@@ -1,8 +1,16 @@
 # SandBox Simulator 4
-SandBox Simulator 4
+SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It let's you play around with different Newtonian physics concepts and visualize them.
+
+I originally developed application in 2008 as a fun side project. At the time there was nothing that let's you quickly visualize many types of physical interations. My goal was a couple of mouse clicks on a form and you're seeing the results right away. No math and no programming required. It was originally designed to give aproximate visual solutions to n-body problems, but it supports much more:
+
+
+
+# Requirements
 
 
 # Some Pretty Pictures
+
+Here are some examples of visualizations.
 
 ![01](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/925be17a-3b91-46f9-90a7-03a9ac5d9caf)
 
