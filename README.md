@@ -1,11 +1,100 @@
 # SandBox Simulator 4
+
+![Splash](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/7698041f-ecb1-420e-bd94-154bf1bdaf4d)
+
 SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It let's you play around with different Newtonian physics concepts and visualize them.
 
-I originally developed application in 2008 as a fun side project. At the time there was nothing that let's you quickly visualize many types of physical interations. My goal was a couple of mouse clicks on a form and you're seeing the results right away. No math and no programming required. It was originally designed to give aproximate visual solutions to n-body problems, but it supports much more:
+I originally developed this application in 2008 as a fun side project. At the time there was nothing that lets you quickly visualize many types of physical interations. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required.
 
+It was originally designed to give aproximate visual solutions to n-body problems of point masses, but it now supports much more:
 
+**Forces**
+- Newtonian Gravity
+- Electostatic Force
+- Uniform Acceleration Fields
+- Uniform Fluid Drag Force
+  - Configurable Fluid Density
+  - Configurable Fluid Viscosity
+  - Configurable Object Drag Coefficient
+- Elastic & Inelastic Collisions
+- Fragmentation on Impact
+  - Gaussian Distribution for Endurance
+  - Gaussian Distribution for Fragment Count
+
+**Methods of Integration for Calculations**
+- 1st order - Euler
+- 2nd order - Verlet
+- 4th order - Symplectic
+- 6th order - Symplectic
+
+**Rendering Options**
+- DirectX 9 Hardware Accelerated
+- DirectX 9 Software Renderer
+- Homegrown Raytracing Engine
+- Object Path Tracing
+- Wireframe Rendering
+ 
+**Objects**
+- Point Mass Spheres
+- Bounding Boxes
+- Physical Attributes
+  - Mass
+  - Charge
+  - Coefficient of Restitution
+  - Radius
+  - Position
+  - Velocity
+- Visual Attributes
+  - Color
+  - Highlights
+  - Reflectivity
+  - Transparency
+  - Refractive Index
+- Prodcedure Generation of All Object Attributes!
+  - Even Distribution
+  - Gaussian Distribution
+  - Random Distribution
+  - Polynomial Distribution
+- Per-Object Interaction Control
+- Groupings of Objects
+
+**Lighting Types**
+- Directional Lights
+- Point Lights
+- Spot Lights
+- Ambient Lighting
+- Highlight Intensity Control
+- Range and Attenuation Control
+- Conic Falloff (Spot Lights)
 
 # Requirements
+- Microsoft .Net Framework version 3.5
+- Windows XP SP2 or higher.
+- A DirectX 9 compatible GPU.
+- A screen resolution of 1024 x 768 or higher.
+- A modern graphics accelerator card is strongly recommened. SandBox Simulator will run with integrated graphics but performance will be significantly reduced.
+- A dual-core CPU is strongly recommended.
+
+# Visualization Controls
+- The keyboard keys W, A, S, D can be used to rotate camera around the central point.
+- The keyboard Up & Down arrows can be used to control the camera position in & out (zoom).
+- The keyboard Space key can be used to pause and resume the simulation.
+
+Note that repositioning of the camera clears the trace history of the objects when object path tracing is enabled.
+
+# Performance Notes
+- SandBox Simulator takes advantage of multithreading and will run best on Dual-Core or Quad-Core processors. This allows all rendering and overhead to run on one core while calculations run on the other.
+- The sample simulations in the Test Simulations directory may run at different speeds depending on your machine. You can change the speed of a simulation by increasing or decreasing the time step, often at the expense of accuracy. As a reference, the sample Figure 8, included in the Simulations folder, runs at about 2 400 000 calculations per second on a Core 2 Duo E6600 (2.4GHz).
+- Reducing time step and increasing the number of calculations per second does not always improve accuracy due to the limitations of floating point numbers.
+- Since SandBox Simulator is calculation heavy, its performance is based primarily on the performance of the floating point unit of the processor. This means that overall performance tends to vary linearly with the clock speed of the processor more than anything else.
+
+# Know Limitations
+- Simulation files (.PR files) made on a computer using one language may produce an error when loaded on a computer using an other language. This is due to different regional and language formats not being taken into consideration. If you encounter this problem, set the regional and language format in your computer's control panel to "English Canada".
+- Bounding box rendering is broken with the ray-tracing render setting.
+
+# Screenshots
+
+
 
 
 # Some Pretty Pictures
