@@ -1364,7 +1364,7 @@ Public Class ControlPanel
         Simulation.Settings.TimeStep = ToDouble(txtTimeStep.Text)
         Simulation.Render.Scale = ToSingle(txtScale.Text)
         Simulation.Settings.MaxCPS = ToDouble(txtLimitCalc.Text)
-        Simulation.Render.BackgroundColor = plRenderBackColor.BackColor
+        Simulation.Render.BackgroundColor = plRenderBackColor.ForeColor
         Simulation.Forces.Gravity = chGravity.Checked
         Simulation.Forces.ElectroStatic.Enabled = chElectrostatic.Checked
         Simulation.Forces.ElectroStatic.Permittivity = ToDouble(txtPermittivity.Text)

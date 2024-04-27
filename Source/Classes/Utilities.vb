@@ -49,8 +49,12 @@ Module Utilities
     'Globlal Constants
     Public Const G As Double = 6.67428 * (10 ^ -11)
     Public Const Eo As Double = 8.854187817 * (10 ^ -12)
-    Public Const Byth As Double = 1 / 255
-    Public Const Byth2 As Double = 1 / (255 * 255)
+
+    Public Const MaxByte As Byte = 255
+    Public Const MaxByteD As Double = 255D
+
+    Public Const Byth As Double = 1D / MaxByteD
+    Public Const Byth2 As Double = 1D / (MaxByteD * MaxByteD)
 
 
     'Global Simulation Object and flags

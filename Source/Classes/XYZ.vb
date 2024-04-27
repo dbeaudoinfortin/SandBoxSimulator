@@ -45,7 +45,7 @@ Public Class XYZ
         Me.Z = Z
     End Sub
     Public Sub New()
-     makeZero()
+        makeZero()
     End Sub
     Public Shared Operator -(ByVal lhs As XYZ, ByVal rhs As XYZ) As XYZ
         Return New XYZ(lhs.X - rhs.X, lhs.Y - rhs.Y, lhs.Z - rhs.Z)

@@ -1,6 +1,5 @@
 ﻿Imports System.Text
 Imports System.Windows.Forms
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class SimulationData
 
@@ -2411,6 +2410,7 @@ Public Class SimulationData
 #End Region
 #Region "Render"
     Private Sub RenderControl()
+        'TODO This doesn't work at all
         RenderCounter.FullCount += 1
         'Limit the frame rate
         If Render.MaxFPS <> 0 And ((Render.Mode = 2) Or (Not Render.VSync)) Then
@@ -2623,12 +2623,12 @@ Public Class SimulationData
         Dim RenderHeight As Integer = Render.Height
         Dim RenderWidth As Integer = Render.Width
         Dim CameraTarget As New XYZ(Camera.Target)
-        Dim BackColor As Color = Render.BackgroundColor
 
         'Data loaded from Simulation - Dynamic
         Dim CameraScreenHunit As New XYZ
         Dim CameraScreenWUnit As New XYZ
         Dim CurrentObjectCount As Integer = 0
+        Dim ObjectRadius() As Double
         Dim ObjectRadiusSqrd() As Double
         Dim ObjectPosition() As XYZ
         Dim ObjectColor() As Color
@@ -2651,118 +2651,19 @@ Public Class SimulationData
         '2D Pixel array
         Dim PixelData((RenderWidth * RenderHeight * 4) - 1) As Byte
         Dim CurrentPixel As Integer
-        Dim PixelColor As New Color
 
         'Used in iterarting through each pixel
         Dim TargetPixel As New XYZ
         Dim CameraPositionToTarget As New XYZ
         Dim HalfRenderWidth As Double = RenderWidth / 2
         Dim HalfRenderHeight As Double = RenderWidth / 2
-        Dim Temp As New XYZ
+        Dim Ray_Temp_XYZ As XYZ
 
-        'Load initial object values that otherwise only get loaded if a change is made to the objects
-        SyncLock LockRayData
-            CurrentObjectCount = ObjectCount
-            ReDim CameratoObject(CurrentObjectCount - 1)
-            ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
-            ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
-            ReDim ObjectPosition(CurrentObjectCount - 1)
-            ReDim ObjectColor(CurrentObjectCount - 1)
-            For i = 0 To CurrentObjectCount - 1
-                ObjectRadiusSqrd(i) = Objects(i).Radius * Objects(i).Radius
-                ObjectColor(i) = Objects(i).Color
-            Next
-        End SyncLock
-
-        'Make the Background Transparent so we can trace the object path
-        If Render.TraceObjects = True Then
-            Render.BackgroundColor = Color.FromArgb(0, Render.BackgroundColor.R, Render.BackgroundColor.G, Render.BackgroundColor.B)
-        End If
-
-        Do While Running
-
-            'Load updated Values
-            SyncLock LockRayData
-                'Update the camera changes
-                CameraScreenHunit = Camera.ScreenHeightUnit
-                CameraScreenWUnit = Camera.ScreenWidthUnit
-                CameraPosition = Camera.Position
-                CameraPositionToTarget = Camera.Target - CameraPosition
-
-                'If the objects didn't change then only update their position
-                If CurrentObjectCount = ObjectCount Then
-                    For i = 0 To CurrentObjectCount - 1
-                        ObjectPosition(i) = Objects(i).Position
-                        CameratoObject(i) = ObjectPosition(i) - CameraPosition
-                        CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
-                    Next
-                Else
-                    CurrentObjectCount = ObjectCount
-                    ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
-                    ReDim ObjectPosition(CurrentObjectCount - 1)
-                    ReDim ObjectColor(CurrentObjectCount - 1)
-                    ReDim CameratoObject(CurrentObjectCount - 1)
-                    ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
-                    For i = 0 To CurrentObjectCount - 1
-                        ObjectPosition(i) = New XYZ(Objects(i).Position)
-                        CameratoObject(i) = ObjectPosition(i) - CameraPosition
-                        CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
-                        ObjectRadiusSqrd(i) = Objects(i).Radius * Objects(i).Radius
-                        ObjectColor(i) = Objects(i).Color
-                    Next
-                End If
-            End SyncLock
-
-            'Reset the current pixel counter
-            CurrentPixel = 0
-
-            'For each pixel
-            For Y = 0 To RenderHeight - 1
-                Temp = ((HalfRenderHeight - Y) * CameraScreenHunit) + CameraPositionToTarget
-                For X = 0 To Render.Width - 1
-                    'Calculate the direction of the primary ray
-                    RayDirection = ((HalfRenderWidth - X) * CameraScreenWUnit) + Temp
-                    RayDirection.makeUnit()
-
-                    'Get the color at the current pixel
-                    PixelColor = TraceRay(CameraPosition, RayDirection, CurrentObjectCount, ObjectPosition, ObjectColor, CameratoObject, ObjectRadiusSqrd, CameratoObjectMagSqrd)
-
-                    'Write the pixel to the pixel array
-                    PixelData(CurrentPixel) = PixelColor.B
-                    PixelData(CurrentPixel + 1) = PixelColor.G
-                    PixelData(CurrentPixel + 2) = PixelColor.R
-                    PixelData(CurrentPixel + 3) = PixelColor.A
-                    CurrentPixel += 4
-                Next
-            Next
-
-            'Draw the pixel array to the screen
-            Stream = Texture.LockRectangle(0, Rect, LockFlags.None, Pitch)
-            Stream.Write(PixelData, 0, PixelData.Length)
-            Texture.UnlockRectangle(0)
-
-            SyncLock LockRayMulti 'Make sure only one thread is using the device 
-                Render.Device.BeginScene()
-                If Camera.DidMove Then
-                    Render.Device.Clear(ClearFlags.Target, BackColor, 1, 0)
-                End If
-                Sprite.Begin(SpriteFlags.AlphaBlend)
-                Sprite.Draw2D(Texture, Rect, Size, Point, Color.White)
-                Sprite.End()
-                Render.Device.EndScene()
-                Render.Device.Present()
-            End SyncLock
-            RenderControl()
-        Loop
-
-        'Reset the background color in case path tracing was used
-        Render.BackgroundColor = Color.FromArgb(255, Render.BackgroundColor.R, Render.BackgroundColor.G, Render.BackgroundColor.B)
-    End Sub
-    Private Function TraceRay(ByRef RayPoint As XYZ, ByRef RayDirection As XYZ, ByRef CurrentObjectCount As Integer, ByRef ObjectPosition() As XYZ, ByRef ObjectColor() As Color, ByRef CameratoObject() As XYZ, ByRef ObjectRadiusSqrd() As Double, ByRef CameratoObjectMagSqrd() As Double) As Color
+        'Used to trace each ray
         Dim Ray_ObjectDistance As Double
-        Dim Ray_ClosestObjectDistance As Double = Double.PositiveInfinity
-        Dim Ray_ClosestObject As Integer = -1
-        Dim Ray_PointNormal As New XYZ
+        Dim Ray_ClosestObjectDistance As Double
+        Dim Ray_ClosestObject As Integer
+        Dim Ray_PointNormal As XYZ
         Dim Ray_tca As Double
         Dim Ray_thc As Double
         Dim Ray_OutsideObject As Boolean
@@ -2780,122 +2681,260 @@ Public Class SimulationData
         Dim Ray_rho As Double
         Dim Ray_cosin As Double
         Dim Ray_cosout As Double
-
         Dim Ray_PointtoObject As XYZ
         Dim Ray_PointtoObjectMagSqrd As Double
 
         'Box
         Dim Ray_ColorUsed As Color
 
-        'For each object check for intersection
+        'Indicates the number of objects changed since the last loop
+        Dim ObjectCountChanged As Boolean = False
+
+        'Load initial object values that otherwise only get loaded if a change is made to the objects
+        'TODO: Replace this with a read-write lock. Don't lock with other render threads only the simulation thread
+        SyncLock LockRayData
+            CurrentObjectCount = ObjectCount
+            ReDim ObjectRadius(CurrentObjectCount - 1)
+            ReDim ObjectColor(CurrentObjectCount - 1)
+            For i = 0 To CurrentObjectCount - 1
+                ObjectRadius(i) = Objects(i).Radius
+                ObjectColor(i) = Objects(i).Color
+            Next
+        End SyncLock
+
+        'Pre-dimension our arrays
+        'Do it outside the SyncLock for better efficiency
+        ReDim CameratoObject(CurrentObjectCount - 1)
+        ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
+        ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
+        ReDim ObjectPosition(CurrentObjectCount - 1)
         For i = 0 To CurrentObjectCount - 1
-            Ray_tca = CameratoObject(i).Dot(RayDirection)
-            Ray_OutsideObject = CameratoObjectMagSqrd(i) > ObjectRadiusSqrd(i)
-            If Ray_tca >= 0 Or Not Ray_OutsideObject Then  'There might be an intersection
-                Ray_thc = ObjectRadiusSqrd(i) - CameratoObjectMagSqrd(i) + (Ray_tca * Ray_tca)
-                If Ray_thc >= 0 Then
-                    If Ray_OutsideObject Then
-                        Ray_ObjectDistance = Ray_tca - Sqrt(Ray_thc)
-                    Else
-                        Ray_ObjectDistance = Ray_tca + Sqrt(Ray_thc)
-                    End If
-                    If Ray_ObjectDistance > 0 And Ray_ObjectDistance < Ray_ClosestObjectDistance Then
-                        Ray_ClosestObjectDistance = Ray_ObjectDistance
-                        Ray_ClosestObject = i
-                    End If
-                End If
-            End If
+            ObjectRadiusSqrd(i) = ObjectRadius(i) * ObjectRadius(i)
         Next
 
-        If Ray_ClosestObject = -1 Then 'If no object was found return the background
-            Return Render.BackgroundColor
-        Else
+        'Make the Background Transparent so we can trace the object path
+        If Render.TraceObjects = True Then
+            Render.BackgroundColor = Color.FromArgb(0, Render.BackgroundColor.R, Render.BackgroundColor.G, Render.BackgroundColor.B)
+        End If
 
-            Ray_ShadowOrigin = RayPoint + (RayDirection * Ray_ClosestObjectDistance)
-            If Ray_ClosestObject <> -2 Then
-                Ray_PointNormal = Ray_ShadowOrigin - ObjectPosition(Ray_ClosestObject)
-                Ray_PointNormal.makeUnit()
-            End If
+        Do While Running
 
+            'Load updated Values
+            'TODO: Replace this with a read-write lock. Don't lock with other render threads only the simulation thread
+            SyncLock LockRayData
+                'Update the camera changes
+                CameraScreenHunit = Camera.ScreenHeightUnit
+                CameraScreenWUnit = Camera.ScreenWidthUnit
+                CameraPosition = Camera.Position
+                CameraPositionToTarget = Camera.Target - CameraPosition
 
-            'For each light in the scene
-            For l = 0 To LightCount - 1
-                If Lights(l).Type = LightType.Directional Then
-                    Ray_ShadowDirection = -Lights(l).Direction
-                Else
-                    Ray_ShadowDirection = Lights(l).Position - Ray_ShadowOrigin
+                'If the objects didn't change then only update their position
+                'TODO: This assumes objects are only ever added
+                If CurrentObjectCount <> ObjectCount Then
+                    CurrentObjectCount = ObjectCount
+                    ObjectCountChanged = True
+                    ReDim ObjectRadius(CurrentObjectCount - 1)
+                    ReDim ObjectColor(CurrentObjectCount - 1)
+                    ReDim ObjectPosition(CurrentObjectCount - 1)
+                    For i = 0 To CurrentObjectCount - 1
+                        ObjectRadius(i) = Objects(i).Radius
+                        ObjectColor(i) = Objects(i).Color
+                    Next
                 End If
 
-                Ray_ShadowLength = Ray_ShadowDirection.Magnitude
-                Ray_ShadowDirection.makeUnit()
-                Ray_LdotN = Ray_ShadowDirection.Dot(Ray_PointNormal)
+                'Always update the Object positions, regardless of object count
+                For i = 0 To CurrentObjectCount - 1
+                    ObjectPosition(i) = Objects(i).Position
+                Next
+            End SyncLock
 
-                If Ray_LdotN < 0 Then 'Self shadowing
-                    Ray_isinShadow = True
-                Else
-                    Ray_isinShadow = False
+            'Re-dimension our arrays
+            'Do it outside the SyncLock for better efficiency
+            If (ObjectCountChanged) Then
+                ObjectCountChanged = False
+                ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
+                ReDim CameratoObject(CurrentObjectCount - 1)
+                ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
+                For i = 0 To CurrentObjectCount - 1
+                    ObjectRadiusSqrd(i) = ObjectRadius(i) * ObjectRadius(i)
+                    CameratoObject(i) = ObjectPosition(i) - CameraPosition
+                    CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
+                Next
+            End If
+
+            'Calculate new values based on camera movement and object movement
+            'Do it outside the SyncLock for better efficiency
+            For i = 0 To CurrentObjectCount - 1
+                CameratoObject(i) = ObjectPosition(i) - CameraPosition
+                CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
+            Next
+
+
+            'Reset the current pixel counter
+            CurrentPixel = 0
+
+            'For each pixel
+            For Y = 0 To RenderHeight - 1
+                Ray_Temp_XYZ = ((HalfRenderHeight - Y) * CameraScreenHunit) + CameraPositionToTarget
+                For X = 0 To Render.Width - 1
+                    'Calculate the direction of the primary ray
+                    RayDirection = ((HalfRenderWidth - X) * CameraScreenWUnit) + Ray_Temp_XYZ
+                    RayDirection.makeUnit()
+
+                    'Reset object flags
+                    Ray_ClosestObjectDistance = Double.PositiveInfinity
+                    Ray_ClosestObject = -1
+
                     'For each object check for intersection
                     For i = 0 To CurrentObjectCount - 1
-                        Ray_PointtoObject = ObjectPosition(i) - Ray_ShadowOrigin
-                        Ray_tca = Ray_PointtoObject.Dot(Ray_ShadowDirection)
-                        If Ray_tca > 0 Then  'There might be an intersection
-                            Ray_PointtoObjectMagSqrd = Ray_PointtoObject.MagnitudeSquared
-                            Ray_thc = ObjectRadiusSqrd(i) - Ray_PointtoObjectMagSqrd + (Ray_tca * Ray_tca)
+                        Ray_tca = CameratoObject(i).Dot(RayDirection)
+                        Ray_OutsideObject = CameratoObjectMagSqrd(i) > ObjectRadiusSqrd(i)
+                        If Ray_tca >= 0 Or Not Ray_OutsideObject Then  'There might be an intersection
+                            Ray_thc = ObjectRadiusSqrd(i) - CameratoObjectMagSqrd(i) + (Ray_tca * Ray_tca)
                             If Ray_thc >= 0 Then
-                                If Ray_tca - Sqrt(Ray_thc) > 0 Then
-                                    Ray_isinShadow = True
-                                    Exit For
+                                If Ray_OutsideObject Then
+                                    Ray_ObjectDistance = Ray_tca - Sqrt(Ray_thc)
+                                Else
+                                    Ray_ObjectDistance = Ray_tca + Sqrt(Ray_thc)
+                                End If
+                                If Ray_ObjectDistance > 0 And Ray_ObjectDistance < Ray_ClosestObjectDistance Then
+                                    Ray_ClosestObjectDistance = Ray_ObjectDistance
+                                    Ray_ClosestObject = i
                                 End If
                             End If
                         End If
                     Next
-                End If
 
-                If Ray_ClosestObject = -2 Then
-                    'ColorUsed = Settings.Box.Color
-                Else
-                    Ray_ColorUsed = ObjectColor(Ray_ClosestObject)
-                End If
-
-                'Add Ambient Lighting for this light
-                Ray_colorR += Lights(l).AmbientColor.R * (Ray_ColorUsed.R * Byth)
-                Ray_colorG += Lights(l).AmbientColor.G * (Ray_ColorUsed.G * Byth)
-                Ray_colorB += Lights(l).AmbientColor.B * (Ray_ColorUsed.B * Byth)
-
-                If Not Ray_isinShadow Then
-                    'Add direct lighting for this light
-
-                    If Lights(l).Type = LightType.Point Then
-                        Ray_attn = 1 / (Lights(l).AttenuationA + (Ray_ShadowLength * (Lights(l).AttenuationB + (Lights(l).AttenuationC * Ray_ShadowLength))))
-                        Ray_spot = 1
-                    ElseIf Lights(l).Type = LightType.Spot Then
-                        Ray_attn = 1 / (Lights(l).AttenuationA + (Ray_ShadowLength * (Lights(l).AttenuationB + (Lights(l).AttenuationC * Ray_ShadowLength))))
-                        Ray_rho = Lights(l).Direction.Dot(-Ray_ShadowDirection)
-                        Ray_cosout = Cos(Lights(l).OuterCone * 0.5)
-                        Ray_cosin = Cos(Lights(l).InnerCone * 0.5)
-                        If Ray_rho > Ray_cosin Then
-                            Ray_spot = 1
-                        ElseIf (Ray_rho <= Ray_cosout) Then
-                            Ray_spot = 0
-                        Else
-                            Ray_spot = ((Ray_rho - Ray_cosout) / (Ray_cosin - Ray_cosout)) ^ Lights(l).Falloff
-                        End If
+                    If Ray_ClosestObject = -1 Then 'If no object was found return the background
+                        'Write the pixel to the pixel array
+                        PixelData(CurrentPixel) = Render.BackgroundColor.B
+                        PixelData(CurrentPixel + 1) = Render.BackgroundColor.G
+                        PixelData(CurrentPixel + 2) = Render.BackgroundColor.R
+                        PixelData(CurrentPixel + 3) = Render.BackgroundColor.A
+                        CurrentPixel += 4
                     Else
-                        Ray_attn = 1
-                        Ray_spot = 1
+
+                        Ray_ShadowOrigin = CameraPosition + (RayDirection * Ray_ClosestObjectDistance)
+                        If Ray_ClosestObject <> -2 Then
+                            Ray_PointNormal = Ray_ShadowOrigin - ObjectPosition(Ray_ClosestObject)
+                            Ray_PointNormal.makeUnit()
+                        Else
+                            'TODO: This is supposed to be for a BOX
+                            Ray_PointNormal = New XYZ
+                        End If
+
+                        'Reset the ray color before calulating all the lighting
+                        Ray_colorR = 0
+                        Ray_colorG = 0
+                        Ray_colorB = 0
+
+                        'For each light in the scene
+                        For l = 0 To LightCount - 1
+                            If Lights(l).Type = LightType.Directional Then
+                                'Directional lights always cast shadows in a single direction
+                                Ray_ShadowDirection = -Lights(l).Direction
+                            Else
+                                Ray_ShadowDirection = Lights(l).Position - Ray_ShadowOrigin
+                            End If
+
+                            Ray_ShadowLength = Ray_ShadowDirection.Magnitude
+                            Ray_ShadowDirection.makeUnit()
+                            Ray_LdotN = Ray_ShadowDirection.Dot(Ray_PointNormal)
+
+                            If Ray_LdotN < 0 Then 'Self shadowing
+                                Ray_isinShadow = True
+                            Else
+                                Ray_isinShadow = False
+                                'For each object check for intersection
+                                For i = 0 To CurrentObjectCount - 1
+                                    Ray_PointtoObject = ObjectPosition(i) - Ray_ShadowOrigin
+                                    Ray_tca = Ray_PointtoObject.Dot(Ray_ShadowDirection)
+                                    If Ray_tca > 0 Then  'There might be an intersection
+                                        Ray_PointtoObjectMagSqrd = Ray_PointtoObject.MagnitudeSquared
+                                        Ray_thc = ObjectRadiusSqrd(i) - Ray_PointtoObjectMagSqrd + (Ray_tca * Ray_tca)
+                                        If Ray_thc >= 0 Then
+                                            If Ray_tca - Sqrt(Ray_thc) > 0 Then
+                                                Ray_isinShadow = True
+                                                Exit For
+                                            End If
+                                        End If
+                                    End If
+                                Next
+                            End If
+
+                            If Ray_ClosestObject = -2 Then
+                                'ColorUsed = Settings.Box.Color
+                            Else
+                                Ray_ColorUsed = ObjectColor(Ray_ClosestObject)
+                            End If
+
+                            'Add Ambient Lighting for this light
+                            Ray_colorR += Lights(l).AmbientColor.R * (Ray_ColorUsed.R * Byth)
+                            Ray_colorG += Lights(l).AmbientColor.G * (Ray_ColorUsed.G * Byth)
+                            Ray_colorB += Lights(l).AmbientColor.B * (Ray_ColorUsed.B * Byth)
+
+                            If Not Ray_isinShadow Then
+                                'Add direct lighting for this light
+
+                                If Lights(l).Type = LightType.Point Then
+                                    Ray_attn = 1 / (Lights(l).AttenuationA + (Ray_ShadowLength * (Lights(l).AttenuationB + (Lights(l).AttenuationC * Ray_ShadowLength))))
+                                    Ray_spot = 1
+                                ElseIf Lights(l).Type = LightType.Spot Then
+                                    Ray_attn = 1 / (Lights(l).AttenuationA + (Ray_ShadowLength * (Lights(l).AttenuationB + (Lights(l).AttenuationC * Ray_ShadowLength))))
+                                    Ray_rho = Lights(l).Direction.Dot(-Ray_ShadowDirection)
+                                    Ray_cosout = Cos(Lights(l).OuterCone * 0.5)
+                                    Ray_cosin = Cos(Lights(l).InnerCone * 0.5)
+                                    If Ray_rho > Ray_cosin Then
+                                        Ray_spot = 1
+                                    ElseIf (Ray_rho <= Ray_cosout) Then
+                                        Ray_spot = 0
+                                    Else
+                                        Ray_spot = ((Ray_rho - Ray_cosout) / (Ray_cosin - Ray_cosout)) ^ Lights(l).Falloff
+                                    End If
+                                Else
+                                    Ray_attn = 1
+                                    Ray_spot = 1
+                                End If
+                                Ray_attn *= Byth * Ray_LdotN * Ray_spot
+                                Ray_colorR += (Ray_attn * Ray_ColorUsed.R) * Lights(l).Color.R
+                                Ray_colorG += (Ray_attn * Ray_ColorUsed.G) * Lights(l).Color.G
+                                Ray_colorB += (Ray_attn * Ray_ColorUsed.B) * Lights(l).Color.B
+                            End If
+                        Next
+
+                        'Write the pixel to the pixel array
+                        PixelData(CurrentPixel) = ToByte(Min(Ray_colorB, MaxByteD)) 'Cap the components at 255
+                        PixelData(CurrentPixel + 1) = ToByte(Min(Ray_colorG, MaxByteD))
+                        PixelData(CurrentPixel + 2) = ToByte(Min(Ray_colorR, MaxByteD))
+                        PixelData(CurrentPixel + 3) = 255
+                        CurrentPixel += 4
                     End If
-                    Ray_attn *= Byth * Ray_LdotN * Ray_spot
-                    Ray_colorR += (Ray_attn * Ray_ColorUsed.R) * Lights(l).Color.R
-                    Ray_colorG += (Ray_attn * Ray_ColorUsed.G) * Lights(l).Color.G
-                    Ray_colorB += (Ray_attn * Ray_ColorUsed.B) * Lights(l).Color.B
-                End If
+                Next
             Next
 
-            'Cap the components at 255
-            Return Color.FromArgb(255, Min(ToInt32(Ray_colorR), 255), Min(ToInt32(Ray_colorG), 255), Min(ToInt32(Ray_colorB), 255))
+            'Draw the pixel array to the screen
+            Stream = Texture.LockRectangle(0, Rect, LockFlags.None, Pitch)
+            Stream.Write(PixelData, 0, PixelData.Length)
+            Texture.UnlockRectangle(0)
 
-        End If
-    End Function
+            SyncLock LockRayMulti 'Make sure only one thread is using the device 
+                Render.Device.BeginScene()
+                If Camera.DidMove Then
+                    Render.Device.Clear(ClearFlags.Target, Render.BackgroundColor, 1, 0)
+                End If
+                Sprite.Begin(SpriteFlags.AlphaBlend)
+                Sprite.Draw2D(Texture, Rect, Size, Point, Color.White)
+                Sprite.End()
+                Render.Device.EndScene()
+                Render.Device.Present()
+            End SyncLock
+            RenderControl() 'TODO: Check the need to make this call here
+        Loop
+
+        'Reset the background color in case path tracing was used
+        Render.BackgroundColor = Color.FromArgb(255, Render.BackgroundColor.R, Render.BackgroundColor.G, Render.BackgroundColor.B)
+    End Sub
+
     Private Function GetNormalColor(ByRef ColorMin As Color, ByRef ColorAvg As Color, ByRef ColorMax As Color) As Color
         Dim ran As Double
         ran = RandMaker.GetNext

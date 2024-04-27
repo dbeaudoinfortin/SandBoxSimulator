@@ -168,6 +168,15 @@
   <data name="Stats.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="lblStat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 8.25pt</value>
+  </data>
+  <data name="lblStat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>446, 17</value>
+  </data>
+  <data name="lblStat.Text" xml:space="preserve">
+    <value>Frames : 0  |  FPS : 0  |  Calculations : 0  |  CPS : 0</value>
+  </data>
   <data name="Stats.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 677</value>
   </data>
@@ -189,15 +198,6 @@
   <data name="&gt;&gt;Stats.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblStat.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 8.25pt</value>
-  </data>
-  <data name="lblStat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>446, 17</value>
-  </data>
-  <data name="lblStat.Text" xml:space="preserve">
-    <value>Frames : 0  |  FPS : 0  |  Calculations : 0  |  CPS : 0</value>
-  </data>
   <metadata name="SaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>211, 17</value>
   </metadata>
@@ -213,1212 +213,6 @@
   <metadata name="gbObjects.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="cmdGroupAdd.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdGroupRemove.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdGroupReplace.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;gbObjects.Name" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.Parent" xml:space="preserve">
-    <value>TabGroups</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupAdd.Name" xml:space="preserve">
-    <value>cmdGroupAdd</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupAdd.Parent" xml:space="preserve">
-    <value>TabGroups</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupAdd.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupRemove.Name" xml:space="preserve">
-    <value>cmdGroupRemove</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupRemove.Parent" xml:space="preserve">
-    <value>TabGroups</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupRemove.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupReplace.Name" xml:space="preserve">
-    <value>cmdGroupReplace</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupReplace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupReplace.Parent" xml:space="preserve">
-    <value>TabGroups</value>
-  </data>
-  <data name="&gt;&gt;cmdGroupReplace.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="TabGroups.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
-  </data>
-  <data name="TabGroups.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabGroups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 581</value>
-  </data>
-  <data name="TabGroups.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="TabGroups.Text" xml:space="preserve">
-    <value>Objects</value>
-  </data>
-  <data name="&gt;&gt;TabGroups.Name" xml:space="preserve">
-    <value>TabGroups</value>
-  </data>
-  <data name="&gt;&gt;TabGroups.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabGroups.Parent" xml:space="preserve">
-    <value>Tabs</value>
-  </data>
-  <data name="&gt;&gt;TabGroups.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <metadata name="gbObjects.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="plObjectHighlightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="plObjectColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectRefractiveIndex.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectRefractiveIndex.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectRefractiveIndex.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectReflectivity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectReflectivity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cbObjectType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chObjectWireframe.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chObjectAffected.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chObjectAffects.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="listGroups.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectVelocityZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectVelocityY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectTransparency.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectHighlightSharpness.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectPositionZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectPositionY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectHighlightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectVelocityX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectPositionX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectCharge.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectMass.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectHighlightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectTransparency.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectVelocityZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectVelocityY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectMass.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectCharge.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectPosition.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectVelocity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectHighlightSharpness.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbObjectTransparency.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectPositionZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectPositionX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectPositionY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectVelocityX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectMass.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectCharge.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbObjectReflectivity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbObjectHighlightSharpness.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectSizeX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectSizeY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectSizeZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectNormalZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectNormalY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectNormalX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectRadius.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectRadius.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectRotationZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectRotationZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectRotationY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectRotationY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectRotationX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectRotationX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectRotation.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblObjectNormal.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectSizeX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectSizeY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectSizeZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtObjectRadius.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectNormalX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectNormalY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdObjectNormalZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;plObjectHighlightColor.Name" xml:space="preserve">
-    <value>plObjectHighlightColor</value>
-  </data>
-  <data name="&gt;&gt;plObjectHighlightColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plObjectHighlightColor.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;plObjectHighlightColor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plObjectColor.Name" xml:space="preserve">
-    <value>plObjectColor</value>
-  </data>
-  <data name="&gt;&gt;plObjectColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plObjectColor.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;plObjectColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRefractiveIndex.Name" xml:space="preserve">
-    <value>cmdObjectRefractiveIndex</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRefractiveIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRefractiveIndex.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRefractiveIndex.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRefractiveIndex.Name" xml:space="preserve">
-    <value>txtObjectRefractiveIndex</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRefractiveIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRefractiveIndex.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRefractiveIndex.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRefractiveIndex.Name" xml:space="preserve">
-    <value>lblObjectRefractiveIndex</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRefractiveIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRefractiveIndex.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRefractiveIndex.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblObjectReflectivity.Name" xml:space="preserve">
-    <value>lblObjectReflectivity</value>
-  </data>
-  <data name="&gt;&gt;lblObjectReflectivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectReflectivity.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectReflectivity.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectReflectivity.Name" xml:space="preserve">
-    <value>cmdObjectReflectivity</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectReflectivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectReflectivity.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectReflectivity.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblObjectType.Name" xml:space="preserve">
-    <value>lblObjectType</value>
-  </data>
-  <data name="&gt;&gt;lblObjectType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectType.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectType.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;cbObjectType.Name" xml:space="preserve">
-    <value>cbObjectType</value>
-  </data>
-  <data name="&gt;&gt;cbObjectType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbObjectType.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cbObjectType.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;chObjectWireframe.Name" xml:space="preserve">
-    <value>chObjectWireframe</value>
-  </data>
-  <data name="&gt;&gt;chObjectWireframe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chObjectWireframe.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;chObjectWireframe.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffected.Name" xml:space="preserve">
-    <value>chObjectAffected</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffected.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffected.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffects.Name" xml:space="preserve">
-    <value>chObjectAffects</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffects.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffects.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;chObjectAffects.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNumber.Name" xml:space="preserve">
-    <value>cmdObjectNumber</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNumber.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNumber.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNumber.Name" xml:space="preserve">
-    <value>lblObjectNumber</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNumber.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNumber.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;listGroups.Name" xml:space="preserve">
-    <value>listGroups</value>
-  </data>
-  <data name="&gt;&gt;listGroups.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listGroups.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;listGroups.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityZ.Name" xml:space="preserve">
-    <value>cmdObjectVelocityZ</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityZ.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityY.Name" xml:space="preserve">
-    <value>cmdObjectVelocityY</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityY.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectTransparency.Name" xml:space="preserve">
-    <value>cmdObjectTransparency</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectTransparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectTransparency.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectTransparency.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightSharpness.Name" xml:space="preserve">
-    <value>cmdObjectHighlightSharpness</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightSharpness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightSharpness.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightSharpness.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionZ.Name" xml:space="preserve">
-    <value>cmdObjectPositionZ</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionZ.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionY.Name" xml:space="preserve">
-    <value>cmdObjectPositionY</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionY.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightColor.Name" xml:space="preserve">
-    <value>cmdObjectHighlightColor</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightColor.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectHighlightColor.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectColor.Name" xml:space="preserve">
-    <value>cmdObjectColor</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectColor.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectColor.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityX.Name" xml:space="preserve">
-    <value>cmdObjectVelocityX</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectVelocityX.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionX.Name" xml:space="preserve">
-    <value>cmdObjectPositionX</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectPositionX.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectCharge.Name" xml:space="preserve">
-    <value>cmdObjectCharge</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectCharge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectCharge.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectCharge.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectMass.Name" xml:space="preserve">
-    <value>cmdObjectMass</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectMass.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectMass.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightColor.Name" xml:space="preserve">
-    <value>lblObjectHighlightColor</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightColor.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightColor.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;lblObjectName.Name" xml:space="preserve">
-    <value>lblObjectName</value>
-  </data>
-  <data name="&gt;&gt;lblObjectName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectName.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectName.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;lblObjectTransparency.Name" xml:space="preserve">
-    <value>lblObjectTransparency</value>
-  </data>
-  <data name="&gt;&gt;lblObjectTransparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectTransparency.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectTransparency.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityZ.Name" xml:space="preserve">
-    <value>txtObjectVelocityZ</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityZ.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;txtObjectName.Name" xml:space="preserve">
-    <value>txtObjectName</value>
-  </data>
-  <data name="&gt;&gt;txtObjectName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectName.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectName.ZOrder" xml:space="preserve">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityY.Name" xml:space="preserve">
-    <value>txtObjectVelocityY</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityY.ZOrder" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;lblObjectMass.Name" xml:space="preserve">
-    <value>lblObjectMass</value>
-  </data>
-  <data name="&gt;&gt;lblObjectMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectMass.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectMass.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;lblObjectCharge.Name" xml:space="preserve">
-    <value>lblObjectCharge</value>
-  </data>
-  <data name="&gt;&gt;lblObjectCharge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectCharge.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectCharge.ZOrder" xml:space="preserve">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;lblObjectColor.Name" xml:space="preserve">
-    <value>lblObjectColor</value>
-  </data>
-  <data name="&gt;&gt;lblObjectColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectColor.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectColor.ZOrder" xml:space="preserve">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;lblObjectPosition.Name" xml:space="preserve">
-    <value>lblObjectPosition</value>
-  </data>
-  <data name="&gt;&gt;lblObjectPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectPosition.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectPosition.ZOrder" xml:space="preserve">
-    <value>36</value>
-  </data>
-  <data name="&gt;&gt;lblObjectVelocity.Name" xml:space="preserve">
-    <value>lblObjectVelocity</value>
-  </data>
-  <data name="&gt;&gt;lblObjectVelocity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectVelocity.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectVelocity.ZOrder" xml:space="preserve">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightSharpness.Name" xml:space="preserve">
-    <value>lblObjectHighlightSharpness</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightSharpness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightSharpness.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectHighlightSharpness.ZOrder" xml:space="preserve">
-    <value>38</value>
-  </data>
-  <data name="&gt;&gt;tbObjectTransparency.Name" xml:space="preserve">
-    <value>tbObjectTransparency</value>
-  </data>
-  <data name="&gt;&gt;tbObjectTransparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbObjectTransparency.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;tbObjectTransparency.ZOrder" xml:space="preserve">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionZ.Name" xml:space="preserve">
-    <value>txtObjectPositionZ</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionZ.ZOrder" xml:space="preserve">
-    <value>40</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionX.Name" xml:space="preserve">
-    <value>txtObjectPositionX</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionX.ZOrder" xml:space="preserve">
-    <value>41</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionY.Name" xml:space="preserve">
-    <value>txtObjectPositionY</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectPositionY.ZOrder" xml:space="preserve">
-    <value>42</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityX.Name" xml:space="preserve">
-    <value>txtObjectVelocityX</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectVelocityX.ZOrder" xml:space="preserve">
-    <value>43</value>
-  </data>
-  <data name="&gt;&gt;txtObjectMass.Name" xml:space="preserve">
-    <value>txtObjectMass</value>
-  </data>
-  <data name="&gt;&gt;txtObjectMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectMass.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectMass.ZOrder" xml:space="preserve">
-    <value>44</value>
-  </data>
-  <data name="&gt;&gt;txtObjectCharge.Name" xml:space="preserve">
-    <value>txtObjectCharge</value>
-  </data>
-  <data name="&gt;&gt;txtObjectCharge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectCharge.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectCharge.ZOrder" xml:space="preserve">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNumber.Name" xml:space="preserve">
-    <value>txtObjectNumber</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNumber.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNumber.ZOrder" xml:space="preserve">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;tbObjectReflectivity.Name" xml:space="preserve">
-    <value>tbObjectReflectivity</value>
-  </data>
-  <data name="&gt;&gt;tbObjectReflectivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbObjectReflectivity.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;tbObjectReflectivity.ZOrder" xml:space="preserve">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;tbObjectHighlightSharpness.Name" xml:space="preserve">
-    <value>tbObjectHighlightSharpness</value>
-  </data>
-  <data name="&gt;&gt;tbObjectHighlightSharpness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbObjectHighlightSharpness.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;tbObjectHighlightSharpness.ZOrder" xml:space="preserve">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeX.Name" xml:space="preserve">
-    <value>txtObjectSizeX</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeX.ZOrder" xml:space="preserve">
-    <value>49</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeY.Name" xml:space="preserve">
-    <value>txtObjectSizeY</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeY.ZOrder" xml:space="preserve">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeZ.Name" xml:space="preserve">
-    <value>txtObjectSizeZ</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectSizeZ.ZOrder" xml:space="preserve">
-    <value>51</value>
-  </data>
-  <data name="&gt;&gt;lblObjectSize.Name" xml:space="preserve">
-    <value>lblObjectSize</value>
-  </data>
-  <data name="&gt;&gt;lblObjectSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectSize.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectSize.ZOrder" xml:space="preserve">
-    <value>52</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalZ.Name" xml:space="preserve">
-    <value>txtObjectNormalZ</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalZ.ZOrder" xml:space="preserve">
-    <value>53</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalY.Name" xml:space="preserve">
-    <value>txtObjectNormalY</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalY.ZOrder" xml:space="preserve">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalX.Name" xml:space="preserve">
-    <value>txtObjectNormalX</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectNormalX.ZOrder" xml:space="preserve">
-    <value>55</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRadius.Name" xml:space="preserve">
-    <value>cmdObjectRadius</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRadius.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRadius.ZOrder" xml:space="preserve">
-    <value>56</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRadius.Name" xml:space="preserve">
-    <value>lblObjectRadius</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRadius.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRadius.ZOrder" xml:space="preserve">
-    <value>57</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationZ.Name" xml:space="preserve">
-    <value>txtObjectRotationZ</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationZ.ZOrder" xml:space="preserve">
-    <value>58</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationZ.Name" xml:space="preserve">
-    <value>cmdObjectRotationZ</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationZ.ZOrder" xml:space="preserve">
-    <value>59</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationY.Name" xml:space="preserve">
-    <value>txtObjectRotationY</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationY.ZOrder" xml:space="preserve">
-    <value>60</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationY.Name" xml:space="preserve">
-    <value>cmdObjectRotationY</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationY.ZOrder" xml:space="preserve">
-    <value>61</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationX.Name" xml:space="preserve">
-    <value>txtObjectRotationX</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRotationX.ZOrder" xml:space="preserve">
-    <value>62</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationX.Name" xml:space="preserve">
-    <value>cmdObjectRotationX</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectRotationX.ZOrder" xml:space="preserve">
-    <value>63</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRotation.Name" xml:space="preserve">
-    <value>lblObjectRotation</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRotation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRotation.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectRotation.ZOrder" xml:space="preserve">
-    <value>64</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNormal.Name" xml:space="preserve">
-    <value>lblObjectNormal</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNormal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNormal.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;lblObjectNormal.ZOrder" xml:space="preserve">
-    <value>65</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeX.Name" xml:space="preserve">
-    <value>cmdObjectSizeX</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeX.ZOrder" xml:space="preserve">
-    <value>66</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeY.Name" xml:space="preserve">
-    <value>cmdObjectSizeY</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeY.ZOrder" xml:space="preserve">
-    <value>67</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeZ.Name" xml:space="preserve">
-    <value>cmdObjectSizeZ</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectSizeZ.ZOrder" xml:space="preserve">
-    <value>68</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRadius.Name" xml:space="preserve">
-    <value>txtObjectRadius</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRadius.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;txtObjectRadius.ZOrder" xml:space="preserve">
-    <value>69</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalX.Name" xml:space="preserve">
-    <value>cmdObjectNormalX</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalX.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalX.ZOrder" xml:space="preserve">
-    <value>70</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalY.Name" xml:space="preserve">
-    <value>cmdObjectNormalY</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalY.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalY.ZOrder" xml:space="preserve">
-    <value>71</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalZ.Name" xml:space="preserve">
-    <value>cmdObjectNormalZ</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalZ.Parent" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;cmdObjectNormalZ.ZOrder" xml:space="preserve">
-    <value>72</value>
-  </data>
-  <data name="gbObjects.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gbObjects.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 528</value>
-  </data>
-  <data name="gbObjects.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="gbObjects.Text" xml:space="preserve">
-    <value>Objects</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.Name" xml:space="preserve">
-    <value>gbObjects</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.Parent" xml:space="preserve">
-    <value>TabGroups</value>
-  </data>
-  <data name="&gt;&gt;gbObjects.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="plObjectHighlightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -3921,6 +2715,30 @@
   <data name="&gt;&gt;cmdObjectNormalZ.ZOrder" xml:space="preserve">
     <value>72</value>
   </data>
+  <data name="gbObjects.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gbObjects.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 528</value>
+  </data>
+  <data name="gbObjects.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="gbObjects.Text" xml:space="preserve">
+    <value>Objects</value>
+  </data>
+  <data name="&gt;&gt;gbObjects.Name" xml:space="preserve">
+    <value>gbObjects</value>
+  </data>
+  <data name="&gt;&gt;gbObjects.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbObjects.Parent" xml:space="preserve">
+    <value>TabGroups</value>
+  </data>
+  <data name="&gt;&gt;gbObjects.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="cmdGroupAdd.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4026,585 +2844,39 @@
   <data name="&gt;&gt;cmdGroupReplace.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="TabGroups.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 39</value>
+  </data>
+  <data name="TabGroups.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TabGroups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 581</value>
+  </data>
+  <data name="TabGroups.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="TabGroups.Text" xml:space="preserve">
+    <value>Objects</value>
+  </data>
+  <data name="&gt;&gt;TabGroups.Name" xml:space="preserve">
+    <value>TabGroups</value>
+  </data>
+  <data name="&gt;&gt;TabGroups.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabGroups.Parent" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="&gt;&gt;TabGroups.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="TabLights.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="gbLights.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="cmdLightAdd.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdLightRemove.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cmdLightReplace.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;gbLights.Name" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;gbLights.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbLights.Parent" xml:space="preserve">
-    <value>TabLights</value>
-  </data>
-  <data name="&gt;&gt;gbLights.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmdLightAdd.Name" xml:space="preserve">
-    <value>cmdLightAdd</value>
-  </data>
-  <data name="&gt;&gt;cmdLightAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdLightAdd.Parent" xml:space="preserve">
-    <value>TabLights</value>
-  </data>
-  <data name="&gt;&gt;cmdLightAdd.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cmdLightRemove.Name" xml:space="preserve">
-    <value>cmdLightRemove</value>
-  </data>
-  <data name="&gt;&gt;cmdLightRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdLightRemove.Parent" xml:space="preserve">
-    <value>TabLights</value>
-  </data>
-  <data name="&gt;&gt;cmdLightRemove.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cmdLightReplace.Name" xml:space="preserve">
-    <value>cmdLightReplace</value>
-  </data>
-  <data name="&gt;&gt;cmdLightReplace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdLightReplace.Parent" xml:space="preserve">
-    <value>TabLights</value>
-  </data>
-  <data name="&gt;&gt;cmdLightReplace.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="TabLights.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
-  </data>
-  <data name="TabLights.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 581</value>
-  </data>
-  <data name="TabLights.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="TabLights.Text" xml:space="preserve">
-    <value>Lighting</value>
-  </data>
-  <data name="&gt;&gt;TabLights.Name" xml:space="preserve">
-    <value>TabLights</value>
-  </data>
-  <data name="&gt;&gt;TabLights.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabLights.Parent" xml:space="preserve">
-    <value>Tabs</value>
-  </data>
-  <data name="&gt;&gt;TabLights.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <metadata name="gbLights.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="plLightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightAttenuationC.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightAttenuationB.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightAttenuationA.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightAttenuation.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightAngleOuter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightRange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightRange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightFalloff.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightFalloff.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightAngle.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightAngleInner.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbLightAmbient.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightAmbient.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightHighlight.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightPositionZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightPositionY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightPositionX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightPosition.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chLightsEnable.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="listLights.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightDirectionZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightDirection.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightDirectionY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtLightDirectionX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblLightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbLightHighlight.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cbLightType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;plLightColor.Name" xml:space="preserve">
-    <value>plLightColor</value>
-  </data>
-  <data name="&gt;&gt;plLightColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plLightColor.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;plLightColor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationC.Name" xml:space="preserve">
-    <value>txtLightAttenuationC</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationC.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationC.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationB.Name" xml:space="preserve">
-    <value>txtLightAttenuationB</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationB.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationA.Name" xml:space="preserve">
-    <value>txtLightAttenuationA</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationA.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightAttenuationA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblLightAttenuation.Name" xml:space="preserve">
-    <value>lblLightAttenuation</value>
-  </data>
-  <data name="&gt;&gt;lblLightAttenuation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightAttenuation.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightAttenuation.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleOuter.Name" xml:space="preserve">
-    <value>txtLightAngleOuter</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleOuter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleOuter.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleOuter.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblLightRange.Name" xml:space="preserve">
-    <value>lblLightRange</value>
-  </data>
-  <data name="&gt;&gt;lblLightRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightRange.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightRange.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;txtLightRange.Name" xml:space="preserve">
-    <value>txtLightRange</value>
-  </data>
-  <data name="&gt;&gt;txtLightRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightRange.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightRange.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;lblLightFalloff.Name" xml:space="preserve">
-    <value>lblLightFalloff</value>
-  </data>
-  <data name="&gt;&gt;lblLightFalloff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightFalloff.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightFalloff.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtLightFalloff.Name" xml:space="preserve">
-    <value>txtLightFalloff</value>
-  </data>
-  <data name="&gt;&gt;txtLightFalloff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightFalloff.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightFalloff.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;lblLightAngle.Name" xml:space="preserve">
-    <value>lblLightAngle</value>
-  </data>
-  <data name="&gt;&gt;lblLightAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightAngle.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightAngle.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleInner.Name" xml:space="preserve">
-    <value>txtLightAngleInner</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleInner.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleInner.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightAngleInner.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;tbLightAmbient.Name" xml:space="preserve">
-    <value>tbLightAmbient</value>
-  </data>
-  <data name="&gt;&gt;tbLightAmbient.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbLightAmbient.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;tbLightAmbient.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;lblLightAmbient.Name" xml:space="preserve">
-    <value>lblLightAmbient</value>
-  </data>
-  <data name="&gt;&gt;lblLightAmbient.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightAmbient.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightAmbient.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;lblLightHighlight.Name" xml:space="preserve">
-    <value>lblLightHighlight</value>
-  </data>
-  <data name="&gt;&gt;lblLightHighlight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightHighlight.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightHighlight.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;lblLightType.Name" xml:space="preserve">
-    <value>lblLightType</value>
-  </data>
-  <data name="&gt;&gt;lblLightType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightType.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightType.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionZ.Name" xml:space="preserve">
-    <value>txtLightPositionZ</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionZ.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionZ.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionY.Name" xml:space="preserve">
-    <value>txtLightPositionY</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionY.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionY.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionX.Name" xml:space="preserve">
-    <value>txtLightPositionX</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionX.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightPositionX.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;lblLightPosition.Name" xml:space="preserve">
-    <value>lblLightPosition</value>
-  </data>
-  <data name="&gt;&gt;lblLightPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightPosition.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightPosition.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;chLightsEnable.Name" xml:space="preserve">
-    <value>chLightsEnable</value>
-  </data>
-  <data name="&gt;&gt;chLightsEnable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chLightsEnable.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;chLightsEnable.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;listLights.Name" xml:space="preserve">
-    <value>listLights</value>
-  </data>
-  <data name="&gt;&gt;listLights.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listLights.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;listLights.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;txtLightName.Name" xml:space="preserve">
-    <value>txtLightName</value>
-  </data>
-  <data name="&gt;&gt;txtLightName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightName.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightName.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;lblLightName.Name" xml:space="preserve">
-    <value>lblLightName</value>
-  </data>
-  <data name="&gt;&gt;lblLightName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightName.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightName.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionZ.Name" xml:space="preserve">
-    <value>txtLightDirectionZ</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionZ.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionZ.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;lblLightDirection.Name" xml:space="preserve">
-    <value>lblLightDirection</value>
-  </data>
-  <data name="&gt;&gt;lblLightDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightDirection.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightDirection.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionY.Name" xml:space="preserve">
-    <value>txtLightDirectionY</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionY.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionY.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionX.Name" xml:space="preserve">
-    <value>txtLightDirectionX</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionX.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;txtLightDirectionX.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;lblLightColor.Name" xml:space="preserve">
-    <value>lblLightColor</value>
-  </data>
-  <data name="&gt;&gt;lblLightColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblLightColor.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;lblLightColor.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;tbLightHighlight.Name" xml:space="preserve">
-    <value>tbLightHighlight</value>
-  </data>
-  <data name="&gt;&gt;tbLightHighlight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbLightHighlight.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;tbLightHighlight.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;cbLightType.Name" xml:space="preserve">
-    <value>cbLightType</value>
-  </data>
-  <data name="&gt;&gt;cbLightType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbLightType.Parent" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;cbLightType.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="gbLights.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gbLights.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 528</value>
-  </data>
-  <data name="gbLights.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="gbLights.Text" xml:space="preserve">
-    <value>Lights</value>
-  </data>
-  <data name="&gt;&gt;gbLights.Name" xml:space="preserve">
-    <value>gbLights</value>
-  </data>
-  <data name="&gt;&gt;gbLights.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbLights.Parent" xml:space="preserve">
-    <value>TabLights</value>
-  </data>
-  <data name="&gt;&gt;gbLights.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="plLightColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -5571,6 +3843,30 @@
   <data name="&gt;&gt;cbLightType.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
+  <data name="gbLights.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gbLights.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 528</value>
+  </data>
+  <data name="gbLights.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="gbLights.Text" xml:space="preserve">
+    <value>Lights</value>
+  </data>
+  <data name="&gt;&gt;gbLights.Name" xml:space="preserve">
+    <value>gbLights</value>
+  </data>
+  <data name="&gt;&gt;gbLights.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbLights.Parent" xml:space="preserve">
+    <value>TabLights</value>
+  </data>
+  <data name="&gt;&gt;gbLights.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="cmdLightAdd.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -5676,330 +3972,36 @@
   <data name="&gt;&gt;cmdLightReplace.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="TabLights.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 39</value>
+  </data>
+  <data name="TabLights.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 581</value>
+  </data>
+  <data name="TabLights.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TabLights.Text" xml:space="preserve">
+    <value>Lighting</value>
+  </data>
+  <data name="&gt;&gt;TabLights.Name" xml:space="preserve">
+    <value>TabLights</value>
+  </data>
+  <data name="&gt;&gt;TabLights.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabLights.Parent" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="&gt;&gt;TabLights.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="TabDisplay.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="GroupBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Rendering.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CmdSaveOut.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
-    <value>TabDisplay</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Rendering.Name" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Rendering.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Rendering.Parent" xml:space="preserve">
-    <value>TabDisplay</value>
-  </data>
-  <data name="&gt;&gt;Rendering.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;CmdSaveOut.Name" xml:space="preserve">
-    <value>CmdSaveOut</value>
-  </data>
-  <data name="&gt;&gt;CmdSaveOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CmdSaveOut.Parent" xml:space="preserve">
-    <value>TabDisplay</value>
-  </data>
-  <data name="&gt;&gt;CmdSaveOut.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="TabDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
-  </data>
-  <data name="TabDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 581</value>
-  </data>
-  <data name="TabDisplay.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="TabDisplay.Text" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;TabDisplay.Name" xml:space="preserve">
-    <value>TabDisplay</value>
-  </data>
-  <data name="&gt;&gt;TabDisplay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabDisplay.Parent" xml:space="preserve">
-    <value>Tabs</value>
-  </data>
-  <data name="&gt;&gt;TabDisplay.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="GroupBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label47.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chCamera.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCPosZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label11.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCOrientZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCTargetY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCPosX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCTargetZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label17.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCTargetX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCPosY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCOrientX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCOrientY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbCameraSpeed.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;Label47.Name" xml:space="preserve">
-    <value>Label47</value>
-  </data>
-  <data name="&gt;&gt;Label47.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label47.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label47.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chCamera.Name" xml:space="preserve">
-    <value>chCamera</value>
-  </data>
-  <data name="&gt;&gt;chCamera.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chCamera.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;chCamera.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtCPosZ.Name" xml:space="preserve">
-    <value>txtCPosZ</value>
-  </data>
-  <data name="&gt;&gt;txtCPosZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCPosZ.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCPosZ.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Label11.Name" xml:space="preserve">
-    <value>Label11</value>
-  </data>
-  <data name="&gt;&gt;Label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label11.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label11.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Label16.Name" xml:space="preserve">
-    <value>Label16</value>
-  </data>
-  <data name="&gt;&gt;Label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label16.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label16.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientZ.Name" xml:space="preserve">
-    <value>txtCOrientZ</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientZ.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientZ.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetY.Name" xml:space="preserve">
-    <value>txtCTargetY</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetY.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetY.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;txtCPosX.Name" xml:space="preserve">
-    <value>txtCPosX</value>
-  </data>
-  <data name="&gt;&gt;txtCPosX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCPosX.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCPosX.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetZ.Name" xml:space="preserve">
-    <value>txtCTargetZ</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetZ.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetZ.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Label17.Name" xml:space="preserve">
-    <value>Label17</value>
-  </data>
-  <data name="&gt;&gt;Label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label17.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label17.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetX.Name" xml:space="preserve">
-    <value>txtCTargetX</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetX.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCTargetX.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtCPosY.Name" xml:space="preserve">
-    <value>txtCPosY</value>
-  </data>
-  <data name="&gt;&gt;txtCPosY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCPosY.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCPosY.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientX.Name" xml:space="preserve">
-    <value>txtCOrientX</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientX.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientX.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientY.Name" xml:space="preserve">
-    <value>txtCOrientY</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientY.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtCOrientY.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;tbCameraSpeed.Name" xml:space="preserve">
-    <value>tbCameraSpeed</value>
-  </data>
-  <data name="&gt;&gt;tbCameraSpeed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbCameraSpeed.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;tbCameraSpeed.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 328</value>
-  </data>
-  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 173</value>
-  </data>
-  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Camera</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
-    <value>TabDisplay</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="Label47.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -6489,348 +4491,33 @@
   <data name="&gt;&gt;tbCameraSpeed.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 328</value>
+  </data>
+  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 173</value>
+  </data>
+  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
+    <value>TabDisplay</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="Rendering.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Label3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtRenderThreads.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label46.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtVFoV.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label45.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cbRender.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label44.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtMaxFPS.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chVSync.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label43.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cbShading.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tbPolys.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label30.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtWindowX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtHFoV.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chTrace.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtWindowY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="plRenderBackColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
-    <value>Label3</value>
-  </data>
-  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtRenderThreads.Name" xml:space="preserve">
-    <value>txtRenderThreads</value>
-  </data>
-  <data name="&gt;&gt;txtRenderThreads.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtRenderThreads.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;txtRenderThreads.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Label46.Name" xml:space="preserve">
-    <value>Label46</value>
-  </data>
-  <data name="&gt;&gt;Label46.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label46.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label46.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtVFoV.Name" xml:space="preserve">
-    <value>txtVFoV</value>
-  </data>
-  <data name="&gt;&gt;txtVFoV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVFoV.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;txtVFoV.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Label45.Name" xml:space="preserve">
-    <value>Label45</value>
-  </data>
-  <data name="&gt;&gt;Label45.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label45.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label45.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cbRender.Name" xml:space="preserve">
-    <value>cbRender</value>
-  </data>
-  <data name="&gt;&gt;cbRender.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbRender.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;cbRender.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Label44.Name" xml:space="preserve">
-    <value>Label44</value>
-  </data>
-  <data name="&gt;&gt;Label44.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label44.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label44.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;txtMaxFPS.Name" xml:space="preserve">
-    <value>txtMaxFPS</value>
-  </data>
-  <data name="&gt;&gt;txtMaxFPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtMaxFPS.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;txtMaxFPS.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;chVSync.Name" xml:space="preserve">
-    <value>chVSync</value>
-  </data>
-  <data name="&gt;&gt;chVSync.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chVSync.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;chVSync.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Label43.Name" xml:space="preserve">
-    <value>Label43</value>
-  </data>
-  <data name="&gt;&gt;Label43.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label43.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label43.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;cbShading.Name" xml:space="preserve">
-    <value>cbShading</value>
-  </data>
-  <data name="&gt;&gt;cbShading.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbShading.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;cbShading.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;tbPolys.Name" xml:space="preserve">
-    <value>tbPolys</value>
-  </data>
-  <data name="&gt;&gt;tbPolys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbPolys.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;tbPolys.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;Label30.Name" xml:space="preserve">
-    <value>Label30</value>
-  </data>
-  <data name="&gt;&gt;Label30.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label30.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label30.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;txtWindowX.Name" xml:space="preserve">
-    <value>txtWindowX</value>
-  </data>
-  <data name="&gt;&gt;txtWindowX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtWindowX.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;txtWindowX.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;Label12.Name" xml:space="preserve">
-    <value>Label12</value>
-  </data>
-  <data name="&gt;&gt;Label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label12.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label12.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;Label18.Name" xml:space="preserve">
-    <value>Label18</value>
-  </data>
-  <data name="&gt;&gt;Label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label18.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label18.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;Label13.Name" xml:space="preserve">
-    <value>Label13</value>
-  </data>
-  <data name="&gt;&gt;Label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label13.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Label13.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;txtHFoV.Name" xml:space="preserve">
-    <value>txtHFoV</value>
-  </data>
-  <data name="&gt;&gt;txtHFoV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtHFoV.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;txtHFoV.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;chTrace.Name" xml:space="preserve">
-    <value>chTrace</value>
-  </data>
-  <data name="&gt;&gt;chTrace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chTrace.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;chTrace.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;txtWindowY.Name" xml:space="preserve">
-    <value>txtWindowY</value>
-  </data>
-  <data name="&gt;&gt;txtWindowY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtWindowY.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;txtWindowY.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;plRenderBackColor.Name" xml:space="preserve">
-    <value>plRenderBackColor</value>
-  </data>
-  <data name="&gt;&gt;plRenderBackColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plRenderBackColor.Parent" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;plRenderBackColor.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="Rendering.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Rendering.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 322</value>
-  </data>
-  <data name="Rendering.TabIndex" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="Rendering.Text" xml:space="preserve">
-    <value>Render</value>
-  </data>
-  <data name="&gt;&gt;Rendering.Name" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
-  <data name="&gt;&gt;Rendering.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Rendering.Parent" xml:space="preserve">
-    <value>TabDisplay</value>
-  </data>
-  <data name="&gt;&gt;Rendering.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="Label3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -7500,6 +5187,30 @@
   <data name="&gt;&gt;plRenderBackColor.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <data name="Rendering.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Rendering.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 322</value>
+  </data>
+  <data name="Rendering.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="Rendering.Text" xml:space="preserve">
+    <value>Render</value>
+  </data>
+  <data name="&gt;&gt;Rendering.Name" xml:space="preserve">
+    <value>Rendering</value>
+  </data>
+  <data name="&gt;&gt;Rendering.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Rendering.Parent" xml:space="preserve">
+    <value>TabDisplay</value>
+  </data>
+  <data name="&gt;&gt;Rendering.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="CmdSaveOut.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -7536,345 +5247,36 @@
   <data name="&gt;&gt;CmdSaveOut.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="TabDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 39</value>
+  </data>
+  <data name="TabDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 581</value>
+  </data>
+  <data name="TabDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="TabDisplay.Text" xml:space="preserve">
+    <value>Rendering</value>
+  </data>
+  <data name="&gt;&gt;TabDisplay.Name" xml:space="preserve">
+    <value>TabDisplay</value>
+  </data>
+  <data name="&gt;&gt;TabDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabDisplay.Parent" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="&gt;&gt;TabDisplay.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="TabForces.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="GroupBox5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="GroupBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;GroupBox5.Name" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.Parent" xml:space="preserve">
-    <value>TabForces</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.Name" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.Parent" xml:space="preserve">
-    <value>TabForces</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TabForces.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
-  </data>
-  <data name="TabForces.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 581</value>
-  </data>
-  <data name="TabForces.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="TabForces.Text" xml:space="preserve">
-    <value>Forces &amp; Collisions</value>
-  </data>
-  <data name="&gt;&gt;TabForces.Name" xml:space="preserve">
-    <value>TabForces</value>
-  </data>
-  <data name="&gt;&gt;TabForces.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabForces.Parent" xml:space="preserve">
-    <value>Tabs</value>
-  </data>
-  <data name="&gt;&gt;TabForces.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="GroupBox5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtPermittivity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label48.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtFluidViscosity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label29.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtDragCoeff.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chForces.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtFluidDensity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chElectrostatic.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtFieldZ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chGravity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtFieldY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chField.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtFieldX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label22.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chDrag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label28.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label26.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;txtPermittivity.Name" xml:space="preserve">
-    <value>txtPermittivity</value>
-  </data>
-  <data name="&gt;&gt;txtPermittivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPermittivity.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtPermittivity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Label48.Name" xml:space="preserve">
-    <value>Label48</value>
-  </data>
-  <data name="&gt;&gt;Label48.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label48.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;Label48.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtFluidViscosity.Name" xml:space="preserve">
-    <value>txtFluidViscosity</value>
-  </data>
-  <data name="&gt;&gt;txtFluidViscosity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFluidViscosity.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtFluidViscosity.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Label29.Name" xml:space="preserve">
-    <value>Label29</value>
-  </data>
-  <data name="&gt;&gt;Label29.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label29.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;Label29.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtDragCoeff.Name" xml:space="preserve">
-    <value>txtDragCoeff</value>
-  </data>
-  <data name="&gt;&gt;txtDragCoeff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDragCoeff.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtDragCoeff.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;chForces.Name" xml:space="preserve">
-    <value>chForces</value>
-  </data>
-  <data name="&gt;&gt;chForces.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chForces.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;chForces.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtFluidDensity.Name" xml:space="preserve">
-    <value>txtFluidDensity</value>
-  </data>
-  <data name="&gt;&gt;txtFluidDensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFluidDensity.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtFluidDensity.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;chElectrostatic.Name" xml:space="preserve">
-    <value>chElectrostatic</value>
-  </data>
-  <data name="&gt;&gt;chElectrostatic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chElectrostatic.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;chElectrostatic.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtFieldZ.Name" xml:space="preserve">
-    <value>txtFieldZ</value>
-  </data>
-  <data name="&gt;&gt;txtFieldZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFieldZ.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtFieldZ.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;chGravity.Name" xml:space="preserve">
-    <value>chGravity</value>
-  </data>
-  <data name="&gt;&gt;chGravity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chGravity.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;chGravity.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;txtFieldY.Name" xml:space="preserve">
-    <value>txtFieldY</value>
-  </data>
-  <data name="&gt;&gt;txtFieldY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFieldY.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtFieldY.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chField.Name" xml:space="preserve">
-    <value>chField</value>
-  </data>
-  <data name="&gt;&gt;chField.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chField.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;chField.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtFieldX.Name" xml:space="preserve">
-    <value>txtFieldX</value>
-  </data>
-  <data name="&gt;&gt;txtFieldX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFieldX.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;txtFieldX.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;Label22.Name" xml:space="preserve">
-    <value>Label22</value>
-  </data>
-  <data name="&gt;&gt;Label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label22.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;Label22.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;chDrag.Name" xml:space="preserve">
-    <value>chDrag</value>
-  </data>
-  <data name="&gt;&gt;chDrag.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chDrag.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;chDrag.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;Label28.Name" xml:space="preserve">
-    <value>Label28</value>
-  </data>
-  <data name="&gt;&gt;Label28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label28.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;Label28.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;Label26.Name" xml:space="preserve">
-    <value>Label26</value>
-  </data>
-  <data name="&gt;&gt;Label26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label26.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;Label26.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="GroupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 292</value>
-  </data>
-  <data name="GroupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="GroupBox5.Text" xml:space="preserve">
-    <value>Forces</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.Name" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.Parent" xml:space="preserve">
-    <value>TabForces</value>
-  </data>
-  <data name="&gt;&gt;GroupBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="txtPermittivity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -8454,228 +5856,33 @@
   <data name="&gt;&gt;Label26.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <data name="GroupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 292</value>
+  </data>
+  <data name="GroupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GroupBox5.Text" xml:space="preserve">
+    <value>Forces</value>
+  </data>
+  <data name="&gt;&gt;GroupBox5.Name" xml:space="preserve">
+    <value>GroupBox5</value>
+  </data>
+  <data name="&gt;&gt;GroupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox5.Parent" xml:space="preserve">
+    <value>TabForces</value>
+  </data>
+  <data name="&gt;&gt;GroupBox5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="GroupBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="chInterpolate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chCollision.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label20.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtCoR.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chbreakable.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblResulting.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label25.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtAddMax.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtBreakMin.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtAddAvg.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtBreakAvg.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtAddMin.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtBreakMax.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;chInterpolate.Name" xml:space="preserve">
-    <value>chInterpolate</value>
-  </data>
-  <data name="&gt;&gt;chInterpolate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chInterpolate.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;chInterpolate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chCollision.Name" xml:space="preserve">
-    <value>chCollision</value>
-  </data>
-  <data name="&gt;&gt;chCollision.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chCollision.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;chCollision.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Label20.Name" xml:space="preserve">
-    <value>Label20</value>
-  </data>
-  <data name="&gt;&gt;Label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label20.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;Label20.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtCoR.Name" xml:space="preserve">
-    <value>txtCoR</value>
-  </data>
-  <data name="&gt;&gt;txtCoR.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCoR.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtCoR.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;chbreakable.Name" xml:space="preserve">
-    <value>chbreakable</value>
-  </data>
-  <data name="&gt;&gt;chbreakable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chbreakable.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;chbreakable.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblResulting.Name" xml:space="preserve">
-    <value>lblResulting</value>
-  </data>
-  <data name="&gt;&gt;lblResulting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblResulting.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;lblResulting.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Label25.Name" xml:space="preserve">
-    <value>Label25</value>
-  </data>
-  <data name="&gt;&gt;Label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label25.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;Label25.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;txtAddMax.Name" xml:space="preserve">
-    <value>txtAddMax</value>
-  </data>
-  <data name="&gt;&gt;txtAddMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtAddMax.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtAddMax.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMin.Name" xml:space="preserve">
-    <value>txtBreakMin</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMin.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMin.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtAddAvg.Name" xml:space="preserve">
-    <value>txtAddAvg</value>
-  </data>
-  <data name="&gt;&gt;txtAddAvg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtAddAvg.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtAddAvg.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;txtBreakAvg.Name" xml:space="preserve">
-    <value>txtBreakAvg</value>
-  </data>
-  <data name="&gt;&gt;txtBreakAvg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBreakAvg.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtBreakAvg.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtAddMin.Name" xml:space="preserve">
-    <value>txtAddMin</value>
-  </data>
-  <data name="&gt;&gt;txtAddMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtAddMin.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtAddMin.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMax.Name" xml:space="preserve">
-    <value>txtBreakMax</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMax.Parent" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtBreakMax.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="GroupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 298</value>
-  </data>
-  <data name="GroupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 188</value>
-  </data>
-  <data name="GroupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>79</value>
-  </data>
-  <data name="GroupBox4.Text" xml:space="preserve">
-    <value>Collisions</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.Name" xml:space="preserve">
-    <value>GroupBox4</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.Parent" xml:space="preserve">
-    <value>TabForces</value>
-  </data>
-  <data name="&gt;&gt;GroupBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="chInterpolate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -9113,6 +6320,54 @@
   </data>
   <data name="&gt;&gt;txtBreakMax.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="GroupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 298</value>
+  </data>
+  <data name="GroupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 188</value>
+  </data>
+  <data name="GroupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="GroupBox4.Text" xml:space="preserve">
+    <value>Collisions</value>
+  </data>
+  <data name="&gt;&gt;GroupBox4.Name" xml:space="preserve">
+    <value>GroupBox4</value>
+  </data>
+  <data name="&gt;&gt;GroupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox4.Parent" xml:space="preserve">
+    <value>TabForces</value>
+  </data>
+  <data name="&gt;&gt;GroupBox4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TabForces.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 39</value>
+  </data>
+  <data name="TabForces.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 581</value>
+  </data>
+  <data name="TabForces.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TabForces.Text" xml:space="preserve">
+    <value>Forces &amp; Collisions</value>
+  </data>
+  <data name="&gt;&gt;TabForces.Name" xml:space="preserve">
+    <value>TabForces</value>
+  </data>
+  <data name="&gt;&gt;TabForces.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabForces.Parent" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="&gt;&gt;TabForces.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="TabSimulation.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
