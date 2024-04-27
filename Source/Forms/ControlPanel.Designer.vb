@@ -163,6 +163,8 @@ Partial Class ControlPanel
         Me.txtCOrientY = New System.Windows.Forms.TextBox()
         Me.tbCameraSpeed = New System.Windows.Forms.TrackBar()
         Me.Rendering = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtRenderThreads = New System.Windows.Forms.TextBox()
         Me.Label46 = New System.Windows.Forms.Label()
         Me.txtVFoV = New System.Windows.Forms.TextBox()
         Me.Label45 = New System.Windows.Forms.Label()
@@ -231,8 +233,6 @@ Partial Class ControlPanel
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtLimitObjects = New System.Windows.Forms.TextBox()
         Me.Tabs = New System.Windows.Forms.TabControl()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtRenderThreads = New System.Windows.Forms.TextBox()
         Me.Stats.SuspendLayout()
         Me.TabGroups.SuspendLayout()
         Me.gbObjects.SuspendLayout()
@@ -259,7 +259,6 @@ Partial Class ControlPanel
         'cmdStart
         '
         Me.cmdStart.BackColor = System.Drawing.SystemColors.Control
-        Me.cmdStart.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmdStart.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.cmdStart.FlatAppearance.BorderSize = 0
         resources.ApplyResources(Me.cmdStart, "cmdStart")
@@ -291,12 +290,6 @@ Partial Class ControlPanel
         Me.lblStat.Name = "lblStat"
         Me.lblStat.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
         Me.lblStat.Spring = True
-        '
-        'SaveDialog
-        '
-        '
-        'OpenDialog
-        '
         '
         'StatusUpdate
         '
@@ -764,7 +757,6 @@ Partial Class ControlPanel
         'tbObjectHighlightSharpness
         '
         Me.tbObjectHighlightSharpness.BackColor = System.Drawing.SystemColors.Control
-        Me.tbObjectHighlightSharpness.Cursor = System.Windows.Forms.Cursors.Default
         resources.ApplyResources(Me.tbObjectHighlightSharpness, "tbObjectHighlightSharpness")
         Me.tbObjectHighlightSharpness.LargeChange = 20
         Me.tbObjectHighlightSharpness.Maximum = 200
@@ -1439,6 +1431,20 @@ Partial Class ControlPanel
         Me.Rendering.Name = "Rendering"
         Me.Rendering.TabStop = False
         '
+        'Label3
+        '
+        Me.Label3.AutoEllipsis = True
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
+        resources.ApplyResources(Me.Label3, "Label3")
+        Me.Label3.Name = "Label3"
+        Me.Label3.UseMnemonic = False
+        '
+        'txtRenderThreads
+        '
+        resources.ApplyResources(Me.txtRenderThreads, "txtRenderThreads")
+        Me.txtRenderThreads.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtRenderThreads.Name = "txtRenderThreads"
+        '
         'Label46
         '
         Me.Label46.AutoEllipsis = True
@@ -1955,6 +1961,7 @@ Partial Class ControlPanel
         Me.cbIntegration.FormattingEnabled = True
         Me.cbIntegration.Items.AddRange(New Object() {resources.GetString("cbIntegration.Items"), resources.GetString("cbIntegration.Items1"), resources.GetString("cbIntegration.Items2"), resources.GetString("cbIntegration.Items3")})
         Me.cbIntegration.Name = "cbIntegration"
+        AddHandler Me.cbIntegration.SelectedIndexChanged, AddressOf Me.cbIntegration_SelectedIndexChanged_1
         '
         'Label24
         '
@@ -1988,20 +1995,6 @@ Partial Class ControlPanel
         Me.Tabs.Controls.Add(Me.TabGroups)
         Me.Tabs.Name = "Tabs"
         Me.Tabs.SelectedIndex = 0
-        '
-        'Label3
-        '
-        Me.Label3.AutoEllipsis = True
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        resources.ApplyResources(Me.Label3, "Label3")
-        Me.Label3.Name = "Label3"
-        Me.Label3.UseMnemonic = False
-        '
-        'txtRenderThreads
-        '
-        resources.ApplyResources(Me.txtRenderThreads, "txtRenderThreads")
-        Me.txtRenderThreads.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtRenderThreads.Name = "txtRenderThreads"
         '
         'ControlPanel
         '

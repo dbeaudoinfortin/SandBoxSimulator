@@ -1,6 +1,10 @@
 ﻿Public Class GroupOptionsColor
     Inherits GroupOptions(Of Color)
 
+    Public Overrides Function AttributeAsString(attribute As Color) As String
+        Return attribute.ToArgb.ToString()
+    End Function
+
     Public Overrides Sub Load(ByRef intext As String)
         MyBase.Load(intext)
 

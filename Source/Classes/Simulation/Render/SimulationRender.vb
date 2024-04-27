@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Structure SimulationRender
     Public Height As Integer
@@ -37,63 +38,76 @@ Public Structure SimulationRender
         Transparency = False
         VSync = True
     End Sub
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<AspectRatio>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AspectRatio>")
         stringBuilder.Append(AspectRatio.ToString())
-        stringBuilder.Append("</AspectRatio>")
+        stringBuilder.AppendLine("</AspectRatio>")
 
-        stringBuilder.AppendLine("<EnableLighting>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<EnableLighting>")
         stringBuilder.Append(EnableLighting.ToString())
-        stringBuilder.Append("</EnableLighting>")
+        stringBuilder.AppendLine("</EnableLighting>")
 
-        stringBuilder.AppendLine("<Height>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Height>")
         stringBuilder.Append(Height.ToString())
-        stringBuilder.Append("</Height>")
+        stringBuilder.AppendLine("</Height>")
 
-        stringBuilder.AppendLine("<MaxFPS>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<MaxFPS>")
         stringBuilder.Append(MaxFPS.ToString())
-        stringBuilder.Append("</MaxFPS>")
+        stringBuilder.AppendLine("</MaxFPS>")
 
-        stringBuilder.AppendLine("<RenderThreads>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<RenderThreads>")
         stringBuilder.Append(RenderThreads.ToString())
-        stringBuilder.Append("</RenderThreads>")
+        stringBuilder.AppendLine("</RenderThreads>")
 
-        stringBuilder.AppendLine("<Mode>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Mode>")
         stringBuilder.Append(Mode.ToString())
-        stringBuilder.Append("</Mode>")
+        stringBuilder.AppendLine("</Mode>")
 
-        stringBuilder.AppendLine("<Scale>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Scale>")
         stringBuilder.Append(Scale.ToString())
-        stringBuilder.Append("</Scale>")
+        stringBuilder.AppendLine("</Scale>")
 
-        stringBuilder.AppendLine("<Shading>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Shading>")
         stringBuilder.Append(Shading.ToString())
-        stringBuilder.Append("</Shading>")
+        stringBuilder.AppendLine("</Shading>")
 
-        stringBuilder.AppendLine("<SphereComplexity>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<SphereComplexity>")
         stringBuilder.Append(SphereComplexity1.ToString())
-        stringBuilder.Append("</SphereComplexity>")
+        stringBuilder.AppendLine("</SphereComplexity>")
 
-        stringBuilder.AppendLine("<TraceObjects>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<TraceObjects>")
         stringBuilder.Append(TraceObjects.ToString())
-        stringBuilder.Append("</TraceObjects>")
+        stringBuilder.AppendLine("</TraceObjects>")
 
-        stringBuilder.AppendLine("<VSync>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<VSync>")
         stringBuilder.Append(VSync.ToString())
-        stringBuilder.Append("</VSync>")
+        stringBuilder.AppendLine("</VSync>")
 
-        stringBuilder.AppendLine("<Width>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Width>")
         stringBuilder.Append(Width.ToString())
-        stringBuilder.Append("</Width>")
+        stringBuilder.AppendLine("</Width>")
 
-        stringBuilder.AppendLine("<BackgroundColor>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<BackgroundColor>")
         stringBuilder.Append(BackgroundColor.ToArgb.ToString())
-        stringBuilder.Append("</BackgroundColor>")
+        stringBuilder.AppendLine("</BackgroundColor>")
 
     End Sub
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

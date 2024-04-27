@@ -1521,7 +1521,7 @@ Public Class ControlPanel
         txtLightDirectionX.Text = "0"
         txtLightDirectionY.Text = "0"
         txtLightDirectionZ.Text = "1"
-        chLightsEnable.Enabled = Simulation.Render.EnableLighting
+        chLightsEnable.Checked = Simulation.Render.EnableLighting
         plLightColor.BackColor = plLightColor.ForeColor
         cbLightType.SelectedIndex = 0
         txtLightPositionX.Text = "0"
@@ -1555,7 +1555,6 @@ Public Class ControlPanel
         Else
             Simulation.RenderCounter.Frequency = Simulation.CalcCounter.Frequency
         End If
-        SetAllEnabled(False)
         UpdateForm()
         SetAllEnabled(True)
         ConfigModified = False
@@ -1651,6 +1650,7 @@ Public Class ControlPanel
                 Simulation.Copy(Backup)
             End Try
             UpdateForm()
+            CheckConditionals()
             ConfigModified = False
         End If
     End Sub
@@ -2850,5 +2850,9 @@ Public Class ControlPanel
 
     Private Sub txtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
         ConfigModified = True
+    End Sub
+
+    Private Sub cbIntegration_SelectedIndexChanged_1(sender As Object, e As EventArgs)
+
     End Sub
 End Class

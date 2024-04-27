@@ -4,24 +4,32 @@ Public Class GroupOptionsXYZ
     Public X As GroupOptions(Of Double) = New GroupOptionsDouble
     Public Y As GroupOptions(Of Double) = New GroupOptionsDouble
     Public Z As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
 
+        Dim tabsPlusOne As String = tabs & Constants.vbTab
+
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<X>")
-        X.ToString(stringBuilder)
-        stringBuilder.Append("</X>")
+        X.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</X>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Y>")
-        Y.ToString(stringBuilder)
-        stringBuilder.Append("</Y>")
+        Y.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Y>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Z>")
-        Z.ToString(stringBuilder)
-        stringBuilder.Append("</Z>")
+        Z.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Z>")
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

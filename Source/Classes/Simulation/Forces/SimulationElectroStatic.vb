@@ -1,21 +1,24 @@
 ﻿Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Structure SimulationElectroStatic
     Public Enabled As Boolean
     Public Permittivity As Double
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<Enabled>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Enabled>")
         stringBuilder.Append(Enabled.ToString())
-        stringBuilder.Append("</Enabled>")
+        stringBuilder.AppendLine("</Enabled>")
 
-        stringBuilder.AppendLine("<Permittivity>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Permittivity>")
         stringBuilder.Append(Permittivity.ToString())
-        stringBuilder.Append("</Permittivity>")
+        stringBuilder.AppendLine("</Permittivity>")
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

@@ -18,77 +18,98 @@ Public MustInherit Class GroupOptions(Of t)
     Public PolynomialB As t
     Public PolynomialC As t
     Public Value As t
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
 
-        stringBuilder.AppendLine("<UseFunction>")
+    Public Overridable Function AttributeAsString(attribute As t) As String
+        Return attribute.ToString()
+    End Function
+
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<UseFunction>")
         stringBuilder.Append(UseFunction.ToString())
-        stringBuilder.Append("</UseFunction>")
+        stringBuilder.AppendLine("</UseFunction>")
 
-        stringBuilder.AppendLine("<Value>")
-        stringBuilder.Append(Value.ToString())
-        stringBuilder.Append("</Value>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Value>")
+        stringBuilder.Append(AttributeAsString(Value))
+        stringBuilder.AppendLine("</Value>")
 
-        stringBuilder.AppendLine("<Even>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Even>")
         stringBuilder.Append(Even.ToString())
-        stringBuilder.Append("</Even>")
+        stringBuilder.AppendLine("</Even>")
 
-        stringBuilder.AppendLine("<EvenMax>")
-        stringBuilder.Append(EvenMax.ToString())
-        stringBuilder.Append("</EvenMax>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<EvenMax>")
+        stringBuilder.Append(AttributeAsString(EvenMax))
+        stringBuilder.AppendLine("</EvenMax>")
 
-        stringBuilder.AppendLine("<EvenMin>")
-        stringBuilder.Append(EvenMin.ToString())
-        stringBuilder.Append("</EvenMin>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<EvenMin>")
+        stringBuilder.Append(AttributeAsString(EvenMin))
+        stringBuilder.AppendLine("</EvenMin>")
 
-        stringBuilder.AppendLine("<Normal>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Normal>")
         stringBuilder.Append(Normal.ToString())
-        stringBuilder.Append("</Normal>")
+        stringBuilder.AppendLine("</Normal>")
 
-        stringBuilder.AppendLine("<NormalMax>")
-        stringBuilder.Append(NormalMax.ToString())
-        stringBuilder.Append("</NormalMax>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<NormalMax>")
+        stringBuilder.Append(AttributeAsString(NormalMax))
+        stringBuilder.AppendLine("</NormalMax>")
 
-        stringBuilder.AppendLine("<NormalAvg>")
-        stringBuilder.Append(NormalAvg.ToString())
-        stringBuilder.Append("</NormalAvg>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<NormalAvg>")
+        stringBuilder.Append(AttributeAsString(NormalAvg))
+        stringBuilder.AppendLine("</NormalAvg>")
 
-        stringBuilder.AppendLine("<NormalMin>")
-        stringBuilder.Append(NormalMin.ToString())
-        stringBuilder.Append("</NormalMin>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<NormalMin>")
+        stringBuilder.Append(AttributeAsString(NormalMin))
+        stringBuilder.AppendLine("</NormalMin>")
 
-        stringBuilder.AppendLine("<Random>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Random>")
         stringBuilder.Append(Random.ToString())
-        stringBuilder.Append("</Random>")
+        stringBuilder.AppendLine("</Random>")
 
-        stringBuilder.AppendLine("<RandomMax>")
-        stringBuilder.Append(RandomMax.ToString())
-        stringBuilder.Append("</RandomMax>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<RandomMax>")
+        stringBuilder.Append(AttributeAsString(RandomMax))
+        stringBuilder.AppendLine("</RandomMax>")
 
-        stringBuilder.AppendLine("<RandomMin>")
-        stringBuilder.Append(RandomMin.ToString())
-        stringBuilder.Append("</RandomMin>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<RandomMin>")
+        stringBuilder.Append(AttributeAsString(RandomMin))
+        stringBuilder.AppendLine("</RandomMin>")
 
-        stringBuilder.AppendLine("<Polynomial>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Polynomial>")
         stringBuilder.Append(Polynomial.ToString())
-        stringBuilder.Append("</Polynomial>")
+        stringBuilder.AppendLine("</Polynomial>")
 
-        stringBuilder.AppendLine("<PolynomialA>")
-        stringBuilder.Append(PolynomialA.ToString())
-        stringBuilder.Append("</PolynomialA>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<PolynomialA>")
+        stringBuilder.Append(AttributeAsString(PolynomialA))
+        stringBuilder.AppendLine("</PolynomialA>")
 
-        stringBuilder.AppendLine("<PolynomialB>")
-        stringBuilder.Append(PolynomialB.ToString())
-        stringBuilder.Append("</PolynomialB>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<PolynomialB>")
+        stringBuilder.Append(AttributeAsString(PolynomialB))
+        stringBuilder.AppendLine("</PolynomialB>")
 
-        stringBuilder.AppendLine("<PolynomialC>")
-        stringBuilder.Append(PolynomialC.ToString())
-        stringBuilder.Append("</PolynomialC>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<PolynomialC>")
+        stringBuilder.Append(AttributeAsString(PolynomialC))
+        stringBuilder.AppendLine("</PolynomialC>")
 
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

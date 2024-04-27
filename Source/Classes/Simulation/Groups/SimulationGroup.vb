@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
     Public Type As ObjectType
@@ -25,92 +26,129 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
     Public Affected As Boolean
     Public Affects As Boolean
     Public Wireframe As Boolean
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
 
-        stringBuilder.AppendLine("<Name>")
-        Name.ToString()
-        stringBuilder.Append("</Name>")
+        Dim tabsPlusOne As String = tabs & Constants.vbTab
 
-        stringBuilder.AppendLine("<Affected>")
-        Affected.ToString()
-        stringBuilder.Append("</Affected>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Name>")
+        stringBuilder.Append(Name.ToString)
+        stringBuilder.AppendLine("</Name>")
 
-        stringBuilder.AppendLine("<Affects>")
-        Affects.ToString()
-        stringBuilder.Append("</Affects>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Affected>")
+        stringBuilder.Append(Affected.ToString)
+        stringBuilder.AppendLine("</Affected>")
 
-        stringBuilder.AppendLine("<Wireframe>")
-        Wireframe.ToString()
-        stringBuilder.Append("</Wireframe>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Affects>")
+        stringBuilder.Append(Affects.ToString)
+        stringBuilder.AppendLine("</Affects>")
 
-        stringBuilder.AppendLine("<Type>")
-        Type.ToString()
-        stringBuilder.Append("</Type>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Wireframe>")
+        stringBuilder.Append(Wireframe.ToString)
+        stringBuilder.AppendLine("</Wireframe>")
 
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Type>")
+        stringBuilder.Append(Type.ToString)
+        stringBuilder.AppendLine("</Type>")
+
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Number>")
-        Number.ToString(stringBuilder)
-        stringBuilder.Append("</Number>")
+        Number.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Number>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Mass>")
-        Mass.ToString(stringBuilder)
-        stringBuilder.Append("</Mass>")
+        Mass.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Mass>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Charge>")
-        Charge.ToString(stringBuilder)
-        stringBuilder.Append("</Charge>")
+        Charge.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Charge>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Size>")
-        Size.ToString(stringBuilder)
-        stringBuilder.Append("</Size>")
+        Size.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Size>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Radius>")
-        Radius.ToString(stringBuilder)
-        stringBuilder.Append("</Radius>")
+        Radius.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Radius>")
 
-        stringBuilder.AppendLine("<Normal>")
-        Normal.ToString(stringBuilder)
-        stringBuilder.Append("</Normal>")
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("<ObjectNormal>")
+        Normal.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</ObjectNormal>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Position>")
-        Position.ToString(stringBuilder)
-        stringBuilder.Append("</Position>")
+        Position.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Position>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Velocity>")
-        Velocity.ToString(stringBuilder)
-        stringBuilder.Append("</Velocity>")
+        Velocity.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Velocity>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Color>")
-        Color.ToString(stringBuilder)
-        stringBuilder.Append("</Color>")
+        Color.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Color>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Highlight>")
-        Highlight.ToString(stringBuilder)
-        stringBuilder.Append("</Highlight>")
+        Highlight.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Highlight>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Sharpness>")
-        Sharpness.ToString(stringBuilder)
-        stringBuilder.Append("</Sharpness>")
+        Sharpness.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Sharpness>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Reflectivity>")
-        Reflectivity.ToString(stringBuilder)
-        stringBuilder.Append("</Reflectivity>")
+        Reflectivity.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Reflectivity>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Transparency>")
-        Transparency.ToString(stringBuilder)
-        stringBuilder.Append("</Transparency>")
+        Transparency.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Transparency>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Rotation>")
-        Rotation.ToString(stringBuilder)
-        stringBuilder.Append("</Rotation>")
+        Rotation.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Rotation>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<RefractiveIndex>")
-        RefractiveIndex.ToString(stringBuilder)
-        stringBuilder.Append("</RefractiveIndex>")
+        RefractiveIndex.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</RefractiveIndex>")
 
     End Sub
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
     Public Sub New(ByRef Other As SimulationGroup)
@@ -278,7 +316,7 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
             Radius.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Normal~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Normal")
+        Result = GetValue(intext, "ObjectNormal")
         If Result <> "" Then
             Normal.Load(Result)
         Else

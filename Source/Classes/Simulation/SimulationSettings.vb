@@ -1,32 +1,37 @@
 ﻿
 
 Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Structure SimulationSettings
     Public TimeStep As Double
     Public MaxObjects As Integer
     Public MaxCPS As Double
     Public IntegrationMethod As Byte
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<IntegrationMethod>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<IntegrationMethod>")
         stringBuilder.Append(IntegrationMethod.ToString())
-        stringBuilder.Append("</IntegrationMethod>")
+        stringBuilder.AppendLine("</IntegrationMethod>")
 
-        stringBuilder.AppendLine("<MaxCPS>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<MaxCPS>")
         stringBuilder.Append(MaxCPS.ToString())
-        stringBuilder.Append("</MaxCPS>")
+        stringBuilder.AppendLine("</MaxCPS>")
 
-        stringBuilder.AppendLine("<MaxObjects>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<MaxObjects>")
         stringBuilder.Append(MaxObjects.ToString())
-        stringBuilder.Append("</MaxObjects>")
+        stringBuilder.AppendLine("</MaxObjects>")
 
-        stringBuilder.AppendLine("<TimeStep>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<TimeStep>")
         stringBuilder.Append(TimeStep.ToString())
-        stringBuilder.Append("</TimeStep>")
+        stringBuilder.AppendLine("</TimeStep>")
     End Sub
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

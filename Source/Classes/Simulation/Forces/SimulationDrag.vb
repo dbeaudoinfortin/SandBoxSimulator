@@ -5,27 +5,31 @@ Public Structure SimulationDrag
     Public DragCoeff As Double
     Public Density As Double
     Public Viscosity As Double
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<Density>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Density>")
         stringBuilder.Append(Density.ToString())
-        stringBuilder.Append("</Density>")
+        stringBuilder.AppendLine("</Density>")
 
-        stringBuilder.AppendLine("<DragCoeff>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<DragCoeff>")
         stringBuilder.Append(DragCoeff.ToString())
-        stringBuilder.Append("</DragCoeff>")
+        stringBuilder.AppendLine("</DragCoeff>")
 
-        stringBuilder.AppendLine("<Enabled>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Enabled>")
         stringBuilder.Append(Enabled.ToString())
-        stringBuilder.Append("</Enabled>")
+        stringBuilder.AppendLine("</Enabled>")
 
-        stringBuilder.AppendLine("<Viscosity>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Viscosity>")
         stringBuilder.Append(Viscosity.ToString())
-        stringBuilder.Append("</Viscosity>")
+        stringBuilder.AppendLine("</Viscosity>")
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

@@ -1,5 +1,6 @@
 ﻿Imports System.Text
 Imports System.Windows.Forms
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class SimulationData
 
@@ -1429,47 +1430,67 @@ Public Class SimulationData
     End Sub
 
     Public Overloads Sub ToString(stringBuilder As StringBuilder)
+
+        Dim tabs As String = Constants.vbTab
+        Dim tabsPlusOne As String = tabs & Constants.vbTab
+
         stringBuilder.AppendLine("<PR4-File>")
 
-        stringBuilder.AppendLine("<LightCount>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<LightCount>")
         stringBuilder.Append(LightCount.ToString())
-        stringBuilder.Append("</LightCount>")
+        stringBuilder.AppendLine("</LightCount>")
 
-        stringBuilder.AppendLine("<GroupCount>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<GroupCount>")
         stringBuilder.Append(GroupCount.ToString())
-        stringBuilder.Append("</GroupCount>")
+        stringBuilder.AppendLine("</GroupCount>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Camera>")
-        Camera.ToString(stringBuilder)
-        stringBuilder.Append("</Camera>")
+        Camera.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Camera>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Collisions>")
-        Collisions.ToString(stringBuilder)
-        stringBuilder.Append("</Collisions>")
+        Collisions.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Collisions>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Forces>")
-        Forces.ToString(stringBuilder)
-        stringBuilder.Append("</Forces>")
+        Forces.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Forces>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Settings>")
-        Settings.ToString(stringBuilder)
-        stringBuilder.Append("</Settings>")
+        Settings.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Settings>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Render>")
-        Render.ToString(stringBuilder)
-        stringBuilder.Append("</Render>")
+        Render.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Render>")
 
         For i = 0 To GroupCount - 1
+            stringBuilder.Append(tabs)
             stringBuilder.AppendLine("<Group>")
-            Groups(i).ToString(stringBuilder)
+            Groups(i).ToString(stringBuilder, tabsPlusOne)
             stringBuilder.AppendLine("</Group>")
         Next
+
         For i = 0 To LightCount - 1
+            stringBuilder.Append(tabs)
             stringBuilder.AppendLine("<Light>")
-            Lights(i).ToString(stringBuilder)
+            Lights(i).ToString(stringBuilder, tabsPlusOne)
+            stringBuilder.Append(tabs)
             stringBuilder.AppendLine("</Light>")
         Next
-        stringBuilder.AppendLine("</PR4-File>")
+        stringBuilder.Append("</PR4-File>")
     End Sub
 
     Public Overrides Function ToString() As String

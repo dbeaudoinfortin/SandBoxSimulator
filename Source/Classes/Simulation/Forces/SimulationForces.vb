@@ -13,31 +13,42 @@ Public Structure SimulationForces
         Field.Clear()
         Drag.Clear()
     End Sub
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<Gravity>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+
+        Dim tabsPlusOne As String = tabs & Constants.vbTab
+
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Gravity>")
         stringBuilder.Append(Gravity.ToString)
-        stringBuilder.Append("</Gravity>")
+        stringBuilder.AppendLine("</Gravity>")
 
-        stringBuilder.AppendLine("<Enabled>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Enabled>")
         stringBuilder.Append(Enabled.ToString)
-        stringBuilder.Append("</Enabled>")
+        stringBuilder.AppendLine("</Enabled>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Drag>")
-        Drag.ToString(stringBuilder)
-        stringBuilder.Append("</Drag>")
+        Drag.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Drag>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<ElectroStatic>")
-        ElectroStatic.ToString(stringBuilder)
-        stringBuilder.Append("</ElectroStatic>")
+        ElectroStatic.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</ElectroStatic>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Field>")
-        Field.ToString(stringBuilder)
-        stringBuilder.Append("</Field>")
+        Field.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Field>")
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
     Public Sub Load(ByRef intext As String)

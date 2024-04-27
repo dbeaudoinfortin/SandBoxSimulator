@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class SimulationLight 'USED AT RUNTIME AND DESIGN TIME
     Public Name As String
@@ -53,70 +54,89 @@ Public Class SimulationLight 'USED AT RUNTIME AND DESIGN TIME
         OuterCone = PI / 4
         Falloff = 1
     End Sub
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<Name>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        Dim tabsPlusOne As String = tabs & Constants.vbTab
+
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Name>")
         stringBuilder.Append(Name.ToString())
-        stringBuilder.Append("</Name>")
+        stringBuilder.AppendLine("</Name>")
 
-        stringBuilder.AppendLine("<Type>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Type>")
         stringBuilder.Append(Type.ToString())
-        stringBuilder.Append("</Type>")
+        stringBuilder.AppendLine("</Type>")
 
-        stringBuilder.AppendLine("<Range>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Range>")
         stringBuilder.Append(Range.ToString())
-        stringBuilder.Append("</Range>")
+        stringBuilder.AppendLine("</Range>")
 
-        stringBuilder.AppendLine("<AttenuationA>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AttenuationA>")
         stringBuilder.Append(AttenuationA.ToString())
-        stringBuilder.Append("</AttenuationA>")
+        stringBuilder.AppendLine("</AttenuationA>")
 
-        stringBuilder.AppendLine("<AttenuationB>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AttenuationB>")
         stringBuilder.Append(AttenuationB.ToString())
-        stringBuilder.Append("</AttenuationB>")
+        stringBuilder.AppendLine("</AttenuationB>")
 
-        stringBuilder.AppendLine("<AttenuationC>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AttenuationC>")
         stringBuilder.Append(AttenuationC.ToString())
-        stringBuilder.Append("</AttenuationC>")
+        stringBuilder.AppendLine("</AttenuationC>")
 
-        stringBuilder.AppendLine("<InnerCone>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<InnerCone>")
         stringBuilder.Append(InnerCone.ToString())
-        stringBuilder.Append("</InnerCone>")
+        stringBuilder.AppendLine("</InnerCone>")
 
-        stringBuilder.AppendLine("<OuterCone>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<OuterCone>")
         stringBuilder.Append(OuterCone.ToString())
-        stringBuilder.Append("</OuterCone>")
+        stringBuilder.AppendLine("</OuterCone>")
 
-        stringBuilder.AppendLine("<Falloff>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Falloff>")
         stringBuilder.Append(Falloff.ToString())
-        stringBuilder.Append("</Falloff>")
+        stringBuilder.AppendLine("</Falloff>")
 
-        stringBuilder.AppendLine("<AmbientRatio>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AmbientRatio>")
         stringBuilder.Append(AmbientRatio.ToString())
-        stringBuilder.Append("</AmbientRatio>")
+        stringBuilder.AppendLine("</AmbientRatio>")
 
-        stringBuilder.AppendLine("<Color>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Color>")
         stringBuilder.Append(Color.ToArgb.ToString())
-        stringBuilder.Append("</Color>")
+        stringBuilder.AppendLine("</Color>")
 
-        stringBuilder.AppendLine("<SpecularColor>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<SpecularColor>")
         stringBuilder.Append(SpecularColor.ToArgb.ToString())
-        stringBuilder.Append("</SpecularColor>")
+        stringBuilder.AppendLine("</SpecularColor>")
 
-        stringBuilder.AppendLine("<AmbientColor>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AmbientColor>")
         stringBuilder.Append(AmbientColor.ToArgb.ToString())
-        stringBuilder.Append("</AmbientColor>")
+        stringBuilder.AppendLine("</AmbientColor>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Position>")
-        Position.ToString(stringBuilder)
-        stringBuilder.Append("</Position>")
+        Position.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Position>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Direction>")
-        Direction.ToString(stringBuilder)
-        stringBuilder.Append("</Direction>")
+        Direction.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Direction>")
     End Sub
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
     Public Sub Load(ByRef intext As String)

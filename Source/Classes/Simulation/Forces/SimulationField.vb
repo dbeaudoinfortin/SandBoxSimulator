@@ -3,19 +3,22 @@
 Public Structure SimulationField
     Public Enabled As Boolean
     Public Acceleration As XYZ
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<Enabled>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Enabled>")
         stringBuilder.Append(Enabled.ToString())
-        stringBuilder.Append("</Enabled>")
+        stringBuilder.AppendLine("</Enabled>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Acceleration>")
-        Acceleration.ToString(stringBuilder)
-        stringBuilder.Append("</Acceleration>")
+        Acceleration.ToString(stringBuilder, tabs & Constants.vbTab)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Acceleration>")
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

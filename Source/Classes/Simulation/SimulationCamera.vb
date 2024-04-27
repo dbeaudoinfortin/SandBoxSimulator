@@ -135,41 +135,52 @@ Public Structure SimulationCamera
         ScreenWidthUnit = (ScreenTempW * Radius) * V
         ScreenHeightUnit = (ScreenTempH * Radius) * U
     End Sub
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        Dim tabsPlusOne As String = tabs & Constants.vbTab
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Position>")
-        Position.ToString(stringBuilder)
-        stringBuilder.Append("</Position>")
+        Position.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Position>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Target>")
-        Target.ToString(stringBuilder)
-        stringBuilder.Append("</Target>")
+        Target.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Target>")
 
+        stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Up>")
-        U.ToString(stringBuilder)
-        stringBuilder.Append("</Up>")
+        U.ToString(stringBuilder, tabsPlusOne)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Up>")
 
-        stringBuilder.AppendLine("<HFov>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<HFov>")
         stringBuilder.Append(HFov.ToString)
-        stringBuilder.Append("</HFov>")
+        stringBuilder.AppendLine("</HFov>")
 
-        stringBuilder.AppendLine("<VFov>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<VFov>")
         stringBuilder.Append(VFov.ToString)
-        stringBuilder.Append("</VFov>")
+        stringBuilder.AppendLine("</VFov>")
 
-        stringBuilder.AppendLine("<MoveSpeed>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<MoveSpeed>")
         stringBuilder.Append(MoveSpeed.ToString())
-        stringBuilder.Append("</MoveSpeed>")
+        stringBuilder.AppendLine("</MoveSpeed>")
 
-        stringBuilder.AppendLine("<AllowModification>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AllowModification>")
         stringBuilder.Append(AllowModification.ToString())
-        stringBuilder.Append("</AllowModification>")
+        stringBuilder.AppendLine("</AllowModification>")
 
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 

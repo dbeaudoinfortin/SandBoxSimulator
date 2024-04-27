@@ -11,51 +11,61 @@ Public Structure SimulationCollision
     Public AddMax As Integer
     Public AddAvg As Integer
     Public Interpolate As Boolean
-    Public Overloads Sub ToString(stringBuilder As StringBuilder)
-        stringBuilder.AppendLine("<AddAvg>")
+    Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AddAvg>")
         stringBuilder.Append(AddAvg.ToString())
-        stringBuilder.Append("</AddAvg>")
+        stringBuilder.AppendLine("</AddAvg>")
 
-        stringBuilder.AppendLine("<AddMax>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AddMax>")
         stringBuilder.Append(AddMax.ToString())
-        stringBuilder.Append("</AddMax>")
+        stringBuilder.AppendLine("</AddMax>")
 
-        stringBuilder.AppendLine("<AddMin>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<AddMin>")
         stringBuilder.Append(AddMin.ToString())
-        stringBuilder.Append("</AddMin>")
+        stringBuilder.AppendLine("</AddMin>")
 
-        stringBuilder.AppendLine("<Breakable>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Breakable>")
         stringBuilder.Append(Breakable.ToString())
-        stringBuilder.Append("</Breakable>")
+        stringBuilder.AppendLine("</Breakable>")
 
-        stringBuilder.AppendLine("<BreakAvg>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<BreakAvg>")
         stringBuilder.Append(BreakAvg.ToString())
-        stringBuilder.Append("</BreakAvg>")
+        stringBuilder.AppendLine("</BreakAvg>")
 
-        stringBuilder.AppendLine("<BreakMax>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<BreakMax>")
         stringBuilder.Append(BreakMax.ToString())
-        stringBuilder.Append("</BreakMax>")
+        stringBuilder.AppendLine("</BreakMax>")
 
-        stringBuilder.AppendLine("<BreakMin>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<BreakMin>")
         stringBuilder.Append(BreakMin.ToString())
-        stringBuilder.Append("</BreakMin>")
+        stringBuilder.AppendLine("</BreakMin>")
 
-        stringBuilder.AppendLine("<CoR>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<CoR>")
         stringBuilder.Append(CoR.ToString())
-        stringBuilder.Append("</CoR>")
+        stringBuilder.AppendLine("</CoR>")
 
-        stringBuilder.AppendLine("<Enabled>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Enabled>")
         stringBuilder.Append(Enabled.ToString())
-        stringBuilder.Append("</Enabled>")
+        stringBuilder.AppendLine("</Enabled>")
 
-        stringBuilder.AppendLine("<Interpolate>")
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Interpolate>")
         stringBuilder.Append(Interpolate.ToString())
-        stringBuilder.Append("</Interpolate>")
+        stringBuilder.AppendLine("</Interpolate>")
     End Sub
 
     Public Overrides Function ToString() As String
         Dim stringBuilder As New StringBuilder
-        ToString(stringBuilder)
+        ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
 
