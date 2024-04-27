@@ -17,6 +17,8 @@ It was originally designed to give aproximate visual solutions to n-body problem
   - Configurable Fluid Viscosity
   - Configurable Object Drag Coefficient
 - Elastic & Inelastic Collisions
+  - Global Coefficient of Restitution
+  - Interpolation Between Time Steps
 - Fragmentation on Impact
   - Gaussian Distribution for Endurance
   - Gaussian Distribution for Fragment Count
@@ -30,7 +32,8 @@ It was originally designed to give aproximate visual solutions to n-body problem
 **Rendering Options**
 - DirectX 9 Hardware Accelerated
 - DirectX 9 Software Renderer
-- Homegrown Raytracing Engine
+- Homegrown Software Raytracing Engine
+  - Configurable Render Thread Count
 - Object Path Tracing
 - Wireframe Rendering
  
@@ -93,8 +96,17 @@ Note that repositioning of the camera clears the trace history of the objects wh
 - Bounding box rendering is broken with the ray-tracing render setting.
 
 # Screenshots
+![image](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/6dd2e880-be1a-4f61-8ad9-701a32754b5f)
 
+![image](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/58a134e3-915f-49a4-9aba-8569c31e5977)
 
+![image](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1b1be0b8-0a4b-4a61-9674-7ce3642be3d4)
+
+![image](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/fefe38b9-5d68-422c-b445-f158c1515878)
+
+![image](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/a55dcb95-cf00-42e1-a5fe-182439e71707)
+
+![image](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/d15321e6-e3c2-4cf5-a613-b142f9ce7a65)
 
 
 # Some Pretty Pictures
