@@ -2,21 +2,21 @@
 
 Public Class ControlPanel
     Public StatusUpdateCount As Integer
-    Public ObjectNumber As GroupOptions(Of Integer) = New GroupOptionsInt
-    Public ObjectMass As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public ObjectCharge As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public ObjectSize As New GroupOptionsXYZ
-    Public ObjectRotation As New GroupOptionsXYZ
-    Public ObjectRadius As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public ObjectNormal As New GroupOptionsXYZ
-    Public ObjectPosition As New GroupOptionsXYZ
-    Public ObjectVelocity As New GroupOptionsXYZ
-    Public ObjectColor As GroupOptions(Of Color) = New GroupOptionsColor
-    Public ObjectHighlight As GroupOptions(Of Color) = New GroupOptionsColor
-    Public ObjectSharpness As GroupOptions(Of Single) = New GroupOptionsSingle
-    Public ObjectReflectivity As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public ObjectTransparency As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public ObjectRefractiveIndex As GroupOptions(Of Double) = New GroupOptionsDouble
+    Public ObjectNumber As SimulationConfigDistribution(Of Integer) = New SimulationConfigDistributionInt
+    Public ObjectMass As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public ObjectCharge As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public ObjectSize As New SimulationConfigDistributionXYZ
+    Public ObjectRotation As New SimulationConfigDistributionXYZ
+    Public ObjectRadius As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public ObjectNormal As New SimulationConfigDistributionXYZ
+    Public ObjectPosition As New SimulationConfigDistributionXYZ
+    Public ObjectVelocity As New SimulationConfigDistributionXYZ
+    Public ObjectColor As SimulationConfigDistribution(Of Color) = New SimulationConfigDistributionColor
+    Public ObjectHighlight As SimulationConfigDistribution(Of Color) = New SimulationConfigDistributionColor
+    Public ObjectSharpness As SimulationConfigDistribution(Of Single) = New SimulationConfigDistributionSingle
+    Public ObjectReflectivity As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public ObjectTransparency As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public ObjectRefractiveIndex As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
     Private Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
         Dim strContents As String
         Dim objReader As System.IO.StreamReader
@@ -65,7 +65,8 @@ Public Class ControlPanel
             Return False
         End If
 
-        If ToInt32(txtLimitObjects.Text) < Simulation.ObjectCount Then
+        'TODO: Should sum up the count of all the objects of all the groups
+        If ToInt32(txtLimitObjects.Text) < Simulation.Config.GroupCount Then
             MsgBox("The number of Objects must not be greater than Max Objects.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
@@ -335,7 +336,6 @@ Public Class ControlPanel
             MsgBox("Relative Permittivity of Medium must be greater of equal to one.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
-
 
         Return True
     End Function
@@ -1359,156 +1359,164 @@ Public Class ControlPanel
         End If
     End Sub
     Private Sub UpdateSimulation()
-        Simulation.Render.Mode = ToByte(cbRender.SelectedIndex)
-        Simulation.Settings.MaxObjects = ToInt32(txtLimitObjects.Text)
-        Simulation.Settings.TimeStep = ToDouble(txtTimeStep.Text)
-        Simulation.Render.Scale = ToSingle(txtScale.Text)
-        Simulation.Settings.MaxCPS = ToDouble(txtLimitCalc.Text)
-        Simulation.Render.BackgroundColor = plRenderBackColor.ForeColor
-        Simulation.Forces.Gravity = chGravity.Checked
-        Simulation.Forces.ElectroStatic.Enabled = chElectrostatic.Checked
-        Simulation.Forces.ElectroStatic.Permittivity = ToDouble(txtPermittivity.Text)
-        Simulation.Render.TraceObjects = chTrace.Checked
-        Simulation.Collisions.Enabled = chCollision.Checked
-        Simulation.Collisions.Breakable = chbreakable.Checked
-        Simulation.Collisions.Interpolate = chInterpolate.Checked
-        Simulation.Camera.HFov = ToSingle(ToDouble(txtHFoV.Text) * (Math.PI / 180))
-        Simulation.Camera.VFov = ToSingle(ToDouble(txtVFoV.Text) * (Math.PI / 180))
-        Simulation.Camera.AllowModification = chCamera.Checked
-        Simulation.Render.SphereComplexity1 = tbPolys.Value
-        Simulation.Forces.Drag.Viscosity = ToDouble(txtFluidViscosity.Text)
-        If Simulation.Camera.AllowModification Then
-            Simulation.Camera.U.X = ToSingle(txtCOrientX.Text)
-            Simulation.Camera.U.Y = ToSingle(txtCOrientY.Text)
-            Simulation.Camera.U.Z = ToSingle(txtCOrientZ.Text)
-            Simulation.Camera.Position.X = ToSingle(txtCPosX.Text)
-            Simulation.Camera.Position.Y = ToSingle(txtCPosY.Text)
-            Simulation.Camera.Position.Z = ToSingle(txtCPosZ.Text)
-            Simulation.Camera.Target.X = ToSingle(txtCTargetX.Text)
-            Simulation.Camera.Target.Y = ToSingle(txtCTargetY.Text)
-            Simulation.Camera.Target.Z = ToSingle(txtCTargetZ.Text)
-            Simulation.Camera.MoveSpeed = 10 ^ ((0.1 * tbCameraSpeed.Value) - 3)
+        Simulation.Config.Render.Mode = ToByte(cbRender.SelectedIndex)
+        Simulation.Config.Settings.MaxObjects = ToInt32(txtLimitObjects.Text)
+        Simulation.Config.Settings.TimeStep = ToDouble(txtTimeStep.Text)
+        Simulation.Config.Render.Scale = ToSingle(txtScale.Text)
+        Simulation.Config.Settings.MaxCPS = ToDouble(txtLimitCalc.Text)
+        Simulation.Config.Render.BackgroundColor = plRenderBackColor.ForeColor
+        Simulation.Config.Forces.Gravity = chGravity.Checked
+        Simulation.Config.Forces.ElectroStatic.Enabled = chElectrostatic.Checked
+        Simulation.Config.Forces.ElectroStatic.Permittivity = ToDouble(txtPermittivity.Text)
+        Simulation.Config.Render.TraceObjects = chTrace.Checked
+        Simulation.Config.Collisions.Enabled = chCollision.Checked
+        Simulation.Config.Collisions.Breakable = chbreakable.Checked
+        Simulation.Config.Collisions.Interpolate = chInterpolate.Checked
+        Simulation.Config.Camera.HFov = ToSingle(ToDouble(txtHFoV.Text) * (Math.PI / 180))
+        Simulation.Config.Camera.VFov = ToSingle(ToDouble(txtVFoV.Text) * (Math.PI / 180))
+        Simulation.Config.Camera.AllowModification = chCamera.Checked
+        Simulation.Config.Render.SphereComplexity = tbPolys.Value
+        Simulation.Config.Forces.Drag.Viscosity = ToDouble(txtFluidViscosity.Text)
+        If Simulation.Config.Camera.AllowModification Then
+            Simulation.Config.Camera.UpVector.X = ToSingle(txtCOrientX.Text)
+            Simulation.Config.Camera.UpVector.Y = ToSingle(txtCOrientY.Text)
+            Simulation.Config.Camera.UpVector.Z = ToSingle(txtCOrientZ.Text)
+            Simulation.Config.Camera.Position.X = ToSingle(txtCPosX.Text)
+            Simulation.Config.Camera.Position.Y = ToSingle(txtCPosY.Text)
+            Simulation.Config.Camera.Position.Z = ToSingle(txtCPosZ.Text)
+            Simulation.Config.Camera.Target.X = ToSingle(txtCTargetX.Text)
+            Simulation.Config.Camera.Target.Y = ToSingle(txtCTargetY.Text)
+            Simulation.Config.Camera.Target.Z = ToSingle(txtCTargetZ.Text)
+            Simulation.Config.Camera.MoveSpeed = 10 ^ ((0.1 * tbCameraSpeed.Value) - 3)
         Else
-            Simulation.Camera.MoveSpeed = 0.2
-            Simulation.Camera.U.X = 0
-            Simulation.Camera.U.Y = 1
-            Simulation.Camera.U.Z = 0
-            Simulation.Camera.Position.X = 0
-            Simulation.Camera.Position.Y = 0
-            Simulation.Camera.Position.Z = -10
-            Simulation.Camera.Target.X = 0
-            Simulation.Camera.Target.Y = 0
-            Simulation.Camera.Target.Z = 0
+            Simulation.Config.Camera.MoveSpeed = 0.2
+            Simulation.Config.Camera.UpVector.X = 0
+            Simulation.Config.Camera.UpVector.Y = 1
+            Simulation.Config.Camera.UpVector.Z = 0
+            Simulation.Config.Camera.Position.X = 0
+            Simulation.Config.Camera.Position.Y = 0
+            Simulation.Config.Camera.Position.Z = -10
+            Simulation.Config.Camera.Target.X = 0
+            Simulation.Config.Camera.Target.Y = 0
+            Simulation.Config.Camera.Target.Z = 0
         End If
-        Simulation.Render.Height = ToInt32(txtWindowY.Text)
-        Simulation.Render.Width = ToInt32(txtWindowX.Text)
-        Simulation.Camera.AllowModification = chCamera.Checked
-        Simulation.Render.AspectRatio = ToSingle(Simulation.Render.Width / Simulation.Render.Height)
-        Simulation.Collisions.CoR = ToDouble(txtCoR.Text)
-        Simulation.Collisions.AddAvg = ToInt32(txtAddAvg.Text)
-        Simulation.Collisions.AddMin = ToInt32(txtAddMin.Text)
-        Simulation.Collisions.AddMax = ToInt32(txtAddMax.Text)
-        Simulation.Collisions.BreakAvg = ToDouble(txtBreakAvg.Text)
-        Simulation.Collisions.BreakMin = ToDouble(txtBreakMin.Text)
-        Simulation.Collisions.BreakMax = ToDouble(txtBreakMax.Text)
-        Simulation.Forces.Drag.Enabled = chDrag.Checked
-        Simulation.Forces.Drag.DragCoeff = ToDouble(txtDragCoeff.Text)
-        Simulation.Forces.Enabled = chForces.Checked
-        Simulation.Forces.Field.Enabled = chField.Checked
-        Simulation.Forces.Field.Acceleration.X = ToDouble(txtFieldX.Text)
-        Simulation.Forces.Field.Acceleration.Y = ToDouble(txtFieldY.Text)
-        Simulation.Forces.Field.Acceleration.Z = ToDouble(txtFieldZ.Text)
-        Simulation.Forces.Drag.Density = ToDouble(txtFluidDensity.Text)
-        Simulation.Settings.IntegrationMethod = ToByte(cbIntegration.SelectedIndex)
-        Simulation.Render.EnableLighting = chLightsEnable.Checked
-        Simulation.Render.VSync = chVSync.Checked
-        Simulation.Render.MaxFPS = ToDouble(txtMaxFPS.Text)
-        Simulation.Render.RenderThreads = ToInt32(txtRenderThreads.Text)
+        Simulation.Config.Render.Height = ToInt32(txtWindowY.Text)
+        Simulation.Config.Render.Width = ToInt32(txtWindowX.Text)
+        Simulation.Config.Camera.AllowModification = chCamera.Checked
+        Simulation.Config.Render.AspectRatio = ToSingle(Simulation.Config.Render.Width / Simulation.Config.Render.Height)
+        Simulation.Config.Collisions.CoR = ToDouble(txtCoR.Text)
+        Simulation.Config.Collisions.AddAvg = ToInt32(txtAddAvg.Text)
+        Simulation.Config.Collisions.AddMin = ToInt32(txtAddMin.Text)
+        Simulation.Config.Collisions.AddMax = ToInt32(txtAddMax.Text)
+        Simulation.Config.Collisions.BreakAvg = ToDouble(txtBreakAvg.Text)
+        Simulation.Config.Collisions.BreakMin = ToDouble(txtBreakMin.Text)
+        Simulation.Config.Collisions.BreakMax = ToDouble(txtBreakMax.Text)
+        Simulation.Config.Forces.Drag.Enabled = chDrag.Checked
+        Simulation.Config.Forces.Drag.DragCoeff = ToDouble(txtDragCoeff.Text)
+        Simulation.Config.Forces.Enabled = chForces.Checked
+        Simulation.Config.Forces.Field.Enabled = chField.Checked
+        Simulation.Config.Forces.Field.Acceleration.X = ToDouble(txtFieldX.Text)
+        Simulation.Config.Forces.Field.Acceleration.Y = ToDouble(txtFieldY.Text)
+        Simulation.Config.Forces.Field.Acceleration.Z = ToDouble(txtFieldZ.Text)
+        Simulation.Config.Forces.Drag.Density = ToDouble(txtFluidDensity.Text)
+        Simulation.Config.Settings.IntegrationMethod = ToByte(cbIntegration.SelectedIndex)
+        Simulation.Config.Render.EnableLighting = chLightsEnable.Checked
+        Simulation.Config.Render.VSync = chVSync.Checked
+        Simulation.Config.Render.MaxFPS = ToDouble(txtMaxFPS.Text)
+        Simulation.Config.Render.RenderThreads = ToInt32(txtRenderThreads.Text)
         If cbShading.SelectedIndex = 0 Then
-            Simulation.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Flat
+            Simulation.Config.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Flat
         Else
-            Simulation.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Gouraud
+            Simulation.Config.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Gouraud
         End If
     End Sub
     Private Sub UpdateForm()
-        Dim i As Integer
-
         '----SIMULATION----
-        cbIntegration.SelectedIndex = Simulation.Settings.IntegrationMethod
-        txtLimitObjects.Text = Simulation.Settings.MaxObjects.ToString
-        txtTimeStep.Text = Simulation.Settings.TimeStep.ToString
-        txtScale.Text = Simulation.Render.Scale.ToString
-        txtLimitCalc.Text = Simulation.Settings.MaxCPS.ToString
-        plRenderBackColor.BackColor = Simulation.Render.BackgroundColor
+        cbIntegration.SelectedIndex = Simulation.Config.Settings.IntegrationMethod
+        txtLimitObjects.Text = Simulation.Config.Settings.MaxObjects.ToString
+        txtTimeStep.Text = Simulation.Config.Settings.TimeStep.ToString
+        txtScale.Text = Simulation.Config.Render.Scale.ToString
+        txtLimitCalc.Text = Simulation.Config.Settings.MaxCPS.ToString
+        plRenderBackColor.BackColor = Simulation.Config.Render.BackgroundColor
 
         '----FORCES----
-        chGravity.Checked = Simulation.Forces.Gravity
-        chElectrostatic.Checked = Simulation.Forces.ElectroStatic.Enabled
-        txtPermittivity.Text = Simulation.Forces.ElectroStatic.Permittivity.ToString
-        chForces.Checked = Simulation.Forces.Enabled
-        chDrag.Checked = Simulation.Forces.Drag.Enabled
-        chField.Checked = Simulation.Forces.Field.Enabled
-        txtFieldX.Text = Simulation.Forces.Field.Acceleration.X.ToString
-        txtFieldY.Text = Simulation.Forces.Field.Acceleration.Y.ToString
-        txtFieldZ.Text = Simulation.Forces.Field.Acceleration.Z.ToString
-        txtDragCoeff.Text = Simulation.Forces.Drag.DragCoeff.ToString
-        txtFluidDensity.Text = Simulation.Forces.Drag.Density.ToString
-        txtFluidViscosity.Text = Simulation.Forces.Drag.Viscosity.ToString
+        chGravity.Checked = Simulation.Config.Forces.Gravity
+        chElectrostatic.Checked = Simulation.Config.Forces.ElectroStatic.Enabled
+        txtPermittivity.Text = Simulation.Config.Forces.ElectroStatic.Permittivity.ToString
+        chForces.Checked = Simulation.Config.Forces.Enabled
+        chDrag.Checked = Simulation.Config.Forces.Drag.Enabled
+        chField.Checked = Simulation.Config.Forces.Field.Enabled
+        txtFieldX.Text = Simulation.Config.Forces.Field.Acceleration.X.ToString
+        txtFieldY.Text = Simulation.Config.Forces.Field.Acceleration.Y.ToString
+        txtFieldZ.Text = Simulation.Config.Forces.Field.Acceleration.Z.ToString
+        txtDragCoeff.Text = Simulation.Config.Forces.Drag.DragCoeff.ToString
+        txtFluidDensity.Text = Simulation.Config.Forces.Drag.Density.ToString
+        txtFluidViscosity.Text = Simulation.Config.Forces.Drag.Viscosity.ToString
 
         '----COLLISIONS----
-        chCollision.Checked = Simulation.Collisions.Enabled
-        chInterpolate.Checked = Simulation.Collisions.Interpolate
-        chbreakable.Checked = Simulation.Collisions.Breakable
-        txtCoR.Text = Simulation.Collisions.CoR.ToString
-        txtBreakMin.Text = Simulation.Collisions.BreakMin.ToString
-        txtBreakAvg.Text = Simulation.Collisions.BreakAvg.ToString
-        txtBreakMax.Text = Simulation.Collisions.BreakMax.ToString
-        txtAddMin.Text = Simulation.Collisions.AddMin.ToString
-        txtAddAvg.Text = Simulation.Collisions.AddAvg.ToString
-        txtAddMax.Text = Simulation.Collisions.AddMax.ToString
+        chCollision.Checked = Simulation.Config.Collisions.Enabled
+        chInterpolate.Checked = Simulation.Config.Collisions.Interpolate
+        chbreakable.Checked = Simulation.Config.Collisions.Breakable
+        txtCoR.Text = Simulation.Config.Collisions.CoR.ToString
+        txtBreakMin.Text = Simulation.Config.Collisions.BreakMin.ToString
+        txtBreakAvg.Text = Simulation.Config.Collisions.BreakAvg.ToString
+        txtBreakMax.Text = Simulation.Config.Collisions.BreakMax.ToString
+        txtAddMin.Text = Simulation.Config.Collisions.AddMin.ToString
+        txtAddAvg.Text = Simulation.Config.Collisions.AddAvg.ToString
+        txtAddMax.Text = Simulation.Config.Collisions.AddMax.ToString
 
         '----DISPLAY----
-        chVSync.Checked = Simulation.Render.VSync
-        txtMaxFPS.Text = Simulation.Render.MaxFPS.ToString
-        txtRenderThreads.Text = Simulation.Render.RenderThreads.ToString
+        chVSync.Checked = Simulation.Config.Render.VSync
+        txtMaxFPS.Text = Simulation.Config.Render.MaxFPS.ToString
+        txtRenderThreads.Text = Simulation.Config.Render.RenderThreads.ToString
 
-        If Simulation.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Flat Then
+        If Simulation.Config.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Flat Then
             cbShading.SelectedIndex = 0
         Else
             cbShading.SelectedIndex = 1
         End If
+
         CmdSaveOut.Enabled = False
-        chCamera.Checked = Simulation.Camera.AllowModification
-        chTrace.Checked = Simulation.Render.TraceObjects
-        txtVFoV.Text = Int((Simulation.Camera.VFov / Math.PI) * 180).ToString
-        txtHFoV.Text = Int((Simulation.Camera.HFov / Math.PI) * 180).ToString
-        txtWindowX.Text = Simulation.Render.Width.ToString
-        txtWindowY.Text = Simulation.Render.Height.ToString
-        txtCPosX.Text = Simulation.Camera.Position.X.ToString
-        txtCPosY.Text = Simulation.Camera.Position.Y.ToString
-        txtCPosZ.Text = Simulation.Camera.Position.Z.ToString
-        txtCOrientX.Text = Simulation.Camera.U.X.ToString
-        txtCOrientY.Text = Simulation.Camera.U.Y.ToString
-        txtCOrientZ.Text = Simulation.Camera.U.Z.ToString
-        txtCTargetX.Text = Simulation.Camera.Target.X.ToString
-        txtCTargetY.Text = Simulation.Camera.Target.Y.ToString
-        txtCTargetZ.Text = Simulation.Camera.Target.Z.ToString
-        cbRender.SelectedIndex = Simulation.Render.Mode
-        tbCameraSpeed.Value = ToInt32((10 * Math.Log10(Simulation.Camera.MoveSpeed)) + 30)
-        tbPolys.Value = Simulation.Render.SphereComplexity1
+        chCamera.Checked = Simulation.Config.Camera.AllowModification
+        chTrace.Checked = Simulation.Config.Render.TraceObjects
+
+        txtVFoV.Text = Int((Simulation.Config.Camera.VFov / Math.PI) * 180).ToString
+        txtHFoV.Text = Int((Simulation.Config.Camera.HFov / Math.PI) * 180).ToString
+
+        txtWindowX.Text = Simulation.Config.Render.Width.ToString
+        txtWindowY.Text = Simulation.Config.Render.Height.ToString
+
+        txtCPosX.Text = Simulation.Config.Camera.Position.X.ToString
+        txtCPosY.Text = Simulation.Config.Camera.Position.Y.ToString
+        txtCPosZ.Text = Simulation.Config.Camera.Position.Z.ToString
+
+        txtCOrientX.Text = Simulation.Config.Camera.UpVector.X.ToString
+        txtCOrientY.Text = Simulation.Config.Camera.UpVector.Y.ToString
+        txtCOrientZ.Text = Simulation.Config.Camera.UpVector.Z.ToString
+
+        txtCTargetX.Text = Simulation.Config.Camera.Target.X.ToString
+        txtCTargetY.Text = Simulation.Config.Camera.Target.Y.ToString
+        txtCTargetZ.Text = Simulation.Config.Camera.Target.Z.ToString
+
+        cbRender.SelectedIndex = Simulation.Config.Render.Mode
+
+        tbCameraSpeed.Value = ToInt32((10 * Math.Log10(Simulation.Config.Camera.MoveSpeed)) + 30)
+        tbPolys.Value = Simulation.Config.Render.SphereComplexity
+
+        Dim i As Integer
 
         '----LIGHTS----
         listLights.Items.Clear()
-        For i = 0 To Simulation.LightCount - 1
-            listLights.Items.Insert(listLights.Items.Count, Simulation.Lights(i).Name)
+        For i = 0 To Simulation.Config.LightCount - 1
+            listLights.Items.Insert(listLights.Items.Count, Simulation.Config.Lights(i).Name)
         Next
         listLights.ClearSelected()
         ClearLightForm()
 
         '----OBJECTS----
         listGroups.Items.Clear()
-        For i = 0 To Simulation.GroupCount - 1
-            listGroups.Items.Insert(listGroups.Items.Count, Simulation.Groups(i).Name)
+        For i = 0 To Simulation.Config.GroupCount - 1
+            listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.Groups(i).Name)
         Next
         listGroups.ClearSelected()
         ClearObjectForm()
@@ -1521,7 +1529,7 @@ Public Class ControlPanel
         txtLightDirectionX.Text = "0"
         txtLightDirectionY.Text = "0"
         txtLightDirectionZ.Text = "1"
-        chLightsEnable.Checked = Simulation.Render.EnableLighting
+        chLightsEnable.Checked = Simulation.Config.Render.EnableLighting
         plLightColor.BackColor = plLightColor.ForeColor
         cbLightType.SelectedIndex = 0
         txtLightPositionX.Text = "0"
@@ -1544,8 +1552,8 @@ Public Class ControlPanel
         End
     End Sub
     Private Sub ControlPanel_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Simulation = New SimulationData
-        Backup = New SimulationData
+        Simulation = New SimulationRuntime
+        Backup = New SimulationRuntime
         CPUNumber = Environment.ProcessorCount
         OpenDialog.InitialDirectory = Application.StartupPath
         SaveDialog.InitialDirectory = Application.StartupPath
@@ -1563,10 +1571,10 @@ Public Class ControlPanel
         If cmdStart.Text = "&Start Simulation" Then
             If Not IsValidSets() Then Exit Sub
             If ObjectRoomLeft() < 0 Then
-                MsgBox("The number Of objects In the simulation surpasses the maximum number Of objects", MsgBoxStyle.Critical, "Error")
+                MsgBox("The number Of objects In the simulation surpasses the maximum number of objects", MsgBoxStyle.Critical, "Error")
                 Exit Sub
             End If
-            If Simulation.GroupCount <= 0 Then
+            If Simulation.Config.GroupCount <= 0 Then
                 MsgBox("At least one Object Is required To begin the simulation.", MsgBoxStyle.Critical, "Error")
                 Exit Sub
             End If
@@ -1644,7 +1652,7 @@ Public Class ControlPanel
             Dim xErr As String = ""
             Try
                 InText = GetFileContents(OpenDialog.FileName, xErr)
-                Simulation.Load(InText)
+                Simulation.Config.Load(InText)
             Catch
                 MsgBox("Unable to load the simulation.", MsgBoxStyle.Critical, "Error")
                 Simulation.Copy(Backup)
@@ -1672,30 +1680,30 @@ Public Class ControlPanel
     End Sub
     Private Sub listLights_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listLights.SelectedIndexChanged
         If listLights.SelectedIndex <> -1 Then
-            txtLightName.Text = Simulation.Lights(listLights.SelectedIndex).Name
-            plLightColor.BackColor = Simulation.Lights(listLights.SelectedIndex).Color
-            txtLightDirectionX.Text = Simulation.Lights(listLights.SelectedIndex).Direction.X.ToString
-            txtLightDirectionY.Text = Simulation.Lights(listLights.SelectedIndex).Direction.Y.ToString
-            txtLightDirectionZ.Text = Simulation.Lights(listLights.SelectedIndex).Direction.Z.ToString
-            If Simulation.Lights(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Spot Then
+            txtLightName.Text = Simulation.Config.Lights(listLights.SelectedIndex).Name
+            plLightColor.BackColor = Simulation.Config.Lights(listLights.SelectedIndex).Color
+            txtLightDirectionX.Text = Simulation.Config.Lights(listLights.SelectedIndex).Direction.X.ToString
+            txtLightDirectionY.Text = Simulation.Config.Lights(listLights.SelectedIndex).Direction.Y.ToString
+            txtLightDirectionZ.Text = Simulation.Config.Lights(listLights.SelectedIndex).Direction.Z.ToString
+            If Simulation.Config.Lights(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Spot Then
                 cbLightType.SelectedIndex = 2
-            ElseIf Simulation.Lights(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Point Then
+            ElseIf Simulation.Config.Lights(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Point Then
                 cbLightType.SelectedIndex = 1
             Else
                 cbLightType.SelectedIndex = 0
             End If
-            txtLightPositionX.Text = Simulation.Lights(listLights.SelectedIndex).Position.X.ToString
-            txtLightPositionY.Text = Simulation.Lights(listLights.SelectedIndex).Position.Y.ToString
-            txtLightPositionZ.Text = Simulation.Lights(listLights.SelectedIndex).Position.Z.ToString
-            tbLightHighlight.Value = Simulation.Lights(listLights.SelectedIndex).SpecularColor.R
-            tbLightAmbient.Value = Simulation.Lights(listLights.SelectedIndex).AmbientRatio
-            txtLightRange.Text = Simulation.Lights(listLights.SelectedIndex).Range.ToString
-            txtLightAttenuationA.Text = Simulation.Lights(listLights.SelectedIndex).AttenuationA.ToString
-            txtLightAttenuationB.Text = Simulation.Lights(listLights.SelectedIndex).AttenuationB.ToString
-            txtLightAttenuationC.Text = Simulation.Lights(listLights.SelectedIndex).AttenuationC.ToString
-            txtLightAngleInner.Text = ToInt32((Simulation.Lights(listLights.SelectedIndex).InnerCone / PI) * 180).ToString
-            txtLightAngleOuter.Text = ToInt32((Simulation.Lights(listLights.SelectedIndex).OuterCone / PI) * 180).ToString
-            txtLightFalloff.Text = Simulation.Lights(listLights.SelectedIndex).Falloff.ToString
+            txtLightPositionX.Text = Simulation.Config.Lights(listLights.SelectedIndex).Position.X.ToString
+            txtLightPositionY.Text = Simulation.Config.Lights(listLights.SelectedIndex).Position.Y.ToString
+            txtLightPositionZ.Text = Simulation.Config.Lights(listLights.SelectedIndex).Position.Z.ToString
+            tbLightHighlight.Value = Simulation.Config.Lights(listLights.SelectedIndex).SpecularColor.R
+            tbLightAmbient.Value = Simulation.Config.Lights(listLights.SelectedIndex).AmbientRatio
+            txtLightRange.Text = Simulation.Config.Lights(listLights.SelectedIndex).Range.ToString
+            txtLightAttenuationA.Text = Simulation.Config.Lights(listLights.SelectedIndex).AttenuationA.ToString
+            txtLightAttenuationB.Text = Simulation.Config.Lights(listLights.SelectedIndex).AttenuationB.ToString
+            txtLightAttenuationC.Text = Simulation.Config.Lights(listLights.SelectedIndex).AttenuationC.ToString
+            txtLightAngleInner.Text = ToInt32((Simulation.Config.Lights(listLights.SelectedIndex).InnerCone / PI) * 180).ToString
+            txtLightAngleOuter.Text = ToInt32((Simulation.Config.Lights(listLights.SelectedIndex).OuterCone / PI) * 180).ToString
+            txtLightFalloff.Text = Simulation.Config.Lights(listLights.SelectedIndex).Falloff.ToString
         Else
             ClearLightForm()
         End If
@@ -1703,77 +1711,77 @@ Public Class ControlPanel
     End Sub
     Private Sub cmdAddLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightAdd.Click
         If Not IsValidLight() = True Then Exit Sub
-        Simulation.EnlargeLights()
-        InsertLight(Simulation.LightCount - 1)
-        listLights.Items.Insert(listLights.Items.Count, Simulation.Lights(Simulation.LightCount - 1).Name)
+        Simulation.Config.EnlargeLights()
+        InsertLight(Simulation.Config.LightCount - 1)
+        listLights.Items.Insert(listLights.Items.Count, Simulation.Config.Lights(Simulation.Config.LightCount - 1).Name)
         listLights.ClearSelected()
         ConfigModified = True
     End Sub
     Private Sub InsertLight(ByRef i As Integer)
         If cbLightType.SelectedIndex = 2 Then
-            Simulation.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Spot
+            Simulation.Config.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Spot
         ElseIf cbLightType.SelectedIndex = 1 Then
-            Simulation.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Point
+            Simulation.Config.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Point
         Else
-            Simulation.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Directional
+            Simulation.Config.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Directional
         End If
-        Simulation.Lights(i).Name = txtLightName.Text
-        Simulation.Lights(i).Color = plLightColor.BackColor
-        Simulation.Lights(i).Direction.X = ToSingle(txtLightDirectionX.Text)
-        Simulation.Lights(i).Direction.Y = ToSingle(txtLightDirectionY.Text)
-        Simulation.Lights(i).Direction.Z = ToSingle(txtLightDirectionZ.Text)
-        Simulation.Lights(i).Position.X = ToSingle(txtLightPositionX.Text)
-        Simulation.Lights(i).Position.Y = ToSingle(txtLightPositionY.Text)
-        Simulation.Lights(i).Position.Z = ToSingle(txtLightPositionZ.Text)
-        Simulation.Lights(i).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
-        Simulation.Lights(i).AmbientRatio = tbLightAmbient.Value
-        Simulation.Lights(i).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
-        Simulation.Lights(i).Range = ToSingle(txtLightRange.Text)
-        Simulation.Lights(i).AttenuationA = ToSingle(txtLightAttenuationA.Text)
-        Simulation.Lights(i).AttenuationB = ToSingle(txtLightAttenuationB.Text)
-        Simulation.Lights(i).AttenuationC = ToSingle(txtLightAttenuationC.Text)
-        Simulation.Lights(i).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
-        Simulation.Lights(i).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
-        Simulation.Lights(i).Falloff = ToSingle(txtLightFalloff.Text)
+        Simulation.Config.Lights(i).Name = txtLightName.Text
+        Simulation.Config.Lights(i).Color = plLightColor.BackColor
+        Simulation.Config.Lights(i).Direction.X = ToSingle(txtLightDirectionX.Text)
+        Simulation.Config.Lights(i).Direction.Y = ToSingle(txtLightDirectionY.Text)
+        Simulation.Config.Lights(i).Direction.Z = ToSingle(txtLightDirectionZ.Text)
+        Simulation.Config.Lights(i).Position.X = ToSingle(txtLightPositionX.Text)
+        Simulation.Config.Lights(i).Position.Y = ToSingle(txtLightPositionY.Text)
+        Simulation.Config.Lights(i).Position.Z = ToSingle(txtLightPositionZ.Text)
+        Simulation.Config.Lights(i).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
+        Simulation.Config.Lights(i).AmbientRatio = tbLightAmbient.Value
+        Simulation.Config.Lights(i).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
+        Simulation.Config.Lights(i).Range = ToSingle(txtLightRange.Text)
+        Simulation.Config.Lights(i).AttenuationA = ToSingle(txtLightAttenuationA.Text)
+        Simulation.Config.Lights(i).AttenuationB = ToSingle(txtLightAttenuationB.Text)
+        Simulation.Config.Lights(i).AttenuationC = ToSingle(txtLightAttenuationC.Text)
+        Simulation.Config.Lights(i).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
+        Simulation.Config.Lights(i).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
+        Simulation.Config.Lights(i).Falloff = ToSingle(txtLightFalloff.Text)
     End Sub
     Private Sub cmdReplaceLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightReplace.Click
         If IsValidLight() = True Then
             Dim index As Integer
             index = listLights.SelectedIndex
-            Simulation.Lights(index).Color = plLightColor.BackColor
-            Simulation.Lights(index).Direction.X = ToSingle(txtLightDirectionX.Text)
-            Simulation.Lights(index).Direction.Y = ToSingle(txtLightDirectionY.Text)
-            Simulation.Lights(index).Direction.Z = ToSingle(txtLightDirectionZ.Text)
-            Simulation.Lights(index).Name = txtLightName.Text
+            Simulation.Config.Lights(index).Color = plLightColor.BackColor
+            Simulation.Config.Lights(index).Direction.X = ToSingle(txtLightDirectionX.Text)
+            Simulation.Config.Lights(index).Direction.Y = ToSingle(txtLightDirectionY.Text)
+            Simulation.Config.Lights(index).Direction.Z = ToSingle(txtLightDirectionZ.Text)
+            Simulation.Config.Lights(index).Name = txtLightName.Text
             If cbLightType.SelectedIndex = 2 Then
-                Simulation.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Spot
+                Simulation.Config.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Spot
             ElseIf cbLightType.SelectedIndex = 1 Then
-                Simulation.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Point
+                Simulation.Config.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Point
             Else
-                Simulation.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Directional
+                Simulation.Config.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Directional
             End If
-            Simulation.Lights(index).Position.X = ToSingle(txtLightPositionX.Text)
-            Simulation.Lights(index).Position.Y = ToSingle(txtLightPositionY.Text)
-            Simulation.Lights(index).Position.Z = ToSingle(txtLightPositionZ.Text)
-            Simulation.Lights(index).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
-            Simulation.Lights(index).AmbientRatio = tbLightAmbient.Value
-            Simulation.Lights(index).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
-            Simulation.Lights(index).Range = ToSingle(txtLightRange.Text)
-            Simulation.Lights(index).AttenuationA = ToSingle(txtLightAttenuationA.Text)
-            Simulation.Lights(index).AttenuationB = ToSingle(txtLightAttenuationB.Text)
-            Simulation.Lights(index).AttenuationC = ToSingle(txtLightAttenuationC.Text)
-            Simulation.Lights(index).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
-            Simulation.Lights(index).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
-            Simulation.Lights(index).Falloff = ToSingle(txtLightFalloff.Text)
+            Simulation.Config.Lights(index).Position.X = ToSingle(txtLightPositionX.Text)
+            Simulation.Config.Lights(index).Position.Y = ToSingle(txtLightPositionY.Text)
+            Simulation.Config.Lights(index).Position.Z = ToSingle(txtLightPositionZ.Text)
+            Simulation.Config.Lights(index).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
+            Simulation.Config.Lights(index).AmbientRatio = tbLightAmbient.Value
+            Simulation.Config.Lights(index).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
+            Simulation.Config.Lights(index).Range = ToSingle(txtLightRange.Text)
+            Simulation.Config.Lights(index).AttenuationA = ToSingle(txtLightAttenuationA.Text)
+            Simulation.Config.Lights(index).AttenuationB = ToSingle(txtLightAttenuationB.Text)
+            Simulation.Config.Lights(index).AttenuationC = ToSingle(txtLightAttenuationC.Text)
+            Simulation.Config.Lights(index).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
+            Simulation.Config.Lights(index).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
+            Simulation.Config.Lights(index).Falloff = ToSingle(txtLightFalloff.Text)
             listLights.Items.RemoveAt(index)
-            listLights.Items.Insert(index, Simulation.Lights(index).Name)
+            listLights.Items.Insert(index, Simulation.Config.Lights(index).Name)
             listLights.ClearSelected()
             ConfigModified = True
         End If
     End Sub
     Private Sub cmdRemoveLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightRemove.Click
         If MsgBox("Are you sure you want to remove the selected light?", MsgBoxStyle.YesNo, "Remove?") = vbYes Then
-            Simulation.RemoveLight(listLights.SelectedIndex)
+            Simulation.Config.RemoveLight(listLights.SelectedIndex)
             listLights.Items.RemoveAt(listLights.SelectedIndex)
             listLights.ClearSelected()
             ConfigModified = True
@@ -2179,14 +2187,14 @@ Public Class ControlPanel
     Private Sub listObjects_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listGroups.SelectedIndexChanged
         If listGroups.SelectedIndex <> -1 Then
             Dim index As Integer = listGroups.SelectedIndex
-            chObjectAffected.Checked = Simulation.Groups(index).Affected
-            chObjectAffects.Checked = Simulation.Groups(index).Affects
-            chObjectWireframe.Checked = Simulation.Groups(index).Wireframe
-            cbObjectType.SelectedIndex = Simulation.Groups(index).Type
-            txtObjectName.Text = Simulation.Groups(index).Name
+            chObjectAffected.Checked = Simulation.Config.Groups(index).Affected
+            chObjectAffects.Checked = Simulation.Config.Groups(index).Affects
+            chObjectWireframe.Checked = Simulation.Config.Groups(index).Wireframe
+            cbObjectType.SelectedIndex = Simulation.Config.Groups(index).Type
+            txtObjectName.Text = Simulation.Config.Groups(index).Name
 
             'NUMBER 
-            ObjectNumber.Copy(Simulation.Groups(index).Number)
+            ObjectNumber.Copy(Simulation.Config.Groups(index).Number)
             txtObjectNumber.Text = ObjectNumber.Value.ToString
             If ObjectNumber.UseFunction Then
                 cmdObjectNumber.ForeColor = Color.RoyalBlue
@@ -2195,7 +2203,7 @@ Public Class ControlPanel
             End If
 
             'MASS
-            ObjectMass.Copy(Simulation.Groups(index).Mass)
+            ObjectMass.Copy(Simulation.Config.Groups(index).Mass)
             txtObjectMass.Text = ObjectMass.Value.ToString
             If ObjectMass.UseFunction Then
                 cmdObjectMass.ForeColor = Color.RoyalBlue
@@ -2204,7 +2212,7 @@ Public Class ControlPanel
             End If
 
             'CHARGE
-            ObjectCharge.Copy(Simulation.Groups(index).Charge)
+            ObjectCharge.Copy(Simulation.Config.Groups(index).Charge)
             txtObjectCharge.Text = ObjectCharge.Value.ToString
             If ObjectCharge.UseFunction Then
                 cmdObjectCharge.ForeColor = Color.RoyalBlue
@@ -2213,7 +2221,7 @@ Public Class ControlPanel
             End If
 
             'RADIUS
-            ObjectRadius.Copy(Simulation.Groups(index).Radius)
+            ObjectRadius.Copy(Simulation.Config.Groups(index).Radius)
             txtObjectRadius.Text = ObjectRadius.Value.ToString
             If ObjectRadius.UseFunction Then
                 cmdObjectRadius.ForeColor = Color.RoyalBlue
@@ -2222,7 +2230,7 @@ Public Class ControlPanel
             End If
 
             'SIZE
-            ObjectSize.Copy(Simulation.Groups(index).Size)
+            ObjectSize.Copy(Simulation.Config.Groups(index).Size)
             txtObjectSizeX.Text = ObjectSize.X.Value.ToString
             If ObjectSize.X.UseFunction Then
                 cmdObjectSizeX.ForeColor = Color.RoyalBlue
@@ -2243,7 +2251,7 @@ Public Class ControlPanel
             End If
 
             'ROTATION
-            ObjectRotation.Copy(Simulation.Groups(index).Rotation)
+            ObjectRotation.Copy(Simulation.Config.Groups(index).Rotation)
             txtObjectRotationX.Text = ObjectRotation.X.Value.ToString
             If ObjectRotation.X.UseFunction Then
                 cmdObjectRotationX.ForeColor = Color.RoyalBlue
@@ -2264,7 +2272,7 @@ Public Class ControlPanel
             End If
 
             'NORMAL
-            ObjectNormal.Copy(Simulation.Groups(index).Normal)
+            ObjectNormal.Copy(Simulation.Config.Groups(index).Normal)
             txtObjectNormalX.Text = ObjectNormal.X.Value.ToString
             If ObjectNormal.X.UseFunction Then
                 cmdObjectNormalX.ForeColor = Color.RoyalBlue
@@ -2285,7 +2293,7 @@ Public Class ControlPanel
             End If
 
             'POSITION
-            ObjectPosition.Copy(Simulation.Groups(index).Position)
+            ObjectPosition.Copy(Simulation.Config.Groups(index).Position)
             txtObjectPositionX.Text = ObjectPosition.X.Value.ToString
             If ObjectPosition.X.UseFunction Then
                 cmdObjectPositionX.ForeColor = Color.RoyalBlue
@@ -2306,7 +2314,7 @@ Public Class ControlPanel
             End If
 
             'VELOCITY
-            ObjectVelocity.Copy(Simulation.Groups(index).Velocity)
+            ObjectVelocity.Copy(Simulation.Config.Groups(index).Velocity)
             txtObjectVelocityX.Text = ObjectVelocity.X.Value.ToString
             If ObjectVelocity.X.UseFunction Then
                 cmdObjectVelocityX.ForeColor = Color.RoyalBlue
@@ -2327,7 +2335,7 @@ Public Class ControlPanel
             End If
 
             'COLOR
-            ObjectColor.Copy(Simulation.Groups(index).Color)
+            ObjectColor.Copy(Simulation.Config.Groups(index).Color)
             plObjectColor.BackColor = ObjectColor.Value
             If ObjectColor.UseFunction Then
                 cmdObjectColor.ForeColor = Color.RoyalBlue
@@ -2336,7 +2344,7 @@ Public Class ControlPanel
             End If
 
             'HIGHLIGHT
-            ObjectHighlight.Copy(Simulation.Groups(index).Highlight)
+            ObjectHighlight.Copy(Simulation.Config.Groups(index).Highlight)
             plObjectHighlightColor.BackColor = ObjectHighlight.Value
             If ObjectHighlight.UseFunction Then
                 cmdObjectHighlightColor.ForeColor = Color.RoyalBlue
@@ -2345,7 +2353,7 @@ Public Class ControlPanel
             End If
 
             'SHARPNESS
-            ObjectSharpness.Copy(Simulation.Groups(index).Sharpness)
+            ObjectSharpness.Copy(Simulation.Config.Groups(index).Sharpness)
             tbObjectHighlightSharpness.Value = ToInt32(ObjectSharpness.Value)
             If ObjectSharpness.UseFunction Then
                 cmdObjectHighlightSharpness.ForeColor = Color.RoyalBlue
@@ -2354,7 +2362,7 @@ Public Class ControlPanel
             End If
 
             'REFLECTIVITY
-            ObjectReflectivity.Copy(Simulation.Groups(index).Reflectivity)
+            ObjectReflectivity.Copy(Simulation.Config.Groups(index).Reflectivity)
             tbObjectReflectivity.Value = ToInt32(ObjectReflectivity.Value)
             If ObjectReflectivity.UseFunction Then
                 cmdObjectReflectivity.ForeColor = Color.RoyalBlue
@@ -2363,7 +2371,7 @@ Public Class ControlPanel
             End If
 
             'TRANSPARENCY
-            ObjectTransparency.Copy(Simulation.Groups(index).Transparency)
+            ObjectTransparency.Copy(Simulation.Config.Groups(index).Transparency)
             tbObjectTransparency.Value = ToInt32(ObjectTransparency.Value)
             If ObjectTransparency.UseFunction Then
                 cmdObjectTransparency.ForeColor = Color.RoyalBlue
@@ -2372,7 +2380,7 @@ Public Class ControlPanel
             End If
 
             'REFRACTIVE INDEX
-            ObjectRefractiveIndex.Copy(Simulation.Groups(index).RefractiveIndex)
+            ObjectRefractiveIndex.Copy(Simulation.Config.Groups(index).RefractiveIndex)
             txtObjectRefractiveIndex.Text = ObjectRefractiveIndex.Value.ToString
             If ObjectRefractiveIndex.UseFunction Then
                 cmdObjectRefractiveIndex.ForeColor = Color.RoyalBlue
@@ -2471,15 +2479,17 @@ Public Class ControlPanel
     End Sub
     Private Function ObjectRoomLeft() As Integer
         Dim CurrentObjects As Integer = 0
-        For i = 0 To Simulation.GroupCount - 1
-            If Simulation.Groups(i).Number.UseFunction Then
-                If Simulation.Groups(i).Number.Random Then
-                    CurrentObjects += Simulation.Groups(i).Number.RandomMax
+        'TODO move this the distribution object
+        For i = 0 To Simulation.Config.GroupCount - 1
+            If Simulation.Config.Groups(i).Number.UseFunction Then
+                If Simulation.Config.Groups(i).Number.Random Then
+                    CurrentObjects += Simulation.Config.Groups(i).Number.RandomMax
                 Else
-                    CurrentObjects += Simulation.Groups(i).Number.NormalMax
+                    CurrentObjects += Simulation.Config.Groups(i).Number.NormalMax
                 End If
+                'TODO: Figure out Polynomial & Even distribution max
             Else
-                CurrentObjects += Simulation.Groups(i).Number.Value
+                CurrentObjects += Simulation.Config.Groups(i).Number.Value
             End If
         Next
         Return ToInt32(txtLimitObjects.Text) - CurrentObjects
@@ -2503,80 +2513,80 @@ Public Class ControlPanel
             Exit Sub
         End If
 
-        Simulation.EnlargeGroups()
-        InsertGroup(Simulation.GroupCount - 1)
-        listGroups.Items.Insert(listGroups.Items.Count, Simulation.Groups(Simulation.GroupCount - 1).Name)
+        Simulation.Config.EnlargeGroups()
+        InsertGroup(Simulation.Config.GroupCount - 1)
+        listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.Groups(Simulation.Config.GroupCount - 1).Name)
         listGroups.ClearSelected()
         ConfigModified = True
     End Sub
     Private Sub InsertGroup(ByRef i As Integer)
 
-        Simulation.Groups(i).Name = txtObjectName.Text
-        Simulation.Groups(i).Affected = chObjectAffected.Checked
-        Simulation.Groups(i).Affects = chObjectAffects.Checked
-        Simulation.Groups(i).Wireframe = chObjectWireframe.Checked
+        Simulation.Config.Groups(i).Name = txtObjectName.Text
+        Simulation.Config.Groups(i).Affected = chObjectAffected.Checked
+        Simulation.Config.Groups(i).Affects = chObjectAffects.Checked
+        Simulation.Config.Groups(i).Wireframe = chObjectWireframe.Checked
         If cbObjectType.SelectedIndex = 0 Then
-            Simulation.Groups(i).Type = ObjectType.Sphere
+            Simulation.Config.Groups(i).Type = ObjectType.Sphere
         ElseIf cbObjectType.SelectedIndex = 1 Then
-            Simulation.Groups(i).Type = ObjectType.Box
+            Simulation.Config.Groups(i).Type = ObjectType.Box
         Else
-            Simulation.Groups(i).Type = ObjectType.InfinitePlane
+            Simulation.Config.Groups(i).Type = ObjectType.InfinitePlane
         End If
 
         ObjectNumber.Value = ToInt32(txtObjectNumber.Text)
-        Simulation.Groups(i).Number.Copy(ObjectNumber)
+        Simulation.Config.Groups(i).Number.Copy(ObjectNumber)
 
         ObjectMass.Value = ToDouble(txtObjectMass.Text)
-        Simulation.Groups(i).Mass.Copy(ObjectMass)
+        Simulation.Config.Groups(i).Mass.Copy(ObjectMass)
 
         ObjectCharge.Value = ToDouble(txtObjectCharge.Text)
-        Simulation.Groups(i).Charge.Copy(ObjectCharge)
+        Simulation.Config.Groups(i).Charge.Copy(ObjectCharge)
 
         ObjectSize.X.Value = ToDouble(txtObjectSizeX.Text)
         ObjectSize.Y.Value = ToDouble(txtObjectSizeY.Text)
         ObjectSize.Z.Value = ToDouble(txtObjectSizeZ.Text)
-        Simulation.Groups(i).Size.Copy(ObjectSize)
+        Simulation.Config.Groups(i).Size.Copy(ObjectSize)
 
         ObjectRadius.Value = ToDouble(txtObjectRadius.Text)
-        Simulation.Groups(i).Radius.Copy(ObjectRadius)
+        Simulation.Config.Groups(i).Radius.Copy(ObjectRadius)
 
         ObjectRotation.X.Value = ToDouble(txtObjectRotationX.Text)
         ObjectRotation.Y.Value = ToDouble(txtObjectRotationY.Text)
         ObjectRotation.Z.Value = ToDouble(txtObjectRotationZ.Text)
-        Simulation.Groups(i).Rotation.Copy(ObjectRotation)
+        Simulation.Config.Groups(i).Rotation.Copy(ObjectRotation)
 
         ObjectNormal.X.Value = ToDouble(txtObjectNormalX.Text)
         ObjectNormal.Y.Value = ToDouble(txtObjectNormalY.Text)
         ObjectNormal.Z.Value = ToDouble(txtObjectNormalZ.Text)
-        Simulation.Groups(i).Normal.Copy(ObjectNormal)
+        Simulation.Config.Groups(i).Normal.Copy(ObjectNormal)
 
         ObjectPosition.X.Value = ToDouble(txtObjectPositionX.Text)
         ObjectPosition.Y.Value = ToDouble(txtObjectPositionY.Text)
         ObjectPosition.Z.Value = ToDouble(txtObjectPositionZ.Text)
-        Simulation.Groups(i).Position.Copy(ObjectPosition)
+        Simulation.Config.Groups(i).Position.Copy(ObjectPosition)
 
         ObjectVelocity.X.Value = ToDouble(txtObjectVelocityX.Text)
         ObjectVelocity.Y.Value = ToDouble(txtObjectVelocityY.Text)
         ObjectVelocity.Z.Value = ToDouble(txtObjectVelocityZ.Text)
-        Simulation.Groups(i).Velocity.Copy(ObjectVelocity)
+        Simulation.Config.Groups(i).Velocity.Copy(ObjectVelocity)
 
         ObjectColor.Value = plObjectColor.BackColor
-        Simulation.Groups(i).Color.Copy(ObjectColor)
+        Simulation.Config.Groups(i).Color.Copy(ObjectColor)
 
         ObjectHighlight.Value = plObjectHighlightColor.BackColor
-        Simulation.Groups(i).Highlight.Copy(ObjectHighlight)
+        Simulation.Config.Groups(i).Highlight.Copy(ObjectHighlight)
 
         ObjectRefractiveIndex.Value = ToDouble(txtObjectRefractiveIndex.Text)
-        Simulation.Groups(i).RefractiveIndex.Copy(ObjectRefractiveIndex)
+        Simulation.Config.Groups(i).RefractiveIndex.Copy(ObjectRefractiveIndex)
 
         ObjectTransparency.Value = ToDouble(tbObjectTransparency.Value)
-        Simulation.Groups(i).Transparency.Copy(ObjectTransparency)
+        Simulation.Config.Groups(i).Transparency.Copy(ObjectTransparency)
 
         ObjectSharpness.Value = ToSingle(tbObjectHighlightSharpness.Value)
-        Simulation.Groups(i).Sharpness.Copy(ObjectSharpness)
+        Simulation.Config.Groups(i).Sharpness.Copy(ObjectSharpness)
 
         ObjectReflectivity.Value = ToSingle(tbObjectReflectivity.Value)
-        Simulation.Groups(i).Reflectivity.Copy(ObjectReflectivity)
+        Simulation.Config.Groups(i).Reflectivity.Copy(ObjectReflectivity)
     End Sub
     Private Function isValidMaxObjects() As Boolean
         If Not IsNumeric(txtLimitObjects.Text) Then
@@ -2607,14 +2617,14 @@ Public Class ControlPanel
                 CurrentObjects = ObjectNumber.NormalMax
             End If
         End If
-        If Simulation.Groups(index).Number.UseFunction Then
+        If Simulation.Config.Groups(index).Number.UseFunction Then
             If ObjectNumber.Random Then
-                CurrentObjects -= Simulation.Groups(index).Number.RandomMax
+                CurrentObjects -= Simulation.Config.Groups(index).Number.RandomMax
             Else
-                CurrentObjects -= Simulation.Groups(index).Number.NormalMax
+                CurrentObjects -= Simulation.Config.Groups(index).Number.NormalMax
             End If
         Else
-            CurrentObjects -= Simulation.Groups(index).Number.Value
+            CurrentObjects -= Simulation.Config.Groups(index).Number.Value
         End If
         If CurrentObjects > ObjectRoomLeft() Then
             MsgBox("Objects are currently limited to " & ToInt32(txtLimitObjects.Text) & ".", MsgBoxStyle.Exclamation, "Warning")
@@ -2623,13 +2633,13 @@ Public Class ControlPanel
 
         InsertGroup(index)
         listGroups.Items.RemoveAt(index)
-        listGroups.Items.Insert(index, Simulation.Groups(index).Name)
+        listGroups.Items.Insert(index, Simulation.Config.Groups(index).Name)
         listGroups.ClearSelected()
         ConfigModified = True
     End Sub
     Private Sub cmdRemoveGroup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupRemove.Click
         If MsgBox("Are you sure you want to remove the selected group?", MsgBoxStyle.YesNo, "Remove?") = MsgBoxResult.No Then Exit Sub
-        Simulation.RemoveGroup(listGroups.SelectedIndex)
+        Simulation.Config.RemoveGroup(listGroups.SelectedIndex)
         listGroups.Items.RemoveAt(listGroups.SelectedIndex)
         listGroups.ClearSelected()
 
@@ -2836,23 +2846,8 @@ Public Class ControlPanel
         ConfigModified = True
     End Sub
 
-    Private Sub TabSimulation_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabSimulation.Click
-
-    End Sub
-
-    Private Sub OpenDialog_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpenDialog.FileOk
-
-    End Sub
-
-    Private Sub SaveDialog_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles SaveDialog.FileOk
-
-    End Sub
-
     Private Sub txtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
         ConfigModified = True
     End Sub
 
-    Private Sub cbIntegration_SelectedIndexChanged_1(sender As Object, e As EventArgs)
-
-    End Sub
 End Class

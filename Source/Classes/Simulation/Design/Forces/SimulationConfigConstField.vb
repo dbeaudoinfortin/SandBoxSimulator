@@ -1,9 +1,8 @@
 ﻿Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
-Public Structure SimulationElectroStatic
+Public Structure SimulationConfigConstField
     Public Enabled As Boolean
-    Public Permittivity As Double
+    Public Acceleration As XYZ
     Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Enabled>")
@@ -11,9 +10,10 @@ Public Structure SimulationElectroStatic
         stringBuilder.AppendLine("</Enabled>")
 
         stringBuilder.Append(tabs)
-        stringBuilder.Append("<Permittivity>")
-        stringBuilder.Append(Permittivity.ToString())
-        stringBuilder.AppendLine("</Permittivity>")
+        stringBuilder.AppendLine("<Acceleration>")
+        Acceleration.ToString(stringBuilder, tabs & Constants.vbTab)
+        stringBuilder.Append(tabs)
+        stringBuilder.AppendLine("</Acceleration>")
     End Sub
 
     Public Overrides Function ToString() As String
@@ -24,26 +24,26 @@ Public Structure SimulationElectroStatic
 
     Public Sub Load(ByRef intext As String)
         Dim Result As String
-        Result = GetValue(intext, "Enabled")
+        Result = GetXMLNodeValue(intext, "Enabled")
         If Result <> "" Then
             Enabled = ToBoolean(Result)
         Else
             Enabled = False
         End If
 
-        Result = GetValue(intext, "Permittivity")
-        If Result <> "" And IsNumeric(Result) Then
-            Permittivity = ToDouble(Result)
+        Result = GetXMLNodeValue(intext, "Acceleration")
+        If Result <> "" Then
+            Acceleration.Load(Result)
         Else
-            Permittivity = 1.0006
+            Acceleration = New XYZ(0, 0, 0)
         End If
     End Sub
     Public Sub Clear()
         Enabled = False
-        Permittivity = 1.0006
+        Acceleration = New XYZ(0, 0, 0)
     End Sub
-    Public Sub Copy(ByRef Other As SimulationElectroStatic)
+    Public Sub Copy(ByRef Other As SimulationConfigConstField)
         Enabled = Other.Enabled
-        Permittivity = Other.Permittivity
+        Acceleration.Copy(Other.Acceleration)
     End Sub
 End Structure

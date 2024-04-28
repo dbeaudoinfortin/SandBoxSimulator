@@ -1,18 +1,14 @@
 ﻿Imports System.Text
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
-Public Structure SimulationRender
+Public Structure SimulationConfigRender
     Public Height As Integer
     Public Width As Integer
     Public AspectRatio As Single
     Public BackgroundColor As Color
     Public TraceObjects As Boolean
-    Public Parameters As PresentParameters 'Only used at runtime
-    Public Device As Device 'Only used at runtime
     Public Scale As Single
-    Public Transparency As Boolean 'Only used at runtime
-    Public SphereComplexity1 As Integer
-    Public SphereComplexity2 As Integer 'Only used at runtime
+    Public SphereComplexity As Integer
     Public EnableLighting As Boolean
     Public Shading As ShadeMode
     Public VSync As Boolean
@@ -22,20 +18,17 @@ Public Structure SimulationRender
     Public Sub Clear()
         AspectRatio = 1
         BackgroundColor = Color.Black
-        Device = Nothing
         EnableLighting = True
         Height = 1000
         Width = 1000
         MaxFPS = 45
         RenderThreads = 1
         Mode = 0
-        Parameters = Nothing
         Scale = 1
         Shading = ShadeMode.Gouraud
-        SphereComplexity1 = 40
-        SphereComplexity2 = ToInt32((SphereComplexity1 * 0.5) + 0.5)
+        SphereComplexity = 40
+
         TraceObjects = False
-        Transparency = False
         VSync = True
     End Sub
     Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
@@ -81,7 +74,7 @@ Public Structure SimulationRender
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<SphereComplexity>")
-        stringBuilder.Append(SphereComplexity1.ToString())
+        stringBuilder.Append(SphereComplexity.ToString())
         stringBuilder.AppendLine("</SphereComplexity>")
 
         stringBuilder.Append(tabs)
@@ -114,56 +107,56 @@ Public Structure SimulationRender
     Public Sub Load(ByRef intext As String)
         Dim Result As String
 
-        Result = GetValue(intext, "AspectRatio")
+        Result = GetXMLNodeValue(intext, "AspectRatio")
         If Result <> "" And IsNumeric(Result) Then
             AspectRatio = ToSingle(Result)
         Else
             AspectRatio = 1
         End If
 
-        Result = GetValue(intext, "EnableLighting")
+        Result = GetXMLNodeValue(intext, "EnableLighting")
         If Result <> "" Then
             EnableLighting = ToBoolean(Result)
         Else
             EnableLighting = True
         End If
 
-        Result = GetValue(intext, "Height")
+        Result = GetXMLNodeValue(intext, "Height")
         If Result <> "" And IsNumeric(Result) Then
             Height = ToInt32(Result)
         Else
             Height = 1000
         End If
 
-        Result = GetValue(intext, "MaxFPS")
+        Result = GetXMLNodeValue(intext, "MaxFPS")
         If Result <> "" And IsNumeric(Result) Then
             MaxFPS = ToDouble(Result)
         Else
             MaxFPS = 45
         End If
 
-        Result = GetValue(intext, "RenderThreads")
+        Result = GetXMLNodeValue(intext, "RenderThreads")
         If Result <> "" And IsNumeric(Result) Then
             RenderThreads = ToInt32(Result)
         Else
             RenderThreads = 1
         End If
 
-        Result = GetValue(intext, "Mode")
+        Result = GetXMLNodeValue(intext, "Mode")
         If Result <> "" And IsNumeric(Result) Then
             Mode = ToByte(Result)
         Else
             Mode = 0
         End If
 
-        Result = GetValue(intext, "Scale")
+        Result = GetXMLNodeValue(intext, "Scale")
         If Result <> "" And IsNumeric(Result) Then
             Scale = ToSingle(Result)
         Else
             Scale = 1
         End If
 
-        Result = GetValue(intext, "Shading")
+        Result = GetXMLNodeValue(intext, "Shading")
         If Result <> "" Then
             If Result = "Flat" Then
                 Shading = ShadeMode.Flat
@@ -174,58 +167,53 @@ Public Structure SimulationRender
             Shading = ShadeMode.Gouraud
         End If
 
-        Result = GetValue(intext, "SphereComplexity")
+        Result = GetXMLNodeValue(intext, "SphereComplexity")
         If Result <> "" And IsNumeric(Result) Then
-            SphereComplexity1 = ToInt32(Result)
+            SphereComplexity = ToInt32(Result)
         Else
-            SphereComplexity1 = 40
+            SphereComplexity = 40
         End If
-        SphereComplexity2 = ToInt32((SphereComplexity1 * 0.5) + 0.5)
 
-        Result = GetValue(intext, "TraceObjects")
+        Result = GetXMLNodeValue(intext, "TraceObjects")
         If Result <> "" Then
             TraceObjects = ToBoolean(Result)
         Else
             TraceObjects = False
         End If
 
-        Result = GetValue(intext, "VSync")
+        Result = GetXMLNodeValue(intext, "VSync")
         If Result <> "" Then
             VSync = ToBoolean(Result)
         Else
             VSync = True
         End If
 
-        Result = GetValue(intext, "Width")
+        Result = GetXMLNodeValue(intext, "Width")
         If Result <> "" And IsNumeric(Result) Then
             Width = ToInt32(Result)
         Else
             Width = 1000
         End If
 
-        Result = GetValue(intext, "BackgroundColor")
+        Result = GetXMLNodeValue(intext, "BackgroundColor")
         If Result <> "" And IsNumeric(Result) Then
             BackgroundColor = Color.FromArgb(ToInt32(Result))
         Else
             BackgroundColor = Color.Black
         End If
     End Sub
-    Public Sub Copy(ByRef Other As SimulationRender)
+    Public Sub Copy(ByRef Other As SimulationConfigRender)
         AspectRatio = Other.AspectRatio
         BackgroundColor = Other.BackgroundColor
-        Device = Nothing
         EnableLighting = Other.EnableLighting
         Height = Other.Height
         MaxFPS = Other.MaxFPS
         RenderThreads = Other.RenderThreads
         Mode = Other.Mode
-        Parameters = Nothing
         Scale = Other.Scale
         Shading = Other.Shading
-        SphereComplexity1 = Other.SphereComplexity1
-        SphereComplexity2 = Other.SphereComplexity2
+        SphereComplexity = Other.SphereComplexity
         TraceObjects = Other.TraceObjects
-        Transparency = Other.Transparency
         VSync = Other.VSync
         Width = Other.Width
     End Sub

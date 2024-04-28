@@ -1,7 +1,7 @@
 ﻿Imports System.Text
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
-Public Class SimulationLight 'USED AT RUNTIME AND DESIGN TIME
+Public Class SimulationConfigLight 'USED AT RUNTIME AND DESIGN TIME
     Public Name As String
     Public Color As Color
     Public Direction As XYZ
@@ -17,10 +17,10 @@ Public Class SimulationLight 'USED AT RUNTIME AND DESIGN TIME
     Public InnerCone As Single
     Public OuterCone As Single
     Public Falloff As Single
-    Public Sub New(ByRef Other As SimulationLight)
+    Public Sub New(ByRef Other As SimulationConfigLight)
         Copy(Other)
     End Sub
-    Public Sub Copy(ByRef Other As SimulationLight)
+    Public Sub Copy(ByRef Other As SimulationConfigLight)
         Name = Other.Name
         Color = Other.Color
         Direction = New XYZ(Other.Direction)
@@ -142,14 +142,14 @@ Public Class SimulationLight 'USED AT RUNTIME AND DESIGN TIME
     Public Sub Load(ByRef intext As String)
         Dim Result As String
 
-        Result = GetValue(intext, "Name")
+        Result = GetXMLNodeValue(intext, "Name")
         If Result <> "" Then
             Name = Result
         Else
             Name = "Default Light"
         End If
 
-        Result = GetValue(intext, "Type")
+        Result = GetXMLNodeValue(intext, "Type")
         If Result <> "" Then
             If Result = "Directional" Then
                 Type = Microsoft.DirectX.Direct3D.LightType.Directional
@@ -164,91 +164,91 @@ Public Class SimulationLight 'USED AT RUNTIME AND DESIGN TIME
             Type = Microsoft.DirectX.Direct3D.LightType.Directional
         End If
 
-        Result = GetValue(intext, "Direction")
+        Result = GetXMLNodeValue(intext, "Direction")
         If Result <> "" Then
             Direction.Load(Result)
         Else
             Direction = New XYZ(0, 0, 1)
         End If
 
-        Result = GetValue(intext, "Position")
+        Result = GetXMLNodeValue(intext, "Position")
         If Result <> "" Then
             Position.Load(Result)
         Else
             Position = New XYZ(0, 0, -2)
         End If
 
-        Result = GetValue(intext, "AmbientRatio")
+        Result = GetXMLNodeValue(intext, "AmbientRatio")
         If Result <> "" And IsNumeric(Result) Then
             AmbientRatio = ToInt32(Result)
         Else
             AmbientRatio = 10
         End If
 
-        Result = GetValue(intext, "Range")
+        Result = GetXMLNodeValue(intext, "Range")
         If Result <> "" And IsNumeric(Result) Then
             Range = ToSingle(Result)
         Else
             Range = 50
         End If
 
-        Result = GetValue(intext, "AttenuationA")
+        Result = GetXMLNodeValue(intext, "AttenuationA")
         If Result <> "" And IsNumeric(Result) Then
             AttenuationA = ToSingle(Result)
         Else
             AttenuationA = 0
         End If
 
-        Result = GetValue(intext, "AttenuationB")
+        Result = GetXMLNodeValue(intext, "AttenuationB")
         If Result <> "" And IsNumeric(Result) Then
             AttenuationB = ToSingle(Result)
         Else
             AttenuationB = 1
         End If
 
-        Result = GetValue(intext, "AttenuationC")
+        Result = GetXMLNodeValue(intext, "AttenuationC")
         If Result <> "" And IsNumeric(Result) Then
             AttenuationC = ToSingle(Result)
         Else
             AttenuationC = 0
         End If
 
-        Result = GetValue(intext, "InnerCone")
+        Result = GetXMLNodeValue(intext, "InnerCone")
         If Result <> "" And IsNumeric(Result) Then
             InnerCone = ToSingle(Result)
         Else
             InnerCone = Math.PI / 6
         End If
 
-        Result = GetValue(intext, "OuterCone")
+        Result = GetXMLNodeValue(intext, "OuterCone")
         If Result <> "" And IsNumeric(Result) Then
             OuterCone = ToSingle(Result)
         Else
             OuterCone = Math.PI / 4
         End If
 
-        Result = GetValue(intext, "Falloff")
+        Result = GetXMLNodeValue(intext, "Falloff")
         If Result <> "" And IsNumeric(Result) Then
             Falloff = ToSingle(Result)
         Else
             Falloff = 1
         End If
 
-        Result = GetValue(intext, "Color")
+        Result = GetXMLNodeValue(intext, "Color")
         If Result <> "" And IsNumeric(Result) Then
             Color = Color.FromArgb(ToInt32(Result))
         Else
             Color = Color.FromArgb(255, 255, 255, 192)
         End If
 
-        Result = GetValue(intext, "SpecularColor")
+        Result = GetXMLNodeValue(intext, "SpecularColor")
         If Result <> "" And IsNumeric(Result) Then
             SpecularColor = Color.FromArgb(ToInt32(Result))
         Else
             SpecularColor = Color.FromArgb(255, 50, 50, 50)
         End If
 
-        Result = GetValue(intext, "AmbientColor")
+        Result = GetXMLNodeValue(intext, "AmbientColor")
         If Result <> "" And IsNumeric(Result) Then
             AmbientColor = Color.FromArgb(ToInt32(Result))
         Else

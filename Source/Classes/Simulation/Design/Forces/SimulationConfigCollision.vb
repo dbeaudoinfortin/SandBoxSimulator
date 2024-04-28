@@ -1,6 +1,6 @@
 ﻿Imports System.Text
 
-Public Structure SimulationCollision
+Public Structure SimulationConfigCollision
     Public Enabled As Boolean
     Public Breakable As Boolean
     Public CoR As Double
@@ -71,70 +71,70 @@ Public Structure SimulationCollision
 
     Public Sub Load(ByRef intext As String)
         Dim Result As String
-        Result = GetValue(intext, "AddAvg")
+        Result = GetXMLNodeValue(intext, "AddAvg")
         If Result <> "" And IsNumeric(Result) Then
             AddAvg = ToInt32(Result)
         Else
             AddAvg = 3
         End If
 
-        Result = GetValue(intext, "AddMax")
+        Result = GetXMLNodeValue(intext, "AddMax")
         If Result <> "" And IsNumeric(Result) Then
             AddMax = ToInt32(Result)
         Else
             AddMax = 8
         End If
 
-        Result = GetValue(intext, "AddMin")
+        Result = GetXMLNodeValue(intext, "AddMin")
         If Result <> "" And IsNumeric(Result) Then
             AddMin = ToInt32(Result)
         Else
             AddMin = 2
         End If
 
-        Result = GetValue(intext, "Breakable")
+        Result = GetXMLNodeValue(intext, "Breakable")
         If Result <> "" Then
             Breakable = ToBoolean(Result)
         Else
             Breakable = False
         End If
 
-        Result = GetValue(intext, "BreakAvg")
+        Result = GetXMLNodeValue(intext, "BreakAvg")
         If Result <> "" And IsNumeric(Result) Then
             BreakAvg = ToDouble(Result)
         Else
             BreakAvg = 100
         End If
 
-        Result = GetValue(intext, "BreakMax")
+        Result = GetXMLNodeValue(intext, "BreakMax")
         If Result <> "" And IsNumeric(Result) Then
             BreakMax = ToDouble(Result)
         Else
             BreakMax = 500
         End If
 
-        Result = GetValue(intext, "BreakMin")
+        Result = GetXMLNodeValue(intext, "BreakMin")
         If Result <> "" And IsNumeric(Result) Then
             BreakMin = ToDouble(Result)
         Else
             BreakMin = 50
         End If
 
-        Result = GetValue(intext, "CoR")
+        Result = GetXMLNodeValue(intext, "CoR")
         If Result <> "" And IsNumeric(Result) Then
             CoR = ToDouble(Result)
         Else
             CoR = 5
         End If
 
-        Result = GetValue(intext, "Enabled")
+        Result = GetXMLNodeValue(intext, "Enabled")
         If Result <> "" Then
             Enabled = ToBoolean(Result)
         Else
             Enabled = False
         End If
 
-        Result = GetValue(intext, "Interpolate")
+        Result = GetXMLNodeValue(intext, "Interpolate")
         If Result <> "" Then
             Interpolate = ToBoolean(Result)
         Else
@@ -153,7 +153,7 @@ Public Structure SimulationCollision
         AddAvg = 3
         Interpolate = False
     End Sub
-    Public Sub Copy(ByRef Other As SimulationCollision)
+    Public Sub Copy(ByRef Other As SimulationConfigCollision)
         Enabled = Other.Enabled
         Breakable = Other.Breakable
         CoR = Other.CoR

@@ -1,9 +1,9 @@
 ﻿Imports System.Text
 
-Public Class GroupOptionsXYZ
-    Public X As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public Y As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public Z As GroupOptions(Of Double) = New GroupOptionsDouble
+Public Class SimulationConfigDistributionXYZ
+    Public X As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public Y As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public Z As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
     Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
 
         Dim tabsPlusOne As String = tabs & Constants.vbTab
@@ -33,7 +33,7 @@ Public Class GroupOptionsXYZ
         Return stringBuilder.ToString
     End Function
 
-    Public Sub Copy(ByRef Other As GroupOptionsXYZ)
+    Public Sub Copy(ByRef Other As SimulationConfigDistributionXYZ)
         X.Copy(Other.X)
         Y.Copy(Other.Y)
         Z.Copy(Other.Z)
@@ -42,25 +42,25 @@ Public Class GroupOptionsXYZ
     Public Sub Load(ByRef intext As String)
         Dim Result As String
 
-        Result = GetValue(intext, "X")
+        Result = GetXMLNodeValue(intext, "X")
         If Result <> "" Then
             X.Load(Result)
         Else
-            X = New GroupOptionsDouble
+            X = New SimulationConfigDistributionDouble
         End If
 
-        Result = GetValue(intext, "Y")
+        Result = GetXMLNodeValue(intext, "Y")
         If Result <> "" Then
             Y.Load(Result)
         Else
-            Y = New GroupOptionsDouble
+            Y = New SimulationConfigDistributionDouble
         End If
 
-        Result = GetValue(intext, "Z")
+        Result = GetXMLNodeValue(intext, "Z")
         If Result <> "" Then
             Z.Load(Result)
         Else
-            Z = New GroupOptionsDouble
+            Z = New SimulationConfigDistributionDouble
         End If
     End Sub
     Public Sub Clear()
@@ -68,4 +68,11 @@ Public Class GroupOptionsXYZ
         Y.Clear()
         Z.Clear()
     End Sub
+
+    Public Function CalculateEffectiveValue(RandMaker As RandNumber, ObjectIndex As Integer, ObjectCount As Integer) As XYZ
+        Return New XYZ(X.CalculateEffectiveValue(RandMaker, ObjectIndex, ObjectCount),
+                       Y.CalculateEffectiveValue(RandMaker, ObjectIndex, ObjectCount),
+                       Z.CalculateEffectiveValue(RandMaker, ObjectIndex, ObjectCount))
+    End Function
+
 End Class

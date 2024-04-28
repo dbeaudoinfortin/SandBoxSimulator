@@ -66,7 +66,6 @@
         End If
     End Function
     Public Function GetNextSkewed(ByVal Mean As Double, ByVal Second As Double) As Double
-
         Do
             U = GetNext()
             V = GetNext()

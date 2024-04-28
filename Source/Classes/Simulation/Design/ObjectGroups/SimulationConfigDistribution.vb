@@ -1,6 +1,6 @@
 ﻿Imports System.Text
 
-Public MustInherit Class GroupOptions(Of t)
+Public MustInherit Class SimulationConfigDistribution(Of t)
     Public UseFunction As Boolean
     Public Even As Boolean
     Public Normal As Boolean
@@ -113,7 +113,7 @@ Public MustInherit Class GroupOptions(Of t)
         Return stringBuilder.ToString
     End Function
 
-    Public Sub Copy(ByRef Other As GroupOptions(Of t))
+    Public Sub Copy(ByRef Other As SimulationConfigDistribution(Of t))
         UseFunction = Other.UseFunction
         Even = Other.Even
         Normal = Other.Normal
@@ -135,35 +135,35 @@ Public MustInherit Class GroupOptions(Of t)
     Public Overridable Sub Load(ByRef intext As String)
         Dim Result As String
 
-        Result = GetValue(intext, "UseFunction")
+        Result = GetXMLNodeValue(intext, "UseFunction")
         If Result <> "" Then
             UseFunction = ToBoolean(Result)
         Else
             UseFunction = False
         End If
 
-        Result = GetValue(intext, "Even")
+        Result = GetXMLNodeValue(intext, "Even")
         If Result <> "" Then
             Even = ToBoolean(Result)
         Else
             Even = False
         End If
 
-        Result = GetValue(intext, "Normal")
+        Result = GetXMLNodeValue(intext, "Normal")
         If Result <> "" Then
             Normal = ToBoolean(Result)
         Else
             Normal = False
         End If
 
-        Result = GetValue(intext, "Random")
+        Result = GetXMLNodeValue(intext, "Random")
         If Result <> "" Then
             Random = ToBoolean(Result)
         Else
             Random = True
         End If
 
-        Result = GetValue(intext, "Polynomial")
+        Result = GetXMLNodeValue(intext, "Polynomial")
         If Result <> "" Then
             Polynomial = ToBoolean(Result)
         Else
@@ -215,4 +215,30 @@ Public MustInherit Class GroupOptions(Of t)
         Polynomial = False
     End Sub
 
+    Public Sub AddUniqueString(stingBuilder As StringBuilder)
+        'Generate a unique string that can be used as a seed for a random number generator
+        'This only includes physical changes that affect the simulation, not cosmetic changes
+        'such as object colour, lighting and material properties
+
+        If UseFunction Then
+            If Even Then
+                stingBuilder.Append(EvenMin.ToString)
+                stingBuilder.Append(EvenMax.ToString)
+            ElseIf Normal Then
+                stingBuilder.Append(NormalMin.ToString)
+                stingBuilder.Append(NormalAvg.ToString)
+                stingBuilder.Append(NormalMax.ToString)
+            ElseIf Polynomial Then
+                stingBuilder.Append(PolynomialA.ToString)
+                stingBuilder.Append(PolynomialB.ToString)
+                stingBuilder.Append(PolynomialC.ToString)
+            ElseIf Random Then
+                stingBuilder.Append(RandomMin.ToString)
+                stingBuilder.Append(RandomMax.ToString)
+            End If
+        Else
+            stingBuilder.Append(Value.ToString)
+        End If
+    End Sub
+    Public MustOverride Function CalculateEffectiveValue(RandMaker As RandNumber, ObjectIndex As Integer, ObjectCount As Integer) As t
 End Class

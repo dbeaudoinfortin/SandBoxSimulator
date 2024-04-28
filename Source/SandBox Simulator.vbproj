@@ -153,21 +153,25 @@
     <Import Include="System.Threading" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Simulation\CalculationCounter.vb" />
-    <Compile Include="Classes\Simulation\Forces\SimulationCollision.vb" />
-    <Compile Include="Classes\Simulation\Forces\SimulationDrag.vb" />
-    <Compile Include="Classes\Simulation\Forces\SimulationElectroStatic.vb" />
-    <Compile Include="Classes\Simulation\Forces\SimulationField.vb" />
-    <Compile Include="Classes\Simulation\Forces\SimulationForces.vb" />
-    <Compile Include="Classes\Simulation\Groups\GroupOptions.vb" />
-    <Compile Include="Classes\Simulation\Groups\GroupOptionsColor.vb" />
-    <Compile Include="Classes\Simulation\Groups\GroupOptionsDouble.vb" />
-    <Compile Include="Classes\Simulation\Groups\GroupOptionsInt.vb" />
-    <Compile Include="Classes\Simulation\Groups\GroupOptionsSingle.vb" />
-    <Compile Include="Classes\Simulation\Groups\GroupOptionsXYZ.vb" />
-    <Compile Include="Classes\Simulation\Render\SimulationRender.vb" />
-    <Compile Include="Classes\Simulation\SimulationCamera.vb" />
-    <Compile Include="Classes\Simulation\SimulationSettings.vb" />
+    <Compile Include="Classes\Simulation\Design\SimulationBaseConfig.vb" />
+    <Compile Include="Classes\Simulation\Run\CalculationCounter.vb" />
+    <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigCollision.vb" />
+    <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigDrag.vb" />
+    <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigElectroStatic.vb" />
+    <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigConstField.vb" />
+    <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigForces.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistribution.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionColor.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionDouble.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionInt.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionSingle.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionXYZ.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\DXRenderThread.vb" />
+    <Compile Include="Classes\Simulation\Design\Render\SimulationConfigRender.vb" />
+    <Compile Include="Classes\Simulation\Design\Render\SimulationConfigCamera.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\SimulationCamera.vb" />
+    <Compile Include="Classes\Simulation\Design\SimulationSettings.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\SimulationRender.vb" />
     <Compile Include="Forms\Output.Designer.vb">
       <DependentUpon>Output.vb</DependentUpon>
     </Compile>
@@ -197,25 +201,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Classes\RandNumber.vb" />
+    <Compile Include="Classes\Simulation\Utilities\RandNumber.vb" />
     <Compile Include="Forms\Distribution.Designer.vb">
       <DependentUpon>Distribution.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Distribution.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\SimulationData.vb" />
-    <Compile Include="Classes\Simulation\Groups\SimulationGroup.vb" />
-    <Compile Include="Classes\Simulation\SimulationLight.vb" />
-    <Compile Include="Classes\Simulation\SimulationObject.vb" />
+    <Compile Include="Classes\Simulation\Run\SimulationRuntime.vb" />
+    <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigObjectGroup.vb" />
+    <Compile Include="Classes\Simulation\Design\Lighting\SimulationConfigLight.vb" />
+    <Compile Include="Classes\Simulation\Run\SimulationObject.vb" />
     <Compile Include="Forms\Splash.Designer.vb">
       <DependentUpon>Splash.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Splash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\Utilities.vb" />
-    <Compile Include="Classes\XYZ.vb" />
+    <Compile Include="Classes\Simulation\Utilities\Utilities.vb" />
+    <Compile Include="Classes\Simulation\Utilities\XYZ.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\ControlPanel.resx">
@@ -332,6 +336,7 @@
     <Content Include="bucket.ico" />
     <None Include="Resources\Splash.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

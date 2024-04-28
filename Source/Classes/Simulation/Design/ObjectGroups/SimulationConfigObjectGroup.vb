@@ -1,27 +1,27 @@
 ﻿Imports System.Text
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
-Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
+Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
     Public Type As ObjectType
     Public Name As String
 
-    Public Number As GroupOptions(Of Integer) = New GroupOptionsInt
-    Public Mass As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public Charge As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public Radius As GroupOptions(Of Double) = New GroupOptionsDouble
+    Public Number As SimulationConfigDistribution(Of Integer) = New SimulationConfigDistributionInt
+    Public Mass As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public Charge As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public Radius As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
 
-    Public Size As New GroupOptionsXYZ
-    Public Normal As New GroupOptionsXYZ
-    Public Rotation As New GroupOptionsXYZ
-    Public Position As New GroupOptionsXYZ
-    Public Velocity As New GroupOptionsXYZ
+    Public Size As New SimulationConfigDistributionXYZ
+    Public Normal As New SimulationConfigDistributionXYZ
+    Public Rotation As New SimulationConfigDistributionXYZ
+    Public Position As New SimulationConfigDistributionXYZ
+    Public Velocity As New SimulationConfigDistributionXYZ
 
-    Public Sharpness As GroupOptions(Of Single) = New GroupOptionsSingle
-    Public Color As GroupOptions(Of Color) = New GroupOptionsColor
-    Public Highlight As GroupOptions(Of Color) = New GroupOptionsColor
-    Public Reflectivity As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public Transparency As GroupOptions(Of Double) = New GroupOptionsDouble
-    Public RefractiveIndex As GroupOptions(Of Double) = New GroupOptionsDouble
+    Public Sharpness As SimulationConfigDistribution(Of Single) = New SimulationConfigDistributionSingle
+    Public Color As SimulationConfigDistribution(Of Color) = New SimulationConfigDistributionColor
+    Public Highlight As SimulationConfigDistribution(Of Color) = New SimulationConfigDistributionColor
+    Public Reflectivity As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public Transparency As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+    Public RefractiveIndex As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
 
     Public Affected As Boolean
     Public Affects As Boolean
@@ -151,10 +151,10 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
         ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
-    Public Sub New(ByRef Other As SimulationGroup)
+    Public Sub New(ByRef Other As SimulationConfigObjectGroup)
         Copy(Other)
     End Sub
-    Public Sub Copy(ByRef Other As SimulationGroup)
+    Public Sub Copy(ByRef Other As SimulationConfigObjectGroup)
         Name = Other.Name
         Type = Other.Type
         Affected = Other.Affected
@@ -217,35 +217,35 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
     Public Sub Load(ByRef intext As String)
         Dim Result As String
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Name~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Name")
+        Result = GetXMLNodeValue(intext, "Name")
         If Result <> "" Then
             Name = Result
         Else
             Name = "Default Object"
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Interaction~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Affected")
+        Result = GetXMLNodeValue(intext, "Affected")
         If Result <> "" Then
             Affected = ToBoolean(Result)
         Else
             Affected = True
         End If
 
-        Result = GetValue(intext, "Affects")
+        Result = GetXMLNodeValue(intext, "Affects")
         If Result <> "" Then
             Affects = ToBoolean(Result)
         Else
             Affects = True
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Display~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Wireframe")
+        Result = GetXMLNodeValue(intext, "Wireframe")
         If Result <> "" Then
             Wireframe = ToBoolean(Result)
         Else
             Wireframe = False
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Type~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Type")
+        Result = GetXMLNodeValue(intext, "Type")
         If Result <> "" Then
             If Result = "Sphere" Then
                 Type = ObjectType.Sphere
@@ -260,84 +260,84 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
             Type = ObjectType.Sphere
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Number~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Number")
+        Result = GetXMLNodeValue(intext, "Number")
         If Result <> "" Then
             Number.Load(Result)
         Else
             Number.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Size~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Size")
+        Result = GetXMLNodeValue(intext, "Size")
         If Result <> "" Then
             Size.Load(Result)
         Else
             Size.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sharpness~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Sharpness")
+        Result = GetXMLNodeValue(intext, "Sharpness")
         If Result <> "" Then
             Sharpness.Load(Result)
         Else
             Sharpness.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Color~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Color")
+        Result = GetXMLNodeValue(intext, "Color")
         If Result <> "" Then
             Color.Load(Result)
         Else
             Color.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Highlight~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Highlight")
+        Result = GetXMLNodeValue(intext, "Highlight")
         If Result <> "" Then
             Highlight.Load(Result)
         Else
             Highlight.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Mass~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Mass")
+        Result = GetXMLNodeValue(intext, "Mass")
         If Result <> "" Then
             Mass.Load(Result)
         Else
             Mass.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Charge~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Charge")
+        Result = GetXMLNodeValue(intext, "Charge")
         If Result <> "" Then
             Charge.Load(Result)
         Else
             Charge.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Radius~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Radius")
+        Result = GetXMLNodeValue(intext, "Radius")
         If Result <> "" Then
             Radius.Load(Result)
         Else
             Radius.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Normal~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "ObjectNormal")
+        Result = GetXMLNodeValue(intext, "ObjectNormal")
         If Result <> "" Then
             Normal.Load(Result)
         Else
             Normal.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Rotation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Rotation")
+        Result = GetXMLNodeValue(intext, "Rotation")
         If Result <> "" Then
             Rotation.Load(Result)
         Else
             Rotation.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Position~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Position")
+        Result = GetXMLNodeValue(intext, "Position")
         If Result <> "" Then
             Position.Load(Result)
         Else
             Position.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Veclocity~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Velocity")
+        Result = GetXMLNodeValue(intext, "Velocity")
         If Result <> "" Then
             Velocity.Load(Result)
         Else
@@ -346,14 +346,14 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
 
 
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Reflectivity~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Reflectivity")
+        Result = GetXMLNodeValue(intext, "Reflectivity")
         If Result <> "" Then
             Reflectivity.Load(Result)
         Else
             Reflectivity.Clear()
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Transparency~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "Transparency")
+        Result = GetXMLNodeValue(intext, "Transparency")
         If Result <> "" Then
             Transparency.Load(Result)
         Else
@@ -361,7 +361,7 @@ Public Class SimulationGroup 'USED AT DESIGN TIME ONLY
         End If
 
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~RefractiveIndex~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Result = GetValue(intext, "RefractiveIndex")
+        Result = GetXMLNodeValue(intext, "RefractiveIndex")
         If Result <> "" Then
             RefractiveIndex.Load(Result)
         Else

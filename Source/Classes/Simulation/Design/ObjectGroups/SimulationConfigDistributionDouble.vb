@@ -1,81 +1,81 @@
 ﻿
-Public Class GroupOptionsDouble
-    Inherits GroupOptions(Of Double)
+Public Class SimulationConfigDistributionDouble
+    Inherits SimulationConfigDistribution(Of Double)
     Public Overrides Sub Load(ByRef intext As String)
         MyBase.Load(intext)
 
         Dim Result As String
-        Result = GetValue(intext, "EvenMin")
+        Result = GetXMLNodeValue(intext, "EvenMin")
         If Result <> "" And IsNumeric(Result) Then
             EvenMin = ToDouble(Result)
         Else
             EvenMin = 0
         End If
 
-        Result = GetValue(intext, "EvenMax")
+        Result = GetXMLNodeValue(intext, "EvenMax")
         If Result <> "" And IsNumeric(Result) Then
             EvenMax = ToDouble(Result)
         Else
             EvenMax = 0
         End If
 
-        Result = GetValue(intext, "NormalMin")
+        Result = GetXMLNodeValue(intext, "NormalMin")
         If Result <> "" And IsNumeric(Result) Then
             NormalMin = ToDouble(Result)
         Else
             NormalMin = 0
         End If
 
-        Result = GetValue(intext, "NormalMax")
+        Result = GetXMLNodeValue(intext, "NormalMax")
         If Result <> "" And IsNumeric(Result) Then
             NormalMax = ToDouble(Result)
         Else
             NormalMax = 0
         End If
 
-        Result = GetValue(intext, "NormalAvg")
+        Result = GetXMLNodeValue(intext, "NormalAvg")
         If Result <> "" And IsNumeric(Result) Then
             NormalAvg = ToDouble(Result)
         Else
             NormalAvg = 0
         End If
 
-        Result = GetValue(intext, "RandomMin")
+        Result = GetXMLNodeValue(intext, "RandomMin")
         If Result <> "" And IsNumeric(Result) Then
             RandomMin = ToDouble(Result)
         Else
             RandomMin = 0
         End If
 
-        Result = GetValue(intext, "RandomMax")
+        Result = GetXMLNodeValue(intext, "RandomMax")
         If Result <> "" And IsNumeric(Result) Then
             RandomMax = ToDouble(Result)
         Else
             RandomMax = 0
         End If
 
-        Result = GetValue(intext, "PolynomialA")
+        Result = GetXMLNodeValue(intext, "PolynomialA")
         If Result <> "" And IsNumeric(Result) Then
             PolynomialA = ToDouble(Result)
         Else
             PolynomialA = 0
         End If
 
-        Result = GetValue(intext, "PolynomialB")
+        Result = GetXMLNodeValue(intext, "PolynomialB")
         If Result <> "" And IsNumeric(Result) Then
             PolynomialB = ToDouble(Result)
         Else
             PolynomialB = 0
         End If
 
-        Result = GetValue(intext, "PolynomialC")
+        Result = GetXMLNodeValue(intext, "PolynomialC")
         If Result <> "" And IsNumeric(Result) Then
             PolynomialC = ToDouble(Result)
         Else
             PolynomialC = 0
         End If
 
-        Result = GetValue(intext, "Value")
+        Result = GetXMLNodeValue(intext, "Value")
         If Result <> "" And IsNumeric(Result) Then
             Value = ToDouble(Result)
         Else
@@ -125,4 +125,38 @@ Public Class GroupOptionsDouble
         PolynomialC = 1
         Value = 1
     End Sub
+    Public Overrides Function CalculateEffectiveValue(RandMaker As RandNumber, ObjectIndex As Integer, ObjectCount As Integer) As Double
+        If Not UseFunction Then
+            'Not using a function (not parametric), return the set value
+            Return Value
+        End If
+
+        Dim effectiveValue As Double
+        If Normal Then 'Calulate using the normal distribution function
+            Dim SkewDirection As Double = RandMaker.GetNext
+            'Determine what distribution curve will be used
+            If SkewDirection = 0.5 Then
+                effectiveValue = NormalAvg
+            ElseIf SkewDirection < 0.5 Then
+                effectiveValue = RandMaker.GetNextSkewed(NormalAvg, NormalMin)
+            Else
+                effectiveValue = RandMaker.GetNextSkewed(NormalAvg, NormalMax)
+            End If
+
+            'Verify reasonable results
+            If effectiveValue < NormalMin Then
+                effectiveValue = NormalMin
+            ElseIf effectiveValue > NormalMax Then
+                effectiveValue = NormalMax
+            End If
+
+        ElseIf Random Then
+            effectiveValue = RandomMin + ((RandomMax - RandomMin) * RandMaker.GetNext)
+        ElseIf Even Then
+            effectiveValue = EvenMin + ((EvenMax - EvenMin) / (ObjectCount - 1)) * ObjectIndex
+        ElseIf Polynomial Then
+            effectiveValue = PolynomialC + (ObjectIndex * PolynomialB) + (ObjectIndex * ObjectIndex * PolynomialA)
+        End If
+        Return effectiveValue
+    End Function
 End Class

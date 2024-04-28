@@ -1,6 +1,6 @@
 ﻿Imports System.Text
 
-Public Structure SimulationDrag
+Public Structure SimulationConfigDrag
     Public Enabled As Boolean
     Public DragCoeff As Double
     Public Density As Double
@@ -35,28 +35,28 @@ Public Structure SimulationDrag
 
     Public Sub Load(ByRef intext As String)
         Dim Result As String
-        Result = GetValue(intext, "Density")
+        Result = GetXMLNodeValue(intext, "Density")
         If Result <> "" And IsNumeric(Result) Then
             Density = ToDouble(Result)
         Else
             Density = 1.225
         End If
 
-        Result = GetValue(intext, "DragCoeff")
+        Result = GetXMLNodeValue(intext, "DragCoeff")
         If Result <> "" And IsNumeric(Result) Then
             DragCoeff = ToDouble(Result)
         Else
             DragCoeff = 0.1
         End If
 
-        Result = GetValue(intext, "Enabled")
+        Result = GetXMLNodeValue(intext, "Enabled")
         If Result <> "" Then
             Enabled = ToBoolean(Result)
         Else
             Enabled = False
         End If
 
-        Result = GetValue(intext, "Viscosity")
+        Result = GetXMLNodeValue(intext, "Viscosity")
         If Result <> "" And IsNumeric(Result) Then
             Viscosity = ToDouble(Result)
         Else
@@ -69,7 +69,7 @@ Public Structure SimulationDrag
         Density = 1.225
         Viscosity = 0.0000178
     End Sub
-    Public Sub Copy(ByRef Other As SimulationDrag)
+    Public Sub Copy(ByRef Other As SimulationConfigDrag)
         Enabled = Other.Enabled
         DragCoeff = Other.DragCoeff
         Density = Other.Density

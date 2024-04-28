@@ -37,28 +37,28 @@ Public Structure SimulationSettings
 
     Public Sub Load(ByRef intext As String)
         Dim Result As String
-        Result = GetValue(intext, "IntegrationMethod")
+        Result = GetXMLNodeValue(intext, "IntegrationMethod")
         If Result <> "" And IsNumeric(Result) Then
             IntegrationMethod = ToByte(Result)
         Else
             IntegrationMethod = 2
         End If
 
-        Result = GetValue(intext, "MaxCPS")
+        Result = GetXMLNodeValue(intext, "MaxCPS")
         If Result <> "" And IsNumeric(Result) Then
             MaxCPS = ToDouble(Result)
         Else
             MaxCPS = 1000
         End If
 
-        Result = GetValue(intext, "MaxObjects")
+        Result = GetXMLNodeValue(intext, "MaxObjects")
         If Result <> "" And IsNumeric(Result) Then
             MaxObjects = ToInt32(Result)
         Else
             MaxObjects = 200
         End If
 
-        Result = GetValue(intext, "TimeStep")
+        Result = GetXMLNodeValue(intext, "TimeStep")
         If Result <> "" And IsNumeric(Result) Then
             TimeStep = ToDouble(Result)
         Else

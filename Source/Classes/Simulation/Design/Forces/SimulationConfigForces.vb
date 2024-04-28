@@ -1,11 +1,11 @@
 ﻿Imports System.Text
 
-Public Structure SimulationForces
+Public Structure SimulationConfigForces
     Public Enabled As Boolean
     Public Gravity As Boolean
-    Public ElectroStatic As SimulationElectroStatic
-    Public Field As SimulationField
-    Public Drag As SimulationDrag
+    Public ElectroStatic As SimulationConfigElectroStatic
+    Public Field As SimulationConfigConstField
+    Public Drag As SimulationConfigDrag
     Public Sub Clear()
         Enabled = False
         Gravity = False
@@ -53,42 +53,42 @@ Public Structure SimulationForces
     End Function
     Public Sub Load(ByRef intext As String)
         Dim Result As String
-        Result = GetValue(intext, "Gravity")
+        Result = GetXMLNodeValue(intext, "Gravity")
         If Result <> "" Then
             Gravity = ToBoolean(Result)
         Else
             Gravity = False
         End If
 
-        Result = GetValue(intext, "Enabled")
+        Result = GetXMLNodeValue(intext, "Enabled")
         If Result <> "" Then
             Enabled = ToBoolean(Result)
         Else
             Enabled = False
         End If
 
-        Result = GetValue(intext, "Drag")
+        Result = GetXMLNodeValue(intext, "Drag")
         If Result <> "" Then
             Drag.Load(Result)
         Else
             Drag.Clear()
         End If
 
-        Result = GetValue(intext, "ElectroStatic")
+        Result = GetXMLNodeValue(intext, "ElectroStatic")
         If Result <> "" Then
             ElectroStatic.Load(Result)
         Else
             ElectroStatic.Clear()
         End If
 
-        Result = GetValue(intext, "Field")
+        Result = GetXMLNodeValue(intext, "Field")
         If Result <> "" Then
             Field.Load(Result)
         Else
             Field.Clear()
         End If
     End Sub
-    Public Sub Copy(ByRef Other As SimulationForces)
+    Public Sub Copy(ByRef Other As SimulationConfigForces)
         Enabled = Other.Enabled
         Gravity = Other.Gravity
         ElectroStatic.Copy(Other.ElectroStatic)

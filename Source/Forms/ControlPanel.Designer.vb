@@ -1961,7 +1961,6 @@ Partial Class ControlPanel
         Me.cbIntegration.FormattingEnabled = True
         Me.cbIntegration.Items.AddRange(New Object() {resources.GetString("cbIntegration.Items"), resources.GetString("cbIntegration.Items1"), resources.GetString("cbIntegration.Items2"), resources.GetString("cbIntegration.Items3")})
         Me.cbIntegration.Name = "cbIntegration"
-        AddHandler Me.cbIntegration.SelectedIndexChanged, AddressOf Me.cbIntegration_SelectedIndexChanged_1
         '
         'Label24
         '

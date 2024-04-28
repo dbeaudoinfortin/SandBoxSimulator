@@ -4,7 +4,6 @@ Public Class XYZ
     Public X As Double
     Public Y As Double
     Public Z As Double
-    Private Mag As Double
     Public Shared Function NaXYZ() As XYZ
         Return New XYZ(Double.PositiveInfinity, Double.PositiveInfinity, Double.PositiveInfinity)
     End Function
@@ -39,7 +38,7 @@ Public Class XYZ
         Y = Other.Y
         Z = Other.Z
     End Sub
-    Public Sub New(ByVal X As Double, ByVal Y As Double, ByVal Z As Double)
+    Public Sub New(X As Double, ByVal Y As Double, ByVal Z As Double)
         Me.X = X
         Me.Y = Y
         Me.Z = Z
@@ -89,17 +88,20 @@ Public Class XYZ
     Public Function Abs() As XYZ
         Return New XYZ(Math.Abs(X), Math.Abs(Y), Math.Abs(Z))
     End Function
-    Public Sub makeUnit()
-        Mag = Magnitude()
+    Public Sub MakeUnit()
+        Dim Mag As Double = Magnitude()
         X /= Mag
         Y /= Mag
         Z /= Mag
     End Sub
-    Public Function getUnit() As XYZ
-        Mag = Magnitude()
-        Return New XYZ(X / Mag, Y / Mag, Z / Mag)
+    Public Function MakeMeUnit() As XYZ
+        MakeUnit()
+        Return Me
     End Function
-    Public Function toVector3() As Vector3
+    Public Function GetNewUnit() As XYZ
+        Return (New XYZ(X, Y, Z)).MakeMeUnit
+    End Function
+    Public Function ToVector3() As Vector3
         Return New Vector3(ToSingle(X), ToSingle(Y), ToSingle(Z))
     End Function
     Public Function Perpendicular() As XYZ
@@ -139,21 +141,21 @@ Public Class XYZ
     Public Sub Load(ByRef intext As String)
         Dim Result As String
 
-        Result = GetValue(intext, "X")
+        Result = GetXMLNodeValue(intext, "X")
         If Result <> "" And IsNumeric(Result) Then
             X = ToDouble(Result)
         Else
             X = 0
         End If
 
-        Result = GetValue(intext, "Y")
+        Result = GetXMLNodeValue(intext, "Y")
         If Result <> "" And IsNumeric(Result) Then
             Y = ToDouble(Result)
         Else
             Y = 0
         End If
 
-        Result = GetValue(intext, "Z")
+        Result = GetXMLNodeValue(intext, "Z")
         If Result <> "" And IsNumeric(Result) Then
             Z = ToDouble(Result)
         Else
