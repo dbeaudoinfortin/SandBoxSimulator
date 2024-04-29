@@ -84,31 +84,41 @@ Public Class SimulationConfigDistributionInt
         End If
     End Sub
 
-    Public Overrides Sub LoadFromDistribution()
-        MyBase.LoadFromDistribution()
+    Public Overrides Sub LoadFromDistributionForm()
+        MyBase.LoadFromDistributionForm()
 
-        If Distribution.Type = TargetType.Text Or Distribution.Type = TargetType.Number Then
-            EvenMax = ToInt32(Distribution.txtEvenMax.Text)
-            EvenMin = ToInt32(Distribution.txtEvenMin.Text)
-            RandomMax = ToInt32(Distribution.txtRandomMax.Text)
-            RandomMin = ToInt32(Distribution.txtRandomMin.Text)
-            NormalMax = ToInt32(Distribution.txtNormalMax.Text)
-            NormalMin = ToInt32(Distribution.txtNormalMin.Text)
-            NormalAvg = ToInt32(Distribution.txtNormalAvg.Text)
-            PolynomialA = ToInt32(Distribution.txtPolynomialA.Text)
-            PolynomialB = ToInt32(Distribution.txtPolynomialB.Text)
-            PolynomialC = ToInt32(Distribution.txtPolynomialC.Text)
+        If Distribution.Type = TargetType.Numeric Or Distribution.Type = TargetType.ObjectCount Then
+            If Even Then
+                EvenMax = ToInt32(Distribution.txtEvenMax.Text)
+                EvenMin = ToInt32(Distribution.txtEvenMin.Text)
+            ElseIf Random Then
+                RandomMax = ToInt32(Distribution.txtRandomMax.Text)
+                RandomMin = ToInt32(Distribution.txtRandomMin.Text)
+            ElseIf Normal Then
+                NormalMax = ToInt32(Distribution.txtNormalMax.Text)
+                NormalMin = ToInt32(Distribution.txtNormalMin.Text)
+                NormalAvg = ToInt32(Distribution.txtNormalAvg.Text)
+            ElseIf Polynomial Then
+                PolynomialA = ToInt32(Distribution.txtPolynomialA.Text)
+                PolynomialB = ToInt32(Distribution.txtPolynomialB.Text)
+                PolynomialC = ToInt32(Distribution.txtPolynomialC.Text)
+            End If
         ElseIf Distribution.Type = TargetType.TrackBar Then
-            EvenMax = Distribution.tbEvenMax.Value
-            EvenMin = Distribution.tbEvenMin.Value
-            RandomMax = Distribution.tbRandomMax.Value
-            RandomMin = Distribution.tbRandomMin.Value
-            NormalMax = Distribution.tbNormalMax.Value
-            NormalMin = Distribution.tbNormalMin.Value
-            NormalAvg = Distribution.tbNormalAvg.Value
-            PolynomialA = Distribution.tbPolynomialA.Value
-            PolynomialB = Distribution.tbPolynomialB.Value
-            PolynomialC = Distribution.tbPolynomialC.Value
+            If Even Then
+                EvenMax = Distribution.tbEvenMax.Value
+                EvenMin = Distribution.tbEvenMin.Value
+            ElseIf Random Then
+                RandomMax = Distribution.tbRandomMax.Value
+                RandomMin = Distribution.tbRandomMin.Value
+            ElseIf Normal Then
+                NormalMax = Distribution.tbNormalMax.Value
+                NormalMin = Distribution.tbNormalMin.Value
+                NormalAvg = Distribution.tbNormalAvg.Value
+            ElseIf Polynomial Then
+                PolynomialA = Distribution.tbPolynomialA.Value
+                PolynomialB = Distribution.tbPolynomialB.Value
+                PolynomialC = Distribution.tbPolynomialC.Value
+            End If
         End If
     End Sub
     Public Overrides Sub Clear()

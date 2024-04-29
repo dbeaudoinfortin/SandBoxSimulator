@@ -1816,375 +1816,194 @@ Public Class ControlPanel
             lblStat.Text = ex.Message
         End Try
     End Sub
-    Private Sub chCollision_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chCollision.CheckedChanged
+    Private Sub ChCollision_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chCollision.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub chbreakable_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chbreakable.CheckedChanged
+    Private Sub Chbreakable_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chbreakable.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub txtTimeStep_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTimeStep.TextChanged
+    Private Sub TxtTimeStep_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTimeStep.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtMaxCPS_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLimitCalc.TextChanged
+    Private Sub TxtMaxCPS_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLimitCalc.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtmaxobjects_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLimitObjects.TextChanged
+    Private Sub Txtmaxobjects_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLimitObjects.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub chGravity_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chGravity.CheckedChanged
+    Private Sub ChGravity_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chGravity.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub chElectrostatic_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chElectrostatic.CheckedChanged
+    Private Sub ChElectrostatic_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chElectrostatic.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub txtFieldX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldX.TextChanged
+    Private Sub TxtFieldX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldX.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtFieldY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldY.TextChanged
+    Private Sub TxtFieldY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldY.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtFieldZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldZ.TextChanged
+    Private Sub TxtFieldZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldZ.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtFluidDensity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFluidDensity.TextChanged
+    Private Sub TxtFluidDensity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFluidDensity.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtFluidViscosity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFluidViscosity.TextChanged
+    Private Sub TxtFluidViscosity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFluidViscosity.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtDragCoeff_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDragCoeff.TextChanged
+    Private Sub TxtDragCoeff_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDragCoeff.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCoR_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCoR.TextChanged
+    Private Sub TxtCoR_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCoR.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtBreakMin_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBreakMin.TextChanged
+    Private Sub TxtBreakMin_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBreakMin.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtBreakAvg_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBreakAvg.TextChanged
+    Private Sub TxtBreakAvg_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBreakAvg.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtBreakMax_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBreakMax.TextChanged
+    Private Sub TxtBreakMax_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBreakMax.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtAddMin_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddMin.TextChanged
+    Private Sub TxtAddMin_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddMin.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtAddAvg_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddAvg.TextChanged
+    Private Sub TxtAddAvg_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddAvg.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtAddMax_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddMax.TextChanged
+    Private Sub TxtAddMax_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddMax.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtWindowX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowX.TextChanged
+    Private Sub TxtWindowX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowX.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtWindowY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowY.TextChanged
+    Private Sub TxtWindowY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowY.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtScale_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtScale.TextChanged
+    Private Sub TxtScale_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtScale.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtHFoV_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHFoV.TextChanged
+    Private Sub TxtHFoV_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHFoV.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub chTrace_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chTrace.CheckedChanged
+    Private Sub ChTrace_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chTrace.CheckedChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCPosX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCPosX.TextChanged
+    Private Sub TxtCPosX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCPosX.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCPosY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCPosY.TextChanged
+    Private Sub TxtCPosY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCPosY.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCPosZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCPosZ.TextChanged
+    Private Sub TxtCPosZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCPosZ.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCTargetX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCTargetX.TextChanged
+    Private Sub TxtCTargetX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCTargetX.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCTargetY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCTargetY.TextChanged
+    Private Sub TxtCTargetY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCTargetY.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCTargetZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCTargetZ.TextChanged
+    Private Sub TxtCTargetZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCTargetZ.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCOrientX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCOrientX.TextChanged
+    Private Sub TxtCOrientX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCOrientX.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCOrientY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCOrientY.TextChanged
+    Private Sub TxtCOrientY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCOrientY.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub txtCOrientZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCOrientZ.TextChanged
+    Private Sub TxtCOrientZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCOrientZ.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub cbIntegration_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbIntegration.SelectedIndexChanged
+    Private Sub CbIntegration_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbIntegration.SelectedIndexChanged
         ConfigModified = True
     End Sub
-    Private Sub chLights_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chLightsEnable.CheckedChanged
+    Private Sub ChLights_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chLightsEnable.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub cbLightType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbLightType.SelectedIndexChanged
+    Private Sub CbLightType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbLightType.SelectedIndexChanged
         CheckConditionals()
     End Sub
-    Private Sub chVSync_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chVSync.CheckedChanged
-        CheckConditionals()
-        ConfigModified = True
-    End Sub
-    Private Sub txtMaxFPS_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMaxFPS.TextChanged
-        ConfigModified = True
-    End Sub
-    Private Sub cbShading_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbShading.SelectedIndexChanged
-        ConfigModified = True
-    End Sub
-    Private Sub cbRender_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbRender.SelectedIndexChanged
+    Private Sub ChVSync_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chVSync.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub txtVFoV_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtVFoV.TextChanged
+    Private Sub TxtMaxFPS_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMaxFPS.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub tbCameraSpeed_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbCameraSpeed.Scroll
+    Private Sub CbShading_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbShading.SelectedIndexChanged
         ConfigModified = True
     End Sub
-    Private Sub txtPermittivity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPermittivity.TextChanged
+    Private Sub CbRender_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbRender.SelectedIndexChanged
+        CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub cmdObjectMass_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectMass.Click
-        If cmdObjectMass.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectMass.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectMass.ForeColor = Color.RoyalBlue
-                txtObjectMass.Enabled = False
-                ObjectMass.UseFunction = True
-                ObjectMass.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectMass.ForeColor = Color.Black
-            txtObjectMass.Enabled = True
-            ObjectMass.UseFunction = False
-        End If
+    Private Sub TxtVFoV_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtVFoV.TextChanged
+        ConfigModified = True
     End Sub
-    Private Sub cmdObjectCharge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectCharge.Click
-        If cmdObjectCharge.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectCharge.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectCharge.ForeColor = Color.RoyalBlue
-                txtObjectCharge.Enabled = False
-                ObjectCharge.UseFunction = True
-                ObjectCharge.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectCharge.ForeColor = Color.Black
-            txtObjectCharge.Enabled = True
-            ObjectCharge.UseFunction = False
-        End If
+    Private Sub TbCameraSpeed_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbCameraSpeed.Scroll
+        ConfigModified = True
     End Sub
-    Private Sub cmdObjectSizeX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectSizeX.Click
-        If cmdObjectSizeX.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectSize.X.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectSizeX.ForeColor = Color.RoyalBlue
-                txtObjectSizeX.Enabled = False
-                ObjectSize.X.UseFunction = True
-                ObjectSize.X.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectSizeX.ForeColor = Color.Black
-            txtObjectSizeX.Enabled = True
-            ObjectSize.X.UseFunction = False
-        End If
+    Private Sub TxtPermittivity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPermittivity.TextChanged
+        ConfigModified = True
     End Sub
-    Private Sub cmdObjectPositionX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectPositionX.Click
-        If cmdObjectPositionX.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectPosition.X.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectPositionX.ForeColor = Color.RoyalBlue
-                txtObjectPositionX.Enabled = False
-                ObjectPosition.X.UseFunction = True
-                ObjectPosition.X.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectPositionX.ForeColor = Color.Black
-            txtObjectPositionX.Enabled = True
-            ObjectPosition.X.UseFunction = False
-        End If
+    Private Sub CmdObjectMass_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectMass.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectMass, cmdObjectMass, DirectCast(txtObjectMass, Control))
     End Sub
-    Private Sub cmdObjectPositionY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectPositionY.Click
-        If cmdObjectPositionY.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectPosition.Y.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectPositionY.ForeColor = Color.RoyalBlue
-                txtObjectPositionY.Enabled = False
-                ObjectPosition.Y.UseFunction = True
-                ObjectPosition.Y.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectPositionY.ForeColor = Color.Black
-            txtObjectPositionY.Enabled = True
-            ObjectPosition.Y.UseFunction = False
-        End If
+
+    Private Sub CmdObjectCharge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectCharge.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectCharge, cmdObjectCharge, DirectCast(txtObjectCharge, Control))
     End Sub
-    Private Sub cmdObjectPositionZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectPositionZ.Click
-        If cmdObjectPositionZ.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectPosition.Z.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectPositionZ.ForeColor = Color.RoyalBlue
-                txtObjectPositionZ.Enabled = False
-                ObjectPosition.Z.UseFunction = True
-                ObjectPosition.Z.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectPositionZ.ForeColor = Color.Black
-            txtObjectPositionZ.Enabled = True
-            ObjectPosition.Z.UseFunction = False
-        End If
+    Private Sub CmdObjectSizeX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectSizeX.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectSize.X, cmdObjectSizeX, DirectCast(txtObjectSizeX, Control))
     End Sub
-    Private Sub cmdObjectVelocityX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectVelocityX.Click
-        If cmdObjectVelocityX.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectVelocity.X.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectVelocityX.ForeColor = Color.RoyalBlue
-                txtObjectVelocityX.Enabled = False
-                ObjectVelocity.X.UseFunction = True
-                ObjectVelocity.X.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectVelocityX.ForeColor = Color.Black
-            txtObjectVelocityX.Enabled = True
-            ObjectVelocity.X.UseFunction = False
-        End If
+    Private Sub CmdObjectPositionX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectPositionX.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectPosition.X, cmdObjectPositionX, DirectCast(txtObjectPositionX, Control))
     End Sub
-    Private Sub cmdObjectVelocityY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectVelocityY.Click
-        If cmdObjectVelocityY.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectVelocity.Y.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectVelocityY.ForeColor = Color.RoyalBlue
-                txtObjectVelocityY.Enabled = False
-                ObjectVelocity.Y.UseFunction = True
-                ObjectVelocity.Y.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectVelocityY.ForeColor = Color.Black
-            txtObjectVelocityY.Enabled = True
-            ObjectVelocity.Y.UseFunction = False
-        End If
+    Private Sub CmdObjectPositionY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectPositionY.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectPosition.Y, cmdObjectPositionY, DirectCast(txtObjectPositionY, Control))
     End Sub
-    Private Sub cmdObjectVelocityZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectVelocityZ.Click
-        If cmdObjectVelocityZ.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectVelocity.Z.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectVelocityZ.ForeColor = Color.RoyalBlue
-                txtObjectVelocityZ.Enabled = False
-                ObjectVelocity.Z.UseFunction = True
-                ObjectVelocity.Z.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectVelocityZ.ForeColor = Color.Black
-            txtObjectVelocityZ.Enabled = True
-            ObjectVelocity.Z.UseFunction = False
-        End If
+    Private Sub CmdObjectPositionZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectPositionZ.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectPosition.Z, cmdObjectPositionZ, DirectCast(txtObjectPositionZ, Control))
     End Sub
-    Private Sub cmdObjectColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectColor.Click
-        If cmdObjectColor.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Color
-            ObjectColor.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectColor.ForeColor = Color.RoyalBlue
-                EnableColorBox(plObjectColor, False)
-                ObjectColor.UseFunction = True
-                ObjectColor.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectColor.ForeColor = Color.Black
-            EnableColorBox(plObjectColor, True)
-            ObjectColor.UseFunction = False
-        End If
+    Private Sub CmdObjectVelocityX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectVelocityX.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectVelocity.X, cmdObjectVelocityX, DirectCast(txtObjectVelocityX, Control))
     End Sub
-    Private Sub cmdObjectHighlightColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectHighlightColor.Click
-        If cmdObjectHighlightColor.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Color
-            ObjectHighlight.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectHighlightColor.ForeColor = Color.RoyalBlue
-                EnableColorBox(plObjectHighlightColor, False)
-                ObjectHighlight.UseFunction = True
-                ObjectHighlight.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectHighlightColor.ForeColor = Color.Black
-            ObjectHighlight.UseFunction = False
-            EnableColorBox(plObjectHighlightColor, True)
-        End If
+    Private Sub CmdObjectVelocityY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectVelocityY.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectVelocity.Y, cmdObjectVelocityY, DirectCast(txtObjectVelocityY, Control))
     End Sub
-    Private Sub cmdObjectHighlightSharpness_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectHighlightSharpness.Click
-        If cmdObjectHighlightSharpness.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.TrackBar
-            ObjectSharpness.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectHighlightSharpness.ForeColor = Color.RoyalBlue
-                tbObjectHighlightSharpness.Enabled = False
-                ObjectSharpness.UseFunction = True
-                ObjectSharpness.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectHighlightSharpness.ForeColor = Color.Black
-            tbObjectHighlightSharpness.Enabled = True
-            ObjectSharpness.UseFunction = False
-        End If
+    Private Sub CmdObjectVelocityZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectVelocityZ.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectVelocity.Z, cmdObjectVelocityZ, DirectCast(txtObjectVelocityZ, Control))
     End Sub
-    Private Sub cmdObjectTransparency_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectTransparency.Click
-        If cmdObjectTransparency.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.TrackBar
-            ObjectTransparency.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectTransparency.ForeColor = Color.RoyalBlue
-                tbObjectTransparency.Enabled = False
-                ObjectTransparency.UseFunction = True
-                ObjectTransparency.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectTransparency.ForeColor = Color.Black
-            tbObjectTransparency.Enabled = True
-            ObjectTransparency.UseFunction = False
-        End If
+    Private Sub CmdObjectColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectColor.Click
+        HandleDistributionFunctionClick(TargetType.Color, ObjectColor, cmdObjectColor, DirectCast(plObjectColor, Control))
     End Sub
-    Private Sub cmdObjectNumber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNumber.Click
-        If cmdObjectNumber.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Number
-            ObjectNumber.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectNumber.ForeColor = Color.RoyalBlue
-                txtObjectNumber.Enabled = False
-                ObjectNumber.UseFunction = True
-                ObjectNumber.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectNumber.ForeColor = Color.Black
-            txtObjectNumber.Enabled = True
-            ObjectNumber.UseFunction = False
-        End If
+    Private Sub CmdObjectHighlightColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectHighlightColor.Click
+        HandleDistributionFunctionClick(TargetType.Color, ObjectHighlight, cmdObjectHighlightColor, DirectCast(plObjectHighlightColor, Control))
     End Sub
-    Private Sub plObjectColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plObjectColor.Click
+    Private Sub CmdObjectHighlightSharpness_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectHighlightSharpness.Click
+        HandleDistributionFunctionClick(TargetType.TrackBar, ObjectSharpness, cmdObjectHighlightSharpness, DirectCast(tbObjectHighlightSharpness, Control))
+    End Sub
+    Private Sub CmdObjectTransparency_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectTransparency.Click
+        HandleDistributionFunctionClick(TargetType.TrackBar, ObjectTransparency, cmdObjectTransparency, DirectCast(tbObjectTransparency, Control))
+    End Sub
+    Private Sub CmdObjectNumber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNumber.Click
+        HandleDistributionFunctionClick(TargetType.ObjectCount, ObjectNumber, cmdObjectNumber, DirectCast(txtObjectNumber, Control))
+    End Sub
+    Private Sub PlObjectColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plObjectColor.Click
         ColorDialog.Color = plObjectColor.BackColor
         ColorDialog.ShowDialog()
         plObjectColor.BackColor = ColorDialog.Color
     End Sub
-    Private Sub listObjects_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listGroups.SelectedIndexChanged
+    Private Sub ListObjects_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listGroups.SelectedIndexChanged
         If listGroups.SelectedIndex <> -1 Then
             Dim index As Integer = listGroups.SelectedIndex
             chObjectAffected.Checked = Simulation.Config.Groups(index).Affected
@@ -2494,7 +2313,7 @@ Public Class ControlPanel
         Next
         Return ToInt32(txtLimitObjects.Text) - CurrentObjects
     End Function
-    Private Sub cmdObjectAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupAdd.Click
+    Private Sub CmdObjectAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupAdd.Click
         If Not IsValidGroup() Or Not isValidMaxObjects() Then Exit Sub
 
         Dim CurrentObjects As Integer
@@ -2588,7 +2407,7 @@ Public Class ControlPanel
         ObjectReflectivity.Value = ToSingle(tbObjectReflectivity.Value)
         Simulation.Config.Groups(i).Reflectivity.Copy(ObjectReflectivity)
     End Sub
-    Private Function isValidMaxObjects() As Boolean
+    Private Function IsValidMaxObjects() As Boolean
         If Not IsNumeric(txtLimitObjects.Text) Then
             MsgBox("Max Objects must have a numeric value.", MsgBoxStyle.Critical, "Error")
             Return False
@@ -2603,8 +2422,8 @@ Public Class ControlPanel
         End If
         Return True
     End Function
-    Private Sub cmdGroupReplace_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupReplace.Click
-        If Not IsValidGroup() Or Not isValidMaxObjects() Then Exit Sub
+    Private Sub CmdGroupReplace_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupReplace.Click
+        If Not IsValidGroup() Or Not IsValidMaxObjects() Then Exit Sub
         Dim index As Integer
         index = listGroups.SelectedIndex
         Dim CurrentObjects As Integer
@@ -2637,7 +2456,7 @@ Public Class ControlPanel
         listGroups.ClearSelected()
         ConfigModified = True
     End Sub
-    Private Sub cmdRemoveGroup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupRemove.Click
+    Private Sub CmdRemoveGroup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupRemove.Click
         If MsgBox("Are you sure you want to remove the selected group?", MsgBoxStyle.YesNo, "Remove?") = MsgBoxResult.No Then Exit Sub
         Simulation.Config.RemoveGroup(listGroups.SelectedIndex)
         listGroups.Items.RemoveAt(listGroups.SelectedIndex)
@@ -2645,195 +2464,67 @@ Public Class ControlPanel
 
         ConfigModified = True
     End Sub
-    Private Sub plObjectHighlightColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plObjectHighlightColor.Click
+    Private Sub PlObjectHighlightColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plObjectHighlightColor.Click
         ColorDialog.Color = plObjectHighlightColor.BackColor
         ColorDialog.ShowDialog()
         plObjectHighlightColor.BackColor = ColorDialog.Color
     End Sub
 
-    Private Sub chobjectAffected_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffected.CheckedChanged
+    Private Sub ChobjectAffected_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffected.CheckedChanged
         CheckConditionals()
     End Sub
-    Private Sub chobjectAffects_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffects.CheckedChanged
+    Private Sub ChobjectAffects_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffects.CheckedChanged
         CheckConditionals()
     End Sub
-    Private Sub cbObjectType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbObjectType.SelectedIndexChanged
+    Private Sub CbObjectType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbObjectType.SelectedIndexChanged
         CheckConditionals()
     End Sub
-    Private Sub cmdObjectSizeY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectSizeY.Click
-        If cmdObjectSizeY.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectSize.Y.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectSizeY.ForeColor = Color.RoyalBlue
-                txtObjectSizeY.Enabled = False
-                ObjectSize.Y.UseFunction = True
-                ObjectSize.Y.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectSizeY.ForeColor = Color.Black
-            txtObjectSizeY.Enabled = True
-            ObjectSize.Y.UseFunction = False
-        End If
+    Private Sub CmdObjectSizeY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectSizeY.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectSize.Y, cmdObjectSizeY, DirectCast(txtObjectSizeY, Control))
     End Sub
-    Private Sub cmdObjectSizeZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectSizeZ.Click
-        If cmdObjectSizeZ.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectSize.Z.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectSizeZ.ForeColor = Color.RoyalBlue
-                txtObjectSizeZ.Enabled = False
-                ObjectSize.Z.UseFunction = True
-                ObjectSize.Z.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectSizeZ.ForeColor = Color.Black
-            txtObjectSizeZ.Enabled = True
-            ObjectSize.Z.UseFunction = False
-        End If
+    Private Sub CmdObjectSizeZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectSizeZ.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectSize.Z, cmdObjectSizeZ, DirectCast(txtObjectSizeZ, Control))
     End Sub
-    Private Sub cmdObjectRadius_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRadius.Click
-        If cmdObjectRadius.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectRadius.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectRadius.ForeColor = Color.RoyalBlue
-                txtObjectRadius.Enabled = False
-                ObjectRadius.UseFunction = True
-                ObjectRadius.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectRadius.ForeColor = Color.Black
-            txtObjectRadius.Enabled = True
-            ObjectRadius.UseFunction = False
-        End If
+    Private Sub CmdObjectRadius_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRadius.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectRadius, cmdObjectRadius, DirectCast(txtObjectRadius, Control))
     End Sub
-    Private Sub cmdObjectNormalX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNormalX.Click
-        If cmdObjectNormalX.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectNormal.X.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectNormalX.ForeColor = Color.RoyalBlue
-                txtObjectNormalX.Enabled = False
-                ObjectNormal.X.UseFunction = True
-                ObjectNormal.X.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectNormalX.ForeColor = Color.Black
-            txtObjectNormalX.Enabled = True
-            ObjectNormal.X.UseFunction = False
-        End If
+    Private Sub CmdObjectNormalX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNormalX.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectNormal.X, cmdObjectNormalX, DirectCast(txtObjectNormalX, Control))
     End Sub
-    Private Sub cmdObjectNormalY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNormalY.Click
-        If cmdObjectNormalY.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectNormal.Y.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectNormalY.ForeColor = Color.RoyalBlue
-                txtObjectNormalY.Enabled = False
-                ObjectNormal.Y.UseFunction = True
-                ObjectNormal.Y.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectNormalY.ForeColor = Color.Black
-            txtObjectNormalY.Enabled = True
-            ObjectNormal.Y.UseFunction = False
-        End If
+    Private Sub CmdObjectNormalY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNormalY.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectNormal.Y, cmdObjectNormalY, DirectCast(txtObjectNormalY, Control))
     End Sub
-    Private Sub cmdObjectNormalZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNormalZ.Click
-        If cmdObjectNormalZ.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectNormal.Z.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectNormalZ.ForeColor = Color.RoyalBlue
-                txtObjectNormalZ.Enabled = False
-                ObjectNormal.Z.UseFunction = True
-                ObjectNormal.Z.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectNormalZ.ForeColor = Color.Black
-            txtObjectNormalZ.Enabled = True
-            ObjectNormal.Z.UseFunction = False
-        End If
+    Private Sub CmdObjectNormalZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectNormalZ.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectNormal.Z, cmdObjectNormalZ, DirectCast(txtObjectNormalZ, Control))
     End Sub
-    Private Sub cmdObjectRotationX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRotationX.Click
-        If cmdObjectRotationX.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectRotation.X.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectRotationX.ForeColor = Color.RoyalBlue
-                txtObjectRotationX.Enabled = False
-                ObjectRotation.X.UseFunction = True
-                ObjectRotation.X.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectRotationX.ForeColor = Color.Black
-            txtObjectRotationX.Enabled = True
-            ObjectRotation.X.UseFunction = False
-        End If
+    Private Sub CmdObjectRotationX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRotationX.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectRotation.X, cmdObjectRotationX, DirectCast(txtObjectRotationX, Control))
     End Sub
-    Private Sub cmdObjectRotationY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRotationY.Click
-        If cmdObjectRotationY.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectRotation.Y.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectRotationY.ForeColor = Color.RoyalBlue
-                txtObjectRotationY.Enabled = False
-                ObjectRotation.Y.UseFunction = True
-                ObjectRotation.Y.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectRotationY.ForeColor = Color.Black
-            txtObjectRotationY.Enabled = True
-            ObjectRotation.Y.UseFunction = False
-        End If
+    Private Sub CmdObjectRotationY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRotationY.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectRotation.Y, cmdObjectRotationY, DirectCast(txtObjectRotationY, Control))
     End Sub
-    Private Sub cmdObjectRotationZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRotationZ.Click
-        If cmdObjectRotationZ.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectRotation.Z.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectRotationZ.ForeColor = Color.RoyalBlue
-                txtObjectRotationZ.Enabled = False
-                ObjectRotation.Z.UseFunction = True
-                ObjectRotation.Z.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectRotationZ.ForeColor = Color.Black
-            txtObjectRotationZ.Enabled = True
-            ObjectRotation.Z.UseFunction = False
-        End If
+    Private Sub CmdObjectRotationZ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRotationZ.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectRotation.Z, cmdObjectRotationZ, DirectCast(txtObjectRotationZ, Control))
     End Sub
-    Private Sub cmdObjectReflectivity_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectReflectivity.Click
-        If cmdObjectReflectivity.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.TrackBar
-            ObjectReflectivity.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectReflectivity.ForeColor = Color.RoyalBlue
-                tbObjectReflectivity.Enabled = False
-                ObjectReflectivity.UseFunction = True
-                ObjectReflectivity.LoadFromDistribution()
-            End If
-        Else
-            cmdObjectReflectivity.ForeColor = Color.Black
-            tbObjectReflectivity.Enabled = True
-            ObjectReflectivity.UseFunction = False
-        End If
+    Private Sub CmdObjectReflectivity_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectReflectivity.Click
+        HandleDistributionFunctionClick(TargetType.TrackBar, ObjectReflectivity, cmdObjectReflectivity, DirectCast(tbObjectReflectivity, Control))
     End Sub
-    Private Sub cmdObjectRefractiveIndex_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRefractiveIndex.Click
-        If cmdObjectRefractiveIndex.ForeColor = Color.Black Then
-            Distribution.Type = TargetType.Text
-            ObjectRefractiveIndex.SendToDistribution()
-            If ShowDistribution() = True Then
-                cmdObjectRefractiveIndex.ForeColor = Color.RoyalBlue
-                txtObjectRefractiveIndex.Enabled = False
-                ObjectRefractiveIndex.UseFunction = True
-                ObjectRefractiveIndex.LoadFromDistribution()
+    Private Sub CmdObjectRefractiveIndex_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdObjectRefractiveIndex.Click
+        HandleDistributionFunctionClick(TargetType.Numeric, ObjectRefractiveIndex, cmdObjectRefractiveIndex, DirectCast(txtObjectRefractiveIndex, Control))
+    End Sub
+
+    Private Sub HandleDistributionFunctionClick(Of t)(ByRef type As TargetType, ByRef distConf As SimulationConfigDistribution(Of t), ByRef cmdButton As Button, ByRef control As Control)
+        Distribution.Type = type
+        distConf.SendToDistributionForm()
+        If ShowDistribution() = True Then ' Did not Cancel
+            distConf.LoadFromDistributionForm()
+            cmdButton.ForeColor = If(distConf.UseFunction, Color.RoyalBlue, Color.Black)
+
+            If (TypeOf control Is Button) Then
+                EnableColorBox(DirectCast(control, Button), Not distConf.UseFunction)
+            Else
+                control.Enabled = Not distConf.UseFunction
             End If
-        Else
-            cmdObjectRefractiveIndex.ForeColor = Color.Black
-            txtObjectRefractiveIndex.Enabled = True
-            ObjectRefractiveIndex.UseFunction = False
         End If
     End Sub
     Private Function ShowDistribution() As Boolean
@@ -2842,11 +2533,11 @@ Public Class ControlPanel
         End If
         Return False
     End Function
-    Private Sub tbPolys_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbPolys.Scroll
+    Private Sub TbPolys_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbPolys.Scroll
         ConfigModified = True
     End Sub
 
-    Private Sub txtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
+    Private Sub TxtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
         ConfigModified = True
     End Sub
 

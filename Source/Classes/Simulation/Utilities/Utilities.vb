@@ -48,11 +48,10 @@ Module Utilities
 
     End Function
     Public Sub EnableColorBox(ByRef pl As Button, ByRef Value As Boolean)
-        If Value = True Then
-            pl.Enabled = True
+        pl.Enabled = Value
+        If Value Then
             pl.BackColor = Color.FromArgb(255, pl.BackColor.R, pl.BackColor.G, pl.BackColor.B)
-        ElseIf Value = False Then
-            pl.Enabled = False
+        Else
             pl.BackColor = Color.FromArgb(75, pl.BackColor.R, pl.BackColor.G, pl.BackColor.B)
         End If
     End Sub
@@ -70,8 +69,8 @@ Public Enum ObjectType
     InfinitePlane
 End Enum
 Public Enum TargetType
-    Text
+    Numeric
     Color
     TrackBar
-    Number
+    ObjectCount
 End Enum

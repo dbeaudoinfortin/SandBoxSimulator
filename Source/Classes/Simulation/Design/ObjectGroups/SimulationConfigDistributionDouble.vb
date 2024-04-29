@@ -83,31 +83,41 @@ Public Class SimulationConfigDistributionDouble
         End If
     End Sub
 
-    Public Overrides Sub LoadFromDistribution()
-        MyBase.LoadFromDistribution()
+    Public Overrides Sub LoadFromDistributionForm()
+        MyBase.LoadFromDistributionForm()
 
-        If Distribution.Type = TargetType.Text Or Distribution.Type = TargetType.Number Then
-            EvenMax = ToDouble(Distribution.txtEvenMax.Text)
-            EvenMin = ToDouble(Distribution.txtEvenMin.Text)
-            RandomMax = ToDouble(Distribution.txtRandomMax.Text)
-            RandomMin = ToDouble(Distribution.txtRandomMin.Text)
-            NormalMax = ToDouble(Distribution.txtNormalMax.Text)
-            NormalMin = ToDouble(Distribution.txtNormalMin.Text)
-            NormalAvg = ToDouble(Distribution.txtNormalAvg.Text)
-            PolynomialA = ToDouble(Distribution.txtPolynomialA.Text)
-            PolynomialB = ToDouble(Distribution.txtPolynomialB.Text)
-            PolynomialC = ToDouble(Distribution.txtPolynomialC.Text)
+        If Distribution.Type = TargetType.Numeric Or Distribution.Type = TargetType.ObjectCount Then
+            If Even Then
+                EvenMax = ToDouble(Distribution.txtEvenMax.Text)
+                EvenMin = ToDouble(Distribution.txtEvenMin.Text)
+            ElseIf Random Then
+                RandomMax = ToDouble(Distribution.txtRandomMax.Text)
+                RandomMin = ToDouble(Distribution.txtRandomMin.Text)
+            ElseIf Normal Then
+                NormalMax = ToDouble(Distribution.txtNormalMax.Text)
+                NormalMin = ToDouble(Distribution.txtNormalMin.Text)
+                NormalAvg = ToDouble(Distribution.txtNormalAvg.Text)
+            ElseIf Polynomial Then
+                PolynomialA = ToDouble(Distribution.txtPolynomialA.Text)
+                PolynomialB = ToDouble(Distribution.txtPolynomialB.Text)
+                PolynomialC = ToDouble(Distribution.txtPolynomialC.Text)
+            End If
         ElseIf Distribution.Type = TargetType.TrackBar Then
-            EvenMax = ToDouble(Distribution.tbEvenMax.Value)
-            EvenMin = ToDouble(Distribution.tbEvenMin.Value)
-            RandomMax = ToDouble(Distribution.tbRandomMax.Value)
-            RandomMin = ToDouble(Distribution.tbRandomMin.Value)
-            NormalMax = ToDouble(Distribution.tbNormalMax.Value)
-            NormalMin = ToDouble(Distribution.tbNormalMin.Value)
-            NormalAvg = ToDouble(Distribution.tbNormalAvg.Value)
-            PolynomialA = ToDouble(Distribution.tbPolynomialA.Value)
-            PolynomialB = ToDouble(Distribution.tbPolynomialB.Value)
-            PolynomialC = ToDouble(Distribution.tbPolynomialC.Value)
+            If Even Then
+                EvenMax = ToDouble(Distribution.tbEvenMax.Value)
+                EvenMin = ToDouble(Distribution.tbEvenMin.Value)
+            ElseIf Random Then
+                RandomMax = ToDouble(Distribution.tbRandomMax.Value)
+                RandomMin = ToDouble(Distribution.tbRandomMin.Value)
+            ElseIf Normal Then
+                NormalMax = ToDouble(Distribution.tbNormalMax.Value)
+                NormalMin = ToDouble(Distribution.tbNormalMin.Value)
+                NormalAvg = ToDouble(Distribution.tbNormalAvg.Value)
+            ElseIf Polynomial Then
+                PolynomialA = ToDouble(Distribution.tbPolynomialA.Value)
+                PolynomialB = ToDouble(Distribution.tbPolynomialB.Value)
+                PolynomialC = ToDouble(Distribution.tbPolynomialC.Value)
+            End If
         End If
     End Sub
     Public Overrides Sub Clear()

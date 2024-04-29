@@ -87,18 +87,42 @@
         End If
     End Sub
 
-    Public Overrides Sub LoadFromDistribution()
-        MyBase.LoadFromDistribution()
-        EvenMax = Distribution.plEvenMax.BackColor
-        EvenMin = Distribution.plEvenMin.BackColor
-        RandomMax = Distribution.plRandomMax.BackColor
-        RandomMin = Distribution.plRandomMin.BackColor
-        NormalMax = Distribution.plNormalMax.BackColor
-        NormalMin = Distribution.plNormalMin.BackColor
-        NormalAvg = Distribution.plNormalAvg.BackColor
-        PolynomialA = Distribution.plPolynomialA.BackColor
-        PolynomialB = Distribution.plPolynomialB.BackColor
-        PolynomialC = Distribution.plPolynomialC.BackColor
+    Public Overrides Sub SendToDistributionForm()
+        MyBase.SendToDistributionForm()
+
+        'Reload the colours for every type of distribution regardless of what is selected
+        If Distribution.Type = TargetType.Color Then
+            Distribution.plEvenMax.BackColor = EvenMax
+            Distribution.plEvenMin.BackColor = EvenMin
+            Distribution.plRandomMax.BackColor = RandomMax
+            Distribution.plRandomMin.BackColor = RandomMin
+            Distribution.plNormalMax.BackColor = NormalMax
+            Distribution.plNormalMin.BackColor = NormalMin
+            Distribution.plNormalAvg.BackColor = NormalAvg
+            Distribution.plPolynomialA.BackColor = PolynomialA
+            Distribution.plPolynomialB.BackColor = PolynomialB
+            Distribution.plPolynomialC.BackColor = PolynomialC
+        End If
+    End Sub
+
+    Public Overrides Sub LoadFromDistributionForm()
+        MyBase.LoadFromDistributionForm()
+        If Even Then
+            EvenMax = Distribution.plEvenMax.BackColor
+            EvenMin = Distribution.plEvenMin.BackColor
+        ElseIf Random Then
+            RandomMax = Distribution.plRandomMax.BackColor
+            RandomMin = Distribution.plRandomMin.BackColor
+        ElseIf Normal Then
+
+            NormalMax = Distribution.plNormalMax.BackColor
+            NormalMin = Distribution.plNormalMin.BackColor
+            NormalAvg = Distribution.plNormalAvg.BackColor
+        ElseIf Polynomial Then
+            PolynomialA = Distribution.plPolynomialA.BackColor
+            PolynomialB = Distribution.plPolynomialB.BackColor
+            PolynomialC = Distribution.plPolynomialC.BackColor
+        End If
     End Sub
     Public Overrides Sub Clear()
         MyBase.Clear()

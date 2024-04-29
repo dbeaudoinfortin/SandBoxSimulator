@@ -1,5 +1,4 @@
 ﻿Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class SimulationConfigLight 'USED AT RUNTIME AND DESIGN TIME
     Public Name As String

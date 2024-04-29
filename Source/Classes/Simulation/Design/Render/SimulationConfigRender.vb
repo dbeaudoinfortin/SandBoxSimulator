@@ -1,6 +1,4 @@
 ﻿Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
 Public Structure SimulationConfigRender
     Public Height As Integer
     Public Width As Integer

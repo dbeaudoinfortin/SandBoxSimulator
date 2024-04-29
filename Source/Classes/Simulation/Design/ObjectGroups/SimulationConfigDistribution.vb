@@ -171,12 +171,15 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
         End If
     End Sub
 
-    Public Sub SendToDistribution()
+    Public Overridable Sub SendToDistributionForm()
         Distribution.rbEven.Checked = Even
         Distribution.rbNormal.Checked = Normal
         Distribution.rbPolynomial.Checked = Polynomial
         Distribution.rbRandom.Checked = Random
-        If Distribution.Type = TargetType.Text Or Distribution.Type = TargetType.Number Then
+        Distribution.rbNone.Checked = Not UseFunction
+
+        'Reload the values for every type of distribution regardless of what is selected
+        If Distribution.Type = TargetType.Numeric Or Distribution.Type = TargetType.ObjectCount Then
             Distribution.txtEvenMax.Text = EvenMax.ToString
             Distribution.txtEvenMin.Text = EvenMin.ToString
             Distribution.txtRandomMax.Text = RandomMax.ToString
@@ -200,11 +203,12 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
             Distribution.tbPolynomialC.Value = ToInt32(PolynomialC)
         End If
     End Sub
-    Public Overridable Sub LoadFromDistribution()
+    Public Overridable Sub LoadFromDistributionForm()
         Even = Distribution.rbEven.Checked
         Normal = Distribution.rbNormal.Checked
         Polynomial = Distribution.rbPolynomial.Checked
         Random = Distribution.rbRandom.Checked
+        UseFunction = Not Distribution.rbNone.Checked
     End Sub
 
     Public Overridable Sub Clear()

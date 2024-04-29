@@ -1,7 +1,4 @@
-﻿Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
-Public Structure SimulationRender
+﻿Public Structure SimulationRender
     Public Parameters As PresentParameters
     Public Device As Device
     Public Transparency As Boolean
