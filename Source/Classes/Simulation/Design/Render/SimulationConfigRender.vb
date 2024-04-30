@@ -5,7 +5,7 @@ Public Structure SimulationConfigRender
     Public AspectRatio As Single
     Public BackgroundColor As Color
     Public TraceObjects As Boolean
-    Public Scale As Single
+    Public WorldScale As Single
     Public SphereComplexity As Integer
     Public EnableLighting As Boolean
     Public Shading As ShadeMode
@@ -22,7 +22,7 @@ Public Structure SimulationConfigRender
         MaxFPS = 45
         RenderThreads = 1
         Mode = 0
-        Scale = 1
+        WorldScale = 1
         Shading = ShadeMode.Gouraud
         SphereComplexity = 40
 
@@ -62,7 +62,7 @@ Public Structure SimulationConfigRender
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Scale>")
-        stringBuilder.Append(Scale.ToString())
+        stringBuilder.Append(WorldScale.ToString())
         stringBuilder.AppendLine("</Scale>")
 
         stringBuilder.Append(tabs)
@@ -149,9 +149,9 @@ Public Structure SimulationConfigRender
 
         Result = GetXMLNodeValue(intext, "Scale")
         If Result <> "" And IsNumeric(Result) Then
-            Scale = ToSingle(Result)
+            WorldScale = ToSingle(Result)
         Else
-            Scale = 1
+            WorldScale = 1
         End If
 
         Result = GetXMLNodeValue(intext, "Shading")
@@ -208,7 +208,7 @@ Public Structure SimulationConfigRender
         MaxFPS = Other.MaxFPS
         RenderThreads = Other.RenderThreads
         Mode = Other.Mode
-        Scale = Other.Scale
+        WorldScale = Other.WorldScale
         Shading = Other.Shading
         SphereComplexity = Other.SphereComplexity
         TraceObjects = Other.TraceObjects

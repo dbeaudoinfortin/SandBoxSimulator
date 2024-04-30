@@ -109,32 +109,6 @@
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <DefineDebug>true</DefineDebug>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <RemoveIntegerChecks>true</RemoveIntegerChecks>
-    <NoWarn>42353,42354,42355</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42105,42106,42107</WarningsAsErrors>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <RemoveIntegerChecks>true</RemoveIntegerChecks>
-    <Optimize>true</Optimize>
-    <NoWarn>42353,42354,42355</NoWarn>
-    <DebugType>None</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42105,42106,42107</WarningsAsErrors>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
@@ -185,6 +159,7 @@
     <Compile Include="Classes\Simulation\Run\Render\SimulationCamera.vb" />
     <Compile Include="Classes\Simulation\Design\SimulationSettings.vb" />
     <Compile Include="Classes\Simulation\Run\Render\SimulationRender.vb" />
+    <Compile Include="Classes\Simulation\Utilities\SimpleColor.vb" />
     <Compile Include="Forms\Output.Designer.vb">
       <DependentUpon>Output.vb</DependentUpon>
     </Compile>

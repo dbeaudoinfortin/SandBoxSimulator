@@ -1,6 +1,6 @@
 ﻿Imports System.Text
 
-Public Class SimulationConfigLight 'USED AT RUNTIME AND DESIGN TIME
+Public Class SimulationConfigLight 'USED AT DESIGN TIME
     Public Name As String
     Public Color As Color
     Public Direction As XYZ

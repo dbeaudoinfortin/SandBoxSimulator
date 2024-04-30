@@ -13,7 +13,7 @@ Public Structure SimulationCamera
     Public MoveDown As Boolean
     Public MoveLeft As Boolean
     Public MoveRight As Boolean
-    Public DidMove As Boolean
+    Private DidMove As Boolean
 
     'Cartesan Coordinates
     Public Target As XYZ
@@ -37,6 +37,9 @@ Public Structure SimulationCamera
     Public ScreenWidthUnit As XYZ       'Only used in Raytracing
     Private ScreenTempW As Double           'Only used in Raytracing
     Private ScreenTempH As Double           'Only used in Raytracing
+
+    Public CameraLock As ReaderWriterLockSlim
+
 
     Public Sub Move()
         'Reset camera movement flag
@@ -83,14 +86,24 @@ Public Structure SimulationCamera
             N.MakeUnit()
             U.MakeUnit()
             V.MakeUnit()
+
             'Calculate the camera posistion relative to the center of the sphere
-            TargetToPosition = N * Radius
+            Dim newTargetToPosition = N * Radius
+
             'Make the camera position relative to the world cooridinate system
-            Position = Target + TargetToPosition
-            If Raytraced Then  'Using Raytracing
-                ScreenWidthUnit = (ScreenTempW * Radius) * V
-                ScreenHeightUnit = (ScreenTempH * Radius) * U
-            End If
+            Dim newPosition = Target + TargetToPosition
+
+            'Used in Raytracing
+            Dim newScreenWidthUnit As XYZ = (ScreenTempW * Radius) * V
+            Dim newScreenHeightUnit As XYZ = (ScreenTempH * Radius) * U
+
+            'TODO NEED TO UPDATE UP VECTOR
+            CameraLock.EnterWriteLock()
+            TargetToPosition = newTargetToPosition
+            Position = newPosition
+            ScreenWidthUnit = newScreenWidthUnit
+            ScreenHeightUnit = newScreenHeightUnit
+            CameraLock.ExitWriteLock()
         End If
     End Sub
     Public Sub Intitialize(ByRef Config As SimulationConfigCamera, ByRef ScreenWidth As Integer, ByRef ScreenHeight As Integer, isRaytraced As Boolean)
@@ -128,5 +141,7 @@ Public Structure SimulationCamera
         ScreenTempH = (Tan(Config.VFov * 0.5) * 2) / ScreenHeight
         ScreenWidthUnit = (ScreenTempW * Radius) * V
         ScreenHeightUnit = (ScreenTempH * Radius) * U
+
+        CameraLock = New ReaderWriterLockSlim
     End Sub
 End Structure

@@ -1368,7 +1368,7 @@ Public Class ControlPanel
         Simulation.Config.Render.Mode = ToByte(cbRender.SelectedIndex)
         Simulation.Config.Settings.MaxObjects = ToInt32(txtLimitObjects.Text)
         Simulation.Config.Settings.TimeStep = ToDouble(txtTimeStep.Text)
-        Simulation.Config.Render.Scale = ToSingle(txtScale.Text)
+        Simulation.Config.Render.WorldScale = ToSingle(txtScale.Text)
         Simulation.Config.Settings.MaxCPS = ToDouble(txtLimitCalc.Text)
         Simulation.Config.Render.BackgroundColor = plRenderBackColor.ForeColor
         Simulation.Config.Forces.Gravity = chGravity.Checked
@@ -1441,7 +1441,7 @@ Public Class ControlPanel
         cbIntegration.SelectedIndex = Simulation.Config.Settings.IntegrationMethod
         txtLimitObjects.Text = Simulation.Config.Settings.MaxObjects.ToString
         txtTimeStep.Text = Simulation.Config.Settings.TimeStep.ToString
-        txtScale.Text = Simulation.Config.Render.Scale.ToString
+        txtScale.Text = Simulation.Config.Render.WorldScale.ToString
         txtLimitCalc.Text = Simulation.Config.Settings.MaxCPS.ToString
         plRenderBackColor.BackColor = Simulation.Config.Render.BackgroundColor
 
@@ -2322,7 +2322,7 @@ Public Class ControlPanel
         Return ToInt32(txtLimitObjects.Text) - CurrentObjects
     End Function
     Private Sub CmdObjectAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupAdd.Click
-        If Not IsValidGroup() Or Not isValidMaxObjects() Then Exit Sub
+        If Not IsValidGroup() Or Not IsValidMaxObjects() Then Exit Sub
 
         Dim CurrentObjects As Integer
         If cmdObjectNumber.ForeColor = Color.Black Then

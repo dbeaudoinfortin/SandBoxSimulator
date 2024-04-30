@@ -939,13 +939,13 @@ Public Class SimulationRuntime
                 If Objects(I).Affected Then
                     Objects(I).Acceleration.Copy(Config.Forces.Field.Acceleration)
                 Else
-                    Objects(I).Acceleration.makeZero()
+                    Objects(I).Acceleration.MakeZero()
                 End If
             Next
         Else
             'Reset acceleration to zero
             For I = 0 To ObjectCount - 1
-                Objects(I).Acceleration.makeZero()
+                Objects(I).Acceleration.MakeZero()
             Next
         End If
         '~~~~~~~~~~~~~OBJECT ENVIRONMENT FORCES~~~~~~~~~~~~~~
@@ -1350,15 +1350,15 @@ Public Class SimulationRuntime
             Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
 
             'Setup the view port
-            Render.Device.Transform.Projection = Matrix.PerspectiveFovLH(Config.Camera.HFov, Config.Render.AspectRatio, 1 / (Config.Render.Scale * 10), Config.Render.Scale * 2000)
-            Render.Device.Transform.View = Matrix.LookAtLH(Camera.Position.ToVector3, Camera.Target.ToVector3, Config.Camera.UpVector.ToVector3)
+            Render.Device.Transform.Projection = Matrix.PerspectiveFovLH(Config.Camera.HFov, Config.Render.AspectRatio, 1 / (Config.Render.WorldScale * 10), Config.Render.WorldScale * 2000)
+            Render.Device.Transform.View = Matrix.LookAtLH(Camera.Position.ToVector3, Camera.Target.ToVector3, Camera.U.ToVector3)
 
             'Calculate Sphere complexity
             Render.SphereSecondaryComplexity = ToInt32((Config.Render.SphereComplexity * 0.5) + 0.5)
 
             'Create object meshes and materials
             For i = 0 To ObjectCount - 1
-                Objects(i).CreateMesh(Render.Device, Config.Render.Scale, Config.Render.SphereComplexity, Render.SphereSecondaryComplexity)
+                Objects(i).CreateMesh(Render.Device, Config.Render.WorldScale, Config.Render.SphereComplexity, Render.SphereSecondaryComplexity)
                 Objects(i).CreateMaterial()
             Next
 
@@ -1375,9 +1375,9 @@ Public Class SimulationRuntime
                     Render.Device.Lights(i).Direction = Config.Lights(i).Direction.ToVector3
                     Render.Device.Lights(i).InnerConeAngle = Config.Lights(i).InnerCone
                     Render.Device.Lights(i).OuterConeAngle = Config.Lights(i).OuterCone
-                    Render.Device.Lights(i).Range = Config.Render.Scale * Config.Lights(i).Range
+                    Render.Device.Lights(i).Range = Config.Render.WorldScale * Config.Lights(i).Range
                     Render.Device.Lights(i).Specular = Config.Lights(i).SpecularColor
-                    Render.Device.Lights(i).Position = (Config.Render.Scale * Config.Lights(i).Position).ToVector3
+                    Render.Device.Lights(i).Position = (Config.Render.WorldScale * Config.Lights(i).Position).ToVector3
                     Render.Device.Lights(i).Update()
                     Render.Device.Lights(i).Enabled = True
                 Next
@@ -1394,7 +1394,10 @@ Public Class SimulationRuntime
         Return True
     End Function
     Private Sub DoDXRender()
-
+        Dim CameraTargetV3 As Vector3 = Camera.Target.ToVector3
+        Dim CameraUpVectorV3 As Vector3 = Config.Camera.UpVector.ToVector3
+        Dim OldCameraPosition As XYZ
+        Dim CameraPosition As XYZ
 
         Do While Running
             'Start the scene
@@ -1403,17 +1406,22 @@ Public Class SimulationRuntime
             'Clear the Z buffer
             Render.Device.Clear(ClearFlags.ZBuffer, Config.Render.BackgroundColor, 1, 0)
 
-            If Camera.DidMove Then
+            'Update the camera position safely
+            Camera.CameraLock.EnterReadLock()
+            CameraPosition = Camera.Position
+            Camera.CameraLock.ExitReadLock()
+
+            If CameraPosition <> OldCameraPosition Then
+                OldCameraPosition = CameraPosition
+
                 'Clear Traces regardless of Trace Display setting
                 Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
 
                 'Change the view port
-                Render.Device.Transform.View = Matrix.LookAtLH(Camera.Position.ToVector3, Camera.Target.ToVector3, Config.Camera.UpVector.ToVector3)
-            Else
+                Render.Device.Transform.View = Matrix.LookAtLH(CameraPosition.ToVector3, CameraTargetV3, CameraUpVectorV3)
+            ElseIf Not Config.Render.TraceObjects Then
                 'Clear Traces
-                If Not Config.Render.TraceObjects Then
-                    Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
-                End If
+                Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
             End If
 
             'TODO: Not everything here needs to be locked with the simulation
@@ -1421,7 +1429,7 @@ Public Class SimulationRuntime
             For i = 0 To ObjectCount - 1
                 'If the object doesn't exist create it on the fly
                 If Objects(i).Mesh = Nothing Then
-                    Objects(i).CreateMesh(Render.Device, Config.Render.Scale, Config.Render.SphereComplexity, Render.SphereSecondaryComplexity)
+                    Objects(i).CreateMesh(Render.Device, Config.Render.WorldScale, Config.Render.SphereComplexity, Render.SphereSecondaryComplexity)
                     Objects(i).CreateMaterial()
                 End If
 
@@ -1432,7 +1440,7 @@ Public Class SimulationRuntime
                 Else
                     Render.Device.RenderState.FillMode = FillMode.Solid
                     'Inside the current box
-                    If Camera.Position.X < Objects(i).LimitPositive.X And Camera.Position.X > Objects(i).LimitNegative.X And Camera.Position.Y < Objects(i).LimitPositive.Y And Camera.Position.Y > Objects(i).LimitNegative.Y And Camera.Position.Z < Objects(i).LimitPositive.Z And Camera.Position.Z > Objects(i).LimitNegative.Z Then 'Inside box
+                    If CameraPosition.X < Objects(i).LimitPositive.X And CameraPosition.X > Objects(i).LimitNegative.X And CameraPosition.Y < Objects(i).LimitPositive.Y And CameraPosition.Y > Objects(i).LimitNegative.Y And CameraPosition.Z < Objects(i).LimitPositive.Z And CameraPosition.Z > Objects(i).LimitNegative.Z Then 'Inside box
                         Render.Device.RenderState.CullMode = Cull.Clockwise
                     Else
                         Render.Device.RenderState.CullMode = Cull.CounterClockwise
@@ -1440,7 +1448,7 @@ Public Class SimulationRuntime
                 End If
 
                 'Draw the object in its place
-                Render.Device.Transform.World = Matrix.RotationX(ToSingle(Objects(i).Rotation.X)) * Matrix.RotationY(ToSingle(Objects(i).Rotation.Y)) * Matrix.RotationZ(ToSingle(Objects(i).Rotation.Z)) * Matrix.Translation(ToSingle(Config.Render.Scale * Objects(i).Position.X), ToSingle(Config.Render.Scale * Objects(i).Position.Y), ToSingle(Config.Render.Scale * Objects(i).Position.Z))
+                Render.Device.Transform.World = Matrix.RotationX(ToSingle(Objects(i).Rotation.X)) * Matrix.RotationY(ToSingle(Objects(i).Rotation.Y)) * Matrix.RotationZ(ToSingle(Objects(i).Rotation.Z)) * Matrix.Translation(ToSingle(Config.Render.WorldScale * Objects(i).Position.X), ToSingle(Config.Render.WorldScale * Objects(i).Position.Y), ToSingle(Config.Render.WorldScale * Objects(i).Position.Z))
 
                 Render.Device.Material = Objects(i).Material
                 Objects(i).Mesh.DrawSubset(0)
@@ -1455,26 +1463,38 @@ Public Class SimulationRuntime
         Loop
     End Sub
     Private Sub DoRayRender()
-        'Data loaded from Simulation - static
+        'Data loaded from Simulation - Constant
         Dim RenderHeight As Integer = Config.Render.Height
         Dim RenderWidth As Integer = Config.Render.Width
+        Dim HalfRenderWidth As Double = RenderWidth / 2
+        Dim HalfRenderHeight As Double = RenderWidth / 2
 
-        'Data loaded from Simulation - Dynamic
-        Dim CameraScreenHunit As XYZ
-        Dim CameraScreenWUnit As XYZ
+        Dim BackgroundColorR As Byte = Config.Render.BackgroundColor.R
+        Dim BackgroundColorG As Byte = Config.Render.BackgroundColor.G
+        Dim BackgroundColorB As Byte = Config.Render.BackgroundColor.B
+        Dim BackgroundColorA As Byte = Config.Render.BackgroundColor.A
+
+        'Data loaded from Simulation - Dynamic (changes during runtime)
+        Dim CameraScreenHunit As New XYZ(Camera.ScreenHeightUnit)
+        Dim CameraScreenWUnit As New XYZ(Camera.ScreenWidthUnit)
+        Dim OldCameraPosition As New XYZ(Camera.Position)
+        Dim CameraPosition As New XYZ(Camera.Position)
+        Dim CameraMoved As Boolean
+
         Dim CurrentObjectCount As Integer
         Dim ObjectRadius() As Double
         Dim ObjectRadiusSqrd() As Double
         Dim ObjectPosition() As XYZ
-        Dim ObjectColor() As Color
-        Dim CameraPosition As XYZ
+        Dim ObjectColor() As SimpleColor
 
-        'Calculated - used in TraceRay
-        Dim RayDirection As New XYZ
-        Dim CameratoObject() As XYZ
-        Dim CameratoObjectMagSqrd() As Double
+        'Calculated - Used to Trace Rays
+        Dim RayDirection As New XYZ ' Dim RayDirection As XYZ 
+        Dim CameraToObjectDistance() As XYZ
+        Dim CameraToObjectMagSqrd() As Double
+        Dim CameraPositionToCameraTarget = Camera.Target - CameraPosition
 
-        'Direct X display
+
+        'DirectX Display Objects
         Dim Texture As New Texture(Render.Device, RenderWidth, RenderHeight, 1, Usage.None, Format.A8R8G8B8, Pool.Managed)
         Dim Sprite As New Sprite(Render.Device)
         Dim Size As New SizeF(RenderWidth, RenderHeight)
@@ -1483,18 +1503,11 @@ Public Class SimulationRuntime
         Dim Pitch As Integer = RenderWidth * RenderHeight * 4
         Dim Stream As GraphicsStream
 
-        '2D Pixel array
+        '2D Pixel Array Raw Data
         Dim PixelData((RenderWidth * RenderHeight * 4) - 1) As Byte
         Dim CurrentPixel As Integer
 
-        'Used in iterarting through each pixel
-        Dim TargetPixel As New XYZ
-        Dim CameraPositionToTarget As XYZ
-        Dim HalfRenderWidth As Double = RenderWidth / 2
-        Dim HalfRenderHeight As Double = RenderWidth / 2
-        Dim Ray_Temp_XYZ As XYZ
-
-        'Used to trace each ray
+        'Used in iterarting through each pixel and tracing each ray
         Dim Ray_ObjectDistance As Double
         Dim Ray_ClosestObjectDistance As Double
         Dim Ray_ClosestObject As Integer
@@ -1507,10 +1520,6 @@ Public Class SimulationRuntime
         Dim Ray_ShadowLength As Double
         Dim Ray_isinShadow As Boolean
         Dim Ray_LdotN As Double
-        Dim Ray_Bias As Double = 0.001 * Config.Render.Scale
-        Dim Ray_colorR As Double
-        Dim Ray_colorG As Double
-        Dim Ray_colorB As Double
         Dim Ray_attn As Double
         Dim Ray_spot As Double
         Dim Ray_rho As Double
@@ -1519,8 +1528,17 @@ Public Class SimulationRuntime
         Dim Ray_PointtoObject As XYZ
         Dim Ray_PointtoObjectMagSqrd As Double
 
+        'Ray color for each pixel
+        Dim Ray_colorR As Double
+        Dim Ray_colorG As Double
+        Dim Ray_colorB As Double
+
+        'Used for temp calulations
+        Dim Ray_Temp_XYZ As XYZ
+        Dim Mag_temp As Double ' Used to calculate the magnitude of a vector
+
         'Box
-        Dim Ray_ColorUsed As Color
+        Dim Ray_ColorUsed As SimpleColor
 
         'Indicates the number of objects changed since the last loop
         Dim ObjectCountChanged As Boolean = False
@@ -1533,14 +1551,14 @@ Public Class SimulationRuntime
         ReDim ObjectColor(CurrentObjectCount - 1)
         For i = 0 To CurrentObjectCount - 1
             ObjectRadius(i) = Objects(i).Radius
-            ObjectColor(i) = Objects(i).Color
+            ObjectColor(i).FromColor(Objects(i).Color)
         Next
         Render.RenderLock.ExitReadLock()
 
         'Pre-dimension our arrays
         'Do it outside the Lock for better efficiency
-        ReDim CameratoObject(CurrentObjectCount - 1)
-        ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
+        ReDim CameraToObjectDistance(CurrentObjectCount - 1)
+        ReDim CameraToObjectMagSqrd(CurrentObjectCount - 1)
         ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
         ReDim ObjectPosition(CurrentObjectCount - 1)
         For i = 0 To CurrentObjectCount - 1
@@ -1548,22 +1566,30 @@ Public Class SimulationRuntime
         Next
 
         'Make the Background Transparent so we can trace the object path
-        If Config.Render.TraceObjects = True Then
-            Config.Render.BackgroundColor = Color.FromArgb(0, Config.Render.BackgroundColor.R, Config.Render.BackgroundColor.G, Config.Render.BackgroundColor.B)
-        End If
+        If Config.Render.TraceObjects = True Then BackgroundColorA = 0
 
         Do While Running
 
-            'Load updated Values
-            'TODO: Replace this with a read-write lock. Don't lock with other render threads only the simulation thread
-            Render.RenderLock.EnterReadLock()
             'Update the camera changes
-            CameraScreenHunit = Camera.ScreenHeightUnit
-            CameraScreenWUnit = Camera.ScreenWidthUnit
+            CameraMoved = False
+            Camera.CameraLock.EnterReadLock()
             CameraPosition = Camera.Position
-            CameraPositionToTarget = Camera.Target - CameraPosition
+            If CameraPosition <> OldCameraPosition Then
+                CameraMoved = True
+                CameraScreenHunit = Camera.ScreenHeightUnit
+                CameraScreenWUnit = Camera.ScreenWidthUnit
+            End If
+            Camera.CameraLock.ExitReadLock()
+            'Minimize time spent in the lock
+            If (CameraMoved) Then
+                OldCameraPosition = CameraPosition
+                CameraPositionToCameraTarget = Camera.Target - CameraPosition
+            End If
 
-            'If the objects didn't change then only update their position
+            'Load updated object values
+            Render.RenderLock.EnterReadLock()
+
+            'If the number of objects didn't change then only update their position
             'TODO: This assumes objects are only ever added
             If CurrentObjectCount <> ObjectCount Then
                 CurrentObjectCount = ObjectCount
@@ -1573,12 +1599,13 @@ Public Class SimulationRuntime
                 ReDim ObjectPosition(CurrentObjectCount - 1)
                 For i = 0 To CurrentObjectCount - 1
                     ObjectRadius(i) = Objects(i).Radius
-                    ObjectColor(i) = Objects(i).Color
+                    ObjectColor(i).FromColor(Objects(i).Color)
                 Next
             End If
 
             'Always update the Object positions, regardless of object count
             For i = 0 To CurrentObjectCount - 1
+                'Note, assign the raw values
                 ObjectPosition(i) = Objects(i).Position
             Next
             Render.RenderLock.ExitReadLock()
@@ -1588,33 +1615,36 @@ Public Class SimulationRuntime
             If (ObjectCountChanged) Then
                 ObjectCountChanged = False
                 ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
-                ReDim CameratoObject(CurrentObjectCount - 1)
-                ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
+                ReDim CameraToObjectDistance(CurrentObjectCount - 1)
+                ReDim CameraToObjectMagSqrd(CurrentObjectCount - 1)
                 For i = 0 To CurrentObjectCount - 1
                     ObjectRadiusSqrd(i) = ObjectRadius(i) * ObjectRadius(i)
-                    CameratoObject(i) = ObjectPosition(i) - CameraPosition
-                    CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
+                    CameraToObjectDistance(i) = ObjectPosition(i) - CameraPosition
+                    CameraToObjectMagSqrd(i) = CameraToObjectDistance(i).MagnitudeSquared
                 Next
             End If
 
             'Calculate new values based on camera movement and object movement
             'Do it outside the Lock for better efficiency
             For i = 0 To CurrentObjectCount - 1
-                CameratoObject(i) = ObjectPosition(i) - CameraPosition
-                CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
+                CameraToObjectDistance(i) = ObjectPosition(i) - CameraPosition
+                CameraToObjectMagSqrd(i) = CameraToObjectDistance(i).MagnitudeSquared
             Next
-
 
             'Reset the current pixel counter
             CurrentPixel = 0
 
             'For each pixel
-            For Y = 0 To RenderHeight - 1
-                Ray_Temp_XYZ = ((HalfRenderHeight - Y) * CameraScreenHunit) + CameraPositionToTarget
-                For X = 0 To Config.Render.Width - 1
+            For YPixel = 0 To RenderHeight - 1
+                Ray_Temp_XYZ = ((HalfRenderHeight - YPixel) * CameraScreenHunit) + CameraPositionToCameraTarget
+                For XPixel = 0 To Config.Render.Width - 1
                     'Calculate the direction of the primary ray
-                    RayDirection = ((HalfRenderWidth - X) * CameraScreenWUnit) + Ray_Temp_XYZ
-                    RayDirection.MakeUnit()
+                    RayDirection = ((HalfRenderWidth - XPixel) * CameraScreenWUnit) + Ray_Temp_XYZ
+                    'Make RayDirection a unit vector
+                    Mag_temp = 1 / Sqrt((RayDirection.X * RayDirection.X) + (RayDirection.Y * RayDirection.Y) + (RayDirection.Z * RayDirection.Z))
+                    RayDirection.X *= Mag_temp
+                    RayDirection.Y *= Mag_temp
+                    RayDirection.Z *= Mag_temp
 
                     'Reset object flags
                     Ray_ClosestObjectDistance = Double.PositiveInfinity
@@ -1622,10 +1652,10 @@ Public Class SimulationRuntime
 
                     'For each object check for intersection
                     For i = 0 To CurrentObjectCount - 1
-                        Ray_tca = CameratoObject(i).Dot(RayDirection)
-                        Ray_OutsideObject = CameratoObjectMagSqrd(i) > ObjectRadiusSqrd(i)
+                        Ray_tca = CameraToObjectDistance(i).Dot(RayDirection)
+                        Ray_OutsideObject = CameraToObjectMagSqrd(i) > ObjectRadiusSqrd(i)
                         If Ray_tca >= 0 Or Not Ray_OutsideObject Then  'There might be an intersection
-                            Ray_thc = ObjectRadiusSqrd(i) - CameratoObjectMagSqrd(i) + (Ray_tca * Ray_tca)
+                            Ray_thc = ObjectRadiusSqrd(i) - CameraToObjectMagSqrd(i) + (Ray_tca * Ray_tca)
                             If Ray_thc >= 0 Then
                                 If Ray_OutsideObject Then
                                     Ray_ObjectDistance = Ray_tca - Sqrt(Ray_thc)
@@ -1642,17 +1672,20 @@ Public Class SimulationRuntime
 
                     If Ray_ClosestObject = -1 Then 'If no object was found return the background
                         'Write the pixel to the pixel array
-                        PixelData(CurrentPixel) = Config.Render.BackgroundColor.B
-                        PixelData(CurrentPixel + 1) = Config.Render.BackgroundColor.G
-                        PixelData(CurrentPixel + 2) = Config.Render.BackgroundColor.R
-                        PixelData(CurrentPixel + 3) = Config.Render.BackgroundColor.A
+                        PixelData(CurrentPixel) = BackgroundColorB
+                        PixelData(CurrentPixel + 1) = BackgroundColorG
+                        PixelData(CurrentPixel + 2) = BackgroundColorR
+                        PixelData(CurrentPixel + 3) = BackgroundColorA
                         CurrentPixel += 4
                     Else
-
                         Ray_ShadowOrigin = CameraPosition + (RayDirection * Ray_ClosestObjectDistance)
                         If Ray_ClosestObject <> -2 Then
                             Ray_PointNormal = Ray_ShadowOrigin - ObjectPosition(Ray_ClosestObject)
-                            Ray_PointNormal.MakeUnit()
+                            'Make Ray_PointNormal a unit vector
+                            Mag_temp = 1 / Sqrt((Ray_PointNormal.X * Ray_PointNormal.X) + (Ray_PointNormal.Y * Ray_PointNormal.Y) + (Ray_PointNormal.Z * Ray_PointNormal.Z))
+                            Ray_PointNormal.X *= Mag_temp
+                            Ray_PointNormal.Y *= Mag_temp
+                            Ray_PointNormal.Z *= Mag_temp
                         Else
                             'TODO: This is supposed to be for a BOX
                             Ray_PointNormal = New XYZ
@@ -1672,8 +1705,13 @@ Public Class SimulationRuntime
                                 Ray_ShadowDirection = Config.Lights(l).Position - Ray_ShadowOrigin
                             End If
 
-                            Ray_ShadowLength = Ray_ShadowDirection.Magnitude
-                            Ray_ShadowDirection.MakeUnit()
+                            Ray_ShadowLength = Sqrt((Ray_ShadowDirection.X * Ray_ShadowDirection.X) + (Ray_ShadowDirection.Y * Ray_ShadowDirection.Y) + (Ray_ShadowDirection.Z * Ray_ShadowDirection.Z))
+                            'Make Ray_ShadowDirection a unit vector
+                            Mag_temp = 1 / Ray_ShadowLength
+                            Ray_ShadowDirection.X *= Mag_temp
+                            Ray_ShadowDirection.Y *= Mag_temp
+                            Ray_ShadowDirection.Z *= Mag_temp
+
                             Ray_LdotN = Ray_ShadowDirection.Dot(Ray_PointNormal)
 
                             If Ray_LdotN < 0 Then 'Self shadowing
@@ -1754,9 +1792,7 @@ Public Class SimulationRuntime
 
             SyncLock LockRayMulti 'Make sure only one thread is using the device 
                 Render.Device.BeginScene()
-                If Camera.DidMove Then
-                    Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
-                End If
+                If CameraMoved Then Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
                 Sprite.Begin(SpriteFlags.AlphaBlend)
                 Sprite.Draw2D(Texture, Rect, Size, Point, Color.White)
                 Sprite.End()

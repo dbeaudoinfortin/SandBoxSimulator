@@ -1,22 +1,22 @@
 ﻿Imports System.Text
 
-Public Class XYZ
+Public Structure XYZ
     Public X As Double
     Public Y As Double
     Public Z As Double
     Public Shared Function NaXYZ() As XYZ
         Return New XYZ(Double.PositiveInfinity, Double.PositiveInfinity, Double.PositiveInfinity)
     End Function
-    Public Function isNaN() As Boolean
+    Public Function IsNaN() As Boolean
         Return X = Double.NaN And Y = Double.NaN And Z = Double.NaN
     End Function
-    Public Function isZero() As Boolean
+    Public Function IsZero() As Boolean
         Return X = 0 And Y = 0 And Z = 0
     End Function
-    Public Sub makeZero()
-        makeValue(0)
+    Public Sub MakeZero()
+        MakeValue(0)
     End Sub
-    Public Sub makeValue(ByRef Value As Double)
+    Public Sub MakeValue(ByVal Value As Double)
         X = Value
         Y = Value
         Z = Value
@@ -27,8 +27,9 @@ Public Class XYZ
     Public Function Cross(ByRef Other As XYZ) As XYZ
         Return New XYZ((Y * Other.Z) - (Z * Other.Y), (Z * Other.X) - (X * Other.Z), (X * Other.Y) - (Y * Other.X))
     End Function
+
     Public Sub New(ByRef Value As Double)
-        makeValue(Value)
+        MakeValue(Value)
     End Sub
     Public Sub New(ByRef Other As XYZ)
         Copy(Other)
@@ -38,14 +39,12 @@ Public Class XYZ
         Y = Other.Y
         Z = Other.Z
     End Sub
-    Public Sub New(X As Double, ByVal Y As Double, ByVal Z As Double)
+    Public Sub New(ByVal X As Double, ByVal Y As Double, ByVal Z As Double)
         Me.X = X
         Me.Y = Y
         Me.Z = Z
     End Sub
-    Public Sub New()
-        makeZero()
-    End Sub
+
     Public Shared Operator -(ByVal lhs As XYZ, ByVal rhs As XYZ) As XYZ
         Return New XYZ(lhs.X - rhs.X, lhs.Y - rhs.Y, lhs.Z - rhs.Z)
     End Operator
@@ -113,7 +112,7 @@ Public Class XYZ
     Public Function Flip() As XYZ
         Return New XYZ(-X, -Z, -Y)
     End Function
-    Public Function isNaXYZ() As Boolean
+    Public Function IsNaXYZ() As Boolean
         Return X = Double.PositiveInfinity And Y = Double.PositiveInfinity And Z = Double.PositiveInfinity
     End Function
     Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
@@ -162,4 +161,4 @@ Public Class XYZ
             Z = 0
         End If
     End Sub
-End Class
+End Structure

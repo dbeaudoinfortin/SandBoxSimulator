@@ -1,7 +1,5 @@
 ﻿Imports System.Windows.Forms
 
-
-
 Module Utilities
     'Performance Counter
     Public Declare Function QueryPerformanceCounter Lib "Kernel32" (ByRef X As Long) As Short

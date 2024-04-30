@@ -9,8 +9,8 @@
     Public Acceleration As XYZ
     Public OldPosition As XYZ 'Used in interpolation
     Public CameraDistance As Double ' Used in DX transparency
-    Public Mesh As Mesh
-    Public Material As Material
+    Public Mesh As Mesh 'DX only
+    Public Material As Material 'DX only
     Public Affected As Boolean
     Public Affects As Boolean
     Public RefractiveIndex As Double
