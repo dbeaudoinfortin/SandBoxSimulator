@@ -1,5 +1,4 @@
-﻿Imports System.Text
-Imports System.Windows.Forms
+﻿Imports System.Windows.Forms
 
 Public Class SimulationRuntime
 
@@ -7,7 +6,7 @@ Public Class SimulationRuntime
     'Mutexes/Locks
     Private ReadOnly LockRayData As New Object
     Private ReadOnly LockRayMulti As New Object
-    Private ReadOnly LockDX As New Object
+    Private ReadOnly LockDXRender As New Object
 
     'Threading
     Private ComputingThread As Thread
@@ -178,6 +177,9 @@ Public Class SimulationRuntime
 
         'Set the camera's initial state based on the configuration 
         Camera.Intitialize(Config.Camera, Config.Render.Width, Config.Render.Height, Config.Render.Mode = 2)
+
+        'Create a lock object
+        Render.RenderLock = New ReaderWriterLockSlim
 
         'Initialize render engine
         If InitializeRender() = False Then
@@ -435,17 +437,14 @@ Public Class SimulationRuntime
 
 
         'COPY THE NEW OBJECTS OVER
-        SyncLock LockRayData ' Make sure Raytracing isn't loading the data 
-            SyncLock LockDX ' Make sure Direct X isn't displaying the data
-                'Copy over the new objects into the simulation
-                Objects(Index).Copy(NewObjects(0))
-                For Z = 1 To BreakNumber - 1
-                    Objects(ObjectCount) = New SimulationObject
-                    Objects(ObjectCount).Copy(NewObjects(Z))
-                    ObjectCount += 1
-                Next
-            End SyncLock
-        End SyncLock
+        Render.RenderLock.EnterWriteLock() ' Make sure the Renderer isn't loading the data 
+        Objects(Index).Copy(NewObjects(0)) 'Copy over the new objects into the simulation
+        For Z = 1 To BreakNumber - 1
+            Objects(ObjectCount) = New SimulationObject
+            Objects(ObjectCount).Copy(NewObjects(Z))
+            ObjectCount += 1
+        Next
+        Render.RenderLock.ExitWriteLock()
     End Sub
     Private Sub TessellateBox(ByRef NewObject1 As SimulationObject, ByRef NewObject2 As SimulationObject, ByRef OldObject As SimulationObject)
         Dim TessX As Double = RandMaker.GetNext
@@ -584,12 +583,318 @@ Public Class SimulationRuntime
         Next
         Return False
     End Function
-    Private Sub DoCompute()
-        Dim T As Double = Config.Settings.TimeStep
-        Dim HalfT As Double = 0.5 * T
-        Dim HalfTSqd As Double = HalfT * T
-        Dim i As Integer
+    Private Sub DoComputeNoIntegration(timeStep As Double)
+        If Config.Collisions.Enabled Then
+            If Config.Collisions.Interpolate Then
+                Do While Running
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).OldPosition.Copy(Objects(i).Position)
+                    Next
 
+                    Render.RenderLock.EnterWriteLock()
+                    For i = 0 To ObjectCount - 1
+                        'TODO: Is is even marginally faster to do the multiplation outside the lock?
+                        Objects(i).Position += Objects(i).Velocity * timeStep
+                    Next
+                    Render.RenderLock.ExitWriteLock()
+
+                    DoCollisions() 'Collisions must be after
+                    ComputationControl()
+                Loop
+            Else
+                'Collisions but not interpolation
+                Do While Running
+                    DoCollisions()
+                    Render.RenderLock.EnterWriteLock()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Position += Objects(i).Velocity * timeStep
+                    Next
+                    Render.RenderLock.ExitWriteLock()
+                    ComputationControl()
+                Loop
+            End If
+        Else
+            'No collisions at all
+            Do While Running
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += Objects(i).Velocity * timeStep
+                Next
+                Render.RenderLock.ExitWriteLock()
+                ComputationControl()
+            Loop
+        End If
+    End Sub
+    Private Sub DoComputeEuler(timeStep As Double)
+        If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
+            Do While Running
+                DoForces()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).OldPosition.Copy(Objects(i).Position)
+                    Objects(i).Velocity += Objects(i).Acceleration * timeStep
+                Next
+
+                'Only the position of the objects actually needs to be locked
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += Objects(i).Velocity * timeStep
+                Next
+                Render.RenderLock.ExitWriteLock()
+
+                DoCollisions()
+                ComputationControl()
+            Loop
+        ElseIf Config.Collisions.Enabled Then
+            Do While Running
+                DoCollisions()
+                DoForces()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += Objects(i).Acceleration * timeStep
+                Next
+
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += Objects(i).Velocity * timeStep
+                Next
+                Render.RenderLock.ExitWriteLock()
+
+                ComputationControl()
+            Loop
+        Else
+            Do While Running
+                DoForces()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += Objects(i).Acceleration * timeStep
+                Next
+
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += Objects(i).Velocity * timeStep
+                Next
+                Render.RenderLock.ExitWriteLock()
+
+                ComputationControl()
+            Loop
+        End If
+    End Sub
+
+    Private Sub DoComputeVerlet(timeStep As Double)
+        Dim HalfT As Double = 0.5 * timeStep
+        Dim HalfTSqd As Double = HalfT * timeStep
+
+        If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
+            DoForces() 'Initial forces
+
+            Do While Running
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).OldPosition.Copy(Objects(i).Position)
+                Next
+
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += (Objects(i).Velocity * timeStep) + (HalfTSqd * Objects(i).Acceleration)
+                Next
+                Render.RenderLock.ExitWriteLock()
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += HalfT * Objects(i).Acceleration
+                Next
+
+                DoForces()
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += Objects(i).Acceleration * HalfT
+                Next
+
+                DoCollisions()
+                ComputationControl()
+            Loop
+        ElseIf Config.Collisions.Enabled Then
+            DoForces() 'Initial forces
+            Do While Running
+                DoCollisions()
+
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += (Objects(i).Velocity * timeStep) + (HalfTSqd * Objects(i).Acceleration)
+                Next
+                Render.RenderLock.ExitWriteLock()
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += HalfT * Objects(i).Acceleration
+                Next
+
+                DoForces()
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += Objects(i).Acceleration * HalfT
+                Next
+
+                ComputationControl()
+            Loop
+        Else
+            DoForces() 'Initial forces
+            Do While Running
+
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += (Objects(i).Velocity * timeStep) + (HalfTSqd * Objects(i).Acceleration)
+
+                Next
+                Render.RenderLock.ExitWriteLock()
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += HalfT * Objects(i).Acceleration
+                Next
+
+                DoForces()
+
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += Objects(i).Acceleration * HalfT
+                Next
+
+                ComputationControl()
+            Loop
+        End If
+    End Sub
+
+    Private Sub DoCompute4thSymplectic(timeStep As Double)
+        Const b As Double = 2 ^ (1 / 3)
+        Const a As Double = 2 - b
+        Const x0 As Double = -b / a
+        Const x1 As Double = 1 / a
+
+        Dim HalfT As Double = 0.5 * timeStep
+        Dim d() As Double = {timeStep * x1, timeStep * x0, timeStep * x1}
+        Dim c() As Double = {x1 * HalfT, (x0 + x1) * HalfT, (x0 + x1) * HalfT, x1 * HalfT}
+
+        If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
+            Do While Running
+                For i = 0 To ObjectCount - 1
+                    Objects(i).OldPosition.Copy(Objects(i).Position)
+                Next
+                For j = 0 To 2
+                    Render.RenderLock.EnterWriteLock()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Position += c(j) * Objects(i).Velocity
+                    Next
+                    Render.RenderLock.ExitWriteLock()
+                    DoForces()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Velocity += d(j) * Objects(i).Acceleration
+                    Next
+                Next
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += c(3) * Objects(i).Velocity
+                Next
+                Render.RenderLock.ExitWriteLock()
+                DoCollisions()
+                ComputationControl()
+            Loop
+        ElseIf Config.Collisions.Enabled Then
+            DoCollisions()
+            For j = 0 To 2
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += c(j) * Objects(i).Velocity
+                Next
+                Render.RenderLock.ExitWriteLock()
+                DoForces()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Velocity += d(j) * Objects(i).Acceleration
+                Next
+            Next
+            Render.RenderLock.EnterWriteLock()
+            For i = 0 To ObjectCount - 1
+                Objects(i).Position += c(3) * Objects(i).Velocity
+            Next
+            Render.RenderLock.ExitWriteLock()
+            ComputationControl()
+        Else
+            Do While Running
+                For j = 0 To 2
+                    Render.RenderLock.EnterWriteLock()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Position += c(j) * Objects(i).Velocity
+                    Next
+                    Render.RenderLock.ExitWriteLock()
+
+                    DoForces()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Velocity += d(j) * Objects(i).Acceleration
+                    Next
+                Next
+
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += c(3) * Objects(i).Velocity
+                Next
+                Render.RenderLock.ExitWriteLock()
+                ComputationControl()
+            Loop
+        End If
+    End Sub
+    Private Sub DoCompute6thSymplectic(timeStep As Double)
+
+        Const w1 As Double = -1.17767998417887
+        Const w2 As Double = 0.235573213359357
+        Const w3 As Double = 0.78451361047756
+        Const w0 As Double = 1 - (2 * (w1 + w2 + w3))
+
+        Dim HalfT As Double = 0.5 * timeStep
+        Dim d() As Double = {timeStep * w3, timeStep * w2, timeStep * w1, timeStep * w0, timeStep * w1, timeStep * w2, timeStep * w3}
+        Dim c() As Double = {w3 * HalfT, (w3 + w2) * HalfT, (w2 + w1) * HalfT, (w1 + w0) * HalfT, (w1 + w0) * HalfT, (w2 + w1) * HalfT, (w3 + w2) * HalfT, w3 * HalfT}
+
+        If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
+            Do While Running
+                For i = 0 To ObjectCount - 1
+                    Objects(i).OldPosition.Copy(Objects(i).Position)
+                Next
+                For j = 0 To 6
+                    Render.RenderLock.EnterWriteLock()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Position += c(j) * Objects(i).Velocity
+                    Next
+                    Render.RenderLock.ExitWriteLock()
+                    DoForces()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Velocity += d(j) * Objects(i).Acceleration
+                    Next
+                Next
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += c(7) * Objects(i).Velocity
+                Next
+                Render.RenderLock.ExitWriteLock()
+                DoCollisions()
+                ComputationControl()
+            Loop
+        Else
+            Do While Running
+                For j = 0 To 6
+                    Render.RenderLock.EnterWriteLock()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Position += c(j) * Objects(i).Velocity
+                    Next
+                    Render.RenderLock.ExitWriteLock()
+                    DoForces()
+                    For i = 0 To ObjectCount - 1
+                        Objects(i).Velocity += d(j) * Objects(i).Acceleration
+                    Next
+                Next
+                Render.RenderLock.EnterWriteLock()
+                For i = 0 To ObjectCount - 1
+                    Objects(i).Position += c(7) * Objects(i).Velocity
+                Next
+                Render.RenderLock.ExitWriteLock()
+                If Config.Collisions.Enabled Then DoCollisions()
+                ComputationControl()
+            Loop
+        End If
+    End Sub
+    Private Sub DoCompute()
         'If breakages might happen then make room for additial objects that might be needed
         If Config.Collisions.Breakable Then
             Array.Resize(Me.Objects, Config.Settings.MaxObjects)
@@ -598,205 +903,19 @@ Public Class SimulationRuntime
         'Pre-calculate Permitivity value
         Ec = 1 / (4 * PI * Eo * Config.Forces.ElectroStatic.Permittivity)
 
-        '~~~~~NO INTEGRATION~~~~~~~
         If Not NeedIntegration() Then
-            If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
-                Do While Running
-                    SyncLock LockRayData
-                        For i = 0 To ObjectCount - 1
-                            Objects(i).OldPosition.Copy(Objects(i).Position)
-                            Objects(i).Position += Objects(i).Velocity * T
-                        Next
-                    End SyncLock
-                    DoCollisions()
-                    ComputationControl()
-                Loop
-            Else
-                Do While Running
-                    If Config.Collisions.Enabled Then DoCollisions()
-                    SyncLock LockRayData
-                        For i = 0 To ObjectCount - 1
-                            Objects(i).Position += Objects(i).Velocity * T
-                        Next
-                    End SyncLock
-                    ComputationControl()
-                Loop
-            End If
-        Else
-            '~~~~~EULER~~~~~~~
-            If Config.Settings.IntegrationMethod = 0 Then
-                If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
-                    Do While Running
-                        DoForces()
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).OldPosition.Copy(Objects(i).Position)
-                                Objects(i).Velocity += Objects(i).Acceleration * T
-                                Objects(i).Position += Objects(i).Velocity * T
-                            Next
-                        End SyncLock
-                        DoCollisions()
-                        ComputationControl()
-                    Loop
-                Else
-                    Do While Running
-                        If Config.Collisions.Enabled Then DoCollisions()
-                        DoForces()
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Velocity += Objects(i).Acceleration * T
-                                Objects(i).Position += Objects(i).Velocity * T
-                            Next
-                        End SyncLock
-                        ComputationControl()
-                    Loop
-                End If
-                '~~~~~VERLET~~~~~~~~~
-            ElseIf Config.Settings.IntegrationMethod = 1 Then
-                If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
-                    DoForces() 'Initial forces
-                    Do While Running
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).OldPosition.Copy(Objects(i).Position)
-                                Objects(i).Position += (Objects(i).Velocity * T) + (HalfTSqd * Objects(i).Acceleration)
-                                Objects(i).Velocity += HalfT * Objects(i).Acceleration
-                            Next
-                        End SyncLock
-                        DoForces()
-                        For i = 0 To ObjectCount - 1
-                            Objects(i).Velocity += Objects(i).Acceleration * HalfT
-                        Next
-                        DoCollisions()
-                        ComputationControl()
-                    Loop
-                Else
-                    DoForces() 'Initial forces
-                    Do While Running
-                        If Config.Collisions.Enabled Then DoCollisions()
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Position += (Objects(i).Velocity * T) + (HalfTSqd * Objects(i).Acceleration)
-                                Objects(i).Velocity += HalfT * Objects(i).Acceleration
-                            Next
-                        End SyncLock
-                        DoForces()
-                        For i = 0 To ObjectCount - 1
-                            Objects(i).Velocity += Objects(i).Acceleration * HalfT
-                        Next
-                        ComputationControl()
-                    Loop
-                End If
-                '~~~~~4th order Symplectic~~~~~~~
-            ElseIf Config.Settings.IntegrationMethod = 2 Then
-                Const b As Double = 2 ^ (1 / 3)
-                Const a As Double = 2 - b
-                Const x0 As Double = -b / a
-                Const x1 As Double = 1 / a
-                Dim d() As Double = {T * x1, T * x0, T * x1}
-                Dim c() As Double = {x1 * HalfT, (x0 + x1) * HalfT, (x0 + x1) * HalfT, x1 * HalfT}
-                If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
-                    Do While Running
-                        For i = 0 To ObjectCount - 1
-                            Objects(i).OldPosition.Copy(Objects(i).Position)
-                        Next
-                        For j = 0 To 2
-                            SyncLock LockRayData
-                                For i = 0 To ObjectCount - 1
-                                    Objects(i).Position += c(j) * Objects(i).Velocity
-                                Next
-                            End SyncLock
-                            DoForces()
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Velocity += d(j) * Objects(i).Acceleration
-                            Next
-                        Next
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Position += c(3) * Objects(i).Velocity
-                            Next
-                        End SyncLock
-                        DoCollisions()
-                        ComputationControl()
-                    Loop
-                Else
-                    Do While Running
-                        If Config.Collisions.Enabled Then DoCollisions()
-                        For j = 0 To 2
-                            SyncLock LockRayData
-                                For i = 0 To ObjectCount - 1
-                                    Objects(i).Position += c(j) * Objects(i).Velocity
-                                Next
-                            End SyncLock
-                            DoForces()
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Velocity += d(j) * Objects(i).Acceleration
-                            Next
-                        Next
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Position += c(3) * Objects(i).Velocity
-                            Next
-                        End SyncLock
-                        ComputationControl()
-                    Loop
-                End If
+            DoComputeNoIntegration(Config.Settings.TimeStep)
+            Return
+        End If
 
-                '~~~~~6th order Symplectic~~~~~~~
-            ElseIf Config.Settings.IntegrationMethod = 3 Then
-                Const w1 As Double = -1.17767998417887
-                Const w2 As Double = 0.235573213359357
-                Const w3 As Double = 0.78451361047756
-                Const w0 As Double = 1 - (2 * (w1 + w2 + w3))
-                Dim d() As Double = {T * w3, T * w2, T * w1, T * w0, T * w1, T * w2, T * w3}
-                Dim c() As Double = {w3 * HalfT, (w3 + w2) * HalfT, (w2 + w1) * HalfT, (w1 + w0) * HalfT, (w1 + w0) * HalfT, (w2 + w1) * HalfT, (w3 + w2) * HalfT, w3 * HalfT}
-                If Config.Collisions.Enabled And Config.Collisions.Interpolate Then
-                    Do While Running
-                        For i = 0 To ObjectCount - 1
-                            Objects(i).OldPosition.Copy(Objects(i).Position)
-                        Next
-                        For j = 0 To 6
-                            SyncLock LockRayData
-                                For i = 0 To ObjectCount - 1
-                                    Objects(i).Position += c(j) * Objects(i).Velocity
-                                Next
-                            End SyncLock
-                            DoForces()
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Velocity += d(j) * Objects(i).Acceleration
-                            Next
-                        Next
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Position += c(7) * Objects(i).Velocity
-                            Next
-                        End SyncLock
-                        DoCollisions()
-                        ComputationControl()
-                    Loop
-                Else
-                    Do While Running
-                        For j = 0 To 6
-                            SyncLock LockRayData
-                                For i = 0 To ObjectCount - 1
-                                    Objects(i).Position += c(j) * Objects(i).Velocity
-                                Next
-                            End SyncLock
-                            DoForces()
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Velocity += d(j) * Objects(i).Acceleration
-                            Next
-                        Next
-                        SyncLock LockRayData
-                            For i = 0 To ObjectCount - 1
-                                Objects(i).Position += c(7) * Objects(i).Velocity
-                            Next
-                        End SyncLock
-                        If Config.Collisions.Enabled Then DoCollisions()
-                        ComputationControl()
-                    Loop
-                End If
-            End If
+        If Config.Settings.IntegrationMethod = 0 Then
+            DoComputeEuler(Config.Settings.TimeStep)
+        ElseIf Config.Settings.IntegrationMethod = 1 Then
+            DoComputeVerlet(Config.Settings.TimeStep)
+        ElseIf Config.Settings.IntegrationMethod = 2 Then
+            DoCompute4thSymplectic(Config.Settings.TimeStep)
+        ElseIf Config.Settings.IntegrationMethod = 3 Then
+            DoCompute6thSymplectic(Config.Settings.TimeStep)
         End If
     End Sub
     Private Sub DoForces()
@@ -996,10 +1115,10 @@ Public Class SimulationRuntime
                     End If
                     If DidCollide Then
                         'Move the objects back to where they would have been at the time of the collision
-                        SyncLock LockRayData
-                            Objects(i).Position = ((Objects(i).Position - Objects(i).OldPosition) * CollisionTime) + Objects(i).OldPosition
-                            Objects(Q).Position = ((Objects(Q).Position - Objects(Q).OldPosition) * CollisionTime) + Objects(Q).OldPosition
-                        End SyncLock
+                        Render.RenderLock.EnterWriteLock()
+                        Objects(i).Position = ((Objects(i).Position - Objects(i).OldPosition) * CollisionTime) + Objects(i).OldPosition
+                        Objects(Q).Position = ((Objects(Q).Position - Objects(Q).OldPosition) * CollisionTime) + Objects(Q).OldPosition
+                        Render.RenderLock.ExitWriteLock()
                         'Recalculate thier seperation
                         QtoIPosistion = Objects(Q).Position - Objects(i).Position
                         QtoIDistanceSqd = QtoIPosistion.MagnitudeSquared
@@ -1043,10 +1162,10 @@ Public Class SimulationRuntime
 
                 If Config.Collisions.Interpolate Then
                     'Move the objects forward by the remaining time
-                    SyncLock LockRayData
-                        Objects(i).Position += Objects(i).Velocity * (Config.Settings.TimeStep * (1 - CollisionTime))
-                        Objects(Q).Position += Objects(Q).Velocity * (Config.Settings.TimeStep * (1 - CollisionTime))
-                    End SyncLock
+                    Render.RenderLock.EnterWriteLock()
+                    Objects(i).Position += Objects(i).Velocity * (Config.Settings.TimeStep * (1 - CollisionTime))
+                    Objects(Q).Position += Objects(Q).Velocity * (Config.Settings.TimeStep * (1 - CollisionTime))
+                    Render.RenderLock.ExitWriteLock()
                 End If
 
                 '~~~~~~~~~~~~~~BREAKABLE OBJECT OBJECT COLLISION~~~~~~~~~~~~
@@ -1085,22 +1204,37 @@ Public Class SimulationRuntime
     End Sub
     Private Sub SetThreads(ByRef ComputeThreads As Integer, ByRef RenderThreads As Integer)
         If ComputeThreads > 0 Then
-            ComputingThread = New Thread(AddressOf DoCompute)
-            ComputingThread.IsBackground = True
+            ComputingThread = New Thread(AddressOf DoCompute) With {
+                .Name = "Compute",
+                .IsBackground = True
+            }
             ComputingThread.Start()
         End If
 
 
         If Config.Render.Mode < 2 Then
             ReDim RenderThread(0)
-            RenderThread(0) = New Thread(AddressOf DoDXRender)
-            RenderThread(0).IsBackground = True
+            RenderThread(0) = New Thread(AddressOf DoDXRender) With {
+                .Name = "DXRender",
+                .IsBackground = True
+            }
+
             RenderThread(0).Start()
         Else
             ReDim RenderThread(RenderThreads - 1)
             For i = 0 To RenderThreads - 1
-                RenderThread(i) = New Thread(AddressOf DoRayRender)
-                RenderThread(i).IsBackground = True
+                RenderThread(i) = New Thread(AddressOf DoRayRender) With {
+                    .Name = "RayRender" & i,
+                    .IsBackground = True
+                }
+            Next
+
+            Dim sleepTime As Integer = 1000 \ RenderThreads
+            For i = 0 To RenderThreads - 1
+                If i <> 0 Then
+                    'Space out the threads to reduce contention
+                    Thread.Sleep(sleepTime)
+                End If
                 RenderThread(i).Start()
             Next
         End If
@@ -1109,9 +1243,9 @@ Public Class SimulationRuntime
 
 #Region "Render"
     Private Sub RenderControl()
-        'TODO This doesn't work at all
+
         RenderCounter.FullCount += 1
-        'Limit the frame rate
+        'Limit the frame rate 'TODO This doesn't work at all
         If Config.Render.MaxFPS <> 0 And ((Config.Render.Mode = 2) Or (Not Config.Render.VSync)) Then
             QueryPerformanceCounter(RenderCounter.LimitStart)
             Do
@@ -1206,14 +1340,14 @@ Public Class SimulationRuntime
 
             'Initialize transparency settings
             If Render.Transparency Then
-                Render.Device.RenderState.SourceBlend = Microsoft.DirectX.Direct3D.Blend.SourceAlpha
-                Render.Device.RenderState.DestinationBlend = Microsoft.DirectX.Direct3D.Blend.InvSourceAlpha
+                Render.Device.RenderState.SourceBlend = Blend.SourceAlpha
+                Render.Device.RenderState.DestinationBlend = Blend.InvSourceAlpha
                 Render.Device.RenderState.AlphaBlendEnable = True
             End If
 
             'Clear the device and paint the background
-            Render.Device.Clear(Microsoft.DirectX.Direct3D.ClearFlags.ZBuffer, Config.Render.BackgroundColor, 1, 0)
-            Render.Device.Clear(Microsoft.DirectX.Direct3D.ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
+            Render.Device.Clear(ClearFlags.ZBuffer, Config.Render.BackgroundColor, 1, 0)
+            Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
 
             'Setup the view port
             Render.Device.Transform.Projection = Matrix.PerspectiveFovLH(Config.Camera.HFov, Config.Render.AspectRatio, 1 / (Config.Render.Scale * 10), Config.Render.Scale * 2000)
@@ -1249,8 +1383,8 @@ Public Class SimulationRuntime
                 Next
             End If
         Else ' Raytracing
-            Render.Device.RenderState.SourceBlend = Microsoft.DirectX.Direct3D.Blend.SourceAlpha
-            Render.Device.RenderState.DestinationBlend = Microsoft.DirectX.Direct3D.Blend.InvSourceAlpha
+            Render.Device.RenderState.SourceBlend = Blend.SourceAlpha
+            Render.Device.RenderState.DestinationBlend = Blend.InvSourceAlpha
             Render.Device.RenderState.AlphaBlendEnable = True
         End If
 
@@ -1260,56 +1394,58 @@ Public Class SimulationRuntime
         Return True
     End Function
     Private Sub DoDXRender()
+
+
         Do While Running
             'Start the scene
             Render.Device.BeginScene()
 
             'Clear the Z buffer
-            Render.Device.Clear(Microsoft.DirectX.Direct3D.ClearFlags.ZBuffer, Config.Render.BackgroundColor, 1, 0)
+            Render.Device.Clear(ClearFlags.ZBuffer, Config.Render.BackgroundColor, 1, 0)
 
             If Camera.DidMove Then
                 'Clear Traces regardless of Trace Display setting
-                Render.Device.Clear(Microsoft.DirectX.Direct3D.ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
+                Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
 
                 'Change the view port
                 Render.Device.Transform.View = Matrix.LookAtLH(Camera.Position.ToVector3, Camera.Target.ToVector3, Config.Camera.UpVector.ToVector3)
             Else
                 'Clear Traces
                 If Not Config.Render.TraceObjects Then
-                    Render.Device.Clear(Microsoft.DirectX.Direct3D.ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
+                    Render.Device.Clear(ClearFlags.Target, Config.Render.BackgroundColor, 1, 0)
                 End If
             End If
 
-            SyncLock LockDX
-                For i = 0 To ObjectCount - 1
+            'TODO: Not everything here needs to be locked with the simulation
+            Render.RenderLock.EnterReadLock()
+            For i = 0 To ObjectCount - 1
+                'If the object doesn't exist create it on the fly
+                If Objects(i).Mesh = Nothing Then
+                    Objects(i).CreateMesh(Render.Device, Config.Render.Scale, Config.Render.SphereComplexity, Render.SphereSecondaryComplexity)
+                    Objects(i).CreateMaterial()
+                End If
 
-                    'If the object doesn't exist create it on the fly
-                    If Objects(i).Mesh = Nothing Then
-                        Objects(i).CreateMesh(Render.Device, Config.Render.Scale, Config.Render.SphereComplexity, Render.SphereSecondaryComplexity)
-                        Objects(i).CreateMaterial()
-                    End If
-
-                    'Change WireFrame settings
-                    If Objects(i).Wireframe = True Then
-                        Render.Device.RenderState.FillMode = FillMode.WireFrame
-                        Render.Device.RenderState.CullMode = Cull.None
+                'Change WireFrame settings
+                If Objects(i).Wireframe = True Then
+                    Render.Device.RenderState.FillMode = FillMode.WireFrame
+                    Render.Device.RenderState.CullMode = Cull.None
+                Else
+                    Render.Device.RenderState.FillMode = FillMode.Solid
+                    'Inside the current box
+                    If Camera.Position.X < Objects(i).LimitPositive.X And Camera.Position.X > Objects(i).LimitNegative.X And Camera.Position.Y < Objects(i).LimitPositive.Y And Camera.Position.Y > Objects(i).LimitNegative.Y And Camera.Position.Z < Objects(i).LimitPositive.Z And Camera.Position.Z > Objects(i).LimitNegative.Z Then 'Inside box
+                        Render.Device.RenderState.CullMode = Cull.Clockwise
                     Else
-                        Render.Device.RenderState.FillMode = FillMode.Solid
-                        'Inside the current box
-                        If Camera.Position.X < Objects(i).LimitPositive.X And Camera.Position.X > Objects(i).LimitNegative.X And Camera.Position.Y < Objects(i).LimitPositive.Y And Camera.Position.Y > Objects(i).LimitNegative.Y And Camera.Position.Z < Objects(i).LimitPositive.Z And Camera.Position.Z > Objects(i).LimitNegative.Z Then 'Inside box
-                            Render.Device.RenderState.CullMode = Microsoft.DirectX.Direct3D.Cull.Clockwise
-                        Else
-                            Render.Device.RenderState.CullMode = Microsoft.DirectX.Direct3D.Cull.CounterClockwise
-                        End If
+                        Render.Device.RenderState.CullMode = Cull.CounterClockwise
                     End If
+                End If
 
-                    'Draw the object in its place
-                    Render.Device.Transform.World = Matrix.RotationX(ToSingle(Objects(i).Rotation.X)) * Matrix.RotationY(ToSingle(Objects(i).Rotation.Y)) * Matrix.RotationZ(ToSingle(Objects(i).Rotation.Z)) * Matrix.Translation(ToSingle(Config.Render.Scale * Objects(i).Position.X), ToSingle(Config.Render.Scale * Objects(i).Position.Y), ToSingle(Config.Render.Scale * Objects(i).Position.Z))
+                'Draw the object in its place
+                Render.Device.Transform.World = Matrix.RotationX(ToSingle(Objects(i).Rotation.X)) * Matrix.RotationY(ToSingle(Objects(i).Rotation.Y)) * Matrix.RotationZ(ToSingle(Objects(i).Rotation.Z)) * Matrix.Translation(ToSingle(Config.Render.Scale * Objects(i).Position.X), ToSingle(Config.Render.Scale * Objects(i).Position.Y), ToSingle(Config.Render.Scale * Objects(i).Position.Z))
 
-                    Render.Device.Material = Objects(i).Material
-                    Objects(i).Mesh.DrawSubset(0)
-                Next
-            End SyncLock
+                Render.Device.Material = Objects(i).Material
+                Objects(i).Mesh.DrawSubset(0)
+            Next
+            Render.RenderLock.ExitReadLock()
 
             'End the scene
             Render.Device.EndScene()
@@ -1324,14 +1460,14 @@ Public Class SimulationRuntime
         Dim RenderWidth As Integer = Config.Render.Width
 
         'Data loaded from Simulation - Dynamic
-        Dim CameraScreenHunit As New XYZ
-        Dim CameraScreenWUnit As New XYZ
-        Dim CurrentObjectCount As Integer = 0
+        Dim CameraScreenHunit As XYZ
+        Dim CameraScreenWUnit As XYZ
+        Dim CurrentObjectCount As Integer
         Dim ObjectRadius() As Double
         Dim ObjectRadiusSqrd() As Double
         Dim ObjectPosition() As XYZ
         Dim ObjectColor() As Color
-        Dim CameraPosition As New XYZ
+        Dim CameraPosition As XYZ
 
         'Calculated - used in TraceRay
         Dim RayDirection As New XYZ
@@ -1353,7 +1489,7 @@ Public Class SimulationRuntime
 
         'Used in iterarting through each pixel
         Dim TargetPixel As New XYZ
-        Dim CameraPositionToTarget As New XYZ
+        Dim CameraPositionToTarget As XYZ
         Dim HalfRenderWidth As Double = RenderWidth / 2
         Dim HalfRenderHeight As Double = RenderWidth / 2
         Dim Ray_Temp_XYZ As XYZ
@@ -1391,18 +1527,18 @@ Public Class SimulationRuntime
 
         'Load initial object values that otherwise only get loaded if a change is made to the objects
         'TODO: Replace this with a read-write lock. Don't lock with other render threads only the simulation thread
-        SyncLock LockRayData
-            CurrentObjectCount = ObjectCount
-            ReDim ObjectRadius(CurrentObjectCount - 1)
-            ReDim ObjectColor(CurrentObjectCount - 1)
-            For i = 0 To CurrentObjectCount - 1
-                ObjectRadius(i) = Objects(i).Radius
-                ObjectColor(i) = Objects(i).Color
-            Next
-        End SyncLock
+        Render.RenderLock.EnterReadLock()
+        CurrentObjectCount = ObjectCount
+        ReDim ObjectRadius(CurrentObjectCount - 1)
+        ReDim ObjectColor(CurrentObjectCount - 1)
+        For i = 0 To CurrentObjectCount - 1
+            ObjectRadius(i) = Objects(i).Radius
+            ObjectColor(i) = Objects(i).Color
+        Next
+        Render.RenderLock.ExitReadLock()
 
         'Pre-dimension our arrays
-        'Do it outside the SyncLock for better efficiency
+        'Do it outside the Lock for better efficiency
         ReDim CameratoObject(CurrentObjectCount - 1)
         ReDim CameratoObjectMagSqrd(CurrentObjectCount - 1)
         ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
@@ -1420,35 +1556,35 @@ Public Class SimulationRuntime
 
             'Load updated Values
             'TODO: Replace this with a read-write lock. Don't lock with other render threads only the simulation thread
-            SyncLock LockRayData
-                'Update the camera changes
-                CameraScreenHunit = Camera.ScreenHeightUnit
-                CameraScreenWUnit = Camera.ScreenWidthUnit
-                CameraPosition = Camera.Position
-                CameraPositionToTarget = Camera.Target - CameraPosition
+            Render.RenderLock.EnterReadLock()
+            'Update the camera changes
+            CameraScreenHunit = Camera.ScreenHeightUnit
+            CameraScreenWUnit = Camera.ScreenWidthUnit
+            CameraPosition = Camera.Position
+            CameraPositionToTarget = Camera.Target - CameraPosition
 
-                'If the objects didn't change then only update their position
-                'TODO: This assumes objects are only ever added
-                If CurrentObjectCount <> ObjectCount Then
-                    CurrentObjectCount = ObjectCount
-                    ObjectCountChanged = True
-                    ReDim ObjectRadius(CurrentObjectCount - 1)
-                    ReDim ObjectColor(CurrentObjectCount - 1)
-                    ReDim ObjectPosition(CurrentObjectCount - 1)
-                    For i = 0 To CurrentObjectCount - 1
-                        ObjectRadius(i) = Objects(i).Radius
-                        ObjectColor(i) = Objects(i).Color
-                    Next
-                End If
-
-                'Always update the Object positions, regardless of object count
+            'If the objects didn't change then only update their position
+            'TODO: This assumes objects are only ever added
+            If CurrentObjectCount <> ObjectCount Then
+                CurrentObjectCount = ObjectCount
+                ObjectCountChanged = True
+                ReDim ObjectRadius(CurrentObjectCount - 1)
+                ReDim ObjectColor(CurrentObjectCount - 1)
+                ReDim ObjectPosition(CurrentObjectCount - 1)
                 For i = 0 To CurrentObjectCount - 1
-                    ObjectPosition(i) = Objects(i).Position
+                    ObjectRadius(i) = Objects(i).Radius
+                    ObjectColor(i) = Objects(i).Color
                 Next
-            End SyncLock
+            End If
+
+            'Always update the Object positions, regardless of object count
+            For i = 0 To CurrentObjectCount - 1
+                ObjectPosition(i) = Objects(i).Position
+            Next
+            Render.RenderLock.ExitReadLock()
 
             'Re-dimension our arrays
-            'Do it outside the SyncLock for better efficiency
+            'Do it outside the Lock for better efficiency
             If (ObjectCountChanged) Then
                 ObjectCountChanged = False
                 ReDim ObjectRadiusSqrd(CurrentObjectCount - 1)
@@ -1462,7 +1598,7 @@ Public Class SimulationRuntime
             End If
 
             'Calculate new values based on camera movement and object movement
-            'Do it outside the SyncLock for better efficiency
+            'Do it outside the Lock for better efficiency
             For i = 0 To CurrentObjectCount - 1
                 CameratoObject(i) = ObjectPosition(i) - CameraPosition
                 CameratoObjectMagSqrd(i) = CameratoObject(i).MagnitudeSquared
