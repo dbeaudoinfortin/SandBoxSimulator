@@ -706,6 +706,7 @@ Partial Class Distribution
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "SandBox Simulator - Distribution"
         Me.TopMost = True
+
         CType(Me.tbEvenMin, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbEvenMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbRandomMin, System.ComponentModel.ISupportInitialize).EndInit()

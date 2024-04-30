@@ -10,7 +10,7 @@
   <trustInfo>
     <security>
       <applicationRequestMinimum>
-        <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" Unrestricted="true" />
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
         <defaultAssemblyRequest permissionSetReference="Custom" />
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
@@ -38,17 +38,7 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
     </dependentAssembly>
   </dependency>
   <dependency>
@@ -58,8 +48,8 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>xMfgNHc6JAkJMygU9JlzBXWhzXE=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lC6Y8UI3NUdJPxOxThYDskIIUa/wE9MIW62ntrIhTZw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -70,8 +60,8 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wdzd2G+fxjDMAjGs17cy/VXcX2M=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8zWdXkGx1P7HIwV5pZPkD+RPav36zR4rvlLuBthGhvs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -82,20 +72,20 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LpB8loigJVOPGy0M8YYKKuSf0uk=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LuQdTVkaOdZI6Q201H0PoFV/1oGXdW7i7pT83k2CDPo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SandBox Simulator.exe" size="2364792">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SandBox Simulator.exe" size="2105208">
       <assemblyIdentity name="SandBox Simulator" version="4.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+f9/cdt2qf/llYckDE1M/SSSD98=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LJ4LmGdWtfIxlCl6uO5iIyr59ThKf5GNx1CUDtc+i9E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -104,17 +94,17 @@
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>DejEJDI0aM+5wSXUe2A2tZ5POhE=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>RzCh8Ve/IPpos3s70splaRXbxy2aMfgMkV9uAQGkWmE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SandBox Simulator.exe.config" size="1272">
+  <file name="SandBox Simulator.exe.config" size="1217">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Ks7q0KJH0wzsidA3OAwWXD8vu7M=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2U+M/blo0/XYHkwRkUh2ThgbnFdiPKiArQMDI0513HM=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=DBF\David" issuerKeyHash="19503b79e2e016cd66c0870cd8fa17bdee977d8c" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>cgOkdgwQ5BUssaPmkZnTVb1gbrc=</DigestValue></Reference></SignedInfo><SignatureValue>tWYzDFXL2C9MEa5UmjpOtnBbdJapt3PxdfL+u3FOEgJiv7WnMfcTq6oEoUIEePFg3dCNPjiCdaSqeYUIgyOzgQ/ohVImVUPHrx28lKUPeGrHXQ8BdyKc+gnUx+H0XZRbOhIVAPmdrlEXoTk/WRYUiGKBUZRSiUnswrhmZh2X3Lk=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>uFbkrr9+5hI/j3cF33P7cpjHcxuNj8qJfgVaxQhCsxxOAxKUtJSk7F9Pk0eQTzD78DLJfLVHhHiM7g4WmLwxYvY27eFSQH3a6Pvahh2/vEiLIYy1w8J0hYOOnJGtWLoopXik7bzTA+OyWcHy076XqzewPMj+KyMjUkJImN6JVaE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="b76e60bd55d39991e6a3b12c15e4100c76a40372" Description="" Url=""><as:assemblyIdentity name="SandBox Simulator.exe" version="4.1.0.0" publicKeyToken="5212a4720f3076b8" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DBF\David</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>/EzAzJrcosMETbYkZiGRLVV3nbU=</DigestValue></Reference></SignedInfo><SignatureValue>Ge88O4+iCFifCgpegnP3w4RBDigcPruCNvzDdD6L746eIJesNSMpSaNIDBjCJZ48YFqx+lBBZp+wu2iN+1Pw/m0sogjK64HAMqnnVKUp2lkO/wJd0ifst07vsVn7Wbfb15OVlqVbjVpQp3gdIM2sDXHPY/01PjqNwuwBzZgZOyg=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>uFbkrr9+5hI/j3cF33P7cpjHcxuNj8qJfgVaxQhCsxxOAxKUtJSk7F9Pk0eQTzD78DLJfLVHhHiM7g4WmLwxYvY27eFSQH3a6Pvahh2/vEiLIYy1w8J0hYOOnJGtWLoopXik7bzTA+OyWcHy076XqzewPMj+KyMjUkJImN6JVaE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBvTCCASagAwIBAgIQN7Azr3uTF4lC3xSrNpnW3DANBgkqhkiG9w0BAQUFADAdMRswGQYDVQQDHhIARABCAEYAXABEAGEAdgBpAGQwHhcNMjQwNDI2MDMyOTU2WhcNMjUwNDI2MDkyOTU2WjAdMRswGQYDVQQDHhIARABCAEYAXABEAGEAdgBpAGQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALhW5K6/fuYSP493Bd9z+3KYx3MbjY/KiX4FWsUIQrMcTgMSlLSUpOxfT5NHkE8w+/AyyXy1R4R4jO4OFpi8MWL2Nu3hUkB92uj72oYdv7xIiyGMtcPCdIWDjpyRrVi6KKV4pO280wPjslnB8tO+l6s3sDzI/isjI1JCSJjeiVWhAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAKkdCyL/H9xOESa2xKpfAftlVaFC/r2VuaLM6GPNrBwQyxoJJNHT5u4nznnYZ/ZkVw6FV4I2K68GPl2SYXwCilIze9loVdSjjD7YIgoaOys3QfAXI0hLJEkvZogClU/TtuFeFk7AEcj4XorYdNcEKHaNhE+4Oy8vVjsEeXhyero4=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=DBF\David" issuerKeyHash="19503b79e2e016cd66c0870cd8fa17bdee977d8c" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>9NZTRv1XomEA29MCwDaZ1jt0Xg8=</DigestValue></Reference></SignedInfo><SignatureValue>esWQ36JyNfz7mB31LF7XNoW7JVxfq+SSmT6OCmJ6ldhFDAeon3xo3jLjeqYYPr5ZIJWbmnWgiDv0OpXR8Tr1ZhLNYdNaz65Zc0iTYDqGdCER6uMvLYr85EDNUyOQtj6vbGCPUgE9cxCPfFCtVoegEAgADBZrL/yHho3Wko7XUEM=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>uFbkrr9+5hI/j3cF33P7cpjHcxuNj8qJfgVaxQhCsxxOAxKUtJSk7F9Pk0eQTzD78DLJfLVHhHiM7g4WmLwxYvY27eFSQH3a6Pvahh2/vEiLIYy1w8J0hYOOnJGtWLoopXik7bzTA+OyWcHy076XqzewPMj+KyMjUkJImN6JVaE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="0f5e743bd69936c002d3db0061a257fd4653d6f4" Description="" Url=""><as:assemblyIdentity name="SandBox Simulator.exe" version="4.1.0.0" publicKeyToken="5212a4720f3076b8" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DBF\David</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>eKVfRRNXEz3N7jB3y4vWA9201gM=</DigestValue></Reference></SignedInfo><SignatureValue>cLqGpQTIc7omjnKA1hpshWuNrDvZ2XKUl/UK/U2OLh8GqR3B2cPOvCcv29cnpE/pLRWrGSsLwRvv8RyhxxFGvMTCL3tg+qSPQmR9S7rycHUmu4WMwreYvxot/NocwVlsGCBjcRGtyD3NPCzE3sWK8XzLpTC7Ex/bJyJNV/mYVrU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>uFbkrr9+5hI/j3cF33P7cpjHcxuNj8qJfgVaxQhCsxxOAxKUtJSk7F9Pk0eQTzD78DLJfLVHhHiM7g4WmLwxYvY27eFSQH3a6Pvahh2/vEiLIYy1w8J0hYOOnJGtWLoopXik7bzTA+OyWcHy076XqzewPMj+KyMjUkJImN6JVaE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBvTCCASagAwIBAgIQN7Azr3uTF4lC3xSrNpnW3DANBgkqhkiG9w0BAQUFADAdMRswGQYDVQQDHhIARABCAEYAXABEAGEAdgBpAGQwHhcNMjQwNDI2MDMyOTU2WhcNMjUwNDI2MDkyOTU2WjAdMRswGQYDVQQDHhIARABCAEYAXABEAGEAdgBpAGQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALhW5K6/fuYSP493Bd9z+3KYx3MbjY/KiX4FWsUIQrMcTgMSlLSUpOxfT5NHkE8w+/AyyXy1R4R4jO4OFpi8MWL2Nu3hUkB92uj72oYdv7xIiyGMtcPCdIWDjpyRrVi6KKV4pO280wPjslnB8tO+l6s3sDzI/isjI1JCSJjeiVWhAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAKkdCyL/H9xOESa2xKpfAftlVaFC/r2VuaLM6GPNrBwQyxoJJNHT5u4nznnYZ/ZkVw6FV4I2K68GPl2SYXwCilIze9loVdSjjD7YIgoaOys3QfAXI0hLJEkvZogClU/TtuFeFk7AEcj4XorYdNcEKHaNhE+4Oy8vVjsEeXhyero4=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

@@ -4,7 +4,7 @@
 
 SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It let's you play around with different Newtonian physics concepts and visualize them.
 
-I originally developed this application in 2008 as a fun side project. At the time there was nothing that lets you quickly visualize many types of physical interations. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required.
+I originally developed this application in 2008 as a fun side project. At the time there was nothing that lets you quickly visualize many types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required.
 
 It was originally designed to give aproximate visual solutions to n-body problems of point masses, but it now supports much more:
 
@@ -40,6 +40,7 @@ It was originally designed to give aproximate visual solutions to n-body problem
 **Objects**
 - Point Mass Spheres
 - Bounding Boxes
+- Infinite Planes
 - Physical Attributes
   - Mass
   - Charge
@@ -71,11 +72,11 @@ It was originally designed to give aproximate visual solutions to n-body problem
 - Conic Falloff (Spot Lights)
 
 # Requirements
-- Microsoft .Net Framework version 3.5
-- Windows XP SP2 or higher.
+- Microsoft .Net Framework version 4.8.1
+- Windows 7 or higher.
 - A DirectX 9 compatible GPU.
 - A screen resolution of 1024 x 768 or higher.
-- A modern graphics accelerator card is strongly recommened. SandBox Simulator will run with integrated graphics but performance will be significantly reduced.
+- A modern graphics accelerator card is strongly recommend. SandBox Simulator will run with integrated graphics but performance will be significantly reduced.
 - A dual-core CPU is strongly recommended.
 
 # Visualization Controls
@@ -86,7 +87,7 @@ It was originally designed to give aproximate visual solutions to n-body problem
 Note that repositioning of the camera clears the trace history of the objects when object path tracing is enabled.
 
 # Performance Notes
-- SandBox Simulator takes advantage of multithreading and will run best on Dual-Core or Quad-Core processors. This allows all rendering and overhead to run on one core while calculations run on the other.
+- SandBox Simulator takes advantage of multi-threading and will run best on Dual-Core or Quad-Core processors. This allows all rendering and overhead to run on one core while calculations run on the other.
 - The sample simulations in the Test Simulations directory may run at different speeds depending on your machine. You can change the speed of a simulation by increasing or decreasing the time step, often at the expense of accuracy. As a reference, the sample Figure 8, included in the Simulations folder, runs at about 2 400 000 calculations per second on a Core 2 Duo E6600 (2.4GHz).
 - Reducing time step and increasing the number of calculations per second does not always improve accuracy due to the limitations of floating point numbers.
 - Since SandBox Simulator is calculation heavy, its performance is based primarily on the performance of the floating point unit of the processor. This means that overall performance tends to vary linearly with the clock speed of the processor more than anything else.

@@ -17,6 +17,8 @@ Public Class ControlPanel
     Public ObjectReflectivity As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
     Public ObjectTransparency As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
     Public ObjectRefractiveIndex As SimulationConfigDistribution(Of Double) = New SimulationConfigDistributionDouble
+
+    Private hasLoaded As Boolean = False 'Used to avoid form checks during component initialization
     Private Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
         Dim strContents As String
         Dim objReader As System.IO.StreamReader
@@ -783,6 +785,10 @@ Public Class ControlPanel
         End If
     End Sub
     Private Sub CheckConditionals()
+        'Don't do this during loading
+        If Not hasLoaded Then Return
+
+        'TODO: Let's simply this
         'RENDER
         If cbRender.SelectedIndex < 2 Then 'Using Direct X
             txtRenderThreads.Enabled = False
@@ -1565,9 +1571,11 @@ Public Class ControlPanel
         End If
         UpdateForm()
         SetAllEnabled(True)
+        hasLoaded = True
+        CheckConditionals()
         ConfigModified = False
     End Sub
-    Private Sub cmdStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdStart.Click
+    Private Sub CmdStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdStart.Click
         If cmdStart.Text = "&Start Simulation" Then
             If Not IsValidSets() Then Exit Sub
             If ObjectRoomLeft() < 0 Then
@@ -1633,7 +1641,7 @@ Public Class ControlPanel
             End If
         End If
     End Sub
-    Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
+    Private Sub CmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
         If ConfigModified = True Then
             If MsgBox("Loading a new file will replace your current configuration." & Chr(13) & "Are you sure you want to proceed?", MsgBoxStyle.YesNo, "Loading...") = vbNo Then
                 Exit Sub
@@ -1662,23 +1670,23 @@ Public Class ControlPanel
             ConfigModified = False
         End If
     End Sub
-    Private Sub plRenderBackColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plRenderBackColor.Click
+    Private Sub PlRenderBackColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plRenderBackColor.Click
         ColorDialog.Color = plRenderBackColor.BackColor
         ColorDialog.ShowDialog()
         plRenderBackColor.BackColor = ColorDialog.Color
         ConfigModified = True
     End Sub
-    Private Sub chCamera_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chCamera.CheckedChanged
+    Private Sub ChCamera_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chCamera.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub plLightColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plLightColor.Click
+    Private Sub PlLightColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plLightColor.Click
         ColorDialog.Color = plLightColor.BackColor
         ColorDialog.ShowDialog()
         plLightColor.BackColor = ColorDialog.Color
         ConfigModified = True
     End Sub
-    Private Sub listLights_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listLights.SelectedIndexChanged
+    Private Sub ListLights_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listLights.SelectedIndexChanged
         If listLights.SelectedIndex <> -1 Then
             txtLightName.Text = Simulation.Config.Lights(listLights.SelectedIndex).Name
             plLightColor.BackColor = Simulation.Config.Lights(listLights.SelectedIndex).Color
@@ -1709,7 +1717,7 @@ Public Class ControlPanel
         End If
         CheckConditionals()
     End Sub
-    Private Sub cmdAddLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightAdd.Click
+    Private Sub CmdAddLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightAdd.Click
         If Not IsValidLight() = True Then Exit Sub
         Simulation.Config.EnlargeLights()
         InsertLight(Simulation.Config.LightCount - 1)
@@ -1744,7 +1752,7 @@ Public Class ControlPanel
         Simulation.Config.Lights(i).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
         Simulation.Config.Lights(i).Falloff = ToSingle(txtLightFalloff.Text)
     End Sub
-    Private Sub cmdReplaceLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightReplace.Click
+    Private Sub CmdReplaceLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightReplace.Click
         If IsValidLight() = True Then
             Dim index As Integer
             index = listLights.SelectedIndex
@@ -1779,7 +1787,7 @@ Public Class ControlPanel
             ConfigModified = True
         End If
     End Sub
-    Private Sub cmdRemoveLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightRemove.Click
+    Private Sub CmdRemoveLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightRemove.Click
         If MsgBox("Are you sure you want to remove the selected light?", MsgBoxStyle.YesNo, "Remove?") = vbYes Then
             Simulation.Config.RemoveLight(listLights.SelectedIndex)
             listLights.Items.RemoveAt(listLights.SelectedIndex)
@@ -1787,15 +1795,15 @@ Public Class ControlPanel
             ConfigModified = True
         End If
     End Sub
-    Private Sub chForces_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chForces.CheckedChanged
+    Private Sub ChForces_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chForces.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub chField_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chField.CheckedChanged
+    Private Sub ChField_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chField.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub chDrag_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chDrag.CheckedChanged
+    Private Sub ChDrag_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chDrag.CheckedChanged
         CheckConditionals()
         ConfigModified = True
     End Sub
