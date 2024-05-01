@@ -121,8 +121,6 @@ Public Class SimulationRuntime
                     .Charge = Group.Charge.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount),
                     .Position = Group.Position.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount),
                     .Velocity = Group.Velocity.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount),
-                    .Transparency = Min(Group.Transparency.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount), 255), 'byte between 0 and 255
-                    .HighlightColor = Group.Highlight.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount),
                     .HighlightSharpness = Min(Group.Sharpness.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount), 200), 'double between 0 and 200
                     .Reflectivity = Min(Group.Reflectivity.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount), 100), 'percentage between 0 and 100
                     .RefractiveIndex = Group.RefractiveIndex.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
@@ -147,14 +145,23 @@ Public Class SimulationRuntime
                     End If
                 End If
 
+                'Transparency
+                Dim Transparency As Byte = ToByte(Min(Group.Transparency.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount), 255))
+                Objects(ObjectCount).Transparency = Transparency
+                Render.Transparency = Render.Transparency Or (Transparency) < 255
+
                 'COLOR - Applies to all Object Types
                 'Apply the object colour based on the base colour and the transparency
                 Dim ObjectColor As Color = Group.Color.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
-                Objects(ObjectCount).Color = Color.FromArgb(ToByte(Objects(ObjectCount).Transparency), ObjectColor.R, ObjectColor.G, ObjectColor.B)
+                Objects(ObjectCount).Color = Color.FromArgb(Transparency, ObjectColor.R, ObjectColor.G, ObjectColor.B)
+
+                Dim HighlightColor As Color = Group.Highlight.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
+                Objects(ObjectCount).HighlightColor = Color.FromArgb(Transparency, HighlightColor.R, HighlightColor.G, HighlightColor.B)
 
                 'Total number of objects created 
                 ObjectCount += 1
             Next
+
         Next
     End Sub
     Private Sub ConvertLightConfigstoLights()

@@ -9,7 +9,16 @@
         Dim CameraTargetV3 As Vector3 = Sim.Camera.Target.ToVector3
         Dim CameraUpVector As XYZ
         Dim OldCameraPosition As XYZ
-        Dim CameraPosition As XYZ
+        Dim CameraPosition As XYZ = Sim.Camera.Position
+        Dim RenderObjects() As SimulationObject = Sim.Objects
+
+        If Sim.Render.Transparency Then
+            ReDim RenderObjects(Sim.ObjectCount - 1)
+            For i = 0 To Sim.ObjectCount - 1
+                RenderObjects(i) = Sim.Objects(i)
+            Next
+            SortObjectsByDepth(RenderObjects, CameraPosition)
+        End If
 
         InitRenderControl()
 
@@ -41,27 +50,41 @@
 
             'TODO: Not everything here needs to be locked with the simulation
             Sim.Render.RenderLock.EnterReadLock()
+
+            If Sim.Render.Transparency Then
+                'Objects may have been added
+                If (Sim.ObjectCount <> RenderObjects.Length) Then
+                    ReDim RenderObjects(Sim.ObjectCount - 1)
+                    For i = 0 To Sim.ObjectCount - 1
+                        RenderObjects(i) = Sim.Objects(i)
+                    Next
+                End If
+
+                'Need to sort objects by depth, always, objects may have moved
+                SortObjectsByDepth(RenderObjects, CameraPosition)
+            End If
+
             For i = 0 To Sim.ObjectCount - 1
                 'If the object doesn't exist create it on the fly
-                If Sim.Objects(i).Mesh = Nothing Then
-                    Sim.Objects(i).CreateMesh(Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
-                    Sim.Objects(i).CreateMaterial()
+                If RenderObjects(i).Mesh = Nothing Then
+                    RenderObjects(i).CreateMesh(Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
+                    RenderObjects(i).CreateMaterial()
                 End If
 
                 'Change WireFrame settings
-                If Sim.Objects(i).Wireframe = True Then
+                If RenderObjects(i).Wireframe = True Then
                     Sim.Render.Device.RenderState.FillMode = FillMode.WireFrame
                     Sim.Render.Device.RenderState.CullMode = Cull.None
                 Else
                     Sim.Render.Device.RenderState.FillMode = FillMode.Solid
                     'Inside the current box
                     If _
-                             CameraPosition.X < Sim.Objects(i).LimitPositive.X _
-                         And CameraPosition.X > Sim.Objects(i).LimitNegative.X _
-                         And CameraPosition.Y < Sim.Objects(i).LimitPositive.Y _
-                         And CameraPosition.Y > Sim.Objects(i).LimitNegative.Y _
-                         And CameraPosition.Z < Sim.Objects(i).LimitPositive.Z _
-                         And CameraPosition.Z > Sim.Objects(i).LimitNegative.Z _
+                             CameraPosition.X < RenderObjects(i).LimitPositive.X _
+                         And CameraPosition.X > RenderObjects(i).LimitNegative.X _
+                         And CameraPosition.Y < RenderObjects(i).LimitPositive.Y _
+                         And CameraPosition.Y > RenderObjects(i).LimitNegative.Y _
+                         And CameraPosition.Z < RenderObjects(i).LimitPositive.Z _
+                         And CameraPosition.Z > RenderObjects(i).LimitNegative.Z _
                     Then 'Inside box
                         Sim.Render.Device.RenderState.CullMode = Cull.Clockwise
                     Else
@@ -71,16 +94,16 @@
 
                 'Draw the object in its place
                 Sim.Render.Device.Transform.World =
-                          Matrix.RotationX(ToSingle(Sim.Objects(i).Rotation.X)) _
-                        * Matrix.RotationY(ToSingle(Sim.Objects(i).Rotation.Y)) _
-                        * Matrix.RotationZ(ToSingle(Sim.Objects(i).Rotation.Z)) _
+                          Matrix.RotationX(ToSingle(RenderObjects(i).Rotation.X)) _
+                        * Matrix.RotationY(ToSingle(RenderObjects(i).Rotation.Y)) _
+                        * Matrix.RotationZ(ToSingle(RenderObjects(i).Rotation.Z)) _
                         * Matrix.Translation(
-                            ToSingle(Sim.Objects(i).Position.X * Sim.Config.Render.WorldScale),
-                            ToSingle(Sim.Objects(i).Position.Y * Sim.Config.Render.WorldScale),
-                            ToSingle(Sim.Objects(i).Position.Z * Sim.Config.Render.WorldScale))
+                            ToSingle(RenderObjects(i).Position.X * Sim.Config.Render.WorldScale),
+                            ToSingle(RenderObjects(i).Position.Y * Sim.Config.Render.WorldScale),
+                            ToSingle(RenderObjects(i).Position.Z * Sim.Config.Render.WorldScale))
 
-                Sim.Render.Device.Material = Sim.Objects(i).Material
-                Sim.Objects(i).Mesh.DrawSubset(0)
+                Sim.Render.Device.Material = RenderObjects(i).Material
+                RenderObjects(i).Mesh.DrawSubset(0)
             Next
             Sim.Render.RenderLock.ExitReadLock()
 
@@ -90,6 +113,16 @@
 
             RenderControl()
         Loop
+    End Sub
+
+    Public Sub SortObjectsByDepth(ByRef RenderObjects() As SimulationObject, ByRef CameraPosition As XYZ)
+        For i = 0 To Sim.ObjectCount - 1
+            'TODO: this is a lot of square roots, very expensive
+            'TODO: this doesn't work for boxes! Need to know size and rotation
+            'TODO: this doesn't work for planes
+            RenderObjects(i).CameraDistance = (RenderObjects(i).Position - CameraPosition).Magnitude - RenderObjects(i).Radius
+        Next
+        Array.Sort(RenderObjects)
     End Sub
 
     Public Shared Sub InitializeDXRender(Sim As SimulationRuntime)
@@ -118,9 +151,9 @@
 
         'Initialize transparency settings
         If Sim.Render.Transparency Then
+            Sim.Render.Device.RenderState.AlphaBlendEnable = True
             Sim.Render.Device.RenderState.SourceBlend = Blend.SourceAlpha
             Sim.Render.Device.RenderState.DestinationBlend = Blend.InvSourceAlpha
-            Sim.Render.Device.RenderState.AlphaBlendEnable = True
         End If
 
         'Clear the device and paint the background
