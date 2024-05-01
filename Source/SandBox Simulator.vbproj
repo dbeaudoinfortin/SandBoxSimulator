@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Simulation\Design\SimulationBaseConfig.vb" />
-    <Compile Include="Classes\Simulation\Run\CalculationCounter.vb" />
+    <Compile Include="Classes\Simulation\Run\Computation\CalculationCounter.vb" />
     <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigCollision.vb" />
     <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigDrag.vb" />
     <Compile Include="Classes\Simulation\Design\Forces\SimulationConfigElectroStatic.vb" />
@@ -153,12 +153,16 @@
     <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionInt.vb" />
     <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionSingle.vb" />
     <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionXYZ.vb" />
-    <Compile Include="Classes\Simulation\Run\Render\DXRenderThread.vb" />
+    <Compile Include="Classes\Simulation\Run\Computation\ComputeThread.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\RayRender.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\RenderBase.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\DXRender.vb" />
     <Compile Include="Classes\Simulation\Design\Render\SimulationConfigRender.vb" />
     <Compile Include="Classes\Simulation\Design\Render\SimulationConfigCamera.vb" />
     <Compile Include="Classes\Simulation\Run\Render\SimulationCamera.vb" />
     <Compile Include="Classes\Simulation\Design\SimulationSettings.vb" />
     <Compile Include="Classes\Simulation\Run\Render\SimulationRender.vb" />
+    <Compile Include="Classes\Simulation\Run\SimulationLight.vb" />
     <Compile Include="Classes\Simulation\Utilities\SimpleColor.vb" />
     <Compile Include="Forms\Output.Designer.vb">
       <DependentUpon>Output.vb</DependentUpon>

@@ -19,4 +19,7 @@ Public Structure SimpleColor
         Me.B = color.B
     End Sub
 
+    Public Function ToColor() As Color
+        Return Color.FromArgb(A, R, G, B)
+    End Function
 End Structure

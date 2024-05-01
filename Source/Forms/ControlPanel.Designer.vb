@@ -516,11 +516,12 @@ Partial Class ControlPanel
         '
         Me.cbObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbObjectType.FormattingEnabled = True
-        Me.cbObjectType.Items.AddRange(New Object() {"Sphere"})
+        Me.cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Infinite Plane"})
         Me.cbObjectType.Location = New System.Drawing.Point(151, 124)
         Me.cbObjectType.Name = "cbObjectType"
         Me.cbObjectType.Size = New System.Drawing.Size(292, 35)
         Me.cbObjectType.TabIndex = 2
+
         '
         'chObjectWireframe
         '
@@ -1285,7 +1286,7 @@ Partial Class ControlPanel
         Me.lblObjectNormal.Name = "lblObjectNormal"
         Me.lblObjectNormal.Size = New System.Drawing.Size(117, 21)
         Me.lblObjectNormal.TabIndex = 228
-        Me.lblObjectNormal.Text = "Normal X, Y, Z:"
+        Me.lblObjectNormal.Text = "Orientation X, Y, Z:"
         Me.lblObjectNormal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblObjectNormal.UseMnemonic = False
         '
@@ -1449,9 +1450,9 @@ Partial Class ControlPanel
         Me.TabLights.Controls.Add(Me.cmdLightAdd)
         Me.TabLights.Controls.Add(Me.cmdLightRemove)
         Me.TabLights.Controls.Add(Me.cmdLightReplace)
-        Me.TabLights.Location = New System.Drawing.Point(4, 37)
+        Me.TabLights.Location = New System.Drawing.Point(4, 39)
         Me.TabLights.Name = "TabLights"
-        Me.TabLights.Size = New System.Drawing.Size(451, 583)
+        Me.TabLights.Size = New System.Drawing.Size(451, 581)
         Me.TabLights.TabIndex = 2
         Me.TabLights.Text = "Lighting"
         Me.TabLights.UseVisualStyleBackColor = True
@@ -3092,7 +3093,7 @@ Partial Class ControlPanel
         Me.GroupBox3.PerformLayout()
         Me.Tabs.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
+
     End Sub
     Friend WithEvents cmdStart As System.Windows.Forms.Button
     Friend WithEvents ColorDialog As System.Windows.Forms.ColorDialog

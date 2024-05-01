@@ -62,13 +62,13 @@ Public Class ControlPanel
             MsgBox("Limit Calculations must have a numeric value.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
-        If ToDouble(txtLimitCalc.Text) < 0 Or ToDouble(txtLimitCalc.Text) > 500000 Then
-            MsgBox("Limit Calculations must be equal to or greater than zero and less than or equal to 500 000.", MsgBoxStyle.Critical, "Error")
+        If ToDouble(txtLimitCalc.Text) < 0 Or ToDouble(txtLimitCalc.Text) > 1000000 Then
+            MsgBox("Limit Calculations must be equal to or greater than zero and less than or equal to 1 million.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
 
         'TODO: Should sum up the count of all the objects of all the groups
-        If ToInt32(txtLimitObjects.Text) < Simulation.Config.GroupCount Then
+        If ToInt32(txtLimitObjects.Text) < Simulation.Config.ObjectGroupCount Then
             MsgBox("The number of Objects must not be greater than Max Objects.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
@@ -341,7 +341,7 @@ Public Class ControlPanel
 
         Return True
     End Function
-    Private Function IsValidGroup() As Boolean
+    Private Function IsValidObjectGroup() As Boolean
 
         'NAME
         If txtObjectName.Text = "" Then
@@ -486,107 +486,120 @@ Public Class ControlPanel
         Return True
     End Function
     Private Function IsValidLight() As Boolean
+
+        Dim isDirectionalLight As Boolean = (cbLightType.SelectedIndex = 0)
+        Dim isPointLight As Boolean = (cbLightType.SelectedIndex = 1)
+        Dim isSpotLight As Boolean = (cbLightType.SelectedIndex = 2)
+
         If txtLightName.Text = "" Then
             MsgBox("The light must have a name.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
-        If IsNumeric(txtLightRange.Text) = False Then
-            MsgBox("The range of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightRange.Text) <= 0 Then
-            MsgBox("The range of the light must be greater than zero.", MsgBoxStyle.Critical, "Error")
-            Return False
+
+        If isDirectionalLight Or isSpotLight Then
+            If IsNumeric(txtLightDirectionX.Text) = False Then
+                MsgBox("The X direction of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightDirectionY.Text) = False Then
+                MsgBox("The Y direction of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightDirectionZ.Text) = False Then
+                MsgBox("The Z direction of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToDouble(txtLightDirectionX.Text) = 0 And ToDouble(txtLightDirectionY.Text) = 0 And ToDouble(txtLightDirectionZ.Text) = 0 Then
+                MsgBox("At least one component of Light Direction must be non-zero.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
         End If
 
-        If IsNumeric(txtLightAttenuationA.Text) = False Then
-            MsgBox("The A attenuation of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightAttenuationA.Text) < 0 Then
-            MsgBox("The A attenuation of the light must be positive.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightAttenuationB.Text) = False Then
-            MsgBox("The B attenuation of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightAttenuationB.Text) < 0 Then
-            MsgBox("The B attenuation of the light must be positive.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightAttenuationC.Text) = False Then
-            MsgBox("The C attenuation of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightAttenuationC.Text) < 0 Then
-            MsgBox("The C attenuation of the light must be positive.", MsgBoxStyle.Critical, "Error")
-            Return False
+        If (isSpotLight Or isPointLight) Then
+            If IsNumeric(txtLightRange.Text) = False Then
+                MsgBox("The range of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightRange.Text) <= 0 Then
+                MsgBox("The range of the light must be greater than zero.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+
+            If IsNumeric(txtLightAttenuationA.Text) = False Then
+                MsgBox("The A attenuation of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightAttenuationA.Text) < 0 Then
+                MsgBox("The A attenuation of the light must be positive.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightAttenuationB.Text) = False Then
+                MsgBox("The B attenuation of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightAttenuationB.Text) < 0 Then
+                MsgBox("The B attenuation of the light must be positive.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightAttenuationC.Text) = False Then
+                MsgBox("The C attenuation of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightAttenuationC.Text) < 0 Then
+                MsgBox("The C attenuation of the light must be positive.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightPositionX.Text) = False Then
+                MsgBox("The X position of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightPositionY.Text) = False Then
+                MsgBox("The Y position of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightPositionZ.Text) = False Then
+                MsgBox("The Z position of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
         End If
 
-        If IsNumeric(txtLightAngleInner.Text) = False Then
-            MsgBox("The inner cone angle of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightAngleInner.Text) <= 0 Or ToSingle(txtLightAngleInner.Text) >= 180 Then
-            MsgBox("The inner cone angle of the light must be greater than zero and less than 180.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToDouble(txtLightAngleInner.Text) <> Int(ToDouble(txtLightAngleInner.Text)) Then
-            MsgBox("The inner cone angle of the light must be of integer value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightAngleOuter.Text) = False Then
-            MsgBox("The outer cone angle of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightAngleOuter.Text) <= 0 Or ToSingle(txtLightAngleOuter.Text) >= 180 Then
-            MsgBox("The outer cone angle of the light must be greater than zero and less than 180.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightAngleOuter.Text) <= ToSingle(txtLightAngleInner.Text) Then
-            MsgBox("The outer cone angle of the light must be greater than the inner cone angle of the light", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToDouble(txtLightAngleOuter.Text) <> Int(ToDouble(txtLightAngleOuter.Text)) Then
-            MsgBox("The outer cone angle of the light must be of integer value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightFalloff.Text) = False Then
-            MsgBox("The falloff of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToSingle(txtLightFalloff.Text) <= 0 Then
-            MsgBox("The falloff of the light must be greater than zero.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightPositionX.Text) = False Then
-            MsgBox("The X position of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightPositionY.Text) = False Then
-            MsgBox("The Y position of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightPositionZ.Text) = False Then
-            MsgBox("The Z position of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightDirectionX.Text) = False Then
-            MsgBox("The X direction of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightDirectionY.Text) = False Then
-            MsgBox("The Y direction of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If IsNumeric(txtLightDirectionZ.Text) = False Then
-            MsgBox("The Z direction of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToDouble(txtLightDirectionX.Text) = 0 And ToDouble(txtLightDirectionY.Text) = 0 And ToDouble(txtLightDirectionZ.Text) = 0 Then
-            MsgBox("At least one component of Light Direction must be non-zero.", MsgBoxStyle.Critical, "Error")
-            Return False
+        If (isSpotLight) Then
+            If IsNumeric(txtLightAngleInner.Text) = False Then
+                MsgBox("The inner cone angle of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightAngleInner.Text) <= 0 Or ToSingle(txtLightAngleInner.Text) >= 180 Then
+                MsgBox("The inner cone angle of the light must be greater than zero and less than 180.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToDouble(txtLightAngleInner.Text) <> Int(ToDouble(txtLightAngleInner.Text)) Then
+                MsgBox("The inner cone angle of the light must be of integer value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightAngleOuter.Text) = False Then
+                MsgBox("The outer cone angle of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightAngleOuter.Text) <= 0 Or ToSingle(txtLightAngleOuter.Text) >= 180 Then
+                MsgBox("The outer cone angle of the light must be greater than zero and less than 180.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightAngleOuter.Text) <= ToSingle(txtLightAngleInner.Text) Then
+                MsgBox("The outer cone angle of the light must be greater than the inner cone angle of the light", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToDouble(txtLightAngleOuter.Text) <> Int(ToDouble(txtLightAngleOuter.Text)) Then
+                MsgBox("The outer cone angle of the light must be of integer value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If IsNumeric(txtLightFalloff.Text) = False Then
+                MsgBox("The falloff of the light must have a numeric value.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
+            If ToSingle(txtLightFalloff.Text) <= 0 Then
+                MsgBox("The falloff of the light must be greater than zero.", MsgBoxStyle.Critical, "Error")
+                Return False
+            End If
         End If
         Return True
     End Function
@@ -790,579 +803,197 @@ Public Class ControlPanel
 
         'TODO: Let's simply this
         'RENDER
-        If cbRender.SelectedIndex < 2 Then 'Using Direct X
-            txtRenderThreads.Enabled = False
-            txtRenderThreads.Text = "1"
+        Dim isDXRender As Boolean = cbRender.SelectedIndex < 2 'Using Direct X
+        Dim isLightsEnabled As Boolean = chLightsEnable.Checked
+        Dim isFancyDXLights As Boolean = isDXRender And isLightsEnabled
+        Dim isRayTraceLights As Boolean = (Not isDXRender) And isLightsEnabled
 
-            tbPolys.Enabled = True
-            chVSync.Enabled = True
-            txtVFoV.Enabled = False
-            If chVSync.Checked Then 'Using Vsync
-                txtMaxFPS.Enabled = False
-            Else
-                txtMaxFPS.Enabled = True
-            End If
-            If chLightsEnable.Checked Then
-                cbShading.Enabled = True
-            Else
-                cbShading.Enabled = False
-            End If
+        txtRenderThreads.Enabled = Not isDXRender
+        tbPolys.Enabled = isDXRender
+        chVSync.Enabled = isDXRender
+        txtVFoV.Enabled = Not isDXRender
+        cbShading.Enabled = isFancyDXLights
+
+        If isDXRender Then 'Using Direct X
+            txtRenderThreads.Text = "1"
+            txtMaxFPS.Enabled = Not chVSync.Checked 'Using Vsync
         Else 'Ray
-            cbShading.Enabled = False
-            tbPolys.Enabled = False
-            chVSync.Enabled = False
-            txtVFoV.Enabled = True
             txtMaxFPS.Enabled = True
-            txtRenderThreads.Enabled = True
         End If
 
         'CAMERA
-        If chCamera.Checked Then 'Modify camera
-            tbCameraSpeed.Enabled = True
-            txtCPosX.Enabled = True
-            txtCPosY.Enabled = True
-            txtCPosZ.Enabled = True
-            txtCTargetX.Enabled = True
-            txtCTargetY.Enabled = True
-            txtCTargetZ.Enabled = True
-            txtCOrientX.Enabled = True
-            txtCOrientY.Enabled = True
-            txtCOrientZ.Enabled = True
-        Else
-            tbCameraSpeed.Enabled = False
-            txtCPosX.Enabled = False
-            txtCPosY.Enabled = False
-            txtCPosZ.Enabled = False
-            txtCTargetX.Enabled = False
-            txtCTargetY.Enabled = False
-            txtCTargetZ.Enabled = False
-            txtCOrientX.Enabled = False
-            txtCOrientY.Enabled = False
-            txtCOrientZ.Enabled = False
-        End If
+        tbCameraSpeed.Enabled = chCamera.Checked
+        txtCPosX.Enabled = chCamera.Checked
+        txtCPosY.Enabled = chCamera.Checked
+        txtCPosZ.Enabled = chCamera.Checked
+        txtCTargetX.Enabled = chCamera.Checked
+        txtCTargetY.Enabled = chCamera.Checked
+        txtCTargetZ.Enabled = chCamera.Checked
+        txtCOrientX.Enabled = chCamera.Checked
+        txtCOrientY.Enabled = chCamera.Checked
+        txtCOrientZ.Enabled = chCamera.Checked
 
+        Dim isDirectionalLight As Boolean = (cbLightType.SelectedIndex = 0)
+        Dim isPointLight As Boolean = (cbLightType.SelectedIndex = 1)
+        Dim isSpotLight As Boolean = (cbLightType.SelectedIndex = 2)
 
         'LIGHTS
-        If chLightsEnable.Checked Then
-            cmdLightAdd.Enabled = True
-            tbLightAmbient.Enabled = True
-            txtLightName.Enabled = True
-            EnableColorBox(plLightColor, True)
-            If cbRender.SelectedIndex < 2 Then 'Using Direct X
-                tbLightHighlight.Enabled = True
-            Else
-                tbLightHighlight.Enabled = False
-            End If
-            listLights.Enabled = True
-            If listLights.SelectedIndex <> -1 Then 'Light is selected
-                cmdLightReplace.Enabled = True
-                cmdLightRemove.Enabled = True
-            Else
-                cmdLightReplace.Enabled = False
-                cmdLightRemove.Enabled = False
-            End If
+        cbLightType.Enabled = isLightsEnabled
+        txtLightDirectionX.Enabled = isLightsEnabled And (isDirectionalLight Or isSpotLight)
+        txtLightDirectionY.Enabled = isLightsEnabled And (isDirectionalLight Or isSpotLight)
+        txtLightDirectionZ.Enabled = isLightsEnabled And (isDirectionalLight Or isSpotLight)
+        txtLightPositionX.Enabled = isLightsEnabled And (isSpotLight Or isPointLight)
+        txtLightPositionY.Enabled = isLightsEnabled And (isSpotLight Or isPointLight)
+        txtLightPositionZ.Enabled = isLightsEnabled And (isSpotLight Or isPointLight)
+        txtLightAttenuationA.Enabled = isLightsEnabled And (isSpotLight Or isPointLight)
+        txtLightAttenuationB.Enabled = isLightsEnabled And (isSpotLight Or isPointLight)
+        txtLightAttenuationC.Enabled = isLightsEnabled And (isSpotLight Or isPointLight)
+        txtLightAngleInner.Enabled = isLightsEnabled And isSpotLight
+        txtLightAngleOuter.Enabled = isLightsEnabled And isSpotLight
+        txtLightFalloff.Enabled = isLightsEnabled And isSpotLight
+        txtLightRange.Enabled = isFancyDXLights And (Not isDirectionalLight)
 
-            'Light Type
-            cbLightType.Enabled = True
-            If cbLightType.SelectedIndex = 0 Then   'Directional
-                txtLightDirectionX.Enabled = True
-                txtLightDirectionY.Enabled = True
-                txtLightDirectionZ.Enabled = True
-                txtLightPositionX.Enabled = False
-                txtLightPositionY.Enabled = False
-                txtLightPositionZ.Enabled = False
-                txtLightAttenuationA.Enabled = False
-                txtLightAttenuationB.Enabled = False
-                txtLightAttenuationC.Enabled = False
-                txtLightAngleInner.Enabled = False
-                txtLightAngleOuter.Enabled = False
-                txtLightFalloff.Enabled = False
-                txtLightRange.Enabled = False
-            ElseIf cbLightType.SelectedIndex = 1 Then   'Point
-                txtLightDirectionX.Enabled = False
-                txtLightDirectionY.Enabled = False
-                txtLightDirectionZ.Enabled = False
-                txtLightPositionX.Enabled = True
-                txtLightPositionY.Enabled = True
-                txtLightPositionZ.Enabled = True
-                txtLightAttenuationA.Enabled = True
-                txtLightAttenuationB.Enabled = True
-                txtLightAttenuationC.Enabled = True
-                txtLightAngleInner.Enabled = False
-                txtLightAngleOuter.Enabled = False
-                txtLightFalloff.Enabled = False
-                If cbRender.SelectedIndex < 2 Then 'Using Direct X
-                    txtLightRange.Enabled = True
-                Else
-                    txtLightRange.Enabled = False
-                End If
-            Else    'Spot
-                txtLightDirectionX.Enabled = True
-                txtLightDirectionY.Enabled = True
-                txtLightDirectionZ.Enabled = True
-                txtLightPositionX.Enabled = True
-                txtLightPositionY.Enabled = True
-                txtLightPositionZ.Enabled = True
-                txtLightAttenuationA.Enabled = True
-                txtLightAttenuationB.Enabled = True
-                txtLightAttenuationC.Enabled = True
-                txtLightAngleInner.Enabled = True
-                txtLightAngleOuter.Enabled = True
-                txtLightFalloff.Enabled = True
-                If cbRender.SelectedIndex < 2 Then 'Using Direct X
-                    txtLightRange.Enabled = True
-                Else
-                    txtLightRange.Enabled = False
-                End If
-            End If
-        Else
-            cbLightType.Enabled = False
-            listLights.Enabled = False
-            cmdLightAdd.Enabled = False
-            tbLightAmbient.Enabled = False
-            txtLightName.Enabled = False
-            EnableColorBox(plLightColor, False)
-            tbLightHighlight.Enabled = False
-            cmdLightReplace.Enabled = False
-            cmdLightRemove.Enabled = False
-            txtLightDirectionX.Enabled = False
-            txtLightDirectionY.Enabled = False
-            txtLightDirectionZ.Enabled = False
-            txtLightPositionX.Enabled = False
-            txtLightPositionY.Enabled = False
-            txtLightPositionZ.Enabled = False
-            txtLightAttenuationA.Enabled = False
-            txtLightAttenuationB.Enabled = False
-            txtLightAttenuationC.Enabled = False
-            txtLightAngleInner.Enabled = False
-            txtLightAngleOuter.Enabled = False
-            txtLightFalloff.Enabled = False
-            txtLightRange.Enabled = False
-        End If
+        listLights.Enabled = isLightsEnabled
+        cmdLightAdd.Enabled = isLightsEnabled
+        tbLightAmbient.Enabled = isLightsEnabled
+        txtLightName.Enabled = isLightsEnabled
+        EnableColorBox(plLightColor, isLightsEnabled)
+        tbLightHighlight.Enabled = isFancyDXLights
+
+        cmdLightReplace.Enabled = isLightsEnabled And (listLights.SelectedIndex <> -1)  'Light is selected
+        cmdLightRemove.Enabled = isLightsEnabled And (listLights.SelectedIndex <> -1)  'Light is selected
 
         'FORCES
-        If chForces.Checked Then
-            chGravity.Enabled = True
-            chField.Enabled = True
-            chElectrostatic.Enabled = True
-            chDrag.Enabled = True
-            If chGravity.Checked Or chElectrostatic.Checked Or chField.Checked Or chDrag.Checked Then
-                cbIntegration.Enabled = True
-            Else
-                cbIntegration.Enabled = False
-            End If
-            If chElectrostatic.Checked Then
-                txtPermittivity.Enabled = True
-            Else
-                txtPermittivity.Enabled = False
-            End If
-            If chField.Checked Then
-                txtFieldX.Enabled = True
-                txtFieldY.Enabled = True
-                txtFieldZ.Enabled = True
-            Else
-                txtFieldX.Enabled = False
-                txtFieldY.Enabled = False
-                txtFieldZ.Enabled = False
-            End If
-            If chDrag.Checked Then
-                txtDragCoeff.Enabled = True
-                txtFluidDensity.Enabled = True
-                txtFluidViscosity.Enabled = True
-            Else
-                txtDragCoeff.Enabled = False
-                txtFluidDensity.Enabled = False
-                txtFluidViscosity.Enabled = False
-            End If
-        Else
-            txtPermittivity.Enabled = False
-            chGravity.Enabled = False
-            chField.Enabled = False
-            chElectrostatic.Enabled = False
-            chDrag.Enabled = False
-            txtFieldX.Enabled = False
-            txtFieldY.Enabled = False
-            txtFieldZ.Enabled = False
-            txtDragCoeff.Enabled = False
-            txtFluidDensity.Enabled = False
-            txtFluidViscosity.Enabled = False
-            cbIntegration.Enabled = False
-        End If
+        Dim isForcesEnabled As Boolean = chForces.Checked
+        Dim isAnyForceEnabled As Boolean = isForcesEnabled And (chGravity.Checked Or chElectrostatic.Checked Or chField.Checked Or chDrag.Checked)
+        chGravity.Enabled = isForcesEnabled
+        chField.Enabled = isForcesEnabled
+        chElectrostatic.Enabled = isForcesEnabled
+        chDrag.Enabled = isForcesEnabled
+        cbIntegration.Enabled = isAnyForceEnabled
+        txtPermittivity.Enabled = isForcesEnabled And chElectrostatic.Checked
+        txtFieldX.Enabled = isForcesEnabled And chField.Checked
+        txtFieldY.Enabled = isForcesEnabled And chField.Checked
+        txtFieldZ.Enabled = isForcesEnabled And chField.Checked
+        txtDragCoeff.Enabled = isForcesEnabled And chDrag.Checked
+        txtFluidDensity.Enabled = isForcesEnabled And chDrag.Checked
+        txtFluidViscosity.Enabled = isForcesEnabled And chDrag.Checked
 
         'COLLISIONS
-        If chCollision.Checked Then
-            txtCoR.Enabled = True
-            chInterpolate.Enabled = True
-            chbreakable.Enabled = True
-            If chbreakable.Checked Then
-                txtAddAvg.Enabled = True
-                txtAddMax.Enabled = True
-                txtAddMin.Enabled = True
-                txtBreakAvg.Enabled = True
-                txtBreakMin.Enabled = True
-                txtBreakMax.Enabled = True
-            Else
-                txtAddAvg.Enabled = False
-                txtAddMax.Enabled = False
-                txtAddMin.Enabled = False
-                txtBreakAvg.Enabled = False
-                txtBreakMin.Enabled = False
-                txtBreakMax.Enabled = False
-            End If
-        Else
-            txtCoR.Enabled = False
-            chInterpolate.Enabled = False
-            chbreakable.Enabled = False
-            txtAddAvg.Enabled = False
-            txtAddMax.Enabled = False
-            txtAddMin.Enabled = False
-            txtBreakAvg.Enabled = False
-            txtBreakMin.Enabled = False
-            txtBreakMax.Enabled = False
-        End If
-
+        Dim isCollisionsEnabled As Boolean = chCollision.Checked
+        txtCoR.Enabled = isCollisionsEnabled
+        chInterpolate.Enabled = isCollisionsEnabled
+        chbreakable.Enabled = isCollisionsEnabled
+        txtAddAvg.Enabled = isCollisionsEnabled And chbreakable.Checked
+        txtAddMax.Enabled = isCollisionsEnabled And chbreakable.Checked
+        txtAddMin.Enabled = isCollisionsEnabled And chbreakable.Checked
+        txtBreakAvg.Enabled = isCollisionsEnabled And chbreakable.Checked
+        txtBreakMin.Enabled = isCollisionsEnabled And chbreakable.Checked
+        txtBreakMax.Enabled = isCollisionsEnabled And chbreakable.Checked
 
         'OBJECTS
-
-        'number
-        If cmdObjectNumber.ForeColor = Color.Black Then
-            txtObjectNumber.Enabled = True
-        Else
-            txtObjectNumber.Enabled = False
-        End If
+        cmdGroupRemove.Enabled = (listGroups.SelectedIndex <> -1) 'An object group is selected
+        cmdGroupReplace.Enabled = (listGroups.SelectedIndex <> -1) 'An object group is selected
+        txtObjectNumber.Enabled = (cmdObjectNumber.ForeColor = Color.Black) 'number
 
         'mass
-        If (chObjectAffected.Checked Or chObjectAffects.Checked) And ((chForces.Checked And (chGravity.Checked Or chElectrostatic.Checked Or chField.Checked Or chDrag.Checked)) Or chCollision.Checked) Then
-            cmdObjectMass.Enabled = True
-            If cmdObjectMass.ForeColor = Color.Black Then
-                txtObjectMass.Enabled = True
-            Else
-                txtObjectMass.Enabled = False
-            End If
-        Else
-            cmdObjectMass.Enabled = False
-            txtObjectMass.Enabled = False
-        End If
+        Dim isObjectMassEnabled As Boolean = (chObjectAffected.Checked Or chObjectAffects.Checked) And (isAnyForceEnabled Or isCollisionsEnabled)
+        cmdObjectMass.Enabled = isObjectMassEnabled
+        txtObjectMass.Enabled = isObjectMassEnabled And (cmdObjectMass.ForeColor = Color.Black)
 
         'charge
-        If chForces.Checked And chElectrostatic.Checked And (chObjectAffected.Checked Or chObjectAffects.Checked) Then
-            cmdObjectCharge.Enabled = True
-            If cmdObjectCharge.ForeColor = Color.Black Then
-                txtObjectCharge.Enabled = True
-            Else
-                txtObjectCharge.Enabled = False
-            End If
-        Else
-            txtObjectCharge.Enabled = False
-            cmdObjectCharge.Enabled = False
-        End If
+        Dim isObjectChargeEnabled As Boolean = isForcesEnabled And chElectrostatic.Checked And (chObjectAffected.Checked Or chObjectAffects.Checked)
+        cmdObjectCharge.Enabled = isObjectChargeEnabled
+        txtObjectCharge.Enabled = isObjectChargeEnabled And (cmdObjectCharge.ForeColor = Color.Black)
 
-        'radius/size - rotation/normal
-        If cbObjectType.SelectedIndex = 0 Then 'Sphere
-            lblObjectRotation.Visible = True
-            cmdObjectRotationX.Visible = True
-            cmdObjectRotationY.Visible = True
-            cmdObjectRotationZ.Visible = True
-            txtObjectRotationX.Visible = True
-            txtObjectRotationY.Visible = True
-            txtObjectRotationZ.Visible = True
+        Dim isObjectSphere As Boolean = (cbObjectType.SelectedIndex = 0)
+        Dim isObjectBox As Boolean = (cbObjectType.SelectedIndex = 1)
+        Dim isObjectPlane As Boolean = (cbObjectType.SelectedIndex = 2)
 
-            cmdObjectRotationX.Enabled = False
-            cmdObjectRotationY.Enabled = False
-            cmdObjectRotationZ.Enabled = False
-            txtObjectRotationX.Enabled = False
-            txtObjectRotationY.Enabled = False
-            txtObjectRotationZ.Enabled = False
+        'rotation
+        lblObjectRotation.Visible = Not isObjectPlane
+        cmdObjectRotationX.Visible = Not isObjectPlane
+        cmdObjectRotationY.Visible = Not isObjectPlane
+        cmdObjectRotationZ.Visible = Not isObjectPlane
+        txtObjectRotationX.Visible = Not isObjectPlane
+        txtObjectRotationY.Visible = Not isObjectPlane
+        txtObjectRotationZ.Visible = Not isObjectPlane
+        cmdObjectRotationX.Enabled = isObjectBox
+        cmdObjectRotationY.Enabled = isObjectBox
+        cmdObjectRotationZ.Enabled = isObjectBox
+        txtObjectRotationX.Enabled = isObjectBox And (cmdObjectRotationX.ForeColor = Color.Black)
+        txtObjectRotationY.Enabled = isObjectBox And (cmdObjectRotationY.ForeColor = Color.Black)
+        txtObjectRotationZ.Enabled = isObjectBox And (cmdObjectRotationZ.ForeColor = Color.Black)
 
-            lblObjectNormal.Visible = False
-            cmdObjectNormalX.Visible = False
-            cmdObjectNormalY.Visible = False
-            cmdObjectNormalZ.Visible = False
-            txtObjectNormalX.Visible = False
-            txtObjectNormalY.Visible = False
-            txtObjectNormalZ.Visible = False
+        'orientation
+        lblObjectNormal.Visible = isObjectPlane
+        cmdObjectNormalX.Visible = isObjectPlane
+        cmdObjectNormalY.Visible = isObjectPlane
+        cmdObjectNormalZ.Visible = isObjectPlane
+        txtObjectNormalX.Visible = isObjectPlane
+        txtObjectNormalY.Visible = isObjectPlane
+        txtObjectNormalZ.Visible = isObjectPlane
+        cmdObjectNormalX.Enabled = isObjectPlane
+        cmdObjectNormalY.Enabled = isObjectPlane
+        cmdObjectNormalZ.Enabled = isObjectPlane
+        txtObjectNormalX.Enabled = isObjectPlane And (cmdObjectNormalX.ForeColor = Color.Black)
+        txtObjectNormalY.Enabled = isObjectPlane And (cmdObjectNormalY.ForeColor = Color.Black)
+        txtObjectNormalZ.Enabled = isObjectPlane And (cmdObjectNormalZ.ForeColor = Color.Black)
 
-            cmdObjectNormalX.Enabled = False
-            cmdObjectNormalY.Enabled = False
-            cmdObjectNormalZ.Enabled = False
-            txtObjectNormalX.Enabled = False
-            txtObjectNormalY.Enabled = False
-            txtObjectNormalZ.Enabled = False
+        'radius
+        lblObjectRadius.Visible = isObjectSphere
+        cmdObjectRadius.Visible = isObjectSphere
+        txtObjectRadius.Visible = isObjectSphere
+        cmdObjectRadius.Enabled = isObjectSphere
+        txtObjectRadius.Enabled = isObjectSphere And (cmdObjectRadius.ForeColor = Color.Black)
 
-            lblObjectRadius.Visible = True
-            cmdObjectRadius.Visible = True
-            txtObjectRadius.Visible = True
-
-            cmdObjectRadius.Enabled = True
-            If cmdObjectRadius.ForeColor = Color.Black Then
-                txtObjectRadius.Enabled = True
-            Else
-                txtObjectRadius.Enabled = False
-            End If
-
-            lblObjectSize.Visible = False
-            cmdObjectSizeX.Visible = False
-            cmdObjectSizeY.Visible = False
-            cmdObjectSizeZ.Visible = False
-            txtObjectSizeX.Visible = False
-            txtObjectSizeY.Visible = False
-            txtObjectSizeZ.Visible = False
-
-            cmdObjectSizeX.Enabled = False
-            cmdObjectSizeY.Enabled = False
-            cmdObjectSizeZ.Enabled = False
-            txtObjectSizeX.Enabled = False
-            txtObjectSizeY.Enabled = False
-            txtObjectSizeZ.Enabled = False
-        ElseIf cbObjectType.SelectedIndex = 1 Then 'Box
-            lblObjectRotation.Visible = True
-            cmdObjectRotationX.Visible = True
-            cmdObjectRotationY.Visible = True
-            cmdObjectRotationZ.Visible = True
-            txtObjectRotationX.Visible = True
-            txtObjectRotationY.Visible = True
-            txtObjectRotationZ.Visible = True
-
-            cmdObjectRotationX.Enabled = True
-            cmdObjectRotationY.Enabled = True
-            cmdObjectRotationZ.Enabled = True
-
-            If cmdObjectRotationX.ForeColor = Color.Black Then
-                txtObjectRotationX.Enabled = True
-            Else
-                txtObjectRotationX.Enabled = False
-            End If
-            If cmdObjectRotationY.ForeColor = Color.Black Then
-                txtObjectRotationY.Enabled = True
-            Else
-                txtObjectRotationY.Enabled = False
-            End If
-            If cmdObjectRotationZ.ForeColor = Color.Black Then
-                txtObjectRotationZ.Enabled = True
-            Else
-                txtObjectRotationZ.Enabled = False
-            End If
-
-            lblObjectNormal.Visible = False
-            cmdObjectNormalX.Visible = False
-            cmdObjectNormalY.Visible = False
-            cmdObjectNormalZ.Visible = False
-            txtObjectNormalX.Visible = False
-            txtObjectNormalY.Visible = False
-            txtObjectNormalZ.Visible = False
-
-            cmdObjectNormalX.Enabled = False
-            cmdObjectNormalY.Enabled = False
-            cmdObjectNormalZ.Enabled = False
-            txtObjectNormalX.Enabled = False
-            txtObjectNormalY.Enabled = False
-            txtObjectNormalZ.Enabled = False
-
-            lblObjectRadius.Visible = False
-            cmdObjectRadius.Visible = False
-            txtObjectRadius.Visible = False
-
-            cmdObjectRadius.Enabled = False
-            txtObjectRadius.Enabled = False
-
-            lblObjectSize.Visible = True
-            cmdObjectSizeX.Visible = True
-            cmdObjectSizeY.Visible = True
-            cmdObjectSizeZ.Visible = True
-            txtObjectSizeX.Visible = True
-            txtObjectSizeY.Visible = True
-            txtObjectSizeZ.Visible = True
-
-            cmdObjectSizeX.Enabled = True
-            cmdObjectSizeY.Enabled = True
-            cmdObjectSizeZ.Enabled = True
-
-            If cmdObjectSizeX.ForeColor = Color.Black Then
-                txtObjectSizeX.Enabled = True
-            Else
-                txtObjectSizeX.Enabled = False
-            End If
-            If cmdObjectSizeY.ForeColor = Color.Black Then
-                txtObjectSizeY.Enabled = True
-            Else
-                txtObjectSizeY.Enabled = False
-            End If
-            If cmdObjectSizeZ.ForeColor = Color.Black Then
-                txtObjectSizeZ.Enabled = True
-            Else
-                txtObjectSizeZ.Enabled = False
-            End If
-
-        ElseIf cbObjectType.SelectedIndex = 2 Then 'Plane
-            lblObjectRotation.Visible = False
-            cmdObjectRotationX.Visible = False
-            cmdObjectRotationY.Visible = False
-            cmdObjectRotationZ.Visible = False
-            txtObjectRotationX.Visible = False
-            txtObjectRotationY.Visible = False
-            txtObjectRotationZ.Visible = False
-
-            cmdObjectRotationX.Enabled = False
-            cmdObjectRotationY.Enabled = False
-            cmdObjectRotationZ.Enabled = False
-            txtObjectRotationX.Enabled = False
-            txtObjectRotationY.Enabled = False
-            txtObjectRotationZ.Enabled = False
-
-            lblObjectNormal.Visible = True
-            cmdObjectNormalX.Visible = True
-            cmdObjectNormalY.Visible = True
-            cmdObjectNormalZ.Visible = True
-            txtObjectNormalX.Visible = True
-            txtObjectNormalY.Visible = True
-            txtObjectNormalZ.Visible = True
-
-            cmdObjectNormalX.Enabled = True
-            cmdObjectNormalY.Enabled = True
-            cmdObjectNormalZ.Enabled = True
-
-            If cmdObjectNormalX.ForeColor = Color.Black Then
-                txtObjectNormalX.Enabled = True
-            Else
-                txtObjectNormalX.Enabled = False
-            End If
-            If cmdObjectNormalY.ForeColor = Color.Black Then
-                txtObjectNormalY.Enabled = True
-            Else
-                txtObjectNormalY.Enabled = False
-            End If
-            If cmdObjectNormalZ.ForeColor = Color.Black Then
-                txtObjectNormalZ.Enabled = True
-            Else
-                txtObjectNormalZ.Enabled = False
-            End If
-
-            lblObjectRadius.Visible = False
-            cmdObjectRadius.Visible = False
-            txtObjectRadius.Visible = False
-
-            cmdObjectRadius.Enabled = False
-            txtObjectRadius.Enabled = False
-
-            lblObjectSize.Visible = True
-            cmdObjectSizeX.Visible = True
-            cmdObjectSizeY.Visible = True
-            cmdObjectSizeZ.Visible = True
-            txtObjectSizeX.Visible = True
-            txtObjectSizeY.Visible = True
-            txtObjectSizeZ.Visible = True
-
-            cmdObjectSizeX.Enabled = False
-            cmdObjectSizeY.Enabled = False
-            cmdObjectSizeZ.Enabled = False
-            txtObjectSizeX.Enabled = False
-            txtObjectSizeY.Enabled = False
-            txtObjectSizeZ.Enabled = False
-        End If
+        'size
+        lblObjectSize.Visible = Not isObjectSphere
+        cmdObjectSizeX.Visible = Not isObjectSphere
+        cmdObjectSizeY.Visible = Not isObjectSphere
+        cmdObjectSizeZ.Visible = Not isObjectSphere
+        txtObjectSizeX.Visible = Not isObjectSphere
+        txtObjectSizeY.Visible = Not isObjectSphere
+        txtObjectSizeZ.Visible = Not isObjectSphere
+        cmdObjectSizeX.Enabled = isObjectBox
+        cmdObjectSizeY.Enabled = isObjectBox
+        cmdObjectSizeZ.Enabled = isObjectBox
+        txtObjectSizeX.Enabled = isObjectBox And (cmdObjectSizeX.ForeColor = Color.Black)
+        txtObjectSizeY.Enabled = isObjectBox And (cmdObjectSizeY.ForeColor = Color.Black)
+        txtObjectSizeZ.Enabled = isObjectBox And (cmdObjectSizeZ.ForeColor = Color.Black)
 
         'position
-        If cmdObjectPositionX.ForeColor = Color.Black Then
-            txtObjectPositionX.Enabled = True
-        Else
-            txtObjectPositionX.Enabled = False
-        End If
-        If cmdObjectPositionY.ForeColor = Color.Black Then
-            txtObjectPositionY.Enabled = True
-        Else
-            txtObjectPositionY.Enabled = False
-        End If
-        If cmdObjectPositionZ.ForeColor = Color.Black Then
-            txtObjectPositionZ.Enabled = True
-        Else
-            txtObjectPositionZ.Enabled = False
-        End If
+        txtObjectPositionX.Enabled = (cmdObjectPositionX.ForeColor = Color.Black)
+        txtObjectPositionY.Enabled = (cmdObjectPositionY.ForeColor = Color.Black)
+        txtObjectPositionZ.Enabled = (cmdObjectPositionZ.ForeColor = Color.Black)
 
         'velocity
-        If cmdObjectVelocityX.ForeColor = Color.Black Then
-            txtObjectVelocityX.Enabled = True
-        Else
-            txtObjectVelocityX.Enabled = False
-        End If
-        If cmdObjectVelocityY.ForeColor = Color.Black Then
-            txtObjectVelocityY.Enabled = True
-        Else
-            txtObjectVelocityY.Enabled = False
-        End If
-        If cmdObjectVelocityZ.ForeColor = Color.Black Then
-            txtObjectVelocityZ.Enabled = True
-        Else
-            txtObjectVelocityZ.Enabled = False
-        End If
+        txtObjectVelocityX.Enabled = (cmdObjectVelocityX.ForeColor = Color.Black)
+        txtObjectVelocityY.Enabled = (cmdObjectVelocityY.ForeColor = Color.Black)
+        txtObjectVelocityZ.Enabled = (cmdObjectVelocityZ.ForeColor = Color.Black)
 
         'color
-        If cmdObjectColor.ForeColor = Color.Black Then
-            EnableColorBox(plObjectColor, True)
-        Else
-            EnableColorBox(plObjectColor, False)
-        End If
+        EnableColorBox(plObjectColor, cmdObjectColor.ForeColor = Color.Black)
 
-        'highlight color & sharpness
-        If chLightsEnable.Checked And cbRender.SelectedIndex < 2 Then
-            cmdObjectHighlightColor.Enabled = True
-            If cmdObjectHighlightColor.ForeColor = Color.Black Then
-                EnableColorBox(plObjectHighlightColor, True)
-            Else
-                EnableColorBox(plObjectHighlightColor, False)
-            End If
-            cmdObjectHighlightSharpness.Enabled = True
-            If cmdObjectHighlightSharpness.ForeColor = Color.Black Then
-                tbObjectHighlightSharpness.Enabled = True
-            Else
-                tbObjectHighlightSharpness.Enabled = False
-            End If
-        Else
-            EnableColorBox(plObjectHighlightColor, False)
-            cmdObjectHighlightColor.Enabled = False
-            tbObjectHighlightSharpness.Enabled = False
-            cmdObjectHighlightSharpness.Enabled = False
-        End If
+        'highlight color
+        cmdObjectHighlightColor.Enabled = isFancyDXLights
+        EnableColorBox(plObjectHighlightColor, isFancyDXLights And (cmdObjectHighlightColor.ForeColor = Color.Black))
+
+        'highlight sharpness
+        cmdObjectHighlightSharpness.Enabled = isFancyDXLights
+        tbObjectHighlightSharpness.Enabled = isFancyDXLights And (cmdObjectHighlightSharpness.ForeColor = Color.Black)
 
         'reflectivity
-        If chLightsEnable.Checked And cbRender.SelectedIndex = 2 Then
-            cmdObjectReflectivity.Enabled = True
-            If cmdObjectReflectivity.ForeColor = Color.Black Then
-                tbObjectReflectivity.Enabled = True
-            Else
-                tbObjectReflectivity.Enabled = False
-            End If
-        Else
-            cmdObjectReflectivity.Enabled = False
-            tbObjectReflectivity.Enabled = False
-        End If
+        cmdObjectReflectivity.Enabled = isFancyDXLights
+        tbObjectReflectivity.Enabled = isFancyDXLights And (cmdObjectReflectivity.ForeColor = Color.Black)
 
         'transparency
         cmdObjectTransparency.Enabled = True
-        If cmdObjectTransparency.ForeColor = Color.Black Then
-            tbObjectTransparency.Enabled = True
-        Else
-            tbObjectTransparency.Enabled = False
-        End If
+        tbObjectTransparency.Enabled = (cmdObjectTransparency.ForeColor = Color.Black)
 
         'refractive index
-        If chLightsEnable.Checked And cbRender.SelectedIndex = 2 Then
-            cmdObjectRefractiveIndex.Enabled = True
-            If cmdObjectRefractiveIndex.ForeColor = Color.Black Then
-                txtObjectRefractiveIndex.Enabled = True
-            Else
-                txtObjectRefractiveIndex.Enabled = False
-            End If
-        Else
-            cmdObjectRefractiveIndex.Enabled = False
-            txtObjectRefractiveIndex.Enabled = False
-        End If
-
-        If listGroups.SelectedIndex <> -1 Then
-            cmdGroupRemove.Enabled = True
-            cmdGroupReplace.Enabled = True
-        Else
-            cmdGroupRemove.Enabled = False
-            cmdGroupReplace.Enabled = False
-        End If
+        cmdObjectRefractiveIndex.Enabled = isRayTraceLights
+        txtObjectRefractiveIndex.Enabled = isRayTraceLights And (cmdObjectRefractiveIndex.ForeColor = Color.Black)
     End Sub
     Private Sub UpdateSimulation()
         Simulation.Config.Render.Mode = ToByte(cbRender.SelectedIndex)
@@ -1513,16 +1144,16 @@ Public Class ControlPanel
 
         '----LIGHTS----
         listLights.Items.Clear()
-        For i = 0 To Simulation.Config.LightCount - 1
-            listLights.Items.Insert(listLights.Items.Count, Simulation.Config.Lights(i).Name)
+        For i = 0 To Simulation.Config.LightConfigCount - 1
+            listLights.Items.Insert(listLights.Items.Count, Simulation.Config.LightConfigs(i).Name)
         Next
         listLights.ClearSelected()
         ClearLightForm()
 
         '----OBJECTS----
         listGroups.Items.Clear()
-        For i = 0 To Simulation.Config.GroupCount - 1
-            listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.Groups(i).Name)
+        For i = 0 To Simulation.Config.ObjectGroupCount - 1
+            listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.ObjectGroups(i).Name)
         Next
         listGroups.ClearSelected()
         ClearObjectForm()
@@ -1564,7 +1195,7 @@ Public Class ControlPanel
         OpenDialog.InitialDirectory = Application.StartupPath
         SaveDialog.InitialDirectory = Application.StartupPath
         If QueryPerformanceFrequency(Simulation.CalcCounter.Frequency) = 0 Then
-            MsgBox("Unable To Query the Performance Count)", MsgBoxStyle.Critical, "Error")
+            MsgBox("Unable To Query the Performance Counter)", MsgBoxStyle.Critical, "Error")
             End
         Else
             Simulation.RenderCounter.Frequency = Simulation.CalcCounter.Frequency
@@ -1582,7 +1213,7 @@ Public Class ControlPanel
                 MsgBox("The number Of objects In the simulation surpasses the maximum number of objects", MsgBoxStyle.Critical, "Error")
                 Exit Sub
             End If
-            If Simulation.Config.GroupCount <= 0 Then
+            If Simulation.Config.ObjectGroupCount <= 0 Then
                 MsgBox("At least one Object Is required To begin the simulation.", MsgBoxStyle.Critical, "Error")
                 Exit Sub
             End If
@@ -1619,7 +1250,7 @@ Public Class ControlPanel
             BackBuffer.Dispose()
         End If
     End Sub
-    Private Sub cmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
+    Private Sub CmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
         If IsValidSets() = True Then
             SaveDialog.FileName = ""
             SaveDialog.DefaultExt = "PR4"
@@ -1630,7 +1261,7 @@ Public Class ControlPanel
                 Try
                     UpdateSimulation()
                     Dim Err As String = ""
-                    If SaveTextToFile(Simulation.ToString(), SaveDialog.FileName, Err) = False Then
+                    If SaveTextToFile(Simulation.Config.ToString(), SaveDialog.FileName, Err) = False Then
                         MsgBox("Unable To save simulation: '" & Err & "'.", MsgBoxStyle.Critical, "Error")
                     Else
                         ConfigModified = False
@@ -1688,30 +1319,30 @@ Public Class ControlPanel
     End Sub
     Private Sub ListLights_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listLights.SelectedIndexChanged
         If listLights.SelectedIndex <> -1 Then
-            txtLightName.Text = Simulation.Config.Lights(listLights.SelectedIndex).Name
-            plLightColor.BackColor = Simulation.Config.Lights(listLights.SelectedIndex).Color
-            txtLightDirectionX.Text = Simulation.Config.Lights(listLights.SelectedIndex).Direction.X.ToString
-            txtLightDirectionY.Text = Simulation.Config.Lights(listLights.SelectedIndex).Direction.Y.ToString
-            txtLightDirectionZ.Text = Simulation.Config.Lights(listLights.SelectedIndex).Direction.Z.ToString
-            If Simulation.Config.Lights(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Spot Then
+            txtLightName.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Name
+            plLightColor.BackColor = Simulation.Config.LightConfigs(listLights.SelectedIndex).Color
+            txtLightDirectionX.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Direction.X.ToString
+            txtLightDirectionY.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Direction.Y.ToString
+            txtLightDirectionZ.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Direction.Z.ToString
+            If Simulation.Config.LightConfigs(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Spot Then
                 cbLightType.SelectedIndex = 2
-            ElseIf Simulation.Config.Lights(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Point Then
+            ElseIf Simulation.Config.LightConfigs(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Point Then
                 cbLightType.SelectedIndex = 1
             Else
                 cbLightType.SelectedIndex = 0
             End If
-            txtLightPositionX.Text = Simulation.Config.Lights(listLights.SelectedIndex).Position.X.ToString
-            txtLightPositionY.Text = Simulation.Config.Lights(listLights.SelectedIndex).Position.Y.ToString
-            txtLightPositionZ.Text = Simulation.Config.Lights(listLights.SelectedIndex).Position.Z.ToString
-            tbLightHighlight.Value = Simulation.Config.Lights(listLights.SelectedIndex).SpecularColor.R
-            tbLightAmbient.Value = Simulation.Config.Lights(listLights.SelectedIndex).AmbientRatio
-            txtLightRange.Text = Simulation.Config.Lights(listLights.SelectedIndex).Range.ToString
-            txtLightAttenuationA.Text = Simulation.Config.Lights(listLights.SelectedIndex).AttenuationA.ToString
-            txtLightAttenuationB.Text = Simulation.Config.Lights(listLights.SelectedIndex).AttenuationB.ToString
-            txtLightAttenuationC.Text = Simulation.Config.Lights(listLights.SelectedIndex).AttenuationC.ToString
-            txtLightAngleInner.Text = ToInt32((Simulation.Config.Lights(listLights.SelectedIndex).InnerCone / PI) * 180).ToString
-            txtLightAngleOuter.Text = ToInt32((Simulation.Config.Lights(listLights.SelectedIndex).OuterCone / PI) * 180).ToString
-            txtLightFalloff.Text = Simulation.Config.Lights(listLights.SelectedIndex).Falloff.ToString
+            txtLightPositionX.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Position.X.ToString
+            txtLightPositionY.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Position.Y.ToString
+            txtLightPositionZ.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Position.Z.ToString
+            tbLightHighlight.Value = Simulation.Config.LightConfigs(listLights.SelectedIndex).SpecularColor.R
+            tbLightAmbient.Value = Simulation.Config.LightConfigs(listLights.SelectedIndex).AmbientRatio
+            txtLightRange.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Range.ToString
+            txtLightAttenuationA.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).AttenuationA.ToString
+            txtLightAttenuationB.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).AttenuationB.ToString
+            txtLightAttenuationC.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).AttenuationC.ToString
+            txtLightAngleInner.Text = ToInt32((Simulation.Config.LightConfigs(listLights.SelectedIndex).InnerCone / PI) * 180).ToString
+            txtLightAngleOuter.Text = ToInt32((Simulation.Config.LightConfigs(listLights.SelectedIndex).OuterCone / PI) * 180).ToString
+            txtLightFalloff.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Falloff.ToString
         Else
             ClearLightForm()
         End If
@@ -1720,69 +1351,62 @@ Public Class ControlPanel
     Private Sub CmdAddLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightAdd.Click
         If Not IsValidLight() = True Then Exit Sub
         Simulation.Config.EnlargeLights()
-        InsertLight(Simulation.Config.LightCount - 1)
-        listLights.Items.Insert(listLights.Items.Count, Simulation.Config.Lights(Simulation.Config.LightCount - 1).Name)
+        InsertLight(Simulation.Config.LightConfigCount - 1)
+        listLights.Items.Insert(listLights.Items.Count, Simulation.Config.LightConfigs(Simulation.Config.LightConfigCount - 1).Name)
         listLights.ClearSelected()
         ConfigModified = True
     End Sub
     Private Sub InsertLight(ByRef i As Integer)
-        If cbLightType.SelectedIndex = 2 Then
-            Simulation.Config.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Spot
-        ElseIf cbLightType.SelectedIndex = 1 Then
-            Simulation.Config.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Point
-        Else
-            Simulation.Config.Lights(i).Type = Microsoft.DirectX.Direct3D.LightType.Directional
+        Dim isDirectionalLight As Boolean = (cbLightType.SelectedIndex = 0)
+        Dim isPointLight As Boolean = (cbLightType.SelectedIndex = 1)
+        Dim isSpotLight As Boolean = (cbLightType.SelectedIndex = 2)
+
+        If isSpotLight Then
+            Simulation.Config.LightConfigs(i).Type = LightType.Spot
+        ElseIf isPointLight Then
+            Simulation.Config.LightConfigs(i).Type = LightType.Point
+        ElseIf isDirectionalLight Then
+            Simulation.Config.LightConfigs(i).Type = LightType.Directional
         End If
-        Simulation.Config.Lights(i).Name = txtLightName.Text
-        Simulation.Config.Lights(i).Color = plLightColor.BackColor
-        Simulation.Config.Lights(i).Direction.X = ToSingle(txtLightDirectionX.Text)
-        Simulation.Config.Lights(i).Direction.Y = ToSingle(txtLightDirectionY.Text)
-        Simulation.Config.Lights(i).Direction.Z = ToSingle(txtLightDirectionZ.Text)
-        Simulation.Config.Lights(i).Position.X = ToSingle(txtLightPositionX.Text)
-        Simulation.Config.Lights(i).Position.Y = ToSingle(txtLightPositionY.Text)
-        Simulation.Config.Lights(i).Position.Z = ToSingle(txtLightPositionZ.Text)
-        Simulation.Config.Lights(i).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
-        Simulation.Config.Lights(i).AmbientRatio = tbLightAmbient.Value
-        Simulation.Config.Lights(i).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
-        Simulation.Config.Lights(i).Range = ToSingle(txtLightRange.Text)
-        Simulation.Config.Lights(i).AttenuationA = ToSingle(txtLightAttenuationA.Text)
-        Simulation.Config.Lights(i).AttenuationB = ToSingle(txtLightAttenuationB.Text)
-        Simulation.Config.Lights(i).AttenuationC = ToSingle(txtLightAttenuationC.Text)
-        Simulation.Config.Lights(i).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
-        Simulation.Config.Lights(i).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
-        Simulation.Config.Lights(i).Falloff = ToSingle(txtLightFalloff.Text)
+
+        Simulation.Config.LightConfigs(i).Name = txtLightName.Text
+        Simulation.Config.LightConfigs(i).Color = plLightColor.BackColor
+
+        If (isDirectionalLight Or isSpotLight) Then
+            Simulation.Config.LightConfigs(i).Direction.X = ToSingle(txtLightDirectionX.Text)
+            Simulation.Config.LightConfigs(i).Direction.Y = ToSingle(txtLightDirectionY.Text)
+            Simulation.Config.LightConfigs(i).Direction.Z = ToSingle(txtLightDirectionZ.Text)
+        End If
+
+        If (isSpotLight Or isPointLight) Then
+            Simulation.Config.LightConfigs(i).Position.X = ToSingle(txtLightPositionX.Text)
+            Simulation.Config.LightConfigs(i).Position.Y = ToSingle(txtLightPositionY.Text)
+            Simulation.Config.LightConfigs(i).Position.Z = ToSingle(txtLightPositionZ.Text)
+
+            Simulation.Config.LightConfigs(i).AttenuationA = ToSingle(txtLightAttenuationA.Text)
+            Simulation.Config.LightConfigs(i).AttenuationB = ToSingle(txtLightAttenuationB.Text)
+            Simulation.Config.LightConfigs(i).AttenuationC = ToSingle(txtLightAttenuationC.Text)
+
+            Simulation.Config.LightConfigs(i).Range = ToSingle(txtLightRange.Text)
+        End If
+
+        If (isSpotLight) Then
+            Simulation.Config.LightConfigs(i).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
+            Simulation.Config.LightConfigs(i).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
+            Simulation.Config.LightConfigs(i).Falloff = ToSingle(txtLightFalloff.Text)
+        End If
+
+        Simulation.Config.LightConfigs(i).AmbientRatio = tbLightAmbient.Value
+        Simulation.Config.LightConfigs(i).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
+        Simulation.Config.LightConfigs(i).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
     End Sub
     Private Sub CmdReplaceLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightReplace.Click
         If IsValidLight() = True Then
             Dim index As Integer
             index = listLights.SelectedIndex
-            Simulation.Config.Lights(index).Color = plLightColor.BackColor
-            Simulation.Config.Lights(index).Direction.X = ToSingle(txtLightDirectionX.Text)
-            Simulation.Config.Lights(index).Direction.Y = ToSingle(txtLightDirectionY.Text)
-            Simulation.Config.Lights(index).Direction.Z = ToSingle(txtLightDirectionZ.Text)
-            Simulation.Config.Lights(index).Name = txtLightName.Text
-            If cbLightType.SelectedIndex = 2 Then
-                Simulation.Config.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Spot
-            ElseIf cbLightType.SelectedIndex = 1 Then
-                Simulation.Config.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Point
-            Else
-                Simulation.Config.Lights(index).Type = Microsoft.DirectX.Direct3D.LightType.Directional
-            End If
-            Simulation.Config.Lights(index).Position.X = ToSingle(txtLightPositionX.Text)
-            Simulation.Config.Lights(index).Position.Y = ToSingle(txtLightPositionY.Text)
-            Simulation.Config.Lights(index).Position.Z = ToSingle(txtLightPositionZ.Text)
-            Simulation.Config.Lights(index).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
-            Simulation.Config.Lights(index).AmbientRatio = tbLightAmbient.Value
-            Simulation.Config.Lights(index).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
-            Simulation.Config.Lights(index).Range = ToSingle(txtLightRange.Text)
-            Simulation.Config.Lights(index).AttenuationA = ToSingle(txtLightAttenuationA.Text)
-            Simulation.Config.Lights(index).AttenuationB = ToSingle(txtLightAttenuationB.Text)
-            Simulation.Config.Lights(index).AttenuationC = ToSingle(txtLightAttenuationC.Text)
-            Simulation.Config.Lights(index).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
-            Simulation.Config.Lights(index).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
-            Simulation.Config.Lights(index).Falloff = ToSingle(txtLightFalloff.Text)
+            InsertLight(index)
             listLights.Items.RemoveAt(index)
-            listLights.Items.Insert(index, Simulation.Config.Lights(index).Name)
+            listLights.Items.Insert(index, Simulation.Config.LightConfigs(index).Name)
             listLights.ClearSelected()
             ConfigModified = True
         End If
@@ -1812,7 +1436,10 @@ Public Class ControlPanel
             StatusUpdateCount += 1
             QueryPerformanceCounter(Simulation.RenderCounter.StopValue)
             Simulation.CalcCounter.StopValue = Simulation.RenderCounter.StopValue
-            lblStat.Text = "Frames : " & Simulation.RenderCounter.FullCount & "  |  FPS : " & Int((Simulation.RenderCounter.FullCount - Simulation.RenderCounter.LastCount) / ((Simulation.RenderCounter.StopValue - Simulation.RenderCounter.StartValue) / Simulation.RenderCounter.Frequency)) & "  |  Calculations : " & Simulation.CalcCounter.FullCount & "  |  CPS : " & Int((Simulation.CalcCounter.FullCount - Simulation.CalcCounter.LastCount) / ((Simulation.CalcCounter.StopValue - Simulation.CalcCounter.StartValue) / Simulation.CalcCounter.Frequency))
+            lblStat.Text = "Frames : " & Simulation.RenderCounter.FullCount &
+                           "  |  FPS : " & Int((Simulation.RenderCounter.FullCount - Simulation.RenderCounter.LastCount) / ((Simulation.RenderCounter.StopValue - Simulation.RenderCounter.StartValue) / Simulation.RenderCounter.Frequency)) &
+                           "  |  Calculations : " & Simulation.CalcCounter.FullCount &
+                           "  |  CPS : " & Int((Simulation.CalcCounter.FullCount - Simulation.CalcCounter.LastCount) / ((Simulation.CalcCounter.StopValue - Simulation.CalcCounter.StartValue) / Simulation.CalcCounter.Frequency))
             If StatusUpdateCount = 40 Then
                 Simulation.CalcCounter.LastCount = Simulation.CalcCounter.FullCount
                 Simulation.RenderCounter.LastCount = Simulation.RenderCounter.FullCount
@@ -2014,14 +1641,14 @@ Public Class ControlPanel
     Private Sub ListObjects_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listGroups.SelectedIndexChanged
         If listGroups.SelectedIndex <> -1 Then
             Dim index As Integer = listGroups.SelectedIndex
-            chObjectAffected.Checked = Simulation.Config.Groups(index).Affected
-            chObjectAffects.Checked = Simulation.Config.Groups(index).Affects
-            chObjectWireframe.Checked = Simulation.Config.Groups(index).Wireframe
-            cbObjectType.SelectedIndex = Simulation.Config.Groups(index).Type
-            txtObjectName.Text = Simulation.Config.Groups(index).Name
+            chObjectAffected.Checked = Simulation.Config.ObjectGroups(index).Affected
+            chObjectAffects.Checked = Simulation.Config.ObjectGroups(index).Affects
+            chObjectWireframe.Checked = Simulation.Config.ObjectGroups(index).Wireframe
+            cbObjectType.SelectedIndex = Simulation.Config.ObjectGroups(index).Type
+            txtObjectName.Text = Simulation.Config.ObjectGroups(index).Name
 
             'NUMBER 
-            ObjectNumber.Copy(Simulation.Config.Groups(index).Number)
+            ObjectNumber.Copy(Simulation.Config.ObjectGroups(index).Number)
             txtObjectNumber.Text = ObjectNumber.Value.ToString
             If ObjectNumber.UseFunction Then
                 cmdObjectNumber.ForeColor = Color.RoyalBlue
@@ -2030,7 +1657,7 @@ Public Class ControlPanel
             End If
 
             'MASS
-            ObjectMass.Copy(Simulation.Config.Groups(index).Mass)
+            ObjectMass.Copy(Simulation.Config.ObjectGroups(index).Mass)
             txtObjectMass.Text = ObjectMass.Value.ToString
             If ObjectMass.UseFunction Then
                 cmdObjectMass.ForeColor = Color.RoyalBlue
@@ -2039,7 +1666,7 @@ Public Class ControlPanel
             End If
 
             'CHARGE
-            ObjectCharge.Copy(Simulation.Config.Groups(index).Charge)
+            ObjectCharge.Copy(Simulation.Config.ObjectGroups(index).Charge)
             txtObjectCharge.Text = ObjectCharge.Value.ToString
             If ObjectCharge.UseFunction Then
                 cmdObjectCharge.ForeColor = Color.RoyalBlue
@@ -2048,7 +1675,7 @@ Public Class ControlPanel
             End If
 
             'RADIUS
-            ObjectRadius.Copy(Simulation.Config.Groups(index).Radius)
+            ObjectRadius.Copy(Simulation.Config.ObjectGroups(index).Radius)
             txtObjectRadius.Text = ObjectRadius.Value.ToString
             If ObjectRadius.UseFunction Then
                 cmdObjectRadius.ForeColor = Color.RoyalBlue
@@ -2057,7 +1684,7 @@ Public Class ControlPanel
             End If
 
             'SIZE
-            ObjectSize.Copy(Simulation.Config.Groups(index).Size)
+            ObjectSize.Copy(Simulation.Config.ObjectGroups(index).Size)
             txtObjectSizeX.Text = ObjectSize.X.Value.ToString
             If ObjectSize.X.UseFunction Then
                 cmdObjectSizeX.ForeColor = Color.RoyalBlue
@@ -2078,7 +1705,7 @@ Public Class ControlPanel
             End If
 
             'ROTATION
-            ObjectRotation.Copy(Simulation.Config.Groups(index).Rotation)
+            ObjectRotation.Copy(Simulation.Config.ObjectGroups(index).Rotation)
             txtObjectRotationX.Text = ObjectRotation.X.Value.ToString
             If ObjectRotation.X.UseFunction Then
                 cmdObjectRotationX.ForeColor = Color.RoyalBlue
@@ -2099,7 +1726,7 @@ Public Class ControlPanel
             End If
 
             'NORMAL
-            ObjectNormal.Copy(Simulation.Config.Groups(index).Normal)
+            ObjectNormal.Copy(Simulation.Config.ObjectGroups(index).Normal)
             txtObjectNormalX.Text = ObjectNormal.X.Value.ToString
             If ObjectNormal.X.UseFunction Then
                 cmdObjectNormalX.ForeColor = Color.RoyalBlue
@@ -2120,7 +1747,7 @@ Public Class ControlPanel
             End If
 
             'POSITION
-            ObjectPosition.Copy(Simulation.Config.Groups(index).Position)
+            ObjectPosition.Copy(Simulation.Config.ObjectGroups(index).Position)
             txtObjectPositionX.Text = ObjectPosition.X.Value.ToString
             If ObjectPosition.X.UseFunction Then
                 cmdObjectPositionX.ForeColor = Color.RoyalBlue
@@ -2141,7 +1768,7 @@ Public Class ControlPanel
             End If
 
             'VELOCITY
-            ObjectVelocity.Copy(Simulation.Config.Groups(index).Velocity)
+            ObjectVelocity.Copy(Simulation.Config.ObjectGroups(index).Velocity)
             txtObjectVelocityX.Text = ObjectVelocity.X.Value.ToString
             If ObjectVelocity.X.UseFunction Then
                 cmdObjectVelocityX.ForeColor = Color.RoyalBlue
@@ -2162,7 +1789,7 @@ Public Class ControlPanel
             End If
 
             'COLOR
-            ObjectColor.Copy(Simulation.Config.Groups(index).Color)
+            ObjectColor.Copy(Simulation.Config.ObjectGroups(index).Color)
             plObjectColor.BackColor = ObjectColor.Value
             If ObjectColor.UseFunction Then
                 cmdObjectColor.ForeColor = Color.RoyalBlue
@@ -2171,7 +1798,7 @@ Public Class ControlPanel
             End If
 
             'HIGHLIGHT
-            ObjectHighlight.Copy(Simulation.Config.Groups(index).Highlight)
+            ObjectHighlight.Copy(Simulation.Config.ObjectGroups(index).Highlight)
             plObjectHighlightColor.BackColor = ObjectHighlight.Value
             If ObjectHighlight.UseFunction Then
                 cmdObjectHighlightColor.ForeColor = Color.RoyalBlue
@@ -2180,7 +1807,7 @@ Public Class ControlPanel
             End If
 
             'SHARPNESS
-            ObjectSharpness.Copy(Simulation.Config.Groups(index).Sharpness)
+            ObjectSharpness.Copy(Simulation.Config.ObjectGroups(index).Sharpness)
             tbObjectHighlightSharpness.Value = ToInt32(ObjectSharpness.Value)
             If ObjectSharpness.UseFunction Then
                 cmdObjectHighlightSharpness.ForeColor = Color.RoyalBlue
@@ -2189,7 +1816,7 @@ Public Class ControlPanel
             End If
 
             'REFLECTIVITY
-            ObjectReflectivity.Copy(Simulation.Config.Groups(index).Reflectivity)
+            ObjectReflectivity.Copy(Simulation.Config.ObjectGroups(index).Reflectivity)
             tbObjectReflectivity.Value = ToInt32(ObjectReflectivity.Value)
             If ObjectReflectivity.UseFunction Then
                 cmdObjectReflectivity.ForeColor = Color.RoyalBlue
@@ -2198,7 +1825,7 @@ Public Class ControlPanel
             End If
 
             'TRANSPARENCY
-            ObjectTransparency.Copy(Simulation.Config.Groups(index).Transparency)
+            ObjectTransparency.Copy(Simulation.Config.ObjectGroups(index).Transparency)
             tbObjectTransparency.Value = ToInt32(ObjectTransparency.Value)
             If ObjectTransparency.UseFunction Then
                 cmdObjectTransparency.ForeColor = Color.RoyalBlue
@@ -2207,7 +1834,7 @@ Public Class ControlPanel
             End If
 
             'REFRACTIVE INDEX
-            ObjectRefractiveIndex.Copy(Simulation.Config.Groups(index).RefractiveIndex)
+            ObjectRefractiveIndex.Copy(Simulation.Config.ObjectGroups(index).RefractiveIndex)
             txtObjectRefractiveIndex.Text = ObjectRefractiveIndex.Value.ToString
             If ObjectRefractiveIndex.UseFunction Then
                 cmdObjectRefractiveIndex.ForeColor = Color.RoyalBlue
@@ -2307,22 +1934,22 @@ Public Class ControlPanel
     Private Function ObjectRoomLeft() As Integer
         Dim CurrentObjects As Integer = 0
         'TODO move this the distribution object
-        For i = 0 To Simulation.Config.GroupCount - 1
-            If Simulation.Config.Groups(i).Number.UseFunction Then
-                If Simulation.Config.Groups(i).Number.Random Then
-                    CurrentObjects += Simulation.Config.Groups(i).Number.RandomMax
+        For i = 0 To Simulation.Config.ObjectGroupCount - 1
+            If Simulation.Config.ObjectGroups(i).Number.UseFunction Then
+                If Simulation.Config.ObjectGroups(i).Number.Random Then
+                    CurrentObjects += Simulation.Config.ObjectGroups(i).Number.RandomMax
                 Else
-                    CurrentObjects += Simulation.Config.Groups(i).Number.NormalMax
+                    CurrentObjects += Simulation.Config.ObjectGroups(i).Number.NormalMax
                 End If
                 'TODO: Figure out Polynomial & Even distribution max
             Else
-                CurrentObjects += Simulation.Config.Groups(i).Number.Value
+                CurrentObjects += Simulation.Config.ObjectGroups(i).Number.Value
             End If
         Next
         Return ToInt32(txtLimitObjects.Text) - CurrentObjects
     End Function
     Private Sub CmdObjectAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupAdd.Click
-        If Not IsValidGroup() Or Not IsValidMaxObjects() Then Exit Sub
+        If Not IsValidObjectGroup() Or Not IsValidMaxObjects() Then Exit Sub
 
         Dim CurrentObjects As Integer
         If cmdObjectNumber.ForeColor = Color.Black Then
@@ -2341,79 +1968,79 @@ Public Class ControlPanel
         End If
 
         Simulation.Config.EnlargeGroups()
-        InsertGroup(Simulation.Config.GroupCount - 1)
-        listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.Groups(Simulation.Config.GroupCount - 1).Name)
+        InsertGroup(Simulation.Config.ObjectGroupCount - 1)
+        listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.ObjectGroups(Simulation.Config.ObjectGroupCount - 1).Name)
         listGroups.ClearSelected()
         ConfigModified = True
     End Sub
     Private Sub InsertGroup(ByRef i As Integer)
 
-        Simulation.Config.Groups(i).Name = txtObjectName.Text
-        Simulation.Config.Groups(i).Affected = chObjectAffected.Checked
-        Simulation.Config.Groups(i).Affects = chObjectAffects.Checked
-        Simulation.Config.Groups(i).Wireframe = chObjectWireframe.Checked
+        Simulation.Config.ObjectGroups(i).Name = txtObjectName.Text
+        Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
+        Simulation.Config.ObjectGroups(i).Affects = chObjectAffects.Checked
+        Simulation.Config.ObjectGroups(i).Wireframe = chObjectWireframe.Checked
         If cbObjectType.SelectedIndex = 0 Then
-            Simulation.Config.Groups(i).Type = ObjectType.Sphere
+            Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
         ElseIf cbObjectType.SelectedIndex = 1 Then
-            Simulation.Config.Groups(i).Type = ObjectType.Box
+            Simulation.Config.ObjectGroups(i).Type = ObjectType.Box
         Else
-            Simulation.Config.Groups(i).Type = ObjectType.InfinitePlane
+            Simulation.Config.ObjectGroups(i).Type = ObjectType.InfinitePlane
         End If
 
         ObjectNumber.Value = ToInt32(txtObjectNumber.Text)
-        Simulation.Config.Groups(i).Number.Copy(ObjectNumber)
+        Simulation.Config.ObjectGroups(i).Number.Copy(ObjectNumber)
 
         ObjectMass.Value = ToDouble(txtObjectMass.Text)
-        Simulation.Config.Groups(i).Mass.Copy(ObjectMass)
+        Simulation.Config.ObjectGroups(i).Mass.Copy(ObjectMass)
 
         ObjectCharge.Value = ToDouble(txtObjectCharge.Text)
-        Simulation.Config.Groups(i).Charge.Copy(ObjectCharge)
+        Simulation.Config.ObjectGroups(i).Charge.Copy(ObjectCharge)
 
         ObjectSize.X.Value = ToDouble(txtObjectSizeX.Text)
         ObjectSize.Y.Value = ToDouble(txtObjectSizeY.Text)
         ObjectSize.Z.Value = ToDouble(txtObjectSizeZ.Text)
-        Simulation.Config.Groups(i).Size.Copy(ObjectSize)
+        Simulation.Config.ObjectGroups(i).Size.Copy(ObjectSize)
 
         ObjectRadius.Value = ToDouble(txtObjectRadius.Text)
-        Simulation.Config.Groups(i).Radius.Copy(ObjectRadius)
+        Simulation.Config.ObjectGroups(i).Radius.Copy(ObjectRadius)
 
         ObjectRotation.X.Value = ToDouble(txtObjectRotationX.Text)
         ObjectRotation.Y.Value = ToDouble(txtObjectRotationY.Text)
         ObjectRotation.Z.Value = ToDouble(txtObjectRotationZ.Text)
-        Simulation.Config.Groups(i).Rotation.Copy(ObjectRotation)
+        Simulation.Config.ObjectGroups(i).Rotation.Copy(ObjectRotation)
 
         ObjectNormal.X.Value = ToDouble(txtObjectNormalX.Text)
         ObjectNormal.Y.Value = ToDouble(txtObjectNormalY.Text)
         ObjectNormal.Z.Value = ToDouble(txtObjectNormalZ.Text)
-        Simulation.Config.Groups(i).Normal.Copy(ObjectNormal)
+        Simulation.Config.ObjectGroups(i).Normal.Copy(ObjectNormal)
 
         ObjectPosition.X.Value = ToDouble(txtObjectPositionX.Text)
         ObjectPosition.Y.Value = ToDouble(txtObjectPositionY.Text)
         ObjectPosition.Z.Value = ToDouble(txtObjectPositionZ.Text)
-        Simulation.Config.Groups(i).Position.Copy(ObjectPosition)
+        Simulation.Config.ObjectGroups(i).Position.Copy(ObjectPosition)
 
         ObjectVelocity.X.Value = ToDouble(txtObjectVelocityX.Text)
         ObjectVelocity.Y.Value = ToDouble(txtObjectVelocityY.Text)
         ObjectVelocity.Z.Value = ToDouble(txtObjectVelocityZ.Text)
-        Simulation.Config.Groups(i).Velocity.Copy(ObjectVelocity)
+        Simulation.Config.ObjectGroups(i).Velocity.Copy(ObjectVelocity)
 
         ObjectColor.Value = plObjectColor.BackColor
-        Simulation.Config.Groups(i).Color.Copy(ObjectColor)
+        Simulation.Config.ObjectGroups(i).Color.Copy(ObjectColor)
 
         ObjectHighlight.Value = plObjectHighlightColor.BackColor
-        Simulation.Config.Groups(i).Highlight.Copy(ObjectHighlight)
+        Simulation.Config.ObjectGroups(i).Highlight.Copy(ObjectHighlight)
 
         ObjectRefractiveIndex.Value = ToDouble(txtObjectRefractiveIndex.Text)
-        Simulation.Config.Groups(i).RefractiveIndex.Copy(ObjectRefractiveIndex)
+        Simulation.Config.ObjectGroups(i).RefractiveIndex.Copy(ObjectRefractiveIndex)
 
         ObjectTransparency.Value = ToDouble(tbObjectTransparency.Value)
-        Simulation.Config.Groups(i).Transparency.Copy(ObjectTransparency)
+        Simulation.Config.ObjectGroups(i).Transparency.Copy(ObjectTransparency)
 
         ObjectSharpness.Value = ToSingle(tbObjectHighlightSharpness.Value)
-        Simulation.Config.Groups(i).Sharpness.Copy(ObjectSharpness)
+        Simulation.Config.ObjectGroups(i).Sharpness.Copy(ObjectSharpness)
 
         ObjectReflectivity.Value = ToSingle(tbObjectReflectivity.Value)
-        Simulation.Config.Groups(i).Reflectivity.Copy(ObjectReflectivity)
+        Simulation.Config.ObjectGroups(i).Reflectivity.Copy(ObjectReflectivity)
     End Sub
     Private Function IsValidMaxObjects() As Boolean
         If Not IsNumeric(txtLimitObjects.Text) Then
@@ -2431,7 +2058,7 @@ Public Class ControlPanel
         Return True
     End Function
     Private Sub CmdGroupReplace_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupReplace.Click
-        If Not IsValidGroup() Or Not IsValidMaxObjects() Then Exit Sub
+        If Not IsValidObjectGroup() Or Not IsValidMaxObjects() Then Exit Sub
         Dim index As Integer
         index = listGroups.SelectedIndex
         Dim CurrentObjects As Integer
@@ -2444,14 +2071,14 @@ Public Class ControlPanel
                 CurrentObjects = ObjectNumber.NormalMax
             End If
         End If
-        If Simulation.Config.Groups(index).Number.UseFunction Then
+        If Simulation.Config.ObjectGroups(index).Number.UseFunction Then
             If ObjectNumber.Random Then
-                CurrentObjects -= Simulation.Config.Groups(index).Number.RandomMax
+                CurrentObjects -= Simulation.Config.ObjectGroups(index).Number.RandomMax
             Else
-                CurrentObjects -= Simulation.Config.Groups(index).Number.NormalMax
+                CurrentObjects -= Simulation.Config.ObjectGroups(index).Number.NormalMax
             End If
         Else
-            CurrentObjects -= Simulation.Config.Groups(index).Number.Value
+            CurrentObjects -= Simulation.Config.ObjectGroups(index).Number.Value
         End If
         If CurrentObjects > ObjectRoomLeft() Then
             MsgBox("Objects are currently limited to " & ToInt32(txtLimitObjects.Text) & ".", MsgBoxStyle.Exclamation, "Warning")
@@ -2460,7 +2087,7 @@ Public Class ControlPanel
 
         InsertGroup(index)
         listGroups.Items.RemoveAt(index)
-        listGroups.Items.Insert(index, Simulation.Config.Groups(index).Name)
+        listGroups.Items.Insert(index, Simulation.Config.ObjectGroups(index).Name)
         listGroups.ClearSelected()
         ConfigModified = True
     End Sub
@@ -2478,10 +2105,10 @@ Public Class ControlPanel
         plObjectHighlightColor.BackColor = ColorDialog.Color
     End Sub
 
-    Private Sub ChobjectAffected_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffected.CheckedChanged
+    Private Sub ChObjectAffected_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffected.CheckedChanged
         CheckConditionals()
     End Sub
-    Private Sub ChobjectAffects_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffects.CheckedChanged
+    Private Sub ChObjectAffects_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chObjectAffects.CheckedChanged
         CheckConditionals()
     End Sub
     Private Sub CbObjectType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbObjectType.SelectedIndexChanged

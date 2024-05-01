@@ -29,7 +29,7 @@ Partial Class Output
         '
         'CameraUpdate
         '
-        Me.CameraUpdate.Interval = 30
+        Me.CameraUpdate.Interval = 10
         '
         'Output
         '

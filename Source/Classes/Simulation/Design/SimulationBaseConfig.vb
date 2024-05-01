@@ -11,12 +11,12 @@ Public Structure SimulationBaseConfig
     Public Settings As SimulationSettings
 
     'Simulation Groups
-    Public GroupCount As Integer
-    Public Groups() As SimulationConfigObjectGroup
+    Public ObjectGroupCount As Integer
+    Public ObjectGroups() As SimulationConfigObjectGroup
 
     'Simulation Lights
-    Public LightCount As Integer
-    Public Lights() As SimulationConfigLight
+    Public LightConfigCount As Integer
+    Public LightConfigs() As SimulationConfigLight
 
     Public Sub Clear()
         Render.Clear()
@@ -26,14 +26,14 @@ Public Structure SimulationBaseConfig
         Settings.Clear()
 
         'Groups
-        GroupCount = 1
-        ReDim Groups(0)
-        Groups(0) = New SimulationConfigObjectGroup
+        ObjectGroupCount = 1
+        ReDim ObjectGroups(0)
+        ObjectGroups(0) = New SimulationConfigObjectGroup
 
         'Lights
-        LightCount = 1
-        ReDim Lights(0)
-        Lights(0) = New SimulationConfigLight
+        LightConfigCount = 1
+        ReDim LightConfigs(0)
+        LightConfigs(0) = New SimulationConfigLight
     End Sub
     Public Sub Copy(ByRef Other As SimulationBaseConfig)
 
@@ -44,17 +44,17 @@ Public Structure SimulationBaseConfig
         Settings.Copy(Other.Settings)
 
         'Groups
-        GroupCount = Other.GroupCount
-        ReDim Groups(GroupCount - 1)
-        For i As Integer = 0 To GroupCount - 1
-            Groups(i) = New SimulationConfigObjectGroup(Other.Groups(i))
+        ObjectGroupCount = Other.ObjectGroupCount
+        ReDim ObjectGroups(ObjectGroupCount - 1)
+        For i As Integer = 0 To ObjectGroupCount - 1
+            ObjectGroups(i) = New SimulationConfigObjectGroup(Other.ObjectGroups(i))
         Next
 
         'Lights
-        LightCount = Other.LightCount
-        ReDim Lights(LightCount - 1)
-        For i As Integer = 0 To LightCount - 1
-            Lights(i) = New SimulationConfigLight(Other.Lights(i))
+        LightConfigCount = Other.LightConfigCount
+        ReDim LightConfigs(LightConfigCount - 1)
+        For i As Integer = 0 To LightConfigCount - 1
+            LightConfigs(i) = New SimulationConfigLight(Other.LightConfigs(i))
         Next
 
     End Sub
@@ -101,49 +101,49 @@ Public Structure SimulationBaseConfig
         End If
 
         'Per Object Settings
-        For r As Integer = 0 To GroupCount - 1
-            stingBuilder.Append(Groups(r).Affected.ToString)
-            stingBuilder.Append(Groups(r).Affects.ToString)
-            stingBuilder.Append(Groups(r).Type.ToString)
+        For r As Integer = 0 To ObjectGroupCount - 1
+            stingBuilder.Append(ObjectGroups(r).Affected.ToString)
+            stingBuilder.Append(ObjectGroups(r).Affects.ToString)
+            stingBuilder.Append(ObjectGroups(r).Type.ToString)
 
-            Groups(r).Number.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Number.AddUniqueString(stingBuilder)
 
             'Mass is only relevant when forces and/or collisions are enabled
             If Collisions.Enabled Or (Forces.Enabled And (Forces.Drag.Enabled Or Forces.ElectroStatic.Enabled Or Forces.Field.Enabled Or Forces.Gravity)) Then
-                Groups(r).Mass.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Mass.AddUniqueString(stingBuilder)
             End If
 
 
             'Forces
             If Forces.Enabled And Forces.ElectroStatic.Enabled Then
                 'Charge is only relevant when the electrostatic force is enabled
-                Groups(r).Charge.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Charge.AddUniqueString(stingBuilder)
             End If
 
             'Position applies to all object types
-            Groups(r).Position.X.AddUniqueString(stingBuilder)
-            Groups(r).Position.Y.AddUniqueString(stingBuilder)
-            Groups(r).Position.Z.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Position.X.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Position.Y.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Position.Z.AddUniqueString(stingBuilder)
 
             'Velocity applies to all object types
-            Groups(r).Velocity.X.AddUniqueString(stingBuilder)
-            Groups(r).Velocity.Y.AddUniqueString(stingBuilder)
-            Groups(r).Velocity.Z.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Velocity.X.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Velocity.Y.AddUniqueString(stingBuilder)
+            ObjectGroups(r).Velocity.Z.AddUniqueString(stingBuilder)
 
             'Specific To Certain Object Types
-            If Groups(r).Type = ObjectType.Sphere Then
-                Groups(r).Radius.AddUniqueString(stingBuilder)
-            ElseIf Groups(r).Type = ObjectType.Box Then
-                Groups(r).Size.X.AddUniqueString(stingBuilder)
-                Groups(r).Size.Y.AddUniqueString(stingBuilder)
-                Groups(r).Size.Z.AddUniqueString(stingBuilder)
-                Groups(r).Rotation.X.AddUniqueString(stingBuilder)
-                Groups(r).Rotation.Y.AddUniqueString(stingBuilder)
-                Groups(r).Rotation.Z.AddUniqueString(stingBuilder)
-            ElseIf Groups(r).Type = ObjectType.InfinitePlane Then
-                Groups(r).Normal.X.AddUniqueString(stingBuilder)
-                Groups(r).Normal.Y.AddUniqueString(stingBuilder)
-                Groups(r).Normal.Z.AddUniqueString(stingBuilder)
+            If ObjectGroups(r).Type = ObjectType.Sphere Then
+                ObjectGroups(r).Radius.AddUniqueString(stingBuilder)
+            ElseIf ObjectGroups(r).Type = ObjectType.Box Then
+                ObjectGroups(r).Size.X.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Size.Y.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Size.Z.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Rotation.X.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Rotation.Y.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Rotation.Z.AddUniqueString(stingBuilder)
+            ElseIf ObjectGroups(r).Type = ObjectType.InfinitePlane Then
+                ObjectGroups(r).Normal.X.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Normal.Y.AddUniqueString(stingBuilder)
+                ObjectGroups(r).Normal.Z.AddUniqueString(stingBuilder)
             End If
         Next
 
@@ -158,12 +158,12 @@ Public Structure SimulationBaseConfig
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<LightCount>")
-        stringBuilder.Append(LightCount.ToString())
+        stringBuilder.Append(LightConfigCount.ToString())
         stringBuilder.AppendLine("</LightCount>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<GroupCount>")
-        stringBuilder.Append(GroupCount.ToString())
+        stringBuilder.Append(ObjectGroupCount.ToString())
         stringBuilder.AppendLine("</GroupCount>")
 
         stringBuilder.Append(tabs)
@@ -196,17 +196,17 @@ Public Structure SimulationBaseConfig
         stringBuilder.Append(tabs)
         stringBuilder.AppendLine("</Render>")
 
-        For i = 0 To GroupCount - 1
+        For i = 0 To ObjectGroupCount - 1
             stringBuilder.Append(tabs)
             stringBuilder.AppendLine("<Group>")
-            Groups(i).ToString(stringBuilder, tabsPlusOne)
+            ObjectGroups(i).ToString(stringBuilder, tabsPlusOne)
             stringBuilder.AppendLine("</Group>")
         Next
 
-        For i = 0 To LightCount - 1
+        For i = 0 To LightConfigCount - 1
             stringBuilder.Append(tabs)
             stringBuilder.AppendLine("<Light>")
-            Lights(i).ToString(stringBuilder, tabsPlusOne)
+            LightConfigs(i).ToString(stringBuilder, tabsPlusOne)
             stringBuilder.Append(tabs)
             stringBuilder.AppendLine("</Light>")
         Next
@@ -218,28 +218,28 @@ Public Structure SimulationBaseConfig
         Return stringBuilder.ToString
     End Function
     Public Sub EnlargeGroups()
-        GroupCount += 1
-        Array.Resize(Groups, GroupCount)
-        Groups(GroupCount - 1) = New SimulationConfigObjectGroup
+        ObjectGroupCount += 1
+        Array.Resize(ObjectGroups, ObjectGroupCount)
+        ObjectGroups(ObjectGroupCount - 1) = New SimulationConfigObjectGroup
     End Sub
     Public Sub EnlargeLights()
-        LightCount += 1
-        Array.Resize(Lights, LightCount)
-        Lights(LightCount - 1) = New SimulationConfigLight
+        LightConfigCount += 1
+        Array.Resize(LightConfigs, LightConfigCount)
+        LightConfigs(LightConfigCount - 1) = New SimulationConfigLight
     End Sub
     Public Sub RemoveGroup(ByVal i As Integer)
-        For q = i To GroupCount - 2
-            Groups(q).Copy(Groups(q + 1))
+        For q = i To ObjectGroupCount - 2
+            ObjectGroups(q).Copy(ObjectGroups(q + 1))
         Next
-        GroupCount -= 1
-        Array.Resize(Groups, GroupCount)
+        ObjectGroupCount -= 1
+        Array.Resize(ObjectGroups, ObjectGroupCount)
     End Sub
     Public Sub RemoveLight(ByVal i As Integer)
-        For q = i To LightCount - 2
-            Lights(q).Copy(Lights(q + 1))
+        For q = i To LightConfigCount - 2
+            LightConfigs(q).Copy(LightConfigs(q + 1))
         Next
-        LightCount -= 1
-        Array.Resize(Lights, LightCount)
+        LightConfigCount -= 1
+        Array.Resize(LightConfigs, LightConfigCount)
     End Sub
     Public Sub Load(ByRef intext As String)
         Dim StartPos As Integer
@@ -249,16 +249,16 @@ Public Structure SimulationBaseConfig
 
         Result = GetXMLNodeValue(intext, "LightCount")
         If Result <> "" And IsNumeric(Result) Then
-            LightCount = ToInt32(Result)
+            LightConfigCount = ToInt32(Result)
         Else
-            LightCount = 1
+            LightConfigCount = 1
         End If
 
         Result = GetXMLNodeValue(intext, "GroupCount")
         If Result <> "" And IsNumeric(Result) Then
-            GroupCount = ToInt32(Result)
+            ObjectGroupCount = ToInt32(Result)
         Else
-            GroupCount = 1
+            ObjectGroupCount = 1
         End If
 
         Result = GetXMLNodeValue(intext, "Camera")
@@ -297,9 +297,9 @@ Public Structure SimulationBaseConfig
         End If
 
         'Create new Groups
-        ReDim Groups(GroupCount - 1)
-        For i = 0 To GroupCount - 1
-            Groups(i) = New SimulationConfigObjectGroup
+        ReDim ObjectGroups(ObjectGroupCount - 1)
+        For i = 0 To ObjectGroupCount - 1
+            ObjectGroups(i) = New SimulationConfigObjectGroup
         Next
 
         'Load Groups
@@ -308,9 +308,9 @@ Public Structure SimulationBaseConfig
                 StartPos = i + Len("<Group>") - 1
             ElseIf UCase(Mid(intext, i, Len("</Group>"))) = UCase("</Group>") Then
                 EnQtoIPosistion = i - 1
-                Groups(q).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1))
+                ObjectGroups(q).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1))
                 q = q + 1
-                If q > GroupCount Then Exit For
+                If q > ObjectGroupCount Then Exit For
             End If
         Next
 
@@ -320,9 +320,9 @@ Public Structure SimulationBaseConfig
         q = 0
 
         'Create new Lights
-        ReDim Lights(LightCount - 1)
-        For i = 0 To LightCount - 1
-            Lights(i) = New SimulationConfigLight
+        ReDim LightConfigs(LightConfigCount - 1)
+        For i = 0 To LightConfigCount - 1
+            LightConfigs(i) = New SimulationConfigLight
         Next
 
         'Load Lights
@@ -331,9 +331,9 @@ Public Structure SimulationBaseConfig
                 StartPos = i + Len("<Light>") - 1
             ElseIf UCase(Mid(intext, i, Len("</Light>"))) = UCase("</Light>") Then
                 EnQtoIPosistion = i - 1
-                Lights(q).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1))
+                LightConfigs(q).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1))
                 q = q + 1
-                If q > LightCount Then Exit For
+                If q > LightConfigCount Then Exit For
             End If
         Next
     End Sub

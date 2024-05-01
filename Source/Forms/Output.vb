@@ -10,36 +10,60 @@ Public Class Output
     Private Sub Output_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         Select Case e.KeyCode
             Case Keys.W
-                Simulation.Camera.MoveUp = True
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveUp = True
+                End SyncLock
             Case Keys.S
-                Simulation.Camera.MoveDown = True
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveDown = True
+                End SyncLock
             Case Keys.D
-                Simulation.Camera.MoveRight = True
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveRight = True
+                End SyncLock
             Case Keys.A
-                Simulation.Camera.MoveLeft = True
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveLeft = True
+                End SyncLock
             Case Keys.Up
-                Simulation.Camera.MoveBack = True
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveBack = True
+                End SyncLock
             Case Keys.Down
-                Simulation.Camera.MoveFront = True
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveFront = True
+                End SyncLock
         End Select
     End Sub
     Private Sub Output_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyUp
         Select Case e.KeyCode
             Case Keys.W
-                Simulation.Camera.MoveUp = False
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveUp = False
+                End SyncLock
             Case Keys.S
-                Simulation.Camera.MoveDown = False
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveDown = False
+                End SyncLock
             Case Keys.D
-                Simulation.Camera.MoveRight = False
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveRight = False
+                End SyncLock
             Case Keys.A
-                Simulation.Camera.MoveLeft = False
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveLeft = False
+                End SyncLock
             Case Keys.Up
-                Simulation.Camera.MoveBack = False
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveBack = False
+                End SyncLock
             Case Keys.Down
-                Simulation.Camera.MoveFront = False
+                SyncLock SimulationCamera.CameraMoveLock
+                    Simulation.Camera.MoveFront = False
+                End SyncLock
 
             Case Keys.Space
-                If Not Simulation.isPaused Then
+                If Not Simulation.Paused Then
                     Simulation.PauseSimulation()
                 Else
                     Simulation.ResumeSimulation()
@@ -49,5 +73,16 @@ Public Class Output
     Private Sub CameraUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CameraUpdate.Tick
         'Check for any changes with the camera
         Simulation.Camera.Move()
+    End Sub
+
+    Private Sub Output_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
+        SyncLock SimulationCamera.CameraMoveLock
+            Simulation.Camera.MoveUp = False
+            Simulation.Camera.MoveDown = False
+            Simulation.Camera.MoveRight = False
+            Simulation.Camera.MoveLeft = False
+            Simulation.Camera.MoveBack = False
+            Simulation.Camera.MoveFront = False
+        End SyncLock
     End Sub
 End Class

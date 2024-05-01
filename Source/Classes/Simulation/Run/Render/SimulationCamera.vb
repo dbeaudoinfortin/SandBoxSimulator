@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports Microsoft.VisualBasic.Devices
 
 Public Structure SimulationCamera
     Private TargetToPosition As XYZ
@@ -22,12 +23,12 @@ Public Structure SimulationCamera
     'Rotation Vectors
     Public U As XYZ     'Up Vector
     Private V As XYZ    'Left Vector
-    Private N As XYZ    'Target vector
+    Public N As XYZ    'Target vector
 
     'Movement
     Public MoveSpeed As Double
-    Private FSpeed As Double
-    Private Bspeed As Double
+    Private ForwardSpeed As Double
+    Private BackSpeed As Double
     Private MinDistance As Double
     Private MaxDistance As Double
 
@@ -38,67 +39,75 @@ Public Structure SimulationCamera
     Private ScreenTempW As Double           'Only used in Raytracing
     Private ScreenTempH As Double           'Only used in Raytracing
 
-    Public CameraLock As ReaderWriterLockSlim
+    Public Shared CameraLock As New ReaderWriterLockSlim
+    Public Shared CameraMoveLock As New Object()
 
 
     Public Sub Move()
+
         'Reset camera movement flag
         DidMove = False
 
-        'Forward or backwards
-        If MoveBack Xor MoveFront Then
-            If MoveFront Then
-                Radius *= FSpeed
-                If Radius > MaxDistance Then
-                    Radius = MaxDistance
-                End If
-            Else
-                Radius *= Bspeed
-                If Radius < MinDistance Then
-                    Radius = MinDistance
-                End If
-            End If
-            DidMove = True
-        End If
+        'Need to lock with the UI thread so new movements aren't happening while
+        'we recalulate the camera position
+        SyncLock CameraMoveLock
 
-        If MoveUp Xor MoveDown Then
-            If MoveDown = True Then
-                N -= U * MoveSpeed
-            Else
-                N += U * MoveSpeed
+            'Forward or backwards
+            If MoveBack Xor MoveFront Then
+                If MoveFront Then
+                    Radius *= ForwardSpeed
+                    If Radius > MaxDistance Then
+                        Radius = MaxDistance
+                    End If
+                Else
+                    Radius *= BackSpeed
+                    If Radius < MinDistance Then
+                        Radius = MinDistance
+                    End If
+                End If
+                DidMove = True
             End If
-            DidMove = True
-        End If
 
-        If MoveLeft Xor MoveRight Then
-            If MoveLeft = True Then
-                N += V * MoveSpeed
-            Else
-                N -= V * MoveSpeed
+            If MoveUp Xor MoveDown Then
+                If MoveDown = True Then
+                    N -= U * MoveSpeed
+                Else
+                    N += U * MoveSpeed
+                End If
+                DidMove = True
             End If
-            DidMove = True
-        End If
+
+            If MoveLeft Xor MoveRight Then
+                If MoveLeft = True Then
+                    N += V * MoveSpeed
+                Else
+                    N -= V * MoveSpeed
+                End If
+                DidMove = True
+            End If
+        End SyncLock
 
         'If there were any changes
         If DidMove = True Then
-            V = U.Cross(N)
-            U = N.Cross(V)
             N.MakeUnit()
-            U.MakeUnit()
-            V.MakeUnit()
+            V = U.Cross(N).MakeMeUnit()
+
+            'Calculate the new up vector
+            Dim newU = N.Cross(V).MakeMeUnit()
 
             'Calculate the camera posistion relative to the center of the sphere
             Dim newTargetToPosition = N * Radius
 
             'Make the camera position relative to the world cooridinate system
-            Dim newPosition = Target + TargetToPosition
+            Dim newPosition = Target + newTargetToPosition
 
             'Used in Raytracing
             Dim newScreenWidthUnit As XYZ = (ScreenTempW * Radius) * V
-            Dim newScreenHeightUnit As XYZ = (ScreenTempH * Radius) * U
+            Dim newScreenHeightUnit As XYZ = (ScreenTempH * Radius) * newU
 
             'TODO NEED TO UPDATE UP VECTOR
             CameraLock.EnterWriteLock()
+            U = newU
             TargetToPosition = newTargetToPosition
             Position = newPosition
             ScreenWidthUnit = newScreenWidthUnit
@@ -119,12 +128,12 @@ Public Structure SimulationCamera
         MoveSpeed = Config.MoveSpeed
         MaxDistance = 1000
         MinDistance = 0.0005
-        FSpeed = 1 + (0.1 * MoveSpeed)
-        Bspeed = 1 - (0.1 * MoveSpeed)
+        ForwardSpeed = 1 + (0.1 * MoveSpeed)
+        BackSpeed = 1 - (0.1 * MoveSpeed)
 
         'Find the coordinate system that defines the sphere of movement
         U = Config.UpVector.GetNewUnit()
-        N = TargetToPosition.GetNewUnit()
+        N =  TargetToPosition.GetNewUnit()
         V = U.Cross(N)
 
         Radius = TargetToPosition.Magnitude
@@ -141,7 +150,5 @@ Public Structure SimulationCamera
         ScreenTempH = (Tan(Config.VFov * 0.5) * 2) / ScreenHeight
         ScreenWidthUnit = (ScreenTempW * Radius) * V
         ScreenHeightUnit = (ScreenTempH * Radius) * U
-
-        CameraLock = New ReaderWriterLockSlim
     End Sub
 End Structure

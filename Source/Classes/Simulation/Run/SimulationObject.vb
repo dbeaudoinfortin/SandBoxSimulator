@@ -1,4 +1,4 @@
-﻿Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GROUP
+﻿Public Structure SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GROUP
 
     Public Type As ObjectType
     Public Color As Color
@@ -70,29 +70,5 @@
     Public Sub New(ByRef Other As SimulationObject)
         Copy(Other)
     End Sub
-    Public Sub New()
-        RefractiveIndex = 1
-        Reflectivity = 0
-        LimitPositive = New XYZ(0, 0, 0)
-        LimitNegative = New XYZ(0, 0, 0)
-        Rotation = New XYZ(0, 0, 0)
-        Size = New XYZ(1, 1, 1)
-        Normal = New XYZ(0, 1, 0)
-        Acceleration = New XYZ(0, 0, 0)
-        OldPosition = New XYZ(0, 0, 0)
-        Wireframe = False
-        Charge = 0
-        Affected = True
-        Affects = True
-        Color = Color.FromArgb(255, 255, 192, 128)
-        HighlightColor = Color.White
-        HighlightSharpness = 50
-        Mass = 1
-        Position = New XYZ(0, 0, 0)
-        Radius = 1
-        Velocity = New XYZ(0, 0, 0)
-        Mesh = Nothing
-        Material = Nothing
-        Transparency = 255
-    End Sub
-End Class
+
+End Structure
