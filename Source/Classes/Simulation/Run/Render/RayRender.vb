@@ -222,7 +222,7 @@
                     For i = 0 To CurrentObjectCount - 1
                         Ray_tca = CameraToObjectDistance(i).Dot(RayDirection)
                         Ray_OutsideObject = CameraToObjectMagSqrd(i) > ObjectRadiusSqrd(i)
-                        If Ray_tca >= 0 Or Not Ray_OutsideObject Then  'There might be an intersection
+                        If Ray_tca >= 0 OrElse Not Ray_OutsideObject Then  'There might be an intersection
                             Ray_thc = ObjectRadiusSqrd(i) - CameraToObjectMagSqrd(i) + (Ray_tca * Ray_tca)
                             If Ray_thc >= 0 Then
                                 If Ray_OutsideObject Then
@@ -230,7 +230,7 @@
                                 Else
                                     Ray_ObjectDistance = Ray_tca + Sqrt(Ray_thc)
                                 End If
-                                If Ray_ObjectDistance > 0 And Ray_ObjectDistance < Ray_ClosestObjectDistance Then
+                                If Ray_ObjectDistance > 0 AndAlso Ray_ObjectDistance < Ray_ClosestObjectDistance Then
                                     Ray_ClosestObjectDistance = Ray_ObjectDistance
                                     Ray_ClosestObject = i
                                 End If

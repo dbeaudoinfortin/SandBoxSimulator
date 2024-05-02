@@ -51,12 +51,29 @@ Public Structure XYZ
     Public Shared Operator -(ByVal rhs As XYZ) As XYZ
         Return New XYZ(0 - rhs.X, 0 - rhs.Y, 0 - rhs.Z)
     End Operator
+    Public Shared Operator -(ByVal lhs As XYZ, ByVal rhs As Double) As XYZ
+        Return New XYZ(lhs.X - rhs, lhs.Y - rhs, lhs.Z - rhs)
+    End Operator
+    Public Shared Operator +(ByVal lhs As XYZ, ByVal rhs As Double) As XYZ
+        Return New XYZ(lhs.X + rhs, lhs.Y + rhs, lhs.Z + rhs)
+    End Operator
+
     Public Shared Operator +(ByVal lhs As XYZ, ByVal rhs As XYZ) As XYZ
         Return New XYZ(lhs.X + rhs.X, lhs.Y + rhs.Y, lhs.Z + rhs.Z)
     End Operator
+
     Public Shared Operator =(ByVal lhs As XYZ, ByVal rhs As XYZ) As Boolean
-        Return lhs.X = rhs.X And lhs.Y = rhs.Y And lhs.Z = rhs.Z
+        Return lhs.X = rhs.X AndAlso lhs.Y = rhs.Y AndAlso lhs.Z = rhs.Z
     End Operator
+
+    Public Shared Operator <=(ByVal lhs As XYZ, ByVal rhs As XYZ) As Boolean
+        Return lhs.X <= rhs.X AndAlso lhs.Y <= rhs.Y AndAlso lhs.Z <= rhs.Z
+    End Operator
+
+    Public Shared Operator >=(ByVal lhs As XYZ, ByVal rhs As XYZ) As Boolean
+        Return lhs.X >= rhs.X AndAlso lhs.Y >= rhs.Y AndAlso lhs.Z >= rhs.Z
+    End Operator
+
     Public Shared Operator *(ByVal lhs As XYZ, ByVal rhs As Double) As XYZ
         Return New XYZ(lhs.X * rhs, lhs.Y * rhs, lhs.Z * rhs)
     End Operator
@@ -78,6 +95,22 @@ Public Structure XYZ
     Public Shared Operator <>(ByVal lhs As XYZ, ByVal rhs As XYZ) As Boolean
         Return Not lhs = rhs
     End Operator
+
+    Public Sub Rotate(ByRef RotationMatrix As Matrix3x3)
+        Dim newX As Double = X * RotationMatrix.M11 + Y * RotationMatrix.M21 + Z * RotationMatrix.M31
+        Dim newY As Double = X * RotationMatrix.M12 + Y * RotationMatrix.M22 + Z * RotationMatrix.M32
+        Z = X * RotationMatrix.M13 + Y * RotationMatrix.M23 + Z * RotationMatrix.M33
+        X = newX
+        Y = newY
+    End Sub
+
+    Public Function NewRotated(ByRef RotationMatrix As Matrix3x3) As XYZ
+        Dim newX As Double = X * RotationMatrix.M11 + Y * RotationMatrix.M21 + Z * RotationMatrix.M31
+        Dim newY As Double = X * RotationMatrix.M12 + Y * RotationMatrix.M22 + Z * RotationMatrix.M32
+        Dim newZ As Double = X * RotationMatrix.M13 + Y * RotationMatrix.M23 + Z * RotationMatrix.M33
+        Return New XYZ(newX, newY, newZ)
+    End Function
+
     Public Function MagnitudeSquared() As Double
         Return (X * X) + (Y * Y) + (Z * Z)
     End Function
@@ -85,7 +118,16 @@ Public Structure XYZ
         Return Sqrt(MagnitudeSquared)
     End Function
     Public Function Abs() As XYZ
-        Return New XYZ(Math.Abs(X), Math.Abs(Y), Math.Abs(Z))
+        Return New XYZ(Me).MakeMeAbs()
+    End Function
+    Public Sub MakeAbs()
+        X = Math.Abs(X)
+        Y = Math.Abs(Y)
+        Z = Math.Abs(Z)
+    End Sub
+    Public Function MakeMeAbs() As XYZ
+        MakeAbs()
+        Return Me
     End Function
     Public Sub MakeUnit()
         Dim Mag As Double = Magnitude()

@@ -251,6 +251,8 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
                 Type = ObjectType.Sphere
             ElseIf Result = "Box" Then
                 Type = ObjectType.Box
+            ElseIf Result = "Plane" Then
+                Type = ObjectType.Plane
             ElseIf Result = "InfinitePlane" Then
                 Type = ObjectType.InfinitePlane
             Else

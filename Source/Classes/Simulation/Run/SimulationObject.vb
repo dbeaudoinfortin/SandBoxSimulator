@@ -38,6 +38,8 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
             Mesh = Mesh.Sphere(Location, ToSingle(Scale * Radius), Complexity1, Complexity2)
         ElseIf Type = ObjectType.Box Then
             Mesh = Mesh.Box(Location, ToSingle(Scale * Size.X), ToSingle(Scale * Size.Y), ToSingle(Scale * Size.Z))
+        ElseIf Type = ObjectType.Plane Then
+            Mesh = Mesh.Box(Location, ToSingle(Scale * Size.X), ToSingle(Scale * Size.Y), ToSingle(Scale * 0.0001))
         ElseIf Type = ObjectType.InfinitePlane Then
             Mesh = Mesh.Box(Location, Scale * 2000, ToSingle(Scale * 0.0001), Scale * 2000)
         End If

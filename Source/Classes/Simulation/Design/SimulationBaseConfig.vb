@@ -133,7 +133,7 @@ Public Structure SimulationBaseConfig
             'Specific To Certain Object Types
             If ObjectGroups(r).Type = ObjectType.Sphere Then
                 ObjectGroups(r).Radius.AddUniqueString(stingBuilder)
-            ElseIf ObjectGroups(r).Type = ObjectType.Box Then
+            ElseIf ObjectGroups(r).Type = ObjectType.Box Or ObjectGroups(r).Type = ObjectType.Plane Then
                 ObjectGroups(r).Size.X.AddUniqueString(stingBuilder)
                 ObjectGroups(r).Size.Y.AddUniqueString(stingBuilder)
                 ObjectGroups(r).Size.Z.AddUniqueString(stingBuilder)

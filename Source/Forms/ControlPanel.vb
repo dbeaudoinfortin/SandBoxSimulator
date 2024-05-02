@@ -909,36 +909,37 @@ Public Class ControlPanel
         Dim isObjectSphere As Boolean = (cbObjectType.SelectedIndex = 0)
         Dim isObjectBox As Boolean = (cbObjectType.SelectedIndex = 1)
         Dim isObjectPlane As Boolean = (cbObjectType.SelectedIndex = 2)
+        Dim isObjectInfinitePlane As Boolean = (cbObjectType.SelectedIndex = 3)
 
-        'rotation
-        lblObjectRotation.Visible = Not isObjectPlane
-        cmdObjectRotationX.Visible = Not isObjectPlane
-        cmdObjectRotationY.Visible = Not isObjectPlane
-        cmdObjectRotationZ.Visible = Not isObjectPlane
-        txtObjectRotationX.Visible = Not isObjectPlane
-        txtObjectRotationY.Visible = Not isObjectPlane
-        txtObjectRotationZ.Visible = Not isObjectPlane
-        cmdObjectRotationX.Enabled = isObjectBox
-        cmdObjectRotationY.Enabled = isObjectBox
-        cmdObjectRotationZ.Enabled = isObjectBox
-        txtObjectRotationX.Enabled = isObjectBox And (cmdObjectRotationX.ForeColor = Color.Black)
-        txtObjectRotationY.Enabled = isObjectBox And (cmdObjectRotationY.ForeColor = Color.Black)
-        txtObjectRotationZ.Enabled = isObjectBox And (cmdObjectRotationZ.ForeColor = Color.Black)
+        'rotation, infinite plane has this replaced with a normal vector
+        lblObjectRotation.Visible = Not isObjectInfinitePlane
+        cmdObjectRotationX.Visible = Not isObjectInfinitePlane
+        cmdObjectRotationY.Visible = Not isObjectInfinitePlane
+        cmdObjectRotationZ.Visible = Not isObjectInfinitePlane
+        txtObjectRotationX.Visible = Not isObjectInfinitePlane
+        txtObjectRotationY.Visible = Not isObjectInfinitePlane
+        txtObjectRotationZ.Visible = Not isObjectInfinitePlane
+        cmdObjectRotationX.Enabled = isObjectBox Or isObjectPlane
+        cmdObjectRotationY.Enabled = isObjectBox Or isObjectPlane
+        cmdObjectRotationZ.Enabled = isObjectBox Or isObjectPlane
+        txtObjectRotationX.Enabled = (isObjectBox Or isObjectPlane) And (cmdObjectRotationX.ForeColor = Color.Black)
+        txtObjectRotationY.Enabled = (isObjectBox Or isObjectPlane) And (cmdObjectRotationY.ForeColor = Color.Black)
+        txtObjectRotationZ.Enabled = (isObjectBox Or isObjectPlane) And (cmdObjectRotationZ.ForeColor = Color.Black)
 
         'orientation
-        lblObjectNormal.Visible = isObjectPlane
-        cmdObjectNormalX.Visible = isObjectPlane
-        cmdObjectNormalY.Visible = isObjectPlane
-        cmdObjectNormalZ.Visible = isObjectPlane
-        txtObjectNormalX.Visible = isObjectPlane
-        txtObjectNormalY.Visible = isObjectPlane
-        txtObjectNormalZ.Visible = isObjectPlane
-        cmdObjectNormalX.Enabled = isObjectPlane
-        cmdObjectNormalY.Enabled = isObjectPlane
-        cmdObjectNormalZ.Enabled = isObjectPlane
-        txtObjectNormalX.Enabled = isObjectPlane And (cmdObjectNormalX.ForeColor = Color.Black)
-        txtObjectNormalY.Enabled = isObjectPlane And (cmdObjectNormalY.ForeColor = Color.Black)
-        txtObjectNormalZ.Enabled = isObjectPlane And (cmdObjectNormalZ.ForeColor = Color.Black)
+        lblObjectNormal.Visible = isObjectInfinitePlane
+        cmdObjectNormalX.Visible = isObjectInfinitePlane
+        cmdObjectNormalY.Visible = isObjectInfinitePlane
+        cmdObjectNormalZ.Visible = isObjectInfinitePlane
+        txtObjectNormalX.Visible = isObjectInfinitePlane
+        txtObjectNormalY.Visible = isObjectInfinitePlane
+        txtObjectNormalZ.Visible = isObjectInfinitePlane
+        cmdObjectNormalX.Enabled = isObjectInfinitePlane
+        cmdObjectNormalY.Enabled = isObjectInfinitePlane
+        cmdObjectNormalZ.Enabled = isObjectInfinitePlane
+        txtObjectNormalX.Enabled = isObjectInfinitePlane And (cmdObjectNormalX.ForeColor = Color.Black)
+        txtObjectNormalY.Enabled = isObjectInfinitePlane And (cmdObjectNormalY.ForeColor = Color.Black)
+        txtObjectNormalZ.Enabled = isObjectInfinitePlane And (cmdObjectNormalZ.ForeColor = Color.Black)
 
         'radius
         lblObjectRadius.Visible = isObjectSphere
@@ -955,11 +956,11 @@ Public Class ControlPanel
         txtObjectSizeX.Visible = Not isObjectSphere
         txtObjectSizeY.Visible = Not isObjectSphere
         txtObjectSizeZ.Visible = Not isObjectSphere
-        cmdObjectSizeX.Enabled = isObjectBox
-        cmdObjectSizeY.Enabled = isObjectBox
-        cmdObjectSizeZ.Enabled = isObjectBox
-        txtObjectSizeX.Enabled = isObjectBox And (cmdObjectSizeX.ForeColor = Color.Black)
-        txtObjectSizeY.Enabled = isObjectBox And (cmdObjectSizeY.ForeColor = Color.Black)
+        cmdObjectSizeX.Enabled = isObjectBox Or isObjectPlane
+        cmdObjectSizeY.Enabled = isObjectBox Or isObjectPlane
+        cmdObjectSizeZ.Enabled = isObjectBox 'Planes are 2 dimensional objects
+        txtObjectSizeX.Enabled = (isObjectBox Or isObjectPlane) And (cmdObjectSizeX.ForeColor = Color.Black)
+        txtObjectSizeY.Enabled = (isObjectBox Or isObjectPlane) And (cmdObjectSizeY.ForeColor = Color.Black)
         txtObjectSizeZ.Enabled = isObjectBox And (cmdObjectSizeZ.ForeColor = Color.Black)
 
         'position
@@ -1983,8 +1984,12 @@ Public Class ControlPanel
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
         ElseIf cbObjectType.SelectedIndex = 1 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Box
-        Else
+        ElseIf cbObjectType.SelectedIndex = 2 Then
+            Simulation.Config.ObjectGroups(i).Type = ObjectType.Plane
+        ElseIf cbObjectType.SelectedIndex = 4 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.InfinitePlane
+        Else
+            Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
         End If
 
         ObjectNumber.Value = ToInt32(txtObjectNumber.Text)

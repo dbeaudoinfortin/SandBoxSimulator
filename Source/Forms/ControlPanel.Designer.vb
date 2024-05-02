@@ -516,7 +516,7 @@ Partial Class ControlPanel
         '
         Me.cbObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbObjectType.FormattingEnabled = True
-        Me.cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Infinite Plane"})
+        Me.cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Plane", "Infinite Plane"})
         Me.cbObjectType.Location = New System.Drawing.Point(151, 124)
         Me.cbObjectType.Name = "cbObjectType"
         Me.cbObjectType.Size = New System.Drawing.Size(292, 35)
@@ -1273,7 +1273,7 @@ Partial Class ControlPanel
         Me.lblObjectRotation.Name = "lblObjectRotation"
         Me.lblObjectRotation.Size = New System.Drawing.Size(127, 21)
         Me.lblObjectRotation.TabIndex = 224
-        Me.lblObjectRotation.Text = "Rotation X, Y, Z  (rad):"
+        Me.lblObjectRotation.Text = "Rotation P, Y, R  (rad):"
         Me.lblObjectRotation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblObjectRotation.UseMnemonic = False
         '

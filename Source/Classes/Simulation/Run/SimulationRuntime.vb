@@ -126,7 +126,7 @@ Public Class SimulationRuntime
                     .RefractiveIndex = Group.RefractiveIndex.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
                 }
 
-                If Group.Type = ObjectType.Box Then
+                If Group.Type = ObjectType.Box Or Group.Type = ObjectType.Plane Then
                     Objects(ObjectCount).Size = Group.Size.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
                     Objects(ObjectCount).Rotation = Group.Rotation.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
                 ElseIf Group.Type = ObjectType.Sphere Then
@@ -134,15 +134,6 @@ Public Class SimulationRuntime
                 ElseIf Group.Type = ObjectType.InfinitePlane Then
                     'Always make the normal vector a unit vector to simplify later calculations
                     Objects(ObjectCount).Normal = Group.Normal.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount).MakeMeUnit()
-
-                    'ROTATION - Calculate rotation based on the normal vector
-                    If Objects(ObjectCount).Normal = New XYZ(0, 1, 0) Then
-                        Objects(ObjectCount).Rotation = New XYZ
-                    Else
-                        'TODO finish calculation the roation of infite planes
-                        'Debug.Print(Acos(Objects(ObjectCount).Normal.Dot(New XYZ(0, 0, 1))).ToString)
-                        'Objects(ObjectCount).Rotation = New XYZ(Acos(Objects(ObjectCount).Normal.Dot(New XYZ(0, 1, 0))), Acos(Objects(ObjectCount).Normal.Dot(New XYZ(0, 0, 1))), Acos(Objects(ObjectCount).Normal.Dot(New XYZ(1, 0, 0))))
-                    End If
                 End If
 
                 'Transparency

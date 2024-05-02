@@ -1,4 +1,7 @@
-﻿Public Class ComputeThread
+﻿Imports System.ComponentModel
+Imports System.Windows.Forms.DataFormats
+
+Public Class ComputeThread
     'Calculation limiter constants
     Private ReadOnly CalcCounterFrequency As Long
     Private ReadOnly CounterTicks1ms As Long 'The counter frequency in ticks per second
@@ -68,7 +71,7 @@
         End If
     End Sub
     Private Sub DoComputeNoIntegration(timeStep As Double)
-        If Sim.Config.Collisions.Enabled And Sim.Config.Collisions.Interpolate Then
+        If Sim.Config.Collisions.Enabled AndAlso Sim.Config.Collisions.Interpolate Then
             'Collisions with interpolation
             Do While Sim.Running
                 For i = 0 To Sim.ObjectCount - 1
@@ -165,7 +168,7 @@
         Dim HalfT As Double = 0.5 * timeStep
         Dim HalfTSqd As Double = HalfT * timeStep
 
-        If Sim.Config.Collisions.Enabled And Sim.Config.Collisions.Interpolate Then
+        If Sim.Config.Collisions.Enabled AndAlso Sim.Config.Collisions.Interpolate Then
             DoForces() 'Initial forces
 
             Do While Sim.Running
@@ -241,7 +244,6 @@
             Loop
         End If
     End Sub
-
     Private Sub DoCompute4thSymplectic(ByRef timeStep As Double)
         Const b As Double = 2 ^ (1 / 3)
         Const a As Double = 2 - b
@@ -252,7 +254,7 @@
         Dim d() As Double = {timeStep * x1, timeStep * x0, timeStep * x1}
         Dim c() As Double = {x1 * HalfT, (x0 + x1) * HalfT, (x0 + x1) * HalfT, x1 * HalfT}
 
-        If Sim.Config.Collisions.Enabled And Sim.Config.Collisions.Interpolate Then
+        If Sim.Config.Collisions.Enabled AndAlso Sim.Config.Collisions.Interpolate Then
             Do While Sim.Running
 
                 For i = 0 To Sim.ObjectCount - 1
@@ -338,7 +340,7 @@
         Dim d() As Double = {timeStep * w3, timeStep * w2, timeStep * w1, timeStep * w0, timeStep * w1, timeStep * w2, timeStep * w3}
         Dim c() As Double = {w3 * HalfT, (w3 + w2) * HalfT, (w2 + w1) * HalfT, (w1 + w0) * HalfT, (w1 + w0) * HalfT, (w2 + w1) * HalfT, (w3 + w2) * HalfT, w3 * HalfT}
 
-        If Sim.Config.Collisions.Enabled And Sim.Config.Collisions.Interpolate Then
+        If Sim.Config.Collisions.Enabled AndAlso Sim.Config.Collisions.Interpolate Then
             Do While Sim.Running
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).OldPosition.Copy(Sim.Objects(i).Position)
@@ -447,24 +449,130 @@
 
 #End Region
 #Region "Collisions"
-    Private Sub DoCollisions()
+    Private Sub DoSphereInfinitePlaneCollision(ByRef Sphere As SimulationObject, ByRef PlaneNormal As XYZ, ByRef PlaneCenter As XYZ)
+        Dim ObjDistance As Double
 
-        'Interpolation
-        Dim QtoIOldPosistion As XYZ
-        Dim OldToNewPosition As XYZ
-        Dim A As Double
-        Dim B As Double
-        Dim C As Double
-        Dim Discriminant As Double
-        Dim Time1 As Double
-        Dim Time2 As Double
-        Dim CollisionTime As Double
-        Dim DidCollide As Boolean
+        'Calculate the distance between the sphere center and the closest point on the (infinite) plane
+        ObjDistance = PlaneNormal.Dot(Sphere.Position) - PlaneNormal.Dot(PlaneCenter)
+        If Math.Abs(ObjDistance) > Sphere.Radius Then Return  ' Sphere is completely outside the plane
 
-        'Object object
-        Dim Q As Integer
-        Dim QtoIPosistion As New XYZ
-        Dim QtoIDistanceSqd As Double
+        System.Console.Beep()
+    End Sub
+    Private Sub DoSpherePlaneCollision(ByRef Sphere As SimulationObject, ByRef PlaneNormal As XYZ, ByRef PlaneCenter As XYZ, ByRef PlaneLimits As XYZ)
+
+        'Calculate the distance between the sphere center and the closest point on the (infinite) plane
+        Dim ObjDistance As Double = PlaneNormal.Dot(Sphere.Position) - PlaneNormal.Dot(PlaneCenter)
+        If Math.Abs(ObjDistance) > Sphere.Radius Then Return  ' Sphere is completely outside the plane
+
+        ' Project the sphere center onto the plane to find the closest point
+        Dim closestPoint As XYZ = Sphere.Position - (PlaneNormal * ObjDistance)
+
+        'Need to rotate this point to the coordinate system of the box
+        ' closestPoint.Rotate(rotationMatrix)
+
+        'Check if this point is within the plane's bounds
+        'Calculate the distance from the closest point to the plane's center
+        'Note that the plane's center positions is already rotated
+        Dim projection As XYZ = (closestPoint - PlaneCenter)
+        projection.MakeMeAbs()
+        'Dim projectionLength As Double = projection.Magnitude
+
+        Dim didCollide = (projection <= PlaneLimits)
+
+        If didCollide Then
+            System.Console.Beep()
+        End If
+    End Sub
+
+    Private Sub DoBoxBoxCollision(ByRef Box1 As SimulationObject, ByRef Box2 As SimulationObject)
+
+    End Sub
+
+    Private Sub DoSphereBoxCollision(ByRef Sphere As SimulationObject, ByRef Box As SimulationObject)
+        'Decompose the box into 6 individual planes
+
+        ' Calculate rotation matrix of the box
+        Dim rotationMatrix As Matrix3x3 = Matrix3x3.CreateFromYawPitchRoll(Box.Rotation.Y, Box.Rotation.X, Box.Rotation.Z)
+        Dim HalfBoxSize As XYZ = Box.Size * 0.5
+        Dim PlaneLimits As XYZ = (HalfBoxSize) ' - Sphere.Radius)
+        PlaneLimits.Rotate(rotationMatrix)
+        PlaneLimits.MakeMeAbs()
+
+        'Front face
+        'First treat the box as aligned with the coordinate system
+        Dim PlaneNormal As New XYZ(0, 0, 1)
+        Dim PlanePosition As New XYZ(Box.Position.X, Box.Position.Y, Box.Position.Z + HalfBoxSize.Z)
+
+        'Then Rotate the plane to the correct orientation
+        PlanePosition.Rotate(rotationMatrix)
+        PlaneNormal.Rotate(rotationMatrix)
+        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
+
+        'Back face
+        'First treat the box as aligned with the coordinate system
+        PlaneNormal = New XYZ(0, 0, -1)
+        PlanePosition = New XYZ(Box.Position.X, Box.Position.Y, Box.Position.Z - HalfBoxSize.Z)
+
+        'Then Rotate the plane to the correct orientation
+        PlanePosition.Rotate(rotationMatrix)
+        PlaneNormal.Rotate(rotationMatrix)
+        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
+
+        'Top face
+        PlaneNormal = New XYZ(0, 1, 0) '
+        PlanePosition = New XYZ(Box.Position.X, Box.Position.Y + HalfBoxSize.Y, Box.Position.Z)
+        PlanePosition.Rotate(rotationMatrix)
+        PlaneNormal.Rotate(rotationMatrix)
+        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
+
+        'Bottom face
+        PlaneNormal = New XYZ(0, -1, 0) '
+        PlanePosition = New XYZ(Box.Position.X, Box.Position.Y - HalfBoxSize.Y, Box.Position.Z)
+        PlanePosition.Rotate(rotationMatrix)
+        PlaneNormal.Rotate(rotationMatrix)
+        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
+
+        'Left face
+        PlaneNormal = New XYZ(-1, 0, 0) '
+        PlanePosition = New XYZ(Box.Position.X - HalfBoxSize.X, Box.Position.Y, Box.Position.Z)
+        PlanePosition.Rotate(rotationMatrix)
+        PlaneNormal.Rotate(rotationMatrix)
+        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
+
+        'Right face
+        PlaneNormal = New XYZ(1, 0, 0) '
+        PlanePosition = New XYZ(Box.Position.X + HalfBoxSize.X, Box.Position.Y, Box.Position.Z)
+        PlanePosition.Rotate(rotationMatrix)
+        PlaneNormal.Rotate(rotationMatrix)
+        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
+
+    End Sub
+
+    Private Sub DoSphereBoxCollision2(ByRef Sphere As SimulationObject, ByRef Box As SimulationObject)
+        ' Calculate rotation matrix of the box
+        Dim rotationMatrix As Matrix3x3 = Matrix3x3.CreateFromYawPitchRoll(Box.Rotation.Y, Box.Rotation.X, Box.Rotation.Z)
+
+        Dim HalfBoxSize As XYZ = (Box.Size * 0.5) + Sphere.Radius
+        Dim BoxLimitNegative As XYZ = Box.Position - HalfBoxSize
+        Dim BoxLimitPositive As XYZ = Box.Position + HalfBoxSize
+        Dim objectPos As XYZ = Sphere.Position '.NewRotated(rotationMatrix)
+        'Rotate the box into the coordinate system
+        BoxLimitNegative.Rotate(rotationMatrix)
+        BoxLimitPositive.Rotate(rotationMatrix)
+
+        Dim InsideBox As Boolean = (objectPos <= BoxLimitPositive) AndAlso (objectPos >= BoxLimitNegative)
+        'Dim InsideBox As Boolean = (Sphere.Position <= BoxLimitPositive) AndAlso (Sphere.Position >= BoxLimitNegative)
+
+        If InsideBox Then
+            System.Console.Beep()
+        End If
+
+    End Sub
+
+    Private Sub DoSphereSphereCollision(ByRef Sphere1 As SimulationObject, ByRef Sphere2 As SimulationObject)
+
+        Dim ObjPosistionDiff As XYZ
+        Dim ObjDistanceSqd As Double
         Dim TempDouble As Double
         Dim TempDouble3 As Double
         Dim TempDouble4 As Double
@@ -480,140 +588,176 @@
         Dim DotProductMagQ As Double
         Dim DeltaKineticQ As Double
         Dim DeltaKineticI As Double
-        Dim i As Integer
 
-        '~~~~~~~~~~~~~OBJECT OBJECT COLLISION~~~~~~~~~~~~
-        For i = 0 To Sim.ObjectCount - 2
-            For Q = i + 1 To Sim.ObjectCount - 1
+        'Interpolation
+        Dim QtoIOldPosistion As XYZ
+        Dim OldToNewPosition As XYZ
+        Dim A As Double
+        Dim B As Double
+        Dim C As Double
+        Dim Discriminant As Double
+        Dim Time1 As Double
+        Dim Time2 As Double
+        Dim CollisionTime As Double
+        Dim DidCollide As Boolean
 
-                If Not Sim.Objects(i).Affected Or Not Sim.Objects(i).Affects Or Not Sim.Objects(Q).Affected Or Not Sim.Objects(Q).Affects Then Continue For
+        SumofRadius = Sphere1.Radius + Sphere2.Radius
+        ObjPosistionDiff = Sphere2.Position - Sphere1.Position
 
-                SumofRadius = Sim.Objects(i).Radius + Sim.Objects(Q).Radius
-                QtoIPosistion = Sim.Objects(Q).Position - Sim.Objects(i).Position
-                DidCollide = False
+        If Sim.Config.Collisions.Interpolate Then
+            'Find the values for the quadratic describing the path of intersection of the objects
+            QtoIOldPosistion = Sphere1.OldPosition - Sphere2.OldPosition
+            OldToNewPosition = -(ObjPosistionDiff + QtoIOldPosistion)
+            A = (OldToNewPosition.X * OldToNewPosition.X) + (OldToNewPosition.Y * OldToNewPosition.Y) + (OldToNewPosition.Z * OldToNewPosition.Z)
+            B = -2 * ((OldToNewPosition.X * QtoIOldPosistion.X) + (OldToNewPosition.Y * QtoIOldPosistion.Y) + (OldToNewPosition.Z * QtoIOldPosistion.Z))
+            C = (QtoIOldPosistion.X * QtoIOldPosistion.X) + (QtoIOldPosistion.Y * QtoIOldPosistion.Y) + (QtoIOldPosistion.Z * QtoIOldPosistion.Z) - (SumofRadius * SumofRadius)
 
-                If Sim.Config.Collisions.Interpolate Then
+            'Reset the collision flag
+            DidCollide = False
 
-                    'Find the values for the quadratic describing the path of intersection of the objects
-                    QtoIOldPosistion = Sim.Objects(i).OldPosition - Sim.Objects(Q).OldPosition
-                    OldToNewPosition = -(QtoIPosistion + QtoIOldPosistion)
-                    A = (OldToNewPosition.X * OldToNewPosition.X) + (OldToNewPosition.Y * OldToNewPosition.Y) + (OldToNewPosition.Z * OldToNewPosition.Z)
-                    B = -2 * ((OldToNewPosition.X * QtoIOldPosistion.X) + (OldToNewPosition.Y * QtoIOldPosistion.Y) + (OldToNewPosition.Z * QtoIOldPosistion.Z))
-                    C = (QtoIOldPosistion.X * QtoIOldPosistion.X) + (QtoIOldPosistion.Y * QtoIOldPosistion.Y) + (QtoIOldPosistion.Z * QtoIOldPosistion.Z) - (SumofRadius * SumofRadius)
-
-                    'Solve the quadratic equation
-                    Discriminant = (B * B) - (4 * A * C)
-                    If Discriminant = 0 Then 'Glancing collision
-                        CollisionTime = B / (2 * A)
-                        If CollisionTime >= 0 And CollisionTime <= 1 Then DidCollide = True
-                    ElseIf Discriminant > 0 Then ' They interpenetrated
-                        TempDouble = 1 / (2 * A)
-                        Time1 = (B - Sqrt(Discriminant)) * TempDouble
-                        Time2 = (B + Sqrt(Discriminant)) * TempDouble
-                        If Time1 >= 0 And Time1 <= 1 Then
-                            If Time2 >= 0 And Time2 <= 1 Then
-                                If Time1 < Time2 Then
-                                    CollisionTime = Time1
-                                    DidCollide = True
-                                Else
-                                    CollisionTime = Time2
-                                    DidCollide = True
-                                End If
-                            Else
-                                CollisionTime = Time1
-                                DidCollide = True
-                            End If
+            'Solve the quadratic equation
+            Discriminant = (B * B) - (4 * A * C)
+            If Discriminant = 0 Then 'Glancing collision
+                CollisionTime = B / (2 * A)
+                If CollisionTime >= 0 And CollisionTime <= 1 Then DidCollide = True
+            ElseIf Discriminant > 0 Then ' They interpenetrated
+                TempDouble = 1 / (2 * A)
+                Time1 = (B - Sqrt(Discriminant)) * TempDouble
+                Time2 = (B + Sqrt(Discriminant)) * TempDouble
+                If Time1 >= 0 And Time1 <= 1 Then
+                    If Time2 >= 0 And Time2 <= 1 Then
+                        If Time1 < Time2 Then
+                            CollisionTime = Time1
+                            DidCollide = True
                         Else
-                            If Time2 >= 0 And Time2 <= 1 Then
-                                CollisionTime = Time2
-                                DidCollide = True
-                            End If
+                            CollisionTime = Time2
+                            DidCollide = True
                         End If
-                    End If
-                    If DidCollide Then
-                        'Move the objects back to where they would have been at the time of the collision
-                        Sim.Render.RenderLock.EnterWriteLock()
-                        Sim.Objects(i).Position = ((Sim.Objects(i).Position - Sim.Objects(i).OldPosition) * CollisionTime) + Sim.Objects(i).OldPosition
-                        Sim.Objects(Q).Position = ((Sim.Objects(Q).Position - Sim.Objects(Q).OldPosition) * CollisionTime) + Sim.Objects(Q).OldPosition
-                        Sim.Render.RenderLock.ExitWriteLock()
-                        'Recalculate thier seperation
-                        QtoIPosistion = Sim.Objects(Q).Position - Sim.Objects(i).Position
-                        QtoIDistanceSqd = QtoIPosistion.MagnitudeSquared
-                        DotProductI = Sim.Objects(i).Velocity.Dot(QtoIPosistion)
-                        DotProductQ = Sim.Objects(Q).Velocity.Dot(QtoIPosistion)
                     Else
-                        'No Collision Occured
-                        Continue For
+                        CollisionTime = Time1
+                        DidCollide = True
                     End If
                 Else
-                    'No interpolation
-                    QtoIDistanceSqd = QtoIPosistion.MagnitudeSquared
-                    If QtoIDistanceSqd > SumofRadius * SumofRadius Then Continue For 'Check that they are touching
-                    DotProductI = Sim.Objects(i).Velocity.Dot(QtoIPosistion)
-                    DotProductQ = Sim.Objects(Q).Velocity.Dot(QtoIPosistion)
-                    If DotProductQ - DotProductI >= 0 Then Continue For 'Check that the are coming together
-                End If
-
-                SumofMasses = Sim.Objects(i).Mass + Sim.Objects(Q).Mass
-                DotProductMagI = DotProductI / QtoIDistanceSqd
-                DotProductMagQ = DotProductQ / QtoIDistanceSqd
-                VI = DotProductMagI * QtoIPosistion
-                VQ = DotProductMagQ * QtoIPosistion
-                If Sim.Config.Collisions.CoR = 0 Then '~~~~~~~~~~~PLASTIC OBJECT OBJECT COLLISION~~~~~~~~~~~
-                    NewVI = ((Sim.Objects(Q).Mass * VQ) + (VI * Sim.Objects(i).Mass)) / SumofMasses
-                    Sim.Objects(i).Velocity.Copy(NewVI + (Sim.Objects(i).Velocity - VI))
-                    Sim.Objects(Q).Velocity.Copy(NewVI + (Sim.Objects(Q).Velocity - VQ))
-                ElseIf Sim.Config.Collisions.CoR = 1 Then  '~~~~~~ELASTIC OBJECT OBJECT COLLISION~~~~~~~~~~~
-                    TempDouble4 = Sim.Objects(i).Mass / SumofMasses
-                    TempDouble5 = Sim.Objects(Q).Mass / SumofMasses
-                    TempDouble = TempDouble4 - TempDouble5
-                    Sim.Objects(i).Velocity += ((TempDouble5 + TempDouble5) * VQ) + (VI * (TempDouble - 1))
-                    Sim.Objects(Q).Velocity += ((TempDouble4 + TempDouble4) * VI) - (VQ * (TempDouble + 1))
-                Else '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PARTIAL OBJECT OBJECT COLLISION~~~~~~~~~~~
-                    TempDouble4 = Sim.Objects(i).Mass / SumofMasses
-                    TempDouble5 = Sim.Objects(Q).Mass / SumofMasses
-                    TempDouble3 = Sim.Config.Collisions.CoR + 1
-                    Sim.Objects(i).Velocity += (TempDouble3 * TempDouble5 * VQ) + (VI * (TempDouble4 - (Sim.Config.Collisions.CoR * TempDouble5) - 1))
-                    Sim.Objects(Q).Velocity += (TempDouble3 * TempDouble4 * VI) + (VQ * (TempDouble5 - (Sim.Config.Collisions.CoR * TempDouble4) - 1))
-                End If
-
-                If Sim.Config.Collisions.Interpolate Then
-                    'Move the objects forward by the remaining time
-                    Sim.Render.RenderLock.EnterWriteLock()
-                    Sim.Objects(i).Position += Sim.Objects(i).Velocity * (Sim.Config.Settings.TimeStep * (1 - CollisionTime))
-                    Sim.Objects(Q).Position += Sim.Objects(Q).Velocity * (Sim.Config.Settings.TimeStep * (1 - CollisionTime))
-                    Sim.Render.RenderLock.ExitWriteLock()
-                End If
-
-                '~~~~~~~~~~~~~~BREAKABLE OBJECT OBJECT COLLISION~~~~~~~~~~~~
-                If Not Sim.Config.Collisions.Breakable Or Sim.ObjectCount >= Sim.Config.Settings.MaxObjects Or Sim.Config.Collisions.CoR = 1 Then Continue For
-
-                DeltaKineticI = Math.Abs(VI.MagnitudeSquared + VQ.MagnitudeSquared - Sim.Objects(i).Velocity.MagnitudeSquared - Sim.Objects(Q).Velocity.MagnitudeSquared)
-                DeltaKineticQ = DeltaKineticI
-                DeltaKineticI *= Sim.Objects(i).Mass
-                DeltaKineticQ *= Sim.Objects(Q).Mass
-
-                'Determine if Q will break
-                If DeltaKineticQ >= Sim.Config.Collisions.BreakMax Then
-                    DoBreak(Q)
-                ElseIf DeltaKineticQ >= Sim.Config.Collisions.BreakMin Then
-                    If DeltaKineticQ = Sim.Config.Collisions.BreakAvg Then
-                        If Sim.RandMaker.GetNext() > 0.5 Then DoBreak(Q)
-                    Else
-                        If Sim.RandMaker.GetNext < Sim.RandMaker.GetProbibility(DeltaKineticQ, Sim.Config.Collisions.BreakAvg, Sim.Config.Collisions.BreakMin, Sim.Config.Collisions.BreakMax) Then DoBreak(Q) 'Get probibility and compare it to a random number
+                    If Time2 >= 0 And Time2 <= 1 Then
+                        CollisionTime = Time2
+                        DidCollide = True
                     End If
                 End If
+            End If
+            If Not DidCollide Then Return 'No Collision Occured
 
-                'Determine if I will break
-                If Sim.ObjectCount >= Sim.Config.Settings.MaxObjects Then Continue For
+            'Move the objects back to where they would have been at the time of the collision
+            Sim.Render.RenderLock.EnterWriteLock()
+            Sphere1.Position = ((Sphere1.Position - Sphere1.OldPosition) * CollisionTime) + Sphere1.OldPosition
+            Sphere2.Position = ((Sphere2.Position - Sphere2.OldPosition) * CollisionTime) + Sphere2.OldPosition
+            Sim.Render.RenderLock.ExitWriteLock()
 
-                If DeltaKineticI >= Sim.Config.Collisions.BreakMax Then
-                    DoBreak(i)
-                ElseIf DeltaKineticI >= Sim.Config.Collisions.BreakMin Then
-                    If DeltaKineticI = Sim.Config.Collisions.BreakAvg Then
-                        If Sim.RandMaker.GetNext() > 0.5 Then DoBreak(i)
-                    Else
-                        If Sim.RandMaker.GetNext < Sim.RandMaker.GetProbibility(DeltaKineticI, Sim.Config.Collisions.BreakAvg, Sim.Config.Collisions.BreakMin, Sim.Config.Collisions.BreakMax) Then DoBreak(i) 'Get probibility and compare it to a random number
+            'Recalculate thier seperation
+            ObjPosistionDiff = Sphere2.Position - Sphere1.Position
+            ObjDistanceSqd = ObjPosistionDiff.MagnitudeSquared
+            DotProductI = Sphere1.Velocity.Dot(ObjPosistionDiff)
+            DotProductQ = Sphere2.Velocity.Dot(ObjPosistionDiff)
+
+        Else 'No interpolation
+            ObjDistanceSqd = ObjPosistionDiff.MagnitudeSquared
+            If ObjDistanceSqd > SumofRadius * SumofRadius Then Return 'Check that they are touching
+            DotProductI = Sphere1.Velocity.Dot(ObjPosistionDiff)
+            DotProductQ = Sphere2.Velocity.Dot(ObjPosistionDiff)
+            If DotProductQ - DotProductI >= 0 Then Return 'Check that the are coming together
+        End If
+
+
+        DotProductMagI = DotProductI / ObjDistanceSqd
+        DotProductMagQ = DotProductQ / ObjDistanceSqd
+        VI = DotProductMagI * ObjPosistionDiff
+        VQ = DotProductMagQ * ObjPosistionDiff
+
+        'Handle object bounce
+        SumofMasses = Sphere1.Mass + Sphere2.Mass
+        If Sim.Config.Collisions.CoR = 0 Then '~~~~~~~~~~~PLASTIC OBJECT OBJECT COLLISION~~~~~~~~~~~
+            NewVI = ((Sphere2.Mass * VQ) + (VI * Sphere1.Mass)) / SumofMasses
+            Sphere1.Velocity.Copy(NewVI + (Sphere1.Velocity - VI))
+            Sphere2.Velocity.Copy(NewVI + (Sphere2.Velocity - VQ))
+        ElseIf Sim.Config.Collisions.CoR = 1 Then  '~~~~~~ELASTIC OBJECT OBJECT COLLISION~~~~~~~~~~~
+            TempDouble4 = Sphere1.Mass / SumofMasses
+            TempDouble5 = Sphere2.Mass / SumofMasses
+            TempDouble = TempDouble4 - TempDouble5
+            Sphere1.Velocity += ((TempDouble5 + TempDouble5) * VQ) + (VI * (TempDouble - 1))
+            Sphere2.Velocity += ((TempDouble4 + TempDouble4) * VI) - (VQ * (TempDouble + 1))
+        Else '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PARTIAL OBJECT OBJECT COLLISION~~~~~~~~~~~
+            TempDouble4 = Sphere1.Mass / SumofMasses
+            TempDouble5 = Sphere2.Mass / SumofMasses
+            TempDouble3 = Sim.Config.Collisions.CoR + 1
+            Sphere1.Velocity += (TempDouble3 * TempDouble5 * VQ) + (VI * (TempDouble4 - (Sim.Config.Collisions.CoR * TempDouble5) - 1))
+            Sphere2.Velocity += (TempDouble3 * TempDouble4 * VI) + (VQ * (TempDouble5 - (Sim.Config.Collisions.CoR * TempDouble4) - 1))
+        End If
+
+        If Sim.Config.Collisions.Interpolate Then
+            'Move the objects forward by the remaining time
+            Sim.Render.RenderLock.EnterWriteLock()
+            Sphere1.Position += Sphere1.Velocity * (Sim.Config.Settings.TimeStep * (1 - CollisionTime))
+            Sphere2.Position += Sphere2.Velocity * (Sim.Config.Settings.TimeStep * (1 - CollisionTime))
+            Sim.Render.RenderLock.ExitWriteLock()
+        End If
+
+        '~~~~~~~~~~~~~~BREAKABLE OBJECT OBJECT COLLISION~~~~~~~~~~~~
+        If Not Sim.Config.Collisions.Breakable Or Sim.ObjectCount >= Sim.Config.Settings.MaxObjects Or Sim.Config.Collisions.CoR = 1 Then Return
+
+        DeltaKineticI = Math.Abs(VI.MagnitudeSquared + VQ.MagnitudeSquared - Sphere1.Velocity.MagnitudeSquared - Sphere2.Velocity.MagnitudeSquared)
+        DeltaKineticQ = DeltaKineticI
+        DeltaKineticI *= Sphere1.Mass
+        DeltaKineticQ *= Sphere2.Mass
+
+        'Determine if Sphere2 will break
+        If DeltaKineticQ >= Sim.Config.Collisions.BreakMax Then
+            DoBreak(Sphere1)
+        ElseIf DeltaKineticQ >= Sim.Config.Collisions.BreakMin Then
+            If DeltaKineticQ = Sim.Config.Collisions.BreakAvg Then
+                If Sim.RandMaker.GetNext() > 0.5 Then DoBreak(Sphere2)
+            Else
+                If Sim.RandMaker.GetNext < Sim.RandMaker.GetProbibility(DeltaKineticQ, Sim.Config.Collisions.BreakAvg, Sim.Config.Collisions.BreakMin, Sim.Config.Collisions.BreakMax) Then DoBreak(Sphere2) 'Get probibility and compare it to a random number
+            End If
+        End If
+
+        'Determine if Sphere1 will break
+        If Sim.ObjectCount >= Sim.Config.Settings.MaxObjects Then Return
+
+        If DeltaKineticI >= Sim.Config.Collisions.BreakMax Then
+            DoBreak(Sphere1)
+        ElseIf DeltaKineticI >= Sim.Config.Collisions.BreakMin Then
+            If DeltaKineticI = Sim.Config.Collisions.BreakAvg Then
+                If Sim.RandMaker.GetNext() > 0.5 Then DoBreak(Sphere1)
+            Else
+                If Sim.RandMaker.GetNext < Sim.RandMaker.GetProbibility(DeltaKineticI, Sim.Config.Collisions.BreakAvg, Sim.Config.Collisions.BreakMin, Sim.Config.Collisions.BreakMax) Then DoBreak(Sphere1) 'Get probibility and compare it to a random number
+            End If
+        End If
+    End Sub
+
+    Private Sub DoCollisions()
+        Dim second As Integer
+
+        '~~~~~~~~~~~~~OBJECT OBJECT COLLISION~~~~~~~~~~~~
+        'Check every object against every other object
+        'TODO: this would benefit greatly from a bounding volume hierarchy
+        For first = 0 To Sim.ObjectCount - 2
+            For second = first + 1 To Sim.ObjectCount - 1
+
+                'If both objects cannot be affected by other objects then ignore collisions
+                'If both objects cannot be affect other objects then ignore collisions
+                If (Not Sim.Objects(first).Affected AndAlso Not Sim.Objects(second).Affected) OrElse (Not Sim.Objects(first).Affects AndAlso Not Sim.Objects(second).Affects) Then Continue For
+
+                If Sim.Objects(first).Type = ObjectType.Sphere Then
+                    If Sim.Objects(second).Type = ObjectType.Sphere Then
+                        DoSphereSphereCollision(Sim.Objects(first), Sim.Objects(second))
+                    ElseIf Sim.Objects(second).Type = ObjectType.Box Then
+                        DoSphereBoxCollision(Sim.Objects(first), Sim.Objects(second))
+                    End If
+
+                ElseIf Sim.Objects(first).Type = ObjectType.Box Then
+                    If Sim.Objects(second).Type = ObjectType.Sphere Then
+                        DoSphereBoxCollision(Sim.Objects(second), Sim.Objects(first))
+                    ElseIf Sim.Objects(second).Type = ObjectType.Box Then
+                        DoBoxBoxCollision(Sim.Objects(first), Sim.Objects(second))
                     End If
                 End If
             Next
@@ -626,54 +770,54 @@
         Dim QtoIDistance As Double
         Dim AccMagi As Double
         Dim AccMagq As Double
-        Dim Coeff As New XYZ
+        Dim Coeff As XYZ
         Dim DragMultiplier As Double
-        Dim ReynoldsNumber As New XYZ
+        Dim ReynoldsNumber As XYZ
         Dim ReynoldsMultiplier As Double
         Dim StokesDragConst As Double
-        Dim QtoIPosistion As New XYZ
+        Dim QtoIPosistion As XYZ
         Dim QtoIDistanceSqd As Double
         Dim Ectemp As Double
-        Dim I As Integer
-        Dim Q As Integer
+        Dim firstObjIdx As Integer
+        Dim secondObjIdx As Integer
         '~~~~~~~~~~~~~~~~~~~GLOBAL FORCES~~~~~~~~~~~~~~~~~
         If Sim.Config.Forces.Field.Enabled Then
             'Apply field
-            For I = 0 To Sim.ObjectCount - 1
-                If Sim.Objects(I).Affected Then
-                    Sim.Objects(I).Acceleration.Copy(Sim.Config.Forces.Field.Acceleration)
+            For firstObjIdx = 0 To Sim.ObjectCount - 1
+                If Sim.Objects(firstObjIdx).Affected Then
+                    Sim.Objects(firstObjIdx).Acceleration.Copy(Sim.Config.Forces.Field.Acceleration)
                 Else
-                    Sim.Objects(I).Acceleration.MakeZero()
+                    Sim.Objects(firstObjIdx).Acceleration.MakeZero()
                 End If
             Next
         Else
             'Reset acceleration to zero
-            For I = 0 To Sim.ObjectCount - 1
-                Sim.Objects(I).Acceleration.MakeZero()
+            For firstObjIdx = 0 To Sim.ObjectCount - 1
+                Sim.Objects(firstObjIdx).Acceleration.MakeZero()
             Next
         End If
         '~~~~~~~~~~~~~OBJECT ENVIRONMENT FORCES~~~~~~~~~~~~~~
         If Sim.Config.Forces.Drag.Enabled Then
-            For I = 0 To Sim.ObjectCount - 1
-                If Sim.Objects(I).Affected Then
-                    ReynoldsMultiplier = (Sim.Config.Forces.Drag.Density * Sim.Objects(I).Radius * 2) / Sim.Config.Forces.Drag.Viscosity
-                    StokesDragConst = (6 * PI * Sim.Config.Forces.Drag.Viscosity * Sim.Objects(I).Radius) / Sim.Objects(I).Mass
-                    DragMultiplier = (0.5 * Sim.Config.Forces.Drag.Density * Sim.Config.Forces.Drag.DragCoeff * Math.PI * Sim.Objects(I).Radius * Sim.Objects(I).Radius) / Sim.Objects(I).Mass
-                    ReynoldsNumber = ReynoldsMultiplier * Sim.Objects(I).Velocity.Abs
+            For firstObjIdx = 0 To Sim.ObjectCount - 1
+                If Sim.Objects(firstObjIdx).Affected Then
+                    ReynoldsMultiplier = (Sim.Config.Forces.Drag.Density * Sim.Objects(firstObjIdx).Radius * 2) / Sim.Config.Forces.Drag.Viscosity
+                    StokesDragConst = (6 * PI * Sim.Config.Forces.Drag.Viscosity * Sim.Objects(firstObjIdx).Radius) / Sim.Objects(firstObjIdx).Mass
+                    DragMultiplier = (0.5 * Sim.Config.Forces.Drag.Density * Sim.Config.Forces.Drag.DragCoeff * Math.PI * Sim.Objects(firstObjIdx).Radius * Sim.Objects(firstObjIdx).Radius) / Sim.Objects(firstObjIdx).Mass
+                    ReynoldsNumber = ReynoldsMultiplier * Sim.Objects(firstObjIdx).Velocity.Abs
                     If ReynoldsNumber.X < 30 Then
-                        Sim.Objects(I).Acceleration.X -= StokesDragConst * Sim.Objects(I).Velocity.X
+                        Sim.Objects(firstObjIdx).Acceleration.X -= StokesDragConst * Sim.Objects(firstObjIdx).Velocity.X
                     Else
-                        Sim.Objects(I).Acceleration.X -= DragMultiplier * Sim.Objects(I).Velocity.X * Math.Abs(Sim.Objects(I).Velocity.X)
+                        Sim.Objects(firstObjIdx).Acceleration.X -= DragMultiplier * Sim.Objects(firstObjIdx).Velocity.X * Math.Abs(Sim.Objects(firstObjIdx).Velocity.X)
                     End If
                     If ReynoldsNumber.Y < 30 Then
-                        Sim.Objects(I).Acceleration.Y -= StokesDragConst * Sim.Objects(I).Velocity.Y
+                        Sim.Objects(firstObjIdx).Acceleration.Y -= StokesDragConst * Sim.Objects(firstObjIdx).Velocity.Y
                     Else
-                        Sim.Objects(I).Acceleration.Y -= DragMultiplier * Sim.Objects(I).Velocity.Y * Math.Abs(Sim.Objects(I).Velocity.Y)
+                        Sim.Objects(firstObjIdx).Acceleration.Y -= DragMultiplier * Sim.Objects(firstObjIdx).Velocity.Y * Math.Abs(Sim.Objects(firstObjIdx).Velocity.Y)
                     End If
                     If ReynoldsNumber.Z < 30 Then
-                        Sim.Objects(I).Acceleration.Z -= StokesDragConst * Sim.Objects(I).Velocity.Z
+                        Sim.Objects(firstObjIdx).Acceleration.Z -= StokesDragConst * Sim.Objects(firstObjIdx).Velocity.Z
                     Else
-                        Sim.Objects(I).Acceleration.Z -= DragMultiplier * Sim.Objects(I).Velocity.Z * Math.Abs(Sim.Objects(I).Velocity.Z)
+                        Sim.Objects(firstObjIdx).Acceleration.Z -= DragMultiplier * Sim.Objects(firstObjIdx).Velocity.Z * Math.Abs(Sim.Objects(firstObjIdx).Velocity.Z)
                     End If
                 End If
             Next
@@ -681,36 +825,36 @@
 
         If Sim.Config.Forces.Gravity Or Sim.Config.Forces.ElectroStatic.Enabled Then
             '~~~~~~~~~~~~~OBJECT OBJECT FORCES~~~~~~~~~~~~~~
-            For I = 0 To Sim.ObjectCount - 2
-                For Q = I + 1 To Sim.ObjectCount - 1
-                    If (Sim.Objects(I).Affected And Sim.Objects(Q).Affects) Or (Sim.Objects(Q).Affected And Sim.Objects(I).Affects) Then 'If the objects are allowed to interact
+            For firstObjIdx = 0 To Sim.ObjectCount - 2
+                For secondObjIdx = firstObjIdx + 1 To Sim.ObjectCount - 1
+                    If (Sim.Objects(firstObjIdx).Affected AndAlso Sim.Objects(secondObjIdx).Affects) OrElse (Sim.Objects(secondObjIdx).Affected AndAlso Sim.Objects(firstObjIdx).Affects) Then 'If the objects are allowed to interact
 
-                        QtoIPosistion = (Sim.Objects(Q).Position - Sim.Objects(I).Position)
+                        QtoIPosistion = (Sim.Objects(secondObjIdx).Position - Sim.Objects(firstObjIdx).Position)
                         QtoIDistanceSqd = QtoIPosistion.MagnitudeSquared
                         QtoIDistance = Math.Sqrt(QtoIDistanceSqd)
                         Coeff = QtoIPosistion / QtoIDistance
 
                         '~~~~~~~~~~~~~NEWTONIAN GRAVITY~~~~~~~~~~~~~~
                         If Sim.Config.Forces.Gravity Then
-                            AccMagi = (G * Sim.Objects(Q).Mass) / (QtoIDistanceSqd)
-                            AccMagq = (-G * Sim.Objects(I).Mass) / (QtoIDistanceSqd)
-                            If Sim.Objects(I).Affected And Sim.Objects(Q).Affects Then
-                                Sim.Objects(I).Acceleration += AccMagi * Coeff
+                            AccMagi = (G * Sim.Objects(secondObjIdx).Mass) / (QtoIDistanceSqd)
+                            AccMagq = (-G * Sim.Objects(firstObjIdx).Mass) / (QtoIDistanceSqd)
+                            If Sim.Objects(firstObjIdx).Affected And Sim.Objects(secondObjIdx).Affects Then
+                                Sim.Objects(firstObjIdx).Acceleration += AccMagi * Coeff
                             End If
-                            If Sim.Objects(Q).Affected And Sim.Objects(I).Affects Then
-                                Sim.Objects(Q).Acceleration += AccMagq * Coeff
+                            If Sim.Objects(secondObjIdx).Affected And Sim.Objects(firstObjIdx).Affects Then
+                                Sim.Objects(secondObjIdx).Acceleration += AccMagq * Coeff
                             End If
                         End If
                         '~~~~~~~~~~~~~ELECTRONMAGNATISM~~~~~~~~~~~~~~
                         If Sim.Config.Forces.ElectroStatic.Enabled Then
-                            Ectemp = (Ec * Sim.Objects(Q).Charge * Sim.Objects(I).Charge)
-                            AccMagi = -(Ectemp / (QtoIDistanceSqd * Sim.Objects(I).Mass))
-                            AccMagq = (Ectemp / (QtoIDistanceSqd * Sim.Objects(Q).Mass))
-                            If Sim.Objects(I).Affected And Sim.Objects(Q).Affects Then
-                                Sim.Objects(I).Acceleration += AccMagi * Coeff
+                            Ectemp = (Ec * Sim.Objects(secondObjIdx).Charge * Sim.Objects(firstObjIdx).Charge)
+                            AccMagi = -(Ectemp / (QtoIDistanceSqd * Sim.Objects(firstObjIdx).Mass))
+                            AccMagq = (Ectemp / (QtoIDistanceSqd * Sim.Objects(secondObjIdx).Mass))
+                            If Sim.Objects(firstObjIdx).Affected And Sim.Objects(secondObjIdx).Affects Then
+                                Sim.Objects(firstObjIdx).Acceleration += AccMagi * Coeff
                             End If
-                            If Sim.Objects(Q).Affected And Sim.Objects(I).Affects Then
-                                Sim.Objects(Q).Acceleration += AccMagq * Coeff
+                            If Sim.Objects(secondObjIdx).Affected And Sim.Objects(firstObjIdx).Affects Then
+                                Sim.Objects(secondObjIdx).Acceleration += AccMagq * Coeff
                             End If
                         End If
                     End If
@@ -721,7 +865,7 @@
 #End Region
 
 #Region "Object Breaking"
-    Private Sub DoBreak(ByRef Index As Integer)
+    Private Sub DoBreak(ByRef SimObject As SimulationObject)
         'Variables used in the breaking
         Dim SkewDirection As Double  ' Determines the direction of the distribution curve
         Dim BreakNumber As Integer 'Determines the number of resulting objects
@@ -765,7 +909,7 @@
         End If
 
         'Calculate 3 perpendicular unit vectors
-        VelocityI = Sim.Objects(Index).Velocity
+        VelocityI = SimObject.Velocity
         VelocityMagnitudeI = VelocityI.Magnitude
         VelocityI /= VelocityMagnitudeI
         VelocityJ = VelocityI.Perpendicular
@@ -775,17 +919,17 @@
         'CREATE NEW OBJECTS AND ASSIGN NON-RANDOM PARAMETERS
         For z = 0 To BreakNumber - 1
             NewObjects(z) = New SimulationObject
-            NewObjects(z).Affected = Sim.Objects(Index).Affected
-            NewObjects(z).Affects = Sim.Objects(Index).Affects
-            NewObjects(z).HighlightColor = Sim.Objects(Index).HighlightColor
-            NewObjects(z).HighlightSharpness = Sim.Objects(Index).HighlightSharpness
-            NewObjects(z).Reflectivity = Sim.Objects(Index).Reflectivity
-            NewObjects(z).RefractiveIndex = Sim.Objects(Index).RefractiveIndex
-            NewObjects(z).Transparency = Sim.Objects(Index).Transparency
-            NewObjects(z).Wireframe = Sim.Objects(Index).Wireframe
-            NewObjects(z).Type = Sim.Objects(Index).Type
-            NewObjects(z).Color = Sim.Objects(Index).Color
-            NewObjects(z).Rotation.Copy(Sim.Objects(Index).Rotation)
+            NewObjects(z).Affected = SimObject.Affected
+            NewObjects(z).Affects = SimObject.Affects
+            NewObjects(z).HighlightColor = SimObject.HighlightColor
+            NewObjects(z).HighlightSharpness = SimObject.HighlightSharpness
+            NewObjects(z).Reflectivity = SimObject.Reflectivity
+            NewObjects(z).RefractiveIndex = SimObject.RefractiveIndex
+            NewObjects(z).Transparency = SimObject.Transparency
+            NewObjects(z).Wireframe = SimObject.Wireframe
+            NewObjects(z).Type = SimObject.Type
+            NewObjects(z).Color = SimObject.Color
+            NewObjects(z).Rotation.Copy(SimObject.Rotation)
             VelocityMagnitude(z) = Sim.RandMaker.GetNext 'Assign a random amount of velocity
             TotalVelocityMagnitude += VelocityMagnitude(z)
             VelocityComponents(z) = New XYZ(Sim.RandMaker.GetNext, Sim.RandMaker.GetNext, Sim.RandMaker.GetNext) 'Assign a random direction to the velocity
@@ -805,12 +949,12 @@
         Next
 
         'ASSIGN SIZE, POSITION AND MASS
-        If Sim.Objects(Index).Type = ObjectType.Box Then 'The object is a Box
+        If SimObject.Type = ObjectType.Box Then 'The object is a Box
 
             'Tesselation of the original box.
             For i = 0 To BreakNumber - 2 'I is the cut number, always 1 less than breaknumber
                 If i = 0 Then 'First cut
-                    TessellateBox(NewObjects(0), NewObjects(1), Sim.Objects(Index))
+                    TessellateBox(NewObjects(0), NewObjects(1), SimObject)
                 Else
                     TessNumber = ToInt32(i * Sim.RandMaker.GetNext) 'Get a random box
                     TessBox.Copy(NewObjects(TessNumber)) 'Copy that box 
@@ -819,16 +963,16 @@
             Next
 
             'Assign mass to each new box based on thier volume
-            OldVolume = 1 / (Sim.Objects(Index).Size.X * Sim.Objects(Index).Size.Y * Sim.Objects(Index).Size.Z)
+            OldVolume = 1 / (SimObject.Size.X * SimObject.Size.Y * SimObject.Size.Z)
             For r = 0 To BreakNumber - 1
                 MassAssigned(r) = (NewObjects(r).Size.X * NewObjects(r).Size.Y * NewObjects(r).Size.Z) * OldVolume 'Fraction of the old mass that each new box will get
-                NewObjects(r).Mass = MassAssigned(r) * Sim.Objects(Index).Mass
+                NewObjects(r).Mass = MassAssigned(r) * SimObject.Mass
             Next
 
             'ASSIGN CHARGE BASED ON MASS
             If Sim.Config.Forces.ElectroStatic.Enabled Then
                 For Z = 0 To BreakNumber - 1
-                    NewObjects(Z).Charge = MassAssigned(Z) * Sim.Objects(Index).Charge 'Assign the charge to the final objects
+                    NewObjects(Z).Charge = MassAssigned(Z) * SimObject.Charge 'Assign the charge to the final objects
                 Next
             End If
         Else 'The object is a Sphere
@@ -842,17 +986,17 @@
             'Apply mass and position
             For Z = 0 To BreakNumber - 1
                 MassAssigned(Z) /= TotalMass 'Find each object's fraction of the total mass
-                NewObjects(Z).Mass = MassAssigned(Z) * Sim.Objects(Index).Mass 'Assign the masses to the final object
-                NewObjects(Z).Radius = (MassAssigned(Z) ^ 0.33333333333333331) * Sim.Objects(Index).Radius
-                RadiusTemp = Sim.Objects(Index).Radius - NewObjects(Z).Radius
+                NewObjects(Z).Mass = MassAssigned(Z) * SimObject.Mass 'Assign the masses to the final object
+                NewObjects(Z).Radius = (MassAssigned(Z) ^ 0.33333333333333331) * SimObject.Radius
+                RadiusTemp = SimObject.Radius - NewObjects(Z).Radius
                 If Sim.RandMaker.GetNext() > 0.5 Then RadiusTemp = -RadiusTemp
-                NewObjects(Z).Position = Sim.Objects(Index).Position + (RadiusTemp * NewObjects(Z).Velocity.GetNewUnit)
+                NewObjects(Z).Position = SimObject.Position + (RadiusTemp * NewObjects(Z).Velocity.GetNewUnit)
             Next
 
             'ASSIGN CHARGE BASED ON MASS
             If Sim.Config.Forces.ElectroStatic.Enabled Then
                 For Z = 0 To BreakNumber - 1
-                    NewObjects(Z).Charge = MassAssigned(Z) * Sim.Objects(Index).Charge 'Assign the charge to the final objects
+                    NewObjects(Z).Charge = MassAssigned(Z) * SimObject.Charge 'Assign the charge to the final objects
                 Next
             End If
         End If
@@ -861,7 +1005,7 @@
 
         'COPY THE NEW OBJECTS OVER
         Sim.Render.RenderLock.EnterWriteLock() ' Make sure the Renderer isn't loading the data 
-        Sim.Objects(Index).Copy(NewObjects(0)) 'Copy over the new objects into the simulation
+        SimObject.Copy(NewObjects(0)) 'Copy over the new objects into the simulation
         For Z = 1 To BreakNumber - 1
             Sim.Objects(Sim.ObjectCount) = New SimulationObject
             Sim.Objects(Sim.ObjectCount).Copy(NewObjects(Z))
