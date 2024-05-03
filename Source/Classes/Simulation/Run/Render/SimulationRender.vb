@@ -3,7 +3,7 @@
     Public Device As Device
     Public Transparency As Boolean
     Public SphereSecondaryComplexity As Integer
-    Public RenderLock As ReaderWriterLockSlim
+    Public Shared RenderLock As New ReaderWriterLockSlim
     Public Sub Clear()
         Device = Nothing
         Parameters = Nothing

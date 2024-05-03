@@ -5,7 +5,7 @@ Public Class SimulationRuntime
 #Region "Attributes"
     'Threading
     Private ComputingThread As Thread
-    Private RenderThread() As Thread
+    Private RenderThreads() As Thread
 
     'Run State
     Private StartTime As Long
@@ -41,7 +41,7 @@ Public Class SimulationRuntime
     Public Sub New()
         'Threading
         ComputingThread = Nothing
-        RenderThread = Nothing
+        RenderThreads = Nothing
 
         Running = False
         Paused = False
@@ -70,7 +70,7 @@ Public Class SimulationRuntime
 
         'Threads
         ComputingThread = Nothing
-        RenderThread = Nothing
+        RenderThreads = Nothing
 
         Running = False
         Paused = False
@@ -128,7 +128,13 @@ Public Class SimulationRuntime
 
                 If Group.Type = ObjectType.Box Or Group.Type = ObjectType.Plane Then
                     Objects(ObjectCount).Size = Group.Size.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
+                    Objects(ObjectCount).HalfSize = Objects(ObjectCount).Size * 0.5
                     Objects(ObjectCount).Rotation = Group.Rotation.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
+
+                    If Config.Collisions.Enabled Then
+                        'Precompute a bunch of data that will be useful in collision detection
+                        Objects(ObjectCount).BoxCollisionData = New BoxCollisionData(Objects(ObjectCount).Rotation, Objects(ObjectCount).HalfSize)
+                    End If
                 ElseIf Group.Type = ObjectType.Sphere Then
                     Objects(ObjectCount).Radius = Group.Radius.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
                 ElseIf Group.Type = ObjectType.InfinitePlane Then
@@ -189,9 +195,6 @@ Public Class SimulationRuntime
         'Set the camera's initial state based on the configuration 
         Camera.Intitialize(Config.Camera, Config.Render.Width, Config.Render.Height, Config.Render.Mode = 2)
 
-        'Create a lock object
-        Render.RenderLock = New ReaderWriterLockSlim
-
         'Initialize render engine
         If InitializeRender() = False Then
             MsgBox("Unable to initialize graphics. Verify that Render Mode has been set correctly.", MsgBoxStyle.Critical, "Error")
@@ -241,47 +244,46 @@ Public Class SimulationRuntime
         End If
 
         'Wait until the threads have finished
+        'TODO: more forcefully end the threads, especially the raytracing
         If Not IsNothing(ComputingThread) Then
             While (ComputingThread.IsAlive)
-                Application.DoEvents()
+                Thread.Sleep(10)
             End While
             ComputingThread = Nothing
         End If
 
-        For Each thread As Thread In RenderThread
-            If Not IsNothing(thread) Then
-                While (thread.IsAlive)
-                    Application.DoEvents()
+        For Each RenderThread As Thread In RenderThreads
+            If Not IsNothing(RenderThread) Then
+                While (RenderThread.IsAlive)
+                    Thread.Sleep(10)
                 End While
-                thread = Nothing
             End If
         Next
+        ReDim RenderThreads(0)
 
         If Config.Render.Mode < 2 Then 'DirectX mode
-            'TODO BOX support
-            ''Trash Box
-            'Settings.Box.Material = Nothing
-            'If Not IsNothing(Settings.Box.Mesh) Then
-            '    Settings.Box.Mesh.Dispose()
-            '    While (Not Settings.Box.Mesh.Disposed)
-            '        Application.DoEvents()
-            '    End While
-            '    Settings.Box.Mesh = Nothing
-            'End If
-
             'Trash all objects
             For i = 0 To ObjectCount - 1
-                If Not IsNothing(Objects(i).Mesh) Then
-                    Objects(i).Mesh.Dispose()
-                    While (Not Objects(i).Mesh.Disposed)
-                        Application.DoEvents()
-                    End While
-                    Objects(i).Mesh = Nothing
+                If Not IsNothing(Objects(i).DXRenderData) Then
+                    If Not IsNothing(Objects(i).DXRenderData.Mesh) Then
+                        Objects(i).DXRenderData.Mesh.Dispose()
+                    End If
+                    Objects(i).DXRenderData.Material = Nothing
+                    Objects(i).DXRenderData.RotationMatrix = Nothing
                 End If
-                Objects(i).Material = Nothing
             Next
-        Else
 
+            'Wait for everything to be deleted
+            For i = 0 To ObjectCount - 1
+                If Not IsNothing(Objects(i).DXRenderData) Then
+                    If Not IsNothing(Objects(i).DXRenderData.Mesh) Then
+                        While (Not Objects(i).DXRenderData.Mesh.Disposed)
+                            Thread.Sleep(10)
+                        End While
+                        Objects(i).DXRenderData.Mesh = Nothing
+                    End If
+                End If
+            Next
         End If
 
         'Trash the device
@@ -312,17 +314,17 @@ Public Class SimulationRuntime
         End If
 
         If Config.Render.Mode < 2 Then
-            ReDim RenderThread(0)
-            RenderThread(0) = New Thread(AddressOf (New DXRender(Me)).DoDXRender) With {
+            ReDim Me.RenderThreads(0)
+            Me.RenderThreads(0) = New Thread(AddressOf (New DXRender(Me)).DoDXRender) With {
                 .Name = "DXRender",
                 .IsBackground = True
             }
 
-            RenderThread(0).Start()
+            Me.RenderThreads(0).Start()
         Else
-            ReDim RenderThread(RenderThreads - 1)
+            ReDim Me.RenderThreads(RenderThreads - 1)
             For i = 0 To RenderThreads - 1
-                RenderThread(i) = New Thread(AddressOf (New RayRender(Me)).DoRayRender) With {
+                Me.RenderThreads(i) = New Thread(AddressOf (New RayRender(Me)).DoRayRender) With {
                     .Name = "RayRender" & i,
                     .IsBackground = True
                 }
@@ -334,7 +336,7 @@ Public Class SimulationRuntime
                     'Space out the threads to reduce contention
                     Thread.Sleep(sleepTime)
                 End If
-                RenderThread(i).Start()
+                Me.RenderThreads(i).Start()
             Next
         End If
     End Sub
@@ -484,7 +486,7 @@ Public Class SimulationRuntime
     End Function
 
     Public Function GetRenderThreadCount() As Integer
-        Return RenderThread.Length
+        Return RenderThreads.Length
     End Function
 #End Region
 

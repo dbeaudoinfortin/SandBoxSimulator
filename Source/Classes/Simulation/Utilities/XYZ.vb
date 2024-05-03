@@ -81,7 +81,7 @@ Public Structure XYZ
         Return New XYZ(lhs * rhs.X, lhs * rhs.Y, lhs * rhs.Z)
     End Operator
     Public Shared Operator *(ByVal lhs As XYZ, ByVal rhs As XYZ) As XYZ
-        Return New XYZ(lhs.X * rhs.X, lhs.X * rhs.Y, lhs.X * rhs.Z)
+        Return New XYZ(lhs.X * rhs.X, lhs.Y * rhs.Y, lhs.Z * rhs.Z)
     End Operator
     Public Shared Operator /(ByVal lhs As XYZ, ByVal rhs As Double) As XYZ
         Return New XYZ(lhs.X / rhs, lhs.Y / rhs, lhs.Z / rhs)
@@ -99,16 +99,16 @@ Public Structure XYZ
     Public Sub Rotate(ByRef RotationMatrix As Matrix3x3)
         Dim newX As Double = X * RotationMatrix.M11 + Y * RotationMatrix.M21 + Z * RotationMatrix.M31
         Dim newY As Double = X * RotationMatrix.M12 + Y * RotationMatrix.M22 + Z * RotationMatrix.M32
-        Z = X * RotationMatrix.M13 + Y * RotationMatrix.M23 + Z * RotationMatrix.M33
+        Dim newZ As Double = X * RotationMatrix.M13 + Y * RotationMatrix.M23 + Z * RotationMatrix.M33
+        Z = newZ
         X = newX
         Y = newY
     End Sub
 
     Public Function NewRotated(ByRef RotationMatrix As Matrix3x3) As XYZ
-        Dim newX As Double = X * RotationMatrix.M11 + Y * RotationMatrix.M21 + Z * RotationMatrix.M31
-        Dim newY As Double = X * RotationMatrix.M12 + Y * RotationMatrix.M22 + Z * RotationMatrix.M32
-        Dim newZ As Double = X * RotationMatrix.M13 + Y * RotationMatrix.M23 + Z * RotationMatrix.M33
-        Return New XYZ(newX, newY, newZ)
+        Dim newXYZ As New XYZ(Me)
+        newXYZ.Rotate(RotationMatrix)
+        Return newXYZ
     End Function
 
     Public Function MagnitudeSquared() As Double

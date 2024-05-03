@@ -78,11 +78,11 @@ Public Class ComputeThread
                     Sim.Objects(i).OldPosition.Copy(Sim.Objects(i).Position)
                 Next
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += Sim.Objects(i).Velocity * timeStep
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 DoCollisions() 'Collisions must be after
                 ComputationControl()
@@ -92,22 +92,22 @@ Public Class ComputeThread
             Do While Sim.Running
                 DoCollisions()
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += Sim.Objects(i).Velocity * timeStep
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 ComputationControl()
             Loop
         Else
             'No collisions at all
             Do While Sim.Running
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += Sim.Objects(i).Velocity * timeStep
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
                 ComputationControl()
             Loop
         End If
@@ -122,11 +122,11 @@ Public Class ComputeThread
                 Next
 
                 'Only the position of the objects actually needs to be locked
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += Sim.Objects(i).Velocity * timeStep
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 DoCollisions()
                 ComputationControl()
@@ -139,11 +139,11 @@ Public Class ComputeThread
                     Sim.Objects(i).Velocity += Sim.Objects(i).Acceleration * timeStep
                 Next
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += Sim.Objects(i).Velocity * timeStep
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 ComputationControl()
             Loop
@@ -154,11 +154,11 @@ Public Class ComputeThread
                     Sim.Objects(i).Velocity += Sim.Objects(i).Acceleration * timeStep
                 Next
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += Sim.Objects(i).Velocity * timeStep
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 ComputationControl()
             Loop
@@ -177,11 +177,11 @@ Public Class ComputeThread
                     Sim.Objects(i).OldPosition.Copy(Sim.Objects(i).Position)
                 Next
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += (Sim.Objects(i).Velocity * timeStep) + (HalfTSqd * Sim.Objects(i).Acceleration)
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Velocity += HalfT * Sim.Objects(i).Acceleration
@@ -201,11 +201,11 @@ Public Class ComputeThread
             Do While Sim.Running
                 DoCollisions()
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += (Sim.Objects(i).Velocity * timeStep) + (HalfTSqd * Sim.Objects(i).Acceleration)
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Velocity += HalfT * Sim.Objects(i).Acceleration
@@ -223,12 +223,12 @@ Public Class ComputeThread
             DoForces() 'Initial forces
             Do While Sim.Running
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += (Sim.Objects(i).Velocity * timeStep) + (HalfTSqd * Sim.Objects(i).Acceleration)
 
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Velocity += HalfT * Sim.Objects(i).Acceleration
@@ -262,11 +262,11 @@ Public Class ComputeThread
                 Next
 
                 For j = 0 To 2
-                    Sim.Render.RenderLock.EnterWriteLock()
+                    SimulationRender.RenderLock.EnterWriteLock()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Position += c(j) * Sim.Objects(i).Velocity
                     Next
-                    Sim.Render.RenderLock.ExitWriteLock()
+                    SimulationRender.RenderLock.ExitWriteLock()
 
                     DoForces()
 
@@ -274,11 +274,11 @@ Public Class ComputeThread
                         Sim.Objects(i).Velocity += d(j) * Sim.Objects(i).Acceleration
                     Next
                 Next
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += c(3) * Sim.Objects(i).Velocity
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
                 DoCollisions()
                 ComputationControl()
             Loop
@@ -287,32 +287,32 @@ Public Class ComputeThread
                 DoCollisions()
 
                 For j = 0 To 2
-                    Sim.Render.RenderLock.EnterWriteLock()
+                    SimulationRender.RenderLock.EnterWriteLock()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Position += c(j) * Sim.Objects(i).Velocity
                     Next
-                    Sim.Render.RenderLock.ExitWriteLock()
+                    SimulationRender.RenderLock.ExitWriteLock()
                     DoForces()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Velocity += d(j) * Sim.Objects(i).Acceleration
                     Next
                 Next
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += c(3) * Sim.Objects(i).Velocity
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
                 ComputationControl()
             Loop
         Else
 
             Do While Sim.Running
                 For j = 0 To 2
-                    Sim.Render.RenderLock.EnterWriteLock()
+                    SimulationRender.RenderLock.EnterWriteLock()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Position += c(j) * Sim.Objects(i).Velocity
                     Next
-                    Sim.Render.RenderLock.ExitWriteLock()
+                    SimulationRender.RenderLock.ExitWriteLock()
 
                     DoForces()
                     For i = 0 To Sim.ObjectCount - 1
@@ -320,11 +320,11 @@ Public Class ComputeThread
                     Next
                 Next
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += c(3) * Sim.Objects(i).Velocity
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
                 ComputationControl()
             Loop
         End If
@@ -346,21 +346,21 @@ Public Class ComputeThread
                     Sim.Objects(i).OldPosition.Copy(Sim.Objects(i).Position)
                 Next
                 For j = 0 To 6
-                    Sim.Render.RenderLock.EnterWriteLock()
+                    SimulationRender.RenderLock.EnterWriteLock()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Position += c(j) * Sim.Objects(i).Velocity
                     Next
-                    Sim.Render.RenderLock.ExitWriteLock()
+                    SimulationRender.RenderLock.ExitWriteLock()
                     DoForces()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Velocity += d(j) * Sim.Objects(i).Acceleration
                     Next
                 Next
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += c(7) * Sim.Objects(i).Velocity
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
                 DoCollisions()
                 ComputationControl()
             Loop
@@ -368,21 +368,21 @@ Public Class ComputeThread
 
             Do While Sim.Running
                 For j = 0 To 6
-                    Sim.Render.RenderLock.EnterWriteLock()
+                    SimulationRender.RenderLock.EnterWriteLock()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Position += c(j) * Sim.Objects(i).Velocity
                     Next
-                    Sim.Render.RenderLock.ExitWriteLock()
+                    SimulationRender.RenderLock.ExitWriteLock()
                     DoForces()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Velocity += d(j) * Sim.Objects(i).Acceleration
                     Next
                 Next
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += c(7) * Sim.Objects(i).Velocity
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
                 DoCollisions()
                 ComputationControl()
             Loop
@@ -391,11 +391,11 @@ Public Class ComputeThread
 
                 For j = 0 To 6
 
-                    Sim.Render.RenderLock.EnterWriteLock()
+                    SimulationRender.RenderLock.EnterWriteLock()
                     For i = 0 To Sim.ObjectCount - 1
                         Sim.Objects(i).Position += c(j) * Sim.Objects(i).Velocity
                     Next
-                    Sim.Render.RenderLock.ExitWriteLock()
+                    SimulationRender.RenderLock.ExitWriteLock()
 
                     DoForces()
 
@@ -404,11 +404,11 @@ Public Class ComputeThread
                     Next
                 Next
 
-                Sim.Render.RenderLock.EnterWriteLock()
+                SimulationRender.RenderLock.EnterWriteLock()
                 For i = 0 To Sim.ObjectCount - 1
                     Sim.Objects(i).Position += c(7) * Sim.Objects(i).Velocity
                 Next
-                Sim.Render.RenderLock.ExitWriteLock()
+                SimulationRender.RenderLock.ExitWriteLock()
 
                 ComputationControl()
             Loop
@@ -449,128 +449,79 @@ Public Class ComputeThread
 
 #End Region
 #Region "Collisions"
-    Private Sub DoSphereInfinitePlaneCollision(ByRef Sphere As SimulationObject, ByRef PlaneNormal As XYZ, ByRef PlaneCenter As XYZ)
+    Private Sub DoSphereInfinitePlaneCollision(ByRef Sphere As SimulationObject, ByRef Plane As SimulationObject)
         Dim ObjDistance As Double
 
         'Calculate the distance between the sphere center and the closest point on the (infinite) plane
-        ObjDistance = PlaneNormal.Dot(Sphere.Position) - PlaneNormal.Dot(PlaneCenter)
+        ObjDistance = Plane.Normal.Dot(Sphere.Position) - Plane.Normal.Dot(Plane.Position)
         If Math.Abs(ObjDistance) > Sphere.Radius Then Return  ' Sphere is completely outside the plane
 
-        System.Console.Beep()
+        'System.Console.Beep()
     End Sub
-    Private Sub DoSpherePlaneCollision(ByRef Sphere As SimulationObject, ByRef PlaneNormal As XYZ, ByRef PlaneCenter As XYZ, ByRef PlaneLimits As XYZ)
+
+    Private Sub DoBoxBoxCollision(ByRef Box1 As SimulationObject, ByRef Box2 As SimulationObject)
+        'TODO
+    End Sub
+
+    Private Sub DoSpherePlaneCollision(ByRef Sphere As SimulationObject, ByRef Plane As SimulationObject)
+        'TODO: Finite plane object with sphere
+        'DoSpherePlaneCollision(Sphere, Plane.Normal, Plane.Position, Plane.HalfSize, Plane.)
+
+    End Sub
+    Private Sub DoSpherePlaneCollision(ByRef Sphere As SimulationObject, ByRef PlaneNormal As XYZ, ByRef PlaneCenter As XYZ, ByRef PlaneLimits As XYZ, rotationMatrixTranpose As Matrix3x3)
+
+        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        '----- CHECK IF COMPLETELY OUTSIDE THE INFITE PLANE -----
+        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         'Calculate the distance between the sphere center and the closest point on the (infinite) plane
         Dim ObjDistance As Double = PlaneNormal.Dot(Sphere.Position) - PlaneNormal.Dot(PlaneCenter)
         If Math.Abs(ObjDistance) > Sphere.Radius Then Return  ' Sphere is completely outside the plane
 
+        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        '----- CHECK IF THE SPHERE CENTER IS INSIDE THE PLANE -----
+        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         ' Project the sphere center onto the plane to find the closest point
         Dim closestPoint As XYZ = Sphere.Position - (PlaneNormal * ObjDistance)
 
-        'Need to rotate this point to the coordinate system of the box
-        ' closestPoint.Rotate(rotationMatrix)
-
-        'Check if this point is within the plane's bounds
         'Calculate the distance from the closest point to the plane's center
         'Note that the plane's center positions is already rotated
-        Dim projection As XYZ = (closestPoint - PlaneCenter)
-        projection.MakeMeAbs()
-        'Dim projectionLength As Double = projection.Magnitude
+        Dim projectionFromPlaneCenter As XYZ = (closestPoint - PlaneCenter)
 
-        Dim didCollide = (projection <= PlaneLimits)
+        'We need to counter rotate the projection vector back to the reference coordinate system
+        'so we can check it against the 2D bounds of the plane
+        projectionFromPlaneCenter.Rotate(rotationMatrixTranpose)
 
-        If didCollide Then
-            System.Console.Beep()
+        'The plane in symetrical in both axis
+        projectionFromPlaneCenter.MakeMeAbs()
+
+        'Now check if this point is within the plane's bounds
+        If Not (projectionFromPlaneCenter <= PlaneLimits) Then
+            '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            '----- CHECK IF THE SPHERE IS ON AN EDGE              -----
+            '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+            'TODO: FINSIH ME
+            Return
         End If
-    End Sub
 
-    Private Sub DoBoxBoxCollision(ByRef Box1 As SimulationObject, ByRef Box2 As SimulationObject)
+        'WE DID Collide
 
+        ' System.Console.Beep()
     End Sub
 
     Private Sub DoSphereBoxCollision(ByRef Sphere As SimulationObject, ByRef Box As SimulationObject)
-        'Decompose the box into 6 individual planes
-
-        ' Calculate rotation matrix of the box
-        Dim rotationMatrix As Matrix3x3 = Matrix3x3.CreateFromYawPitchRoll(Box.Rotation.Y, Box.Rotation.X, Box.Rotation.Z)
-        Dim HalfBoxSize As XYZ = Box.Size * 0.5
-        Dim PlaneLimits As XYZ = (HalfBoxSize) ' - Sphere.Radius)
-        PlaneLimits.Rotate(rotationMatrix)
-        PlaneLimits.MakeMeAbs()
-
-        'Front face
-        'First treat the box as aligned with the coordinate system
-        Dim PlaneNormal As New XYZ(0, 0, 1)
-        Dim PlanePosition As New XYZ(Box.Position.X, Box.Position.Y, Box.Position.Z + HalfBoxSize.Z)
-
-        'Then Rotate the plane to the correct orientation
-        PlanePosition.Rotate(rotationMatrix)
-        PlaneNormal.Rotate(rotationMatrix)
-        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
-
-        'Back face
-        'First treat the box as aligned with the coordinate system
-        PlaneNormal = New XYZ(0, 0, -1)
-        PlanePosition = New XYZ(Box.Position.X, Box.Position.Y, Box.Position.Z - HalfBoxSize.Z)
-
-        'Then Rotate the plane to the correct orientation
-        PlanePosition.Rotate(rotationMatrix)
-        PlaneNormal.Rotate(rotationMatrix)
-        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
-
-        'Top face
-        PlaneNormal = New XYZ(0, 1, 0) '
-        PlanePosition = New XYZ(Box.Position.X, Box.Position.Y + HalfBoxSize.Y, Box.Position.Z)
-        PlanePosition.Rotate(rotationMatrix)
-        PlaneNormal.Rotate(rotationMatrix)
-        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
-
-        'Bottom face
-        PlaneNormal = New XYZ(0, -1, 0) '
-        PlanePosition = New XYZ(Box.Position.X, Box.Position.Y - HalfBoxSize.Y, Box.Position.Z)
-        PlanePosition.Rotate(rotationMatrix)
-        PlaneNormal.Rotate(rotationMatrix)
-        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
-
-        'Left face
-        PlaneNormal = New XYZ(-1, 0, 0) '
-        PlanePosition = New XYZ(Box.Position.X - HalfBoxSize.X, Box.Position.Y, Box.Position.Z)
-        PlanePosition.Rotate(rotationMatrix)
-        PlaneNormal.Rotate(rotationMatrix)
-        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
-
-        'Right face
-        PlaneNormal = New XYZ(1, 0, 0) '
-        PlanePosition = New XYZ(Box.Position.X + HalfBoxSize.X, Box.Position.Y, Box.Position.Z)
-        PlanePosition.Rotate(rotationMatrix)
-        PlaneNormal.Rotate(rotationMatrix)
-        DoSpherePlaneCollision(Sphere, PlaneNormal, PlanePosition, PlaneLimits)
-
+        DoSpherePlaneCollision(Sphere, Box.BoxCollisionData.FrontPlaneNormalRotated, Box.Position + Box.BoxCollisionData.FrontPlaneCenterRotated, Box.BoxCollisionData.FrontPlaneLimits, Box.BoxCollisionData.RotationMatrixTranpose)
+        DoSpherePlaneCollision(Sphere, Box.BoxCollisionData.BackPlaneNormalRotated, Box.Position + Box.BoxCollisionData.BackPlaneCenterRotated, Box.BoxCollisionData.BackPlaneLimits, Box.BoxCollisionData.RotationMatrixTranpose)
+        DoSpherePlaneCollision(Sphere, Box.BoxCollisionData.TopPlaneNormalRotated, Box.Position + Box.BoxCollisionData.TopPlaneCenterRotated, Box.BoxCollisionData.TopPlaneLimits, Box.BoxCollisionData.RotationMatrixTranpose)
+        DoSpherePlaneCollision(Sphere, Box.BoxCollisionData.BottomPlaneNormalRotated, Box.Position + Box.BoxCollisionData.BottomPlaneCenterRotated, Box.BoxCollisionData.BottomPlaneLimits, Box.BoxCollisionData.RotationMatrixTranpose)
+        DoSpherePlaneCollision(Sphere, Box.BoxCollisionData.LeftPlaneNormalRotated, Box.Position + Box.BoxCollisionData.LeftPlaneCenterRotated, Box.BoxCollisionData.LeftPlaneLimits, Box.BoxCollisionData.RotationMatrixTranpose)
+        DoSpherePlaneCollision(Sphere, Box.BoxCollisionData.RightPlaneNormalRotated, Box.Position + Box.BoxCollisionData.RightPlaneCenterRotated, Box.BoxCollisionData.RightPlaneLimits, Box.BoxCollisionData.RotationMatrixTranpose)
     End Sub
 
-    Private Sub DoSphereBoxCollision2(ByRef Sphere As SimulationObject, ByRef Box As SimulationObject)
-        ' Calculate rotation matrix of the box
-        Dim rotationMatrix As Matrix3x3 = Matrix3x3.CreateFromYawPitchRoll(Box.Rotation.Y, Box.Rotation.X, Box.Rotation.Z)
-
-        Dim HalfBoxSize As XYZ = (Box.Size * 0.5) + Sphere.Radius
-        Dim BoxLimitNegative As XYZ = Box.Position - HalfBoxSize
-        Dim BoxLimitPositive As XYZ = Box.Position + HalfBoxSize
-        Dim objectPos As XYZ = Sphere.Position '.NewRotated(rotationMatrix)
-        'Rotate the box into the coordinate system
-        BoxLimitNegative.Rotate(rotationMatrix)
-        BoxLimitPositive.Rotate(rotationMatrix)
-
-        Dim InsideBox As Boolean = (objectPos <= BoxLimitPositive) AndAlso (objectPos >= BoxLimitNegative)
-        'Dim InsideBox As Boolean = (Sphere.Position <= BoxLimitPositive) AndAlso (Sphere.Position >= BoxLimitNegative)
-
-        If InsideBox Then
-            System.Console.Beep()
-        End If
-
-    End Sub
 
     Private Sub DoSphereSphereCollision(ByRef Sphere1 As SimulationObject, ByRef Sphere2 As SimulationObject)
-
         Dim ObjPosistionDiff As XYZ
         Dim ObjDistanceSqd As Double
         Dim TempDouble As Double
@@ -647,10 +598,10 @@ Public Class ComputeThread
             If Not DidCollide Then Return 'No Collision Occured
 
             'Move the objects back to where they would have been at the time of the collision
-            Sim.Render.RenderLock.EnterWriteLock()
+            SimulationRender.RenderLock.EnterWriteLock()
             Sphere1.Position = ((Sphere1.Position - Sphere1.OldPosition) * CollisionTime) + Sphere1.OldPosition
             Sphere2.Position = ((Sphere2.Position - Sphere2.OldPosition) * CollisionTime) + Sphere2.OldPosition
-            Sim.Render.RenderLock.ExitWriteLock()
+            SimulationRender.RenderLock.ExitWriteLock()
 
             'Recalculate thier seperation
             ObjPosistionDiff = Sphere2.Position - Sphere1.Position
@@ -694,10 +645,10 @@ Public Class ComputeThread
 
         If Sim.Config.Collisions.Interpolate Then
             'Move the objects forward by the remaining time
-            Sim.Render.RenderLock.EnterWriteLock()
+            SimulationRender.RenderLock.EnterWriteLock()
             Sphere1.Position += Sphere1.Velocity * (Sim.Config.Settings.TimeStep * (1 - CollisionTime))
             Sphere2.Position += Sphere2.Velocity * (Sim.Config.Settings.TimeStep * (1 - CollisionTime))
-            Sim.Render.RenderLock.ExitWriteLock()
+            SimulationRender.RenderLock.ExitWriteLock()
         End If
 
         '~~~~~~~~~~~~~~BREAKABLE OBJECT OBJECT COLLISION~~~~~~~~~~~~
@@ -732,7 +683,6 @@ Public Class ComputeThread
             End If
         End If
     End Sub
-
     Private Sub DoCollisions()
         Dim second As Integer
 
@@ -746,11 +696,14 @@ Public Class ComputeThread
                 'If both objects cannot be affect other objects then ignore collisions
                 If (Not Sim.Objects(first).Affected AndAlso Not Sim.Objects(second).Affected) OrElse (Not Sim.Objects(first).Affects AndAlso Not Sim.Objects(second).Affects) Then Continue For
 
+                'TODO: More object type permutations
                 If Sim.Objects(first).Type = ObjectType.Sphere Then
                     If Sim.Objects(second).Type = ObjectType.Sphere Then
                         DoSphereSphereCollision(Sim.Objects(first), Sim.Objects(second))
                     ElseIf Sim.Objects(second).Type = ObjectType.Box Then
                         DoSphereBoxCollision(Sim.Objects(first), Sim.Objects(second))
+                    ElseIf Sim.Objects(second).Type = ObjectType.InfinitePlane Then
+                        DoSphereInfinitePlaneCollision(Sim.Objects(first), Sim.Objects(second))
                     End If
 
                 ElseIf Sim.Objects(first).Type = ObjectType.Box Then
@@ -1004,14 +957,14 @@ Public Class ComputeThread
 
 
         'COPY THE NEW OBJECTS OVER
-        Sim.Render.RenderLock.EnterWriteLock() ' Make sure the Renderer isn't loading the data 
+        SimulationRender.RenderLock.EnterWriteLock() ' Make sure the Renderer isn't loading the data 
         SimObject.Copy(NewObjects(0)) 'Copy over the new objects into the simulation
         For Z = 1 To BreakNumber - 1
             Sim.Objects(Sim.ObjectCount) = New SimulationObject
             Sim.Objects(Sim.ObjectCount).Copy(NewObjects(Z))
             Sim.ObjectCount += 1
         Next
-        Sim.Render.RenderLock.ExitWriteLock()
+        SimulationRender.RenderLock.ExitWriteLock()
     End Sub
     Private Sub TessellateBox(ByRef NewObject1 As SimulationObject, ByRef NewObject2 As SimulationObject, ByRef OldObject As SimulationObject)
         Dim TessX As Double = Sim.RandMaker.GetNext

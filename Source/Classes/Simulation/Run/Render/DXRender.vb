@@ -1,4 +1,6 @@
-﻿Public Class DXRender
+﻿Imports System.Windows.Forms.AxHost
+
+Public Class DXRender
     Inherits RenderBase
 
     Public Sub New(ByRef Sim As SimulationRuntime)
@@ -10,13 +12,14 @@
         Dim CameraUpVector As XYZ
         Dim OldCameraPosition As XYZ
         Dim CameraPosition As XYZ = Sim.Camera.Position
-        Dim RenderObjects() As SimulationObject = Sim.Objects
+        Dim RenderObjects() As SimulationObject 'Need to store our own copy since our array need to be sorted
+
+        ReDim RenderObjects(Sim.ObjectCount - 1)
+        For i = 0 To Sim.ObjectCount - 1
+            RenderObjects(i) = Sim.Objects(i)
+        Next
 
         If Sim.Render.Transparency Then
-            ReDim RenderObjects(Sim.ObjectCount - 1)
-            For i = 0 To Sim.ObjectCount - 1
-                RenderObjects(i) = Sim.Objects(i)
-            Next
             SortObjectsByDepth(RenderObjects, CameraPosition)
         End If
 
@@ -49,26 +52,25 @@
             End If
 
             'TODO: Not everything here needs to be locked with the simulation
-            Sim.Render.RenderLock.EnterReadLock()
+            SimulationRender.RenderLock.EnterReadLock()
+
+            'Objects may have been added
+            If (Sim.ObjectCount <> RenderObjects.Length) Then
+                ReDim RenderObjects(Sim.ObjectCount - 1)
+                For i = 0 To Sim.ObjectCount - 1
+                    RenderObjects(i) = Sim.Objects(i)
+                Next
+            End If
 
             If Sim.Render.Transparency Then
-                'Objects may have been added
-                If (Sim.ObjectCount <> RenderObjects.Length) Then
-                    ReDim RenderObjects(Sim.ObjectCount - 1)
-                    For i = 0 To Sim.ObjectCount - 1
-                        RenderObjects(i) = Sim.Objects(i)
-                    Next
-                End If
-
                 'Need to sort objects by depth, always, objects may have moved
                 SortObjectsByDepth(RenderObjects, CameraPosition)
             End If
 
             For i = 0 To Sim.ObjectCount - 1
                 'If the object doesn't exist create it on the fly
-                If RenderObjects(i).Mesh = Nothing Then
-                    RenderObjects(i).CreateMesh(Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
-                    RenderObjects(i).CreateMaterial()
+                If RenderObjects(i).DXRenderData Is Nothing Then
+                    Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
                 End If
 
                 'Change WireFrame settings
@@ -77,35 +79,30 @@
                     Sim.Render.Device.RenderState.CullMode = Cull.None
                 Else
                     Sim.Render.Device.RenderState.FillMode = FillMode.Solid
+                    'TODO: revist this, need to take into account box rotation
+                    'Need to calculate if the point represented by the camera is inside the box
+                    'This is similar to the collision of a sphere and box but the sphere has a radius of zero
                     'Inside the current box
-                    If _
-                             CameraPosition.X < RenderObjects(i).LimitPositive.X _
-                         And CameraPosition.X > RenderObjects(i).LimitNegative.X _
-                         And CameraPosition.Y < RenderObjects(i).LimitPositive.Y _
-                         And CameraPosition.Y > RenderObjects(i).LimitNegative.Y _
-                         And CameraPosition.Z < RenderObjects(i).LimitPositive.Z _
-                         And CameraPosition.Z > RenderObjects(i).LimitNegative.Z _
-                    Then 'Inside box
-                        Sim.Render.Device.RenderState.CullMode = Cull.Clockwise
-                    Else
-                        Sim.Render.Device.RenderState.CullMode = Cull.CounterClockwise
-                    End If
+                    'If __                    Then 'Inside box
+                    'Sim.Render.Device.RenderState.CullMode = Cull.Clockwise
+                    'Else
+                    Sim.Render.Device.RenderState.CullMode = Cull.CounterClockwise
+                    'End If
                 End If
 
                 'Draw the object in its place
-                Sim.Render.Device.Transform.World =
-                          Matrix.RotationX(ToSingle(RenderObjects(i).Rotation.X)) _
-                        * Matrix.RotationY(ToSingle(RenderObjects(i).Rotation.Y)) _
-                        * Matrix.RotationZ(ToSingle(RenderObjects(i).Rotation.Z)) _
-                        * Matrix.Translation(
+                'Calculate the translation matrix of the object
+                Dim translationMatrix As Matrix = Matrix.Translation(
                             ToSingle(RenderObjects(i).Position.X * Sim.Config.Render.WorldScale),
                             ToSingle(RenderObjects(i).Position.Y * Sim.Config.Render.WorldScale),
                             ToSingle(RenderObjects(i).Position.Z * Sim.Config.Render.WorldScale))
 
-                Sim.Render.Device.Material = RenderObjects(i).Material
-                RenderObjects(i).Mesh.DrawSubset(0)
+                'The TransformMatrix is simply the multiplication of both matricies
+                Sim.Render.Device.Transform.World = RenderObjects(i).DXRenderData.RotationMatrix * translationMatrix
+                Sim.Render.Device.Material = RenderObjects(i).DXRenderData.Material
+                RenderObjects(i).DXRenderData.Mesh.DrawSubset(0)
             Next
-            Sim.Render.RenderLock.ExitReadLock()
+            SimulationRender.RenderLock.ExitReadLock()
 
             'End the scene
             Sim.Render.Device.EndScene()
@@ -169,8 +166,7 @@
 
         'Create object meshes and materials
         For i = 0 To Sim.ObjectCount - 1
-            Sim.Objects(i).CreateMesh(Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
-            Sim.Objects(i).CreateMaterial()
+            Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
         Next
 
         'Create the lights

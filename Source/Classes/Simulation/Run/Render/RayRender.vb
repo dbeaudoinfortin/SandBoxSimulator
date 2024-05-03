@@ -89,7 +89,7 @@
 
         'Load initial object values that otherwise only get loaded if a change is made to the objects
         'TODO: Replace this with a read-write lock. Don't lock with other render threads only the simulation thread
-        Sim.Render.RenderLock.EnterReadLock()
+        SimulationRender.RenderLock.EnterReadLock()
         CurrentObjectCount = Sim.ObjectCount
         ReDim ObjectRadius(CurrentObjectCount - 1)
         ReDim ObjectColor(CurrentObjectCount - 1)
@@ -97,7 +97,7 @@
             ObjectRadius(i) = Sim.Objects(i).Radius * Sim.Config.Render.WorldScale
             ObjectColor(i).FromColor(Sim.Objects(i).Color)
         Next
-        Sim.Render.RenderLock.ExitReadLock()
+        SimulationRender.RenderLock.ExitReadLock()
 
         'Pre-dimension our arrays
         'Do it outside the Lock for better efficiency
@@ -133,7 +133,7 @@
             End If
 
             'Load updated object values
-            Sim.Render.RenderLock.EnterReadLock()
+            SimulationRender.RenderLock.EnterReadLock()
 
             'If the number of objects didn't change then only update their position
             'TODO: This assumes objects are only ever added
@@ -156,7 +156,7 @@
                 ObjectPosition(i).Y = Sim.Objects(i).Position.Y
                 ObjectPosition(i).Z = Sim.Objects(i).Position.Z
             Next
-            Sim.Render.RenderLock.ExitReadLock()
+            SimulationRender.RenderLock.ExitReadLock()
 
             'Re-dimension our arrays
             'Do it outside the Lock for better efficiency

@@ -1273,7 +1273,7 @@ Partial Class ControlPanel
         Me.lblObjectRotation.Name = "lblObjectRotation"
         Me.lblObjectRotation.Size = New System.Drawing.Size(127, 21)
         Me.lblObjectRotation.TabIndex = 224
-        Me.lblObjectRotation.Text = "Rotation P, Y, R  (rad):"
+        Me.lblObjectRotation.Text = "Rotation Y, P, R  (rad):"
         Me.lblObjectRotation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblObjectRotation.UseMnemonic = False
         '

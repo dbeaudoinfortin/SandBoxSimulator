@@ -1986,7 +1986,7 @@ Public Class ControlPanel
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Box
         ElseIf cbObjectType.SelectedIndex = 2 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Plane
-        ElseIf cbObjectType.SelectedIndex = 4 Then
+        ElseIf cbObjectType.SelectedIndex = 3 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.InfinitePlane
         Else
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere

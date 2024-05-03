@@ -154,6 +154,8 @@
     <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionSingle.vb" />
     <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigDistributionXYZ.vb" />
     <Compile Include="Classes\Simulation\Run\Computation\ComputeThread.vb" />
+    <Compile Include="Classes\Simulation\Run\Render\ObjectDXRenderData.vb" />
+    <Compile Include="Classes\Simulation\Run\Objects\ObjectCollisionData.vb" />
     <Compile Include="Classes\Simulation\Run\Render\RayRender.vb" />
     <Compile Include="Classes\Simulation\Run\Render\RenderBase.vb" />
     <Compile Include="Classes\Simulation\Run\Render\DXRender.vb" />
@@ -163,6 +165,7 @@
     <Compile Include="Classes\Simulation\Design\SimulationSettings.vb" />
     <Compile Include="Classes\Simulation\Run\Render\SimulationRender.vb" />
     <Compile Include="Classes\Simulation\Run\SimulationLight.vb" />
+    <Compile Include="Classes\Simulation\Utilities\Matrix3x3.vb" />
     <Compile Include="Classes\Simulation\Utilities\SimpleColor.vb" />
     <Compile Include="Forms\Output.Designer.vb">
       <DependentUpon>Output.vb</DependentUpon>
@@ -203,7 +206,7 @@
     <Compile Include="Classes\Simulation\Run\SimulationRuntime.vb" />
     <Compile Include="Classes\Simulation\Design\ObjectGroups\SimulationConfigObjectGroup.vb" />
     <Compile Include="Classes\Simulation\Design\Lighting\SimulationConfigLight.vb" />
-    <Compile Include="Classes\Simulation\Run\SimulationObject.vb" />
+    <Compile Include="Classes\Simulation\Run\Objects\SimulationObject.vb" />
     <Compile Include="Forms\Splash.Designer.vb">
       <DependentUpon>Splash.vb</DependentUpon>
     </Compile>
