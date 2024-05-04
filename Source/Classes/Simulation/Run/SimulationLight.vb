@@ -1,4 +1,6 @@
-﻿Public Structure SimulationLight
+﻿Imports SharpDX.Direct3D9
+
+Public Structure SimulationLight
     Public Type As LightType
 
     Public Color As SimpleColor

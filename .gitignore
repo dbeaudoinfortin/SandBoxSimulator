@@ -6,3 +6,6 @@
 /Source/Intel® VTune™ Profiler Results
 /Source/GPUCache
 /Source/debug.log
+/Source/packages
+/CSCompatibilityLayer/obj
+/CSCompatibilityLayer/bin

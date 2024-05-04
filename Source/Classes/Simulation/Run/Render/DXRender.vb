@@ -1,10 +1,14 @@
-﻿Imports System.Windows.Forms.AxHost
+﻿Imports System.Drawing.Drawing2D
+Imports SharpDX
+Imports SharpDX.Direct3D9
+Imports CSCompatibilityLayer
+Imports FillMode = SharpDX.Direct3D9.FillMode
 
 Public Class DXRender
     Inherits RenderBase
 
-    Public Sub New(ByRef Sim As SimulationRuntime)
-        MyBase.New(Sim)
+    Public Sub New(ByRef sim As SimulationRuntime)
+        MyBase.New(sim)
     End Sub
 
     Public Sub DoDXRender()
@@ -44,8 +48,9 @@ Public Class DXRender
                 'Clear Traces regardless of Trace Display setting
                 Sim.Render.Device.Clear(ClearFlags.Target, Sim.Config.Render.BackgroundColor, 1, 0)
 
+                Dim viewMatrix As SharpDX.Matrix = SharpDX.Matrix.LookAtLH(Sim.Camera.Position.ToVector3, Sim.Camera.Target.ToVector3, Sim.Camera.N.ToVector3)
                 'Change the view port
-                Sim.Render.Device.Transform.View = Matrix.LookAtLH(CameraPosition.ToVector3, CameraTargetV3, CameraUpVector.ToVector3)
+                CSCompat.SetTransformation(Sim.Render.Device, TransformState.View, viewMatrix)
             ElseIf Not Sim.Config.Render.TraceObjects Then
                 'Clear Traces
                 Sim.Render.Device.Clear(ClearFlags.Target, Sim.Config.Render.BackgroundColor, 1, 0)
@@ -75,10 +80,10 @@ Public Class DXRender
 
                 'Change WireFrame settings
                 If RenderObjects(i).Wireframe = True Then
-                    Sim.Render.Device.RenderState.FillMode = FillMode.WireFrame
-                    Sim.Render.Device.RenderState.CullMode = Cull.None
+                    Sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Wireframe)
+                    Sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.None)
                 Else
-                    Sim.Render.Device.RenderState.FillMode = FillMode.Solid
+                    Sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Solid)
                     'TODO: revist this, need to take into account box rotation
                     'Need to calculate if the point represented by the camera is inside the box
                     'This is similar to the collision of a sphere and box but the sphere has a radius of zero
@@ -86,19 +91,19 @@ Public Class DXRender
                     'If __                    Then 'Inside box
                     'Sim.Render.Device.RenderState.CullMode = Cull.Clockwise
                     'Else
-                    Sim.Render.Device.RenderState.CullMode = Cull.CounterClockwise
+                    Sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.Counterclockwise)
                     'End If
                 End If
 
                 'Draw the object in its place
                 'Calculate the translation matrix of the object
-                Dim translationMatrix As Matrix = Matrix.Translation(
+                Dim translationMatrix As SharpDX.Matrix = SharpDX.Matrix.Translation(
                             ToSingle(RenderObjects(i).Position.X * Sim.Config.Render.WorldScale),
                             ToSingle(RenderObjects(i).Position.Y * Sim.Config.Render.WorldScale),
                             ToSingle(RenderObjects(i).Position.Z * Sim.Config.Render.WorldScale))
 
                 'The TransformMatrix is simply the multiplication of both matricies
-                Sim.Render.Device.Transform.World = RenderObjects(i).DXRenderData.RotationMatrix * translationMatrix
+                CSCompat.SetTransformation(Sim.Render.Device, TransformState.World, RenderObjects(i).DXRenderData.RotationMatrix * translationMatrix)
                 Sim.Render.Device.Material = RenderObjects(i).DXRenderData.Material
                 RenderObjects(i).DXRenderData.Mesh.DrawSubset(0)
             Next
@@ -112,81 +117,88 @@ Public Class DXRender
         Loop
     End Sub
 
-    Public Sub SortObjectsByDepth(ByRef RenderObjects() As SimulationObject, ByRef CameraPosition As XYZ)
+    Public Sub SortObjectsByDepth(ByRef renderObjects() As SimulationObject, ByRef cameraPosition As XYZ)
         For i = 0 To Sim.ObjectCount - 1
             'TODO: this is a lot of square roots, very expensive
             'TODO: this doesn't work for boxes! Need to know size and rotation
             'TODO: this doesn't work for planes
-            RenderObjects(i).CameraDistance = (RenderObjects(i).Position - CameraPosition).Magnitude - RenderObjects(i).Radius
+            renderObjects(i).CameraDistance = (renderObjects(i).Position - cameraPosition).Magnitude - renderObjects(i).Radius
         Next
-        Array.Sort(RenderObjects)
+        Array.Sort(renderObjects)
     End Sub
 
-    Public Shared Sub InitializeDXRender(Sim As SimulationRuntime)
+    Public Shared Sub InitializeDXRender(sim As SimulationRuntime)
 
         'Initialize render settings
-        Sim.Render.Device.RenderState.PointSize = 4
-        Sim.Render.Device.RenderState.FillMode = FillMode.Solid
-        Sim.Render.Device.RenderState.ZBufferEnable = True
-        Sim.Render.Device.RenderState.FogEnable = False
-        Sim.Render.Device.RenderState.CullMode = Cull.CounterClockwise
-        Sim.Render.Device.RenderState.ShadeMode = Sim.Config.Render.Shading
+        sim.Render.Device.SetRenderState(RenderState.PointSize, 4)
+        sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Solid)
+        sim.Render.Device.SetRenderState(RenderState.ZEnable, True)
+        sim.Render.Device.SetRenderState(RenderState.FogEnable, False)
+        sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.Counterclockwise)
+        sim.Render.Device.SetRenderState(RenderState.ShadeMode, sim.Config.Render.Shading)
 
-        Sim.Render.Device.RenderState.Lighting = True
-        If Sim.Config.Render.EnableLighting Then
-            Sim.Render.Device.RenderState.Ambient = Color.Black
-            Sim.Render.Device.RenderState.AmbientMaterialSource = ColorSource.Material
-            Sim.Render.Device.RenderState.DiffuseMaterialSource = ColorSource.Material
-            Sim.Render.Device.RenderState.SpecularMaterialSource = ColorSource.Material
-            Sim.Render.Device.RenderState.EmissiveMaterialSource = ColorSource.Material
-            Sim.Render.Device.RenderState.SpecularEnable = True
+        sim.Render.Device.SetRenderState(RenderState.Lighting, True)
+        If sim.Config.Render.EnableLighting Then
+            sim.Render.Device.SetRenderState(RenderState.Ambient, System.Drawing.Color.Black.ToArgb) 'TODO: is this BGRA or ARGB ?
+            sim.Render.Device.SetRenderState(RenderState.AmbientMaterialSource, ColorSource.Material)
+            sim.Render.Device.SetRenderState(RenderState.DiffuseMaterialSource, ColorSource.Material)
+            sim.Render.Device.SetRenderState(RenderState.SpecularMaterialSource, ColorSource.Material)
+            sim.Render.Device.SetRenderState(RenderState.EmissiveMaterialSource, ColorSource.Material)
+            sim.Render.Device.SetRenderState(RenderState.SpecularEnable, True)
         Else
-            Sim.Render.Device.RenderState.SpecularEnable = False
-            Sim.Render.Device.RenderState.AmbientMaterialSource = ColorSource.Material
-            Sim.Render.Device.RenderState.Ambient = Color.White
+            sim.Render.Device.SetRenderState(RenderState.SpecularEnable, False)
+            sim.Render.Device.SetRenderState(RenderState.AmbientMaterialSource, ColorSource.Material)
+            sim.Render.Device.SetRenderState(RenderState.Ambient, System.Drawing.Color.White.ToArgb)
         End If
 
         'Initialize transparency settings
-        If Sim.Render.Transparency Then
-            Sim.Render.Device.RenderState.AlphaBlendEnable = True
-            Sim.Render.Device.RenderState.SourceBlend = Blend.SourceAlpha
-            Sim.Render.Device.RenderState.DestinationBlend = Blend.InvSourceAlpha
+        If sim.Render.Transparency Then
+            sim.Render.Device.SetRenderState(RenderState.AlphaBlendEnable, True)
+            sim.Render.Device.SetRenderState(RenderState.SourceBlend, SharpDX.Direct3D9.Blend.SourceAlpha)
+            sim.Render.Device.SetRenderState(RenderState.DestinationBlend, SharpDX.Direct3D9.Blend.InverseSourceAlpha)
         End If
 
         'Clear the device and paint the background
-        Sim.Render.Device.Clear(ClearFlags.ZBuffer, Sim.Config.Render.BackgroundColor, 1, 0)
-        Sim.Render.Device.Clear(ClearFlags.Target, Sim.Config.Render.BackgroundColor, 1, 0)
+        sim.Render.Device.Clear(ClearFlags.ZBuffer, sim.Config.Render.BackgroundColor, 1, 0)
+        sim.Render.Device.Clear(ClearFlags.Target, sim.Config.Render.BackgroundColor, 1, 0)
 
         'Setup the view port
-        Sim.Render.Device.Transform.Projection = Matrix.PerspectiveFovLH(Sim.Config.Camera.HFov, Sim.Config.Render.AspectRatio, 1 / (Sim.Config.Render.WorldScale * 10), Sim.Config.Render.WorldScale * 2000)
-        Sim.Render.Device.Transform.View = Matrix.LookAtLH(Sim.Camera.Position.ToVector3, Sim.Camera.Target.ToVector3, Sim.Camera.N.ToVector3)
+        ' Setting the Projection Matrix
+        Dim nearPlane As Single = 1 / (sim.Config.Render.WorldScale * 10)
+        Dim farPlane As Single = sim.Config.Render.WorldScale * 2000
+        CSCompat.SetTransformation(sim.Render.Device, TransformState.Projection, SharpDX.Matrix.PerspectiveFovLH(sim.Config.Camera.HFov, sim.Config.Render.AspectRatio, nearPlane, farPlane))
+
+        ' Setting the View Matrix
+        CSCompat.SetTransformation(sim.Render.Device, TransformState.View, SharpDX.Matrix.LookAtLH(sim.Camera.Position.ToVector3, sim.Camera.Target.ToVector3, sim.Camera.N.ToVector3))
 
         'Calculate Sphere complexity
-        Sim.Render.SphereSecondaryComplexity = ToInt32((Sim.Config.Render.SphereComplexity * 0.5) + 0.5)
+        sim.Render.SphereSecondaryComplexity = ToInt32((sim.Config.Render.SphereComplexity * 0.5) + 0.5)
 
         'Create object meshes and materials
-        For i = 0 To Sim.ObjectCount - 1
-            Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
+        For i = 0 To sim.ObjectCount - 1
+            sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(sim.Objects(i), sim.Render.Device, sim.Config.Render.WorldScale, sim.Config.Render.SphereComplexity, sim.Render.SphereSecondaryComplexity)
         Next
 
         'Create the lights
-        If Sim.Config.Render.EnableLighting = True Then
-            For i = 0 To Sim.LightCount - 1
-                Sim.Render.Device.Lights(i).Type = Sim.Lights(i).Type
-                Sim.Render.Device.Lights(i).Ambient = Sim.Lights(i).AmbientColor.ToColor
-                Sim.Render.Device.Lights(i).Attenuation0 = Sim.Lights(i).AttenuationA
-                Sim.Render.Device.Lights(i).Attenuation1 = Sim.Lights(i).AttenuationB
-                Sim.Render.Device.Lights(i).Attenuation2 = Sim.Lights(i).AttenuationC
-                Sim.Render.Device.Lights(i).Falloff = Sim.Lights(i).Falloff
-                Sim.Render.Device.Lights(i).Diffuse = Sim.Lights(i).Color.ToColor
-                Sim.Render.Device.Lights(i).Direction = Sim.Lights(i).Direction.ToVector3
-                Sim.Render.Device.Lights(i).InnerConeAngle = Sim.Lights(i).InnerCone
-                Sim.Render.Device.Lights(i).OuterConeAngle = Sim.Lights(i).OuterCone
-                Sim.Render.Device.Lights(i).Range = Sim.Lights(i).Range
-                Sim.Render.Device.Lights(i).Specular = Sim.Lights(i).SpecularColor.ToColor
-                Sim.Render.Device.Lights(i).Position = Sim.Lights(i).Position.ToVector3
-                Sim.Render.Device.Lights(i).Update()
-                Sim.Render.Device.Lights(i).Enabled = True
+        If sim.Config.Render.EnableLighting = True Then
+            For i = 0 To sim.LightCount - 1
+                Dim light As New Light With {
+                    .Type = sim.Lights(i).Type,
+                    .Ambient = sim.Lights(i).AmbientColor.ToRawColor4,
+                    .Attenuation0 = sim.Lights(i).AttenuationA,
+                    .Attenuation1 = sim.Lights(i).AttenuationB,
+                    .Attenuation2 = sim.Lights(i).AttenuationC,
+                    .Falloff = sim.Lights(i).Falloff,
+                    .Diffuse = sim.Lights(i).Color.ToRawColor4,
+                    .Direction = sim.Lights(i).Direction.ToVector3,
+                    .Range = sim.Lights(i).Range,
+                    .Specular = sim.Lights(i).SpecularColor.ToRawColor4,
+                    .Position = sim.Lights(i).Position.ToVector3,
+                    .Theta = sim.Lights(i).InnerCone,
+                    .Phi = sim.Lights(i).OuterCone
+                }
+                sim.Render.Device.SetLight(i, light)
+                sim.Render.Device.EnableLight(i, True)
             Next
         End If
 

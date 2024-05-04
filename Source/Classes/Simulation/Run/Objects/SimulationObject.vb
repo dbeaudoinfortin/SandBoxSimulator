@@ -27,29 +27,29 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
     Public BoxCollisionData As BoxCollisionData 'Used only in collisions
     Public DXRenderData As ObjectDXRenderData
 
-    Public Sub Copy(ByRef Other As SimulationObject)
-        CameraDistance = Other.CameraDistance
-        Type = Other.Type
-        RefractiveIndex = Other.RefractiveIndex
-        Reflectivity = Other.Reflectivity
-        Rotation.Copy(Other.Rotation)
-        Size.Copy(Other.Size)
-        HalfSize.Copy(Other.HalfSize)
-        Normal.Copy(Other.Normal)
-        Acceleration.Copy(Other.Acceleration)
-        OldPosition.Copy(Other.OldPosition)
-        Wireframe = Other.Wireframe
-        Charge = Other.Charge
-        Affected = Other.Affected
-        Affects = Other.Affects
-        Color = Other.Color
-        HighlightColor = Other.HighlightColor
-        HighlightSharpness = Other.HighlightSharpness
-        Mass = Other.Mass
-        Position.Copy(Other.Position)
-        Radius = Other.Radius
-        Velocity.Copy(Other.Velocity)
-        Transparency = Other.Transparency
+    Public Sub Copy(ByRef other As SimulationObject)
+        CameraDistance = other.CameraDistance
+        Type = other.Type
+        RefractiveIndex = other.RefractiveIndex
+        Reflectivity = other.Reflectivity
+        Rotation.Copy(other.Rotation)
+        Size.Copy(other.Size)
+        HalfSize.Copy(other.HalfSize)
+        Normal.Copy(other.Normal)
+        Acceleration.Copy(other.Acceleration)
+        OldPosition.Copy(other.OldPosition)
+        Wireframe = other.Wireframe
+        Charge = other.Charge
+        Affected = other.Affected
+        Affects = other.Affects
+        Color = other.Color
+        HighlightColor = other.HighlightColor
+        HighlightSharpness = other.HighlightSharpness
+        Mass = other.Mass
+        Position.Copy(other.Position)
+        Radius = other.Radius
+        Velocity.Copy(other.Velocity)
+        Transparency = other.Transparency
         BoxCollisionData = Nothing
         DXRenderData = Nothing
     End Sub

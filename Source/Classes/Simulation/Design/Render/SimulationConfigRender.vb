@@ -1,9 +1,11 @@
 ﻿Imports System.Text
+Imports SharpDX.Direct3D9
+Imports SharpDX.Mathematics.Interop
 Public Structure SimulationConfigRender
     Public Height As Integer
     Public Width As Integer
     Public AspectRatio As Single
-    Public BackgroundColor As Color
+    Public BackgroundColor As RawColorBGRA
     Public TraceObjects As Boolean
     Public WorldScale As Single
     Public SphereComplexity As Integer
@@ -15,7 +17,7 @@ Public Structure SimulationConfigRender
     Public Mode As Byte
     Public Sub Clear()
         AspectRatio = 1
-        BackgroundColor = Color.Black
+        BackgroundColor = ConvertColorToRawColorBGRA(Color.Black)
         EnableLighting = True
         Height = 1000
         Width = 1000
@@ -92,7 +94,7 @@ Public Structure SimulationConfigRender
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<BackgroundColor>")
-        stringBuilder.Append(BackgroundColor.ToArgb.ToString())
+        stringBuilder.Append(ConvertRawColorBGRAToColor(BackgroundColor).ToArgb.ToString())
         stringBuilder.AppendLine("</BackgroundColor>")
 
     End Sub
@@ -195,9 +197,9 @@ Public Structure SimulationConfigRender
 
         Result = GetXMLNodeValue(intext, "BackgroundColor")
         If Result <> "" And IsNumeric(Result) Then
-            BackgroundColor = Color.FromArgb(ToInt32(Result))
+            BackgroundColor = ConvertColorToRawColorBGRA(Color.FromArgb(ToInt32(Result)))
         Else
-            BackgroundColor = Color.Black
+            BackgroundColor = ConvertColorToRawColorBGRA(Color.Black)
         End If
     End Sub
     Public Sub Copy(ByRef Other As SimulationConfigRender)

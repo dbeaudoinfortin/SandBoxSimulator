@@ -1,4 +1,6 @@
-﻿Imports System.Windows.Forms
+﻿Imports System.IO
+Imports System.Windows.Forms
+Imports SharpDX.Direct3D9
 
 Public Class ControlPanel
     Public StatusUpdateCount As Integer
@@ -46,7 +48,7 @@ Public Class ControlPanel
         Return bAns
     End Function
     Private Function IsValidSets() As Boolean
-        If Not isValidMaxObjects() Then Return False
+        If Not IsValidMaxObjects() Then Return False
 
         If Not IsNumeric(txtTimeStep.Text) Then
             MsgBox("Time Step must have a numeric value.", MsgBoxStyle.Critical, "Error")
@@ -1002,7 +1004,7 @@ Public Class ControlPanel
         Simulation.Config.Settings.TimeStep = ToDouble(txtTimeStep.Text)
         Simulation.Config.Render.WorldScale = ToSingle(txtScale.Text)
         Simulation.Config.Settings.MaxCPS = ToDouble(txtLimitCalc.Text)
-        Simulation.Config.Render.BackgroundColor = plRenderBackColor.ForeColor
+        Simulation.Config.Render.BackgroundColor = ConvertColorToRawColorBGRA(plRenderBackColor.BackColor)
         Simulation.Config.Forces.Gravity = chGravity.Checked
         Simulation.Config.Forces.ElectroStatic.Enabled = chElectrostatic.Checked
         Simulation.Config.Forces.ElectroStatic.Permittivity = ToDouble(txtPermittivity.Text)
@@ -1063,9 +1065,9 @@ Public Class ControlPanel
         Simulation.Config.Render.MaxFPS = ToDouble(txtMaxFPS.Text)
         Simulation.Config.Render.RenderThreads = ToInt32(txtRenderThreads.Text)
         If cbShading.SelectedIndex = 0 Then
-            Simulation.Config.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Flat
+            Simulation.Config.Render.Shading = SharpDX.Direct3D9.ShadeMode.Flat
         Else
-            Simulation.Config.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Gouraud
+            Simulation.Config.Render.Shading = SharpDX.Direct3D9.ShadeMode.Gouraud
         End If
     End Sub
     Private Sub UpdateForm()
@@ -1075,7 +1077,7 @@ Public Class ControlPanel
         txtTimeStep.Text = Simulation.Config.Settings.TimeStep.ToString
         txtScale.Text = Simulation.Config.Render.WorldScale.ToString
         txtLimitCalc.Text = Simulation.Config.Settings.MaxCPS.ToString
-        plRenderBackColor.BackColor = Simulation.Config.Render.BackgroundColor
+        plRenderBackColor.BackColor = ConvertRawColorBGRAToColor(Simulation.Config.Render.BackgroundColor)
 
         '----FORCES----
         chGravity.Checked = Simulation.Config.Forces.Gravity
@@ -1108,7 +1110,7 @@ Public Class ControlPanel
         txtMaxFPS.Text = Simulation.Config.Render.MaxFPS.ToString
         txtRenderThreads.Text = Simulation.Config.Render.RenderThreads.ToString
 
-        If Simulation.Config.Render.Shading = Microsoft.DirectX.Direct3D.ShadeMode.Flat Then
+        If Simulation.Config.Render.Shading = ShadeMode.Flat Then
             cbShading.SelectedIndex = 0
         Else
             cbShading.SelectedIndex = 1
@@ -1227,16 +1229,20 @@ Public Class ControlPanel
             CmdSaveOut.Enabled = True
             Simulation.RunSimulation()
         Else
-            If Output.Visible Then
-                Output.Hide()
-            End If
             Simulation.StopSimulation()
-
-            Simulation.Copy(Backup)
-            SetAllEnabled(True)
-            CmdSaveOut.Enabled = False
-            cmdStart.Text = "&Start Simulation"
+            EndSimulationForm()
         End If
+    End Sub
+
+    Public Sub EndSimulationForm()
+        If Output.Visible Then
+            Output.Hide()
+        End If
+
+        Simulation.Copy(Backup)
+        SetAllEnabled(True)
+        CmdSaveOut.Enabled = False
+        cmdStart.Text = "&Start Simulation"
     End Sub
     Private Sub CmdSaveOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdSaveOut.Click
         SaveDialog.FileName = ""
@@ -1245,9 +1251,11 @@ Public Class ControlPanel
         SaveDialog.Filter = "Bitmap (*.bmp)|*.bmp"
         SaveDialog.ShowDialog()
         If SaveDialog.FileName <> "" Then
-            Dim BackBuffer As Microsoft.DirectX.Direct3D.Surface
-            BackBuffer = Simulation.Render.Device.GetBackBuffer(0, 0, 0)
-            Microsoft.DirectX.Direct3D.SurfaceLoader.Save(SaveDialog.FileName, Microsoft.DirectX.Direct3D.ImageFileFormat.Bmp, BackBuffer)
+            Dim BackBuffer As Surface
+            BackBuffer = Simulation.Render.Device.GetBackBuffer(0, 0)
+            Using fileStream As FileStream = File.Create(SaveDialog.FileName)
+                Surface.ToStream(BackBuffer, ImageFileFormat.Png).CopyTo(fileStream)
+            End Using
             BackBuffer.Dispose()
         End If
     End Sub
@@ -1325,9 +1333,9 @@ Public Class ControlPanel
             txtLightDirectionX.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Direction.X.ToString
             txtLightDirectionY.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Direction.Y.ToString
             txtLightDirectionZ.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Direction.Z.ToString
-            If Simulation.Config.LightConfigs(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Spot Then
+            If Simulation.Config.LightConfigs(listLights.SelectedIndex).Type = LightType.Spot Then
                 cbLightType.SelectedIndex = 2
-            ElseIf Simulation.Config.LightConfigs(listLights.SelectedIndex).Type = Microsoft.DirectX.Direct3D.LightType.Point Then
+            ElseIf Simulation.Config.LightConfigs(listLights.SelectedIndex).Type = LightType.Point Then
                 cbLightType.SelectedIndex = 1
             Else
                 cbLightType.SelectedIndex = 0

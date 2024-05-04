@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports SharpDX.Direct3D9
 
 Public Class SimulationConfigLight 'USED AT DESIGN TIME
     Public Name As String
@@ -151,16 +152,16 @@ Public Class SimulationConfigLight 'USED AT DESIGN TIME
         Result = GetXMLNodeValue(intext, "Type")
         If Result <> "" Then
             If Result = "Directional" Then
-                Type = Microsoft.DirectX.Direct3D.LightType.Directional
+                Type = LightType.Directional
             ElseIf Result = "Spot" Then
-                Type = Microsoft.DirectX.Direct3D.LightType.Spot
+                Type = LightType.Spot
             ElseIf Result = "Point" Then
-                Type = Microsoft.DirectX.Direct3D.LightType.Point
+                Type = LightType.Point
             Else
-                Type = Microsoft.DirectX.Direct3D.LightType.Directional
+                Type = LightType.Directional
             End If
         Else
-            Type = Microsoft.DirectX.Direct3D.LightType.Directional
+            Type = LightType.Directional
         End If
 
         Result = GetXMLNodeValue(intext, "Direction")

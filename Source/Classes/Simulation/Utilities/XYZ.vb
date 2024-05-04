@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports SharpDX
 
 Public Structure XYZ
     Public X As Double

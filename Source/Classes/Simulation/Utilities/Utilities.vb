@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports SharpDX.Mathematics.Interop
 
 Module Utilities
     'Performance Counter
@@ -22,21 +23,20 @@ Module Utilities
     Public ConfigModified As Boolean = False
 
     'Global CPU properties
-    Public BeenWarned As Boolean = False
     Public CPUNumber As Integer
 
-    Public Function GetXMLNodeValue(ByVal InText As String, ByVal CheckText As String) As String
+    Public Function GetXMLNodeValue(ByVal inText As String, ByVal checkText As String) As String
         Try
             Dim i As Integer
             Dim StartPos As Integer
             Dim EnQtoIPosistion As Integer
 
-            For i = 1 To Len(InText)
-                If UCase(Mid(InText, i, Len("<" & CheckText & ">"))) = UCase("<" & CheckText & ">") Then
-                    StartPos = i + Len("<" & CheckText & ">")
-                ElseIf UCase(Mid(InText, i, Len("</" & CheckText & ">"))) = UCase("</" & CheckText & ">") Then
+            For i = 1 To Len(inText)
+                If UCase(Mid(inText, i, Len("<" & checkText & ">"))) = UCase("<" & checkText & ">") Then
+                    StartPos = i + Len("<" & checkText & ">")
+                ElseIf UCase(Mid(inText, i, Len("</" & checkText & ">"))) = UCase("</" & checkText & ">") Then
                     EnQtoIPosistion = i - 1
-                    Return Mid(InText, StartPos, EnQtoIPosistion - StartPos + 1)
+                    Return Mid(inText, StartPos, EnQtoIPosistion - StartPos + 1)
                 End If
             Next
         Catch
@@ -45,19 +45,31 @@ Module Utilities
         Return ""
 
     End Function
-    Public Sub EnableColorBox(ByRef pl As Button, ByRef Value As Boolean)
-        pl.Enabled = Value
-        If Value Then
+    Public Sub EnableColorBox(ByRef pl As Button, ByRef value As Boolean)
+        pl.Enabled = value
+        If value Then
             pl.BackColor = Color.FromArgb(255, pl.BackColor.R, pl.BackColor.G, pl.BackColor.B)
         Else
             pl.BackColor = Color.FromArgb(75, pl.BackColor.R, pl.BackColor.G, pl.BackColor.B)
         End If
     End Sub
-    Public Function BlendColors(ByRef Color1 As Color, ByRef Color2 As Color, ByVal Factor As Double) As Color
+    Public Function BlendColors(ByRef color1 As Color, ByRef color2 As Color, ByVal factor As Double) As Color
         'Factor is the percentage of the first color that is used in the blend
-        If Factor < 0 Then Factor = 0 - Factor
-        If Factor > 1 Then Factor = 1
-        Return Color.FromArgb(ToByte((Color1.A * Factor) + ((1 - Factor) * Color2.R)), ToByte((Color1.R * Factor) + ((1 - Factor) * Color2.R)), ToByte((Color1.G * Factor) + ((1 - Factor) * Color2.G)), ToByte((Color1.B * Factor) + ((1 - Factor) * Color2.B)))
+        If factor < 0 Then factor = 0 - factor
+        If factor > 1 Then factor = 1
+        Return Color.FromArgb(ToByte((color1.A * factor) + ((1 - factor) * color2.R)), ToByte((color1.R * factor) + ((1 - factor) * color2.R)), ToByte((color1.G * factor) + ((1 - factor) * color2.G)), ToByte((color1.B * factor) + ((1 - factor) * color2.B)))
+    End Function
+
+    Public Function ConvertColorToRawColorBGRA(color As Color) As RawColorBGRA
+        Return New RawColorBGRA(color.B, color.G, color.R, color.A)
+    End Function
+
+    Public Function ConvertColorToRawColor4(color As Color) As RawColor4
+        Return New RawColor4(color.R, color.G, color.B, color.A)
+    End Function
+
+    Public Function ConvertRawColorBGRAToColor(bgraColor As RawColorBGRA) As Color
+        Return Color.FromArgb(bgraColor.A, bgraColor.R, bgraColor.G, bgraColor.B)
     End Function
 
 End Module

@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports SharpDX.Direct3D9
 
 Public Class SimulationRuntime
 
@@ -62,9 +63,9 @@ Public Class SimulationRuntime
         'Random
         RandMaker = New RandNumber
     End Sub
-    Public Function Copy(ByRef Other As SimulationRuntime) As Boolean
+    Public Function Copy(ByRef other As SimulationRuntime) As Boolean
         '----DEEP COPY----
-        If Running = True Or Other.Running = True Then
+        If Running = True Or other.Running = True Then
             Return False
         End If
 
@@ -76,18 +77,18 @@ Public Class SimulationRuntime
         Paused = False
 
         'Counters
-        CalcCounter.Copy(Other.CalcCounter)
-        RenderCounter.Copy(Other.RenderCounter)
-        StartTime = Other.StartTime
+        CalcCounter.Copy(other.CalcCounter)
+        RenderCounter.Copy(other.RenderCounter)
+        StartTime = other.StartTime
 
         'Settings
-        Config.Copy(Other.Config)
+        Config.Copy(other.Config)
 
         'Objects
-        ObjectCount = Other.ObjectCount
+        ObjectCount = other.ObjectCount
         ReDim Objects(ObjectCount - 1)
         For i As Integer = 0 To ObjectCount - 1
-            Objects(i) = New SimulationObject(Other.Objects(i))
+            Objects(i) = New SimulationObject(other.Objects(i))
         Next
 
         Return True
@@ -195,26 +196,28 @@ Public Class SimulationRuntime
         'Set the camera's initial state based on the configuration 
         Camera.Intitialize(Config.Camera, Config.Render.Width, Config.Render.Height, Config.Render.Mode = 2)
 
-        'Initialize render engine
-        If InitializeRender() = False Then
-            MsgBox("Unable to initialize graphics. Verify that Render Mode has been set correctly.", MsgBoxStyle.Critical, "Error")
-            StopSimulation()
-            Exit Sub
-        End If
-
         'Determine the number of threads that will be needed
-        Dim DoIntegration As Boolean = NeedIntegration()
-        Dim CompNumber As Integer = If(DoIntegration Or NeedBasicCompute() = True, 1, 0)
-        Dim RenderNumber As Integer
+        Dim doIntegration As Boolean = NeedIntegration()
+        Dim compNumber As Integer = If(doIntegration Or NeedBasicCompute() = True, 1, 0)
+        Dim renderThreadCount As Integer
 
         If Config.Render.RenderThreads = -1 Then
-            RenderNumber = CPUNumber - CompNumber
+            renderThreadCount = CPUNumber - compNumber
         Else
-            RenderNumber = Config.Render.RenderThreads
+            renderThreadCount = Config.Render.RenderThreads
         End If
 
-        If RenderNumber < 1 Then
-            RenderNumber = 1
+        If renderThreadCount < 1 Then
+            renderThreadCount = 1
+        End If
+
+        'Initialize render output and create all the DirectX objects
+        'Note: this must be done after the number of render threads is calculated
+        If InitializeRender(renderThreadCount) = False Then
+            MsgBox("Unable to initialize Render output. Verify that Render Mode has been set correctly.", MsgBoxStyle.Critical, "Error")
+            StopSimulation()
+            ControlPanel.EndSimulationForm() ' May need to reset the form
+            Exit Sub
         End If
 
         'Show and update the window
@@ -230,18 +233,13 @@ Public Class SimulationRuntime
         Output.CameraUpdate.Enabled = True
 
         'Launch the threads
-        SetThreads(CompNumber, RenderNumber, DoIntegration)
+        SetThreads(compNumber, renderThreadCount, doIntegration)
     End Sub
     Public Sub StopSimulation()
         Running = False
 
         ControlPanel.StatusUpdate.Enabled = False
         Output.CameraUpdate.Enabled = False
-
-        'If Render is paused, restart it
-        If Paused = True Then
-            ResumeSimulation()
-        End If
 
         'Wait until the threads have finished
         'TODO: more forcefully end the threads, especially the raytracing
@@ -252,48 +250,19 @@ Public Class SimulationRuntime
             ComputingThread = Nothing
         End If
 
-        For Each RenderThread As Thread In RenderThreads
-            If Not IsNothing(RenderThread) Then
-                While (RenderThread.IsAlive)
-                    Thread.Sleep(10)
-                End While
-            End If
-        Next
-        ReDim RenderThreads(0)
-
-        If Config.Render.Mode < 2 Then 'DirectX mode
-            'Trash all objects
-            For i = 0 To ObjectCount - 1
-                If Not IsNothing(Objects(i).DXRenderData) Then
-                    If Not IsNothing(Objects(i).DXRenderData.Mesh) Then
-                        Objects(i).DXRenderData.Mesh.Dispose()
-                    End If
-                    Objects(i).DXRenderData.Material = Nothing
-                    Objects(i).DXRenderData.RotationMatrix = Nothing
+        If Not IsNothing(RenderThreads) Then
+            For Each RenderThread As Thread In RenderThreads
+                If Not IsNothing(RenderThread) Then
+                    While (RenderThread.IsAlive)
+                        Thread.Sleep(10)
+                    End While
                 End If
             Next
-
-            'Wait for everything to be deleted
-            For i = 0 To ObjectCount - 1
-                If Not IsNothing(Objects(i).DXRenderData) Then
-                    If Not IsNothing(Objects(i).DXRenderData.Mesh) Then
-                        While (Not Objects(i).DXRenderData.Mesh.Disposed)
-                            Thread.Sleep(10)
-                        End While
-                        Objects(i).DXRenderData.Mesh = Nothing
-                    End If
-                End If
-            Next
+            ReDim RenderThreads(0)
         End If
 
-        'Trash the device
-        If Not IsNothing(Render.Device) Then
-            Render.Device.Dispose()
-            While (Not Render.Device.Disposed)
-                Application.DoEvents()
-            End While
-            Render.Device = Nothing
-        End If
+        'Delete all the DirectX objects
+        TearDownRender()
     End Sub
     Public Sub PauseSimulation()
         Paused = True
@@ -410,73 +379,80 @@ Public Class SimulationRuntime
 #End Region
 
 #Region "Render"
-    Private Function InitializeRender() As Boolean
+
+    Private Sub TearDownRender()
+        If Config.Render.Mode < 2 Then 'DirectX mode
+            'Trash all objects
+            For i = 0 To ObjectCount - 1
+                If Not IsNothing(Objects(i).DXRenderData) Then
+                    If Not IsNothing(Objects(i).DXRenderData.Mesh) Then
+                        Objects(i).DXRenderData.Mesh.Dispose()
+                    End If
+                    Objects(i).DXRenderData.Material = Nothing
+                    Objects(i).DXRenderData.RotationMatrix = Nothing
+                End If
+            Next
+        End If
+
+        'Trash the device
+        If Not IsNothing(Render.Device) Then
+            Render.Device.Dispose()
+            Render.Device = Nothing
+        End If
+
+        'Trash the Direct3D object
+        If Not IsNothing(Render.Direct3D) Then
+            Render.Direct3D.Dispose()
+            Render.Direct3D = Nothing
+        End If
+    End Sub
+    Private Function InitializeRender(renderThreadCount As Integer) As Boolean
+        Render.Direct3D = New Direct3D
+
         'Create the render device parameters
         Render.Parameters = New PresentParameters With {
             .Windowed = True,
             .SwapEffect = SwapEffect.Discard,
             .EnableAutoDepthStencil = True,
-            .AutoDepthStencilFormat = DepthFormat.D16
+            .AutoDepthStencilFormat = Format.D16
         }
 
-        'Set VSync
-        If Config.Render.Mode < 2 And Config.Render.VSync Then
+        'Set VSync - DirectX only
+        If Config.Render.Mode < 2 AndAlso Config.Render.VSync Then
             Render.Parameters.PresentationInterval = PresentInterval.Default
         Else
             Render.Parameters.PresentationInterval = PresentInterval.Immediate
         End If
 
-        'Create the Device
-        If Config.Render.Mode = 0 Then 'Hardware DirectX 9
-            Try
-                Render.Device = New Device(0, DeviceType.Hardware, Output.Handle, (CreateFlags.HardwareVertexProcessing Or CreateFlags.FpuPreserve), Render.Parameters)
-            Catch
-                If BeenWarned = False Then
-                    MsgBox("Unable to initialize hardware vertex processing, PointMass Simulator will attempt to continue. For best performance please ensure to have a proper graphics accelerator card.", MsgBoxStyle.Critical, "Error")
-                    BeenWarned = True
-                End If
-                Try
-                    Render.Device = New Device(0, DeviceType.Hardware, Output.Handle, CreateFlags.SoftwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-                Catch
-                    Return False
-                End Try
-            End Try
-        ElseIf Config.Render.Mode = 1 Then 'Software DirectX 9
-            Try
-                Render.Device = New Device(0, DeviceType.Reference, Output.Handle, CreateFlags.HardwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-            Catch
-                Try
-                    Render.Device = New Device(0, DeviceType.Reference, Output.Handle, CreateFlags.SoftwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-                Catch
-                    Return False
-                End Try
-            End Try
-        Else 'Raytracing
-            Try
-                Render.Device = New Device(0, DeviceType.Hardware, Output.Handle, CreateFlags.HardwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-            Catch
-                Try
-                    Render.Device = New Device(0, DeviceType.Hardware, Output.Handle, CreateFlags.SoftwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-                Catch
-                    Try
-                        Render.Device = New Device(0, DeviceType.Reference, Output.Handle, CreateFlags.HardwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-                    Catch
-                        Try
-                            Render.Device = New Device(0, DeviceType.Reference, Output.Handle, CreateFlags.SoftwareVertexProcessing Or CreateFlags.FpuPreserve, Render.Parameters)
-                        Catch
-                            Return False
-                        End Try
-                    End Try
-                End Try
-            End Try
+        Dim deviceType As DeviceType
+        Dim deviceCreateFlags As CreateFlags
+        If Config.Render.Mode = 1 Then
+            deviceType = DeviceType.Reference
+            deviceCreateFlags = CreateFlags.SoftwareVertexProcessing
+        Else
+            deviceType = DeviceType.Hardware
+            deviceCreateFlags = CreateFlags.HardwareVertexProcessing
         End If
+
+        deviceCreateFlags = deviceCreateFlags Or CreateFlags.FpuPreserve
+
+        'Multi-Threaded Raytracing
+        If Config.Render.Mode = 2 AndAlso renderThreadCount > 1 Then
+            deviceCreateFlags = deviceCreateFlags Or CreateFlags.Multithreaded
+        End If
+
+        'Create the Device
+        Try
+            Render.Device = New Device(Render.Direct3D, 0, deviceType, Output.Handle, deviceCreateFlags, Render.Parameters)
+        Catch e As Exception
+            MsgBox("Unable to initialize DirectX 9 device: " & e.Message, MsgBoxStyle.Critical, "Error")
+            Return False
+        End Try
 
         If Config.Render.Mode < 2 Then ' Using DirectX, not Raytracing
             DXRender.InitializeDXRender(Me)
         Else ' Raytracing
-            Render.Device.RenderState.SourceBlend = Blend.SourceAlpha
-            Render.Device.RenderState.DestinationBlend = Blend.InvSourceAlpha
-            Render.Device.RenderState.AlphaBlendEnable = True
+            RayRender.InitializeRayRender(Me)
         End If
 
         'Trash the parameters

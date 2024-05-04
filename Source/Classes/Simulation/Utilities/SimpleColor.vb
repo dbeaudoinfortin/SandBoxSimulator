@@ -1,4 +1,6 @@
 ﻿'A simpler version of System.Drawing.color that avoid type conversions
+Imports SharpDX.Mathematics.Interop
+
 Public Structure SimpleColor
     Public A As Byte
     Public R As Byte
@@ -21,5 +23,9 @@ Public Structure SimpleColor
 
     Public Function ToColor() As Color
         Return Color.FromArgb(A, R, G, B)
+    End Function
+
+    Public Function ToRawColor4() As RawColor4
+        Return New RawColor4(R, G, B, A)
     End Function
 End Structure
