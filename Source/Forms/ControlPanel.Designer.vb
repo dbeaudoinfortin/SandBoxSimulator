@@ -3302,6 +3302,6 @@ Partial Class ControlPanel
     Friend WithEvents plObjectHighlightColor As System.Windows.Forms.Button
     Friend WithEvents plLightColor As System.Windows.Forms.Button
     Friend WithEvents plRenderBackColor As System.Windows.Forms.Button
-    Friend WithEvents Label3 As Windows.Forms.Label
-    Friend WithEvents txtRenderThreads As Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtRenderThreads As System.Windows.Forms.TextBox
 End Class

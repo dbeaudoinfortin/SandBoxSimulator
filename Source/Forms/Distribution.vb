@@ -13,14 +13,14 @@
         CheckConditionals()
     End Sub
     Private Sub CmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-        Me.Hide()
+        Hide()
     End Sub
     Private Sub CmdOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOK.Click
         If ValidateTextBoxes() Then
-            DialogResult = Windows.Forms.DialogResult.OK
+            DialogResult = DialogResult.OK
             Me.Hide()
         Else
-            DialogResult = Windows.Forms.DialogResult.None
+            DialogResult = DialogResult.None
         End If
     End Sub
     Private Sub PlEvenMin_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles plEvenMin.Click

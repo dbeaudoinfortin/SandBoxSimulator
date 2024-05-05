@@ -19,4 +19,18 @@
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Forms\ControlPanel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Distribution.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Output.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Splash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

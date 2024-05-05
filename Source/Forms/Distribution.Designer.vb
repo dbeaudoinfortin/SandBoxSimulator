@@ -761,5 +761,5 @@ Partial Class Distribution
     Friend WithEvents plPolynomialC As System.Windows.Forms.Button
     Friend WithEvents plPolynomialB As System.Windows.Forms.Button
     Friend WithEvents plPolynomialA As System.Windows.Forms.Button
-    Friend WithEvents rbNone As Windows.Forms.RadioButton
+    Friend WithEvents rbNone As System.Windows.Forms.RadioButton
 End Class

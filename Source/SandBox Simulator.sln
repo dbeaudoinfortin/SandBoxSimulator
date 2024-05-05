@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SandBox Simulator", "SandBox Simulator.vbproj", "{2C81FFA8-5FF7-4195-859E-0048613A91A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCompatibilityLayer", "..\CSCompatibilityLayer\CSCompatibilityLayer.csproj", "{0B3BBB22-B0E3-46C5-8A67-D257917A6F0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSCompatibilityLayer", "..\CSCompatibilityLayer\CSCompatibilityLayer.csproj", "{0B3BBB22-B0E3-46C5-8A67-D257917A6F0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

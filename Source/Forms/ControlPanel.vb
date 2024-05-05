@@ -34,7 +34,7 @@ Public Class ControlPanel
             Return ""
         End Try
     End Function
-    Private Function SaveTextToFile(ByVal strData As String, ByVal FullPath As String, Optional ByVal ErrInfo As String = "") As Boolean
+    Private Function SaveTextToFile(ByVal strData As String, ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As Boolean
         Dim bAns As Boolean = False
         Dim objReader As System.IO.StreamWriter
         Try
@@ -2176,7 +2176,7 @@ Public Class ControlPanel
         End If
     End Sub
     Private Function ShowDistribution() As Boolean
-        If Distribution.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If Distribution.ShowDialog() = DialogResult.OK Then
             Return True
         End If
         Return False
