@@ -12,74 +12,85 @@ Public Class DXRender
     End Sub
 
     Public Sub DoDXRender()
-        Dim CameraTargetV3 As Vector3 = Sim.Camera.Target.ToVector3
-        Dim CameraUpVector As XYZ
-        Dim OldCameraPosition As XYZ
-        Dim CameraPosition As XYZ = Sim.Camera.Position
-        Dim RenderObjects() As SimulationObject 'Need to store our own copy since our array need to be sorted
+        Dim cameraTargetV3 As Vector3 = Sim.Camera.Target.ToVector3
+        Dim cameraUpVector As XYZ
+        Dim oldCameraPosition As XYZ
+        Dim cameraPosition As XYZ = Sim.Camera.Position
+        Dim renderObjects() As SimulationObject 'Need to store our own copy since our array need to be sorted
+        Dim cameraMoved As Boolean
+        Dim viewMatrix As SharpDX.Matrix
 
-        ReDim RenderObjects(Sim.ObjectCount - 1)
+        ReDim renderObjects(Sim.ObjectCount - 1)
         For i = 0 To Sim.ObjectCount - 1
-            RenderObjects(i) = Sim.Objects(i)
+            renderObjects(i) = Sim.Objects(i)
         Next
 
         If Sim.Render.Transparency Then
-            SortObjectsByDepth(RenderObjects, CameraPosition)
+            SortObjectsByDepth(renderObjects, cameraPosition)
         End If
 
         InitRenderControl()
 
         Do While Sim.Running
-            'Start the scene
-            Sim.Render.Device.BeginScene()
-
             'Clear the Z buffer
             Sim.Render.Device.Clear(ClearFlags.ZBuffer, Sim.Config.Render.BackgroundColor, 1, 0)
 
             'Update the camera position safely
             SimulationCamera.CameraLock.EnterReadLock()
-            CameraPosition = Sim.Camera.Position
-            CameraUpVector = Sim.Camera.U
+            cameraPosition = Sim.Camera.Position
+            cameraUpVector = Sim.Camera.U
             SimulationCamera.CameraLock.ExitReadLock()
 
-            If CameraPosition <> OldCameraPosition Then
-                OldCameraPosition = CameraPosition
+            'Mave sure we call Device.Clear prior to BeginScene
+            If cameraPosition <> oldCameraPosition Then
+                oldCameraPosition = cameraPosition
+                cameraMoved = True
+
+                'Calculate the new view matrix
+                viewMatrix = SharpDX.Matrix.LookAtLH(cameraPosition.ToVector3, cameraTargetV3, cameraUpVector.ToVector3)
 
                 'Clear Traces regardless of Trace Display setting
                 Sim.Render.Device.Clear(ClearFlags.Target, Sim.Config.Render.BackgroundColor, 1, 0)
-
-                Dim viewMatrix As SharpDX.Matrix = SharpDX.Matrix.LookAtLH(Sim.Camera.Position.ToVector3, Sim.Camera.Target.ToVector3, Sim.Camera.N.ToVector3)
-                'Change the view port
-                CSCompat.SetTransformation(Sim.Render.Device, TransformState.View, viewMatrix)
             ElseIf Not Sim.Config.Render.TraceObjects Then
                 'Clear Traces
                 Sim.Render.Device.Clear(ClearFlags.Target, Sim.Config.Render.BackgroundColor, 1, 0)
             End If
 
+            If cameraMoved Then
+                cameraMoved = False
+                'Change the view port
+                CSCompat.SetTransformation(Sim.Render.Device, TransformState.View, viewMatrix)
+            End If
+
+            'Start the scene
+            Sim.Render.Device.BeginScene()
+
             'TODO: Not everything here needs to be locked with the simulation
+            'We should make a copy of the positions of all the objects first and then
+            'release the lock
             SimulationRender.RenderLock.EnterReadLock()
 
             'Objects may have been added
-            If (Sim.ObjectCount <> RenderObjects.Length) Then
-                ReDim RenderObjects(Sim.ObjectCount - 1)
+            If (Sim.ObjectCount <> renderObjects.Length) Then
+                ReDim renderObjects(Sim.ObjectCount - 1)
                 For i = 0 To Sim.ObjectCount - 1
-                    RenderObjects(i) = Sim.Objects(i)
+                    renderObjects(i) = Sim.Objects(i)
                 Next
             End If
 
             If Sim.Render.Transparency Then
                 'Need to sort objects by depth, always, objects may have moved
-                SortObjectsByDepth(RenderObjects, CameraPosition)
+                SortObjectsByDepth(renderObjects, cameraPosition)
             End If
 
             For i = 0 To Sim.ObjectCount - 1
                 'If the object doesn't exist create it on the fly
-                If RenderObjects(i).DXRenderData Is Nothing Then
+                If renderObjects(i).DXRenderData Is Nothing Then
                     Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
                 End If
 
                 'Change WireFrame settings
-                If RenderObjects(i).Wireframe = True Then
+                If renderObjects(i).Wireframe = True Then
                     Sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Wireframe)
                     Sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.None)
                 Else
@@ -98,14 +109,14 @@ Public Class DXRender
                 'Draw the object in its place
                 'Calculate the translation matrix of the object
                 Dim translationMatrix As SharpDX.Matrix = SharpDX.Matrix.Translation(
-                            ToSingle(RenderObjects(i).Position.X * Sim.Config.Render.WorldScale),
-                            ToSingle(RenderObjects(i).Position.Y * Sim.Config.Render.WorldScale),
-                            ToSingle(RenderObjects(i).Position.Z * Sim.Config.Render.WorldScale))
+                            ToSingle(renderObjects(i).Position.X * Sim.Config.Render.WorldScale),
+                            ToSingle(renderObjects(i).Position.Y * Sim.Config.Render.WorldScale),
+                            ToSingle(renderObjects(i).Position.Z * Sim.Config.Render.WorldScale))
 
                 'The TransformMatrix is simply the multiplication of both matricies
-                CSCompat.SetTransformation(Sim.Render.Device, TransformState.World, RenderObjects(i).DXRenderData.RotationMatrix * translationMatrix)
-                Sim.Render.Device.Material = RenderObjects(i).DXRenderData.Material
-                RenderObjects(i).DXRenderData.Mesh.DrawSubset(0)
+                CSCompat.SetTransformation(Sim.Render.Device, TransformState.World, renderObjects(i).DXRenderData.RotationMatrix * translationMatrix)
+                Sim.Render.Device.Material = renderObjects(i).DXRenderData.Material
+                renderObjects(i).DXRenderData.Mesh.DrawSubset(0)
             Next
             SimulationRender.RenderLock.ExitReadLock()
 
@@ -128,23 +139,26 @@ Public Class DXRender
     End Sub
 
     Public Shared Sub InitializeDXRender(sim As SimulationRuntime)
+        'Create the z buffer
+        sim.Render.Device.SetRenderState(RenderState.ZEnable, True)
+        sim.Render.Device.SetRenderState(RenderState.ZFunc, Compare.LessEqual)
 
         'Initialize render settings
         sim.Render.Device.SetRenderState(RenderState.PointSize, 4)
         sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Solid)
-        sim.Render.Device.SetRenderState(RenderState.ZEnable, True)
+
         sim.Render.Device.SetRenderState(RenderState.FogEnable, False)
         sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.Counterclockwise)
         sim.Render.Device.SetRenderState(RenderState.ShadeMode, sim.Config.Render.Shading)
 
         sim.Render.Device.SetRenderState(RenderState.Lighting, True)
         If sim.Config.Render.EnableLighting Then
+            sim.Render.Device.SetRenderState(RenderState.SpecularEnable, True)
             sim.Render.Device.SetRenderState(RenderState.Ambient, System.Drawing.Color.Black.ToArgb) 'TODO: is this BGRA or ARGB ?
             sim.Render.Device.SetRenderState(RenderState.AmbientMaterialSource, ColorSource.Material)
             sim.Render.Device.SetRenderState(RenderState.DiffuseMaterialSource, ColorSource.Material)
             sim.Render.Device.SetRenderState(RenderState.SpecularMaterialSource, ColorSource.Material)
             sim.Render.Device.SetRenderState(RenderState.EmissiveMaterialSource, ColorSource.Material)
-            sim.Render.Device.SetRenderState(RenderState.SpecularEnable, True)
         Else
             sim.Render.Device.SetRenderState(RenderState.SpecularEnable, False)
             sim.Render.Device.SetRenderState(RenderState.AmbientMaterialSource, ColorSource.Material)
@@ -158,18 +172,11 @@ Public Class DXRender
             sim.Render.Device.SetRenderState(RenderState.DestinationBlend, SharpDX.Direct3D9.Blend.InverseSourceAlpha)
         End If
 
-        'Clear the device and paint the background
-        sim.Render.Device.Clear(ClearFlags.ZBuffer, sim.Config.Render.BackgroundColor, 1, 0)
-        sim.Render.Device.Clear(ClearFlags.Target, sim.Config.Render.BackgroundColor, 1, 0)
-
         'Setup the view port
         ' Setting the Projection Matrix
         Dim nearPlane As Single = 1 / (sim.Config.Render.WorldScale * 10)
         Dim farPlane As Single = sim.Config.Render.WorldScale * 2000
         CSCompat.SetTransformation(sim.Render.Device, TransformState.Projection, SharpDX.Matrix.PerspectiveFovLH(sim.Config.Camera.HFov, sim.Config.Render.AspectRatio, nearPlane, farPlane))
-
-        ' Setting the View Matrix
-        CSCompat.SetTransformation(sim.Render.Device, TransformState.View, SharpDX.Matrix.LookAtLH(sim.Camera.Position.ToVector3, sim.Camera.Target.ToVector3, sim.Camera.N.ToVector3))
 
         'Calculate Sphere complexity
         sim.Render.SphereSecondaryComplexity = ToInt32((sim.Config.Render.SphereComplexity * 0.5) + 0.5)

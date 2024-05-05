@@ -26,6 +26,6 @@ Public Structure SimpleColor
     End Function
 
     Public Function ToRawColor4() As RawColor4
-        Return New RawColor4(R, G, B, A)
+        Return New RawColor4(R * BythSingle, G * BythSingle, B * BythSingle, A * BythSingle)
     End Function
 End Structure

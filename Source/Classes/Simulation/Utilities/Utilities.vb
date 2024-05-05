@@ -15,7 +15,7 @@ Module Utilities
 
     Public Const Byth As Double = 1D / MaxByteD
     Public Const Byth2 As Double = 1D / (MaxByteD * MaxByteD)
-
+    Public Const BythSingle As Single = 1.0F / MaxByte
 
     'Global Simulation Object and flags
     Public Simulation As SimulationRuntime
@@ -65,7 +65,7 @@ Module Utilities
     End Function
 
     Public Function ConvertColorToRawColor4(color As Color) As RawColor4
-        Return New RawColor4(color.R, color.G, color.B, color.A)
+        Return New RawColor4(color.R * BythSingle, color.G * BythSingle, color.B * BythSingle, color.A * BythSingle)
     End Function
 
     Public Function ConvertRawColorBGRAToColor(bgraColor As RawColorBGRA) As Color

@@ -1,5 +1,6 @@
 ﻿Imports SharpDX
 Imports SharpDX.Direct3D9
+Imports SharpDX.Mathematics.Interop
 
 Public Class ObjectDXRenderData
     Public Mesh As Mesh
@@ -35,11 +36,11 @@ Public Class ObjectDXRenderData
         If SimObject.Type = ObjectType.Sphere Then
             Return CSCompatibilityLayer.CSCompat.CreateSphere(device, ToSingle(Scale * SimObject.Radius), Complexity1, Complexity2)
         ElseIf SimObject.Type = ObjectType.Box Then
-            'Return Mesh.Box(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * SimObject.Size.Z))
+            Return CSCompatibilityLayer.CSCompat.CreateBox(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * SimObject.Size.Z))
         ElseIf SimObject.Type = ObjectType.Plane Then
-            'Return Mesh.Box(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * 0.0001))
+            Return CSCompatibilityLayer.CSCompat.CreateBox(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * 0.0001))
         ElseIf SimObject.Type = ObjectType.InfinitePlane Then
-            'Return Mesh.Box(device, Scale * 2000, ToSingle(Scale * 0.0001), Scale * 2000)
+            Return CSCompatibilityLayer.CSCompat.CreateBox(device, Scale * 2000, ToSingle(Scale * 0.0001), Scale * 2000)
         End If
         Return Nothing
     End Function
