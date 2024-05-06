@@ -11,17 +11,17 @@ Originally designed to give aproximate visual solutions to n-body problems of po
 **Forces**
 - Newtonian Gravity
 - Electostatic Force
-- Uniform Acceleration Fields
+- Uniform Acceleration Field
 - Uniform Fluid Drag Force
   - Configurable Fluid Density
   - Configurable Fluid Viscosity
-  - Configurable Object Drag Coefficient
+  - Configurable Object Drag Coefficient (Global)
 - Elastic & Inelastic Collisions
-  - Global Coefficient of Restitution
-  - Interpolation Between Time Steps
+  - Configurable Global Coefficient of Restitution
+  - Configurable Interpolation Between Time Steps
 - Fragmentation on Impact
-  - Gaussian Distribution for Endurance
-  - Gaussian Distribution for Fragment Count
+  - Gaussian Distribution of Probability for Endurance
+  - Gaussian Distribution for Probability Fragment Count
 
 **Methods of Integration for Calculations**
 - 1st order - Euler
@@ -32,10 +32,20 @@ Originally designed to give aproximate visual solutions to n-body problems of po
 **Rendering Options**
 - DirectX 9 Hardware Accelerated
 - DirectX 9 Software Renderer
-- Homegrown Software Ray tracing Engine
+- Homegrown Software Ray Tracing Engine
   - Configurable Render Thread Count
+  - Shadow Rendering
 - Object Path Tracing
 - Wireframe Rendering
+- Selectable Background Colour
+
+**Camera Controls**
+- Keyboard Controls During Runtime
+- Configurable Movement Speed
+- Target
+- Postion
+- Orientation
+- Field of View
  
 **Objects**
 - Point Mass Spheres
@@ -60,8 +70,8 @@ Originally designed to give aproximate visual solutions to n-body problems of po
   - Gaussian Distribution
   - Random Distribution
   - Polynomial Distribution
-- Per-Object Interaction Control
-- Groupings of Objects
+- Per-Object Interaction Control (Which Affects What and Which is Affected by What)
+- Groupings of Objects (With Prodcedure Generation of Quantity)
 
 **Lighting Types**
 - Directional Lights
@@ -69,7 +79,8 @@ Originally designed to give aproximate visual solutions to n-body problems of po
 - Spot Lights
 - Ambient Lighting
 - Highlight Intensity Control
-- Range and Attenuation Control
+- Range Control
+- Attenuation Control
 - Conic Falloff (Spot Lights)
 
 # Requirements
@@ -134,9 +145,8 @@ The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this project
 - Implemented in VB .Net. I originally chose VB because I wanted a simple drag-and-drop UI designer for Windows forms and a simple way to make use of DirectX, at the expense of the performance of the calculations themselves. The goal was to build something for fun and to get going quickly. At the time, I felt that Visual Studio's feature set for VB was better than that of C#. 
 - Requires Visual Studio 2022.
 - DirectX rendering makes use of the DirectX 9 implementation from the SharpDX library.
-- Ray traced rendering is built from scratch by myself.
+- Ray traced rendering is built from scratch by myself. Rays are traced using the usual "backwards" approach of projecting them out of the camera, through the screen, to the objects, and then bouncing them to the lights. Once the colour of a pixel is calculated, it is written to a byte buffer. At the end of the frame, that buffer is written to a texture and texture is drawn in the scene using DirectX 9. Each thread renders their frame independantly, and the frames are presented alternately in a first-come-first-served manner.
 - The solution contains a second project called CS Compatibility. The purpose of this project is to build a DLL that sits bewteen SandBox Simulator and a handful of calls to SharpDX, as a work-around for some of the language incompatibilities between C# and VB .Net. Since SharpDX is no longer under development, and VB .Net's popularity continues to fall, I doubt the compatibility issues will get resolved. I also don't feel it's worth rewriting Sandbox Simulator in another language since its just a fun side project.
-
 
 # Future Plans
 There are a number of additions that I have been meaning to implement (one of these days...):
@@ -146,10 +156,11 @@ There are a number of additions that I have been meaning to implement (one of th
 - Increased use of SIMD accelerated .Net types (vectors, matricies, etc.)
 - Support for DirectX 11 & 12. Possibly Vulkan.
 - Right now nearly everything uses double precision floats. I'd like to try spliting up the code to use single precision for rendering calulation and double precision for physics calulations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
-- Support of object rotational velocities.
+- Support for object rotational velocities.
 - Support for per-object constant acceleration, instead of just a global setting that applies to all objects.
 - Rendering of only object verticies in DirectX mode (as opposed to wireframe or full).
 - Ray traced render enhancements: transparency, refractive index, reflectivity, etc.
+- Ray tracing depth control to limit object interactions and improve performance.
 
 # Screenshots
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/6dd2e880-be1a-4f61-8ad9-701a32754b5f" width="500" />
