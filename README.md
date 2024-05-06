@@ -2,11 +2,11 @@
 
 ![Splash](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/7698041f-ecb1-420e-bd94-154bf1bdaf4d)
 
-SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It let's you play around with different Newtonian physics concepts and visualize them.
+SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It lets you play around with different Newtonian physics concepts and visualize them.
 
-I originally developed this application in 2008 as a fun side project. At the time there was nothing that lets you quickly visualize many types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required.
+I originally developed this application in 2008 as a fun side project. At the time there was nothing that I could find to let you quickly visualize several types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required. I resurected version 4.0 from the dead and have made some significant changes in version 4.1 (see below) to modernize it.
 
-It was originally designed to give aproximate visual solutions to n-body problems of point masses, but it now supports much more:
+Originally designed to give aproximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
 
 **Forces**
 - Newtonian Gravity
@@ -32,14 +32,15 @@ It was originally designed to give aproximate visual solutions to n-body problem
 **Rendering Options**
 - DirectX 9 Hardware Accelerated
 - DirectX 9 Software Renderer
-- Homegrown Software Raytracing Engine
+- Homegrown Software Ray tracing Engine
   - Configurable Render Thread Count
 - Object Path Tracing
 - Wireframe Rendering
  
 **Objects**
 - Point Mass Spheres
-- Bounding Boxes
+- Boxes
+- Finite Planes
 - Infinite Planes
 - Physical Attributes
   - Mass
@@ -72,11 +73,20 @@ It was originally designed to give aproximate visual solutions to n-body problem
 - Conic Falloff (Spot Lights)
 
 # Requirements
-- Microsoft .Net Framework version 4.8.1
+As part of resurecting this project from the dead, I have made several technology upgrades. The current (version 4.1) requirements are the following:
+- Microsoft .Net 8.0
 - Windows 7 or higher.
 - A DirectX 9 compatible GPU.
+- A screen resolution of 1920 x 1080 or higher.
+- Any modern GPU with hardware vertex processing (2006+), integrated or discrete.
+- Any modern CPU.
+
+The orginal 2008-era system requirements were:
+- Microsoft .Net Framework version 2.0
+- Windows XP or higher.
+- A DirectX 9 compatible GPU.
 - A screen resolution of 1024 x 768 or higher.
-- A modern graphics accelerator card is strongly recommend. SandBox Simulator will run with integrated graphics but performance will be significantly reduced.
+- A modern graphics accelerator card is strongly recommended. SandBox Simulator will run with integrated graphics but performance will be significantly reduced.
 - A dual-core CPU is strongly recommended.
 
 # Visualization Controls
@@ -87,14 +97,48 @@ It was originally designed to give aproximate visual solutions to n-body problem
 Note that repositioning of the camera clears the trace history of the objects when object path tracing is enabled.
 
 # Performance Notes
-- SandBox Simulator takes advantage of multi-threading and will run best on Dual-Core or Quad-Core processors. This allows all rendering and overhead to run on one core while calculations run on the other.
-- The sample simulations in the Test Simulations directory may run at different speeds depending on your machine. You can change the speed of a simulation by increasing or decreasing the time step, often at the expense of accuracy. As a reference, the sample Figure 8, included in the Simulations folder, runs at about 2 400 000 calculations per second on a Core 2 Duo E6600 (2.4GHz).
+
+- SandBox Simulator takes advantage of multi-threading and will run best on multi-core processors. This allows all rendering and overhead to run on one core while calculations run on the other. Ray-trace rendering makes use of alternate frame rendering and, as of version 4.1, scales fairly well with CPU core counts up to 64 cores. 
+- The sample simulations in the Test Simulations directory may run at different speeds depending on your machine. You can change the speed of a simulation by increasing or decreasing the time step, often at the expense of accuracy. As a reference, ~~the sample Figure 8, included in the Simulations folder~~ (note: I have since lost this file), runs at about 2 400 000 calculations per second on a Core 2 Duo E6600 (2.4GHz).
 - Reducing time step and increasing the number of calculations per second does not always improve accuracy due to the limitations of floating point numbers.
 - Since SandBox Simulator is calculation heavy, its performance is based primarily on the performance of the floating point unit of the processor. This means that overall performance tends to vary linearly with the clock speed of the processor more than anything else.
 
-# Know Limitations
-- Simulation files (.PR files) made on a computer using one language may produce an error when loaded on a computer using an other language. This is due to different regional and language formats not being taken into consideration. If you encounter this problem, set the regional and language format in your computer's control panel to "English Canada".
-- Bounding box rendering is broken with the ray-tracing render setting.
+# Known Limitations
+
+- Simulation files (.PR files) made on a computer using one language may produce an error when loaded on a computer using an other language. This is due to different regional and language formats not being taken into consideration. If you encounter this problem, set the regional and language format in your computer's control panel to "English Canada". I plan to eventually get around to fixing this.
+- Box rendering is broken with the ray tracing render setting.
+
+# Changes in Version 4.1
+
+The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this projects and made the following changed in version 4.1:
+- Upgraded from the .Net Framework 2.0 to .Net 8.0
+- Moved from Visual Studio 2005 to Visual Studio 2022
+- Upgraded from 32bit to 64bit
+- Migrated from the Managed DirectX 1.1 library to SharpDX 4.2.0
+- Restored support for non-sphere object types (box, finite plane, infinit plane). I had lost the code for these at some point.
+- Improved the implementation object attributes that are assigned a distribution function.
+- Implemented DirectX rendering of transparent objects.
+- Support for high DPI monitors.
+- The control panel form can now be resized with the form controls automatically adjusting.
+- Greatly improved multithreading. Lower thread contention and better scaling with high core count CPUs.
+- Greatly improved ray tracing performance. 
+- Lots of refactoring and code clean-up
+
+# Implementation Details
+
+- Implemented in VB .Net. I originally chose VB because I wanted a simple drag-and-drop UI designer for Windows forms and a simple way to make use of DirectX, at the expense of the performance of the calculations themselves. At the time, I felt that Visual Studio's feature set for VB was better than that of C#. 
+- Requires Visual Studio 2022
+- DirectX rendering makes use of DirectX 9 implementation from the SharpDX library.
+- Ray traced rendering is built from scratch by myself.
+
+
+# Future Plans
+There are a number of additions that I have been meaning to implement (one of these days...):
+
+- Bounding volume hierarchies of objects to improve ray-tracing performance
+- Bounding volume hierarchies of objects to improve collision detection performance
+- Increased use of SIMD accelerated .Net types (vectors, matricies, etc.)
+- Support for DirectX 11 & 12. Possibly Vulkan.
 
 # Screenshots
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/6dd2e880-be1a-4f61-8ad9-701a32754b5f" width="500" />
