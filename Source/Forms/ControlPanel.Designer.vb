@@ -22,3077 +22,3288 @@ Partial Class ControlPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ControlPanel))
-        Me.cmdStart = New System.Windows.Forms.Button()
-        Me.ColorDialog = New System.Windows.Forms.ColorDialog()
-        Me.Stats = New System.Windows.Forms.StatusStrip()
-        Me.lblStat = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.SaveDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.OpenDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.StatusUpdate = New System.Windows.Forms.Timer(Me.components)
-        Me.TabGroups = New System.Windows.Forms.TabPage()
-        Me.gbObjects = New System.Windows.Forms.GroupBox()
-        Me.plObjectHighlightColor = New System.Windows.Forms.Button()
-        Me.plObjectColor = New System.Windows.Forms.Button()
-        Me.cmdObjectRefractiveIndex = New System.Windows.Forms.Button()
-        Me.txtObjectRefractiveIndex = New System.Windows.Forms.TextBox()
-        Me.lblObjectRefractiveIndex = New System.Windows.Forms.Label()
-        Me.lblObjectReflectivity = New System.Windows.Forms.Label()
-        Me.cmdObjectReflectivity = New System.Windows.Forms.Button()
-        Me.lblObjectType = New System.Windows.Forms.Label()
-        Me.cbObjectType = New System.Windows.Forms.ComboBox()
-        Me.chObjectWireframe = New System.Windows.Forms.CheckBox()
-        Me.chObjectAffected = New System.Windows.Forms.CheckBox()
-        Me.chObjectAffects = New System.Windows.Forms.CheckBox()
-        Me.cmdObjectNumber = New System.Windows.Forms.Button()
-        Me.lblObjectNumber = New System.Windows.Forms.Label()
-        Me.listGroups = New System.Windows.Forms.ListBox()
-        Me.cmdObjectVelocityZ = New System.Windows.Forms.Button()
-        Me.cmdObjectVelocityY = New System.Windows.Forms.Button()
-        Me.cmdObjectTransparency = New System.Windows.Forms.Button()
-        Me.cmdObjectHighlightSharpness = New System.Windows.Forms.Button()
-        Me.cmdObjectPositionZ = New System.Windows.Forms.Button()
-        Me.cmdObjectPositionY = New System.Windows.Forms.Button()
-        Me.cmdObjectHighlightColor = New System.Windows.Forms.Button()
-        Me.cmdObjectColor = New System.Windows.Forms.Button()
-        Me.cmdObjectVelocityX = New System.Windows.Forms.Button()
-        Me.cmdObjectPositionX = New System.Windows.Forms.Button()
-        Me.cmdObjectCharge = New System.Windows.Forms.Button()
-        Me.cmdObjectMass = New System.Windows.Forms.Button()
-        Me.lblObjectHighlightColor = New System.Windows.Forms.Label()
-        Me.lblObjectName = New System.Windows.Forms.Label()
-        Me.lblObjectTransparency = New System.Windows.Forms.Label()
-        Me.txtObjectVelocityZ = New System.Windows.Forms.TextBox()
-        Me.txtObjectName = New System.Windows.Forms.TextBox()
-        Me.txtObjectVelocityY = New System.Windows.Forms.TextBox()
-        Me.lblObjectMass = New System.Windows.Forms.Label()
-        Me.lblObjectCharge = New System.Windows.Forms.Label()
-        Me.lblObjectColor = New System.Windows.Forms.Label()
-        Me.lblObjectPosition = New System.Windows.Forms.Label()
-        Me.lblObjectVelocity = New System.Windows.Forms.Label()
-        Me.lblObjectHighlightSharpness = New System.Windows.Forms.Label()
-        Me.tbObjectTransparency = New System.Windows.Forms.TrackBar()
-        Me.txtObjectPositionZ = New System.Windows.Forms.TextBox()
-        Me.txtObjectPositionX = New System.Windows.Forms.TextBox()
-        Me.txtObjectPositionY = New System.Windows.Forms.TextBox()
-        Me.txtObjectVelocityX = New System.Windows.Forms.TextBox()
-        Me.txtObjectMass = New System.Windows.Forms.TextBox()
-        Me.txtObjectCharge = New System.Windows.Forms.TextBox()
-        Me.txtObjectNumber = New System.Windows.Forms.TextBox()
-        Me.tbObjectReflectivity = New System.Windows.Forms.TrackBar()
-        Me.tbObjectHighlightSharpness = New System.Windows.Forms.TrackBar()
-        Me.txtObjectSizeX = New System.Windows.Forms.TextBox()
-        Me.txtObjectSizeY = New System.Windows.Forms.TextBox()
-        Me.txtObjectSizeZ = New System.Windows.Forms.TextBox()
-        Me.lblObjectSize = New System.Windows.Forms.Label()
-        Me.txtObjectNormalZ = New System.Windows.Forms.TextBox()
-        Me.txtObjectNormalY = New System.Windows.Forms.TextBox()
-        Me.txtObjectNormalX = New System.Windows.Forms.TextBox()
-        Me.cmdObjectRadius = New System.Windows.Forms.Button()
-        Me.lblObjectRadius = New System.Windows.Forms.Label()
-        Me.txtObjectRotationZ = New System.Windows.Forms.TextBox()
-        Me.cmdObjectRotationZ = New System.Windows.Forms.Button()
-        Me.txtObjectRotationY = New System.Windows.Forms.TextBox()
-        Me.cmdObjectRotationY = New System.Windows.Forms.Button()
-        Me.txtObjectRotationX = New System.Windows.Forms.TextBox()
-        Me.cmdObjectRotationX = New System.Windows.Forms.Button()
-        Me.lblObjectRotation = New System.Windows.Forms.Label()
-        Me.lblObjectNormal = New System.Windows.Forms.Label()
-        Me.cmdObjectSizeX = New System.Windows.Forms.Button()
-        Me.cmdObjectSizeY = New System.Windows.Forms.Button()
-        Me.cmdObjectSizeZ = New System.Windows.Forms.Button()
-        Me.txtObjectRadius = New System.Windows.Forms.TextBox()
-        Me.cmdObjectNormalX = New System.Windows.Forms.Button()
-        Me.cmdObjectNormalY = New System.Windows.Forms.Button()
-        Me.cmdObjectNormalZ = New System.Windows.Forms.Button()
-        Me.cmdGroupAdd = New System.Windows.Forms.Button()
-        Me.cmdGroupRemove = New System.Windows.Forms.Button()
-        Me.cmdGroupReplace = New System.Windows.Forms.Button()
-        Me.TabLights = New System.Windows.Forms.TabPage()
-        Me.gbLights = New System.Windows.Forms.GroupBox()
-        Me.plLightColor = New System.Windows.Forms.Button()
-        Me.txtLightAttenuationC = New System.Windows.Forms.TextBox()
-        Me.txtLightAttenuationB = New System.Windows.Forms.TextBox()
-        Me.txtLightAttenuationA = New System.Windows.Forms.TextBox()
-        Me.lblLightAttenuation = New System.Windows.Forms.Label()
-        Me.txtLightAngleOuter = New System.Windows.Forms.TextBox()
-        Me.lblLightRange = New System.Windows.Forms.Label()
-        Me.txtLightRange = New System.Windows.Forms.TextBox()
-        Me.lblLightFalloff = New System.Windows.Forms.Label()
-        Me.txtLightFalloff = New System.Windows.Forms.TextBox()
-        Me.lblLightAngle = New System.Windows.Forms.Label()
-        Me.txtLightAngleInner = New System.Windows.Forms.TextBox()
-        Me.tbLightAmbient = New System.Windows.Forms.TrackBar()
-        Me.lblLightAmbient = New System.Windows.Forms.Label()
-        Me.lblLightHighlight = New System.Windows.Forms.Label()
-        Me.lblLightType = New System.Windows.Forms.Label()
-        Me.txtLightPositionZ = New System.Windows.Forms.TextBox()
-        Me.txtLightPositionY = New System.Windows.Forms.TextBox()
-        Me.txtLightPositionX = New System.Windows.Forms.TextBox()
-        Me.lblLightPosition = New System.Windows.Forms.Label()
-        Me.chLightsEnable = New System.Windows.Forms.CheckBox()
-        Me.listLights = New System.Windows.Forms.ListBox()
-        Me.txtLightName = New System.Windows.Forms.TextBox()
-        Me.lblLightName = New System.Windows.Forms.Label()
-        Me.txtLightDirectionZ = New System.Windows.Forms.TextBox()
-        Me.lblLightDirection = New System.Windows.Forms.Label()
-        Me.txtLightDirectionY = New System.Windows.Forms.TextBox()
-        Me.txtLightDirectionX = New System.Windows.Forms.TextBox()
-        Me.lblLightColor = New System.Windows.Forms.Label()
-        Me.tbLightHighlight = New System.Windows.Forms.TrackBar()
-        Me.cbLightType = New System.Windows.Forms.ComboBox()
-        Me.cmdLightAdd = New System.Windows.Forms.Button()
-        Me.cmdLightRemove = New System.Windows.Forms.Button()
-        Me.cmdLightReplace = New System.Windows.Forms.Button()
-        Me.TabDisplay = New System.Windows.Forms.TabPage()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label47 = New System.Windows.Forms.Label()
-        Me.chCamera = New System.Windows.Forms.CheckBox()
-        Me.txtCPosZ = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.txtCOrientZ = New System.Windows.Forms.TextBox()
-        Me.txtCTargetY = New System.Windows.Forms.TextBox()
-        Me.txtCPosX = New System.Windows.Forms.TextBox()
-        Me.txtCTargetZ = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.txtCTargetX = New System.Windows.Forms.TextBox()
-        Me.txtCPosY = New System.Windows.Forms.TextBox()
-        Me.txtCOrientX = New System.Windows.Forms.TextBox()
-        Me.txtCOrientY = New System.Windows.Forms.TextBox()
-        Me.tbCameraSpeed = New System.Windows.Forms.TrackBar()
-        Me.Rendering = New System.Windows.Forms.GroupBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtRenderThreads = New System.Windows.Forms.TextBox()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.txtVFoV = New System.Windows.Forms.TextBox()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.cbRender = New System.Windows.Forms.ComboBox()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.txtMaxFPS = New System.Windows.Forms.TextBox()
-        Me.chVSync = New System.Windows.Forms.CheckBox()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.cbShading = New System.Windows.Forms.ComboBox()
-        Me.tbPolys = New System.Windows.Forms.TrackBar()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.txtWindowX = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.txtHFoV = New System.Windows.Forms.TextBox()
-        Me.chTrace = New System.Windows.Forms.CheckBox()
-        Me.txtWindowY = New System.Windows.Forms.TextBox()
-        Me.plRenderBackColor = New System.Windows.Forms.Button()
-        Me.CmdSaveOut = New System.Windows.Forms.Button()
-        Me.TabForces = New System.Windows.Forms.TabPage()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.txtPermittivity = New System.Windows.Forms.TextBox()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.txtFluidViscosity = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.txtDragCoeff = New System.Windows.Forms.TextBox()
-        Me.chForces = New System.Windows.Forms.CheckBox()
-        Me.txtFluidDensity = New System.Windows.Forms.TextBox()
-        Me.chElectrostatic = New System.Windows.Forms.CheckBox()
-        Me.txtFieldZ = New System.Windows.Forms.TextBox()
-        Me.chGravity = New System.Windows.Forms.CheckBox()
-        Me.txtFieldY = New System.Windows.Forms.TextBox()
-        Me.chField = New System.Windows.Forms.CheckBox()
-        Me.txtFieldX = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.chDrag = New System.Windows.Forms.CheckBox()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.chInterpolate = New System.Windows.Forms.CheckBox()
-        Me.chCollision = New System.Windows.Forms.CheckBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.txtCoR = New System.Windows.Forms.TextBox()
-        Me.chbreakable = New System.Windows.Forms.CheckBox()
-        Me.lblResulting = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.txtAddMax = New System.Windows.Forms.TextBox()
-        Me.txtBreakMin = New System.Windows.Forms.TextBox()
-        Me.txtAddAvg = New System.Windows.Forms.TextBox()
-        Me.txtBreakAvg = New System.Windows.Forms.TextBox()
-        Me.txtAddMin = New System.Windows.Forms.TextBox()
-        Me.txtBreakMax = New System.Windows.Forms.TextBox()
-        Me.TabSimulation = New System.Windows.Forms.TabPage()
-        Me.cmdLoad = New System.Windows.Forms.Button()
-        Me.cmdSave = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtLimitCalc = New System.Windows.Forms.TextBox()
-        Me.txtScale = New System.Windows.Forms.TextBox()
-        Me.txtTimeStep = New System.Windows.Forms.TextBox()
-        Me.cbIntegration = New System.Windows.Forms.ComboBox()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtLimitObjects = New System.Windows.Forms.TextBox()
-        Me.Tabs = New System.Windows.Forms.TabControl()
-        Me.Stats.SuspendLayout()
-        Me.TabGroups.SuspendLayout()
-        Me.gbObjects.SuspendLayout()
-        CType(Me.tbObjectTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbObjectReflectivity, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbObjectHighlightSharpness, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabLights.SuspendLayout()
-        Me.gbLights.SuspendLayout()
-        CType(Me.tbLightAmbient, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbLightHighlight, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabDisplay.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.tbCameraSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Rendering.SuspendLayout()
-        CType(Me.tbPolys, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabForces.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.TabSimulation.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.Tabs.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'cmdStart
-        '
-        Me.cmdStart.BackColor = System.Drawing.SystemColors.Control
-        Me.cmdStart.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdStart.FlatAppearance.BorderSize = 0
-        Me.cmdStart.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdStart.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdStart.ForeColor = System.Drawing.Color.Black
-        Me.cmdStart.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdStart.Location = New System.Drawing.Point(6, 5)
-        Me.cmdStart.Name = "cmdStart"
-        Me.cmdStart.Size = New System.Drawing.Size(451, 39)
-        Me.cmdStart.TabIndex = 0
-        Me.cmdStart.Text = "&Start Simulation"
-        Me.cmdStart.UseVisualStyleBackColor = False
-        '
-        'ColorDialog
-        '
-        Me.ColorDialog.AnyColor = True
-        Me.ColorDialog.Color = System.Drawing.SystemColors.ActiveCaption
-        Me.ColorDialog.FullOpen = True
-        '
-        'Stats
-        '
-        Me.Stats.AutoSize = False
-        Me.Stats.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Stats.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStat})
-        Me.Stats.Location = New System.Drawing.Point(0, 677)
-        Me.Stats.Name = "Stats"
-        Me.Stats.Size = New System.Drawing.Size(461, 22)
-        Me.Stats.SizingGrip = False
-        Me.Stats.TabIndex = 22
-        '
-        'lblStat
-        '
-        Me.lblStat.BackColor = System.Drawing.SystemColors.Control
-        Me.lblStat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.lblStat.Font = New System.Drawing.Font("Arial", 8.25!)
-        Me.lblStat.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblStat.LinkColor = System.Drawing.Color.White
-        Me.lblStat.Name = "lblStat"
-        Me.lblStat.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
-        Me.lblStat.Size = New System.Drawing.Size(446, 17)
-        Me.lblStat.Spring = True
-        Me.lblStat.Text = "Frames : 0  |  FPS : 0  |  Calculations : 0  |  CPS : 0"
-        '
-        'StatusUpdate
-        '
-        Me.StatusUpdate.Interval = 150
-        '
-        'TabGroups
-        '
-        Me.TabGroups.BackColor = System.Drawing.SystemColors.Control
-        Me.TabGroups.Controls.Add(Me.gbObjects)
-        Me.TabGroups.Controls.Add(Me.cmdGroupAdd)
-        Me.TabGroups.Controls.Add(Me.cmdGroupRemove)
-        Me.TabGroups.Controls.Add(Me.cmdGroupReplace)
-        Me.TabGroups.Location = New System.Drawing.Point(4, 37)
-        Me.TabGroups.Name = "TabGroups"
-        Me.TabGroups.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabGroups.Size = New System.Drawing.Size(451, 583)
-        Me.TabGroups.TabIndex = 7
-        Me.TabGroups.Text = "Objects"
-        Me.TabGroups.UseVisualStyleBackColor = True
-        '
-        'gbObjects
-        '
-        Me.gbObjects.Controls.Add(Me.plObjectHighlightColor)
-        Me.gbObjects.Controls.Add(Me.plObjectColor)
-        Me.gbObjects.Controls.Add(Me.cmdObjectRefractiveIndex)
-        Me.gbObjects.Controls.Add(Me.txtObjectRefractiveIndex)
-        Me.gbObjects.Controls.Add(Me.lblObjectRefractiveIndex)
-        Me.gbObjects.Controls.Add(Me.lblObjectReflectivity)
-        Me.gbObjects.Controls.Add(Me.cmdObjectReflectivity)
-        Me.gbObjects.Controls.Add(Me.lblObjectType)
-        Me.gbObjects.Controls.Add(Me.cbObjectType)
-        Me.gbObjects.Controls.Add(Me.chObjectWireframe)
-        Me.gbObjects.Controls.Add(Me.chObjectAffected)
-        Me.gbObjects.Controls.Add(Me.chObjectAffects)
-        Me.gbObjects.Controls.Add(Me.cmdObjectNumber)
-        Me.gbObjects.Controls.Add(Me.lblObjectNumber)
-        Me.gbObjects.Controls.Add(Me.listGroups)
-        Me.gbObjects.Controls.Add(Me.cmdObjectVelocityZ)
-        Me.gbObjects.Controls.Add(Me.cmdObjectVelocityY)
-        Me.gbObjects.Controls.Add(Me.cmdObjectTransparency)
-        Me.gbObjects.Controls.Add(Me.cmdObjectHighlightSharpness)
-        Me.gbObjects.Controls.Add(Me.cmdObjectPositionZ)
-        Me.gbObjects.Controls.Add(Me.cmdObjectPositionY)
-        Me.gbObjects.Controls.Add(Me.cmdObjectHighlightColor)
-        Me.gbObjects.Controls.Add(Me.cmdObjectColor)
-        Me.gbObjects.Controls.Add(Me.cmdObjectVelocityX)
-        Me.gbObjects.Controls.Add(Me.cmdObjectPositionX)
-        Me.gbObjects.Controls.Add(Me.cmdObjectCharge)
-        Me.gbObjects.Controls.Add(Me.cmdObjectMass)
-        Me.gbObjects.Controls.Add(Me.lblObjectHighlightColor)
-        Me.gbObjects.Controls.Add(Me.lblObjectName)
-        Me.gbObjects.Controls.Add(Me.lblObjectTransparency)
-        Me.gbObjects.Controls.Add(Me.txtObjectVelocityZ)
-        Me.gbObjects.Controls.Add(Me.txtObjectName)
-        Me.gbObjects.Controls.Add(Me.txtObjectVelocityY)
-        Me.gbObjects.Controls.Add(Me.lblObjectMass)
-        Me.gbObjects.Controls.Add(Me.lblObjectCharge)
-        Me.gbObjects.Controls.Add(Me.lblObjectColor)
-        Me.gbObjects.Controls.Add(Me.lblObjectPosition)
-        Me.gbObjects.Controls.Add(Me.lblObjectVelocity)
-        Me.gbObjects.Controls.Add(Me.lblObjectHighlightSharpness)
-        Me.gbObjects.Controls.Add(Me.tbObjectTransparency)
-        Me.gbObjects.Controls.Add(Me.txtObjectPositionZ)
-        Me.gbObjects.Controls.Add(Me.txtObjectPositionX)
-        Me.gbObjects.Controls.Add(Me.txtObjectPositionY)
-        Me.gbObjects.Controls.Add(Me.txtObjectVelocityX)
-        Me.gbObjects.Controls.Add(Me.txtObjectMass)
-        Me.gbObjects.Controls.Add(Me.txtObjectCharge)
-        Me.gbObjects.Controls.Add(Me.txtObjectNumber)
-        Me.gbObjects.Controls.Add(Me.tbObjectReflectivity)
-        Me.gbObjects.Controls.Add(Me.tbObjectHighlightSharpness)
-        Me.gbObjects.Controls.Add(Me.txtObjectSizeX)
-        Me.gbObjects.Controls.Add(Me.txtObjectSizeY)
-        Me.gbObjects.Controls.Add(Me.txtObjectSizeZ)
-        Me.gbObjects.Controls.Add(Me.lblObjectSize)
-        Me.gbObjects.Controls.Add(Me.txtObjectNormalZ)
-        Me.gbObjects.Controls.Add(Me.txtObjectNormalY)
-        Me.gbObjects.Controls.Add(Me.txtObjectNormalX)
-        Me.gbObjects.Controls.Add(Me.cmdObjectRadius)
-        Me.gbObjects.Controls.Add(Me.lblObjectRadius)
-        Me.gbObjects.Controls.Add(Me.txtObjectRotationZ)
-        Me.gbObjects.Controls.Add(Me.cmdObjectRotationZ)
-        Me.gbObjects.Controls.Add(Me.txtObjectRotationY)
-        Me.gbObjects.Controls.Add(Me.cmdObjectRotationY)
-        Me.gbObjects.Controls.Add(Me.txtObjectRotationX)
-        Me.gbObjects.Controls.Add(Me.cmdObjectRotationX)
-        Me.gbObjects.Controls.Add(Me.lblObjectRotation)
-        Me.gbObjects.Controls.Add(Me.lblObjectNormal)
-        Me.gbObjects.Controls.Add(Me.cmdObjectSizeX)
-        Me.gbObjects.Controls.Add(Me.cmdObjectSizeY)
-        Me.gbObjects.Controls.Add(Me.cmdObjectSizeZ)
-        Me.gbObjects.Controls.Add(Me.txtObjectRadius)
-        Me.gbObjects.Controls.Add(Me.cmdObjectNormalX)
-        Me.gbObjects.Controls.Add(Me.cmdObjectNormalY)
-        Me.gbObjects.Controls.Add(Me.cmdObjectNormalZ)
-        Me.gbObjects.Location = New System.Drawing.Point(0, 0)
-        Me.gbObjects.Name = "gbObjects"
-        Me.gbObjects.Size = New System.Drawing.Size(451, 528)
-        Me.gbObjects.TabIndex = 70
-        Me.gbObjects.TabStop = False
-        Me.gbObjects.Text = "Objects"
-        '
-        'plObjectHighlightColor
-        '
-        Me.plObjectHighlightColor.BackColor = System.Drawing.Color.White
-        Me.plObjectHighlightColor.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.plObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.plObjectHighlightColor.ForeColor = System.Drawing.Color.White
-        Me.plObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.plObjectHighlightColor.Location = New System.Drawing.Point(151, 377)
-        Me.plObjectHighlightColor.Name = "plObjectHighlightColor"
-        Me.plObjectHighlightColor.Size = New System.Drawing.Size(292, 21)
-        Me.plObjectHighlightColor.TabIndex = 38
-        Me.plObjectHighlightColor.UseVisualStyleBackColor = False
-        '
-        'plObjectColor
-        '
-        Me.plObjectColor.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.plObjectColor.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.plObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.plObjectColor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.plObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.plObjectColor.Location = New System.Drawing.Point(151, 348)
-        Me.plObjectColor.Name = "plObjectColor"
-        Me.plObjectColor.Size = New System.Drawing.Size(292, 21)
-        Me.plObjectColor.TabIndex = 36
-        Me.plObjectColor.UseVisualStyleBackColor = False
-        '
-        'cmdObjectRefractiveIndex
-        '
-        Me.cmdObjectRefractiveIndex.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectRefractiveIndex.FlatAppearance.BorderSize = 0
-        Me.cmdObjectRefractiveIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectRefractiveIndex.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectRefractiveIndex.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectRefractiveIndex.Location = New System.Drawing.Point(128, 475)
-        Me.cmdObjectRefractiveIndex.Name = "cmdObjectRefractiveIndex"
-        Me.cmdObjectRefractiveIndex.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectRefractiveIndex.TabIndex = 45
-        Me.cmdObjectRefractiveIndex.Text = "ƒ"
-        Me.cmdObjectRefractiveIndex.UseVisualStyleBackColor = False
-        '
-        'txtObjectRefractiveIndex
-        '
-        Me.txtObjectRefractiveIndex.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectRefractiveIndex.Location = New System.Drawing.Point(151, 475)
-        Me.txtObjectRefractiveIndex.Name = "txtObjectRefractiveIndex"
-        Me.txtObjectRefractiveIndex.Size = New System.Drawing.Size(292, 35)
-        Me.txtObjectRefractiveIndex.TabIndex = 46
-        Me.txtObjectRefractiveIndex.Text = "1"
-        Me.txtObjectRefractiveIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblObjectRefractiveIndex
-        '
-        Me.lblObjectRefractiveIndex.AutoEllipsis = True
-        Me.lblObjectRefractiveIndex.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectRefractiveIndex.Location = New System.Drawing.Point(3, 475)
-        Me.lblObjectRefractiveIndex.Name = "lblObjectRefractiveIndex"
-        Me.lblObjectRefractiveIndex.Size = New System.Drawing.Size(117, 21)
-        Me.lblObjectRefractiveIndex.TabIndex = 233
-        Me.lblObjectRefractiveIndex.Text = "Refractive Index: "
-        Me.lblObjectRefractiveIndex.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectRefractiveIndex.UseMnemonic = False
-        '
-        'lblObjectReflectivity
-        '
-        Me.lblObjectReflectivity.AutoEllipsis = True
-        Me.lblObjectReflectivity.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectReflectivity.Location = New System.Drawing.Point(3, 424)
-        Me.lblObjectReflectivity.Name = "lblObjectReflectivity"
-        Me.lblObjectReflectivity.Size = New System.Drawing.Size(117, 21)
-        Me.lblObjectReflectivity.TabIndex = 230
-        Me.lblObjectReflectivity.Text = "Reflectivity: "
-        Me.lblObjectReflectivity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectReflectivity.UseMnemonic = False
-        '
-        'cmdObjectReflectivity
-        '
-        Me.cmdObjectReflectivity.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectReflectivity.FlatAppearance.BorderSize = 0
-        Me.cmdObjectReflectivity.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectReflectivity.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectReflectivity.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectReflectivity.Location = New System.Drawing.Point(128, 424)
-        Me.cmdObjectReflectivity.Name = "cmdObjectReflectivity"
-        Me.cmdObjectReflectivity.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectReflectivity.TabIndex = 41
-        Me.cmdObjectReflectivity.Text = "ƒ"
-        Me.cmdObjectReflectivity.UseVisualStyleBackColor = False
-        '
-        'lblObjectType
-        '
-        Me.lblObjectType.AutoEllipsis = True
-        Me.lblObjectType.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectType.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectType.Location = New System.Drawing.Point(3, 124)
-        Me.lblObjectType.Name = "lblObjectType"
-        Me.lblObjectType.Size = New System.Drawing.Size(118, 23)
-        Me.lblObjectType.TabIndex = 213
-        Me.lblObjectType.Text = "Type of Objects: "
-        Me.lblObjectType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectType.UseMnemonic = False
-        '
-        'cbObjectType
-        '
-        Me.cbObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbObjectType.FormattingEnabled = True
-        Me.cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Plane", "Infinite Plane"})
-        Me.cbObjectType.Location = New System.Drawing.Point(151, 124)
-        Me.cbObjectType.Name = "cbObjectType"
-        Me.cbObjectType.Size = New System.Drawing.Size(292, 35)
-        Me.cbObjectType.TabIndex = 2
-
-        '
-        'chObjectWireframe
-        '
-        Me.chObjectWireframe.AutoEllipsis = True
-        Me.chObjectWireframe.Enabled = False
-        Me.chObjectWireframe.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chObjectWireframe.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chObjectWireframe.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chObjectWireframe.Location = New System.Drawing.Point(244, 502)
-        Me.chObjectWireframe.Name = "chObjectWireframe"
-        Me.chObjectWireframe.Size = New System.Drawing.Size(152, 19)
-        Me.chObjectWireframe.TabIndex = 49
-        Me.chObjectWireframe.Text = "Render as Wireframe"
-        Me.chObjectWireframe.UseMnemonic = False
-        Me.chObjectWireframe.UseVisualStyleBackColor = True
-        '
-        'chObjectAffected
-        '
-        Me.chObjectAffected.AutoSize = True
-        Me.chObjectAffected.Checked = True
-        Me.chObjectAffected.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chObjectAffected.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.chObjectAffected.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chObjectAffected.Location = New System.Drawing.Point(114, 503)
-        Me.chObjectAffected.Name = "chObjectAffected"
-        Me.chObjectAffected.Size = New System.Drawing.Size(245, 31)
-        Me.chObjectAffected.TabIndex = 48
-        Me.chObjectAffected.Text = "Affected by Others"
-        Me.chObjectAffected.UseVisualStyleBackColor = True
-        '
-        'chObjectAffects
-        '
-        Me.chObjectAffects.AutoSize = True
-        Me.chObjectAffects.Checked = True
-        Me.chObjectAffects.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chObjectAffects.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.chObjectAffects.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chObjectAffects.Location = New System.Drawing.Point(6, 503)
-        Me.chObjectAffects.Name = "chObjectAffects"
-        Me.chObjectAffects.Size = New System.Drawing.Size(197, 31)
-        Me.chObjectAffects.TabIndex = 47
-        Me.chObjectAffects.Text = "Affects Others"
-        Me.chObjectAffects.UseVisualStyleBackColor = True
-        '
-        'cmdObjectNumber
-        '
-        Me.cmdObjectNumber.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectNumber.BackColor = System.Drawing.SystemColors.Control
-        Me.cmdObjectNumber.FlatAppearance.BorderSize = 0
-        Me.cmdObjectNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectNumber.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectNumber.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectNumber.Location = New System.Drawing.Point(128, 153)
-        Me.cmdObjectNumber.Name = "cmdObjectNumber"
-        Me.cmdObjectNumber.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectNumber.TabIndex = 3
-        Me.cmdObjectNumber.Text = "ƒ"
-        Me.cmdObjectNumber.UseVisualStyleBackColor = False
-        '
-        'lblObjectNumber
-        '
-        Me.lblObjectNumber.AutoEllipsis = True
-        Me.lblObjectNumber.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectNumber.Location = New System.Drawing.Point(3, 153)
-        Me.lblObjectNumber.Name = "lblObjectNumber"
-        Me.lblObjectNumber.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectNumber.TabIndex = 205
-        Me.lblObjectNumber.Text = "Number of Objects:"
-        Me.lblObjectNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectNumber.UseMnemonic = False
-        '
-        'listGroups
-        '
-        Me.listGroups.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.listGroups.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.listGroups.IntegralHeight = False
-        Me.listGroups.ItemHeight = 27
-        Me.listGroups.Location = New System.Drawing.Point(6, 20)
-        Me.listGroups.Name = "listGroups"
-        Me.listGroups.Size = New System.Drawing.Size(437, 74)
-        Me.listGroups.TabIndex = 0
-        '
-        'cmdObjectVelocityZ
-        '
-        Me.cmdObjectVelocityZ.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectVelocityZ.FlatAppearance.BorderSize = 0
-        Me.cmdObjectVelocityZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectVelocityZ.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectVelocityZ.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectVelocityZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectVelocityZ.Location = New System.Drawing.Point(339, 321)
-        Me.cmdObjectVelocityZ.Name = "cmdObjectVelocityZ"
-        Me.cmdObjectVelocityZ.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectVelocityZ.TabIndex = 33
-        Me.cmdObjectVelocityZ.Text = "ƒ"
-        Me.cmdObjectVelocityZ.UseVisualStyleBackColor = False
-        '
-        'cmdObjectVelocityY
-        '
-        Me.cmdObjectVelocityY.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectVelocityY.FlatAppearance.BorderSize = 0
-        Me.cmdObjectVelocityY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectVelocityY.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectVelocityY.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectVelocityY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectVelocityY.Location = New System.Drawing.Point(234, 321)
-        Me.cmdObjectVelocityY.Name = "cmdObjectVelocityY"
-        Me.cmdObjectVelocityY.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectVelocityY.TabIndex = 31
-        Me.cmdObjectVelocityY.Text = "ƒ"
-        Me.cmdObjectVelocityY.UseVisualStyleBackColor = False
-        '
-        'cmdObjectTransparency
-        '
-        Me.cmdObjectTransparency.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectTransparency.FlatAppearance.BorderSize = 0
-        Me.cmdObjectTransparency.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectTransparency.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectTransparency.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectTransparency.Location = New System.Drawing.Point(128, 448)
-        Me.cmdObjectTransparency.Name = "cmdObjectTransparency"
-        Me.cmdObjectTransparency.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectTransparency.TabIndex = 43
-        Me.cmdObjectTransparency.Text = "ƒ"
-        Me.cmdObjectTransparency.UseVisualStyleBackColor = False
-        '
-        'cmdObjectHighlightSharpness
-        '
-        Me.cmdObjectHighlightSharpness.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectHighlightSharpness.FlatAppearance.BorderSize = 0
-        Me.cmdObjectHighlightSharpness.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectHighlightSharpness.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectHighlightSharpness.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectHighlightSharpness.Location = New System.Drawing.Point(128, 401)
-        Me.cmdObjectHighlightSharpness.Name = "cmdObjectHighlightSharpness"
-        Me.cmdObjectHighlightSharpness.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectHighlightSharpness.TabIndex = 39
-        Me.cmdObjectHighlightSharpness.Text = "ƒ"
-        Me.cmdObjectHighlightSharpness.UseVisualStyleBackColor = False
-        '
-        'cmdObjectPositionZ
-        '
-        Me.cmdObjectPositionZ.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectPositionZ.FlatAppearance.BorderSize = 0
-        Me.cmdObjectPositionZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectPositionZ.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectPositionZ.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectPositionZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectPositionZ.Location = New System.Drawing.Point(339, 292)
-        Me.cmdObjectPositionZ.Name = "cmdObjectPositionZ"
-        Me.cmdObjectPositionZ.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectPositionZ.TabIndex = 27
-        Me.cmdObjectPositionZ.Text = "ƒ"
-        Me.cmdObjectPositionZ.UseVisualStyleBackColor = False
-        '
-        'cmdObjectPositionY
-        '
-        Me.cmdObjectPositionY.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectPositionY.FlatAppearance.BorderSize = 0
-        Me.cmdObjectPositionY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectPositionY.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectPositionY.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectPositionY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectPositionY.Location = New System.Drawing.Point(234, 292)
-        Me.cmdObjectPositionY.Name = "cmdObjectPositionY"
-        Me.cmdObjectPositionY.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectPositionY.TabIndex = 25
-        Me.cmdObjectPositionY.Text = "ƒ"
-        Me.cmdObjectPositionY.UseVisualStyleBackColor = False
-        '
-        'cmdObjectHighlightColor
-        '
-        Me.cmdObjectHighlightColor.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectHighlightColor.FlatAppearance.BorderSize = 0
-        Me.cmdObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectHighlightColor.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectHighlightColor.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectHighlightColor.Location = New System.Drawing.Point(128, 377)
-        Me.cmdObjectHighlightColor.Name = "cmdObjectHighlightColor"
-        Me.cmdObjectHighlightColor.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectHighlightColor.TabIndex = 37
-        Me.cmdObjectHighlightColor.Text = "ƒ"
-        Me.cmdObjectHighlightColor.UseVisualStyleBackColor = False
-        '
-        'cmdObjectColor
-        '
-        Me.cmdObjectColor.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectColor.FlatAppearance.BorderSize = 0
-        Me.cmdObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectColor.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectColor.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectColor.Location = New System.Drawing.Point(128, 348)
-        Me.cmdObjectColor.Name = "cmdObjectColor"
-        Me.cmdObjectColor.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectColor.TabIndex = 35
-        Me.cmdObjectColor.Text = "ƒ"
-        Me.cmdObjectColor.UseVisualStyleBackColor = False
-        '
-        'cmdObjectVelocityX
-        '
-        Me.cmdObjectVelocityX.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectVelocityX.FlatAppearance.BorderSize = 0
-        Me.cmdObjectVelocityX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectVelocityX.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectVelocityX.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectVelocityX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectVelocityX.Location = New System.Drawing.Point(128, 321)
-        Me.cmdObjectVelocityX.Name = "cmdObjectVelocityX"
-        Me.cmdObjectVelocityX.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectVelocityX.TabIndex = 29
-        Me.cmdObjectVelocityX.Text = "ƒ"
-        Me.cmdObjectVelocityX.UseVisualStyleBackColor = False
-        '
-        'cmdObjectPositionX
-        '
-        Me.cmdObjectPositionX.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectPositionX.FlatAppearance.BorderSize = 0
-        Me.cmdObjectPositionX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectPositionX.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectPositionX.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectPositionX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectPositionX.Location = New System.Drawing.Point(128, 292)
-        Me.cmdObjectPositionX.Name = "cmdObjectPositionX"
-        Me.cmdObjectPositionX.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectPositionX.TabIndex = 23
-        Me.cmdObjectPositionX.Text = "ƒ"
-        Me.cmdObjectPositionX.UseVisualStyleBackColor = False
-        '
-        'cmdObjectCharge
-        '
-        Me.cmdObjectCharge.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectCharge.FlatAppearance.BorderSize = 0
-        Me.cmdObjectCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectCharge.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectCharge.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectCharge.Location = New System.Drawing.Point(128, 209)
-        Me.cmdObjectCharge.Name = "cmdObjectCharge"
-        Me.cmdObjectCharge.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectCharge.TabIndex = 7
-        Me.cmdObjectCharge.Text = "ƒ"
-        Me.cmdObjectCharge.UseVisualStyleBackColor = False
-        '
-        'cmdObjectMass
-        '
-        Me.cmdObjectMass.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectMass.FlatAppearance.BorderSize = 0
-        Me.cmdObjectMass.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectMass.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectMass.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectMass.Location = New System.Drawing.Point(128, 180)
-        Me.cmdObjectMass.Name = "cmdObjectMass"
-        Me.cmdObjectMass.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectMass.TabIndex = 5
-        Me.cmdObjectMass.Text = "ƒ"
-        Me.cmdObjectMass.UseVisualStyleBackColor = False
-        '
-        'lblObjectHighlightColor
-        '
-        Me.lblObjectHighlightColor.AutoEllipsis = True
-        Me.lblObjectHighlightColor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectHighlightColor.Location = New System.Drawing.Point(3, 377)
-        Me.lblObjectHighlightColor.Name = "lblObjectHighlightColor"
-        Me.lblObjectHighlightColor.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectHighlightColor.TabIndex = 161
-        Me.lblObjectHighlightColor.Text = "Highlight Color: "
-        Me.lblObjectHighlightColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectHighlightColor.UseMnemonic = False
-        '
-        'lblObjectName
-        '
-        Me.lblObjectName.AutoEllipsis = True
-        Me.lblObjectName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectName.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectName.Location = New System.Drawing.Point(3, 97)
-        Me.lblObjectName.Name = "lblObjectName"
-        Me.lblObjectName.Size = New System.Drawing.Size(146, 21)
-        Me.lblObjectName.TabIndex = 140
-        Me.lblObjectName.Text = "Name of Objects: "
-        Me.lblObjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectName.UseMnemonic = False
-        '
-        'lblObjectTransparency
-        '
-        Me.lblObjectTransparency.AutoEllipsis = True
-        Me.lblObjectTransparency.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectTransparency.Location = New System.Drawing.Point(3, 448)
-        Me.lblObjectTransparency.Name = "lblObjectTransparency"
-        Me.lblObjectTransparency.Size = New System.Drawing.Size(127, 21)
-        Me.lblObjectTransparency.TabIndex = 149
-        Me.lblObjectTransparency.Text = "Transparency:"
-        Me.lblObjectTransparency.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectTransparency.UseMnemonic = False
-        '
-        'txtObjectVelocityZ
-        '
-        Me.txtObjectVelocityZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectVelocityZ.Location = New System.Drawing.Point(361, 321)
-        Me.txtObjectVelocityZ.Name = "txtObjectVelocityZ"
-        Me.txtObjectVelocityZ.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectVelocityZ.TabIndex = 34
-        Me.txtObjectVelocityZ.Text = "0"
-        Me.txtObjectVelocityZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectName
-        '
-        Me.txtObjectName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectName.Location = New System.Drawing.Point(151, 97)
-        Me.txtObjectName.Name = "txtObjectName"
-        Me.txtObjectName.Size = New System.Drawing.Size(292, 35)
-        Me.txtObjectName.TabIndex = 1
-        Me.txtObjectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectVelocityY
-        '
-        Me.txtObjectVelocityY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectVelocityY.Location = New System.Drawing.Point(256, 321)
-        Me.txtObjectVelocityY.Name = "txtObjectVelocityY"
-        Me.txtObjectVelocityY.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectVelocityY.TabIndex = 32
-        Me.txtObjectVelocityY.Text = "0"
-        Me.txtObjectVelocityY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblObjectMass
-        '
-        Me.lblObjectMass.AutoEllipsis = True
-        Me.lblObjectMass.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectMass.Location = New System.Drawing.Point(3, 180)
-        Me.lblObjectMass.Name = "lblObjectMass"
-        Me.lblObjectMass.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectMass.TabIndex = 141
-        Me.lblObjectMass.Text = "Mass (kg): "
-        Me.lblObjectMass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectMass.UseMnemonic = False
-        '
-        'lblObjectCharge
-        '
-        Me.lblObjectCharge.AutoEllipsis = True
-        Me.lblObjectCharge.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectCharge.Location = New System.Drawing.Point(3, 209)
-        Me.lblObjectCharge.Name = "lblObjectCharge"
-        Me.lblObjectCharge.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectCharge.TabIndex = 142
-        Me.lblObjectCharge.Text = "Charge (C): "
-        Me.lblObjectCharge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectCharge.UseMnemonic = False
-        '
-        'lblObjectColor
-        '
-        Me.lblObjectColor.AutoEllipsis = True
-        Me.lblObjectColor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectColor.Location = New System.Drawing.Point(3, 348)
-        Me.lblObjectColor.Name = "lblObjectColor"
-        Me.lblObjectColor.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectColor.TabIndex = 146
-        Me.lblObjectColor.Text = "Color: "
-        Me.lblObjectColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectColor.UseMnemonic = False
-        '
-        'lblObjectPosition
-        '
-        Me.lblObjectPosition.AutoEllipsis = True
-        Me.lblObjectPosition.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectPosition.Location = New System.Drawing.Point(3, 292)
-        Me.lblObjectPosition.Name = "lblObjectPosition"
-        Me.lblObjectPosition.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectPosition.TabIndex = 144
-        Me.lblObjectPosition.Text = "Position X,Y,Z  (m):"
-        Me.lblObjectPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectPosition.UseMnemonic = False
-        '
-        'lblObjectVelocity
-        '
-        Me.lblObjectVelocity.AutoEllipsis = True
-        Me.lblObjectVelocity.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectVelocity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectVelocity.Location = New System.Drawing.Point(3, 321)
-        Me.lblObjectVelocity.Name = "lblObjectVelocity"
-        Me.lblObjectVelocity.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectVelocity.TabIndex = 145
-        Me.lblObjectVelocity.Text = "Velocity X,Y,Z (m/s): "
-        Me.lblObjectVelocity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectVelocity.UseMnemonic = False
-        '
-        'lblObjectHighlightSharpness
-        '
-        Me.lblObjectHighlightSharpness.AutoEllipsis = True
-        Me.lblObjectHighlightSharpness.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectHighlightSharpness.Location = New System.Drawing.Point(3, 401)
-        Me.lblObjectHighlightSharpness.Name = "lblObjectHighlightSharpness"
-        Me.lblObjectHighlightSharpness.Size = New System.Drawing.Size(126, 21)
-        Me.lblObjectHighlightSharpness.TabIndex = 164
-        Me.lblObjectHighlightSharpness.Text = "Highlight Sharpness: "
-        Me.lblObjectHighlightSharpness.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectHighlightSharpness.UseMnemonic = False
-        '
-        'tbObjectTransparency
-        '
-        Me.tbObjectTransparency.BackColor = System.Drawing.SystemColors.Control
-        Me.tbObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbObjectTransparency.LargeChange = 15
-        Me.tbObjectTransparency.Location = New System.Drawing.Point(151, 448)
-        Me.tbObjectTransparency.Maximum = 255
-        Me.tbObjectTransparency.Name = "tbObjectTransparency"
-        Me.tbObjectTransparency.Size = New System.Drawing.Size(292, 90)
-        Me.tbObjectTransparency.SmallChange = 15
-        Me.tbObjectTransparency.TabIndex = 44
-        Me.tbObjectTransparency.TickFrequency = 5
-        Me.tbObjectTransparency.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbObjectTransparency.Value = 255
-        '
-        'txtObjectPositionZ
-        '
-        Me.txtObjectPositionZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectPositionZ.Location = New System.Drawing.Point(361, 292)
-        Me.txtObjectPositionZ.Name = "txtObjectPositionZ"
-        Me.txtObjectPositionZ.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectPositionZ.TabIndex = 28
-        Me.txtObjectPositionZ.Text = "0"
-        Me.txtObjectPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectPositionX
-        '
-        Me.txtObjectPositionX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectPositionX.Location = New System.Drawing.Point(151, 292)
-        Me.txtObjectPositionX.Name = "txtObjectPositionX"
-        Me.txtObjectPositionX.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectPositionX.TabIndex = 24
-        Me.txtObjectPositionX.Text = "0"
-        Me.txtObjectPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectPositionY
-        '
-        Me.txtObjectPositionY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectPositionY.Location = New System.Drawing.Point(256, 292)
-        Me.txtObjectPositionY.Name = "txtObjectPositionY"
-        Me.txtObjectPositionY.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectPositionY.TabIndex = 26
-        Me.txtObjectPositionY.Text = "0"
-        Me.txtObjectPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectVelocityX
-        '
-        Me.txtObjectVelocityX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectVelocityX.Location = New System.Drawing.Point(151, 321)
-        Me.txtObjectVelocityX.Name = "txtObjectVelocityX"
-        Me.txtObjectVelocityX.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectVelocityX.TabIndex = 30
-        Me.txtObjectVelocityX.Text = "0"
-        Me.txtObjectVelocityX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectMass
-        '
-        Me.txtObjectMass.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectMass.Location = New System.Drawing.Point(151, 180)
-        Me.txtObjectMass.Name = "txtObjectMass"
-        Me.txtObjectMass.Size = New System.Drawing.Size(292, 35)
-        Me.txtObjectMass.TabIndex = 6
-        Me.txtObjectMass.Text = "0"
-        Me.txtObjectMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectCharge
-        '
-        Me.txtObjectCharge.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectCharge.Location = New System.Drawing.Point(151, 209)
-        Me.txtObjectCharge.Name = "txtObjectCharge"
-        Me.txtObjectCharge.Size = New System.Drawing.Size(292, 35)
-        Me.txtObjectCharge.TabIndex = 8
-        Me.txtObjectCharge.Text = "0"
-        Me.txtObjectCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectNumber
-        '
-        Me.txtObjectNumber.Enabled = False
-        Me.txtObjectNumber.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectNumber.Location = New System.Drawing.Point(151, 153)
-        Me.txtObjectNumber.Name = "txtObjectNumber"
-        Me.txtObjectNumber.Size = New System.Drawing.Size(292, 35)
-        Me.txtObjectNumber.TabIndex = 4
-        Me.txtObjectNumber.Text = "0"
-        Me.txtObjectNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'tbObjectReflectivity
-        '
-        Me.tbObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbObjectReflectivity.LargeChange = 10
-        Me.tbObjectReflectivity.Location = New System.Drawing.Point(151, 424)
-        Me.tbObjectReflectivity.Maximum = 100
-        Me.tbObjectReflectivity.Name = "tbObjectReflectivity"
-        Me.tbObjectReflectivity.Size = New System.Drawing.Size(292, 90)
-        Me.tbObjectReflectivity.TabIndex = 42
-        Me.tbObjectReflectivity.TickFrequency = 5
-        Me.tbObjectReflectivity.TickStyle = System.Windows.Forms.TickStyle.None
-        '
-        'tbObjectHighlightSharpness
-        '
-        Me.tbObjectHighlightSharpness.BackColor = System.Drawing.SystemColors.Control
-        Me.tbObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbObjectHighlightSharpness.LargeChange = 20
-        Me.tbObjectHighlightSharpness.Location = New System.Drawing.Point(151, 400)
-        Me.tbObjectHighlightSharpness.Maximum = 200
-        Me.tbObjectHighlightSharpness.Name = "tbObjectHighlightSharpness"
-        Me.tbObjectHighlightSharpness.Size = New System.Drawing.Size(292, 90)
-        Me.tbObjectHighlightSharpness.SmallChange = 10
-        Me.tbObjectHighlightSharpness.TabIndex = 40
-        Me.tbObjectHighlightSharpness.TickFrequency = 5
-        Me.tbObjectHighlightSharpness.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbObjectHighlightSharpness.Value = 50
-        '
-        'txtObjectSizeX
-        '
-        Me.txtObjectSizeX.Enabled = False
-        Me.txtObjectSizeX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectSizeX.Location = New System.Drawing.Point(151, 238)
-        Me.txtObjectSizeX.Name = "txtObjectSizeX"
-        Me.txtObjectSizeX.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectSizeX.TabIndex = 10
-        Me.txtObjectSizeX.Text = "5"
-        Me.txtObjectSizeX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectSizeY
-        '
-        Me.txtObjectSizeY.Enabled = False
-        Me.txtObjectSizeY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectSizeY.Location = New System.Drawing.Point(256, 238)
-        Me.txtObjectSizeY.Name = "txtObjectSizeY"
-        Me.txtObjectSizeY.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectSizeY.TabIndex = 12
-        Me.txtObjectSizeY.Text = "5"
-        Me.txtObjectSizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectSizeZ
-        '
-        Me.txtObjectSizeZ.Enabled = False
-        Me.txtObjectSizeZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectSizeZ.Location = New System.Drawing.Point(361, 238)
-        Me.txtObjectSizeZ.Name = "txtObjectSizeZ"
-        Me.txtObjectSizeZ.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectSizeZ.TabIndex = 14
-        Me.txtObjectSizeZ.Text = "5"
-        Me.txtObjectSizeZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblObjectSize
-        '
-        Me.lblObjectSize.AutoEllipsis = True
-        Me.lblObjectSize.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectSize.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectSize.Location = New System.Drawing.Point(3, 238)
-        Me.lblObjectSize.Name = "lblObjectSize"
-        Me.lblObjectSize.Size = New System.Drawing.Size(117, 21)
-        Me.lblObjectSize.TabIndex = 218
-        Me.lblObjectSize.Text = "Size X, Y, Z (m): "
-        Me.lblObjectSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectSize.UseMnemonic = False
-        '
-        'txtObjectNormalZ
-        '
-        Me.txtObjectNormalZ.Enabled = False
-        Me.txtObjectNormalZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectNormalZ.Location = New System.Drawing.Point(361, 265)
-        Me.txtObjectNormalZ.Name = "txtObjectNormalZ"
-        Me.txtObjectNormalZ.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectNormalZ.TabIndex = 21
-        Me.txtObjectNormalZ.Text = "5"
-        Me.txtObjectNormalZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectNormalY
-        '
-        Me.txtObjectNormalY.Enabled = False
-        Me.txtObjectNormalY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectNormalY.Location = New System.Drawing.Point(256, 265)
-        Me.txtObjectNormalY.Name = "txtObjectNormalY"
-        Me.txtObjectNormalY.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectNormalY.TabIndex = 18
-        Me.txtObjectNormalY.Text = "5"
-        Me.txtObjectNormalY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtObjectNormalX
-        '
-        Me.txtObjectNormalX.Enabled = False
-        Me.txtObjectNormalX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectNormalX.Location = New System.Drawing.Point(151, 265)
-        Me.txtObjectNormalX.Name = "txtObjectNormalX"
-        Me.txtObjectNormalX.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectNormalX.TabIndex = 16
-        Me.txtObjectNormalX.Text = "5"
-        Me.txtObjectNormalX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cmdObjectRadius
-        '
-        Me.cmdObjectRadius.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectRadius.FlatAppearance.BorderSize = 0
-        Me.cmdObjectRadius.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectRadius.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectRadius.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectRadius.Location = New System.Drawing.Point(128, 238)
-        Me.cmdObjectRadius.Name = "cmdObjectRadius"
-        Me.cmdObjectRadius.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectRadius.TabIndex = 9
-        Me.cmdObjectRadius.Text = "ƒ"
-        Me.cmdObjectRadius.UseVisualStyleBackColor = False
-        '
-        'lblObjectRadius
-        '
-        Me.lblObjectRadius.AutoEllipsis = True
-        Me.lblObjectRadius.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectRadius.Location = New System.Drawing.Point(3, 238)
-        Me.lblObjectRadius.Name = "lblObjectRadius"
-        Me.lblObjectRadius.Size = New System.Drawing.Size(118, 21)
-        Me.lblObjectRadius.TabIndex = 143
-        Me.lblObjectRadius.Text = "Radius (m): "
-        Me.lblObjectRadius.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectRadius.UseMnemonic = False
-        '
-        'txtObjectRotationZ
-        '
-        Me.txtObjectRotationZ.Enabled = False
-        Me.txtObjectRotationZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectRotationZ.Location = New System.Drawing.Point(361, 265)
-        Me.txtObjectRotationZ.Name = "txtObjectRotationZ"
-        Me.txtObjectRotationZ.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectRotationZ.TabIndex = 223
-        Me.txtObjectRotationZ.Text = "5"
-        Me.txtObjectRotationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cmdObjectRotationZ
-        '
-        Me.cmdObjectRotationZ.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectRotationZ.FlatAppearance.BorderSize = 0
-        Me.cmdObjectRotationZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectRotationZ.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectRotationZ.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectRotationZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectRotationZ.Location = New System.Drawing.Point(339, 265)
-        Me.cmdObjectRotationZ.Name = "cmdObjectRotationZ"
-        Me.cmdObjectRotationZ.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectRotationZ.TabIndex = 22
-        Me.cmdObjectRotationZ.Text = "ƒ"
-        Me.cmdObjectRotationZ.UseVisualStyleBackColor = False
-        '
-        'txtObjectRotationY
-        '
-        Me.txtObjectRotationY.Enabled = False
-        Me.txtObjectRotationY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectRotationY.Location = New System.Drawing.Point(256, 265)
-        Me.txtObjectRotationY.Name = "txtObjectRotationY"
-        Me.txtObjectRotationY.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectRotationY.TabIndex = 222
-        Me.txtObjectRotationY.Text = "5"
-        Me.txtObjectRotationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cmdObjectRotationY
-        '
-        Me.cmdObjectRotationY.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectRotationY.FlatAppearance.BorderSize = 0
-        Me.cmdObjectRotationY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectRotationY.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectRotationY.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectRotationY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectRotationY.Location = New System.Drawing.Point(234, 265)
-        Me.cmdObjectRotationY.Name = "cmdObjectRotationY"
-        Me.cmdObjectRotationY.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectRotationY.TabIndex = 17
-        Me.cmdObjectRotationY.Text = "ƒ"
-        Me.cmdObjectRotationY.UseVisualStyleBackColor = False
-        '
-        'txtObjectRotationX
-        '
-        Me.txtObjectRotationX.Enabled = False
-        Me.txtObjectRotationX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectRotationX.Location = New System.Drawing.Point(151, 265)
-        Me.txtObjectRotationX.Name = "txtObjectRotationX"
-        Me.txtObjectRotationX.Size = New System.Drawing.Size(82, 35)
-        Me.txtObjectRotationX.TabIndex = 221
-        Me.txtObjectRotationX.Text = "5"
-        Me.txtObjectRotationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cmdObjectRotationX
-        '
-        Me.cmdObjectRotationX.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectRotationX.FlatAppearance.BorderSize = 0
-        Me.cmdObjectRotationX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectRotationX.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectRotationX.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectRotationX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectRotationX.Location = New System.Drawing.Point(128, 265)
-        Me.cmdObjectRotationX.Name = "cmdObjectRotationX"
-        Me.cmdObjectRotationX.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectRotationX.TabIndex = 15
-        Me.cmdObjectRotationX.Text = "ƒ"
-        Me.cmdObjectRotationX.UseVisualStyleBackColor = False
-        '
-        'lblObjectRotation
-        '
-        Me.lblObjectRotation.AutoEllipsis = True
-        Me.lblObjectRotation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectRotation.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectRotation.Location = New System.Drawing.Point(3, 265)
-        Me.lblObjectRotation.Name = "lblObjectRotation"
-        Me.lblObjectRotation.Size = New System.Drawing.Size(127, 21)
-        Me.lblObjectRotation.TabIndex = 224
-        Me.lblObjectRotation.Text = "Rotation Y, P, R  (rad):"
-        Me.lblObjectRotation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectRotation.UseMnemonic = False
-        '
-        'lblObjectNormal
-        '
-        Me.lblObjectNormal.AutoEllipsis = True
-        Me.lblObjectNormal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblObjectNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblObjectNormal.Location = New System.Drawing.Point(3, 265)
-        Me.lblObjectNormal.Name = "lblObjectNormal"
-        Me.lblObjectNormal.Size = New System.Drawing.Size(117, 21)
-        Me.lblObjectNormal.TabIndex = 228
-        Me.lblObjectNormal.Text = "Orientation X, Y, Z:"
-        Me.lblObjectNormal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblObjectNormal.UseMnemonic = False
-        '
-        'cmdObjectSizeX
-        '
-        Me.cmdObjectSizeX.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectSizeX.FlatAppearance.BorderSize = 0
-        Me.cmdObjectSizeX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectSizeX.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectSizeX.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectSizeX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectSizeX.Location = New System.Drawing.Point(128, 238)
-        Me.cmdObjectSizeX.Name = "cmdObjectSizeX"
-        Me.cmdObjectSizeX.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectSizeX.TabIndex = 168
-        Me.cmdObjectSizeX.Text = "ƒ"
-        Me.cmdObjectSizeX.UseVisualStyleBackColor = False
-        '
-        'cmdObjectSizeY
-        '
-        Me.cmdObjectSizeY.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectSizeY.FlatAppearance.BorderSize = 0
-        Me.cmdObjectSizeY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectSizeY.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectSizeY.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectSizeY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectSizeY.Location = New System.Drawing.Point(234, 238)
-        Me.cmdObjectSizeY.Name = "cmdObjectSizeY"
-        Me.cmdObjectSizeY.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectSizeY.TabIndex = 11
-        Me.cmdObjectSizeY.Text = "ƒ"
-        Me.cmdObjectSizeY.UseVisualStyleBackColor = False
-        '
-        'cmdObjectSizeZ
-        '
-        Me.cmdObjectSizeZ.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectSizeZ.FlatAppearance.BorderSize = 0
-        Me.cmdObjectSizeZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectSizeZ.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectSizeZ.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectSizeZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectSizeZ.Location = New System.Drawing.Point(339, 238)
-        Me.cmdObjectSizeZ.Name = "cmdObjectSizeZ"
-        Me.cmdObjectSizeZ.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectSizeZ.TabIndex = 13
-        Me.cmdObjectSizeZ.Text = "ƒ"
-        Me.cmdObjectSizeZ.UseVisualStyleBackColor = False
-        '
-        'txtObjectRadius
-        '
-        Me.txtObjectRadius.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtObjectRadius.Location = New System.Drawing.Point(151, 238)
-        Me.txtObjectRadius.Name = "txtObjectRadius"
-        Me.txtObjectRadius.Size = New System.Drawing.Size(292, 35)
-        Me.txtObjectRadius.TabIndex = 151
-        Me.txtObjectRadius.Text = "0"
-        Me.txtObjectRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cmdObjectNormalX
-        '
-        Me.cmdObjectNormalX.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectNormalX.FlatAppearance.BorderSize = 0
-        Me.cmdObjectNormalX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectNormalX.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectNormalX.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectNormalX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectNormalX.Location = New System.Drawing.Point(128, 265)
-        Me.cmdObjectNormalX.Name = "cmdObjectNormalX"
-        Me.cmdObjectNormalX.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectNormalX.TabIndex = 231
-        Me.cmdObjectNormalX.Text = "ƒ"
-        Me.cmdObjectNormalX.UseVisualStyleBackColor = False
-        '
-        'cmdObjectNormalY
-        '
-        Me.cmdObjectNormalY.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectNormalY.FlatAppearance.BorderSize = 0
-        Me.cmdObjectNormalY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectNormalY.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectNormalY.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectNormalY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectNormalY.Location = New System.Drawing.Point(234, 265)
-        Me.cmdObjectNormalY.Name = "cmdObjectNormalY"
-        Me.cmdObjectNormalY.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectNormalY.TabIndex = 238
-        Me.cmdObjectNormalY.Text = "ƒ"
-        Me.cmdObjectNormalY.UseVisualStyleBackColor = False
-        '
-        'cmdObjectNormalZ
-        '
-        Me.cmdObjectNormalZ.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdObjectNormalZ.FlatAppearance.BorderSize = 0
-        Me.cmdObjectNormalZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdObjectNormalZ.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.cmdObjectNormalZ.ForeColor = System.Drawing.Color.Black
-        Me.cmdObjectNormalZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdObjectNormalZ.Location = New System.Drawing.Point(339, 265)
-        Me.cmdObjectNormalZ.Name = "cmdObjectNormalZ"
-        Me.cmdObjectNormalZ.Size = New System.Drawing.Size(21, 21)
-        Me.cmdObjectNormalZ.TabIndex = 239
-        Me.cmdObjectNormalZ.Text = "ƒ"
-        Me.cmdObjectNormalZ.UseVisualStyleBackColor = False
-        '
-        'cmdGroupAdd
-        '
-        Me.cmdGroupAdd.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdGroupAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdGroupAdd.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdGroupAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdGroupAdd.Location = New System.Drawing.Point(0, 534)
-        Me.cmdGroupAdd.Name = "cmdGroupAdd"
-        Me.cmdGroupAdd.Size = New System.Drawing.Size(451, 30)
-        Me.cmdGroupAdd.TabIndex = 0
-        Me.cmdGroupAdd.Text = "Add Objects"
-        Me.cmdGroupAdd.UseVisualStyleBackColor = True
-        '
-        'cmdGroupRemove
-        '
-        Me.cmdGroupRemove.Enabled = False
-        Me.cmdGroupRemove.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdGroupRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdGroupRemove.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdGroupRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdGroupRemove.Location = New System.Drawing.Point(227, 563)
-        Me.cmdGroupRemove.Name = "cmdGroupRemove"
-        Me.cmdGroupRemove.Size = New System.Drawing.Size(224, 30)
-        Me.cmdGroupRemove.TabIndex = 2
-        Me.cmdGroupRemove.Text = "Remove Objects"
-        Me.cmdGroupRemove.UseVisualStyleBackColor = True
-        '
-        'cmdGroupReplace
-        '
-        Me.cmdGroupReplace.Enabled = False
-        Me.cmdGroupReplace.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdGroupReplace.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdGroupReplace.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdGroupReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdGroupReplace.Location = New System.Drawing.Point(0, 563)
-        Me.cmdGroupReplace.Name = "cmdGroupReplace"
-        Me.cmdGroupReplace.Size = New System.Drawing.Size(228, 30)
-        Me.cmdGroupReplace.TabIndex = 1
-        Me.cmdGroupReplace.Text = "Replace Objects"
-        Me.cmdGroupReplace.UseVisualStyleBackColor = True
-        '
-        'TabLights
-        '
-        Me.TabLights.BackColor = System.Drawing.SystemColors.Control
-        Me.TabLights.Controls.Add(Me.gbLights)
-        Me.TabLights.Controls.Add(Me.cmdLightAdd)
-        Me.TabLights.Controls.Add(Me.cmdLightRemove)
-        Me.TabLights.Controls.Add(Me.cmdLightReplace)
-        Me.TabLights.Location = New System.Drawing.Point(4, 39)
-        Me.TabLights.Name = "TabLights"
-        Me.TabLights.Size = New System.Drawing.Size(451, 581)
-        Me.TabLights.TabIndex = 2
-        Me.TabLights.Text = "Lighting"
-        Me.TabLights.UseVisualStyleBackColor = True
-        '
-        'gbLights
-        '
-        Me.gbLights.Controls.Add(Me.plLightColor)
-        Me.gbLights.Controls.Add(Me.txtLightAttenuationC)
-        Me.gbLights.Controls.Add(Me.txtLightAttenuationB)
-        Me.gbLights.Controls.Add(Me.txtLightAttenuationA)
-        Me.gbLights.Controls.Add(Me.lblLightAttenuation)
-        Me.gbLights.Controls.Add(Me.txtLightAngleOuter)
-        Me.gbLights.Controls.Add(Me.lblLightRange)
-        Me.gbLights.Controls.Add(Me.txtLightRange)
-        Me.gbLights.Controls.Add(Me.lblLightFalloff)
-        Me.gbLights.Controls.Add(Me.txtLightFalloff)
-        Me.gbLights.Controls.Add(Me.lblLightAngle)
-        Me.gbLights.Controls.Add(Me.txtLightAngleInner)
-        Me.gbLights.Controls.Add(Me.tbLightAmbient)
-        Me.gbLights.Controls.Add(Me.lblLightAmbient)
-        Me.gbLights.Controls.Add(Me.lblLightHighlight)
-        Me.gbLights.Controls.Add(Me.lblLightType)
-        Me.gbLights.Controls.Add(Me.txtLightPositionZ)
-        Me.gbLights.Controls.Add(Me.txtLightPositionY)
-        Me.gbLights.Controls.Add(Me.txtLightPositionX)
-        Me.gbLights.Controls.Add(Me.lblLightPosition)
-        Me.gbLights.Controls.Add(Me.chLightsEnable)
-        Me.gbLights.Controls.Add(Me.listLights)
-        Me.gbLights.Controls.Add(Me.txtLightName)
-        Me.gbLights.Controls.Add(Me.lblLightName)
-        Me.gbLights.Controls.Add(Me.txtLightDirectionZ)
-        Me.gbLights.Controls.Add(Me.lblLightDirection)
-        Me.gbLights.Controls.Add(Me.txtLightDirectionY)
-        Me.gbLights.Controls.Add(Me.txtLightDirectionX)
-        Me.gbLights.Controls.Add(Me.lblLightColor)
-        Me.gbLights.Controls.Add(Me.tbLightHighlight)
-        Me.gbLights.Controls.Add(Me.cbLightType)
-        Me.gbLights.Location = New System.Drawing.Point(0, 0)
-        Me.gbLights.Name = "gbLights"
-        Me.gbLights.Size = New System.Drawing.Size(451, 528)
-        Me.gbLights.TabIndex = 65
-        Me.gbLights.TabStop = False
-        Me.gbLights.Text = "Lights"
-        '
-        'plLightColor
-        '
-        Me.plLightColor.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.plLightColor.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.plLightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.plLightColor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.plLightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.plLightColor.Location = New System.Drawing.Point(151, 326)
-        Me.plLightColor.Name = "plLightColor"
-        Me.plLightColor.Size = New System.Drawing.Size(292, 21)
-        Me.plLightColor.TabIndex = 10
-        Me.plLightColor.UseVisualStyleBackColor = False
-        '
-        'txtLightAttenuationC
-        '
-        Me.txtLightAttenuationC.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightAttenuationC.Location = New System.Drawing.Point(346, 447)
-        Me.txtLightAttenuationC.Name = "txtLightAttenuationC"
-        Me.txtLightAttenuationC.Size = New System.Drawing.Size(97, 35)
-        Me.txtLightAttenuationC.TabIndex = 16
-        Me.txtLightAttenuationC.Text = "0"
-        Me.txtLightAttenuationC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtLightAttenuationB
-        '
-        Me.txtLightAttenuationB.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightAttenuationB.Location = New System.Drawing.Point(248, 447)
-        Me.txtLightAttenuationB.Name = "txtLightAttenuationB"
-        Me.txtLightAttenuationB.Size = New System.Drawing.Size(98, 35)
-        Me.txtLightAttenuationB.TabIndex = 15
-        Me.txtLightAttenuationB.Text = "0"
-        Me.txtLightAttenuationB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtLightAttenuationA
-        '
-        Me.txtLightAttenuationA.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightAttenuationA.Location = New System.Drawing.Point(151, 447)
-        Me.txtLightAttenuationA.Name = "txtLightAttenuationA"
-        Me.txtLightAttenuationA.Size = New System.Drawing.Size(97, 35)
-        Me.txtLightAttenuationA.TabIndex = 14
-        Me.txtLightAttenuationA.Text = "0"
-        Me.txtLightAttenuationA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightAttenuation
-        '
-        Me.lblLightAttenuation.AutoEllipsis = True
-        Me.lblLightAttenuation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightAttenuation.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightAttenuation.Location = New System.Drawing.Point(3, 445)
-        Me.lblLightAttenuation.Name = "lblLightAttenuation"
-        Me.lblLightAttenuation.Size = New System.Drawing.Size(135, 25)
-        Me.lblLightAttenuation.TabIndex = 114
-        Me.lblLightAttenuation.Text = "Attenuation A, B, C:"
-        Me.lblLightAttenuation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightAttenuation.UseMnemonic = False
-        '
-        'txtLightAngleOuter
-        '
-        Me.txtLightAngleOuter.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightAngleOuter.Location = New System.Drawing.Point(297, 474)
-        Me.txtLightAngleOuter.Name = "txtLightAngleOuter"
-        Me.txtLightAngleOuter.Size = New System.Drawing.Size(146, 35)
-        Me.txtLightAngleOuter.TabIndex = 18
-        Me.txtLightAngleOuter.Text = "45"
-        Me.txtLightAngleOuter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightRange
-        '
-        Me.lblLightRange.AutoEllipsis = True
-        Me.lblLightRange.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightRange.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightRange.Location = New System.Drawing.Point(3, 417)
-        Me.lblLightRange.Name = "lblLightRange"
-        Me.lblLightRange.Size = New System.Drawing.Size(114, 25)
-        Me.lblLightRange.TabIndex = 112
-        Me.lblLightRange.Text = "Range (m): "
-        Me.lblLightRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightRange.UseMnemonic = False
-        '
-        'txtLightRange
-        '
-        Me.txtLightRange.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightRange.Location = New System.Drawing.Point(151, 419)
-        Me.txtLightRange.Name = "txtLightRange"
-        Me.txtLightRange.Size = New System.Drawing.Size(292, 35)
-        Me.txtLightRange.TabIndex = 13
-        Me.txtLightRange.Text = "45"
-        Me.txtLightRange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightFalloff
-        '
-        Me.lblLightFalloff.AutoEllipsis = True
-        Me.lblLightFalloff.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightFalloff.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightFalloff.Location = New System.Drawing.Point(3, 499)
-        Me.lblLightFalloff.Name = "lblLightFalloff"
-        Me.lblLightFalloff.Size = New System.Drawing.Size(135, 25)
-        Me.lblLightFalloff.TabIndex = 110
-        Me.lblLightFalloff.Text = "Inner to Outer Falloff: "
-        Me.lblLightFalloff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightFalloff.UseMnemonic = False
-        '
-        'txtLightFalloff
-        '
-        Me.txtLightFalloff.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightFalloff.Location = New System.Drawing.Point(151, 501)
-        Me.txtLightFalloff.Name = "txtLightFalloff"
-        Me.txtLightFalloff.Size = New System.Drawing.Size(292, 35)
-        Me.txtLightFalloff.TabIndex = 19
-        Me.txtLightFalloff.Text = "1"
-        Me.txtLightFalloff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightAngle
-        '
-        Me.lblLightAngle.AutoEllipsis = True
-        Me.lblLightAngle.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightAngle.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightAngle.Location = New System.Drawing.Point(3, 472)
-        Me.lblLightAngle.Name = "lblLightAngle"
-        Me.lblLightAngle.Size = New System.Drawing.Size(135, 25)
-        Me.lblLightAngle.TabIndex = 108
-        Me.lblLightAngle.Text = "Inner, Outer Angle (°): "
-        Me.lblLightAngle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightAngle.UseMnemonic = False
-        '
-        'txtLightAngleInner
-        '
-        Me.txtLightAngleInner.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightAngleInner.Location = New System.Drawing.Point(151, 474)
-        Me.txtLightAngleInner.Name = "txtLightAngleInner"
-        Me.txtLightAngleInner.Size = New System.Drawing.Size(146, 35)
-        Me.txtLightAngleInner.TabIndex = 17
-        Me.txtLightAngleInner.Text = "45"
-        Me.txtLightAngleInner.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'tbLightAmbient
-        '
-        Me.tbLightAmbient.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbLightAmbient.LargeChange = 15
-        Me.tbLightAmbient.Location = New System.Drawing.Point(151, 386)
-        Me.tbLightAmbient.Maximum = 100
-        Me.tbLightAmbient.Name = "tbLightAmbient"
-        Me.tbLightAmbient.Size = New System.Drawing.Size(292, 90)
-        Me.tbLightAmbient.SmallChange = 15
-        Me.tbLightAmbient.TabIndex = 12
-        Me.tbLightAmbient.TickFrequency = 5
-        Me.tbLightAmbient.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbLightAmbient.Value = 10
-        '
-        'lblLightAmbient
-        '
-        Me.lblLightAmbient.AutoEllipsis = True
-        Me.lblLightAmbient.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightAmbient.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightAmbient.Location = New System.Drawing.Point(3, 386)
-        Me.lblLightAmbient.Name = "lblLightAmbient"
-        Me.lblLightAmbient.Size = New System.Drawing.Size(122, 17)
-        Me.lblLightAmbient.TabIndex = 103
-        Me.lblLightAmbient.Text = "Ambient Lighting: "
-        Me.lblLightAmbient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightAmbient.UseMnemonic = False
-        '
-        'lblLightHighlight
-        '
-        Me.lblLightHighlight.AutoEllipsis = True
-        Me.lblLightHighlight.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightHighlight.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightHighlight.Location = New System.Drawing.Point(3, 354)
-        Me.lblLightHighlight.Name = "lblLightHighlight"
-        Me.lblLightHighlight.Size = New System.Drawing.Size(135, 17)
-        Me.lblLightHighlight.TabIndex = 105
-        Me.lblLightHighlight.Text = "Highlight Intensity: "
-        Me.lblLightHighlight.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightHighlight.UseMnemonic = False
-        '
-        'lblLightType
-        '
-        Me.lblLightType.AutoEllipsis = True
-        Me.lblLightType.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightType.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightType.Location = New System.Drawing.Point(3, 242)
-        Me.lblLightType.Name = "lblLightType"
-        Me.lblLightType.Size = New System.Drawing.Size(114, 23)
-        Me.lblLightType.TabIndex = 101
-        Me.lblLightType.Text = "Type of Light: "
-        Me.lblLightType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightType.UseMnemonic = False
-        '
-        'txtLightPositionZ
-        '
-        Me.txtLightPositionZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightPositionZ.Location = New System.Drawing.Point(346, 271)
-        Me.txtLightPositionZ.Name = "txtLightPositionZ"
-        Me.txtLightPositionZ.Size = New System.Drawing.Size(97, 35)
-        Me.txtLightPositionZ.TabIndex = 6
-        Me.txtLightPositionZ.Text = "0"
-        Me.txtLightPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtLightPositionY
-        '
-        Me.txtLightPositionY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightPositionY.Location = New System.Drawing.Point(248, 271)
-        Me.txtLightPositionY.Name = "txtLightPositionY"
-        Me.txtLightPositionY.Size = New System.Drawing.Size(98, 35)
-        Me.txtLightPositionY.TabIndex = 5
-        Me.txtLightPositionY.Text = "0"
-        Me.txtLightPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtLightPositionX
-        '
-        Me.txtLightPositionX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightPositionX.Location = New System.Drawing.Point(151, 271)
-        Me.txtLightPositionX.Name = "txtLightPositionX"
-        Me.txtLightPositionX.Size = New System.Drawing.Size(97, 35)
-        Me.txtLightPositionX.TabIndex = 4
-        Me.txtLightPositionX.Text = "0"
-        Me.txtLightPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightPosition
-        '
-        Me.lblLightPosition.AutoEllipsis = True
-        Me.lblLightPosition.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightPosition.Location = New System.Drawing.Point(3, 271)
-        Me.lblLightPosition.Name = "lblLightPosition"
-        Me.lblLightPosition.Size = New System.Drawing.Size(122, 21)
-        Me.lblLightPosition.TabIndex = 97
-        Me.lblLightPosition.Text = "Position X,Y,Z  (m):"
-        Me.lblLightPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightPosition.UseMnemonic = False
-        '
-        'chLightsEnable
-        '
-        Me.chLightsEnable.AutoEllipsis = True
-        Me.chLightsEnable.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.chLightsEnable.Checked = True
-        Me.chLightsEnable.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chLightsEnable.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chLightsEnable.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chLightsEnable.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chLightsEnable.Location = New System.Drawing.Point(6, 20)
-        Me.chLightsEnable.Name = "chLightsEnable"
-        Me.chLightsEnable.Size = New System.Drawing.Size(347, 22)
-        Me.chLightsEnable.TabIndex = 0
-        Me.chLightsEnable.Text = "Enable Lighting"
-        Me.chLightsEnable.UseMnemonic = False
-        Me.chLightsEnable.UseVisualStyleBackColor = True
-        '
-        'listLights
-        '
-        Me.listLights.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.listLights.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.listLights.IntegralHeight = False
-        Me.listLights.ItemHeight = 27
-        Me.listLights.Location = New System.Drawing.Point(6, 48)
-        Me.listLights.Name = "listLights"
-        Me.listLights.Size = New System.Drawing.Size(437, 159)
-        Me.listLights.TabIndex = 1
-        '
-        'txtLightName
-        '
-        Me.txtLightName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightName.Location = New System.Drawing.Point(151, 213)
-        Me.txtLightName.Name = "txtLightName"
-        Me.txtLightName.Size = New System.Drawing.Size(292, 35)
-        Me.txtLightName.TabIndex = 2
-        Me.txtLightName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightName
-        '
-        Me.lblLightName.AutoEllipsis = True
-        Me.lblLightName.BackColor = System.Drawing.Color.Transparent
-        Me.lblLightName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightName.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightName.Location = New System.Drawing.Point(3, 213)
-        Me.lblLightName.Name = "lblLightName"
-        Me.lblLightName.Size = New System.Drawing.Size(122, 21)
-        Me.lblLightName.TabIndex = 87
-        Me.lblLightName.Text = "Name: "
-        Me.lblLightName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightName.UseMnemonic = False
-        '
-        'txtLightDirectionZ
-        '
-        Me.txtLightDirectionZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightDirectionZ.Location = New System.Drawing.Point(346, 298)
-        Me.txtLightDirectionZ.Name = "txtLightDirectionZ"
-        Me.txtLightDirectionZ.Size = New System.Drawing.Size(97, 35)
-        Me.txtLightDirectionZ.TabIndex = 9
-        Me.txtLightDirectionZ.Text = "0"
-        Me.txtLightDirectionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightDirection
-        '
-        Me.lblLightDirection.AutoEllipsis = True
-        Me.lblLightDirection.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightDirection.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightDirection.Location = New System.Drawing.Point(3, 298)
-        Me.lblLightDirection.Name = "lblLightDirection"
-        Me.lblLightDirection.Size = New System.Drawing.Size(135, 21)
-        Me.lblLightDirection.TabIndex = 88
-        Me.lblLightDirection.Text = "Direction X,Y,Z:"
-        Me.lblLightDirection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightDirection.UseMnemonic = False
-        '
-        'txtLightDirectionY
-        '
-        Me.txtLightDirectionY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightDirectionY.Location = New System.Drawing.Point(248, 298)
-        Me.txtLightDirectionY.Name = "txtLightDirectionY"
-        Me.txtLightDirectionY.Size = New System.Drawing.Size(98, 35)
-        Me.txtLightDirectionY.TabIndex = 8
-        Me.txtLightDirectionY.Text = "0"
-        Me.txtLightDirectionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtLightDirectionX
-        '
-        Me.txtLightDirectionX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLightDirectionX.Location = New System.Drawing.Point(151, 298)
-        Me.txtLightDirectionX.Name = "txtLightDirectionX"
-        Me.txtLightDirectionX.Size = New System.Drawing.Size(97, 35)
-        Me.txtLightDirectionX.TabIndex = 7
-        Me.txtLightDirectionX.Text = "0"
-        Me.txtLightDirectionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lblLightColor
-        '
-        Me.lblLightColor.AutoEllipsis = True
-        Me.lblLightColor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblLightColor.Location = New System.Drawing.Point(3, 325)
-        Me.lblLightColor.Name = "lblLightColor"
-        Me.lblLightColor.Size = New System.Drawing.Size(122, 23)
-        Me.lblLightColor.TabIndex = 89
-        Me.lblLightColor.Text = "Color: "
-        Me.lblLightColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblLightColor.UseMnemonic = False
-        '
-        'tbLightHighlight
-        '
-        Me.tbLightHighlight.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbLightHighlight.LargeChange = 15
-        Me.tbLightHighlight.Location = New System.Drawing.Point(151, 354)
-        Me.tbLightHighlight.Maximum = 255
-        Me.tbLightHighlight.Name = "tbLightHighlight"
-        Me.tbLightHighlight.Size = New System.Drawing.Size(292, 90)
-        Me.tbLightHighlight.SmallChange = 5
-        Me.tbLightHighlight.TabIndex = 11
-        Me.tbLightHighlight.TickFrequency = 5
-        Me.tbLightHighlight.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbLightHighlight.Value = 50
-        '
-        'cbLightType
-        '
-        Me.cbLightType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbLightType.FormattingEnabled = True
-        Me.cbLightType.Items.AddRange(New Object() {"Directional", "Point", "Spot"})
-        Me.cbLightType.Location = New System.Drawing.Point(151, 242)
-        Me.cbLightType.Name = "cbLightType"
-        Me.cbLightType.Size = New System.Drawing.Size(292, 35)
-        Me.cbLightType.TabIndex = 3
-        '
-        'cmdLightAdd
-        '
-        Me.cmdLightAdd.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
-        Me.cmdLightAdd.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdLightAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdLightAdd.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdLightAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdLightAdd.Location = New System.Drawing.Point(0, 534)
-        Me.cmdLightAdd.Name = "cmdLightAdd"
-        Me.cmdLightAdd.Size = New System.Drawing.Size(451, 30)
-        Me.cmdLightAdd.TabIndex = 0
-        Me.cmdLightAdd.Text = "Add Light"
-        Me.cmdLightAdd.UseVisualStyleBackColor = False
-        '
-        'cmdLightRemove
-        '
-        Me.cmdLightRemove.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
-        Me.cmdLightRemove.Enabled = False
-        Me.cmdLightRemove.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdLightRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdLightRemove.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdLightRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdLightRemove.Location = New System.Drawing.Point(227, 563)
-        Me.cmdLightRemove.Name = "cmdLightRemove"
-        Me.cmdLightRemove.Size = New System.Drawing.Size(224, 30)
-        Me.cmdLightRemove.TabIndex = 2
-        Me.cmdLightRemove.Text = "Remove Light"
-        Me.cmdLightRemove.UseVisualStyleBackColor = False
-        '
-        'cmdLightReplace
-        '
-        Me.cmdLightReplace.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
-        Me.cmdLightReplace.Enabled = False
-        Me.cmdLightReplace.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdLightReplace.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdLightReplace.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdLightReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdLightReplace.Location = New System.Drawing.Point(0, 563)
-        Me.cmdLightReplace.Name = "cmdLightReplace"
-        Me.cmdLightReplace.Size = New System.Drawing.Size(228, 30)
-        Me.cmdLightReplace.TabIndex = 1
-        Me.cmdLightReplace.Text = "Replace Light"
-        Me.cmdLightReplace.UseVisualStyleBackColor = False
-        '
-        'TabDisplay
-        '
-        Me.TabDisplay.BackColor = System.Drawing.SystemColors.Control
-        Me.TabDisplay.Controls.Add(Me.GroupBox1)
-        Me.TabDisplay.Controls.Add(Me.Rendering)
-        Me.TabDisplay.Controls.Add(Me.CmdSaveOut)
-        Me.TabDisplay.Location = New System.Drawing.Point(4, 37)
-        Me.TabDisplay.Name = "TabDisplay"
-        Me.TabDisplay.Size = New System.Drawing.Size(451, 583)
-        Me.TabDisplay.TabIndex = 6
-        Me.TabDisplay.Text = "Rendering"
-        Me.TabDisplay.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Label47)
-        Me.GroupBox1.Controls.Add(Me.chCamera)
-        Me.GroupBox1.Controls.Add(Me.txtCPosZ)
-        Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.Label16)
-        Me.GroupBox1.Controls.Add(Me.txtCOrientZ)
-        Me.GroupBox1.Controls.Add(Me.txtCTargetY)
-        Me.GroupBox1.Controls.Add(Me.txtCPosX)
-        Me.GroupBox1.Controls.Add(Me.txtCTargetZ)
-        Me.GroupBox1.Controls.Add(Me.Label17)
-        Me.GroupBox1.Controls.Add(Me.txtCTargetX)
-        Me.GroupBox1.Controls.Add(Me.txtCPosY)
-        Me.GroupBox1.Controls.Add(Me.txtCOrientX)
-        Me.GroupBox1.Controls.Add(Me.txtCOrientY)
-        Me.GroupBox1.Controls.Add(Me.tbCameraSpeed)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 328)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(451, 173)
-        Me.GroupBox1.TabIndex = 91
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Camera"
-        '
-        'Label47
-        '
-        Me.Label47.AutoEllipsis = True
-        Me.Label47.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label47.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label47.Location = New System.Drawing.Point(2, 124)
-        Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(178, 21)
-        Me.Label47.TabIndex = 103
-        Me.Label47.Text = "Camera Movement Speed: "
-        Me.Label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label47.UseMnemonic = False
-        '
-        'chCamera
-        '
-        Me.chCamera.AutoEllipsis = True
-        Me.chCamera.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chCamera.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chCamera.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chCamera.Location = New System.Drawing.Point(5, 20)
-        Me.chCamera.Name = "chCamera"
-        Me.chCamera.Size = New System.Drawing.Size(310, 27)
-        Me.chCamera.TabIndex = 42
-        Me.chCamera.Text = "Modify Default Camera Settings"
-        Me.chCamera.UseMnemonic = False
-        Me.chCamera.UseVisualStyleBackColor = True
-        '
-        'txtCPosZ
-        '
-        Me.txtCPosZ.Enabled = False
-        Me.txtCPosZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCPosZ.Location = New System.Drawing.Point(370, 50)
-        Me.txtCPosZ.Name = "txtCPosZ"
-        Me.txtCPosZ.Size = New System.Drawing.Size(73, 35)
-        Me.txtCPosZ.TabIndex = 2
-        Me.txtCPosZ.Text = "-10"
-        Me.txtCPosZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label11
-        '
-        Me.Label11.AutoEllipsis = True
-        Me.Label11.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label11.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label11.Location = New System.Drawing.Point(2, 49)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(188, 22)
-        Me.Label11.TabIndex = 100
-        Me.Label11.Text = "Camera Position X,Y,Z (m): "
-        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label11.UseMnemonic = False
-        '
-        'Label16
-        '
-        Me.Label16.AutoEllipsis = True
-        Me.Label16.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label16.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label16.Location = New System.Drawing.Point(2, 73)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(188, 23)
-        Me.Label16.TabIndex = 101
-        Me.Label16.Text = "Camera Target X,Y,Z: "
-        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label16.UseMnemonic = False
-        '
-        'txtCOrientZ
-        '
-        Me.txtCOrientZ.Enabled = False
-        Me.txtCOrientZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCOrientZ.Location = New System.Drawing.Point(370, 97)
-        Me.txtCOrientZ.Name = "txtCOrientZ"
-        Me.txtCOrientZ.Size = New System.Drawing.Size(73, 35)
-        Me.txtCOrientZ.TabIndex = 8
-        Me.txtCOrientZ.Text = "0"
-        Me.txtCOrientZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtCTargetY
-        '
-        Me.txtCTargetY.Enabled = False
-        Me.txtCTargetY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCTargetY.Location = New System.Drawing.Point(297, 74)
-        Me.txtCTargetY.Name = "txtCTargetY"
-        Me.txtCTargetY.Size = New System.Drawing.Size(73, 35)
-        Me.txtCTargetY.TabIndex = 4
-        Me.txtCTargetY.Text = "0"
-        Me.txtCTargetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtCPosX
-        '
-        Me.txtCPosX.Enabled = False
-        Me.txtCPosX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCPosX.Location = New System.Drawing.Point(225, 50)
-        Me.txtCPosX.Name = "txtCPosX"
-        Me.txtCPosX.Size = New System.Drawing.Size(72, 35)
-        Me.txtCPosX.TabIndex = 0
-        Me.txtCPosX.Text = "0"
-        Me.txtCPosX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtCTargetZ
-        '
-        Me.txtCTargetZ.Enabled = False
-        Me.txtCTargetZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCTargetZ.Location = New System.Drawing.Point(370, 74)
-        Me.txtCTargetZ.Name = "txtCTargetZ"
-        Me.txtCTargetZ.Size = New System.Drawing.Size(73, 35)
-        Me.txtCTargetZ.TabIndex = 5
-        Me.txtCTargetZ.Text = "0"
-        Me.txtCTargetZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label17
-        '
-        Me.Label17.AutoEllipsis = True
-        Me.Label17.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label17.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label17.Location = New System.Drawing.Point(2, 97)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(188, 21)
-        Me.Label17.TabIndex = 102
-        Me.Label17.Text = "Camera Up Orientation X,Y,Z: "
-        Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label17.UseMnemonic = False
-        '
-        'txtCTargetX
-        '
-        Me.txtCTargetX.Enabled = False
-        Me.txtCTargetX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCTargetX.Location = New System.Drawing.Point(225, 74)
-        Me.txtCTargetX.Name = "txtCTargetX"
-        Me.txtCTargetX.Size = New System.Drawing.Size(72, 35)
-        Me.txtCTargetX.TabIndex = 3
-        Me.txtCTargetX.Text = "0"
-        Me.txtCTargetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtCPosY
-        '
-        Me.txtCPosY.Enabled = False
-        Me.txtCPosY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCPosY.Location = New System.Drawing.Point(297, 50)
-        Me.txtCPosY.Name = "txtCPosY"
-        Me.txtCPosY.Size = New System.Drawing.Size(73, 35)
-        Me.txtCPosY.TabIndex = 1
-        Me.txtCPosY.Text = "0"
-        Me.txtCPosY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtCOrientX
-        '
-        Me.txtCOrientX.Enabled = False
-        Me.txtCOrientX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCOrientX.Location = New System.Drawing.Point(225, 97)
-        Me.txtCOrientX.Name = "txtCOrientX"
-        Me.txtCOrientX.Size = New System.Drawing.Size(72, 35)
-        Me.txtCOrientX.TabIndex = 6
-        Me.txtCOrientX.Text = "0"
-        Me.txtCOrientX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtCOrientY
-        '
-        Me.txtCOrientY.Enabled = False
-        Me.txtCOrientY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCOrientY.Location = New System.Drawing.Point(297, 97)
-        Me.txtCOrientY.Name = "txtCOrientY"
-        Me.txtCOrientY.Size = New System.Drawing.Size(73, 35)
-        Me.txtCOrientY.TabIndex = 7
-        Me.txtCOrientY.Text = "1"
-        Me.txtCOrientY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'tbCameraSpeed
-        '
-        Me.tbCameraSpeed.BackColor = System.Drawing.SystemColors.Control
-        Me.tbCameraSpeed.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbCameraSpeed.LargeChange = 10
-        Me.tbCameraSpeed.Location = New System.Drawing.Point(225, 126)
-        Me.tbCameraSpeed.Maximum = 40
-        Me.tbCameraSpeed.Minimum = 10
-        Me.tbCameraSpeed.Name = "tbCameraSpeed"
-        Me.tbCameraSpeed.Size = New System.Drawing.Size(218, 90)
-        Me.tbCameraSpeed.TabIndex = 9
-        Me.tbCameraSpeed.TickFrequency = 5
-        Me.tbCameraSpeed.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbCameraSpeed.Value = 23
-        '
-        'Rendering
-        '
-        Me.Rendering.Controls.Add(Me.Label3)
-        Me.Rendering.Controls.Add(Me.txtRenderThreads)
-        Me.Rendering.Controls.Add(Me.Label46)
-        Me.Rendering.Controls.Add(Me.txtVFoV)
-        Me.Rendering.Controls.Add(Me.Label45)
-        Me.Rendering.Controls.Add(Me.cbRender)
-        Me.Rendering.Controls.Add(Me.Label44)
-        Me.Rendering.Controls.Add(Me.txtMaxFPS)
-        Me.Rendering.Controls.Add(Me.chVSync)
-        Me.Rendering.Controls.Add(Me.Label43)
-        Me.Rendering.Controls.Add(Me.cbShading)
-        Me.Rendering.Controls.Add(Me.tbPolys)
-        Me.Rendering.Controls.Add(Me.Label30)
-        Me.Rendering.Controls.Add(Me.txtWindowX)
-        Me.Rendering.Controls.Add(Me.Label12)
-        Me.Rendering.Controls.Add(Me.Label18)
-        Me.Rendering.Controls.Add(Me.Label13)
-        Me.Rendering.Controls.Add(Me.txtHFoV)
-        Me.Rendering.Controls.Add(Me.chTrace)
-        Me.Rendering.Controls.Add(Me.txtWindowY)
-        Me.Rendering.Controls.Add(Me.plRenderBackColor)
-        Me.Rendering.Location = New System.Drawing.Point(0, 0)
-        Me.Rendering.Name = "Rendering"
-        Me.Rendering.Size = New System.Drawing.Size(451, 322)
-        Me.Rendering.TabIndex = 90
-        Me.Rendering.TabStop = False
-        Me.Rendering.Text = "Render"
-        '
-        'Label3
-        '
-        Me.Label3.AutoEllipsis = True
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label3.Location = New System.Drawing.Point(2, 44)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(182, 25)
-        Me.Label3.TabIndex = 245
-        Me.Label3.Text = "Render Thread Count: "
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.UseMnemonic = False
-        '
-        'txtRenderThreads
-        '
-        Me.txtRenderThreads.Enabled = False
-        Me.txtRenderThreads.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtRenderThreads.Location = New System.Drawing.Point(225, 46)
-        Me.txtRenderThreads.MaxLength = 4
-        Me.txtRenderThreads.Name = "txtRenderThreads"
-        Me.txtRenderThreads.Size = New System.Drawing.Size(218, 35)
-        Me.txtRenderThreads.TabIndex = 1
-        Me.txtRenderThreads.Text = "1"
-        Me.txtRenderThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label46
-        '
-        Me.Label46.AutoEllipsis = True
-        Me.Label46.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label46.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label46.Location = New System.Drawing.Point(2, 126)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(182, 25)
-        Me.Label46.TabIndex = 129
-        Me.Label46.Text = "Vertical Field of View (°): "
-        Me.Label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label46.UseMnemonic = False
-        '
-        'txtVFoV
-        '
-        Me.txtVFoV.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtVFoV.Location = New System.Drawing.Point(225, 128)
-        Me.txtVFoV.Name = "txtVFoV"
-        Me.txtVFoV.Size = New System.Drawing.Size(218, 35)
-        Me.txtVFoV.TabIndex = 5
-        Me.txtVFoV.Text = "45"
-        Me.txtVFoV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label45
-        '
-        Me.Label45.AutoEllipsis = True
-        Me.Label45.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label45.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label45.Location = New System.Drawing.Point(2, 17)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(174, 21)
-        Me.Label45.TabIndex = 126
-        Me.Label45.Text = "Render Mode: "
-        Me.Label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label45.UseMnemonic = False
-        '
-        'cbRender
-        '
-        Me.cbRender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbRender.FormattingEnabled = True
-        Me.cbRender.Items.AddRange(New Object() {"DirectX 9 (Hardware)", "DirectX 9 (Software)", "Raytracing (Software)"})
-        Me.cbRender.Location = New System.Drawing.Point(225, 17)
-        Me.cbRender.Name = "cbRender"
-        Me.cbRender.Size = New System.Drawing.Size(218, 35)
-        Me.cbRender.TabIndex = 0
-        '
-        'Label44
-        '
-        Me.Label44.AutoEllipsis = True
-        Me.Label44.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label44.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label44.Location = New System.Drawing.Point(2, 286)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(182, 25)
-        Me.Label44.TabIndex = 124
-        Me.Label44.Text = "Maximum Frame Rate (F/s): "
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label44.UseMnemonic = False
-        '
-        'txtMaxFPS
-        '
-        Me.txtMaxFPS.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtMaxFPS.Location = New System.Drawing.Point(225, 288)
-        Me.txtMaxFPS.Name = "txtMaxFPS"
-        Me.txtMaxFPS.Size = New System.Drawing.Size(218, 35)
-        Me.txtMaxFPS.TabIndex = 11
-        Me.txtMaxFPS.Text = "45"
-        Me.txtMaxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chVSync
-        '
-        Me.chVSync.AutoEllipsis = True
-        Me.chVSync.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chVSync.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chVSync.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chVSync.Location = New System.Drawing.Point(5, 264)
-        Me.chVSync.Name = "chVSync"
-        Me.chVSync.Size = New System.Drawing.Size(316, 19)
-        Me.chVSync.TabIndex = 10
-        Me.chVSync.Text = "Synchronize Frame Rate to Monitor (vsync)"
-        Me.chVSync.UseMnemonic = False
-        Me.chVSync.UseVisualStyleBackColor = True
-        '
-        'Label43
-        '
-        Me.Label43.AutoEllipsis = True
-        Me.Label43.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label43.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label43.Location = New System.Drawing.Point(2, 184)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(174, 21)
-        Me.Label43.TabIndex = 120
-        Me.Label43.Text = "Light Shading Mode: "
-        Me.Label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label43.UseMnemonic = False
-        '
-        'cbShading
-        '
-        Me.cbShading.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbShading.FormattingEnabled = True
-        Me.cbShading.Items.AddRange(New Object() {"Flat", "Gouraud"})
-        Me.cbShading.Location = New System.Drawing.Point(225, 184)
-        Me.cbShading.Name = "cbShading"
-        Me.cbShading.Size = New System.Drawing.Size(218, 35)
-        Me.cbShading.TabIndex = 7
-        '
-        'tbPolys
-        '
-        Me.tbPolys.BackColor = System.Drawing.SystemColors.Control
-        Me.tbPolys.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tbPolys.LargeChange = 10
-        Me.tbPolys.Location = New System.Drawing.Point(225, 213)
-        Me.tbPolys.Maximum = 100
-        Me.tbPolys.Minimum = 2
-        Me.tbPolys.Name = "tbPolys"
-        Me.tbPolys.Size = New System.Drawing.Size(218, 90)
-        Me.tbPolys.TabIndex = 8
-        Me.tbPolys.TickFrequency = 5
-        Me.tbPolys.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbPolys.Value = 40
-        '
-        'Label30
-        '
-        Me.Label30.AutoEllipsis = True
-        Me.Label30.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label30.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label30.Location = New System.Drawing.Point(2, 213)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(178, 21)
-        Me.Label30.TabIndex = 117
-        Me.Label30.Text = "Sphere Polygon Count: "
-        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label30.UseMnemonic = False
-        '
-        'txtWindowX
-        '
-        Me.txtWindowX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtWindowX.Location = New System.Drawing.Point(225, 74)
-        Me.txtWindowX.Name = "txtWindowX"
-        Me.txtWindowX.Size = New System.Drawing.Size(109, 35)
-        Me.txtWindowX.TabIndex = 2
-        Me.txtWindowX.Text = "500"
-        Me.txtWindowX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label12
-        '
-        Me.Label12.AutoEllipsis = True
-        Me.Label12.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label12.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label12.Location = New System.Drawing.Point(2, 72)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(183, 25)
-        Me.Label12.TabIndex = 115
-        Me.Label12.Text = "Window Size X,Y (px): "
-        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label12.UseMnemonic = False
-        '
-        'Label18
-        '
-        Me.Label18.AutoEllipsis = True
-        Me.Label18.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label18.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label18.Location = New System.Drawing.Point(2, 99)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(182, 25)
-        Me.Label18.TabIndex = 116
-        Me.Label18.Text = "Horizontal Field of View (°): "
-        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label18.UseMnemonic = False
-        '
-        'Label13
-        '
-        Me.Label13.AutoEllipsis = True
-        Me.Label13.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label13.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label13.Location = New System.Drawing.Point(2, 155)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(177, 23)
-        Me.Label13.TabIndex = 114
-        Me.Label13.Text = "Background Color: "
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label13.UseMnemonic = False
-        '
-        'txtHFoV
-        '
-        Me.txtHFoV.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtHFoV.Location = New System.Drawing.Point(225, 101)
-        Me.txtHFoV.Name = "txtHFoV"
-        Me.txtHFoV.Size = New System.Drawing.Size(218, 35)
-        Me.txtHFoV.TabIndex = 4
-        Me.txtHFoV.Text = "45"
-        Me.txtHFoV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chTrace
-        '
-        Me.chTrace.AutoEllipsis = True
-        Me.chTrace.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chTrace.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chTrace.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chTrace.Location = New System.Drawing.Point(5, 237)
-        Me.chTrace.Name = "chTrace"
-        Me.chTrace.Size = New System.Drawing.Size(345, 24)
-        Me.chTrace.TabIndex = 9
-        Me.chTrace.Text = "Trace Object Paths"
-        Me.chTrace.UseMnemonic = False
-        Me.chTrace.UseVisualStyleBackColor = True
-        '
-        'txtWindowY
-        '
-        Me.txtWindowY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtWindowY.Location = New System.Drawing.Point(334, 74)
-        Me.txtWindowY.Name = "txtWindowY"
-        Me.txtWindowY.Size = New System.Drawing.Size(109, 35)
-        Me.txtWindowY.TabIndex = 3
-        Me.txtWindowY.Text = "500"
-        Me.txtWindowY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'plRenderBackColor
-        '
-        Me.plRenderBackColor.BackColor = System.Drawing.Color.Black
-        Me.plRenderBackColor.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.plRenderBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.plRenderBackColor.ForeColor = System.Drawing.Color.Black
-        Me.plRenderBackColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.plRenderBackColor.Location = New System.Drawing.Point(225, 155)
-        Me.plRenderBackColor.Name = "plRenderBackColor"
-        Me.plRenderBackColor.Size = New System.Drawing.Size(218, 21)
-        Me.plRenderBackColor.TabIndex = 6
-        Me.plRenderBackColor.UseVisualStyleBackColor = False
-        '
-        'CmdSaveOut
-        '
-        Me.CmdSaveOut.Enabled = False
-        Me.CmdSaveOut.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.CmdSaveOut.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.CmdSaveOut.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CmdSaveOut.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.CmdSaveOut.Location = New System.Drawing.Point(0, 563)
-        Me.CmdSaveOut.Name = "CmdSaveOut"
-        Me.CmdSaveOut.Size = New System.Drawing.Size(451, 30)
-        Me.CmdSaveOut.TabIndex = 0
-        Me.CmdSaveOut.Text = "Save Image"
-        Me.CmdSaveOut.UseVisualStyleBackColor = True
-        '
-        'TabForces
-        '
-        Me.TabForces.BackColor = System.Drawing.SystemColors.Control
-        Me.TabForces.Controls.Add(Me.GroupBox5)
-        Me.TabForces.Controls.Add(Me.GroupBox4)
-        Me.TabForces.Location = New System.Drawing.Point(4, 37)
-        Me.TabForces.Name = "TabForces"
-        Me.TabForces.Size = New System.Drawing.Size(451, 583)
-        Me.TabForces.TabIndex = 3
-        Me.TabForces.Text = "Forces & Collisions"
-        Me.TabForces.UseVisualStyleBackColor = True
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.txtPermittivity)
-        Me.GroupBox5.Controls.Add(Me.Label48)
-        Me.GroupBox5.Controls.Add(Me.txtFluidViscosity)
-        Me.GroupBox5.Controls.Add(Me.Label29)
-        Me.GroupBox5.Controls.Add(Me.txtDragCoeff)
-        Me.GroupBox5.Controls.Add(Me.chForces)
-        Me.GroupBox5.Controls.Add(Me.txtFluidDensity)
-        Me.GroupBox5.Controls.Add(Me.chElectrostatic)
-        Me.GroupBox5.Controls.Add(Me.txtFieldZ)
-        Me.GroupBox5.Controls.Add(Me.chGravity)
-        Me.GroupBox5.Controls.Add(Me.txtFieldY)
-        Me.GroupBox5.Controls.Add(Me.chField)
-        Me.GroupBox5.Controls.Add(Me.txtFieldX)
-        Me.GroupBox5.Controls.Add(Me.Label22)
-        Me.GroupBox5.Controls.Add(Me.chDrag)
-        Me.GroupBox5.Controls.Add(Me.Label28)
-        Me.GroupBox5.Controls.Add(Me.Label26)
-        Me.GroupBox5.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(451, 292)
-        Me.GroupBox5.TabIndex = 0
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Forces"
-        '
-        'txtPermittivity
-        '
-        Me.txtPermittivity.Enabled = False
-        Me.txtPermittivity.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtPermittivity.Location = New System.Drawing.Point(225, 101)
-        Me.txtPermittivity.Name = "txtPermittivity"
-        Me.txtPermittivity.Size = New System.Drawing.Size(218, 35)
-        Me.txtPermittivity.TabIndex = 3
-        Me.txtPermittivity.Text = "1.0006"
-        Me.txtPermittivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label48
-        '
-        Me.Label48.AutoEllipsis = True
-        Me.Label48.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label48.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label48.Location = New System.Drawing.Point(2, 101)
-        Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(180, 21)
-        Me.Label48.TabIndex = 95
-        Me.Label48.Text = "Relative Permittivity of Medium:"
-        Me.Label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label48.UseMnemonic = False
-        '
-        'txtFluidViscosity
-        '
-        Me.txtFluidViscosity.Enabled = False
-        Me.txtFluidViscosity.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtFluidViscosity.Location = New System.Drawing.Point(225, 229)
-        Me.txtFluidViscosity.Name = "txtFluidViscosity"
-        Me.txtFluidViscosity.Size = New System.Drawing.Size(218, 35)
-        Me.txtFluidViscosity.TabIndex = 10
-        Me.txtFluidViscosity.Text = "1.78E-5"
-        Me.txtFluidViscosity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label29
-        '
-        Me.Label29.AutoEllipsis = True
-        Me.Label29.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label29.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label29.Location = New System.Drawing.Point(2, 229)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(180, 21)
-        Me.Label29.TabIndex = 93
-        Me.Label29.Text = "Fluid Viscosity (kg/ms):"
-        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label29.UseMnemonic = False
-        '
-        'txtDragCoeff
-        '
-        Me.txtDragCoeff.Enabled = False
-        Me.txtDragCoeff.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtDragCoeff.Location = New System.Drawing.Point(225, 256)
-        Me.txtDragCoeff.Name = "txtDragCoeff"
-        Me.txtDragCoeff.Size = New System.Drawing.Size(218, 35)
-        Me.txtDragCoeff.TabIndex = 11
-        Me.txtDragCoeff.Text = "0.1"
-        Me.txtDragCoeff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chForces
-        '
-        Me.chForces.AutoEllipsis = True
-        Me.chForces.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.chForces.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chForces.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chForces.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chForces.Location = New System.Drawing.Point(5, 20)
-        Me.chForces.Name = "chForces"
-        Me.chForces.Size = New System.Drawing.Size(347, 22)
-        Me.chForces.TabIndex = 0
-        Me.chForces.Text = "Enable Forces"
-        Me.chForces.UseMnemonic = False
-        Me.chForces.UseVisualStyleBackColor = True
-        '
-        'txtFluidDensity
-        '
-        Me.txtFluidDensity.Enabled = False
-        Me.txtFluidDensity.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtFluidDensity.Location = New System.Drawing.Point(225, 202)
-        Me.txtFluidDensity.Name = "txtFluidDensity"
-        Me.txtFluidDensity.Size = New System.Drawing.Size(218, 35)
-        Me.txtFluidDensity.TabIndex = 9
-        Me.txtFluidDensity.Text = "1.225"
-        Me.txtFluidDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chElectrostatic
-        '
-        Me.chElectrostatic.AutoEllipsis = True
-        Me.chElectrostatic.Enabled = False
-        Me.chElectrostatic.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chElectrostatic.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.chElectrostatic.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chElectrostatic.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chElectrostatic.Location = New System.Drawing.Point(5, 76)
-        Me.chElectrostatic.Name = "chElectrostatic"
-        Me.chElectrostatic.Size = New System.Drawing.Size(347, 22)
-        Me.chElectrostatic.TabIndex = 2
-        Me.chElectrostatic.Text = "Electrostatic Force"
-        Me.chElectrostatic.UseMnemonic = False
-        Me.chElectrostatic.UseVisualStyleBackColor = True
-        '
-        'txtFieldZ
-        '
-        Me.txtFieldZ.Enabled = False
-        Me.txtFieldZ.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtFieldZ.Location = New System.Drawing.Point(370, 153)
-        Me.txtFieldZ.Name = "txtFieldZ"
-        Me.txtFieldZ.Size = New System.Drawing.Size(73, 35)
-        Me.txtFieldZ.TabIndex = 7
-        Me.txtFieldZ.Text = "0"
-        Me.txtFieldZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chGravity
-        '
-        Me.chGravity.AutoEllipsis = True
-        Me.chGravity.Enabled = False
-        Me.chGravity.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chGravity.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chGravity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chGravity.Location = New System.Drawing.Point(5, 48)
-        Me.chGravity.Name = "chGravity"
-        Me.chGravity.Size = New System.Drawing.Size(347, 22)
-        Me.chGravity.TabIndex = 1
-        Me.chGravity.Text = "Newtonian Gravity"
-        Me.chGravity.UseMnemonic = False
-        Me.chGravity.UseVisualStyleBackColor = True
-        '
-        'txtFieldY
-        '
-        Me.txtFieldY.Enabled = False
-        Me.txtFieldY.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtFieldY.Location = New System.Drawing.Point(297, 153)
-        Me.txtFieldY.Name = "txtFieldY"
-        Me.txtFieldY.Size = New System.Drawing.Size(73, 35)
-        Me.txtFieldY.TabIndex = 6
-        Me.txtFieldY.Text = "0"
-        Me.txtFieldY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chField
-        '
-        Me.chField.AutoEllipsis = True
-        Me.chField.Enabled = False
-        Me.chField.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chField.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chField.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chField.Location = New System.Drawing.Point(5, 128)
-        Me.chField.Name = "chField"
-        Me.chField.Size = New System.Drawing.Size(347, 22)
-        Me.chField.TabIndex = 4
-        Me.chField.Text = "Uniform Field"
-        Me.chField.UseMnemonic = False
-        Me.chField.UseVisualStyleBackColor = True
-        '
-        'txtFieldX
-        '
-        Me.txtFieldX.Enabled = False
-        Me.txtFieldX.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtFieldX.Location = New System.Drawing.Point(225, 153)
-        Me.txtFieldX.Name = "txtFieldX"
-        Me.txtFieldX.Size = New System.Drawing.Size(72, 35)
-        Me.txtFieldX.TabIndex = 5
-        Me.txtFieldX.Text = "0"
-        Me.txtFieldX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label22
-        '
-        Me.Label22.AutoEllipsis = True
-        Me.Label22.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label22.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label22.Location = New System.Drawing.Point(2, 153)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(180, 21)
-        Me.Label22.TabIndex = 89
-        Me.Label22.Text = "Acceleration (m/s^2) X,Y,Z: "
-        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label22.UseMnemonic = False
-        '
-        'chDrag
-        '
-        Me.chDrag.AutoEllipsis = True
-        Me.chDrag.Enabled = False
-        Me.chDrag.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chDrag.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chDrag.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chDrag.Location = New System.Drawing.Point(5, 177)
-        Me.chDrag.Name = "chDrag"
-        Me.chDrag.Size = New System.Drawing.Size(166, 22)
-        Me.chDrag.TabIndex = 8
-        Me.chDrag.Text = "Uniform Drag"
-        Me.chDrag.UseMnemonic = False
-        Me.chDrag.UseVisualStyleBackColor = True
-        '
-        'Label28
-        '
-        Me.Label28.AutoEllipsis = True
-        Me.Label28.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label28.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label28.Location = New System.Drawing.Point(2, 256)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(180, 21)
-        Me.Label28.TabIndex = 91
-        Me.Label28.Text = "Drag Coefficient:"
-        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label28.UseMnemonic = False
-        '
-        'Label26
-        '
-        Me.Label26.AutoEllipsis = True
-        Me.Label26.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label26.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label26.Location = New System.Drawing.Point(2, 202)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(180, 21)
-        Me.Label26.TabIndex = 90
-        Me.Label26.Text = "Fluid Density (kg/m^3):"
-        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label26.UseMnemonic = False
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.chInterpolate)
-        Me.GroupBox4.Controls.Add(Me.chCollision)
-        Me.GroupBox4.Controls.Add(Me.Label20)
-        Me.GroupBox4.Controls.Add(Me.txtCoR)
-        Me.GroupBox4.Controls.Add(Me.chbreakable)
-        Me.GroupBox4.Controls.Add(Me.lblResulting)
-        Me.GroupBox4.Controls.Add(Me.Label25)
-        Me.GroupBox4.Controls.Add(Me.txtAddMax)
-        Me.GroupBox4.Controls.Add(Me.txtBreakMin)
-        Me.GroupBox4.Controls.Add(Me.txtAddAvg)
-        Me.GroupBox4.Controls.Add(Me.txtBreakAvg)
-        Me.GroupBox4.Controls.Add(Me.txtAddMin)
-        Me.GroupBox4.Controls.Add(Me.txtBreakMax)
-        Me.GroupBox4.Location = New System.Drawing.Point(0, 298)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(451, 188)
-        Me.GroupBox4.TabIndex = 79
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Collisions"
-        '
-        'chInterpolate
-        '
-        Me.chInterpolate.AutoSize = True
-        Me.chInterpolate.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chInterpolate.Location = New System.Drawing.Point(5, 70)
-        Me.chInterpolate.Name = "chInterpolate"
-        Me.chInterpolate.Size = New System.Drawing.Size(385, 31)
-        Me.chInterpolate.TabIndex = 2
-        Me.chInterpolate.Text = "Interpolate Between Time Steps"
-        Me.chInterpolate.UseVisualStyleBackColor = True
-        '
-        'chCollision
-        '
-        Me.chCollision.AutoEllipsis = True
-        Me.chCollision.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.chCollision.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chCollision.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chCollision.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chCollision.Location = New System.Drawing.Point(5, 20)
-        Me.chCollision.Name = "chCollision"
-        Me.chCollision.Size = New System.Drawing.Size(347, 22)
-        Me.chCollision.TabIndex = 0
-        Me.chCollision.Text = "Enable Collisions"
-        Me.chCollision.UseMnemonic = False
-        Me.chCollision.UseVisualStyleBackColor = True
-        '
-        'Label20
-        '
-        Me.Label20.AutoEllipsis = True
-        Me.Label20.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label20.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label20.Location = New System.Drawing.Point(2, 43)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(176, 22)
-        Me.Label20.TabIndex = 66
-        Me.Label20.Text = "Coeff. of Restitution:"
-        Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label20.UseMnemonic = False
-        '
-        'txtCoR
-        '
-        Me.txtCoR.Enabled = False
-        Me.txtCoR.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCoR.Location = New System.Drawing.Point(225, 46)
-        Me.txtCoR.Name = "txtCoR"
-        Me.txtCoR.Size = New System.Drawing.Size(218, 35)
-        Me.txtCoR.TabIndex = 1
-        Me.txtCoR.Text = "0.5"
-        Me.txtCoR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chbreakable
-        '
-        Me.chbreakable.AutoEllipsis = True
-        Me.chbreakable.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.chbreakable.Enabled = False
-        Me.chbreakable.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chbreakable.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chbreakable.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.chbreakable.Location = New System.Drawing.Point(5, 95)
-        Me.chbreakable.Name = "chbreakable"
-        Me.chbreakable.Size = New System.Drawing.Size(347, 22)
-        Me.chbreakable.TabIndex = 3
-        Me.chbreakable.Text = "Breakable Collisions"
-        Me.chbreakable.UseMnemonic = False
-        Me.chbreakable.UseVisualStyleBackColor = True
-        '
-        'lblResulting
-        '
-        Me.lblResulting.AutoEllipsis = True
-        Me.lblResulting.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblResulting.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblResulting.Location = New System.Drawing.Point(2, 148)
-        Me.lblResulting.Name = "lblResulting"
-        Me.lblResulting.Size = New System.Drawing.Size(197, 22)
-        Me.lblResulting.TabIndex = 67
-        Me.lblResulting.Text = "Resulting Objects Min, Avg, Max:"
-        Me.lblResulting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblResulting.UseMnemonic = False
-        '
-        'Label25
-        '
-        Me.Label25.AutoEllipsis = True
-        Me.Label25.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label25.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label25.Location = New System.Drawing.Point(2, 120)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(175, 25)
-        Me.Label25.TabIndex = 68
-        Me.Label25.Text = "Endurance Min, Avg, Max:"
-        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label25.UseMnemonic = False
-        '
-        'txtAddMax
-        '
-        Me.txtAddMax.Enabled = False
-        Me.txtAddMax.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtAddMax.Location = New System.Drawing.Point(370, 149)
-        Me.txtAddMax.Name = "txtAddMax"
-        Me.txtAddMax.Size = New System.Drawing.Size(73, 35)
-        Me.txtAddMax.TabIndex = 9
-        Me.txtAddMax.Text = "8"
-        Me.txtAddMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtBreakMin
-        '
-        Me.txtBreakMin.Enabled = False
-        Me.txtBreakMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtBreakMin.Location = New System.Drawing.Point(225, 122)
-        Me.txtBreakMin.Name = "txtBreakMin"
-        Me.txtBreakMin.Size = New System.Drawing.Size(72, 35)
-        Me.txtBreakMin.TabIndex = 4
-        Me.txtBreakMin.Text = "50"
-        Me.txtBreakMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtAddAvg
-        '
-        Me.txtAddAvg.Enabled = False
-        Me.txtAddAvg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtAddAvg.Location = New System.Drawing.Point(297, 149)
-        Me.txtAddAvg.Name = "txtAddAvg"
-        Me.txtAddAvg.Size = New System.Drawing.Size(73, 35)
-        Me.txtAddAvg.TabIndex = 8
-        Me.txtAddAvg.Text = "3"
-        Me.txtAddAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtBreakAvg
-        '
-        Me.txtBreakAvg.Enabled = False
-        Me.txtBreakAvg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtBreakAvg.Location = New System.Drawing.Point(297, 122)
-        Me.txtBreakAvg.Name = "txtBreakAvg"
-        Me.txtBreakAvg.Size = New System.Drawing.Size(73, 35)
-        Me.txtBreakAvg.TabIndex = 5
-        Me.txtBreakAvg.Text = "100"
-        Me.txtBreakAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtAddMin
-        '
-        Me.txtAddMin.Enabled = False
-        Me.txtAddMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtAddMin.Location = New System.Drawing.Point(224, 149)
-        Me.txtAddMin.Name = "txtAddMin"
-        Me.txtAddMin.Size = New System.Drawing.Size(72, 35)
-        Me.txtAddMin.TabIndex = 7
-        Me.txtAddMin.Text = "2"
-        Me.txtAddMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtBreakMax
-        '
-        Me.txtBreakMax.Enabled = False
-        Me.txtBreakMax.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtBreakMax.Location = New System.Drawing.Point(370, 122)
-        Me.txtBreakMax.Name = "txtBreakMax"
-        Me.txtBreakMax.Size = New System.Drawing.Size(73, 35)
-        Me.txtBreakMax.TabIndex = 6
-        Me.txtBreakMax.Text = "500"
-        Me.txtBreakMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TabSimulation
-        '
-        Me.TabSimulation.BackColor = System.Drawing.SystemColors.Control
-        Me.TabSimulation.Controls.Add(Me.cmdLoad)
-        Me.TabSimulation.Controls.Add(Me.cmdSave)
-        Me.TabSimulation.Controls.Add(Me.GroupBox3)
-        Me.TabSimulation.Location = New System.Drawing.Point(4, 39)
-        Me.TabSimulation.Name = "TabSimulation"
-        Me.TabSimulation.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabSimulation.Size = New System.Drawing.Size(451, 581)
-        Me.TabSimulation.TabIndex = 0
-        Me.TabSimulation.Text = "Simulation"
-        Me.TabSimulation.UseVisualStyleBackColor = True
-        '
-        'cmdLoad
-        '
-        Me.cmdLoad.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdLoad.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdLoad.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdLoad.Location = New System.Drawing.Point(225, 563)
-        Me.cmdLoad.Name = "cmdLoad"
-        Me.cmdLoad.Size = New System.Drawing.Size(226, 30)
-        Me.cmdLoad.TabIndex = 1
-        Me.cmdLoad.Text = "Load Simulation"
-        Me.cmdLoad.UseVisualStyleBackColor = True
-        '
-        'cmdSave
-        '
-        Me.cmdSave.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.cmdSave.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdSave.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdSave.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdSave.Location = New System.Drawing.Point(0, 563)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(226, 30)
-        Me.cmdSave.TabIndex = 0
-        Me.cmdSave.Text = "Save Simulation"
-        Me.cmdSave.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Controls.Add(Me.Label4)
-        Me.GroupBox3.Controls.Add(Me.Label2)
-        Me.GroupBox3.Controls.Add(Me.txtLimitCalc)
-        Me.GroupBox3.Controls.Add(Me.txtScale)
-        Me.GroupBox3.Controls.Add(Me.txtTimeStep)
-        Me.GroupBox3.Controls.Add(Me.cbIntegration)
-        Me.GroupBox3.Controls.Add(Me.Label24)
-        Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.txtLimitObjects)
-        Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(451, 159)
-        Me.GroupBox3.TabIndex = 89
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Simulation"
-        '
-        'Label1
-        '
-        Me.Label1.AutoEllipsis = True
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label1.Location = New System.Drawing.Point(2, 17)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(161, 21)
-        Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Time Step (s): "
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.UseMnemonic = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoEllipsis = True
-        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label4.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label4.Location = New System.Drawing.Point(2, 44)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(161, 21)
-        Me.Label4.TabIndex = 12
-        Me.Label4.Text = "Limit Calculations (C/s): "
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.UseMnemonic = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoEllipsis = True
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label2.Location = New System.Drawing.Point(2, 96)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(183, 25)
-        Me.Label2.TabIndex = 31
-        Me.Label2.Text = "World Scale:"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.UseMnemonic = False
-        '
-        'txtLimitCalc
-        '
-        Me.txtLimitCalc.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLimitCalc.Location = New System.Drawing.Point(224, 44)
-        Me.txtLimitCalc.Name = "txtLimitCalc"
-        Me.txtLimitCalc.Size = New System.Drawing.Size(218, 35)
-        Me.txtLimitCalc.TabIndex = 1
-        Me.txtLimitCalc.Text = "1000"
-        Me.txtLimitCalc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtScale
-        '
-        Me.txtScale.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtScale.Location = New System.Drawing.Point(224, 98)
-        Me.txtScale.Name = "txtScale"
-        Me.txtScale.Size = New System.Drawing.Size(218, 35)
-        Me.txtScale.TabIndex = 3
-        Me.txtScale.Text = "1"
-        Me.txtScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtTimeStep
-        '
-        Me.txtTimeStep.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtTimeStep.Location = New System.Drawing.Point(224, 17)
-        Me.txtTimeStep.Name = "txtTimeStep"
-        Me.txtTimeStep.Size = New System.Drawing.Size(218, 35)
-        Me.txtTimeStep.TabIndex = 0
-        Me.txtTimeStep.Text = "0.001"
-        Me.txtTimeStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cbIntegration
-        '
-        Me.cbIntegration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbIntegration.Enabled = False
-        Me.cbIntegration.FormattingEnabled = True
-        Me.cbIntegration.Items.AddRange(New Object() {"1st order - Euler", "2nd order - Verlet", "4th order - Symplectic", "6th order - Symplectic"})
-        Me.cbIntegration.Location = New System.Drawing.Point(224, 125)
-        Me.cbIntegration.Name = "cbIntegration"
-        Me.cbIntegration.Size = New System.Drawing.Size(218, 35)
-        Me.cbIntegration.TabIndex = 4
-        '
-        'Label24
-        '
-        Me.Label24.AutoEllipsis = True
-        Me.Label24.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label24.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label24.Location = New System.Drawing.Point(2, 71)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(161, 21)
-        Me.Label24.TabIndex = 26
-        Me.Label24.Text = "Limit Objects: "
-        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label24.UseMnemonic = False
-        '
-        'Label14
-        '
-        Me.Label14.AutoEllipsis = True
-        Me.Label14.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label14.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label14.Location = New System.Drawing.Point(2, 127)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(161, 21)
-        Me.Label14.TabIndex = 28
-        Me.Label14.Text = "Method of Integration : "
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label14.UseMnemonic = False
-        '
-        'txtLimitObjects
-        '
-        Me.txtLimitObjects.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtLimitObjects.Location = New System.Drawing.Point(224, 71)
-        Me.txtLimitObjects.Name = "txtLimitObjects"
-        Me.txtLimitObjects.Size = New System.Drawing.Size(218, 35)
-        Me.txtLimitObjects.TabIndex = 2
-        Me.txtLimitObjects.Text = "200"
-        Me.txtLimitObjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Tabs
-        '
-        Me.Tabs.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
-        Me.Tabs.Controls.Add(Me.TabSimulation)
-        Me.Tabs.Controls.Add(Me.TabForces)
-        Me.Tabs.Controls.Add(Me.TabDisplay)
-        Me.Tabs.Controls.Add(Me.TabLights)
-        Me.Tabs.Controls.Add(Me.TabGroups)
-        Me.Tabs.Location = New System.Drawing.Point(2, 50)
-        Me.Tabs.Name = "Tabs"
-        Me.Tabs.SelectedIndex = 0
-        Me.Tabs.Size = New System.Drawing.Size(459, 624)
-        Me.Tabs.TabIndex = 1
-        '
-        'ControlPanel
-        '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(461, 699)
-        Me.Controls.Add(Me.Tabs)
-        Me.Controls.Add(Me.Stats)
-        Me.Controls.Add(Me.cmdStart)
-        Me.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "ControlPanel"
-        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SandBox Simulator -  Control Panel"
-        Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Stats.ResumeLayout(False)
-        Me.Stats.PerformLayout()
-        Me.TabGroups.ResumeLayout(False)
-        Me.gbObjects.ResumeLayout(False)
-        Me.gbObjects.PerformLayout()
-        CType(Me.tbObjectTransparency, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbObjectReflectivity, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbObjectHighlightSharpness, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabLights.ResumeLayout(False)
-        Me.gbLights.ResumeLayout(False)
-        Me.gbLights.PerformLayout()
-        CType(Me.tbLightAmbient, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbLightHighlight, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabDisplay.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.tbCameraSpeed, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Rendering.ResumeLayout(False)
-        Me.Rendering.PerformLayout()
-        CType(Me.tbPolys, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabForces.ResumeLayout(False)
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        Me.TabSimulation.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.Tabs.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        cmdStart = New System.Windows.Forms.Button()
+        ColorDialog = New System.Windows.Forms.ColorDialog()
+        Stats = New System.Windows.Forms.StatusStrip()
+        lblStat = New System.Windows.Forms.ToolStripStatusLabel()
+        SaveDialog = New System.Windows.Forms.SaveFileDialog()
+        OpenDialog = New System.Windows.Forms.OpenFileDialog()
+        StatusUpdate = New System.Windows.Forms.Timer(components)
+        TabGroups = New System.Windows.Forms.TabPage()
+        gbObjects = New System.Windows.Forms.GroupBox()
+        plObjectHighlightColor = New System.Windows.Forms.Button()
+        plObjectColor = New System.Windows.Forms.Button()
+        cmdObjectRefractiveIndex = New System.Windows.Forms.Button()
+        txtObjectRefractiveIndex = New System.Windows.Forms.TextBox()
+        lblObjectRefractiveIndex = New System.Windows.Forms.Label()
+        lblObjectReflectivity = New System.Windows.Forms.Label()
+        cmdObjectReflectivity = New System.Windows.Forms.Button()
+        lblObjectType = New System.Windows.Forms.Label()
+        cbObjectType = New System.Windows.Forms.ComboBox()
+        chObjectWireframe = New System.Windows.Forms.CheckBox()
+        chObjectAffected = New System.Windows.Forms.CheckBox()
+        chObjectAffects = New System.Windows.Forms.CheckBox()
+        cmdObjectNumber = New System.Windows.Forms.Button()
+        lblObjectNumber = New System.Windows.Forms.Label()
+        listGroups = New System.Windows.Forms.ListBox()
+        cmdObjectVelocityZ = New System.Windows.Forms.Button()
+        cmdObjectVelocityY = New System.Windows.Forms.Button()
+        cmdObjectTransparency = New System.Windows.Forms.Button()
+        cmdObjectHighlightSharpness = New System.Windows.Forms.Button()
+        cmdObjectPositionZ = New System.Windows.Forms.Button()
+        cmdObjectPositionY = New System.Windows.Forms.Button()
+        cmdObjectHighlightColor = New System.Windows.Forms.Button()
+        cmdObjectColor = New System.Windows.Forms.Button()
+        cmdObjectVelocityX = New System.Windows.Forms.Button()
+        cmdObjectPositionX = New System.Windows.Forms.Button()
+        cmdObjectCharge = New System.Windows.Forms.Button()
+        cmdObjectMass = New System.Windows.Forms.Button()
+        lblObjectHighlightColor = New System.Windows.Forms.Label()
+        lblObjectName = New System.Windows.Forms.Label()
+        lblObjectTransparency = New System.Windows.Forms.Label()
+        txtObjectVelocityZ = New System.Windows.Forms.TextBox()
+        txtObjectName = New System.Windows.Forms.TextBox()
+        txtObjectVelocityY = New System.Windows.Forms.TextBox()
+        lblObjectMass = New System.Windows.Forms.Label()
+        lblObjectCharge = New System.Windows.Forms.Label()
+        lblObjectColor = New System.Windows.Forms.Label()
+        lblObjectPosition = New System.Windows.Forms.Label()
+        lblObjectVelocity = New System.Windows.Forms.Label()
+        lblObjectHighlightSharpness = New System.Windows.Forms.Label()
+        tbObjectTransparency = New System.Windows.Forms.TrackBar()
+        txtObjectPositionZ = New System.Windows.Forms.TextBox()
+        txtObjectPositionX = New System.Windows.Forms.TextBox()
+        txtObjectPositionY = New System.Windows.Forms.TextBox()
+        txtObjectVelocityX = New System.Windows.Forms.TextBox()
+        txtObjectMass = New System.Windows.Forms.TextBox()
+        txtObjectCharge = New System.Windows.Forms.TextBox()
+        txtObjectNumber = New System.Windows.Forms.TextBox()
+        tbObjectReflectivity = New System.Windows.Forms.TrackBar()
+        tbObjectHighlightSharpness = New System.Windows.Forms.TrackBar()
+        txtObjectSizeX = New System.Windows.Forms.TextBox()
+        txtObjectSizeY = New System.Windows.Forms.TextBox()
+        txtObjectSizeZ = New System.Windows.Forms.TextBox()
+        lblObjectSize = New System.Windows.Forms.Label()
+        txtObjectNormalZ = New System.Windows.Forms.TextBox()
+        txtObjectNormalY = New System.Windows.Forms.TextBox()
+        txtObjectNormalX = New System.Windows.Forms.TextBox()
+        cmdObjectRadius = New System.Windows.Forms.Button()
+        lblObjectRadius = New System.Windows.Forms.Label()
+        txtObjectRotationZ = New System.Windows.Forms.TextBox()
+        cmdObjectRotationZ = New System.Windows.Forms.Button()
+        txtObjectRotationY = New System.Windows.Forms.TextBox()
+        cmdObjectRotationY = New System.Windows.Forms.Button()
+        txtObjectRotationX = New System.Windows.Forms.TextBox()
+        cmdObjectRotationX = New System.Windows.Forms.Button()
+        lblObjectRotation = New System.Windows.Forms.Label()
+        lblObjectNormal = New System.Windows.Forms.Label()
+        cmdObjectSizeX = New System.Windows.Forms.Button()
+        cmdObjectSizeY = New System.Windows.Forms.Button()
+        cmdObjectSizeZ = New System.Windows.Forms.Button()
+        txtObjectRadius = New System.Windows.Forms.TextBox()
+        cmdObjectNormalX = New System.Windows.Forms.Button()
+        cmdObjectNormalY = New System.Windows.Forms.Button()
+        cmdObjectNormalZ = New System.Windows.Forms.Button()
+        cmdGroupAdd = New System.Windows.Forms.Button()
+        cmdGroupRemove = New System.Windows.Forms.Button()
+        cmdGroupReplace = New System.Windows.Forms.Button()
+        TabLights = New System.Windows.Forms.TabPage()
+        gbLights = New System.Windows.Forms.GroupBox()
+        plLightColor = New System.Windows.Forms.Button()
+        txtLightAttenuationC = New System.Windows.Forms.TextBox()
+        txtLightAttenuationB = New System.Windows.Forms.TextBox()
+        txtLightAttenuationA = New System.Windows.Forms.TextBox()
+        lblLightAttenuation = New System.Windows.Forms.Label()
+        txtLightAngleOuter = New System.Windows.Forms.TextBox()
+        lblLightRange = New System.Windows.Forms.Label()
+        txtLightRange = New System.Windows.Forms.TextBox()
+        lblLightFalloff = New System.Windows.Forms.Label()
+        txtLightFalloff = New System.Windows.Forms.TextBox()
+        lblLightAngle = New System.Windows.Forms.Label()
+        txtLightAngleInner = New System.Windows.Forms.TextBox()
+        tbLightAmbient = New System.Windows.Forms.TrackBar()
+        lblLightAmbient = New System.Windows.Forms.Label()
+        lblLightHighlight = New System.Windows.Forms.Label()
+        lblLightType = New System.Windows.Forms.Label()
+        txtLightPositionZ = New System.Windows.Forms.TextBox()
+        txtLightPositionY = New System.Windows.Forms.TextBox()
+        txtLightPositionX = New System.Windows.Forms.TextBox()
+        lblLightPosition = New System.Windows.Forms.Label()
+        chLightsEnable = New System.Windows.Forms.CheckBox()
+        listLights = New System.Windows.Forms.ListBox()
+        txtLightName = New System.Windows.Forms.TextBox()
+        lblLightName = New System.Windows.Forms.Label()
+        txtLightDirectionZ = New System.Windows.Forms.TextBox()
+        lblLightDirection = New System.Windows.Forms.Label()
+        txtLightDirectionY = New System.Windows.Forms.TextBox()
+        txtLightDirectionX = New System.Windows.Forms.TextBox()
+        lblLightColor = New System.Windows.Forms.Label()
+        tbLightHighlight = New System.Windows.Forms.TrackBar()
+        cbLightType = New System.Windows.Forms.ComboBox()
+        cmdLightAdd = New System.Windows.Forms.Button()
+        cmdLightRemove = New System.Windows.Forms.Button()
+        cmdLightReplace = New System.Windows.Forms.Button()
+        TabDisplay = New System.Windows.Forms.TabPage()
+        spRendering = New System.Windows.Forms.SplitContainer()
+        gbRendering = New System.Windows.Forms.GroupBox()
+        pRender = New System.Windows.Forms.Panel()
+        TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Label45 = New System.Windows.Forms.Label()
+        Label3 = New System.Windows.Forms.Label()
+        Label30 = New System.Windows.Forms.Label()
+        txtWindowX = New System.Windows.Forms.TextBox()
+        tbPolys = New System.Windows.Forms.TrackBar()
+        Label12 = New System.Windows.Forms.Label()
+        txtRenderThreads = New System.Windows.Forms.TextBox()
+        cbShading = New System.Windows.Forms.ComboBox()
+        Label18 = New System.Windows.Forms.Label()
+        Label46 = New System.Windows.Forms.Label()
+        Label43 = New System.Windows.Forms.Label()
+        Label13 = New System.Windows.Forms.Label()
+        chVSync = New System.Windows.Forms.CheckBox()
+        txtHFoV = New System.Windows.Forms.TextBox()
+        txtVFoV = New System.Windows.Forms.TextBox()
+        txtMaxFPS = New System.Windows.Forms.TextBox()
+        chTrace = New System.Windows.Forms.CheckBox()
+        Label44 = New System.Windows.Forms.Label()
+        txtWindowY = New System.Windows.Forms.TextBox()
+        plRenderBackColor = New System.Windows.Forms.Button()
+        cbRender = New System.Windows.Forms.ComboBox()
+        gbCamera = New System.Windows.Forms.GroupBox()
+        pCamera = New System.Windows.Forms.Panel()
+        Label47 = New System.Windows.Forms.Label()
+        chCamera = New System.Windows.Forms.CheckBox()
+        txtCTargetZ = New System.Windows.Forms.TextBox()
+        tbCameraSpeed = New System.Windows.Forms.TrackBar()
+        txtCPosX = New System.Windows.Forms.TextBox()
+        Label17 = New System.Windows.Forms.Label()
+        txtCPosZ = New System.Windows.Forms.TextBox()
+        txtCTargetY = New System.Windows.Forms.TextBox()
+        txtCOrientY = New System.Windows.Forms.TextBox()
+        txtCTargetX = New System.Windows.Forms.TextBox()
+        txtCOrientZ = New System.Windows.Forms.TextBox()
+        Label11 = New System.Windows.Forms.Label()
+        txtCPosY = New System.Windows.Forms.TextBox()
+        txtCOrientX = New System.Windows.Forms.TextBox()
+        Label16 = New System.Windows.Forms.Label()
+        CmdSaveOut = New System.Windows.Forms.Button()
+        TabForces = New System.Windows.Forms.TabPage()
+        spForces = New System.Windows.Forms.SplitContainer()
+        gbForces = New System.Windows.Forms.GroupBox()
+        pForces = New System.Windows.Forms.Panel()
+        tlpAccelForce = New System.Windows.Forms.TableLayoutPanel()
+        txtFieldX = New System.Windows.Forms.TextBox()
+        txtFieldY = New System.Windows.Forms.TextBox()
+        txtFieldZ = New System.Windows.Forms.TextBox()
+        txtPermittivity = New System.Windows.Forms.TextBox()
+        chForces = New System.Windows.Forms.CheckBox()
+        Label48 = New System.Windows.Forms.Label()
+        Label26 = New System.Windows.Forms.Label()
+        txtFluidViscosity = New System.Windows.Forms.TextBox()
+        Label28 = New System.Windows.Forms.Label()
+        Label29 = New System.Windows.Forms.Label()
+        chDrag = New System.Windows.Forms.CheckBox()
+        txtDragCoeff = New System.Windows.Forms.TextBox()
+        Label22 = New System.Windows.Forms.Label()
+        txtFluidDensity = New System.Windows.Forms.TextBox()
+        chField = New System.Windows.Forms.CheckBox()
+        chElectrostatic = New System.Windows.Forms.CheckBox()
+        chGravity = New System.Windows.Forms.CheckBox()
+        gbCollisions = New System.Windows.Forms.GroupBox()
+        pCollisions = New System.Windows.Forms.Panel()
+        TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        txtAddMin = New System.Windows.Forms.TextBox()
+        txtAddAvg = New System.Windows.Forms.TextBox()
+        txtAddMax = New System.Windows.Forms.TextBox()
+        TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        txtBreakMax = New System.Windows.Forms.TextBox()
+        txtBreakAvg = New System.Windows.Forms.TextBox()
+        txtBreakMin = New System.Windows.Forms.TextBox()
+        chInterpolate = New System.Windows.Forms.CheckBox()
+        chCollision = New System.Windows.Forms.CheckBox()
+        Label20 = New System.Windows.Forms.Label()
+        txtCoR = New System.Windows.Forms.TextBox()
+        chbreakable = New System.Windows.Forms.CheckBox()
+        lblResulting = New System.Windows.Forms.Label()
+        Label25 = New System.Windows.Forms.Label()
+        TabSimulation = New System.Windows.Forms.TabPage()
+        spSaveAndLoad = New System.Windows.Forms.SplitContainer()
+        cmdSave = New System.Windows.Forms.Button()
+        cmdLoad = New System.Windows.Forms.Button()
+        gbSimulation = New System.Windows.Forms.GroupBox()
+        pSimulation = New System.Windows.Forms.Panel()
+        Label1 = New System.Windows.Forms.Label()
+        txtLimitObjects = New System.Windows.Forms.TextBox()
+        Label4 = New System.Windows.Forms.Label()
+        Label14 = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
+        Label24 = New System.Windows.Forms.Label()
+        txtLimitCalc = New System.Windows.Forms.TextBox()
+        cbIntegration = New System.Windows.Forms.ComboBox()
+        txtScale = New System.Windows.Forms.TextBox()
+        txtTimeStep = New System.Windows.Forms.TextBox()
+        Tabs = New System.Windows.Forms.TabControl()
+        Stats.SuspendLayout()
+        TabGroups.SuspendLayout()
+        gbObjects.SuspendLayout()
+        CType(tbObjectTransparency, ComponentModel.ISupportInitialize).BeginInit()
+        CType(tbObjectReflectivity, ComponentModel.ISupportInitialize).BeginInit()
+        CType(tbObjectHighlightSharpness, ComponentModel.ISupportInitialize).BeginInit()
+        TabLights.SuspendLayout()
+        gbLights.SuspendLayout()
+        CType(tbLightAmbient, ComponentModel.ISupportInitialize).BeginInit()
+        CType(tbLightHighlight, ComponentModel.ISupportInitialize).BeginInit()
+        TabDisplay.SuspendLayout()
+        CType(spRendering, ComponentModel.ISupportInitialize).BeginInit()
+        spRendering.Panel1.SuspendLayout()
+        spRendering.Panel2.SuspendLayout()
+        spRendering.SuspendLayout()
+        gbRendering.SuspendLayout()
+        pRender.SuspendLayout()
+        TableLayoutPanel3.SuspendLayout()
+        CType(tbPolys, ComponentModel.ISupportInitialize).BeginInit()
+        gbCamera.SuspendLayout()
+        pCamera.SuspendLayout()
+        CType(tbCameraSpeed, ComponentModel.ISupportInitialize).BeginInit()
+        TabForces.SuspendLayout()
+        CType(spForces, ComponentModel.ISupportInitialize).BeginInit()
+        spForces.Panel1.SuspendLayout()
+        spForces.Panel2.SuspendLayout()
+        spForces.SuspendLayout()
+        gbForces.SuspendLayout()
+        pForces.SuspendLayout()
+        tlpAccelForce.SuspendLayout()
+        gbCollisions.SuspendLayout()
+        pCollisions.SuspendLayout()
+        TableLayoutPanel2.SuspendLayout()
+        TableLayoutPanel1.SuspendLayout()
+        TabSimulation.SuspendLayout()
+        CType(spSaveAndLoad, ComponentModel.ISupportInitialize).BeginInit()
+        spSaveAndLoad.Panel1.SuspendLayout()
+        spSaveAndLoad.Panel2.SuspendLayout()
+        spSaveAndLoad.SuspendLayout()
+        gbSimulation.SuspendLayout()
+        pSimulation.SuspendLayout()
+        Tabs.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' cmdStart
+        ' 
+        cmdStart.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdStart.BackColor = SystemColors.Control
+        cmdStart.FlatAppearance.BorderColor = Color.Black
+        cmdStart.FlatAppearance.BorderSize = 0
+        cmdStart.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdStart.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        cmdStart.ForeColor = Color.Black
+        cmdStart.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdStart.Location = New Point(12, 5)
+        cmdStart.Name = "cmdStart"
+        cmdStart.Size = New Size(1480, 62)
+        cmdStart.TabIndex = 0
+        cmdStart.Text = "&Start Simulation"
+        cmdStart.UseVisualStyleBackColor = False
+        ' 
+        ' ColorDialog
+        ' 
+        ColorDialog.AnyColor = True
+        ColorDialog.Color = SystemColors.ActiveCaption
+        ColorDialog.FullOpen = True
+        ' 
+        ' Stats
+        ' 
+        Stats.AutoSize = False
+        Stats.ImageScalingSize = New Size(32, 32)
+        Stats.Items.AddRange(New System.Windows.Forms.ToolStripItem() {lblStat})
+        Stats.Location = New Point(0, 1161)
+        Stats.Name = "Stats"
+        Stats.Size = New Size(1504, 42)
+        Stats.SizingGrip = False
+        Stats.TabIndex = 22
+        ' 
+        ' lblStat
+        ' 
+        lblStat.BackColor = SystemColors.Control
+        lblStat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        lblStat.Font = New Font("Arial", 8.25F)
+        lblStat.ForeColor = SystemColors.ControlText
+        lblStat.LinkColor = Color.White
+        lblStat.Name = "lblStat"
+        lblStat.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
+        lblStat.Size = New Size(1489, 32)
+        lblStat.Spring = True
+        lblStat.Text = "Frames : 0  |  FPS : 0  |  Calculations : 0  |  CPS : 0"
+        ' 
+        ' StatusUpdate
+        ' 
+        StatusUpdate.Interval = 150
+        ' 
+        ' TabGroups
+        ' 
+        TabGroups.BackColor = SystemColors.Control
+        TabGroups.Controls.Add(gbObjects)
+        TabGroups.Controls.Add(cmdGroupAdd)
+        TabGroups.Controls.Add(cmdGroupRemove)
+        TabGroups.Controls.Add(cmdGroupReplace)
+        TabGroups.Location = New Point(4, 44)
+        TabGroups.Name = "TabGroups"
+        TabGroups.Padding = New System.Windows.Forms.Padding(3)
+        TabGroups.Size = New Size(1472, 1037)
+        TabGroups.TabIndex = 7
+        TabGroups.Text = "Objects"
+        TabGroups.UseVisualStyleBackColor = True
+        ' 
+        ' gbObjects
+        ' 
+        gbObjects.Controls.Add(plObjectHighlightColor)
+        gbObjects.Controls.Add(plObjectColor)
+        gbObjects.Controls.Add(cmdObjectRefractiveIndex)
+        gbObjects.Controls.Add(txtObjectRefractiveIndex)
+        gbObjects.Controls.Add(lblObjectRefractiveIndex)
+        gbObjects.Controls.Add(lblObjectReflectivity)
+        gbObjects.Controls.Add(cmdObjectReflectivity)
+        gbObjects.Controls.Add(lblObjectType)
+        gbObjects.Controls.Add(cbObjectType)
+        gbObjects.Controls.Add(chObjectWireframe)
+        gbObjects.Controls.Add(chObjectAffected)
+        gbObjects.Controls.Add(chObjectAffects)
+        gbObjects.Controls.Add(cmdObjectNumber)
+        gbObjects.Controls.Add(lblObjectNumber)
+        gbObjects.Controls.Add(listGroups)
+        gbObjects.Controls.Add(cmdObjectVelocityZ)
+        gbObjects.Controls.Add(cmdObjectVelocityY)
+        gbObjects.Controls.Add(cmdObjectTransparency)
+        gbObjects.Controls.Add(cmdObjectHighlightSharpness)
+        gbObjects.Controls.Add(cmdObjectPositionZ)
+        gbObjects.Controls.Add(cmdObjectPositionY)
+        gbObjects.Controls.Add(cmdObjectHighlightColor)
+        gbObjects.Controls.Add(cmdObjectColor)
+        gbObjects.Controls.Add(cmdObjectVelocityX)
+        gbObjects.Controls.Add(cmdObjectPositionX)
+        gbObjects.Controls.Add(cmdObjectCharge)
+        gbObjects.Controls.Add(cmdObjectMass)
+        gbObjects.Controls.Add(lblObjectHighlightColor)
+        gbObjects.Controls.Add(lblObjectName)
+        gbObjects.Controls.Add(lblObjectTransparency)
+        gbObjects.Controls.Add(txtObjectVelocityZ)
+        gbObjects.Controls.Add(txtObjectName)
+        gbObjects.Controls.Add(txtObjectVelocityY)
+        gbObjects.Controls.Add(lblObjectMass)
+        gbObjects.Controls.Add(lblObjectCharge)
+        gbObjects.Controls.Add(lblObjectColor)
+        gbObjects.Controls.Add(lblObjectPosition)
+        gbObjects.Controls.Add(lblObjectVelocity)
+        gbObjects.Controls.Add(lblObjectHighlightSharpness)
+        gbObjects.Controls.Add(tbObjectTransparency)
+        gbObjects.Controls.Add(txtObjectPositionZ)
+        gbObjects.Controls.Add(txtObjectPositionX)
+        gbObjects.Controls.Add(txtObjectPositionY)
+        gbObjects.Controls.Add(txtObjectVelocityX)
+        gbObjects.Controls.Add(txtObjectMass)
+        gbObjects.Controls.Add(txtObjectCharge)
+        gbObjects.Controls.Add(txtObjectNumber)
+        gbObjects.Controls.Add(tbObjectReflectivity)
+        gbObjects.Controls.Add(tbObjectHighlightSharpness)
+        gbObjects.Controls.Add(txtObjectSizeX)
+        gbObjects.Controls.Add(txtObjectSizeY)
+        gbObjects.Controls.Add(txtObjectSizeZ)
+        gbObjects.Controls.Add(lblObjectSize)
+        gbObjects.Controls.Add(txtObjectNormalZ)
+        gbObjects.Controls.Add(txtObjectNormalY)
+        gbObjects.Controls.Add(txtObjectNormalX)
+        gbObjects.Controls.Add(cmdObjectRadius)
+        gbObjects.Controls.Add(lblObjectRadius)
+        gbObjects.Controls.Add(txtObjectRotationZ)
+        gbObjects.Controls.Add(cmdObjectRotationZ)
+        gbObjects.Controls.Add(txtObjectRotationY)
+        gbObjects.Controls.Add(cmdObjectRotationY)
+        gbObjects.Controls.Add(txtObjectRotationX)
+        gbObjects.Controls.Add(cmdObjectRotationX)
+        gbObjects.Controls.Add(lblObjectRotation)
+        gbObjects.Controls.Add(lblObjectNormal)
+        gbObjects.Controls.Add(cmdObjectSizeX)
+        gbObjects.Controls.Add(cmdObjectSizeY)
+        gbObjects.Controls.Add(cmdObjectSizeZ)
+        gbObjects.Controls.Add(txtObjectRadius)
+        gbObjects.Controls.Add(cmdObjectNormalX)
+        gbObjects.Controls.Add(cmdObjectNormalY)
+        gbObjects.Controls.Add(cmdObjectNormalZ)
+        gbObjects.Location = New Point(0, 0)
+        gbObjects.Name = "gbObjects"
+        gbObjects.Size = New Size(451, 528)
+        gbObjects.TabIndex = 70
+        gbObjects.TabStop = False
+        gbObjects.Text = "Objects"
+        ' 
+        ' plObjectHighlightColor
+        ' 
+        plObjectHighlightColor.BackColor = Color.White
+        plObjectHighlightColor.FlatAppearance.BorderColor = Color.Black
+        plObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        plObjectHighlightColor.ForeColor = Color.White
+        plObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        plObjectHighlightColor.Location = New Point(151, 377)
+        plObjectHighlightColor.Name = "plObjectHighlightColor"
+        plObjectHighlightColor.Size = New Size(292, 21)
+        plObjectHighlightColor.TabIndex = 38
+        plObjectHighlightColor.UseVisualStyleBackColor = False
+        ' 
+        ' plObjectColor
+        ' 
+        plObjectColor.BackColor = Color.FromArgb(CByte(255), CByte(192), CByte(128))
+        plObjectColor.FlatAppearance.BorderColor = Color.Black
+        plObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        plObjectColor.ForeColor = Color.FromArgb(CByte(255), CByte(192), CByte(128))
+        plObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        plObjectColor.Location = New Point(151, 348)
+        plObjectColor.Name = "plObjectColor"
+        plObjectColor.Size = New Size(292, 21)
+        plObjectColor.TabIndex = 36
+        plObjectColor.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectRefractiveIndex
+        ' 
+        cmdObjectRefractiveIndex.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRefractiveIndex.FlatAppearance.BorderSize = 0
+        cmdObjectRefractiveIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRefractiveIndex.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRefractiveIndex.ForeColor = Color.Black
+        cmdObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRefractiveIndex.Location = New Point(128, 475)
+        cmdObjectRefractiveIndex.Name = "cmdObjectRefractiveIndex"
+        cmdObjectRefractiveIndex.Size = New Size(21, 21)
+        cmdObjectRefractiveIndex.TabIndex = 45
+        cmdObjectRefractiveIndex.Text = "ƒ"
+        cmdObjectRefractiveIndex.UseVisualStyleBackColor = False
+        ' 
+        ' txtObjectRefractiveIndex
+        ' 
+        txtObjectRefractiveIndex.ForeColor = SystemColors.ControlText
+        txtObjectRefractiveIndex.Location = New Point(151, 475)
+        txtObjectRefractiveIndex.Name = "txtObjectRefractiveIndex"
+        txtObjectRefractiveIndex.Size = New Size(292, 35)
+        txtObjectRefractiveIndex.TabIndex = 46
+        txtObjectRefractiveIndex.Text = "1"
+        txtObjectRefractiveIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblObjectRefractiveIndex
+        ' 
+        lblObjectRefractiveIndex.AutoEllipsis = True
+        lblObjectRefractiveIndex.ForeColor = SystemColors.ControlText
+        lblObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectRefractiveIndex.Location = New Point(3, 475)
+        lblObjectRefractiveIndex.Name = "lblObjectRefractiveIndex"
+        lblObjectRefractiveIndex.Size = New Size(117, 21)
+        lblObjectRefractiveIndex.TabIndex = 233
+        lblObjectRefractiveIndex.Text = "Refractive Index: "
+        lblObjectRefractiveIndex.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectRefractiveIndex.UseMnemonic = False
+        ' 
+        ' lblObjectReflectivity
+        ' 
+        lblObjectReflectivity.AutoEllipsis = True
+        lblObjectReflectivity.ForeColor = SystemColors.ControlText
+        lblObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectReflectivity.Location = New Point(3, 424)
+        lblObjectReflectivity.Name = "lblObjectReflectivity"
+        lblObjectReflectivity.Size = New Size(117, 21)
+        lblObjectReflectivity.TabIndex = 230
+        lblObjectReflectivity.Text = "Reflectivity: "
+        lblObjectReflectivity.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectReflectivity.UseMnemonic = False
+        ' 
+        ' cmdObjectReflectivity
+        ' 
+        cmdObjectReflectivity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectReflectivity.FlatAppearance.BorderSize = 0
+        cmdObjectReflectivity.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectReflectivity.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectReflectivity.ForeColor = Color.Black
+        cmdObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectReflectivity.Location = New Point(128, 424)
+        cmdObjectReflectivity.Name = "cmdObjectReflectivity"
+        cmdObjectReflectivity.Size = New Size(21, 21)
+        cmdObjectReflectivity.TabIndex = 41
+        cmdObjectReflectivity.Text = "ƒ"
+        cmdObjectReflectivity.UseVisualStyleBackColor = False
+        ' 
+        ' lblObjectType
+        ' 
+        lblObjectType.AutoEllipsis = True
+        lblObjectType.ForeColor = SystemColors.ControlText
+        lblObjectType.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectType.Location = New Point(3, 124)
+        lblObjectType.Name = "lblObjectType"
+        lblObjectType.Size = New Size(118, 23)
+        lblObjectType.TabIndex = 213
+        lblObjectType.Text = "Type of Objects: "
+        lblObjectType.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectType.UseMnemonic = False
+        ' 
+        ' cbObjectType
+        ' 
+        cbObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        cbObjectType.FormattingEnabled = True
+        cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Plane", "Infinite Plane"})
+        cbObjectType.Location = New Point(151, 124)
+        cbObjectType.Name = "cbObjectType"
+        cbObjectType.Size = New Size(292, 35)
+        cbObjectType.TabIndex = 2
+        ' 
+        ' chObjectWireframe
+        ' 
+        chObjectWireframe.AutoEllipsis = True
+        chObjectWireframe.Enabled = False
+        chObjectWireframe.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chObjectWireframe.ForeColor = SystemColors.ControlText
+        chObjectWireframe.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chObjectWireframe.Location = New Point(244, 502)
+        chObjectWireframe.Name = "chObjectWireframe"
+        chObjectWireframe.Size = New Size(152, 19)
+        chObjectWireframe.TabIndex = 49
+        chObjectWireframe.Text = "Render as Wireframe"
+        chObjectWireframe.UseMnemonic = False
+        chObjectWireframe.UseVisualStyleBackColor = True
+        ' 
+        ' chObjectAffected
+        ' 
+        chObjectAffected.AutoSize = True
+        chObjectAffected.Checked = True
+        chObjectAffected.CheckState = System.Windows.Forms.CheckState.Checked
+        chObjectAffected.Font = New Font("Arial", 9F)
+        chObjectAffected.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chObjectAffected.Location = New Point(114, 503)
+        chObjectAffected.Name = "chObjectAffected"
+        chObjectAffected.Size = New Size(245, 31)
+        chObjectAffected.TabIndex = 48
+        chObjectAffected.Text = "Affected by Others"
+        chObjectAffected.UseVisualStyleBackColor = True
+        ' 
+        ' chObjectAffects
+        ' 
+        chObjectAffects.AutoSize = True
+        chObjectAffects.Checked = True
+        chObjectAffects.CheckState = System.Windows.Forms.CheckState.Checked
+        chObjectAffects.Font = New Font("Arial", 9F)
+        chObjectAffects.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chObjectAffects.Location = New Point(6, 503)
+        chObjectAffects.Name = "chObjectAffects"
+        chObjectAffects.Size = New Size(197, 31)
+        chObjectAffects.TabIndex = 47
+        chObjectAffects.Text = "Affects Others"
+        chObjectAffects.UseVisualStyleBackColor = True
+        ' 
+        ' cmdObjectNumber
+        ' 
+        cmdObjectNumber.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectNumber.BackColor = SystemColors.Control
+        cmdObjectNumber.FlatAppearance.BorderSize = 0
+        cmdObjectNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNumber.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNumber.ForeColor = Color.Black
+        cmdObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNumber.Location = New Point(128, 153)
+        cmdObjectNumber.Name = "cmdObjectNumber"
+        cmdObjectNumber.Size = New Size(21, 21)
+        cmdObjectNumber.TabIndex = 3
+        cmdObjectNumber.Text = "ƒ"
+        cmdObjectNumber.UseVisualStyleBackColor = False
+        ' 
+        ' lblObjectNumber
+        ' 
+        lblObjectNumber.AutoEllipsis = True
+        lblObjectNumber.ForeColor = SystemColors.ControlText
+        lblObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectNumber.Location = New Point(3, 153)
+        lblObjectNumber.Name = "lblObjectNumber"
+        lblObjectNumber.Size = New Size(126, 21)
+        lblObjectNumber.TabIndex = 205
+        lblObjectNumber.Text = "Number of Objects:"
+        lblObjectNumber.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectNumber.UseMnemonic = False
+        ' 
+        ' listGroups
+        ' 
+        listGroups.Font = New Font("Arial", 9F)
+        listGroups.ForeColor = SystemColors.ControlText
+        listGroups.IntegralHeight = False
+        listGroups.ItemHeight = 27
+        listGroups.Location = New Point(6, 20)
+        listGroups.Name = "listGroups"
+        listGroups.Size = New Size(437, 74)
+        listGroups.TabIndex = 0
+        ' 
+        ' cmdObjectVelocityZ
+        ' 
+        cmdObjectVelocityZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectVelocityZ.FlatAppearance.BorderSize = 0
+        cmdObjectVelocityZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectVelocityZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectVelocityZ.ForeColor = Color.Black
+        cmdObjectVelocityZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectVelocityZ.Location = New Point(339, 321)
+        cmdObjectVelocityZ.Name = "cmdObjectVelocityZ"
+        cmdObjectVelocityZ.Size = New Size(21, 21)
+        cmdObjectVelocityZ.TabIndex = 33
+        cmdObjectVelocityZ.Text = "ƒ"
+        cmdObjectVelocityZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectVelocityY
+        ' 
+        cmdObjectVelocityY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectVelocityY.FlatAppearance.BorderSize = 0
+        cmdObjectVelocityY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectVelocityY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectVelocityY.ForeColor = Color.Black
+        cmdObjectVelocityY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectVelocityY.Location = New Point(234, 321)
+        cmdObjectVelocityY.Name = "cmdObjectVelocityY"
+        cmdObjectVelocityY.Size = New Size(21, 21)
+        cmdObjectVelocityY.TabIndex = 31
+        cmdObjectVelocityY.Text = "ƒ"
+        cmdObjectVelocityY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectTransparency
+        ' 
+        cmdObjectTransparency.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectTransparency.FlatAppearance.BorderSize = 0
+        cmdObjectTransparency.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectTransparency.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectTransparency.ForeColor = Color.Black
+        cmdObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectTransparency.Location = New Point(128, 448)
+        cmdObjectTransparency.Name = "cmdObjectTransparency"
+        cmdObjectTransparency.Size = New Size(21, 21)
+        cmdObjectTransparency.TabIndex = 43
+        cmdObjectTransparency.Text = "ƒ"
+        cmdObjectTransparency.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectHighlightSharpness
+        ' 
+        cmdObjectHighlightSharpness.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectHighlightSharpness.FlatAppearance.BorderSize = 0
+        cmdObjectHighlightSharpness.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectHighlightSharpness.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectHighlightSharpness.ForeColor = Color.Black
+        cmdObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectHighlightSharpness.Location = New Point(128, 401)
+        cmdObjectHighlightSharpness.Name = "cmdObjectHighlightSharpness"
+        cmdObjectHighlightSharpness.Size = New Size(21, 21)
+        cmdObjectHighlightSharpness.TabIndex = 39
+        cmdObjectHighlightSharpness.Text = "ƒ"
+        cmdObjectHighlightSharpness.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectPositionZ
+        ' 
+        cmdObjectPositionZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectPositionZ.FlatAppearance.BorderSize = 0
+        cmdObjectPositionZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectPositionZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectPositionZ.ForeColor = Color.Black
+        cmdObjectPositionZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectPositionZ.Location = New Point(339, 292)
+        cmdObjectPositionZ.Name = "cmdObjectPositionZ"
+        cmdObjectPositionZ.Size = New Size(21, 21)
+        cmdObjectPositionZ.TabIndex = 27
+        cmdObjectPositionZ.Text = "ƒ"
+        cmdObjectPositionZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectPositionY
+        ' 
+        cmdObjectPositionY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectPositionY.FlatAppearance.BorderSize = 0
+        cmdObjectPositionY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectPositionY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectPositionY.ForeColor = Color.Black
+        cmdObjectPositionY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectPositionY.Location = New Point(234, 292)
+        cmdObjectPositionY.Name = "cmdObjectPositionY"
+        cmdObjectPositionY.Size = New Size(21, 21)
+        cmdObjectPositionY.TabIndex = 25
+        cmdObjectPositionY.Text = "ƒ"
+        cmdObjectPositionY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectHighlightColor
+        ' 
+        cmdObjectHighlightColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectHighlightColor.FlatAppearance.BorderSize = 0
+        cmdObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectHighlightColor.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectHighlightColor.ForeColor = Color.Black
+        cmdObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectHighlightColor.Location = New Point(128, 377)
+        cmdObjectHighlightColor.Name = "cmdObjectHighlightColor"
+        cmdObjectHighlightColor.Size = New Size(21, 21)
+        cmdObjectHighlightColor.TabIndex = 37
+        cmdObjectHighlightColor.Text = "ƒ"
+        cmdObjectHighlightColor.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectColor
+        ' 
+        cmdObjectColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectColor.FlatAppearance.BorderSize = 0
+        cmdObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectColor.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectColor.ForeColor = Color.Black
+        cmdObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectColor.Location = New Point(128, 348)
+        cmdObjectColor.Name = "cmdObjectColor"
+        cmdObjectColor.Size = New Size(21, 21)
+        cmdObjectColor.TabIndex = 35
+        cmdObjectColor.Text = "ƒ"
+        cmdObjectColor.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectVelocityX
+        ' 
+        cmdObjectVelocityX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectVelocityX.FlatAppearance.BorderSize = 0
+        cmdObjectVelocityX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectVelocityX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectVelocityX.ForeColor = Color.Black
+        cmdObjectVelocityX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectVelocityX.Location = New Point(128, 321)
+        cmdObjectVelocityX.Name = "cmdObjectVelocityX"
+        cmdObjectVelocityX.Size = New Size(21, 21)
+        cmdObjectVelocityX.TabIndex = 29
+        cmdObjectVelocityX.Text = "ƒ"
+        cmdObjectVelocityX.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectPositionX
+        ' 
+        cmdObjectPositionX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectPositionX.FlatAppearance.BorderSize = 0
+        cmdObjectPositionX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectPositionX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectPositionX.ForeColor = Color.Black
+        cmdObjectPositionX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectPositionX.Location = New Point(128, 292)
+        cmdObjectPositionX.Name = "cmdObjectPositionX"
+        cmdObjectPositionX.Size = New Size(21, 21)
+        cmdObjectPositionX.TabIndex = 23
+        cmdObjectPositionX.Text = "ƒ"
+        cmdObjectPositionX.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectCharge
+        ' 
+        cmdObjectCharge.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectCharge.FlatAppearance.BorderSize = 0
+        cmdObjectCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectCharge.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectCharge.ForeColor = Color.Black
+        cmdObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectCharge.Location = New Point(128, 209)
+        cmdObjectCharge.Name = "cmdObjectCharge"
+        cmdObjectCharge.Size = New Size(21, 21)
+        cmdObjectCharge.TabIndex = 7
+        cmdObjectCharge.Text = "ƒ"
+        cmdObjectCharge.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectMass
+        ' 
+        cmdObjectMass.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectMass.FlatAppearance.BorderSize = 0
+        cmdObjectMass.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectMass.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectMass.ForeColor = Color.Black
+        cmdObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectMass.Location = New Point(128, 180)
+        cmdObjectMass.Name = "cmdObjectMass"
+        cmdObjectMass.Size = New Size(21, 21)
+        cmdObjectMass.TabIndex = 5
+        cmdObjectMass.Text = "ƒ"
+        cmdObjectMass.UseVisualStyleBackColor = False
+        ' 
+        ' lblObjectHighlightColor
+        ' 
+        lblObjectHighlightColor.AutoEllipsis = True
+        lblObjectHighlightColor.ForeColor = SystemColors.ControlText
+        lblObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectHighlightColor.Location = New Point(3, 377)
+        lblObjectHighlightColor.Name = "lblObjectHighlightColor"
+        lblObjectHighlightColor.Size = New Size(126, 21)
+        lblObjectHighlightColor.TabIndex = 161
+        lblObjectHighlightColor.Text = "Highlight Color: "
+        lblObjectHighlightColor.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectHighlightColor.UseMnemonic = False
+        ' 
+        ' lblObjectName
+        ' 
+        lblObjectName.AutoEllipsis = True
+        lblObjectName.ForeColor = SystemColors.ControlText
+        lblObjectName.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectName.Location = New Point(3, 97)
+        lblObjectName.Name = "lblObjectName"
+        lblObjectName.Size = New Size(146, 21)
+        lblObjectName.TabIndex = 140
+        lblObjectName.Text = "Name of Objects: "
+        lblObjectName.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectName.UseMnemonic = False
+        ' 
+        ' lblObjectTransparency
+        ' 
+        lblObjectTransparency.AutoEllipsis = True
+        lblObjectTransparency.ForeColor = SystemColors.ControlText
+        lblObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectTransparency.Location = New Point(3, 448)
+        lblObjectTransparency.Name = "lblObjectTransparency"
+        lblObjectTransparency.Size = New Size(127, 21)
+        lblObjectTransparency.TabIndex = 149
+        lblObjectTransparency.Text = "Transparency:"
+        lblObjectTransparency.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectTransparency.UseMnemonic = False
+        ' 
+        ' txtObjectVelocityZ
+        ' 
+        txtObjectVelocityZ.ForeColor = SystemColors.ControlText
+        txtObjectVelocityZ.Location = New Point(361, 321)
+        txtObjectVelocityZ.Name = "txtObjectVelocityZ"
+        txtObjectVelocityZ.Size = New Size(82, 35)
+        txtObjectVelocityZ.TabIndex = 34
+        txtObjectVelocityZ.Text = "0"
+        txtObjectVelocityZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectName
+        ' 
+        txtObjectName.ForeColor = SystemColors.ControlText
+        txtObjectName.Location = New Point(151, 97)
+        txtObjectName.Name = "txtObjectName"
+        txtObjectName.Size = New Size(292, 35)
+        txtObjectName.TabIndex = 1
+        txtObjectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectVelocityY
+        ' 
+        txtObjectVelocityY.ForeColor = SystemColors.ControlText
+        txtObjectVelocityY.Location = New Point(256, 321)
+        txtObjectVelocityY.Name = "txtObjectVelocityY"
+        txtObjectVelocityY.Size = New Size(82, 35)
+        txtObjectVelocityY.TabIndex = 32
+        txtObjectVelocityY.Text = "0"
+        txtObjectVelocityY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblObjectMass
+        ' 
+        lblObjectMass.AutoEllipsis = True
+        lblObjectMass.ForeColor = SystemColors.ControlText
+        lblObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectMass.Location = New Point(3, 180)
+        lblObjectMass.Name = "lblObjectMass"
+        lblObjectMass.Size = New Size(126, 21)
+        lblObjectMass.TabIndex = 141
+        lblObjectMass.Text = "Mass (kg): "
+        lblObjectMass.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectMass.UseMnemonic = False
+        ' 
+        ' lblObjectCharge
+        ' 
+        lblObjectCharge.AutoEllipsis = True
+        lblObjectCharge.ForeColor = SystemColors.ControlText
+        lblObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectCharge.Location = New Point(3, 209)
+        lblObjectCharge.Name = "lblObjectCharge"
+        lblObjectCharge.Size = New Size(126, 21)
+        lblObjectCharge.TabIndex = 142
+        lblObjectCharge.Text = "Charge (C): "
+        lblObjectCharge.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectCharge.UseMnemonic = False
+        ' 
+        ' lblObjectColor
+        ' 
+        lblObjectColor.AutoEllipsis = True
+        lblObjectColor.ForeColor = SystemColors.ControlText
+        lblObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectColor.Location = New Point(3, 348)
+        lblObjectColor.Name = "lblObjectColor"
+        lblObjectColor.Size = New Size(126, 21)
+        lblObjectColor.TabIndex = 146
+        lblObjectColor.Text = "Color: "
+        lblObjectColor.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectColor.UseMnemonic = False
+        ' 
+        ' lblObjectPosition
+        ' 
+        lblObjectPosition.AutoEllipsis = True
+        lblObjectPosition.ForeColor = SystemColors.ControlText
+        lblObjectPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectPosition.Location = New Point(3, 292)
+        lblObjectPosition.Name = "lblObjectPosition"
+        lblObjectPosition.Size = New Size(126, 21)
+        lblObjectPosition.TabIndex = 144
+        lblObjectPosition.Text = "Position X,Y,Z  (m):"
+        lblObjectPosition.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectPosition.UseMnemonic = False
+        ' 
+        ' lblObjectVelocity
+        ' 
+        lblObjectVelocity.AutoEllipsis = True
+        lblObjectVelocity.ForeColor = SystemColors.ControlText
+        lblObjectVelocity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectVelocity.Location = New Point(3, 321)
+        lblObjectVelocity.Name = "lblObjectVelocity"
+        lblObjectVelocity.Size = New Size(126, 21)
+        lblObjectVelocity.TabIndex = 145
+        lblObjectVelocity.Text = "Velocity X,Y,Z (m/s): "
+        lblObjectVelocity.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectVelocity.UseMnemonic = False
+        ' 
+        ' lblObjectHighlightSharpness
+        ' 
+        lblObjectHighlightSharpness.AutoEllipsis = True
+        lblObjectHighlightSharpness.ForeColor = SystemColors.ControlText
+        lblObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectHighlightSharpness.Location = New Point(3, 401)
+        lblObjectHighlightSharpness.Name = "lblObjectHighlightSharpness"
+        lblObjectHighlightSharpness.Size = New Size(126, 21)
+        lblObjectHighlightSharpness.TabIndex = 164
+        lblObjectHighlightSharpness.Text = "Highlight Sharpness: "
+        lblObjectHighlightSharpness.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectHighlightSharpness.UseMnemonic = False
+        ' 
+        ' tbObjectTransparency
+        ' 
+        tbObjectTransparency.BackColor = SystemColors.Control
+        tbObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbObjectTransparency.LargeChange = 15
+        tbObjectTransparency.Location = New Point(151, 448)
+        tbObjectTransparency.Maximum = 255
+        tbObjectTransparency.Name = "tbObjectTransparency"
+        tbObjectTransparency.Size = New Size(292, 90)
+        tbObjectTransparency.SmallChange = 15
+        tbObjectTransparency.TabIndex = 44
+        tbObjectTransparency.TickFrequency = 5
+        tbObjectTransparency.TickStyle = System.Windows.Forms.TickStyle.None
+        tbObjectTransparency.Value = 255
+        ' 
+        ' txtObjectPositionZ
+        ' 
+        txtObjectPositionZ.ForeColor = SystemColors.ControlText
+        txtObjectPositionZ.Location = New Point(361, 292)
+        txtObjectPositionZ.Name = "txtObjectPositionZ"
+        txtObjectPositionZ.Size = New Size(82, 35)
+        txtObjectPositionZ.TabIndex = 28
+        txtObjectPositionZ.Text = "0"
+        txtObjectPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectPositionX
+        ' 
+        txtObjectPositionX.ForeColor = SystemColors.ControlText
+        txtObjectPositionX.Location = New Point(151, 292)
+        txtObjectPositionX.Name = "txtObjectPositionX"
+        txtObjectPositionX.Size = New Size(82, 35)
+        txtObjectPositionX.TabIndex = 24
+        txtObjectPositionX.Text = "0"
+        txtObjectPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectPositionY
+        ' 
+        txtObjectPositionY.ForeColor = SystemColors.ControlText
+        txtObjectPositionY.Location = New Point(256, 292)
+        txtObjectPositionY.Name = "txtObjectPositionY"
+        txtObjectPositionY.Size = New Size(82, 35)
+        txtObjectPositionY.TabIndex = 26
+        txtObjectPositionY.Text = "0"
+        txtObjectPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectVelocityX
+        ' 
+        txtObjectVelocityX.ForeColor = SystemColors.ControlText
+        txtObjectVelocityX.Location = New Point(151, 321)
+        txtObjectVelocityX.Name = "txtObjectVelocityX"
+        txtObjectVelocityX.Size = New Size(82, 35)
+        txtObjectVelocityX.TabIndex = 30
+        txtObjectVelocityX.Text = "0"
+        txtObjectVelocityX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectMass
+        ' 
+        txtObjectMass.ForeColor = SystemColors.ControlText
+        txtObjectMass.Location = New Point(151, 180)
+        txtObjectMass.Name = "txtObjectMass"
+        txtObjectMass.Size = New Size(292, 35)
+        txtObjectMass.TabIndex = 6
+        txtObjectMass.Text = "0"
+        txtObjectMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectCharge
+        ' 
+        txtObjectCharge.ForeColor = SystemColors.ControlText
+        txtObjectCharge.Location = New Point(151, 209)
+        txtObjectCharge.Name = "txtObjectCharge"
+        txtObjectCharge.Size = New Size(292, 35)
+        txtObjectCharge.TabIndex = 8
+        txtObjectCharge.Text = "0"
+        txtObjectCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectNumber
+        ' 
+        txtObjectNumber.Enabled = False
+        txtObjectNumber.ForeColor = SystemColors.ControlText
+        txtObjectNumber.Location = New Point(151, 153)
+        txtObjectNumber.Name = "txtObjectNumber"
+        txtObjectNumber.Size = New Size(292, 35)
+        txtObjectNumber.TabIndex = 4
+        txtObjectNumber.Text = "0"
+        txtObjectNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' tbObjectReflectivity
+        ' 
+        tbObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbObjectReflectivity.LargeChange = 10
+        tbObjectReflectivity.Location = New Point(151, 424)
+        tbObjectReflectivity.Maximum = 100
+        tbObjectReflectivity.Name = "tbObjectReflectivity"
+        tbObjectReflectivity.Size = New Size(292, 90)
+        tbObjectReflectivity.TabIndex = 42
+        tbObjectReflectivity.TickFrequency = 5
+        tbObjectReflectivity.TickStyle = System.Windows.Forms.TickStyle.None
+        ' 
+        ' tbObjectHighlightSharpness
+        ' 
+        tbObjectHighlightSharpness.BackColor = SystemColors.Control
+        tbObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbObjectHighlightSharpness.LargeChange = 20
+        tbObjectHighlightSharpness.Location = New Point(151, 400)
+        tbObjectHighlightSharpness.Maximum = 200
+        tbObjectHighlightSharpness.Name = "tbObjectHighlightSharpness"
+        tbObjectHighlightSharpness.Size = New Size(292, 90)
+        tbObjectHighlightSharpness.SmallChange = 10
+        tbObjectHighlightSharpness.TabIndex = 40
+        tbObjectHighlightSharpness.TickFrequency = 5
+        tbObjectHighlightSharpness.TickStyle = System.Windows.Forms.TickStyle.None
+        tbObjectHighlightSharpness.Value = 50
+        ' 
+        ' txtObjectSizeX
+        ' 
+        txtObjectSizeX.Enabled = False
+        txtObjectSizeX.ForeColor = SystemColors.ControlText
+        txtObjectSizeX.Location = New Point(151, 238)
+        txtObjectSizeX.Name = "txtObjectSizeX"
+        txtObjectSizeX.Size = New Size(82, 35)
+        txtObjectSizeX.TabIndex = 10
+        txtObjectSizeX.Text = "5"
+        txtObjectSizeX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectSizeY
+        ' 
+        txtObjectSizeY.Enabled = False
+        txtObjectSizeY.ForeColor = SystemColors.ControlText
+        txtObjectSizeY.Location = New Point(256, 238)
+        txtObjectSizeY.Name = "txtObjectSizeY"
+        txtObjectSizeY.Size = New Size(82, 35)
+        txtObjectSizeY.TabIndex = 12
+        txtObjectSizeY.Text = "5"
+        txtObjectSizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectSizeZ
+        ' 
+        txtObjectSizeZ.Enabled = False
+        txtObjectSizeZ.ForeColor = SystemColors.ControlText
+        txtObjectSizeZ.Location = New Point(361, 238)
+        txtObjectSizeZ.Name = "txtObjectSizeZ"
+        txtObjectSizeZ.Size = New Size(82, 35)
+        txtObjectSizeZ.TabIndex = 14
+        txtObjectSizeZ.Text = "5"
+        txtObjectSizeZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblObjectSize
+        ' 
+        lblObjectSize.AutoEllipsis = True
+        lblObjectSize.ForeColor = SystemColors.ControlText
+        lblObjectSize.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectSize.Location = New Point(3, 238)
+        lblObjectSize.Name = "lblObjectSize"
+        lblObjectSize.Size = New Size(117, 21)
+        lblObjectSize.TabIndex = 218
+        lblObjectSize.Text = "Size X, Y, Z (m): "
+        lblObjectSize.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectSize.UseMnemonic = False
+        ' 
+        ' txtObjectNormalZ
+        ' 
+        txtObjectNormalZ.Enabled = False
+        txtObjectNormalZ.ForeColor = SystemColors.ControlText
+        txtObjectNormalZ.Location = New Point(361, 265)
+        txtObjectNormalZ.Name = "txtObjectNormalZ"
+        txtObjectNormalZ.Size = New Size(82, 35)
+        txtObjectNormalZ.TabIndex = 21
+        txtObjectNormalZ.Text = "5"
+        txtObjectNormalZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectNormalY
+        ' 
+        txtObjectNormalY.Enabled = False
+        txtObjectNormalY.ForeColor = SystemColors.ControlText
+        txtObjectNormalY.Location = New Point(256, 265)
+        txtObjectNormalY.Name = "txtObjectNormalY"
+        txtObjectNormalY.Size = New Size(82, 35)
+        txtObjectNormalY.TabIndex = 18
+        txtObjectNormalY.Text = "5"
+        txtObjectNormalY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectNormalX
+        ' 
+        txtObjectNormalX.Enabled = False
+        txtObjectNormalX.ForeColor = SystemColors.ControlText
+        txtObjectNormalX.Location = New Point(151, 265)
+        txtObjectNormalX.Name = "txtObjectNormalX"
+        txtObjectNormalX.Size = New Size(82, 35)
+        txtObjectNormalX.TabIndex = 16
+        txtObjectNormalX.Text = "5"
+        txtObjectNormalX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectRadius
+        ' 
+        cmdObjectRadius.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRadius.FlatAppearance.BorderSize = 0
+        cmdObjectRadius.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRadius.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRadius.ForeColor = Color.Black
+        cmdObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRadius.Location = New Point(128, 238)
+        cmdObjectRadius.Name = "cmdObjectRadius"
+        cmdObjectRadius.Size = New Size(21, 21)
+        cmdObjectRadius.TabIndex = 9
+        cmdObjectRadius.Text = "ƒ"
+        cmdObjectRadius.UseVisualStyleBackColor = False
+        ' 
+        ' lblObjectRadius
+        ' 
+        lblObjectRadius.AutoEllipsis = True
+        lblObjectRadius.ForeColor = SystemColors.ControlText
+        lblObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectRadius.Location = New Point(3, 238)
+        lblObjectRadius.Name = "lblObjectRadius"
+        lblObjectRadius.Size = New Size(118, 21)
+        lblObjectRadius.TabIndex = 143
+        lblObjectRadius.Text = "Radius (m): "
+        lblObjectRadius.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectRadius.UseMnemonic = False
+        ' 
+        ' txtObjectRotationZ
+        ' 
+        txtObjectRotationZ.Enabled = False
+        txtObjectRotationZ.ForeColor = SystemColors.ControlText
+        txtObjectRotationZ.Location = New Point(361, 265)
+        txtObjectRotationZ.Name = "txtObjectRotationZ"
+        txtObjectRotationZ.Size = New Size(82, 35)
+        txtObjectRotationZ.TabIndex = 223
+        txtObjectRotationZ.Text = "5"
+        txtObjectRotationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectRotationZ
+        ' 
+        cmdObjectRotationZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRotationZ.FlatAppearance.BorderSize = 0
+        cmdObjectRotationZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRotationZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRotationZ.ForeColor = Color.Black
+        cmdObjectRotationZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRotationZ.Location = New Point(339, 265)
+        cmdObjectRotationZ.Name = "cmdObjectRotationZ"
+        cmdObjectRotationZ.Size = New Size(21, 21)
+        cmdObjectRotationZ.TabIndex = 22
+        cmdObjectRotationZ.Text = "ƒ"
+        cmdObjectRotationZ.UseVisualStyleBackColor = False
+        ' 
+        ' txtObjectRotationY
+        ' 
+        txtObjectRotationY.Enabled = False
+        txtObjectRotationY.ForeColor = SystemColors.ControlText
+        txtObjectRotationY.Location = New Point(256, 265)
+        txtObjectRotationY.Name = "txtObjectRotationY"
+        txtObjectRotationY.Size = New Size(82, 35)
+        txtObjectRotationY.TabIndex = 222
+        txtObjectRotationY.Text = "5"
+        txtObjectRotationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectRotationY
+        ' 
+        cmdObjectRotationY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRotationY.FlatAppearance.BorderSize = 0
+        cmdObjectRotationY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRotationY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRotationY.ForeColor = Color.Black
+        cmdObjectRotationY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRotationY.Location = New Point(234, 265)
+        cmdObjectRotationY.Name = "cmdObjectRotationY"
+        cmdObjectRotationY.Size = New Size(21, 21)
+        cmdObjectRotationY.TabIndex = 17
+        cmdObjectRotationY.Text = "ƒ"
+        cmdObjectRotationY.UseVisualStyleBackColor = False
+        ' 
+        ' txtObjectRotationX
+        ' 
+        txtObjectRotationX.Enabled = False
+        txtObjectRotationX.ForeColor = SystemColors.ControlText
+        txtObjectRotationX.Location = New Point(151, 265)
+        txtObjectRotationX.Name = "txtObjectRotationX"
+        txtObjectRotationX.Size = New Size(82, 35)
+        txtObjectRotationX.TabIndex = 221
+        txtObjectRotationX.Text = "5"
+        txtObjectRotationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectRotationX
+        ' 
+        cmdObjectRotationX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRotationX.FlatAppearance.BorderSize = 0
+        cmdObjectRotationX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRotationX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRotationX.ForeColor = Color.Black
+        cmdObjectRotationX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRotationX.Location = New Point(128, 265)
+        cmdObjectRotationX.Name = "cmdObjectRotationX"
+        cmdObjectRotationX.Size = New Size(21, 21)
+        cmdObjectRotationX.TabIndex = 15
+        cmdObjectRotationX.Text = "ƒ"
+        cmdObjectRotationX.UseVisualStyleBackColor = False
+        ' 
+        ' lblObjectRotation
+        ' 
+        lblObjectRotation.AutoEllipsis = True
+        lblObjectRotation.ForeColor = SystemColors.ControlText
+        lblObjectRotation.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectRotation.Location = New Point(3, 265)
+        lblObjectRotation.Name = "lblObjectRotation"
+        lblObjectRotation.Size = New Size(127, 21)
+        lblObjectRotation.TabIndex = 224
+        lblObjectRotation.Text = "Rotation Y, P, R  (rad):"
+        lblObjectRotation.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectRotation.UseMnemonic = False
+        ' 
+        ' lblObjectNormal
+        ' 
+        lblObjectNormal.AutoEllipsis = True
+        lblObjectNormal.ForeColor = SystemColors.ControlText
+        lblObjectNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectNormal.Location = New Point(3, 265)
+        lblObjectNormal.Name = "lblObjectNormal"
+        lblObjectNormal.Size = New Size(117, 21)
+        lblObjectNormal.TabIndex = 228
+        lblObjectNormal.Text = "Orientation X, Y, Z:"
+        lblObjectNormal.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectNormal.UseMnemonic = False
+        ' 
+        ' cmdObjectSizeX
+        ' 
+        cmdObjectSizeX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectSizeX.FlatAppearance.BorderSize = 0
+        cmdObjectSizeX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectSizeX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectSizeX.ForeColor = Color.Black
+        cmdObjectSizeX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectSizeX.Location = New Point(128, 238)
+        cmdObjectSizeX.Name = "cmdObjectSizeX"
+        cmdObjectSizeX.Size = New Size(21, 21)
+        cmdObjectSizeX.TabIndex = 168
+        cmdObjectSizeX.Text = "ƒ"
+        cmdObjectSizeX.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectSizeY
+        ' 
+        cmdObjectSizeY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectSizeY.FlatAppearance.BorderSize = 0
+        cmdObjectSizeY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectSizeY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectSizeY.ForeColor = Color.Black
+        cmdObjectSizeY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectSizeY.Location = New Point(234, 238)
+        cmdObjectSizeY.Name = "cmdObjectSizeY"
+        cmdObjectSizeY.Size = New Size(21, 21)
+        cmdObjectSizeY.TabIndex = 11
+        cmdObjectSizeY.Text = "ƒ"
+        cmdObjectSizeY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectSizeZ
+        ' 
+        cmdObjectSizeZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectSizeZ.FlatAppearance.BorderSize = 0
+        cmdObjectSizeZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectSizeZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectSizeZ.ForeColor = Color.Black
+        cmdObjectSizeZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectSizeZ.Location = New Point(339, 238)
+        cmdObjectSizeZ.Name = "cmdObjectSizeZ"
+        cmdObjectSizeZ.Size = New Size(21, 21)
+        cmdObjectSizeZ.TabIndex = 13
+        cmdObjectSizeZ.Text = "ƒ"
+        cmdObjectSizeZ.UseVisualStyleBackColor = False
+        ' 
+        ' txtObjectRadius
+        ' 
+        txtObjectRadius.ForeColor = SystemColors.ControlText
+        txtObjectRadius.Location = New Point(151, 238)
+        txtObjectRadius.Name = "txtObjectRadius"
+        txtObjectRadius.Size = New Size(292, 35)
+        txtObjectRadius.TabIndex = 151
+        txtObjectRadius.Text = "0"
+        txtObjectRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectNormalX
+        ' 
+        cmdObjectNormalX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectNormalX.FlatAppearance.BorderSize = 0
+        cmdObjectNormalX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNormalX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNormalX.ForeColor = Color.Black
+        cmdObjectNormalX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNormalX.Location = New Point(128, 265)
+        cmdObjectNormalX.Name = "cmdObjectNormalX"
+        cmdObjectNormalX.Size = New Size(21, 21)
+        cmdObjectNormalX.TabIndex = 231
+        cmdObjectNormalX.Text = "ƒ"
+        cmdObjectNormalX.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectNormalY
+        ' 
+        cmdObjectNormalY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectNormalY.FlatAppearance.BorderSize = 0
+        cmdObjectNormalY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNormalY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNormalY.ForeColor = Color.Black
+        cmdObjectNormalY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNormalY.Location = New Point(234, 265)
+        cmdObjectNormalY.Name = "cmdObjectNormalY"
+        cmdObjectNormalY.Size = New Size(21, 21)
+        cmdObjectNormalY.TabIndex = 238
+        cmdObjectNormalY.Text = "ƒ"
+        cmdObjectNormalY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectNormalZ
+        ' 
+        cmdObjectNormalZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectNormalZ.FlatAppearance.BorderSize = 0
+        cmdObjectNormalZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNormalZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNormalZ.ForeColor = Color.Black
+        cmdObjectNormalZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNormalZ.Location = New Point(339, 265)
+        cmdObjectNormalZ.Name = "cmdObjectNormalZ"
+        cmdObjectNormalZ.Size = New Size(21, 21)
+        cmdObjectNormalZ.TabIndex = 239
+        cmdObjectNormalZ.Text = "ƒ"
+        cmdObjectNormalZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdGroupAdd
+        ' 
+        cmdGroupAdd.FlatAppearance.BorderColor = Color.Black
+        cmdGroupAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdGroupAdd.ForeColor = SystemColors.ControlText
+        cmdGroupAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdGroupAdd.Location = New Point(0, 534)
+        cmdGroupAdd.Name = "cmdGroupAdd"
+        cmdGroupAdd.Size = New Size(451, 30)
+        cmdGroupAdd.TabIndex = 0
+        cmdGroupAdd.Text = "Add Objects"
+        cmdGroupAdd.UseVisualStyleBackColor = True
+        ' 
+        ' cmdGroupRemove
+        ' 
+        cmdGroupRemove.Enabled = False
+        cmdGroupRemove.FlatAppearance.BorderColor = Color.Black
+        cmdGroupRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdGroupRemove.ForeColor = SystemColors.ControlText
+        cmdGroupRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdGroupRemove.Location = New Point(227, 563)
+        cmdGroupRemove.Name = "cmdGroupRemove"
+        cmdGroupRemove.Size = New Size(224, 30)
+        cmdGroupRemove.TabIndex = 2
+        cmdGroupRemove.Text = "Remove Objects"
+        cmdGroupRemove.UseVisualStyleBackColor = True
+        ' 
+        ' cmdGroupReplace
+        ' 
+        cmdGroupReplace.Enabled = False
+        cmdGroupReplace.FlatAppearance.BorderColor = Color.Black
+        cmdGroupReplace.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdGroupReplace.ForeColor = SystemColors.ControlText
+        cmdGroupReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdGroupReplace.Location = New Point(0, 563)
+        cmdGroupReplace.Name = "cmdGroupReplace"
+        cmdGroupReplace.Size = New Size(228, 30)
+        cmdGroupReplace.TabIndex = 1
+        cmdGroupReplace.Text = "Replace Objects"
+        cmdGroupReplace.UseVisualStyleBackColor = True
+        ' 
+        ' TabLights
+        ' 
+        TabLights.BackColor = SystemColors.Control
+        TabLights.Controls.Add(gbLights)
+        TabLights.Controls.Add(cmdLightAdd)
+        TabLights.Controls.Add(cmdLightRemove)
+        TabLights.Controls.Add(cmdLightReplace)
+        TabLights.Location = New Point(4, 44)
+        TabLights.Name = "TabLights"
+        TabLights.Size = New Size(1472, 1037)
+        TabLights.TabIndex = 2
+        TabLights.Text = "Lighting"
+        TabLights.UseVisualStyleBackColor = True
+        ' 
+        ' gbLights
+        ' 
+        gbLights.Controls.Add(plLightColor)
+        gbLights.Controls.Add(txtLightAttenuationC)
+        gbLights.Controls.Add(txtLightAttenuationB)
+        gbLights.Controls.Add(txtLightAttenuationA)
+        gbLights.Controls.Add(lblLightAttenuation)
+        gbLights.Controls.Add(txtLightAngleOuter)
+        gbLights.Controls.Add(lblLightRange)
+        gbLights.Controls.Add(txtLightRange)
+        gbLights.Controls.Add(lblLightFalloff)
+        gbLights.Controls.Add(txtLightFalloff)
+        gbLights.Controls.Add(lblLightAngle)
+        gbLights.Controls.Add(txtLightAngleInner)
+        gbLights.Controls.Add(tbLightAmbient)
+        gbLights.Controls.Add(lblLightAmbient)
+        gbLights.Controls.Add(lblLightHighlight)
+        gbLights.Controls.Add(lblLightType)
+        gbLights.Controls.Add(txtLightPositionZ)
+        gbLights.Controls.Add(txtLightPositionY)
+        gbLights.Controls.Add(txtLightPositionX)
+        gbLights.Controls.Add(lblLightPosition)
+        gbLights.Controls.Add(chLightsEnable)
+        gbLights.Controls.Add(listLights)
+        gbLights.Controls.Add(txtLightName)
+        gbLights.Controls.Add(lblLightName)
+        gbLights.Controls.Add(txtLightDirectionZ)
+        gbLights.Controls.Add(lblLightDirection)
+        gbLights.Controls.Add(txtLightDirectionY)
+        gbLights.Controls.Add(txtLightDirectionX)
+        gbLights.Controls.Add(lblLightColor)
+        gbLights.Controls.Add(tbLightHighlight)
+        gbLights.Controls.Add(cbLightType)
+        gbLights.Location = New Point(0, 0)
+        gbLights.Name = "gbLights"
+        gbLights.Size = New Size(451, 528)
+        gbLights.TabIndex = 65
+        gbLights.TabStop = False
+        gbLights.Text = "Lights"
+        ' 
+        ' plLightColor
+        ' 
+        plLightColor.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        plLightColor.FlatAppearance.BorderColor = Color.Black
+        plLightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        plLightColor.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        plLightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        plLightColor.Location = New Point(151, 326)
+        plLightColor.Name = "plLightColor"
+        plLightColor.Size = New Size(292, 21)
+        plLightColor.TabIndex = 10
+        plLightColor.UseVisualStyleBackColor = False
+        ' 
+        ' txtLightAttenuationC
+        ' 
+        txtLightAttenuationC.ForeColor = SystemColors.ControlText
+        txtLightAttenuationC.Location = New Point(346, 447)
+        txtLightAttenuationC.Name = "txtLightAttenuationC"
+        txtLightAttenuationC.Size = New Size(97, 35)
+        txtLightAttenuationC.TabIndex = 16
+        txtLightAttenuationC.Text = "0"
+        txtLightAttenuationC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtLightAttenuationB
+        ' 
+        txtLightAttenuationB.ForeColor = SystemColors.ControlText
+        txtLightAttenuationB.Location = New Point(248, 447)
+        txtLightAttenuationB.Name = "txtLightAttenuationB"
+        txtLightAttenuationB.Size = New Size(98, 35)
+        txtLightAttenuationB.TabIndex = 15
+        txtLightAttenuationB.Text = "0"
+        txtLightAttenuationB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtLightAttenuationA
+        ' 
+        txtLightAttenuationA.ForeColor = SystemColors.ControlText
+        txtLightAttenuationA.Location = New Point(151, 447)
+        txtLightAttenuationA.Name = "txtLightAttenuationA"
+        txtLightAttenuationA.Size = New Size(97, 35)
+        txtLightAttenuationA.TabIndex = 14
+        txtLightAttenuationA.Text = "0"
+        txtLightAttenuationA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightAttenuation
+        ' 
+        lblLightAttenuation.AutoEllipsis = True
+        lblLightAttenuation.ForeColor = SystemColors.ControlText
+        lblLightAttenuation.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightAttenuation.Location = New Point(3, 445)
+        lblLightAttenuation.Name = "lblLightAttenuation"
+        lblLightAttenuation.Size = New Size(135, 25)
+        lblLightAttenuation.TabIndex = 114
+        lblLightAttenuation.Text = "Attenuation A, B, C:"
+        lblLightAttenuation.TextAlign = ContentAlignment.MiddleLeft
+        lblLightAttenuation.UseMnemonic = False
+        ' 
+        ' txtLightAngleOuter
+        ' 
+        txtLightAngleOuter.ForeColor = SystemColors.ControlText
+        txtLightAngleOuter.Location = New Point(297, 474)
+        txtLightAngleOuter.Name = "txtLightAngleOuter"
+        txtLightAngleOuter.Size = New Size(146, 35)
+        txtLightAngleOuter.TabIndex = 18
+        txtLightAngleOuter.Text = "45"
+        txtLightAngleOuter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightRange
+        ' 
+        lblLightRange.AutoEllipsis = True
+        lblLightRange.ForeColor = SystemColors.ControlText
+        lblLightRange.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightRange.Location = New Point(3, 417)
+        lblLightRange.Name = "lblLightRange"
+        lblLightRange.Size = New Size(114, 25)
+        lblLightRange.TabIndex = 112
+        lblLightRange.Text = "Range (m): "
+        lblLightRange.TextAlign = ContentAlignment.MiddleLeft
+        lblLightRange.UseMnemonic = False
+        ' 
+        ' txtLightRange
+        ' 
+        txtLightRange.ForeColor = SystemColors.ControlText
+        txtLightRange.Location = New Point(151, 419)
+        txtLightRange.Name = "txtLightRange"
+        txtLightRange.Size = New Size(292, 35)
+        txtLightRange.TabIndex = 13
+        txtLightRange.Text = "45"
+        txtLightRange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightFalloff
+        ' 
+        lblLightFalloff.AutoEllipsis = True
+        lblLightFalloff.ForeColor = SystemColors.ControlText
+        lblLightFalloff.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightFalloff.Location = New Point(3, 499)
+        lblLightFalloff.Name = "lblLightFalloff"
+        lblLightFalloff.Size = New Size(135, 25)
+        lblLightFalloff.TabIndex = 110
+        lblLightFalloff.Text = "Inner to Outer Falloff: "
+        lblLightFalloff.TextAlign = ContentAlignment.MiddleLeft
+        lblLightFalloff.UseMnemonic = False
+        ' 
+        ' txtLightFalloff
+        ' 
+        txtLightFalloff.ForeColor = SystemColors.ControlText
+        txtLightFalloff.Location = New Point(151, 501)
+        txtLightFalloff.Name = "txtLightFalloff"
+        txtLightFalloff.Size = New Size(292, 35)
+        txtLightFalloff.TabIndex = 19
+        txtLightFalloff.Text = "1"
+        txtLightFalloff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightAngle
+        ' 
+        lblLightAngle.AutoEllipsis = True
+        lblLightAngle.ForeColor = SystemColors.ControlText
+        lblLightAngle.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightAngle.Location = New Point(3, 472)
+        lblLightAngle.Name = "lblLightAngle"
+        lblLightAngle.Size = New Size(135, 25)
+        lblLightAngle.TabIndex = 108
+        lblLightAngle.Text = "Inner, Outer Angle (°): "
+        lblLightAngle.TextAlign = ContentAlignment.MiddleLeft
+        lblLightAngle.UseMnemonic = False
+        ' 
+        ' txtLightAngleInner
+        ' 
+        txtLightAngleInner.ForeColor = SystemColors.ControlText
+        txtLightAngleInner.Location = New Point(151, 474)
+        txtLightAngleInner.Name = "txtLightAngleInner"
+        txtLightAngleInner.Size = New Size(146, 35)
+        txtLightAngleInner.TabIndex = 17
+        txtLightAngleInner.Text = "45"
+        txtLightAngleInner.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' tbLightAmbient
+        ' 
+        tbLightAmbient.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbLightAmbient.LargeChange = 15
+        tbLightAmbient.Location = New Point(151, 386)
+        tbLightAmbient.Maximum = 100
+        tbLightAmbient.Name = "tbLightAmbient"
+        tbLightAmbient.Size = New Size(292, 90)
+        tbLightAmbient.SmallChange = 15
+        tbLightAmbient.TabIndex = 12
+        tbLightAmbient.TickFrequency = 5
+        tbLightAmbient.TickStyle = System.Windows.Forms.TickStyle.None
+        tbLightAmbient.Value = 10
+        ' 
+        ' lblLightAmbient
+        ' 
+        lblLightAmbient.AutoEllipsis = True
+        lblLightAmbient.ForeColor = SystemColors.ControlText
+        lblLightAmbient.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightAmbient.Location = New Point(3, 386)
+        lblLightAmbient.Name = "lblLightAmbient"
+        lblLightAmbient.Size = New Size(122, 17)
+        lblLightAmbient.TabIndex = 103
+        lblLightAmbient.Text = "Ambient Lighting: "
+        lblLightAmbient.TextAlign = ContentAlignment.MiddleLeft
+        lblLightAmbient.UseMnemonic = False
+        ' 
+        ' lblLightHighlight
+        ' 
+        lblLightHighlight.AutoEllipsis = True
+        lblLightHighlight.ForeColor = SystemColors.ControlText
+        lblLightHighlight.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightHighlight.Location = New Point(3, 354)
+        lblLightHighlight.Name = "lblLightHighlight"
+        lblLightHighlight.Size = New Size(135, 17)
+        lblLightHighlight.TabIndex = 105
+        lblLightHighlight.Text = "Highlight Intensity: "
+        lblLightHighlight.TextAlign = ContentAlignment.MiddleLeft
+        lblLightHighlight.UseMnemonic = False
+        ' 
+        ' lblLightType
+        ' 
+        lblLightType.AutoEllipsis = True
+        lblLightType.ForeColor = SystemColors.ControlText
+        lblLightType.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightType.Location = New Point(3, 242)
+        lblLightType.Name = "lblLightType"
+        lblLightType.Size = New Size(114, 23)
+        lblLightType.TabIndex = 101
+        lblLightType.Text = "Type of Light: "
+        lblLightType.TextAlign = ContentAlignment.MiddleLeft
+        lblLightType.UseMnemonic = False
+        ' 
+        ' txtLightPositionZ
+        ' 
+        txtLightPositionZ.ForeColor = SystemColors.ControlText
+        txtLightPositionZ.Location = New Point(346, 271)
+        txtLightPositionZ.Name = "txtLightPositionZ"
+        txtLightPositionZ.Size = New Size(97, 35)
+        txtLightPositionZ.TabIndex = 6
+        txtLightPositionZ.Text = "0"
+        txtLightPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtLightPositionY
+        ' 
+        txtLightPositionY.ForeColor = SystemColors.ControlText
+        txtLightPositionY.Location = New Point(248, 271)
+        txtLightPositionY.Name = "txtLightPositionY"
+        txtLightPositionY.Size = New Size(98, 35)
+        txtLightPositionY.TabIndex = 5
+        txtLightPositionY.Text = "0"
+        txtLightPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtLightPositionX
+        ' 
+        txtLightPositionX.ForeColor = SystemColors.ControlText
+        txtLightPositionX.Location = New Point(151, 271)
+        txtLightPositionX.Name = "txtLightPositionX"
+        txtLightPositionX.Size = New Size(97, 35)
+        txtLightPositionX.TabIndex = 4
+        txtLightPositionX.Text = "0"
+        txtLightPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightPosition
+        ' 
+        lblLightPosition.AutoEllipsis = True
+        lblLightPosition.ForeColor = SystemColors.ControlText
+        lblLightPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightPosition.Location = New Point(3, 271)
+        lblLightPosition.Name = "lblLightPosition"
+        lblLightPosition.Size = New Size(122, 21)
+        lblLightPosition.TabIndex = 97
+        lblLightPosition.Text = "Position X,Y,Z  (m):"
+        lblLightPosition.TextAlign = ContentAlignment.MiddleLeft
+        lblLightPosition.UseMnemonic = False
+        ' 
+        ' chLightsEnable
+        ' 
+        chLightsEnable.AutoEllipsis = True
+        chLightsEnable.CheckAlign = ContentAlignment.MiddleCenter
+        chLightsEnable.Checked = True
+        chLightsEnable.CheckState = System.Windows.Forms.CheckState.Checked
+        chLightsEnable.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chLightsEnable.ForeColor = SystemColors.ControlText
+        chLightsEnable.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chLightsEnable.Location = New Point(6, 20)
+        chLightsEnable.Name = "chLightsEnable"
+        chLightsEnable.Size = New Size(347, 22)
+        chLightsEnable.TabIndex = 0
+        chLightsEnable.Text = "Enable Lighting"
+        chLightsEnable.UseMnemonic = False
+        chLightsEnable.UseVisualStyleBackColor = True
+        ' 
+        ' listLights
+        ' 
+        listLights.Font = New Font("Arial", 9F)
+        listLights.ForeColor = SystemColors.ControlText
+        listLights.IntegralHeight = False
+        listLights.ItemHeight = 27
+        listLights.Location = New Point(6, 48)
+        listLights.Name = "listLights"
+        listLights.Size = New Size(437, 159)
+        listLights.TabIndex = 1
+        ' 
+        ' txtLightName
+        ' 
+        txtLightName.ForeColor = SystemColors.ControlText
+        txtLightName.Location = New Point(151, 213)
+        txtLightName.Name = "txtLightName"
+        txtLightName.Size = New Size(292, 35)
+        txtLightName.TabIndex = 2
+        txtLightName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightName
+        ' 
+        lblLightName.AutoEllipsis = True
+        lblLightName.BackColor = Color.Transparent
+        lblLightName.ForeColor = SystemColors.ControlText
+        lblLightName.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightName.Location = New Point(3, 213)
+        lblLightName.Name = "lblLightName"
+        lblLightName.Size = New Size(122, 21)
+        lblLightName.TabIndex = 87
+        lblLightName.Text = "Name: "
+        lblLightName.TextAlign = ContentAlignment.MiddleLeft
+        lblLightName.UseMnemonic = False
+        ' 
+        ' txtLightDirectionZ
+        ' 
+        txtLightDirectionZ.ForeColor = SystemColors.ControlText
+        txtLightDirectionZ.Location = New Point(346, 298)
+        txtLightDirectionZ.Name = "txtLightDirectionZ"
+        txtLightDirectionZ.Size = New Size(97, 35)
+        txtLightDirectionZ.TabIndex = 9
+        txtLightDirectionZ.Text = "0"
+        txtLightDirectionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightDirection
+        ' 
+        lblLightDirection.AutoEllipsis = True
+        lblLightDirection.ForeColor = SystemColors.ControlText
+        lblLightDirection.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightDirection.Location = New Point(3, 298)
+        lblLightDirection.Name = "lblLightDirection"
+        lblLightDirection.Size = New Size(135, 21)
+        lblLightDirection.TabIndex = 88
+        lblLightDirection.Text = "Direction X,Y,Z:"
+        lblLightDirection.TextAlign = ContentAlignment.MiddleLeft
+        lblLightDirection.UseMnemonic = False
+        ' 
+        ' txtLightDirectionY
+        ' 
+        txtLightDirectionY.ForeColor = SystemColors.ControlText
+        txtLightDirectionY.Location = New Point(248, 298)
+        txtLightDirectionY.Name = "txtLightDirectionY"
+        txtLightDirectionY.Size = New Size(98, 35)
+        txtLightDirectionY.TabIndex = 8
+        txtLightDirectionY.Text = "0"
+        txtLightDirectionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtLightDirectionX
+        ' 
+        txtLightDirectionX.ForeColor = SystemColors.ControlText
+        txtLightDirectionX.Location = New Point(151, 298)
+        txtLightDirectionX.Name = "txtLightDirectionX"
+        txtLightDirectionX.Size = New Size(97, 35)
+        txtLightDirectionX.TabIndex = 7
+        txtLightDirectionX.Text = "0"
+        txtLightDirectionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' lblLightColor
+        ' 
+        lblLightColor.AutoEllipsis = True
+        lblLightColor.ForeColor = SystemColors.ControlText
+        lblLightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblLightColor.Location = New Point(3, 325)
+        lblLightColor.Name = "lblLightColor"
+        lblLightColor.Size = New Size(122, 23)
+        lblLightColor.TabIndex = 89
+        lblLightColor.Text = "Color: "
+        lblLightColor.TextAlign = ContentAlignment.MiddleLeft
+        lblLightColor.UseMnemonic = False
+        ' 
+        ' tbLightHighlight
+        ' 
+        tbLightHighlight.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbLightHighlight.LargeChange = 15
+        tbLightHighlight.Location = New Point(151, 354)
+        tbLightHighlight.Maximum = 255
+        tbLightHighlight.Name = "tbLightHighlight"
+        tbLightHighlight.Size = New Size(292, 90)
+        tbLightHighlight.SmallChange = 5
+        tbLightHighlight.TabIndex = 11
+        tbLightHighlight.TickFrequency = 5
+        tbLightHighlight.TickStyle = System.Windows.Forms.TickStyle.None
+        tbLightHighlight.Value = 50
+        ' 
+        ' cbLightType
+        ' 
+        cbLightType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        cbLightType.FormattingEnabled = True
+        cbLightType.Items.AddRange(New Object() {"Directional", "Point", "Spot"})
+        cbLightType.Location = New Point(151, 242)
+        cbLightType.Name = "cbLightType"
+        cbLightType.Size = New Size(292, 35)
+        cbLightType.TabIndex = 3
+        ' 
+        ' cmdLightAdd
+        ' 
+        cmdLightAdd.BackColor = Color.FromArgb(CByte(235), CByte(235), CByte(235))
+        cmdLightAdd.FlatAppearance.BorderColor = Color.Black
+        cmdLightAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdLightAdd.ForeColor = SystemColors.ControlText
+        cmdLightAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdLightAdd.Location = New Point(0, 534)
+        cmdLightAdd.Name = "cmdLightAdd"
+        cmdLightAdd.Size = New Size(451, 30)
+        cmdLightAdd.TabIndex = 0
+        cmdLightAdd.Text = "Add Light"
+        cmdLightAdd.UseVisualStyleBackColor = False
+        ' 
+        ' cmdLightRemove
+        ' 
+        cmdLightRemove.BackColor = Color.FromArgb(CByte(235), CByte(235), CByte(235))
+        cmdLightRemove.Enabled = False
+        cmdLightRemove.FlatAppearance.BorderColor = Color.Black
+        cmdLightRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdLightRemove.ForeColor = SystemColors.ControlText
+        cmdLightRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdLightRemove.Location = New Point(227, 563)
+        cmdLightRemove.Name = "cmdLightRemove"
+        cmdLightRemove.Size = New Size(224, 30)
+        cmdLightRemove.TabIndex = 2
+        cmdLightRemove.Text = "Remove Light"
+        cmdLightRemove.UseVisualStyleBackColor = False
+        ' 
+        ' cmdLightReplace
+        ' 
+        cmdLightReplace.BackColor = Color.FromArgb(CByte(235), CByte(235), CByte(235))
+        cmdLightReplace.Enabled = False
+        cmdLightReplace.FlatAppearance.BorderColor = Color.Black
+        cmdLightReplace.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdLightReplace.ForeColor = SystemColors.ControlText
+        cmdLightReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdLightReplace.Location = New Point(0, 563)
+        cmdLightReplace.Name = "cmdLightReplace"
+        cmdLightReplace.Size = New Size(228, 30)
+        cmdLightReplace.TabIndex = 1
+        cmdLightReplace.Text = "Replace Light"
+        cmdLightReplace.UseVisualStyleBackColor = False
+        ' 
+        ' TabDisplay
+        ' 
+        TabDisplay.BackColor = SystemColors.Control
+        TabDisplay.Controls.Add(spRendering)
+        TabDisplay.Controls.Add(CmdSaveOut)
+        TabDisplay.Location = New Point(4, 39)
+        TabDisplay.Name = "TabDisplay"
+        TabDisplay.Size = New Size(1472, 1042)
+        TabDisplay.TabIndex = 6
+        TabDisplay.Text = "Rendering"
+        TabDisplay.UseVisualStyleBackColor = True
+        ' 
+        ' spRendering
+        ' 
+        spRendering.Location = New Point(3, 3)
+        spRendering.Name = "spRendering"
+        spRendering.Orientation = System.Windows.Forms.Orientation.Horizontal
+        ' 
+        ' spRendering.Panel1
+        ' 
+        spRendering.Panel1.Controls.Add(gbRendering)
+        ' 
+        ' spRendering.Panel2
+        ' 
+        spRendering.Panel2.Controls.Add(gbCamera)
+        spRendering.Size = New Size(1466, 968)
+        spRendering.SplitterDistance = 615
+        spRendering.TabIndex = 92
+        ' 
+        ' gbRendering
+        ' 
+        gbRendering.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        gbRendering.Controls.Add(pRender)
+        gbRendering.Location = New Point(3, 3)
+        gbRendering.Name = "gbRendering"
+        gbRendering.Size = New Size(1460, 609)
+        gbRendering.TabIndex = 90
+        gbRendering.TabStop = False
+        gbRendering.Text = "Render"
+        ' 
+        ' pRender
+        ' 
+        pRender.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        pRender.AutoScroll = True
+        pRender.Controls.Add(chVSync)
+        pRender.Controls.Add(TableLayoutPanel3)
+        pRender.Controls.Add(Label45)
+        pRender.Controls.Add(Label3)
+        pRender.Controls.Add(Label30)
+        pRender.Controls.Add(tbPolys)
+        pRender.Controls.Add(Label12)
+        pRender.Controls.Add(txtRenderThreads)
+        pRender.Controls.Add(cbShading)
+        pRender.Controls.Add(Label18)
+        pRender.Controls.Add(Label46)
+        pRender.Controls.Add(Label43)
+        pRender.Controls.Add(Label13)
+        pRender.Controls.Add(txtHFoV)
+        pRender.Controls.Add(txtVFoV)
+        pRender.Controls.Add(txtMaxFPS)
+        pRender.Controls.Add(chTrace)
+        pRender.Controls.Add(Label44)
+        pRender.Controls.Add(plRenderBackColor)
+        pRender.Controls.Add(cbRender)
+        pRender.Location = New Point(6, 29)
+        pRender.Name = "pRender"
+        pRender.Size = New Size(1448, 574)
+        pRender.TabIndex = 0
+        ' 
+        ' TableLayoutPanel3
+        ' 
+        TableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        TableLayoutPanel3.ColumnCount = 2
+        TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel3.Controls.Add(txtWindowX, 0, 0)
+        TableLayoutPanel3.Controls.Add(txtWindowY, 1, 0)
+        TableLayoutPanel3.Location = New Point(376, 103)
+        TableLayoutPanel3.Name = "TableLayoutPanel3"
+        TableLayoutPanel3.RowCount = 1
+        TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel3.Size = New Size(1069, 44)
+        TableLayoutPanel3.TabIndex = 246
+        ' 
+        ' Label45
+        ' 
+        Label45.AutoEllipsis = True
+        Label45.ForeColor = SystemColors.ControlText
+        Label45.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label45.Location = New Point(6, 14)
+        Label45.Name = "Label45"
+        Label45.Size = New Size(348, 35)
+        Label45.TabIndex = 126
+        Label45.Text = "Render Mode: "
+        Label45.TextAlign = ContentAlignment.MiddleLeft
+        Label45.UseMnemonic = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoEllipsis = True
+        Label3.ForeColor = SystemColors.ControlText
+        Label3.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label3.Location = New Point(6, 59)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(348, 35)
+        Label3.TabIndex = 245
+        Label3.Text = "Render Thread Count: "
+        Label3.TextAlign = ContentAlignment.MiddleLeft
+        Label3.UseMnemonic = False
+        ' 
+        ' Label30
+        ' 
+        Label30.AutoEllipsis = True
+        Label30.ForeColor = SystemColors.ControlText
+        Label30.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label30.Location = New Point(6, 346)
+        Label30.Name = "Label30"
+        Label30.Size = New Size(305, 35)
+        Label30.TabIndex = 117
+        Label30.Text = "Sphere Polygon Count: "
+        Label30.TextAlign = ContentAlignment.MiddleLeft
+        Label30.UseMnemonic = False
+        ' 
+        ' txtWindowX
+        ' 
+        txtWindowX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtWindowX.ForeColor = SystemColors.ControlText
+        txtWindowX.Location = New Point(3, 3)
+        txtWindowX.Name = "txtWindowX"
+        txtWindowX.Size = New Size(528, 35)
+        txtWindowX.TabIndex = 2
+        txtWindowX.Text = "500"
+        txtWindowX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' tbPolys
+        ' 
+        tbPolys.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tbPolys.BackColor = SystemColors.Control
+        tbPolys.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbPolys.LargeChange = 10
+        tbPolys.Location = New Point(376, 346)
+        tbPolys.Maximum = 100
+        tbPolys.Minimum = 2
+        tbPolys.Name = "tbPolys"
+        tbPolys.Size = New Size(1066, 90)
+        tbPolys.TabIndex = 8
+        tbPolys.TickFrequency = 5
+        tbPolys.TickStyle = System.Windows.Forms.TickStyle.None
+        tbPolys.Value = 40
+        ' 
+        ' Label12
+        ' 
+        Label12.AutoEllipsis = True
+        Label12.ForeColor = SystemColors.ControlText
+        Label12.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label12.Location = New Point(6, 103)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(348, 35)
+        Label12.TabIndex = 115
+        Label12.Text = "Window Size X,Y (px): "
+        Label12.TextAlign = ContentAlignment.MiddleLeft
+        Label12.UseMnemonic = False
+        ' 
+        ' txtRenderThreads
+        ' 
+        txtRenderThreads.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtRenderThreads.Enabled = False
+        txtRenderThreads.ForeColor = SystemColors.ControlText
+        txtRenderThreads.Location = New Point(376, 59)
+        txtRenderThreads.MaxLength = 4
+        txtRenderThreads.Name = "txtRenderThreads"
+        txtRenderThreads.Size = New Size(1069, 35)
+        txtRenderThreads.TabIndex = 1
+        txtRenderThreads.Text = "1"
+        txtRenderThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cbShading
+        ' 
+        cbShading.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cbShading.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        cbShading.FormattingEnabled = True
+        cbShading.Items.AddRange(New Object() {"Flat", "Gouraud"})
+        cbShading.Location = New Point(376, 298)
+        cbShading.Name = "cbShading"
+        cbShading.Size = New Size(1069, 35)
+        cbShading.TabIndex = 7
+        ' 
+        ' Label18
+        ' 
+        Label18.AutoEllipsis = True
+        Label18.ForeColor = SystemColors.ControlText
+        Label18.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label18.Location = New Point(6, 156)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(348, 35)
+        Label18.TabIndex = 116
+        Label18.Text = "Horizontal Field of View (°): "
+        Label18.TextAlign = ContentAlignment.MiddleLeft
+        Label18.UseMnemonic = False
+        ' 
+        ' Label46
+        ' 
+        Label46.AutoEllipsis = True
+        Label46.ForeColor = SystemColors.ControlText
+        Label46.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label46.Location = New Point(6, 205)
+        Label46.Name = "Label46"
+        Label46.Size = New Size(348, 35)
+        Label46.TabIndex = 129
+        Label46.Text = "Vertical Field of View (°): "
+        Label46.TextAlign = ContentAlignment.MiddleLeft
+        Label46.UseMnemonic = False
+        ' 
+        ' Label43
+        ' 
+        Label43.AutoEllipsis = True
+        Label43.ForeColor = SystemColors.ControlText
+        Label43.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label43.Location = New Point(6, 297)
+        Label43.Name = "Label43"
+        Label43.Size = New Size(348, 35)
+        Label43.TabIndex = 120
+        Label43.Text = "Light Shading Mode: "
+        Label43.TextAlign = ContentAlignment.MiddleLeft
+        Label43.UseMnemonic = False
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoEllipsis = True
+        Label13.ForeColor = SystemColors.ControlText
+        Label13.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label13.Location = New Point(6, 251)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(348, 35)
+        Label13.TabIndex = 114
+        Label13.Text = "Background Color: "
+        Label13.TextAlign = ContentAlignment.MiddleLeft
+        Label13.UseMnemonic = False
+        ' 
+        ' chVSync
+        ' 
+        chVSync.AutoEllipsis = True
+        chVSync.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chVSync.ForeColor = SystemColors.ControlText
+        chVSync.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chVSync.Location = New Point(6, 425)
+        chVSync.Name = "chVSync"
+        chVSync.Size = New Size(548, 35)
+        chVSync.TabIndex = 10
+        chVSync.Text = "Synchronize Frame Rate to Monitor (vsync)"
+        chVSync.UseMnemonic = False
+        chVSync.UseVisualStyleBackColor = True
+        ' 
+        ' txtHFoV
+        ' 
+        txtHFoV.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtHFoV.ForeColor = SystemColors.ControlText
+        txtHFoV.Location = New Point(376, 157)
+        txtHFoV.Name = "txtHFoV"
+        txtHFoV.Size = New Size(1069, 35)
+        txtHFoV.TabIndex = 4
+        txtHFoV.Text = "45"
+        txtHFoV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtVFoV
+        ' 
+        txtVFoV.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtVFoV.ForeColor = SystemColors.ControlText
+        txtVFoV.Location = New Point(376, 206)
+        txtVFoV.Name = "txtVFoV"
+        txtVFoV.Size = New Size(1069, 35)
+        txtVFoV.TabIndex = 5
+        txtVFoV.Text = "45"
+        txtVFoV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtMaxFPS
+        ' 
+        txtMaxFPS.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtMaxFPS.ForeColor = SystemColors.ControlText
+        txtMaxFPS.Location = New Point(376, 477)
+        txtMaxFPS.Name = "txtMaxFPS"
+        txtMaxFPS.Size = New Size(1066, 35)
+        txtMaxFPS.TabIndex = 11
+        txtMaxFPS.Text = "45"
+        txtMaxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' chTrace
+        ' 
+        chTrace.AutoEllipsis = True
+        chTrace.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chTrace.ForeColor = SystemColors.ControlText
+        chTrace.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chTrace.Location = New Point(6, 384)
+        chTrace.Name = "chTrace"
+        chTrace.Size = New Size(345, 35)
+        chTrace.TabIndex = 9
+        chTrace.Text = "Trace Object Paths"
+        chTrace.UseMnemonic = False
+        chTrace.UseVisualStyleBackColor = True
+        ' 
+        ' Label44
+        ' 
+        Label44.AutoEllipsis = True
+        Label44.ForeColor = SystemColors.ControlText
+        Label44.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label44.Location = New Point(37, 476)
+        Label44.Name = "Label44"
+        Label44.Size = New Size(322, 35)
+        Label44.TabIndex = 124
+        Label44.Text = "Maximum Frame Rate (F/s): "
+        Label44.TextAlign = ContentAlignment.MiddleLeft
+        Label44.UseMnemonic = False
+        ' 
+        ' txtWindowY
+        ' 
+        txtWindowY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtWindowY.ForeColor = SystemColors.ControlText
+        txtWindowY.Location = New Point(537, 3)
+        txtWindowY.Name = "txtWindowY"
+        txtWindowY.Size = New Size(529, 35)
+        txtWindowY.TabIndex = 3
+        txtWindowY.Text = "500"
+        txtWindowY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' plRenderBackColor
+        ' 
+        plRenderBackColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        plRenderBackColor.BackColor = Color.Black
+        plRenderBackColor.FlatAppearance.BorderColor = Color.Black
+        plRenderBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        plRenderBackColor.ForeColor = Color.Black
+        plRenderBackColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        plRenderBackColor.Location = New Point(376, 252)
+        plRenderBackColor.Name = "plRenderBackColor"
+        plRenderBackColor.Size = New Size(1066, 32)
+        plRenderBackColor.TabIndex = 6
+        plRenderBackColor.UseVisualStyleBackColor = False
+        ' 
+        ' cbRender
+        ' 
+        cbRender.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cbRender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        cbRender.FormattingEnabled = True
+        cbRender.Items.AddRange(New Object() {"DirectX 9 (Hardware)", "DirectX 9 (Software)", "Raytracing (Software)"})
+        cbRender.Location = New Point(376, 14)
+        cbRender.Name = "cbRender"
+        cbRender.Size = New Size(1069, 35)
+        cbRender.TabIndex = 0
+        ' 
+        ' gbCamera
+        ' 
+        gbCamera.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        gbCamera.Controls.Add(pCamera)
+        gbCamera.Location = New Point(3, 3)
+        gbCamera.Name = "gbCamera"
+        gbCamera.Size = New Size(1460, 343)
+        gbCamera.TabIndex = 91
+        gbCamera.TabStop = False
+        gbCamera.Text = "Camera"
+        ' 
+        ' pCamera
+        ' 
+        pCamera.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        pCamera.AutoScroll = True
+        pCamera.Controls.Add(Label47)
+        pCamera.Controls.Add(chCamera)
+        pCamera.Controls.Add(txtCTargetZ)
+        pCamera.Controls.Add(tbCameraSpeed)
+        pCamera.Controls.Add(txtCPosX)
+        pCamera.Controls.Add(Label17)
+        pCamera.Controls.Add(txtCPosZ)
+        pCamera.Controls.Add(txtCTargetY)
+        pCamera.Controls.Add(txtCOrientY)
+        pCamera.Controls.Add(txtCTargetX)
+        pCamera.Controls.Add(txtCOrientZ)
+        pCamera.Controls.Add(Label11)
+        pCamera.Controls.Add(txtCPosY)
+        pCamera.Controls.Add(txtCOrientX)
+        pCamera.Controls.Add(Label16)
+        pCamera.Location = New Point(6, 33)
+        pCamera.Name = "pCamera"
+        pCamera.Size = New Size(1448, 304)
+        pCamera.TabIndex = 0
+        ' 
+        ' Label47
+        ' 
+        Label47.AutoEllipsis = True
+        Label47.ForeColor = SystemColors.ControlText
+        Label47.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label47.Location = New Point(37, 197)
+        Label47.Name = "Label47"
+        Label47.Size = New Size(411, 35)
+        Label47.TabIndex = 103
+        Label47.Text = "Camera Movement Speed: "
+        Label47.TextAlign = ContentAlignment.MiddleLeft
+        Label47.UseMnemonic = False
+        ' 
+        ' chCamera
+        ' 
+        chCamera.AutoEllipsis = True
+        chCamera.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chCamera.ForeColor = SystemColors.ControlText
+        chCamera.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chCamera.Location = New Point(7, 14)
+        chCamera.Name = "chCamera"
+        chCamera.Size = New Size(406, 35)
+        chCamera.TabIndex = 42
+        chCamera.Text = "Modify Default Camera Settings"
+        chCamera.UseMnemonic = False
+        chCamera.UseVisualStyleBackColor = True
+        ' 
+        ' txtCTargetZ
+        ' 
+        txtCTargetZ.Enabled = False
+        txtCTargetZ.ForeColor = SystemColors.ControlText
+        txtCTargetZ.Location = New Point(1322, 123)
+        txtCTargetZ.Name = "txtCTargetZ"
+        txtCTargetZ.Size = New Size(73, 35)
+        txtCTargetZ.TabIndex = 5
+        txtCTargetZ.Text = "0"
+        txtCTargetZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' tbCameraSpeed
+        ' 
+        tbCameraSpeed.BackColor = SystemColors.Control
+        tbCameraSpeed.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbCameraSpeed.LargeChange = 10
+        tbCameraSpeed.Location = New Point(423, 197)
+        tbCameraSpeed.Maximum = 40
+        tbCameraSpeed.Minimum = 10
+        tbCameraSpeed.Name = "tbCameraSpeed"
+        tbCameraSpeed.Size = New Size(218, 90)
+        tbCameraSpeed.TabIndex = 9
+        tbCameraSpeed.TickFrequency = 5
+        tbCameraSpeed.TickStyle = System.Windows.Forms.TickStyle.None
+        tbCameraSpeed.Value = 23
+        ' 
+        ' txtCPosX
+        ' 
+        txtCPosX.Enabled = False
+        txtCPosX.ForeColor = SystemColors.ControlText
+        txtCPosX.Location = New Point(1177, 53)
+        txtCPosX.Name = "txtCPosX"
+        txtCPosX.Size = New Size(72, 35)
+        txtCPosX.TabIndex = 0
+        txtCPosX.Text = "0"
+        txtCPosX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoEllipsis = True
+        Label17.ForeColor = SystemColors.ControlText
+        Label17.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label17.Location = New Point(37, 144)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(376, 35)
+        Label17.TabIndex = 102
+        Label17.Text = "Camera Up Orientation X,Y,Z: "
+        Label17.TextAlign = ContentAlignment.MiddleLeft
+        Label17.UseMnemonic = False
+        ' 
+        ' txtCPosZ
+        ' 
+        txtCPosZ.Enabled = False
+        txtCPosZ.ForeColor = SystemColors.ControlText
+        txtCPosZ.Location = New Point(1322, 53)
+        txtCPosZ.Name = "txtCPosZ"
+        txtCPosZ.Size = New Size(73, 35)
+        txtCPosZ.TabIndex = 2
+        txtCPosZ.Text = "-10"
+        txtCPosZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtCTargetY
+        ' 
+        txtCTargetY.Enabled = False
+        txtCTargetY.ForeColor = SystemColors.ControlText
+        txtCTargetY.Location = New Point(1249, 123)
+        txtCTargetY.Name = "txtCTargetY"
+        txtCTargetY.Size = New Size(73, 35)
+        txtCTargetY.TabIndex = 4
+        txtCTargetY.Text = "0"
+        txtCTargetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtCOrientY
+        ' 
+        txtCOrientY.Enabled = False
+        txtCOrientY.ForeColor = SystemColors.ControlText
+        txtCOrientY.Location = New Point(1249, 180)
+        txtCOrientY.Name = "txtCOrientY"
+        txtCOrientY.Size = New Size(73, 35)
+        txtCOrientY.TabIndex = 7
+        txtCOrientY.Text = "1"
+        txtCOrientY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtCTargetX
+        ' 
+        txtCTargetX.Enabled = False
+        txtCTargetX.ForeColor = SystemColors.ControlText
+        txtCTargetX.Location = New Point(1177, 123)
+        txtCTargetX.Name = "txtCTargetX"
+        txtCTargetX.Size = New Size(72, 35)
+        txtCTargetX.TabIndex = 3
+        txtCTargetX.Text = "0"
+        txtCTargetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtCOrientZ
+        ' 
+        txtCOrientZ.Enabled = False
+        txtCOrientZ.ForeColor = SystemColors.ControlText
+        txtCOrientZ.Location = New Point(1322, 180)
+        txtCOrientZ.Name = "txtCOrientZ"
+        txtCOrientZ.Size = New Size(73, 35)
+        txtCOrientZ.TabIndex = 8
+        txtCOrientZ.Text = "0"
+        txtCOrientZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoEllipsis = True
+        Label11.ForeColor = SystemColors.ControlText
+        Label11.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label11.Location = New Point(37, 52)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(368, 35)
+        Label11.TabIndex = 100
+        Label11.Text = "Camera Position X,Y,Z (m): "
+        Label11.TextAlign = ContentAlignment.MiddleLeft
+        Label11.UseMnemonic = False
+        ' 
+        ' txtCPosY
+        ' 
+        txtCPosY.Enabled = False
+        txtCPosY.ForeColor = SystemColors.ControlText
+        txtCPosY.Location = New Point(1249, 53)
+        txtCPosY.Name = "txtCPosY"
+        txtCPosY.Size = New Size(73, 35)
+        txtCPosY.TabIndex = 1
+        txtCPosY.Text = "0"
+        txtCPosY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtCOrientX
+        ' 
+        txtCOrientX.Enabled = False
+        txtCOrientX.ForeColor = SystemColors.ControlText
+        txtCOrientX.Location = New Point(1177, 180)
+        txtCOrientX.Name = "txtCOrientX"
+        txtCOrientX.Size = New Size(72, 35)
+        txtCOrientX.TabIndex = 6
+        txtCOrientX.Text = "0"
+        txtCOrientX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Label16
+        ' 
+        Label16.AutoEllipsis = True
+        Label16.ForeColor = SystemColors.ControlText
+        Label16.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label16.Location = New Point(37, 98)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(317, 35)
+        Label16.TabIndex = 101
+        Label16.Text = "Camera Target X,Y,Z: "
+        Label16.TextAlign = ContentAlignment.MiddleLeft
+        Label16.UseMnemonic = False
+        ' 
+        ' CmdSaveOut
+        ' 
+        CmdSaveOut.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        CmdSaveOut.Enabled = False
+        CmdSaveOut.FlatAppearance.BorderColor = Color.Black
+        CmdSaveOut.FlatStyle = System.Windows.Forms.FlatStyle.System
+        CmdSaveOut.ForeColor = SystemColors.ControlText
+        CmdSaveOut.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        CmdSaveOut.Location = New Point(5, 977)
+        CmdSaveOut.Name = "CmdSaveOut"
+        CmdSaveOut.Size = New Size(1464, 62)
+        CmdSaveOut.TabIndex = 0
+        CmdSaveOut.Text = "Save Image"
+        CmdSaveOut.UseVisualStyleBackColor = True
+        ' 
+        ' TabForces
+        ' 
+        TabForces.BackColor = SystemColors.Control
+        TabForces.Controls.Add(spForces)
+        TabForces.Location = New Point(4, 39)
+        TabForces.Name = "TabForces"
+        TabForces.Size = New Size(1472, 1042)
+        TabForces.TabIndex = 3
+        TabForces.Text = "Forces & Collisions"
+        TabForces.UseVisualStyleBackColor = True
+        ' 
+        ' spForces
+        ' 
+        spForces.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        spForces.Location = New Point(3, 3)
+        spForces.Name = "spForces"
+        spForces.Orientation = System.Windows.Forms.Orientation.Horizontal
+        ' 
+        ' spForces.Panel1
+        ' 
+        spForces.Panel1.Controls.Add(gbForces)
+        ' 
+        ' spForces.Panel2
+        ' 
+        spForces.Panel2.Controls.Add(gbCollisions)
+        spForces.Size = New Size(1466, 1036)
+        spForces.SplitterDistance = 518
+        spForces.TabIndex = 80
+        ' 
+        ' gbForces
+        ' 
+        gbForces.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        gbForces.Controls.Add(pForces)
+        gbForces.Location = New Point(3, 3)
+        gbForces.Name = "gbForces"
+        gbForces.Size = New Size(1460, 512)
+        gbForces.TabIndex = 0
+        gbForces.TabStop = False
+        gbForces.Text = "Forces"
+        ' 
+        ' pForces
+        ' 
+        pForces.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        pForces.AutoScroll = True
+        pForces.Controls.Add(tlpAccelForce)
+        pForces.Controls.Add(txtPermittivity)
+        pForces.Controls.Add(chForces)
+        pForces.Controls.Add(Label48)
+        pForces.Controls.Add(Label26)
+        pForces.Controls.Add(txtFluidViscosity)
+        pForces.Controls.Add(Label28)
+        pForces.Controls.Add(Label29)
+        pForces.Controls.Add(chDrag)
+        pForces.Controls.Add(txtDragCoeff)
+        pForces.Controls.Add(Label22)
+        pForces.Controls.Add(txtFluidDensity)
+        pForces.Controls.Add(chField)
+        pForces.Controls.Add(chElectrostatic)
+        pForces.Controls.Add(chGravity)
+        pForces.Location = New Point(6, 34)
+        pForces.Name = "pForces"
+        pForces.Size = New Size(1448, 463)
+        pForces.TabIndex = 1
+        ' 
+        ' tlpAccelForce
+        ' 
+        tlpAccelForce.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tlpAccelForce.ColumnCount = 3
+        tlpAccelForce.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tlpAccelForce.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tlpAccelForce.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tlpAccelForce.Controls.Add(txtFieldX, 0, 0)
+        tlpAccelForce.Controls.Add(txtFieldY, 1, 0)
+        tlpAccelForce.Controls.Add(txtFieldZ, 2, 0)
+        tlpAccelForce.Location = New Point(402, 214)
+        tlpAccelForce.Name = "tlpAccelForce"
+        tlpAccelForce.RowCount = 1
+        tlpAccelForce.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        tlpAccelForce.Size = New Size(1043, 45)
+        tlpAccelForce.TabIndex = 70
+        ' 
+        ' txtFieldX
+        ' 
+        txtFieldX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtFieldX.Enabled = False
+        txtFieldX.ForeColor = SystemColors.ControlText
+        txtFieldX.Location = New Point(3, 3)
+        txtFieldX.Name = "txtFieldX"
+        txtFieldX.Size = New Size(341, 35)
+        txtFieldX.TabIndex = 5
+        txtFieldX.Text = "0"
+        txtFieldX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtFieldY
+        ' 
+        txtFieldY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtFieldY.Enabled = False
+        txtFieldY.ForeColor = SystemColors.ControlText
+        txtFieldY.Location = New Point(350, 3)
+        txtFieldY.Name = "txtFieldY"
+        txtFieldY.Size = New Size(341, 35)
+        txtFieldY.TabIndex = 6
+        txtFieldY.Text = "0"
+        txtFieldY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtFieldZ
+        ' 
+        txtFieldZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtFieldZ.Enabled = False
+        txtFieldZ.ForeColor = SystemColors.ControlText
+        txtFieldZ.Location = New Point(697, 3)
+        txtFieldZ.Name = "txtFieldZ"
+        txtFieldZ.Size = New Size(343, 35)
+        txtFieldZ.TabIndex = 7
+        txtFieldZ.Text = "0"
+        txtFieldZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtPermittivity
+        ' 
+        txtPermittivity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtPermittivity.Enabled = False
+        txtPermittivity.ForeColor = SystemColors.ControlText
+        txtPermittivity.Location = New Point(402, 133)
+        txtPermittivity.Name = "txtPermittivity"
+        txtPermittivity.Size = New Size(1043, 35)
+        txtPermittivity.TabIndex = 3
+        txtPermittivity.Text = "1.0006"
+        txtPermittivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' chForces
+        ' 
+        chForces.AutoEllipsis = True
+        chForces.CheckAlign = ContentAlignment.MiddleCenter
+        chForces.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chForces.ForeColor = SystemColors.ControlText
+        chForces.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chForces.Location = New Point(3, 13)
+        chForces.Name = "chForces"
+        chForces.Size = New Size(347, 35)
+        chForces.TabIndex = 0
+        chForces.Text = "Enable Forces"
+        chForces.UseMnemonic = False
+        chForces.UseVisualStyleBackColor = True
+        ' 
+        ' Label48
+        ' 
+        Label48.AutoEllipsis = True
+        Label48.ForeColor = SystemColors.ControlText
+        Label48.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label48.Location = New Point(33, 133)
+        Label48.Name = "Label48"
+        Label48.Size = New Size(363, 36)
+        Label48.TabIndex = 95
+        Label48.Text = "Relative Permittivity of Medium:"
+        Label48.TextAlign = ContentAlignment.MiddleLeft
+        Label48.UseMnemonic = False
+        ' 
+        ' Label26
+        ' 
+        Label26.AutoEllipsis = True
+        Label26.ForeColor = SystemColors.ControlText
+        Label26.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label26.Location = New Point(33, 297)
+        Label26.Name = "Label26"
+        Label26.Size = New Size(363, 35)
+        Label26.TabIndex = 90
+        Label26.Text = "Fluid Density (kg/m^3):"
+        Label26.TextAlign = ContentAlignment.MiddleLeft
+        Label26.UseMnemonic = False
+        ' 
+        ' txtFluidViscosity
+        ' 
+        txtFluidViscosity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtFluidViscosity.Enabled = False
+        txtFluidViscosity.ForeColor = SystemColors.ControlText
+        txtFluidViscosity.Location = New Point(402, 339)
+        txtFluidViscosity.Name = "txtFluidViscosity"
+        txtFluidViscosity.Size = New Size(1043, 35)
+        txtFluidViscosity.TabIndex = 10
+        txtFluidViscosity.Text = "1.78E-5"
+        txtFluidViscosity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Label28
+        ' 
+        Label28.AutoEllipsis = True
+        Label28.ForeColor = SystemColors.ControlText
+        Label28.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label28.Location = New Point(33, 380)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(363, 35)
+        Label28.TabIndex = 91
+        Label28.Text = "Drag Coefficient:"
+        Label28.TextAlign = ContentAlignment.MiddleLeft
+        Label28.UseMnemonic = False
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoEllipsis = True
+        Label29.ForeColor = SystemColors.ControlText
+        Label29.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label29.Location = New Point(33, 339)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(363, 35)
+        Label29.TabIndex = 93
+        Label29.Text = "Fluid Viscosity (kg/ms):"
+        Label29.TextAlign = ContentAlignment.MiddleLeft
+        Label29.UseMnemonic = False
+        ' 
+        ' chDrag
+        ' 
+        chDrag.AutoEllipsis = True
+        chDrag.Enabled = False
+        chDrag.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chDrag.ForeColor = SystemColors.ControlText
+        chDrag.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chDrag.Location = New Point(3, 259)
+        chDrag.Name = "chDrag"
+        chDrag.Size = New Size(262, 35)
+        chDrag.TabIndex = 8
+        chDrag.Text = "Uniform Drag"
+        chDrag.UseMnemonic = False
+        chDrag.UseVisualStyleBackColor = True
+        ' 
+        ' txtDragCoeff
+        ' 
+        txtDragCoeff.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtDragCoeff.Enabled = False
+        txtDragCoeff.ForeColor = SystemColors.ControlText
+        txtDragCoeff.Location = New Point(402, 380)
+        txtDragCoeff.Name = "txtDragCoeff"
+        txtDragCoeff.Size = New Size(1043, 35)
+        txtDragCoeff.TabIndex = 11
+        txtDragCoeff.Text = "0.1"
+        txtDragCoeff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Label22
+        ' 
+        Label22.AutoEllipsis = True
+        Label22.ForeColor = SystemColors.ControlText
+        Label22.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label22.Location = New Point(33, 216)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(363, 35)
+        Label22.TabIndex = 89
+        Label22.Text = "Acceleration (m/s^2) X,Y,Z:"
+        Label22.TextAlign = ContentAlignment.MiddleLeft
+        Label22.UseMnemonic = False
+        ' 
+        ' txtFluidDensity
+        ' 
+        txtFluidDensity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtFluidDensity.Enabled = False
+        txtFluidDensity.ForeColor = SystemColors.ControlText
+        txtFluidDensity.Location = New Point(402, 298)
+        txtFluidDensity.Name = "txtFluidDensity"
+        txtFluidDensity.Size = New Size(1043, 35)
+        txtFluidDensity.TabIndex = 9
+        txtFluidDensity.Text = "1.225"
+        txtFluidDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' chField
+        ' 
+        chField.AutoEllipsis = True
+        chField.Enabled = False
+        chField.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chField.ForeColor = SystemColors.ControlText
+        chField.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chField.Location = New Point(3, 178)
+        chField.Name = "chField"
+        chField.Size = New Size(347, 35)
+        chField.TabIndex = 4
+        chField.Text = "Uniform Field"
+        chField.UseMnemonic = False
+        chField.UseVisualStyleBackColor = True
+        ' 
+        ' chElectrostatic
+        ' 
+        chElectrostatic.AutoEllipsis = True
+        chElectrostatic.Enabled = False
+        chElectrostatic.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chElectrostatic.Font = New Font("Arial", 9F)
+        chElectrostatic.ForeColor = SystemColors.ControlText
+        chElectrostatic.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chElectrostatic.Location = New Point(3, 95)
+        chElectrostatic.Name = "chElectrostatic"
+        chElectrostatic.Size = New Size(347, 35)
+        chElectrostatic.TabIndex = 2
+        chElectrostatic.Text = "Electrostatic Force"
+        chElectrostatic.UseMnemonic = False
+        chElectrostatic.UseVisualStyleBackColor = True
+        ' 
+        ' chGravity
+        ' 
+        chGravity.AutoEllipsis = True
+        chGravity.Enabled = False
+        chGravity.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chGravity.ForeColor = SystemColors.ControlText
+        chGravity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chGravity.Location = New Point(3, 54)
+        chGravity.Name = "chGravity"
+        chGravity.Size = New Size(347, 35)
+        chGravity.TabIndex = 1
+        chGravity.Text = "Newtonian Gravity"
+        chGravity.UseMnemonic = False
+        chGravity.UseVisualStyleBackColor = True
+        ' 
+        ' gbCollisions
+        ' 
+        gbCollisions.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        gbCollisions.Controls.Add(pCollisions)
+        gbCollisions.Location = New Point(3, 3)
+        gbCollisions.Name = "gbCollisions"
+        gbCollisions.Size = New Size(1460, 508)
+        gbCollisions.TabIndex = 79
+        gbCollisions.TabStop = False
+        gbCollisions.Text = "Collisions"
+        ' 
+        ' pCollisions
+        ' 
+        pCollisions.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        pCollisions.AutoScroll = True
+        pCollisions.Controls.Add(TableLayoutPanel2)
+        pCollisions.Controls.Add(TableLayoutPanel1)
+        pCollisions.Controls.Add(chInterpolate)
+        pCollisions.Controls.Add(chCollision)
+        pCollisions.Controls.Add(Label20)
+        pCollisions.Controls.Add(txtCoR)
+        pCollisions.Controls.Add(chbreakable)
+        pCollisions.Controls.Add(lblResulting)
+        pCollisions.Controls.Add(Label25)
+        pCollisions.Location = New Point(6, 34)
+        pCollisions.Name = "pCollisions"
+        pCollisions.Size = New Size(1448, 468)
+        pCollisions.TabIndex = 80
+        ' 
+        ' TableLayoutPanel2
+        ' 
+        TableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        TableLayoutPanel2.ColumnCount = 3
+        TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel2.Controls.Add(txtAddMin, 0, 0)
+        TableLayoutPanel2.Controls.Add(txtAddAvg, 1, 0)
+        TableLayoutPanel2.Controls.Add(txtAddMax, 2, 0)
+        TableLayoutPanel2.Location = New Point(402, 246)
+        TableLayoutPanel2.Name = "TableLayoutPanel2"
+        TableLayoutPanel2.RowCount = 1
+        TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel2.Size = New Size(1043, 52)
+        TableLayoutPanel2.TabIndex = 72
+        ' 
+        ' txtAddMin
+        ' 
+        txtAddMin.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtAddMin.Enabled = False
+        txtAddMin.ForeColor = SystemColors.ControlText
+        txtAddMin.Location = New Point(3, 3)
+        txtAddMin.Name = "txtAddMin"
+        txtAddMin.Size = New Size(341, 35)
+        txtAddMin.TabIndex = 7
+        txtAddMin.Text = "2"
+        txtAddMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtAddAvg
+        ' 
+        txtAddAvg.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtAddAvg.Enabled = False
+        txtAddAvg.ForeColor = SystemColors.ControlText
+        txtAddAvg.Location = New Point(350, 3)
+        txtAddAvg.Name = "txtAddAvg"
+        txtAddAvg.Size = New Size(341, 35)
+        txtAddAvg.TabIndex = 8
+        txtAddAvg.Text = "3"
+        txtAddAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtAddMax
+        ' 
+        txtAddMax.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtAddMax.Enabled = False
+        txtAddMax.ForeColor = SystemColors.ControlText
+        txtAddMax.Location = New Point(697, 3)
+        txtAddMax.Name = "txtAddMax"
+        txtAddMax.Size = New Size(343, 35)
+        txtAddMax.TabIndex = 9
+        txtAddMax.Text = "8"
+        txtAddMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' TableLayoutPanel1
+        ' 
+        TableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        TableLayoutPanel1.ColumnCount = 3
+        TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel1.Controls.Add(txtBreakMax, 2, 0)
+        TableLayoutPanel1.Controls.Add(txtBreakAvg, 1, 0)
+        TableLayoutPanel1.Controls.Add(txtBreakMin, 0, 0)
+        TableLayoutPanel1.Location = New Point(402, 187)
+        TableLayoutPanel1.Name = "TableLayoutPanel1"
+        TableLayoutPanel1.RowCount = 1
+        TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel1.Size = New Size(1040, 45)
+        TableLayoutPanel1.TabIndex = 71
+        ' 
+        ' txtBreakMax
+        ' 
+        txtBreakMax.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtBreakMax.Enabled = False
+        txtBreakMax.ForeColor = SystemColors.ControlText
+        txtBreakMax.Location = New Point(695, 3)
+        txtBreakMax.Name = "txtBreakMax"
+        txtBreakMax.Size = New Size(342, 35)
+        txtBreakMax.TabIndex = 6
+        txtBreakMax.Text = "500"
+        txtBreakMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtBreakAvg
+        ' 
+        txtBreakAvg.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtBreakAvg.Enabled = False
+        txtBreakAvg.ForeColor = SystemColors.ControlText
+        txtBreakAvg.Location = New Point(349, 3)
+        txtBreakAvg.Name = "txtBreakAvg"
+        txtBreakAvg.Size = New Size(340, 35)
+        txtBreakAvg.TabIndex = 5
+        txtBreakAvg.Text = "100"
+        txtBreakAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtBreakMin
+        ' 
+        txtBreakMin.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtBreakMin.Enabled = False
+        txtBreakMin.ForeColor = SystemColors.ControlText
+        txtBreakMin.Location = New Point(3, 3)
+        txtBreakMin.Name = "txtBreakMin"
+        txtBreakMin.Size = New Size(340, 35)
+        txtBreakMin.TabIndex = 4
+        txtBreakMin.Text = "50"
+        txtBreakMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' chInterpolate
+        ' 
+        chInterpolate.AutoSize = True
+        chInterpolate.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chInterpolate.Location = New Point(33, 112)
+        chInterpolate.Name = "chInterpolate"
+        chInterpolate.Size = New Size(385, 31)
+        chInterpolate.TabIndex = 2
+        chInterpolate.Text = "Interpolate Between Time Steps"
+        chInterpolate.UseVisualStyleBackColor = True
+        ' 
+        ' chCollision
+        ' 
+        chCollision.AutoEllipsis = True
+        chCollision.CheckAlign = ContentAlignment.MiddleCenter
+        chCollision.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chCollision.ForeColor = SystemColors.ControlText
+        chCollision.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chCollision.Location = New Point(3, 17)
+        chCollision.Name = "chCollision"
+        chCollision.Size = New Size(347, 35)
+        chCollision.TabIndex = 0
+        chCollision.Text = "Enable Collisions"
+        chCollision.UseMnemonic = False
+        chCollision.UseVisualStyleBackColor = True
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoEllipsis = True
+        Label20.ForeColor = SystemColors.ControlText
+        Label20.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label20.Location = New Point(33, 55)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(363, 35)
+        Label20.TabIndex = 66
+        Label20.Text = "Coeff. of Restitution:"
+        Label20.TextAlign = ContentAlignment.MiddleLeft
+        Label20.UseMnemonic = False
+        ' 
+        ' txtCoR
+        ' 
+        txtCoR.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtCoR.Enabled = False
+        txtCoR.ForeColor = SystemColors.ControlText
+        txtCoR.Location = New Point(402, 56)
+        txtCoR.Name = "txtCoR"
+        txtCoR.Size = New Size(1040, 35)
+        txtCoR.TabIndex = 1
+        txtCoR.Text = "0.5"
+        txtCoR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' chbreakable
+        ' 
+        chbreakable.AutoEllipsis = True
+        chbreakable.CheckAlign = ContentAlignment.MiddleCenter
+        chbreakable.Enabled = False
+        chbreakable.FlatStyle = System.Windows.Forms.FlatStyle.System
+        chbreakable.ForeColor = SystemColors.ControlText
+        chbreakable.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        chbreakable.Location = New Point(33, 149)
+        chbreakable.Name = "chbreakable"
+        chbreakable.Size = New Size(347, 35)
+        chbreakable.TabIndex = 3
+        chbreakable.Text = "Breakable Collisions"
+        chbreakable.UseMnemonic = False
+        chbreakable.UseVisualStyleBackColor = True
+        ' 
+        ' lblResulting
+        ' 
+        lblResulting.AutoEllipsis = True
+        lblResulting.ForeColor = SystemColors.ControlText
+        lblResulting.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblResulting.Location = New Point(63, 233)
+        lblResulting.Name = "lblResulting"
+        lblResulting.Size = New Size(217, 65)
+        lblResulting.TabIndex = 67
+        lblResulting.Text = "Resulting Objects Min, Avg, Max:"
+        lblResulting.TextAlign = ContentAlignment.MiddleLeft
+        lblResulting.UseMnemonic = False
+        ' 
+        ' Label25
+        ' 
+        Label25.AutoEllipsis = True
+        Label25.ForeColor = SystemColors.ControlText
+        Label25.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label25.Location = New Point(63, 187)
+        Label25.Name = "Label25"
+        Label25.Size = New Size(317, 35)
+        Label25.TabIndex = 68
+        Label25.Text = "Endurance Min, Avg, Max:"
+        Label25.TextAlign = ContentAlignment.MiddleLeft
+        Label25.UseMnemonic = False
+        ' 
+        ' TabSimulation
+        ' 
+        TabSimulation.BackColor = SystemColors.Control
+        TabSimulation.Controls.Add(spSaveAndLoad)
+        TabSimulation.Controls.Add(gbSimulation)
+        TabSimulation.Location = New Point(4, 39)
+        TabSimulation.Name = "TabSimulation"
+        TabSimulation.Padding = New System.Windows.Forms.Padding(3)
+        TabSimulation.Size = New Size(1472, 1042)
+        TabSimulation.TabIndex = 0
+        TabSimulation.Text = "Simulation"
+        TabSimulation.UseVisualStyleBackColor = True
+        ' 
+        ' spSaveAndLoad
+        ' 
+        spSaveAndLoad.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        spSaveAndLoad.IsSplitterFixed = True
+        spSaveAndLoad.Location = New Point(6, 974)
+        spSaveAndLoad.Name = "spSaveAndLoad"
+        ' 
+        ' spSaveAndLoad.Panel1
+        ' 
+        spSaveAndLoad.Panel1.Controls.Add(cmdSave)
+        ' 
+        ' spSaveAndLoad.Panel2
+        ' 
+        spSaveAndLoad.Panel2.Controls.Add(cmdLoad)
+        spSaveAndLoad.Size = New Size(1460, 62)
+        spSaveAndLoad.SplitterDistance = 728
+        spSaveAndLoad.TabIndex = 90
+        ' 
+        ' cmdSave
+        ' 
+        cmdSave.AutoSize = True
+        cmdSave.Dock = System.Windows.Forms.DockStyle.Fill
+        cmdSave.FlatAppearance.BorderColor = Color.Black
+        cmdSave.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdSave.ForeColor = SystemColors.ControlText
+        cmdSave.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdSave.Location = New Point(0, 0)
+        cmdSave.Name = "cmdSave"
+        cmdSave.Size = New Size(728, 62)
+        cmdSave.TabIndex = 0
+        cmdSave.Text = "Save Simulation"
+        cmdSave.UseVisualStyleBackColor = True
+        ' 
+        ' cmdLoad
+        ' 
+        cmdLoad.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdLoad.FlatAppearance.BorderColor = Color.Black
+        cmdLoad.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdLoad.ForeColor = SystemColors.ControlText
+        cmdLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdLoad.Location = New Point(0, 0)
+        cmdLoad.Name = "cmdLoad"
+        cmdLoad.Size = New Size(725, 62)
+        cmdLoad.TabIndex = 1
+        cmdLoad.Text = "Load Simulation"
+        cmdLoad.UseVisualStyleBackColor = True
+        ' 
+        ' gbSimulation
+        ' 
+        gbSimulation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        gbSimulation.Controls.Add(pSimulation)
+        gbSimulation.Location = New Point(6, 6)
+        gbSimulation.Name = "gbSimulation"
+        gbSimulation.Size = New Size(1460, 962)
+        gbSimulation.TabIndex = 89
+        gbSimulation.TabStop = False
+        gbSimulation.Text = "Simulation"
+        ' 
+        ' pSimulation
+        ' 
+        pSimulation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        pSimulation.AutoScroll = True
+        pSimulation.Controls.Add(Label1)
+        pSimulation.Controls.Add(txtLimitObjects)
+        pSimulation.Controls.Add(Label4)
+        pSimulation.Controls.Add(Label14)
+        pSimulation.Controls.Add(Label2)
+        pSimulation.Controls.Add(Label24)
+        pSimulation.Controls.Add(txtLimitCalc)
+        pSimulation.Controls.Add(cbIntegration)
+        pSimulation.Controls.Add(txtScale)
+        pSimulation.Controls.Add(txtTimeStep)
+        pSimulation.Location = New Point(6, 34)
+        pSimulation.Name = "pSimulation"
+        pSimulation.Size = New Size(1448, 922)
+        pSimulation.TabIndex = 32
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoEllipsis = True
+        Label1.ForeColor = SystemColors.ControlText
+        Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label1.Location = New Point(3, 4)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(322, 34)
+        Label1.TabIndex = 9
+        Label1.Text = "Time Step (s):"
+        Label1.TextAlign = ContentAlignment.MiddleRight
+        Label1.UseMnemonic = False
+        ' 
+        ' txtLimitObjects
+        ' 
+        txtLimitObjects.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtLimitObjects.ForeColor = SystemColors.ControlText
+        txtLimitObjects.Location = New Point(331, 85)
+        txtLimitObjects.Name = "txtLimitObjects"
+        txtLimitObjects.Size = New Size(1114, 35)
+        txtLimitObjects.TabIndex = 2
+        txtLimitObjects.Text = "200"
+        txtLimitObjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoEllipsis = True
+        Label4.ForeColor = SystemColors.ControlText
+        Label4.ImageAlign = ContentAlignment.MiddleRight
+        Label4.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label4.Location = New Point(3, 44)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(322, 35)
+        Label4.TabIndex = 12
+        Label4.Text = "Limit Calculations (C/s):"
+        Label4.TextAlign = ContentAlignment.MiddleRight
+        Label4.UseMnemonic = False
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoEllipsis = True
+        Label14.ForeColor = SystemColors.ControlText
+        Label14.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label14.Location = New Point(3, 167)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(322, 35)
+        Label14.TabIndex = 28
+        Label14.Text = "Method of Integration:"
+        Label14.TextAlign = ContentAlignment.MiddleRight
+        Label14.UseMnemonic = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoEllipsis = True
+        Label2.ForeColor = SystemColors.ControlText
+        Label2.ImageAlign = ContentAlignment.MiddleRight
+        Label2.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label2.Location = New Point(3, 126)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(322, 35)
+        Label2.TabIndex = 31
+        Label2.Text = "World Scale:"
+        Label2.TextAlign = ContentAlignment.MiddleRight
+        Label2.UseMnemonic = False
+        ' 
+        ' Label24
+        ' 
+        Label24.AutoEllipsis = True
+        Label24.ForeColor = SystemColors.ControlText
+        Label24.ImageAlign = ContentAlignment.MiddleRight
+        Label24.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Label24.Location = New Point(3, 79)
+        Label24.Name = "Label24"
+        Label24.Size = New Size(322, 41)
+        Label24.TabIndex = 26
+        Label24.Text = "Limit Objects:"
+        Label24.TextAlign = ContentAlignment.MiddleRight
+        Label24.UseMnemonic = False
+        ' 
+        ' txtLimitCalc
+        ' 
+        txtLimitCalc.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtLimitCalc.ForeColor = SystemColors.ControlText
+        txtLimitCalc.Location = New Point(331, 44)
+        txtLimitCalc.Name = "txtLimitCalc"
+        txtLimitCalc.Size = New Size(1114, 35)
+        txtLimitCalc.TabIndex = 1
+        txtLimitCalc.Text = "1000"
+        txtLimitCalc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cbIntegration
+        ' 
+        cbIntegration.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cbIntegration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        cbIntegration.Enabled = False
+        cbIntegration.FormattingEnabled = True
+        cbIntegration.Items.AddRange(New Object() {"1st order - Euler", "2nd order - Verlet", "4th order - Symplectic", "6th order - Symplectic"})
+        cbIntegration.Location = New Point(331, 167)
+        cbIntegration.Name = "cbIntegration"
+        cbIntegration.Size = New Size(1114, 35)
+        cbIntegration.TabIndex = 4
+        ' 
+        ' txtScale
+        ' 
+        txtScale.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtScale.ForeColor = SystemColors.ControlText
+        txtScale.Location = New Point(331, 126)
+        txtScale.Name = "txtScale"
+        txtScale.Size = New Size(1114, 35)
+        txtScale.TabIndex = 3
+        txtScale.Text = "1"
+        txtScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtTimeStep
+        ' 
+        txtTimeStep.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtTimeStep.ForeColor = SystemColors.ControlText
+        txtTimeStep.Location = New Point(331, 3)
+        txtTimeStep.Name = "txtTimeStep"
+        txtTimeStep.Size = New Size(1114, 35)
+        txtTimeStep.TabIndex = 0
+        txtTimeStep.Text = "0.001"
+        txtTimeStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' Tabs
+        ' 
+        Tabs.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        Tabs.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
+        Tabs.Controls.Add(TabSimulation)
+        Tabs.Controls.Add(TabForces)
+        Tabs.Controls.Add(TabDisplay)
+        Tabs.Controls.Add(TabLights)
+        Tabs.Controls.Add(TabGroups)
+        Tabs.Location = New Point(12, 73)
+        Tabs.Name = "Tabs"
+        Tabs.SelectedIndex = 0
+        Tabs.Size = New Size(1480, 1085)
+        Tabs.TabIndex = 1
+        ' 
+        ' ControlPanel
+        ' 
+        AutoScaleDimensions = New SizeF(192F, 192F)
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        BackColor = SystemColors.Control
+        ClientSize = New Size(1504, 1203)
+        Controls.Add(Tabs)
+        Controls.Add(Stats)
+        Controls.Add(cmdStart)
+        Font = New Font("Arial", 9F)
+        ForeColor = SystemColors.ControlText
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MaximizeBox = False
+        MinimizeBox = False
+        MinimumSize = New Size(700, 500)
+        Name = "ControlPanel"
+        SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Text = "SandBox Simulator -  Control Panel"
+        TransparencyKey = Color.FromArgb(CByte(255), CByte(192), CByte(192))
+        Stats.ResumeLayout(False)
+        Stats.PerformLayout()
+        TabGroups.ResumeLayout(False)
+        gbObjects.ResumeLayout(False)
+        gbObjects.PerformLayout()
+        CType(tbObjectTransparency, ComponentModel.ISupportInitialize).EndInit()
+        CType(tbObjectReflectivity, ComponentModel.ISupportInitialize).EndInit()
+        CType(tbObjectHighlightSharpness, ComponentModel.ISupportInitialize).EndInit()
+        TabLights.ResumeLayout(False)
+        gbLights.ResumeLayout(False)
+        gbLights.PerformLayout()
+        CType(tbLightAmbient, ComponentModel.ISupportInitialize).EndInit()
+        CType(tbLightHighlight, ComponentModel.ISupportInitialize).EndInit()
+        TabDisplay.ResumeLayout(False)
+        spRendering.Panel1.ResumeLayout(False)
+        spRendering.Panel2.ResumeLayout(False)
+        CType(spRendering, ComponentModel.ISupportInitialize).EndInit()
+        spRendering.ResumeLayout(False)
+        gbRendering.ResumeLayout(False)
+        pRender.ResumeLayout(False)
+        pRender.PerformLayout()
+        TableLayoutPanel3.ResumeLayout(False)
+        TableLayoutPanel3.PerformLayout()
+        CType(tbPolys, ComponentModel.ISupportInitialize).EndInit()
+        gbCamera.ResumeLayout(False)
+        pCamera.ResumeLayout(False)
+        pCamera.PerformLayout()
+        CType(tbCameraSpeed, ComponentModel.ISupportInitialize).EndInit()
+        TabForces.ResumeLayout(False)
+        spForces.Panel1.ResumeLayout(False)
+        spForces.Panel2.ResumeLayout(False)
+        CType(spForces, ComponentModel.ISupportInitialize).EndInit()
+        spForces.ResumeLayout(False)
+        gbForces.ResumeLayout(False)
+        pForces.ResumeLayout(False)
+        pForces.PerformLayout()
+        tlpAccelForce.ResumeLayout(False)
+        tlpAccelForce.PerformLayout()
+        gbCollisions.ResumeLayout(False)
+        pCollisions.ResumeLayout(False)
+        pCollisions.PerformLayout()
+        TableLayoutPanel2.ResumeLayout(False)
+        TableLayoutPanel2.PerformLayout()
+        TableLayoutPanel1.ResumeLayout(False)
+        TableLayoutPanel1.PerformLayout()
+        TabSimulation.ResumeLayout(False)
+        spSaveAndLoad.Panel1.ResumeLayout(False)
+        spSaveAndLoad.Panel1.PerformLayout()
+        spSaveAndLoad.Panel2.ResumeLayout(False)
+        CType(spSaveAndLoad, ComponentModel.ISupportInitialize).EndInit()
+        spSaveAndLoad.ResumeLayout(False)
+        gbSimulation.ResumeLayout(False)
+        pSimulation.ResumeLayout(False)
+        pSimulation.PerformLayout()
+        Tabs.ResumeLayout(False)
+        ResumeLayout(False)
 
     End Sub
     Friend WithEvents cmdStart As System.Windows.Forms.Button
@@ -3214,7 +3425,7 @@ Partial Class ControlPanel
     Friend WithEvents cmdLightRemove As System.Windows.Forms.Button
     Friend WithEvents cmdLightReplace As System.Windows.Forms.Button
     Friend WithEvents TabDisplay As System.Windows.Forms.TabPage
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents gbCamera As System.Windows.Forms.GroupBox
     Friend WithEvents Label47 As System.Windows.Forms.Label
     Friend WithEvents chCamera As System.Windows.Forms.CheckBox
     Friend WithEvents txtCPosZ As System.Windows.Forms.TextBox
@@ -3230,7 +3441,7 @@ Partial Class ControlPanel
     Friend WithEvents txtCOrientX As System.Windows.Forms.TextBox
     Friend WithEvents txtCOrientY As System.Windows.Forms.TextBox
     Friend WithEvents tbCameraSpeed As System.Windows.Forms.TrackBar
-    Friend WithEvents Rendering As System.Windows.Forms.GroupBox
+    Friend WithEvents gbRendering As System.Windows.Forms.GroupBox
     Friend WithEvents Label46 As System.Windows.Forms.Label
     Friend WithEvents txtVFoV As System.Windows.Forms.TextBox
     Friend WithEvents Label45 As System.Windows.Forms.Label
@@ -3251,7 +3462,7 @@ Partial Class ControlPanel
     Friend WithEvents txtWindowY As System.Windows.Forms.TextBox
     Friend WithEvents CmdSaveOut As System.Windows.Forms.Button
     Friend WithEvents TabForces As System.Windows.Forms.TabPage
-    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents gbForces As System.Windows.Forms.GroupBox
     Friend WithEvents txtPermittivity As System.Windows.Forms.TextBox
     Friend WithEvents Label48 As System.Windows.Forms.Label
     Friend WithEvents txtFluidViscosity As System.Windows.Forms.TextBox
@@ -3269,7 +3480,7 @@ Partial Class ControlPanel
     Friend WithEvents chDrag As System.Windows.Forms.CheckBox
     Friend WithEvents Label28 As System.Windows.Forms.Label
     Friend WithEvents Label26 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents gbCollisions As System.Windows.Forms.GroupBox
     Friend WithEvents chInterpolate As System.Windows.Forms.CheckBox
     Friend WithEvents chCollision As System.Windows.Forms.CheckBox
     Friend WithEvents Label20 As System.Windows.Forms.Label
@@ -3286,7 +3497,7 @@ Partial Class ControlPanel
     Friend WithEvents TabSimulation As System.Windows.Forms.TabPage
     Friend WithEvents cmdLoad As System.Windows.Forms.Button
     Friend WithEvents cmdSave As System.Windows.Forms.Button
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents gbSimulation As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -3304,4 +3515,16 @@ Partial Class ControlPanel
     Friend WithEvents plRenderBackColor As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtRenderThreads As System.Windows.Forms.TextBox
+    Friend WithEvents spSaveAndLoad As System.Windows.Forms.SplitContainer
+    Friend WithEvents pSimulation As System.Windows.Forms.Panel
+    Friend WithEvents spForces As System.Windows.Forms.SplitContainer
+    Friend WithEvents pForces As System.Windows.Forms.Panel
+    Friend WithEvents pCollisions As System.Windows.Forms.Panel
+    Friend WithEvents tlpAccelForce As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents spRendering As System.Windows.Forms.SplitContainer
+    Friend WithEvents pRender As System.Windows.Forms.Panel
+    Friend WithEvents pCamera As System.Windows.Forms.Panel
+    Friend WithEvents TableLayoutPanel3 As System.Windows.Forms.TableLayoutPanel
 End Class

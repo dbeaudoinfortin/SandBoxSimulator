@@ -113,6 +113,18 @@
         tbPolynomialB.Visible = isTrackBar
         tbPolynomialC.Visible = isTrackBar
 
+        'Trackbar Label Visibility
+        lbEvenMin.Visible = isTrackBar
+        lbEvenMax.Visible = isTrackBar
+        lbNormalAvg.Visible = isTrackBar
+        lbNormalMax.Visible = isTrackBar
+        lbNormalMin.Visible = isTrackBar
+        lbRandomMin.Visible = isTrackBar
+        lbRandomMax.Visible = isTrackBar
+        lbPolynomialA.Visible = isTrackBar
+        lbPolynomialB.Visible = isTrackBar
+        lbPolynomialC.Visible = isTrackBar
+
         'Color Picker Enabled
         EnableColorBox(plPolynomialA, isColor And isPol)
         EnableColorBox(plPolynomialB, isColor And isPol)
@@ -288,5 +300,70 @@
         End If
         Return True
     End Function
+
+    Private Sub tbRandomMin_Scroll(sender As Object, e As EventArgs) Handles tbRandomMin.Scroll
+        If tbRandomMin.Value > tbRandomMax.Value Then
+            tbRandomMin.Value = tbRandomMax.Value
+        End If
+        lbRandomMin.Text = tbRandomMin.Value.ToString
+    End Sub
+
+    Private Sub tbRandomMax_Scroll(sender As Object, e As EventArgs) Handles tbRandomMax.Scroll
+        If tbRandomMax.Value < tbRandomMin.Value Then
+            tbRandomMax.Value = tbRandomMin.Value
+        End If
+        lbRandomMax.Text = tbRandomMax.Value.ToString
+    End Sub
+
+    Private Sub tbEvenMin_Scroll(sender As Object, e As EventArgs) Handles tbEvenMin.Scroll
+        If tbEvenMin.Value > tbEvenMax.Value Then
+            tbEvenMin.Value = tbEvenMax.Value
+        End If
+        lbEvenMin.Text = tbEvenMin.Value.ToString
+    End Sub
+
+    Private Sub tbEvenMax_Scroll(sender As Object, e As EventArgs) Handles tbEvenMax.Scroll
+        If tbEvenMax.Value < tbEvenMin.Value Then
+            tbEvenMax.Value = tbEvenMin.Value
+        End If
+        lbEvenMax.Text = tbEvenMax.Value.ToString
+    End Sub
+
+    Private Sub tbNormalMin_Scroll(sender As Object, e As EventArgs) Handles tbNormalMin.Scroll
+        If tbNormalMin.Value > tbNormalAvg.Value Then
+            tbNormalMin.Value = tbNormalAvg.Value
+        End If
+        lbNormalMin.Text = tbNormalMin.Value.ToString
+    End Sub
+
+    Private Sub tbNormalMax_Scroll(sender As Object, e As EventArgs) Handles tbNormalMax.Scroll
+        If tbNormalMax.Value < tbNormalAvg.Value Then
+            tbNormalMax.Value = tbNormalAvg.Value
+        End If
+        lbNormalMax.Text = tbNormalMax.Value.ToString
+    End Sub
+
+    Private Sub tbNormalAvg_Scroll(sender As Object, e As EventArgs) Handles tbNormalAvg.Scroll
+        If tbNormalAvg.Value > tbNormalMax.Value Then
+            tbNormalAvg.Value = tbNormalMax.Value
+        End If
+        If tbNormalAvg.Value < tbNormalMin.Value Then
+            tbNormalAvg.Value = tbNormalMin.Value
+        End If
+        lbNormalAvg.Text = tbNormalAvg.Value.ToString
+    End Sub
+
+    Private Sub tbPolynomialC_Scroll(sender As Object, e As EventArgs) Handles tbPolynomialC.Scroll
+        lbPolynomialC.Text = tbPolynomialC.Value.ToString
+    End Sub
+
+    Private Sub tbPolynomialB_Scroll(sender As Object, e As EventArgs) Handles tbPolynomialB.Scroll
+        lbPolynomialB.Text = tbPolynomialB.Value.ToString
+    End Sub
+
+    Private Sub tbPolynomialA_Scroll(sender As Object, e As EventArgs) Handles tbPolynomialA.Scroll
+        lbPolynomialA.Text = tbPolynomialA.Value.ToString
+    End Sub
+
 
 End Class
