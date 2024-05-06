@@ -124,15 +124,15 @@ Public Class SimulationConfigDistributionDouble
         MyBase.Clear()
 
         EvenMin = 1
-        EvenMax = 1.5
+        EvenMax = 50
         NormalMin = 1
-        NormalMax = 1.5
-        NormalAvg = 1.2
+        NormalMax = 50
+        NormalAvg = 20
         RandomMin = 1
-        RandomMax = 1.5
+        RandomMax = 50
         PolynomialA = 0
-        PolynomialB = 0.05
-        PolynomialC = 1
+        PolynomialB = 5
+        PolynomialC = 50
         Value = 1
     End Sub
     Public Overrides Function CalculateEffectiveValue(RandMaker As RandNumber, ObjectIndex As Integer, ObjectCount As Integer) As Double
