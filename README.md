@@ -71,7 +71,7 @@ Originally designed to give approximate visual solutions to n-body problems of p
   - Random Distribution
   - Polynomial Distribution
 - Per-Object Interaction Control (Which Affects What and Which is Affected by What)
-- Groupings of Objects (With Prodcedure Generation of Quantity)
+- Groupings of Objects (With Procedural Generation of Quantity)
 
 **Lighting Types**
 - Directional Lights
@@ -92,7 +92,7 @@ As part of resurecting this project from the dead, I have made several technolog
 - Any modern GPU with hardware vertex processing (2006+), integrated or discrete.
 - Any modern x86-64 CPU.
 
-The orginal 2008-era system requirements were:
+The original 2008-era system requirements were:
 - Microsoft .Net Framework version 2.0
 - Windows XP or higher.
 - A DirectX 9 compatible GPU.
@@ -128,7 +128,7 @@ The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this project
 - Moved from Visual Studio 2005 to Visual Studio 2022.
 - Upgraded from 32bit to 64bit.
 - Migrated from the Managed DirectX 1.1 library to SharpDX 4.2.0 for DirectX 9 rendering.
-- Restored support for non-sphere object types (box, finite plane, infinit plane). I had lost the code for these at some point.
+- Restored support for non-sphere object types (box, finite plane, infinite plane). I had lost the code for these at some point.
 - Improved the implementation object attributes that are assigned a distribution function.
 - Implemented DirectX rendering of transparent objects.
 - Support for high DPI monitors.
@@ -145,20 +145,20 @@ The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this project
 - Implemented in VB .Net. I originally chose VB because I wanted a simple drag-and-drop UI designer for Windows forms and a simple way to make use of DirectX, at the expense of the performance of the calculations themselves. The goal was to build something for fun and to get going quickly. At the time, I felt that Visual Studio's feature set for VB was better than that of C#. 
 - Requires Visual Studio 2022.
 - DirectX rendering makes use of the DirectX 9 implementation from the SharpDX library.
-- Ray traced rendering is built from scratch by myself. Rays are traced using the usual "backwards" approach of projecting them out of the camera, through the screen, to the objects, and then bouncing them to the lights. Once the colour of a pixel is calculated, it is written to a byte buffer. At the end of the frame, that buffer is written to a texture and texture is drawn in the scene using DirectX 9. Each thread renders their frame independantly, and the frames are presented alternately in a first-come-first-served manner.
-- The solution contains a second project called CS Compatibility. The purpose of this project is to build a DLL that sits bewteen SandBox Simulator and a handful of calls to SharpDX, as a work-around for some of the language incompatibilities between C# and VB .Net. Since SharpDX is no longer under development, and VB .Net's popularity continues to fall, I doubt the compatibility issues will get resolved. I also don't feel it's worth rewriting Sandbox Simulator in another language since its just a fun side project.
+- Ray traced rendering is built from scratch by myself. Rays are traced using the usual "backwards" approach of projecting them out of the camera, through the screen, to the objects, and then bouncing them to the lights. Once the colour of a pixel is calculated, it is written to a byte buffer. At the end of the frame, that buffer is written to a texture and texture is drawn in the scene using DirectX 9. Each thread renders their frame independently, and the frames are presented alternately in a first-come-first-served manner.
+- The solution contains a second project called CS Compatibility. The purpose of this project is to build a DLL that sits between SandBox Simulator and a handful of calls to SharpDX, as a work-around for some of the language incompatibilities between C# and VB .Net. Since SharpDX is no longer under development, and VB .Net's popularity continues to fall, I doubt the compatibility issues will get resolved. I also don't feel it's worth rewriting Sandbox Simulator in another language since its just a fun side project.
 
 # Future Plans
 There are a number of additions that I have been meaning to implement (one of these days...):
 
 - Bounding volume hierarchies of objects to improve ray-tracing performance.
 - Bounding volume hierarchies of objects to improve collision detection performance.
-- Increased use of SIMD accelerated .Net types (vectors, matricies, etc.)
+- Increased use of SIMD accelerated .Net types (vectors, matrices, etc.)
 - Support for DirectX 11 & 12. Possibly Vulkan.
-- Right now nearly everything uses double precision floats. I'd like to try spliting up the code to use single precision for rendering calulation and double precision for physics calulations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
+- Right now nearly everything uses double precision floats. I'd like to try spliting up the code to use single precision for rendering calculations and double precision for physics calculations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
 - Support for object rotational velocities.
 - Support for per-object constant acceleration, instead of just a global setting that applies to all objects.
-- Rendering of only object verticies in DirectX mode (as opposed to wireframe or full).
+- Rendering of only object vertices in DirectX mode (as opposed to wireframe or full).
 - Ray traced render enhancements: transparency, refractive index, reflectivity, etc.
 - Ray tracing depth control to limit object interactions and improve performance.
 
