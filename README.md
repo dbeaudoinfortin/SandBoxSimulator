@@ -6,11 +6,11 @@ SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It 
 
 I originally developed this application in 2008 as a fun side project. At the time there was nothing that I could find to let you quickly visualize several types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required. I resurected version 4.0 from the dead and have made some significant changes in version 4.1 (see below) to modernize it.
 
-Originally designed to give aproximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
+Originally designed to give approximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
 
 **Forces**
 - Newtonian Gravity
-- Electostatic Force
+- Electrostatic Force
 - Uniform Acceleration Field
 - Uniform Fluid Drag Force
   - Configurable Fluid Density
@@ -21,7 +21,7 @@ Originally designed to give aproximate visual solutions to n-body problems of po
   - Configurable Interpolation Between Time Steps
 - Fragmentation on Impact
   - Gaussian Distribution of Probability for Endurance
-  - Gaussian Distribution for Probability Fragment Count
+  - Gaussian Distribution of Probability for Fragment Count
 
 **Methods of Integration for Calculations**
 - 1st order - Euler
@@ -65,7 +65,7 @@ Originally designed to give aproximate visual solutions to n-body problems of po
   - Reflectivity
   - Transparency
   - Refractive Index
-- Prodcedure Generation of All Object Attributes!
+- Procedural Generation of All Object Attributes!
   - Even Distribution
   - Gaussian Distribution
   - Random Distribution
