@@ -79,7 +79,7 @@ As part of resurecting this project from the dead, I have made several technolog
 - A DirectX 9 compatible GPU.
 - A screen resolution of 1920 x 1080 or higher.
 - Any modern GPU with hardware vertex processing (2006+), integrated or discrete.
-- Any modern CPU.
+- Any modern x86-64 CPU.
 
 The orginal 2008-era system requirements were:
 - Microsoft .Net Framework version 2.0
@@ -106,39 +106,50 @@ Note that repositioning of the camera clears the trace history of the objects wh
 # Known Limitations
 
 - Simulation files (.PR files) made on a computer using one language may produce an error when loaded on a computer using an other language. This is due to different regional and language formats not being taken into consideration. If you encounter this problem, set the regional and language format in your computer's control panel to "English Canada". I plan to eventually get around to fixing this.
-- Box rendering is broken with the ray tracing render setting.
+- Box and plane rendering is broken with the ray tracing render setting. The objects always show up a spheres.
+- Ray traced rendering does not support aspect ratio other than 1:1. This is more of a bug than a design limitation.
+- Sphere to box collisions cannot handle situations where the sphere makes clean contact with only an edge of the box. This is a work in progress.
 
 # Changes in Version 4.1
 
-The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this projects and made the following changed in version 4.1:
-- Upgraded from the .Net Framework 2.0 to .Net 8.0
-- Moved from Visual Studio 2005 to Visual Studio 2022
-- Upgraded from 32bit to 64bit
-- Migrated from the Managed DirectX 1.1 library to SharpDX 4.2.0
+The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this projects and made the following changes in version 4.1:
+- Upgraded from the .Net Framework 2.0 to .Net 8.0.
+- Moved from Visual Studio 2005 to Visual Studio 2022.
+- Upgraded from 32bit to 64bit.
+- Migrated from the Managed DirectX 1.1 library to SharpDX 4.2.0 for DirectX 9 rendering.
 - Restored support for non-sphere object types (box, finite plane, infinit plane). I had lost the code for these at some point.
 - Improved the implementation object attributes that are assigned a distribution function.
 - Implemented DirectX rendering of transparent objects.
 - Support for high DPI monitors.
 - The control panel form can now be resized with the form controls automatically adjusting.
 - Greatly improved multithreading. Lower thread contention and better scaling with high core count CPUs.
-- Greatly improved ray tracing performance. 
+- Greatly improved ray tracing performance.
+- Improved frame rate limiter.
+- Improved camera responsiveness and smoothness.
+- Improved form painting speed.
 - Lots of refactoring and code clean-up
 
 # Implementation Details
 
-- Implemented in VB .Net. I originally chose VB because I wanted a simple drag-and-drop UI designer for Windows forms and a simple way to make use of DirectX, at the expense of the performance of the calculations themselves. At the time, I felt that Visual Studio's feature set for VB was better than that of C#. 
-- Requires Visual Studio 2022
-- DirectX rendering makes use of DirectX 9 implementation from the SharpDX library.
+- Implemented in VB .Net. I originally chose VB because I wanted a simple drag-and-drop UI designer for Windows forms and a simple way to make use of DirectX, at the expense of the performance of the calculations themselves. The goal was to build something for fun and to get going quickly. At the time, I felt that Visual Studio's feature set for VB was better than that of C#. 
+- Requires Visual Studio 2022.
+- DirectX rendering makes use of the DirectX 9 implementation from the SharpDX library.
 - Ray traced rendering is built from scratch by myself.
+- The solution contains a second project called CS Compatibility. The purpose of this project is to build a DLL that sits bewteen SandBox Simulator and a handful of calls to SharpDX, as a work-around for some of the language incompatibilities between C# and VB .Net. Since SharpDX is no longer under development, and VB .Net's popularity continues to fall, I doubt the compatibility issues will get resolved. I also don't feel it's worth rewriting Sandbox Simulator in another language since its just a fun side project.
 
 
 # Future Plans
 There are a number of additions that I have been meaning to implement (one of these days...):
 
-- Bounding volume hierarchies of objects to improve ray-tracing performance
-- Bounding volume hierarchies of objects to improve collision detection performance
+- Bounding volume hierarchies of objects to improve ray-tracing performance.
+- Bounding volume hierarchies of objects to improve collision detection performance.
 - Increased use of SIMD accelerated .Net types (vectors, matricies, etc.)
 - Support for DirectX 11 & 12. Possibly Vulkan.
+- Right now nearly everything uses double precision floats. I'd like to try spliting up the code to use single precision for rendering calulation and double precision for physics calulations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
+- Support of object rotational velocities.
+- Support for per-object constant acceleration, instead of just a global setting that applies to all objects.
+- Rendering of only object verticies in DirectX mode (as opposed to wireframe or full).
+- Ray traced render enhancements: transparency, refractive index, reflectivity, etc.
 
 # Screenshots
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/6dd2e880-be1a-4f61-8ad9-701a32754b5f" width="500" />
