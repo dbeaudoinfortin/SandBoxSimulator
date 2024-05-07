@@ -879,7 +879,7 @@ Public Class ComputeThread
             NewObjects(z).Reflectivity = SimObject.Reflectivity
             NewObjects(z).RefractiveIndex = SimObject.RefractiveIndex
             NewObjects(z).Transparency = SimObject.Transparency
-            NewObjects(z).Wireframe = SimObject.Wireframe
+            NewObjects(z).DXRenderType = SimObject.DXRenderType
             NewObjects(z).Type = SimObject.Type
             NewObjects(z).Color = SimObject.Color
             NewObjects(z).Rotation.Copy(SimObject.Rotation)

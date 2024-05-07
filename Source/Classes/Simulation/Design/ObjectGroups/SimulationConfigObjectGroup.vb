@@ -26,6 +26,7 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
     Public Affected As Boolean
     Public Affects As Boolean
     Public Wireframe As Boolean
+    Public Points As Boolean
     Public Overloads Sub ToString(stringBuilder As StringBuilder, tabs As String)
 
         Dim tabsPlusOne As String = tabs & Constants.vbTab
@@ -49,6 +50,11 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
         stringBuilder.Append("<Wireframe>")
         stringBuilder.Append(Wireframe.ToString)
         stringBuilder.AppendLine("</Wireframe>")
+
+        stringBuilder.Append(tabs)
+        stringBuilder.Append("<Points>")
+        stringBuilder.Append(Points.ToString)
+        stringBuilder.AppendLine("</Points>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Type>")
@@ -160,6 +166,7 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
         Affected = Other.Affected
         Affects = Other.Affects
         Wireframe = Other.Wireframe
+        Points = Other.Points
         Number.Copy(Other.Number)
         Mass.Copy(Other.Mass)
         Charge.Copy(Other.Charge)
@@ -182,6 +189,7 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
         Affects = True
         Affected = True
         Wireframe = False
+        Points = False
         Number.Clear()
         Mass.Clear()
         Charge.Clear()
@@ -243,6 +251,13 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
             Wireframe = ToBoolean(Result)
         Else
             Wireframe = False
+        End If
+
+        Result = GetXMLNodeValue(intext, "Points")
+        If Result <> "" Then
+            Points = ToBoolean(Result)
+        Else
+            Points = False
         End If
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Type~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         Result = GetXMLNodeValue(intext, "Type")

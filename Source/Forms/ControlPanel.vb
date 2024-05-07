@@ -664,6 +664,7 @@ Public Class ControlPanel
         chObjectAffected.Enabled = State
         chObjectAffects.Enabled = State
         chObjectWireframe.Enabled = State
+        chObjectPoints.Enabled = State
 
         cmdGroupAdd.Enabled = State
 
@@ -1281,6 +1282,7 @@ Public Class ControlPanel
         SaveDialog.Filter = "Bitmap (*.bmp)|*.bmp"
         SaveDialog.ShowDialog()
         If SaveDialog.FileName <> "" Then
+            SaveDialog.InitialDirectory = Path.GetDirectoryName(SaveDialog.FileName)
             Dim BackBuffer As Surface
             BackBuffer = Simulation.Render.Device.GetBackBuffer(0, 0)
             Using fileStream As FileStream = File.Create(SaveDialog.FileName)
@@ -1297,6 +1299,7 @@ Public Class ControlPanel
             SaveDialog.Filter = "PR4 File (*.PR4)|*.PR4"
             SaveDialog.ShowDialog()
             If SaveDialog.FileName <> "" Then
+                SaveDialog.InitialDirectory = Path.GetDirectoryName(SaveDialog.FileName)
                 Try
                     UpdateSimulation()
                     Dim Err As String = ""
@@ -1327,6 +1330,7 @@ Public Class ControlPanel
         OpenDialog.Filter = "PR4 file (*.PR4)|*.PR4"
         OpenDialog.ShowDialog()
         If OpenDialog.FileName <> "" Then
+            OpenDialog.InitialDirectory = Path.GetDirectoryName(OpenDialog.FileName)
             Dim xErr As String = ""
             Try
                 InText = GetFileContents(OpenDialog.FileName, xErr)
@@ -1446,13 +1450,13 @@ Public Class ControlPanel
         Simulation.Config.LightConfigs(i).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
     End Sub
     Private Sub CmdReplaceLight_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdLightReplace.Click
-        If IsValidLight = True Then
+        If IsValidLight() = True Then
             Dim index As Integer
             index = listLights.SelectedIndex
             InsertLight(index)
             listLights.Items.RemoveAt(index)
             listLights.Items.Insert(index, Simulation.Config.LightConfigs(index).Name)
-            listLights.ClearSelected
+            listLights.ClearSelected()
             ConfigModified = True
         End If
     End Sub
@@ -1460,7 +1464,7 @@ Public Class ControlPanel
         If MsgBox("Are you sure you want to remove the selected light?", MsgBoxStyle.YesNo, "Remove?") = vbYes Then
             Simulation.Config.RemoveLight(listLights.SelectedIndex)
             listLights.Items.RemoveAt(listLights.SelectedIndex)
-            listLights.ClearSelected
+            listLights.ClearSelected()
             ConfigModified = True
         End If
     End Sub
@@ -1692,6 +1696,7 @@ Public Class ControlPanel
             chObjectAffected.Checked = Simulation.Config.ObjectGroups(index).Affected
             chObjectAffects.Checked = Simulation.Config.ObjectGroups(index).Affects
             chObjectWireframe.Checked = Simulation.Config.ObjectGroups(index).Wireframe
+            chObjectPoints.Checked = Simulation.Config.ObjectGroups(index).Points
             cbObjectType.SelectedIndex = Simulation.Config.ObjectGroups(index).Type
             txtObjectName.Text = Simulation.Config.ObjectGroups(index).Name
 
@@ -1919,6 +1924,7 @@ Public Class ControlPanel
         chObjectAffected.Checked = True
         chObjectAffects.Checked = True
         chObjectWireframe.Checked = False
+        chObjectPoints.Checked = False
 
         'Clear the form's textbox values
         txtObjectName.Text = ""
@@ -2036,6 +2042,7 @@ Public Class ControlPanel
         Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
         Simulation.Config.ObjectGroups(i).Affects = chObjectAffects.Checked
         Simulation.Config.ObjectGroups(i).Wireframe = chObjectWireframe.Checked
+        Simulation.Config.ObjectGroups(i).Points = chObjectPoints.Checked
         If cbObjectType.SelectedIndex = 0 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
         ElseIf cbObjectType.SelectedIndex = 1 Then
@@ -2238,6 +2245,14 @@ Public Class ControlPanel
 
     Private Sub TxtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
         ConfigModified = True
+    End Sub
+
+    Private Sub chObjectPoints_CheckedChanged(sender As Object, e As EventArgs) Handles chObjectPoints.CheckedChanged
+        If (chObjectPoints.Checked) Then chObjectWireframe.Checked = False
+    End Sub
+
+    Private Sub chObjectWireframe_CheckedChanged(sender As Object, e As EventArgs) Handles chObjectWireframe.CheckedChanged
+        If (chObjectWireframe.Checked) Then chObjectPoints.Checked = False
     End Sub
 End Class
 

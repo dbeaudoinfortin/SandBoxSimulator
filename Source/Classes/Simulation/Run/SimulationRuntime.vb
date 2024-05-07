@@ -116,7 +116,6 @@ Public Class SimulationRuntime
                 Objects(ObjectCount) = New SimulationObject With {
                     .Affected = Group.Affected,
                     .Affects = Group.Affects,
-                    .Wireframe = Group.Wireframe,
                     .Type = Group.Type,
                     .Mass = Group.Mass.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount),
                     .Charge = Group.Charge.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount),
@@ -126,6 +125,14 @@ Public Class SimulationRuntime
                     .Reflectivity = Min(Group.Reflectivity.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount), 100), 'percentage between 0 and 100
                     .RefractiveIndex = Group.RefractiveIndex.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
                 }
+
+                If Group.Wireframe Then
+                    Objects(ObjectCount).DXRenderType = RenderType.Wireframe
+                ElseIf Group.Points Then
+                    Objects(ObjectCount).DXRenderType = RenderType.Points
+                Else
+                    Objects(ObjectCount).DXRenderType = RenderType.Solid
+                End If
 
                 If Group.Type = ObjectType.Box Or Group.Type = ObjectType.Plane Then
                     Objects(ObjectCount).Size = Group.Size.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)

@@ -85,3 +85,10 @@ Public Enum TargetType
     TrackBar
     ObjectCount
 End Enum
+
+Public Enum RenderType
+    Solid
+    Wireframe
+    Points
+End Enum
+

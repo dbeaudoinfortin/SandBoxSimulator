@@ -1,7 +1,5 @@
 ﻿Imports SharpDX
 Imports SharpDX.Direct3D9
-Imports SharpDX.Mathematics.Interop
-
 Public Class ObjectDXRenderData
     Public Mesh As Mesh
     Public Material As Material

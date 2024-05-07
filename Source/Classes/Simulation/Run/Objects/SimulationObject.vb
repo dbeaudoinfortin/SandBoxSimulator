@@ -18,7 +18,6 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
     Public Mass As Double
     Public Charge As Double
     Public Radius As Double
-    Public Wireframe As Boolean
     Public Transparency As Byte
     Public Size As XYZ 'Used for Box and Finite Plane (X & Y only)
     Public HalfSize As XYZ
@@ -26,6 +25,7 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
     Public Normal As XYZ 'Used for Infinite Plane
     Public BoxCollisionData As BoxCollisionData 'Used only in collisions
     Public DXRenderData As ObjectDXRenderData
+    Public DXRenderType As RenderType
 
     Public Sub Copy(ByRef other As SimulationObject)
         CameraDistance = other.CameraDistance
@@ -38,7 +38,6 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
         Normal.Copy(other.Normal)
         Acceleration.Copy(other.Acceleration)
         OldPosition.Copy(other.OldPosition)
-        Wireframe = other.Wireframe
         Charge = other.Charge
         Affected = other.Affected
         Affects = other.Affects
@@ -52,6 +51,7 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
         Transparency = other.Transparency
         BoxCollisionData = Nothing
         DXRenderData = Nothing
+        DXRenderType = other.DXRenderType
     End Sub
     Public Sub New(ByRef Other As SimulationObject)
         Copy(Other)
@@ -66,7 +66,6 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
         Normal = New XYZ(0, 1, 0)
         Acceleration = New XYZ(0, 0, 0)
         OldPosition = New XYZ(0, 0, 0)
-        Wireframe = False
         Charge = 0
         Affected = True
         Affects = True
@@ -80,6 +79,7 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
         Transparency = 255
         BoxCollisionData = Nothing
         DXRenderData = Nothing
+        DXRenderType = RenderType.Solid
     End Sub
 
     Public Function CompareTo(other As SimulationObject) As Integer Implements IComparable(Of SimulationObject).CompareTo

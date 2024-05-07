@@ -89,10 +89,13 @@ Public Class DXRender
                     Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
                 End If
 
-                'Change WireFrame settings
-                If renderObjects(i).Wireframe = True Then
+                'Wireframe vs points vs solid rendering
+                If renderObjects(i).DXRenderType = RenderType.Wireframe Then
                     Sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Wireframe)
-                    Sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.None)
+                    Sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.Counterclockwise)
+                ElseIf renderObjects(i).DXRenderType = RenderType.Points Then
+                    Sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Point)
+                    Sim.Render.Device.SetRenderState(RenderState.CullMode, Cull.Counterclockwise)
                 Else
                     Sim.Render.Device.SetRenderState(RenderState.FillMode, FillMode.Solid)
                     'TODO: revist this, need to take into account box rotation

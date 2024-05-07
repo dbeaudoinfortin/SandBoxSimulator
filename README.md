@@ -37,6 +37,7 @@ Originally designed to give approximate visual solutions to n-body problems of p
   - Shadow Rendering
 - Object Path Tracing
 - Wireframe Rendering
+- Vertex Point Rendering
 - Selectable Background Colour
 
 **Camera Controls**
@@ -158,7 +159,6 @@ There are a number of additions that I have been meaning to implement (one of th
 - Right now nearly everything uses double precision floats. I'd like to try spliting up the code to use single precision for rendering calculations and double precision for physics calculations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
 - Support for object rotational velocities.
 - Support for per-object constant acceleration, instead of just a global setting that applies to all objects.
-- Rendering of only object vertices in DirectX mode (as opposed to wireframe or full).
 - Ray traced render enhancements: transparency, refractive index, reflectivity, etc.
 - Ray tracing depth control to limit object interactions and improve performance.
 
