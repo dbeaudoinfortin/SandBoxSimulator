@@ -47,7 +47,7 @@ Public Class ControlPanel
         End Try
         Return bAns
     End Function
-    Private Function IsValidSettings() As Boolean
+    Private Function IsValidSets() As Boolean
         If Not IsValidMaxObjects() Then Return False
 
         If Not IsNumeric(txtTimeStep.Text) Then
@@ -609,8 +609,6 @@ Public Class ControlPanel
         Return True
     End Function
     Private Sub SetAllEnabled(ByVal State As Boolean)
-        'Paint the controls only at the end
-        Me.SuspendLayout()
 
         'SIMULATION
         txtTimeStep.Enabled = State
@@ -800,16 +798,10 @@ Public Class ControlPanel
         Else
             CheckConditionals()
         End If
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub CheckConditionals()
         'Don't do this during loading
         If Not hasLoaded Then Return
-
-        'Paint the controls only at the end
-        Me.SuspendLayout()
 
         'TODO: Let's simply this
         'RENDER
@@ -1005,9 +997,6 @@ Public Class ControlPanel
         'refractive index
         cmdObjectRefractiveIndex.Enabled = isRayTraceLights
         txtObjectRefractiveIndex.Enabled = isRayTraceLights And (cmdObjectRefractiveIndex.ForeColor = Color.Black)
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub UpdateSimulation()
         Simulation.Config.Render.Mode = ToByte(cbRender.SelectedIndex)
@@ -1082,10 +1071,6 @@ Public Class ControlPanel
         End If
     End Sub
     Private Sub UpdateForm()
-
-        'Paint the controls only at the end
-        Me.SuspendLayout()
-
         '----SIMULATION----
         cbIntegration.SelectedIndex = Simulation.Config.Settings.IntegrationMethod
         txtLimitObjects.Text = Simulation.Config.Settings.MaxObjects.ToString
@@ -1176,14 +1161,8 @@ Public Class ControlPanel
         listGroups.ClearSelected()
         ClearObjectForm()
 
-        'Paint the controls only at the end
-        Me.ResumeLayout()
-
     End Sub
     Private Sub ClearLightForm()
-        'Paint the controls only at the end
-        Me.SuspendLayout()
-
         cmdLightRemove.Enabled = False
         cmdLightReplace.Enabled = False
         txtLightName.Text = ""
@@ -1204,9 +1183,6 @@ Public Class ControlPanel
         txtLightAngleInner.Text = "30"
         txtLightAngleOuter.Text = "45"
         txtLightFalloff.Text = "1"
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub ControlPanel_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         If Simulation.Running = True Then
@@ -1235,7 +1211,7 @@ Public Class ControlPanel
     End Sub
     Private Sub CmdStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdStart.Click
         If cmdStart.Text = "&Start Simulation" Then
-            If Not IsValidSettings() Then Exit Sub
+            If Not IsValidSets() Then Exit Sub
             If ObjectRoomLeft() < 0 Then
                 MsgBox("The number Of objects In the simulation surpasses the maximum number of objects", MsgBoxStyle.Critical, "Error")
                 Exit Sub
@@ -1284,7 +1260,7 @@ Public Class ControlPanel
         End If
     End Sub
     Private Sub CmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
-        If IsValidSettings() = True Then
+        If IsValidSets() = True Then
             SaveDialog.FileName = ""
             SaveDialog.DefaultExt = "PR4"
             SaveDialog.Title = "Save Simulation"
@@ -1351,9 +1327,6 @@ Public Class ControlPanel
         ConfigModified = True
     End Sub
     Private Sub ListLights_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listLights.SelectedIndexChanged
-
-        'Paint the controls only at the end
-        Me.SuspendLayout()
         If listLights.SelectedIndex <> -1 Then
             txtLightName.Text = Simulation.Config.LightConfigs(listLights.SelectedIndex).Name
             plLightColor.BackColor = Simulation.Config.LightConfigs(listLights.SelectedIndex).Color
@@ -1383,9 +1356,6 @@ Public Class ControlPanel
             ClearLightForm()
         End If
         CheckConditionals()
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub CmdAddLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightAdd.Click
         If Not IsValidLight() = True Then Exit Sub
@@ -1515,13 +1485,13 @@ Public Class ControlPanel
         CheckConditionals()
         ConfigModified = True
     End Sub
-    Private Sub TxtFieldX_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtFieldX.TextChanged
+    Private Sub TxtFieldX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldX.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub TxtFieldY_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtFieldY.TextChanged
+    Private Sub TxtFieldY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldY.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub TxtFieldZ_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtFieldZ.TextChanged
+    Private Sub TxtFieldZ_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFieldZ.TextChanged
         ConfigModified = True
     End Sub
     Private Sub TxtFluidDensity_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFluidDensity.TextChanged
@@ -1678,9 +1648,6 @@ Public Class ControlPanel
         plObjectColor.BackColor = ColorDialog.Color
     End Sub
     Private Sub ListObjects_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles listGroups.SelectedIndexChanged
-        'Paint the controls only at the end
-        Me.SuspendLayout()
-
         If listGroups.SelectedIndex <> -1 Then
             Dim index As Integer = listGroups.SelectedIndex
             chObjectAffected.Checked = Simulation.Config.ObjectGroups(index).Affected
@@ -1887,9 +1854,6 @@ Public Class ControlPanel
             ClearObjectForm()
         End If
         CheckConditionals()
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub ClearObjectForm()
         'Clear all Distribution Values
@@ -1996,9 +1960,6 @@ Public Class ControlPanel
     Private Sub CmdObjectAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupAdd.Click
         If Not IsValidObjectGroup() Or Not IsValidMaxObjects() Then Exit Sub
 
-        'Paint the controls only at the end
-        Me.SuspendLayout()
-
         Dim CurrentObjects As Integer
         If cmdObjectNumber.ForeColor = Color.Black Then
             CurrentObjects = ToInt32(txtObjectNumber.Text)
@@ -2020,9 +1981,6 @@ Public Class ControlPanel
         listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.ObjectGroups(Simulation.Config.ObjectGroupCount - 1).Name)
         listGroups.ClearSelected()
         ConfigModified = True
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub InsertGroup(ByRef i As Integer)
 
@@ -2114,9 +2072,6 @@ Public Class ControlPanel
     End Function
     Private Sub CmdGroupReplace_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupReplace.Click
         If Not IsValidObjectGroup() Or Not IsValidMaxObjects() Then Exit Sub
-        'Paint the controls only at the end
-        Me.SuspendLayout()
-
         Dim index As Integer
         index = listGroups.SelectedIndex
         Dim CurrentObjects As Integer
@@ -2148,9 +2103,6 @@ Public Class ControlPanel
         listGroups.Items.Insert(index, Simulation.Config.ObjectGroups(index).Name)
         listGroups.ClearSelected()
         ConfigModified = True
-
-        'Paint the controls only at the end
-        Me.ResumeLayout()
     End Sub
     Private Sub CmdRemoveGroup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupRemove.Click
         If MsgBox("Are you sure you want to remove the selected group?", MsgBoxStyle.YesNo, "Remove?") = MsgBoxResult.No Then Exit Sub
@@ -2236,6 +2188,5 @@ Public Class ControlPanel
     Private Sub TxtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
         ConfigModified = True
     End Sub
-
 
 End Class

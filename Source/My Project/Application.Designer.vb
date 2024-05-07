@@ -28,7 +28,7 @@ Namespace My
             Me.EnableVisualStyles = true
             Me.SaveMySettingsOnExit = true
             Me.ShutDownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
-            Me.HighDpiMode = HighDpiMode.PerMonitorV2
+            Me.HighDpiMode = HighDpiMode.DpiUnaware
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
@@ -43,7 +43,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Function OnInitialize(ByVal commandLineArgs As System.Collections.ObjectModel.ReadOnlyCollection(Of String)) As Boolean
-            Me.MinimumSplashScreenDisplayTime = 2000
+            Me.MinimumSplashScreenDisplayTime = 0
             Return MyBase.OnInitialize(commandLineArgs)
         End Function
     End Class

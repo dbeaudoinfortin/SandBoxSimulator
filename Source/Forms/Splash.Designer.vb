@@ -23,26 +23,24 @@ Partial Class Splash
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Splash))
-        SuspendLayout()
-        ' 
-        ' Splash
-        ' 
-        AutoScaleDimensions = New SizeF(192F, 192F)
-        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
-        BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        ClientSize = New Size(1278, 698)
-        ControlBox = False
-        Cursor = System.Windows.Forms.Cursors.AppStarting
-        DoubleBuffered = True
-        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        MaximizeBox = False
-        MinimizeBox = False
-        Name = "Splash"
-        ShowInTaskbar = False
-        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        ResumeLayout(False)
+        Me.SuspendLayout()
+        '
+        'Splash
+        '
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.BackgroundImage = Global.SandBoxSimulator.My.Resources.Resources.Splash
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.ClientSize = New System.Drawing.Size(638, 348)
+        Me.ControlBox = False
+        Me.Cursor = System.Windows.Forms.Cursors.AppStarting
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "Splash"
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.ResumeLayout(False)
 
     End Sub
 

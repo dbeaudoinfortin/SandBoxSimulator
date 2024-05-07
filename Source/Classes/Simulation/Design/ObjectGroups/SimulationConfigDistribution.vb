@@ -27,7 +27,7 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<UseFunction>")
-        stringBuilder.Append(UseFunction)
+        stringBuilder.Append(UseFunction.ToString())
         stringBuilder.AppendLine("</UseFunction>")
 
         stringBuilder.Append(tabs)
@@ -37,7 +37,7 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Even>")
-        stringBuilder.Append(Even)
+        stringBuilder.Append(Even.ToString())
         stringBuilder.AppendLine("</Even>")
 
         stringBuilder.Append(tabs)
@@ -52,7 +52,7 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Normal>")
-        stringBuilder.Append(Normal)
+        stringBuilder.Append(Normal.ToString())
         stringBuilder.AppendLine("</Normal>")
 
         stringBuilder.Append(tabs)
@@ -72,7 +72,7 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Random>")
-        stringBuilder.Append(Random)
+        stringBuilder.Append(Random.ToString())
         stringBuilder.AppendLine("</Random>")
 
         stringBuilder.Append(tabs)
@@ -87,7 +87,7 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Polynomial>")
-        stringBuilder.Append(Polynomial)
+        stringBuilder.Append(Polynomial.ToString())
         stringBuilder.AppendLine("</Polynomial>")
 
         stringBuilder.Append(tabs)
@@ -201,17 +201,6 @@ Public MustInherit Class SimulationConfigDistribution(Of t)
             Distribution.tbPolynomialA.Value = ToInt32(PolynomialA)
             Distribution.tbPolynomialB.Value = ToInt32(PolynomialB)
             Distribution.tbPolynomialC.Value = ToInt32(PolynomialC)
-
-            Distribution.lbEvenMax.Text = EvenMax.ToString
-            Distribution.lbEvenMin.Text = EvenMin.ToString
-            Distribution.lbRandomMax.Text = RandomMax.ToString
-            Distribution.lbRandomMin.Text = RandomMin.ToString
-            Distribution.lbNormalMax.Text = NormalMax.ToString
-            Distribution.lbNormalMin.Text = NormalMin.ToString
-            Distribution.lbNormalAvg.Text = NormalAvg.ToString
-            Distribution.lbPolynomialA.Text = PolynomialA.ToString
-            Distribution.lbPolynomialB.Text = PolynomialB.ToString
-            Distribution.lbPolynomialC.Text = PolynomialC.ToString
         End If
     End Sub
     Public Overridable Sub LoadFromDistributionForm()

@@ -22,29 +22,28 @@ Partial Class Output
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New ComponentModel.Container()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Output))
-        CameraUpdate = New System.Windows.Forms.Timer(components)
-        SuspendLayout()
-        ' 
-        ' CameraUpdate
-        ' 
-        CameraUpdate.Interval = 10
-        ' 
-        ' Output
-        ' 
-        AutoScaleDimensions = New SizeF(192F, 192F)
-        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        ClientSize = New Size(437, 284)
-        Font = New Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        MaximizeBox = False
-        MinimizeBox = False
-        Name = "Output"
-        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Text = "SandBox Simulator - Ouput"
-        ResumeLayout(False)
+        Me.CameraUpdate = New System.Windows.Forms.Timer(Me.components)
+        Me.SuspendLayout()
+        '
+        'CameraUpdate
+        '
+        Me.CameraUpdate.Interval = 10
+        '
+        'Output
+        '
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.ClientSize = New System.Drawing.Size(437, 284)
+        Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "Output"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "SandBox Simulator - Ouput"
+        Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents CameraUpdate As System.Windows.Forms.Timer

@@ -7,8 +7,8 @@
   <EnableVisualStyles>true</EnableVisualStyles>
   <AuthenticationMode>0</AuthenticationMode>
   <SplashScreen>Splash</SplashScreen>
-  <MinimumSplashScreenDisplayTime>2000</MinimumSplashScreenDisplayTime>
+  <MinimumSplashScreenDisplayTime>0</MinimumSplashScreenDisplayTime>
   <SaveMySettingsOnExit>true</SaveMySettingsOnExit>
   <HighDpiMpde>false</HighDpiMpde>
-  <HighDpiMode>3</HighDpiMode>
+  <HighDpiMode>0</HighDpiMode>
 </MyApplicationData>
