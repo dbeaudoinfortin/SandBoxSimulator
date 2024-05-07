@@ -4,7 +4,7 @@
 
 SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It lets you play around with different Newtonian physics concepts and visualize them.
 
-I originally developed this application in 2008 as a fun side project. At the time there was nothing that I could find to let you quickly visualize several types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required. I resurected version 4.0 from the dead and have made some significant changes in version 4.1 (see below) to modernize it.
+I originally developed this application in 2008 as a fun side project. At the time there was nothing that I could find to let you quickly visualize several types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required. I resurrected version 4.0 from the dead and have made some significant changes in version 4.1 (see below) to modernize it.
 
 Originally designed to give approximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
 
@@ -44,7 +44,7 @@ Originally designed to give approximate visual solutions to n-body problems of p
 - Keyboard Controls During Runtime
 - Configurable Movement Speed
 - Target
-- Postion
+- Position
 - Orientation
 - Field of View
  
@@ -85,7 +85,7 @@ Originally designed to give approximate visual solutions to n-body problems of p
 - Conic Falloff (Spot Lights)
 
 # Requirements
-As part of resurecting this project from the dead, I have made several technology upgrades. The current (version 4.1) requirements are the following:
+As part of resurrecting this project from the dead, I have made several technology upgrades. The current (version 4.1) requirements are the following:
 - Microsoft .Net 8.0
 - Windows 7 or higher.
 - A DirectX 9 compatible GPU.
@@ -134,7 +134,7 @@ The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this project
 - Implemented DirectX rendering of transparent objects.
 - Support for high DPI monitors.
 - The control panel form can now be resized with the form controls automatically adjusting.
-- Greatly improved multithreading. Lower thread contention and better scaling with high core count CPUs.
+- Greatly improved multi threading. Lower thread contention and better scaling with high core count CPUs.
 - Greatly improved ray tracing performance.
 - Improved frame rate limiter.
 - Improved camera responsiveness and smoothness.
@@ -156,7 +156,7 @@ There are a number of additions that I have been meaning to implement (one of th
 - Bounding volume hierarchies of objects to improve collision detection performance.
 - Increased use of SIMD accelerated .Net types (vectors, matrices, etc.)
 - Support for DirectX 11 & 12. Possibly Vulkan.
-- Right now nearly everything uses double precision floats. I'd like to try spliting up the code to use single precision for rendering calculations and double precision for physics calculations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
+- Right now nearly everything uses double precision floats. I'd like to try splitting up the code to use single precision for rendering calculations and double precision for physics calculations. Though I'm not sure how much of a difference in performance this will actually make now that I have moved from 32bits to 64bits.
 - Support for object rotational velocities.
 - Support for per-object constant acceleration, instead of just a global setting that applies to all objects.
 - Ray traced render enhancements: transparency, refractive index, reflectivity, etc.
