@@ -32,83 +32,90 @@ Partial Class ControlPanel
         OpenDialog = New System.Windows.Forms.OpenFileDialog()
         StatusUpdate = New System.Windows.Forms.Timer(components)
         TabGroups = New System.Windows.Forms.TabPage()
+        TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
+        cmdGroupReplace = New System.Windows.Forms.Button()
+        cmdGroupRemove = New System.Windows.Forms.Button()
         gbObjects = New System.Windows.Forms.GroupBox()
+        listGroups = New System.Windows.Forms.ListBox()
+        Panel2 = New System.Windows.Forms.Panel()
+        tblOrientation = New System.Windows.Forms.TableLayoutPanel()
+        txtObjectNormalX = New System.Windows.Forms.TextBox()
+        txtObjectNormalY = New System.Windows.Forms.TextBox()
+        txtObjectNormalZ = New System.Windows.Forms.TextBox()
+        cmdObjectNormalX = New System.Windows.Forms.Button()
+        cmdObjectNormalZ = New System.Windows.Forms.Button()
+        cmdObjectNormalY = New System.Windows.Forms.Button()
+        tblVelocity = New System.Windows.Forms.TableLayoutPanel()
+        txtObjectVelocityX = New System.Windows.Forms.TextBox()
+        txtObjectVelocityY = New System.Windows.Forms.TextBox()
+        txtObjectVelocityZ = New System.Windows.Forms.TextBox()
+        cmdObjectVelocityZ = New System.Windows.Forms.Button()
+        cmdObjectVelocityY = New System.Windows.Forms.Button()
+        cmdObjectVelocityX = New System.Windows.Forms.Button()
+        tblPosition = New System.Windows.Forms.TableLayoutPanel()
+        txtObjectPositionX = New System.Windows.Forms.TextBox()
+        txtObjectPositionY = New System.Windows.Forms.TextBox()
+        txtObjectPositionZ = New System.Windows.Forms.TextBox()
+        cmdObjectPositionZ = New System.Windows.Forms.Button()
+        cmdObjectPositionY = New System.Windows.Forms.Button()
+        cmdObjectPositionX = New System.Windows.Forms.Button()
+        TableLayoutPanel15 = New System.Windows.Forms.TableLayoutPanel()
+        txtObjectRotationX = New System.Windows.Forms.TextBox()
+        txtObjectRotationY = New System.Windows.Forms.TextBox()
+        txtObjectRotationZ = New System.Windows.Forms.TextBox()
+        cmdObjectRotationY = New System.Windows.Forms.Button()
+        cmdObjectRotationZ = New System.Windows.Forms.Button()
+        cmdObjectRotationX = New System.Windows.Forms.Button()
+        txtObjectRefractiveIndex = New System.Windows.Forms.TextBox()
+        tbObjectTransparency = New System.Windows.Forms.TrackBar()
+        tbObjectReflectivity = New System.Windows.Forms.TrackBar()
+        tblSize = New System.Windows.Forms.TableLayoutPanel()
+        txtObjectSizeX = New System.Windows.Forms.TextBox()
+        txtObjectSizeY = New System.Windows.Forms.TextBox()
+        txtObjectSizeZ = New System.Windows.Forms.TextBox()
+        cmdObjectSizeZ = New System.Windows.Forms.Button()
+        cmdObjectSizeX = New System.Windows.Forms.Button()
+        cmdObjectSizeY = New System.Windows.Forms.Button()
         plObjectHighlightColor = New System.Windows.Forms.Button()
         plObjectColor = New System.Windows.Forms.Button()
         cmdObjectRefractiveIndex = New System.Windows.Forms.Button()
-        txtObjectRefractiveIndex = New System.Windows.Forms.TextBox()
+        txtObjectRadius = New System.Windows.Forms.TextBox()
         lblObjectRefractiveIndex = New System.Windows.Forms.Label()
         lblObjectReflectivity = New System.Windows.Forms.Label()
         cmdObjectReflectivity = New System.Windows.Forms.Button()
         lblObjectType = New System.Windows.Forms.Label()
+        lblObjectNormal = New System.Windows.Forms.Label()
         cbObjectType = New System.Windows.Forms.ComboBox()
+        lblObjectRotation = New System.Windows.Forms.Label()
         chObjectWireframe = New System.Windows.Forms.CheckBox()
         chObjectAffected = New System.Windows.Forms.CheckBox()
         chObjectAffects = New System.Windows.Forms.CheckBox()
         cmdObjectNumber = New System.Windows.Forms.Button()
         lblObjectNumber = New System.Windows.Forms.Label()
-        listGroups = New System.Windows.Forms.ListBox()
-        cmdObjectVelocityZ = New System.Windows.Forms.Button()
-        cmdObjectVelocityY = New System.Windows.Forms.Button()
+        lblObjectRadius = New System.Windows.Forms.Label()
+        cmdObjectRadius = New System.Windows.Forms.Button()
         cmdObjectTransparency = New System.Windows.Forms.Button()
         cmdObjectHighlightSharpness = New System.Windows.Forms.Button()
-        cmdObjectPositionZ = New System.Windows.Forms.Button()
-        cmdObjectPositionY = New System.Windows.Forms.Button()
+        lblObjectSize = New System.Windows.Forms.Label()
         cmdObjectHighlightColor = New System.Windows.Forms.Button()
         cmdObjectColor = New System.Windows.Forms.Button()
-        cmdObjectVelocityX = New System.Windows.Forms.Button()
-        cmdObjectPositionX = New System.Windows.Forms.Button()
+        tbObjectHighlightSharpness = New System.Windows.Forms.TrackBar()
         cmdObjectCharge = New System.Windows.Forms.Button()
         cmdObjectMass = New System.Windows.Forms.Button()
+        txtObjectNumber = New System.Windows.Forms.TextBox()
         lblObjectHighlightColor = New System.Windows.Forms.Label()
+        txtObjectCharge = New System.Windows.Forms.TextBox()
         lblObjectName = New System.Windows.Forms.Label()
+        txtObjectMass = New System.Windows.Forms.TextBox()
         lblObjectTransparency = New System.Windows.Forms.Label()
-        txtObjectVelocityZ = New System.Windows.Forms.TextBox()
         txtObjectName = New System.Windows.Forms.TextBox()
-        txtObjectVelocityY = New System.Windows.Forms.TextBox()
         lblObjectMass = New System.Windows.Forms.Label()
         lblObjectCharge = New System.Windows.Forms.Label()
-        lblObjectColor = New System.Windows.Forms.Label()
-        lblObjectPosition = New System.Windows.Forms.Label()
-        lblObjectVelocity = New System.Windows.Forms.Label()
         lblObjectHighlightSharpness = New System.Windows.Forms.Label()
-        tbObjectTransparency = New System.Windows.Forms.TrackBar()
-        txtObjectPositionZ = New System.Windows.Forms.TextBox()
-        txtObjectPositionX = New System.Windows.Forms.TextBox()
-        txtObjectPositionY = New System.Windows.Forms.TextBox()
-        txtObjectVelocityX = New System.Windows.Forms.TextBox()
-        txtObjectMass = New System.Windows.Forms.TextBox()
-        txtObjectCharge = New System.Windows.Forms.TextBox()
-        txtObjectNumber = New System.Windows.Forms.TextBox()
-        tbObjectReflectivity = New System.Windows.Forms.TrackBar()
-        tbObjectHighlightSharpness = New System.Windows.Forms.TrackBar()
-        txtObjectSizeX = New System.Windows.Forms.TextBox()
-        txtObjectSizeY = New System.Windows.Forms.TextBox()
-        txtObjectSizeZ = New System.Windows.Forms.TextBox()
-        lblObjectSize = New System.Windows.Forms.Label()
-        txtObjectNormalZ = New System.Windows.Forms.TextBox()
-        txtObjectNormalY = New System.Windows.Forms.TextBox()
-        txtObjectNormalX = New System.Windows.Forms.TextBox()
-        cmdObjectRadius = New System.Windows.Forms.Button()
-        lblObjectRadius = New System.Windows.Forms.Label()
-        txtObjectRotationZ = New System.Windows.Forms.TextBox()
-        cmdObjectRotationZ = New System.Windows.Forms.Button()
-        txtObjectRotationY = New System.Windows.Forms.TextBox()
-        cmdObjectRotationY = New System.Windows.Forms.Button()
-        txtObjectRotationX = New System.Windows.Forms.TextBox()
-        cmdObjectRotationX = New System.Windows.Forms.Button()
-        lblObjectRotation = New System.Windows.Forms.Label()
-        lblObjectNormal = New System.Windows.Forms.Label()
-        cmdObjectSizeX = New System.Windows.Forms.Button()
-        cmdObjectSizeY = New System.Windows.Forms.Button()
-        cmdObjectSizeZ = New System.Windows.Forms.Button()
-        txtObjectRadius = New System.Windows.Forms.TextBox()
-        cmdObjectNormalX = New System.Windows.Forms.Button()
-        cmdObjectNormalY = New System.Windows.Forms.Button()
-        cmdObjectNormalZ = New System.Windows.Forms.Button()
+        lblObjectColor = New System.Windows.Forms.Label()
+        lblObjectVelocity = New System.Windows.Forms.Label()
+        lblObjectPosition = New System.Windows.Forms.Label()
         cmdGroupAdd = New System.Windows.Forms.Button()
-        cmdGroupRemove = New System.Windows.Forms.Button()
-        cmdGroupReplace = New System.Windows.Forms.Button()
         TabLights = New System.Windows.Forms.TabPage()
         TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
         cmdLightRemove = New System.Windows.Forms.Button()
@@ -255,13 +262,20 @@ Partial Class ControlPanel
         txtTimeStep = New System.Windows.Forms.TextBox()
         Tabs = New System.Windows.Forms.TabControl()
         TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
-        TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
-        Panel2 = New System.Windows.Forms.Panel()
+        TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
+        tblRotation = New System.Windows.Forms.TableLayoutPanel()
         Stats.SuspendLayout()
         TabGroups.SuspendLayout()
+        TableLayoutPanel13.SuspendLayout()
         gbObjects.SuspendLayout()
+        Panel2.SuspendLayout()
+        tblOrientation.SuspendLayout()
+        tblVelocity.SuspendLayout()
+        tblPosition.SuspendLayout()
+        TableLayoutPanel15.SuspendLayout()
         CType(tbObjectTransparency, ComponentModel.ISupportInitialize).BeginInit()
         CType(tbObjectReflectivity, ComponentModel.ISupportInitialize).BeginInit()
+        tblSize.SuspendLayout()
         CType(tbObjectHighlightSharpness, ComponentModel.ISupportInitialize).BeginInit()
         TabLights.SuspendLayout()
         TableLayoutPanel8.SuspendLayout()
@@ -308,8 +322,6 @@ Partial Class ControlPanel
         gbSimulation.SuspendLayout()
         pSimulation.SuspendLayout()
         Tabs.SuspendLayout()
-        TableLayoutPanel13.SuspendLayout()
-        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' cmdStart
@@ -324,7 +336,7 @@ Partial Class ControlPanel
         cmdStart.ImeMode = System.Windows.Forms.ImeMode.NoControl
         cmdStart.Location = New Point(12, 5)
         cmdStart.Name = "cmdStart"
-        cmdStart.Size = New Size(1580, 62)
+        cmdStart.Size = New Size(957, 62)
         cmdStart.TabIndex = 0
         cmdStart.Text = "&Start Simulation"
         cmdStart.UseVisualStyleBackColor = False
@@ -342,7 +354,7 @@ Partial Class ControlPanel
         Stats.Items.AddRange(New System.Windows.Forms.ToolStripItem() {lblStat})
         Stats.Location = New Point(0, 1437)
         Stats.Name = "Stats"
-        Stats.Size = New Size(1604, 42)
+        Stats.Size = New Size(981, 42)
         Stats.SizingGrip = False
         Stats.TabIndex = 22
         ' 
@@ -355,7 +367,7 @@ Partial Class ControlPanel
         lblStat.LinkColor = Color.White
         lblStat.Name = "lblStat"
         lblStat.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
-        lblStat.Size = New Size(1589, 32)
+        lblStat.Size = New Size(966, 32)
         lblStat.Spring = True
         lblStat.Text = "Frames : 0  |  FPS : 0  |  Calculations : 0  |  CPS : 0"
         ' 
@@ -372,10 +384,55 @@ Partial Class ControlPanel
         TabGroups.Location = New Point(4, 39)
         TabGroups.Name = "TabGroups"
         TabGroups.Padding = New System.Windows.Forms.Padding(3)
-        TabGroups.Size = New Size(1572, 1318)
+        TabGroups.Size = New Size(973, 1321)
         TabGroups.TabIndex = 7
         TabGroups.Text = "Objects"
         TabGroups.UseVisualStyleBackColor = True
+        ' 
+        ' TableLayoutPanel13
+        ' 
+        TableLayoutPanel13.ColumnCount = 2
+        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel13.Controls.Add(cmdGroupReplace, 0, 0)
+        TableLayoutPanel13.Controls.Add(cmdGroupRemove, 1, 0)
+        TableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Bottom
+        TableLayoutPanel13.Location = New Point(3, 1250)
+        TableLayoutPanel13.Name = "TableLayoutPanel13"
+        TableLayoutPanel13.RowCount = 1
+        TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel13.Size = New Size(967, 68)
+        TableLayoutPanel13.TabIndex = 71
+        ' 
+        ' cmdGroupReplace
+        ' 
+        cmdGroupReplace.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdGroupReplace.Enabled = False
+        cmdGroupReplace.FlatAppearance.BorderColor = Color.Black
+        cmdGroupReplace.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdGroupReplace.ForeColor = SystemColors.ControlText
+        cmdGroupReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdGroupReplace.Location = New Point(3, 3)
+        cmdGroupReplace.Name = "cmdGroupReplace"
+        cmdGroupReplace.Size = New Size(477, 62)
+        cmdGroupReplace.TabIndex = 1
+        cmdGroupReplace.Text = "Replace Objects"
+        cmdGroupReplace.UseVisualStyleBackColor = True
+        ' 
+        ' cmdGroupRemove
+        ' 
+        cmdGroupRemove.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdGroupRemove.Enabled = False
+        cmdGroupRemove.FlatAppearance.BorderColor = Color.Black
+        cmdGroupRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
+        cmdGroupRemove.ForeColor = SystemColors.ControlText
+        cmdGroupRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdGroupRemove.Location = New Point(486, 3)
+        cmdGroupRemove.Name = "cmdGroupRemove"
+        cmdGroupRemove.Size = New Size(478, 62)
+        cmdGroupRemove.TabIndex = 2
+        cmdGroupRemove.Text = "Remove Objects"
+        cmdGroupRemove.UseVisualStyleBackColor = True
         ' 
         ' gbObjects
         ' 
@@ -384,70 +441,681 @@ Partial Class ControlPanel
         gbObjects.Controls.Add(Panel2)
         gbObjects.Location = New Point(6, 6)
         gbObjects.Name = "gbObjects"
-        gbObjects.Size = New Size(1560, 1164)
+        gbObjects.Size = New Size(959, 1176)
         gbObjects.TabIndex = 70
         gbObjects.TabStop = False
         gbObjects.Text = "Objects"
         ' 
+        ' listGroups
+        ' 
+        listGroups.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        listGroups.Font = New Font("Arial", 9F)
+        listGroups.ForeColor = SystemColors.ControlText
+        listGroups.ItemHeight = 27
+        listGroups.Location = New Point(6, 34)
+        listGroups.Name = "listGroups"
+        listGroups.Size = New Size(942, 166)
+        listGroups.TabIndex = 0
+        ' 
+        ' Panel2
+        ' 
+        Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        Panel2.AutoScroll = True
+        Panel2.Controls.Add(tblOrientation)
+        Panel2.Controls.Add(tblVelocity)
+        Panel2.Controls.Add(tblPosition)
+        Panel2.Controls.Add(TableLayoutPanel15)
+        Panel2.Controls.Add(txtObjectRefractiveIndex)
+        Panel2.Controls.Add(tbObjectTransparency)
+        Panel2.Controls.Add(tbObjectReflectivity)
+        Panel2.Controls.Add(tblSize)
+        Panel2.Controls.Add(plObjectHighlightColor)
+        Panel2.Controls.Add(plObjectColor)
+        Panel2.Controls.Add(cmdObjectRefractiveIndex)
+        Panel2.Controls.Add(txtObjectRadius)
+        Panel2.Controls.Add(lblObjectRefractiveIndex)
+        Panel2.Controls.Add(lblObjectReflectivity)
+        Panel2.Controls.Add(cmdObjectReflectivity)
+        Panel2.Controls.Add(lblObjectType)
+        Panel2.Controls.Add(lblObjectNormal)
+        Panel2.Controls.Add(cbObjectType)
+        Panel2.Controls.Add(lblObjectRotation)
+        Panel2.Controls.Add(chObjectWireframe)
+        Panel2.Controls.Add(chObjectAffected)
+        Panel2.Controls.Add(chObjectAffects)
+        Panel2.Controls.Add(cmdObjectNumber)
+        Panel2.Controls.Add(lblObjectNumber)
+        Panel2.Controls.Add(lblObjectRadius)
+        Panel2.Controls.Add(cmdObjectRadius)
+        Panel2.Controls.Add(cmdObjectTransparency)
+        Panel2.Controls.Add(cmdObjectHighlightSharpness)
+        Panel2.Controls.Add(lblObjectSize)
+        Panel2.Controls.Add(cmdObjectHighlightColor)
+        Panel2.Controls.Add(cmdObjectColor)
+        Panel2.Controls.Add(tbObjectHighlightSharpness)
+        Panel2.Controls.Add(cmdObjectCharge)
+        Panel2.Controls.Add(cmdObjectMass)
+        Panel2.Controls.Add(txtObjectNumber)
+        Panel2.Controls.Add(lblObjectHighlightColor)
+        Panel2.Controls.Add(txtObjectCharge)
+        Panel2.Controls.Add(lblObjectName)
+        Panel2.Controls.Add(txtObjectMass)
+        Panel2.Controls.Add(lblObjectTransparency)
+        Panel2.Controls.Add(txtObjectName)
+        Panel2.Controls.Add(lblObjectMass)
+        Panel2.Controls.Add(lblObjectCharge)
+        Panel2.Controls.Add(lblObjectHighlightSharpness)
+        Panel2.Controls.Add(lblObjectColor)
+        Panel2.Controls.Add(lblObjectVelocity)
+        Panel2.Controls.Add(lblObjectPosition)
+        Panel2.Location = New Point(6, 206)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(947, 964)
+        Panel2.TabIndex = 240
+        ' 
+        ' tblOrientation
+        ' 
+        tblOrientation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tblOrientation.ColumnCount = 6
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblOrientation.Controls.Add(txtObjectNormalX, 1, 0)
+        tblOrientation.Controls.Add(txtObjectNormalY, 3, 0)
+        tblOrientation.Controls.Add(txtObjectNormalZ, 5, 0)
+        tblOrientation.Controls.Add(cmdObjectNormalX, 0, 0)
+        tblOrientation.Controls.Add(cmdObjectNormalZ, 4, 0)
+        tblOrientation.Controls.Add(cmdObjectNormalY, 2, 0)
+        tblOrientation.Location = New Point(271, 291)
+        tblOrientation.Name = "tblOrientation"
+        tblOrientation.RowCount = 1
+        tblOrientation.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.Size = New Size(668, 43)
+        tblOrientation.TabIndex = 243
+        ' 
+        ' txtObjectNormalX
+        ' 
+        txtObjectNormalX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectNormalX.Enabled = False
+        txtObjectNormalX.ForeColor = SystemColors.ControlText
+        txtObjectNormalX.Location = New Point(40, 3)
+        txtObjectNormalX.Name = "txtObjectNormalX"
+        txtObjectNormalX.Size = New Size(179, 35)
+        txtObjectNormalX.TabIndex = 16
+        txtObjectNormalX.Text = "5"
+        txtObjectNormalX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectNormalY
+        ' 
+        txtObjectNormalY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectNormalY.Enabled = False
+        txtObjectNormalY.ForeColor = SystemColors.ControlText
+        txtObjectNormalY.Location = New Point(262, 3)
+        txtObjectNormalY.Name = "txtObjectNormalY"
+        txtObjectNormalY.Size = New Size(179, 35)
+        txtObjectNormalY.TabIndex = 18
+        txtObjectNormalY.Text = "5"
+        txtObjectNormalY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectNormalZ
+        ' 
+        txtObjectNormalZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectNormalZ.Enabled = False
+        txtObjectNormalZ.ForeColor = SystemColors.ControlText
+        txtObjectNormalZ.Location = New Point(484, 3)
+        txtObjectNormalZ.Name = "txtObjectNormalZ"
+        txtObjectNormalZ.Size = New Size(181, 35)
+        txtObjectNormalZ.TabIndex = 21
+        txtObjectNormalZ.Text = "5"
+        txtObjectNormalZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectNormalX
+        ' 
+        cmdObjectNormalX.FlatAppearance.BorderSize = 0
+        cmdObjectNormalX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNormalX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNormalX.ForeColor = Color.Black
+        cmdObjectNormalX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNormalX.Location = New Point(3, 3)
+        cmdObjectNormalX.Name = "cmdObjectNormalX"
+        cmdObjectNormalX.Size = New Size(31, 35)
+        cmdObjectNormalX.TabIndex = 231
+        cmdObjectNormalX.Text = "ƒ"
+        cmdObjectNormalX.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectNormalZ
+        ' 
+        cmdObjectNormalZ.FlatAppearance.BorderSize = 0
+        cmdObjectNormalZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNormalZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNormalZ.ForeColor = Color.Black
+        cmdObjectNormalZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNormalZ.Location = New Point(447, 3)
+        cmdObjectNormalZ.Name = "cmdObjectNormalZ"
+        cmdObjectNormalZ.Size = New Size(31, 35)
+        cmdObjectNormalZ.TabIndex = 239
+        cmdObjectNormalZ.Text = "ƒ"
+        cmdObjectNormalZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectNormalY
+        ' 
+        cmdObjectNormalY.FlatAppearance.BorderSize = 0
+        cmdObjectNormalY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectNormalY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectNormalY.ForeColor = Color.Black
+        cmdObjectNormalY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectNormalY.Location = New Point(225, 3)
+        cmdObjectNormalY.Name = "cmdObjectNormalY"
+        cmdObjectNormalY.Size = New Size(31, 35)
+        cmdObjectNormalY.TabIndex = 238
+        cmdObjectNormalY.Text = "ƒ"
+        cmdObjectNormalY.UseVisualStyleBackColor = False
+        ' 
+        ' tblVelocity
+        ' 
+        tblVelocity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tblVelocity.ColumnCount = 6
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblVelocity.Controls.Add(txtObjectVelocityX, 1, 0)
+        tblVelocity.Controls.Add(txtObjectVelocityY, 3, 0)
+        tblVelocity.Controls.Add(txtObjectVelocityZ, 5, 0)
+        tblVelocity.Controls.Add(cmdObjectVelocityZ, 4, 0)
+        tblVelocity.Controls.Add(cmdObjectVelocityY, 2, 0)
+        tblVelocity.Controls.Add(cmdObjectVelocityX, 0, 0)
+        tblVelocity.Location = New Point(271, 389)
+        tblVelocity.Name = "tblVelocity"
+        tblVelocity.RowCount = 1
+        tblVelocity.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.Size = New Size(671, 43)
+        tblVelocity.TabIndex = 244
+        ' 
+        ' txtObjectVelocityX
+        ' 
+        txtObjectVelocityX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectVelocityX.ForeColor = SystemColors.ControlText
+        txtObjectVelocityX.Location = New Point(40, 3)
+        txtObjectVelocityX.Name = "txtObjectVelocityX"
+        txtObjectVelocityX.Size = New Size(180, 35)
+        txtObjectVelocityX.TabIndex = 30
+        txtObjectVelocityX.Text = "0"
+        txtObjectVelocityX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectVelocityY
+        ' 
+        txtObjectVelocityY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectVelocityY.ForeColor = SystemColors.ControlText
+        txtObjectVelocityY.Location = New Point(263, 3)
+        txtObjectVelocityY.Name = "txtObjectVelocityY"
+        txtObjectVelocityY.Size = New Size(180, 35)
+        txtObjectVelocityY.TabIndex = 32
+        txtObjectVelocityY.Text = "0"
+        txtObjectVelocityY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectVelocityZ
+        ' 
+        txtObjectVelocityZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectVelocityZ.ForeColor = SystemColors.ControlText
+        txtObjectVelocityZ.Location = New Point(486, 3)
+        txtObjectVelocityZ.Name = "txtObjectVelocityZ"
+        txtObjectVelocityZ.Size = New Size(182, 35)
+        txtObjectVelocityZ.TabIndex = 34
+        txtObjectVelocityZ.Text = "0"
+        txtObjectVelocityZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectVelocityZ
+        ' 
+        cmdObjectVelocityZ.FlatAppearance.BorderSize = 0
+        cmdObjectVelocityZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectVelocityZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectVelocityZ.ForeColor = Color.Black
+        cmdObjectVelocityZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectVelocityZ.Location = New Point(449, 3)
+        cmdObjectVelocityZ.Name = "cmdObjectVelocityZ"
+        cmdObjectVelocityZ.Size = New Size(31, 35)
+        cmdObjectVelocityZ.TabIndex = 33
+        cmdObjectVelocityZ.Text = "ƒ"
+        cmdObjectVelocityZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectVelocityY
+        ' 
+        cmdObjectVelocityY.FlatAppearance.BorderSize = 0
+        cmdObjectVelocityY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectVelocityY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectVelocityY.ForeColor = Color.Black
+        cmdObjectVelocityY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectVelocityY.Location = New Point(226, 3)
+        cmdObjectVelocityY.Name = "cmdObjectVelocityY"
+        cmdObjectVelocityY.Size = New Size(31, 35)
+        cmdObjectVelocityY.TabIndex = 31
+        cmdObjectVelocityY.Text = "ƒ"
+        cmdObjectVelocityY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectVelocityX
+        ' 
+        cmdObjectVelocityX.FlatAppearance.BorderSize = 0
+        cmdObjectVelocityX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectVelocityX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectVelocityX.ForeColor = Color.Black
+        cmdObjectVelocityX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectVelocityX.Location = New Point(3, 3)
+        cmdObjectVelocityX.Name = "cmdObjectVelocityX"
+        cmdObjectVelocityX.Size = New Size(31, 35)
+        cmdObjectVelocityX.TabIndex = 29
+        cmdObjectVelocityX.Text = "ƒ"
+        cmdObjectVelocityX.UseVisualStyleBackColor = False
+        ' 
+        ' tblPosition
+        ' 
+        tblPosition.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tblPosition.ColumnCount = 6
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblPosition.Controls.Add(txtObjectPositionX, 1, 0)
+        tblPosition.Controls.Add(txtObjectPositionY, 3, 0)
+        tblPosition.Controls.Add(txtObjectPositionZ, 5, 0)
+        tblPosition.Controls.Add(cmdObjectPositionZ, 4, 0)
+        tblPosition.Controls.Add(cmdObjectPositionY, 2, 0)
+        tblPosition.Controls.Add(cmdObjectPositionX, 0, 0)
+        tblPosition.Location = New Point(271, 340)
+        tblPosition.Name = "tblPosition"
+        tblPosition.RowCount = 1
+        tblPosition.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.Size = New Size(671, 43)
+        tblPosition.TabIndex = 242
+        ' 
+        ' txtObjectPositionX
+        ' 
+        txtObjectPositionX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectPositionX.ForeColor = SystemColors.ControlText
+        txtObjectPositionX.Location = New Point(40, 3)
+        txtObjectPositionX.Name = "txtObjectPositionX"
+        txtObjectPositionX.Size = New Size(180, 35)
+        txtObjectPositionX.TabIndex = 24
+        txtObjectPositionX.Text = "0"
+        txtObjectPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectPositionY
+        ' 
+        txtObjectPositionY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectPositionY.ForeColor = SystemColors.ControlText
+        txtObjectPositionY.Location = New Point(263, 3)
+        txtObjectPositionY.Name = "txtObjectPositionY"
+        txtObjectPositionY.Size = New Size(180, 35)
+        txtObjectPositionY.TabIndex = 26
+        txtObjectPositionY.Text = "0"
+        txtObjectPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectPositionZ
+        ' 
+        txtObjectPositionZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectPositionZ.ForeColor = SystemColors.ControlText
+        txtObjectPositionZ.Location = New Point(486, 3)
+        txtObjectPositionZ.Name = "txtObjectPositionZ"
+        txtObjectPositionZ.Size = New Size(182, 35)
+        txtObjectPositionZ.TabIndex = 28
+        txtObjectPositionZ.Text = "0"
+        txtObjectPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectPositionZ
+        ' 
+        cmdObjectPositionZ.FlatAppearance.BorderSize = 0
+        cmdObjectPositionZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectPositionZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectPositionZ.ForeColor = Color.Black
+        cmdObjectPositionZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectPositionZ.Location = New Point(449, 3)
+        cmdObjectPositionZ.Name = "cmdObjectPositionZ"
+        cmdObjectPositionZ.Size = New Size(31, 35)
+        cmdObjectPositionZ.TabIndex = 27
+        cmdObjectPositionZ.Text = "ƒ"
+        cmdObjectPositionZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectPositionY
+        ' 
+        cmdObjectPositionY.FlatAppearance.BorderSize = 0
+        cmdObjectPositionY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectPositionY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectPositionY.ForeColor = Color.Black
+        cmdObjectPositionY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectPositionY.Location = New Point(226, 3)
+        cmdObjectPositionY.Name = "cmdObjectPositionY"
+        cmdObjectPositionY.Size = New Size(31, 35)
+        cmdObjectPositionY.TabIndex = 25
+        cmdObjectPositionY.Text = "ƒ"
+        cmdObjectPositionY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectPositionX
+        ' 
+        cmdObjectPositionX.FlatAppearance.BorderSize = 0
+        cmdObjectPositionX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectPositionX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectPositionX.ForeColor = Color.Black
+        cmdObjectPositionX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectPositionX.Location = New Point(3, 3)
+        cmdObjectPositionX.Name = "cmdObjectPositionX"
+        cmdObjectPositionX.Size = New Size(31, 35)
+        cmdObjectPositionX.TabIndex = 23
+        cmdObjectPositionX.Text = "ƒ"
+        cmdObjectPositionX.UseVisualStyleBackColor = False
+        ' 
+        ' TableLayoutPanel15
+        ' 
+        TableLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        TableLayoutPanel15.ColumnCount = 6
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        TableLayoutPanel15.Controls.Add(txtObjectRotationX, 1, 0)
+        TableLayoutPanel15.Controls.Add(txtObjectRotationY, 3, 0)
+        TableLayoutPanel15.Controls.Add(txtObjectRotationZ, 5, 0)
+        TableLayoutPanel15.Controls.Add(cmdObjectRotationY, 2, 0)
+        TableLayoutPanel15.Controls.Add(cmdObjectRotationZ, 4, 0)
+        TableLayoutPanel15.Controls.Add(cmdObjectRotationX, 0, 0)
+        TableLayoutPanel15.Location = New Point(271, 291)
+        TableLayoutPanel15.Name = "TableLayoutPanel15"
+        TableLayoutPanel15.RowCount = 1
+        TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.Size = New Size(671, 43)
+        TableLayoutPanel15.TabIndex = 241
+        ' 
+        ' txtObjectRotationX
+        ' 
+        txtObjectRotationX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectRotationX.Enabled = False
+        txtObjectRotationX.ForeColor = SystemColors.ControlText
+        txtObjectRotationX.Location = New Point(40, 3)
+        txtObjectRotationX.Name = "txtObjectRotationX"
+        txtObjectRotationX.Size = New Size(180, 35)
+        txtObjectRotationX.TabIndex = 221
+        txtObjectRotationX.Text = "5"
+        txtObjectRotationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectRotationY
+        ' 
+        txtObjectRotationY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectRotationY.Enabled = False
+        txtObjectRotationY.ForeColor = SystemColors.ControlText
+        txtObjectRotationY.Location = New Point(263, 3)
+        txtObjectRotationY.Name = "txtObjectRotationY"
+        txtObjectRotationY.Size = New Size(180, 35)
+        txtObjectRotationY.TabIndex = 222
+        txtObjectRotationY.Text = "5"
+        txtObjectRotationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectRotationZ
+        ' 
+        txtObjectRotationZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectRotationZ.Enabled = False
+        txtObjectRotationZ.ForeColor = SystemColors.ControlText
+        txtObjectRotationZ.Location = New Point(486, 3)
+        txtObjectRotationZ.Name = "txtObjectRotationZ"
+        txtObjectRotationZ.Size = New Size(182, 35)
+        txtObjectRotationZ.TabIndex = 223
+        txtObjectRotationZ.Text = "5"
+        txtObjectRotationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectRotationY
+        ' 
+        cmdObjectRotationY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRotationY.FlatAppearance.BorderSize = 0
+        cmdObjectRotationY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRotationY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRotationY.ForeColor = Color.Black
+        cmdObjectRotationY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRotationY.Location = New Point(226, 3)
+        cmdObjectRotationY.Name = "cmdObjectRotationY"
+        cmdObjectRotationY.Size = New Size(31, 35)
+        cmdObjectRotationY.TabIndex = 17
+        cmdObjectRotationY.Text = "ƒ"
+        cmdObjectRotationY.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectRotationZ
+        ' 
+        cmdObjectRotationZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRotationZ.FlatAppearance.BorderSize = 0
+        cmdObjectRotationZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRotationZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRotationZ.ForeColor = Color.Black
+        cmdObjectRotationZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRotationZ.Location = New Point(449, 3)
+        cmdObjectRotationZ.Name = "cmdObjectRotationZ"
+        cmdObjectRotationZ.Size = New Size(31, 35)
+        cmdObjectRotationZ.TabIndex = 22
+        cmdObjectRotationZ.Text = "ƒ"
+        cmdObjectRotationZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectRotationX
+        ' 
+        cmdObjectRotationX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        cmdObjectRotationX.FlatAppearance.BorderSize = 0
+        cmdObjectRotationX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRotationX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRotationX.ForeColor = Color.Black
+        cmdObjectRotationX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRotationX.Location = New Point(3, 3)
+        cmdObjectRotationX.Name = "cmdObjectRotationX"
+        cmdObjectRotationX.Size = New Size(31, 35)
+        cmdObjectRotationX.TabIndex = 15
+        cmdObjectRotationX.Text = "ƒ"
+        cmdObjectRotationX.UseVisualStyleBackColor = False
+        ' 
+        ' txtObjectRefractiveIndex
+        ' 
+        txtObjectRefractiveIndex.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectRefractiveIndex.ForeColor = SystemColors.ControlText
+        txtObjectRefractiveIndex.Location = New Point(314, 677)
+        txtObjectRefractiveIndex.Name = "txtObjectRefractiveIndex"
+        txtObjectRefractiveIndex.Size = New Size(628, 35)
+        txtObjectRefractiveIndex.TabIndex = 46
+        txtObjectRefractiveIndex.Text = "1"
+        txtObjectRefractiveIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' tbObjectTransparency
+        ' 
+        tbObjectTransparency.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tbObjectTransparency.BackColor = SystemColors.Control
+        tbObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbObjectTransparency.LargeChange = 15
+        tbObjectTransparency.Location = New Point(314, 634)
+        tbObjectTransparency.Maximum = 255
+        tbObjectTransparency.Name = "tbObjectTransparency"
+        tbObjectTransparency.Size = New Size(625, 90)
+        tbObjectTransparency.SmallChange = 15
+        tbObjectTransparency.TabIndex = 44
+        tbObjectTransparency.TickFrequency = 5
+        tbObjectTransparency.TickStyle = System.Windows.Forms.TickStyle.None
+        tbObjectTransparency.Value = 255
+        ' 
+        ' tbObjectReflectivity
+        ' 
+        tbObjectReflectivity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tbObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbObjectReflectivity.LargeChange = 10
+        tbObjectReflectivity.Location = New Point(314, 577)
+        tbObjectReflectivity.Maximum = 100
+        tbObjectReflectivity.Name = "tbObjectReflectivity"
+        tbObjectReflectivity.Size = New Size(628, 90)
+        tbObjectReflectivity.TabIndex = 42
+        tbObjectReflectivity.TickFrequency = 5
+        tbObjectReflectivity.TickStyle = System.Windows.Forms.TickStyle.None
+        ' 
+        ' tblSize
+        ' 
+        tblSize.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tblSize.ColumnCount = 6
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblSize.Controls.Add(txtObjectSizeX, 1, 0)
+        tblSize.Controls.Add(txtObjectSizeY, 3, 0)
+        tblSize.Controls.Add(txtObjectSizeZ, 5, 0)
+        tblSize.Controls.Add(cmdObjectSizeZ, 4, 0)
+        tblSize.Controls.Add(cmdObjectSizeX, 0, 0)
+        tblSize.Controls.Add(cmdObjectSizeY, 2, 0)
+        tblSize.Location = New Point(271, 247)
+        tblSize.Name = "tblSize"
+        tblSize.RowCount = 1
+        tblSize.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.Size = New Size(671, 43)
+        tblSize.TabIndex = 240
+        ' 
+        ' txtObjectSizeX
+        ' 
+        txtObjectSizeX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectSizeX.Enabled = False
+        txtObjectSizeX.ForeColor = SystemColors.ControlText
+        txtObjectSizeX.Location = New Point(40, 3)
+        txtObjectSizeX.Name = "txtObjectSizeX"
+        txtObjectSizeX.Size = New Size(180, 35)
+        txtObjectSizeX.TabIndex = 10
+        txtObjectSizeX.Text = "5"
+        txtObjectSizeX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectSizeY
+        ' 
+        txtObjectSizeY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectSizeY.Enabled = False
+        txtObjectSizeY.ForeColor = SystemColors.ControlText
+        txtObjectSizeY.Location = New Point(263, 3)
+        txtObjectSizeY.Name = "txtObjectSizeY"
+        txtObjectSizeY.Size = New Size(180, 35)
+        txtObjectSizeY.TabIndex = 12
+        txtObjectSizeY.Text = "5"
+        txtObjectSizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' txtObjectSizeZ
+        ' 
+        txtObjectSizeZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectSizeZ.Enabled = False
+        txtObjectSizeZ.ForeColor = SystemColors.ControlText
+        txtObjectSizeZ.Location = New Point(486, 3)
+        txtObjectSizeZ.Name = "txtObjectSizeZ"
+        txtObjectSizeZ.Size = New Size(182, 35)
+        txtObjectSizeZ.TabIndex = 14
+        txtObjectSizeZ.Text = "5"
+        txtObjectSizeZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
+        ' cmdObjectSizeZ
+        ' 
+        cmdObjectSizeZ.FlatAppearance.BorderSize = 0
+        cmdObjectSizeZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectSizeZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectSizeZ.ForeColor = Color.Black
+        cmdObjectSizeZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectSizeZ.Location = New Point(449, 3)
+        cmdObjectSizeZ.Name = "cmdObjectSizeZ"
+        cmdObjectSizeZ.Size = New Size(31, 35)
+        cmdObjectSizeZ.TabIndex = 13
+        cmdObjectSizeZ.Text = "ƒ"
+        cmdObjectSizeZ.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectSizeX
+        ' 
+        cmdObjectSizeX.FlatAppearance.BorderSize = 0
+        cmdObjectSizeX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectSizeX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectSizeX.ForeColor = Color.Black
+        cmdObjectSizeX.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectSizeX.Location = New Point(3, 3)
+        cmdObjectSizeX.Name = "cmdObjectSizeX"
+        cmdObjectSizeX.Size = New Size(31, 35)
+        cmdObjectSizeX.TabIndex = 168
+        cmdObjectSizeX.Text = "ƒ"
+        cmdObjectSizeX.UseVisualStyleBackColor = False
+        ' 
+        ' cmdObjectSizeY
+        ' 
+        cmdObjectSizeY.FlatAppearance.BorderSize = 0
+        cmdObjectSizeY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectSizeY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectSizeY.ForeColor = Color.Black
+        cmdObjectSizeY.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectSizeY.Location = New Point(226, 3)
+        cmdObjectSizeY.Name = "cmdObjectSizeY"
+        cmdObjectSizeY.Size = New Size(31, 35)
+        cmdObjectSizeY.TabIndex = 11
+        cmdObjectSizeY.Text = "ƒ"
+        cmdObjectSizeY.UseVisualStyleBackColor = False
+        ' 
         ' plObjectHighlightColor
         ' 
+        plObjectHighlightColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         plObjectHighlightColor.BackColor = Color.White
         plObjectHighlightColor.FlatAppearance.BorderColor = Color.Black
         plObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         plObjectHighlightColor.ForeColor = Color.White
         plObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        plObjectHighlightColor.Location = New Point(581, 552)
+        plObjectHighlightColor.Location = New Point(314, 478)
         plObjectHighlightColor.Name = "plObjectHighlightColor"
-        plObjectHighlightColor.Size = New Size(292, 21)
+        plObjectHighlightColor.Size = New Size(630, 32)
         plObjectHighlightColor.TabIndex = 38
         plObjectHighlightColor.UseVisualStyleBackColor = False
         ' 
         ' plObjectColor
         ' 
+        plObjectColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         plObjectColor.BackColor = Color.FromArgb(CByte(255), CByte(192), CByte(128))
         plObjectColor.FlatAppearance.BorderColor = Color.Black
         plObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         plObjectColor.ForeColor = Color.FromArgb(CByte(255), CByte(192), CByte(128))
         plObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        plObjectColor.Location = New Point(581, 523)
+        plObjectColor.Location = New Point(314, 438)
         plObjectColor.Name = "plObjectColor"
-        plObjectColor.Size = New Size(292, 21)
+        plObjectColor.Size = New Size(630, 32)
         plObjectColor.TabIndex = 36
         plObjectColor.UseVisualStyleBackColor = False
         ' 
         ' cmdObjectRefractiveIndex
         ' 
-        cmdObjectRefractiveIndex.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectRefractiveIndex.FlatAppearance.BorderSize = 0
         cmdObjectRefractiveIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectRefractiveIndex.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectRefractiveIndex.ForeColor = Color.Black
         cmdObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRefractiveIndex.Location = New Point(1427, 844)
+        cmdObjectRefractiveIndex.Location = New Point(271, 676)
         cmdObjectRefractiveIndex.Name = "cmdObjectRefractiveIndex"
         cmdObjectRefractiveIndex.Size = New Size(35, 35)
         cmdObjectRefractiveIndex.TabIndex = 45
         cmdObjectRefractiveIndex.Text = "ƒ"
         cmdObjectRefractiveIndex.UseVisualStyleBackColor = False
         ' 
-        ' txtObjectRefractiveIndex
+        ' txtObjectRadius
         ' 
-        txtObjectRefractiveIndex.ForeColor = SystemColors.ControlText
-        txtObjectRefractiveIndex.Location = New Point(581, 650)
-        txtObjectRefractiveIndex.Name = "txtObjectRefractiveIndex"
-        txtObjectRefractiveIndex.Size = New Size(292, 35)
-        txtObjectRefractiveIndex.TabIndex = 46
-        txtObjectRefractiveIndex.Text = "1"
-        txtObjectRefractiveIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        txtObjectRadius.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectRadius.ForeColor = SystemColors.ControlText
+        txtObjectRadius.Location = New Point(312, 246)
+        txtObjectRadius.Name = "txtObjectRadius"
+        txtObjectRadius.Size = New Size(630, 35)
+        txtObjectRadius.TabIndex = 151
+        txtObjectRadius.Text = "0"
+        txtObjectRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         ' 
         ' lblObjectRefractiveIndex
         ' 
         lblObjectRefractiveIndex.AutoEllipsis = True
         lblObjectRefractiveIndex.ForeColor = SystemColors.ControlText
         lblObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRefractiveIndex.Location = New Point(433, 650)
+        lblObjectRefractiveIndex.Location = New Point(11, 677)
         lblObjectRefractiveIndex.Name = "lblObjectRefractiveIndex"
-        lblObjectRefractiveIndex.Size = New Size(117, 21)
+        lblObjectRefractiveIndex.Size = New Size(210, 35)
         lblObjectRefractiveIndex.TabIndex = 233
         lblObjectRefractiveIndex.Text = "Refractive Index: "
         lblObjectRefractiveIndex.TextAlign = ContentAlignment.MiddleLeft
@@ -458,9 +1126,9 @@ Partial Class ControlPanel
         lblObjectReflectivity.AutoEllipsis = True
         lblObjectReflectivity.ForeColor = SystemColors.ControlText
         lblObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectReflectivity.Location = New Point(433, 599)
+        lblObjectReflectivity.Location = New Point(11, 577)
         lblObjectReflectivity.Name = "lblObjectReflectivity"
-        lblObjectReflectivity.Size = New Size(117, 21)
+        lblObjectReflectivity.Size = New Size(191, 35)
         lblObjectReflectivity.TabIndex = 230
         lblObjectReflectivity.Text = "Reflectivity: "
         lblObjectReflectivity.TextAlign = ContentAlignment.MiddleLeft
@@ -468,13 +1136,12 @@ Partial Class ControlPanel
         ' 
         ' cmdObjectReflectivity
         ' 
-        cmdObjectReflectivity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectReflectivity.FlatAppearance.BorderSize = 0
         cmdObjectReflectivity.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectReflectivity.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectReflectivity.ForeColor = Color.Black
         cmdObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectReflectivity.Location = New Point(558, 599)
+        cmdObjectReflectivity.Location = New Point(271, 577)
         cmdObjectReflectivity.Name = "cmdObjectReflectivity"
         cmdObjectReflectivity.Size = New Size(35, 35)
         cmdObjectReflectivity.TabIndex = 41
@@ -486,23 +1153,50 @@ Partial Class ControlPanel
         lblObjectType.AutoEllipsis = True
         lblObjectType.ForeColor = SystemColors.ControlText
         lblObjectType.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectType.Location = New Point(9, 52)
+        lblObjectType.Location = New Point(9, 65)
         lblObjectType.Name = "lblObjectType"
-        lblObjectType.Size = New Size(292, 35)
+        lblObjectType.Size = New Size(250, 35)
         lblObjectType.TabIndex = 213
         lblObjectType.Text = "Type of Objects: "
         lblObjectType.TextAlign = ContentAlignment.MiddleLeft
         lblObjectType.UseMnemonic = False
         ' 
+        ' lblObjectNormal
+        ' 
+        lblObjectNormal.AutoEllipsis = True
+        lblObjectNormal.ForeColor = SystemColors.ControlText
+        lblObjectNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectNormal.Location = New Point(9, 295)
+        lblObjectNormal.Name = "lblObjectNormal"
+        lblObjectNormal.Size = New Size(238, 35)
+        lblObjectNormal.TabIndex = 228
+        lblObjectNormal.Text = "Orientation X, Y, Z:"
+        lblObjectNormal.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectNormal.UseMnemonic = False
+        ' 
         ' cbObjectType
         ' 
+        cbObjectType.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cbObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         cbObjectType.FormattingEnabled = True
         cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Plane", "Infinite Plane"})
-        cbObjectType.Location = New Point(407, 52)
+        cbObjectType.Location = New Point(312, 66)
         cbObjectType.Name = "cbObjectType"
-        cbObjectType.Size = New Size(1138, 35)
+        cbObjectType.Size = New Size(630, 35)
         cbObjectType.TabIndex = 2
+        ' 
+        ' lblObjectRotation
+        ' 
+        lblObjectRotation.AutoEllipsis = True
+        lblObjectRotation.ForeColor = SystemColors.ControlText
+        lblObjectRotation.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectRotation.Location = New Point(9, 290)
+        lblObjectRotation.Name = "lblObjectRotation"
+        lblObjectRotation.Size = New Size(274, 35)
+        lblObjectRotation.TabIndex = 224
+        lblObjectRotation.Text = "Rotation Y, P, R  (rad):"
+        lblObjectRotation.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectRotation.UseMnemonic = False
         ' 
         ' chObjectWireframe
         ' 
@@ -511,9 +1205,9 @@ Partial Class ControlPanel
         chObjectWireframe.FlatStyle = System.Windows.Forms.FlatStyle.System
         chObjectWireframe.ForeColor = SystemColors.ControlText
         chObjectWireframe.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chObjectWireframe.Location = New Point(674, 677)
+        chObjectWireframe.Location = New Point(11, 777)
         chObjectWireframe.Name = "chObjectWireframe"
-        chObjectWireframe.Size = New Size(152, 19)
+        chObjectWireframe.Size = New Size(320, 35)
         chObjectWireframe.TabIndex = 49
         chObjectWireframe.Text = "Render as Wireframe"
         chObjectWireframe.UseMnemonic = False
@@ -526,7 +1220,7 @@ Partial Class ControlPanel
         chObjectAffected.CheckState = System.Windows.Forms.CheckState.Checked
         chObjectAffected.Font = New Font("Arial", 9F)
         chObjectAffected.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chObjectAffected.Location = New Point(544, 678)
+        chObjectAffected.Location = New Point(229, 731)
         chObjectAffected.Name = "chObjectAffected"
         chObjectAffected.Size = New Size(245, 31)
         chObjectAffected.TabIndex = 48
@@ -540,7 +1234,7 @@ Partial Class ControlPanel
         chObjectAffects.CheckState = System.Windows.Forms.CheckState.Checked
         chObjectAffects.Font = New Font("Arial", 9F)
         chObjectAffects.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chObjectAffects.Location = New Point(436, 678)
+        chObjectAffects.Location = New Point(11, 731)
         chObjectAffects.Name = "chObjectAffects"
         chObjectAffects.Size = New Size(197, 31)
         chObjectAffects.TabIndex = 47
@@ -549,14 +1243,13 @@ Partial Class ControlPanel
         ' 
         ' cmdObjectNumber
         ' 
-        cmdObjectNumber.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectNumber.BackColor = SystemColors.Control
         cmdObjectNumber.FlatAppearance.BorderSize = 0
         cmdObjectNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectNumber.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectNumber.ForeColor = Color.Black
         cmdObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNumber.Location = New Point(753, 563)
+        cmdObjectNumber.Location = New Point(271, 111)
         cmdObjectNumber.Name = "cmdObjectNumber"
         cmdObjectNumber.Size = New Size(35, 35)
         cmdObjectNumber.TabIndex = 3
@@ -568,63 +1261,49 @@ Partial Class ControlPanel
         lblObjectNumber.AutoEllipsis = True
         lblObjectNumber.ForeColor = SystemColors.ControlText
         lblObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectNumber.Location = New Point(9, 92)
+        lblObjectNumber.Location = New Point(9, 110)
         lblObjectNumber.Name = "lblObjectNumber"
-        lblObjectNumber.Size = New Size(318, 35)
+        lblObjectNumber.Size = New Size(250, 35)
         lblObjectNumber.TabIndex = 205
         lblObjectNumber.Text = "Number of Objects:"
         lblObjectNumber.TextAlign = ContentAlignment.MiddleLeft
         lblObjectNumber.UseMnemonic = False
         ' 
-        ' listGroups
+        ' lblObjectRadius
         ' 
-        listGroups.Font = New Font("Arial", 9F)
-        listGroups.ForeColor = SystemColors.ControlText
-        listGroups.ItemHeight = 27
-        listGroups.Location = New Point(6, 34)
-        listGroups.Name = "listGroups"
-        listGroups.Size = New Size(1536, 166)
-        listGroups.TabIndex = 0
+        lblObjectRadius.AutoEllipsis = True
+        lblObjectRadius.ForeColor = SystemColors.ControlText
+        lblObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectRadius.Location = New Point(9, 251)
+        lblObjectRadius.Name = "lblObjectRadius"
+        lblObjectRadius.Size = New Size(250, 35)
+        lblObjectRadius.TabIndex = 143
+        lblObjectRadius.Text = "Radius (m):"
+        lblObjectRadius.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectRadius.UseMnemonic = False
         ' 
-        ' cmdObjectVelocityZ
+        ' cmdObjectRadius
         ' 
-        cmdObjectVelocityZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectVelocityZ.FlatAppearance.BorderSize = 0
-        cmdObjectVelocityZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectVelocityZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectVelocityZ.ForeColor = Color.Black
-        cmdObjectVelocityZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectVelocityZ.Location = New Point(1101, 599)
-        cmdObjectVelocityZ.Name = "cmdObjectVelocityZ"
-        cmdObjectVelocityZ.Size = New Size(35, 35)
-        cmdObjectVelocityZ.TabIndex = 33
-        cmdObjectVelocityZ.Text = "ƒ"
-        cmdObjectVelocityZ.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectVelocityY
-        ' 
-        cmdObjectVelocityY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectVelocityY.FlatAppearance.BorderSize = 0
-        cmdObjectVelocityY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectVelocityY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectVelocityY.ForeColor = Color.Black
-        cmdObjectVelocityY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectVelocityY.Location = New Point(664, 496)
-        cmdObjectVelocityY.Name = "cmdObjectVelocityY"
-        cmdObjectVelocityY.Size = New Size(35, 35)
-        cmdObjectVelocityY.TabIndex = 31
-        cmdObjectVelocityY.Text = "ƒ"
-        cmdObjectVelocityY.UseVisualStyleBackColor = False
+        cmdObjectRadius.FlatAppearance.BorderSize = 0
+        cmdObjectRadius.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        cmdObjectRadius.Font = New Font("Arial", 8.25F, FontStyle.Bold)
+        cmdObjectRadius.ForeColor = Color.Black
+        cmdObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        cmdObjectRadius.Location = New Point(271, 246)
+        cmdObjectRadius.Name = "cmdObjectRadius"
+        cmdObjectRadius.Size = New Size(35, 35)
+        cmdObjectRadius.TabIndex = 9
+        cmdObjectRadius.Text = "ƒ"
+        cmdObjectRadius.UseVisualStyleBackColor = False
         ' 
         ' cmdObjectTransparency
         ' 
-        cmdObjectTransparency.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectTransparency.FlatAppearance.BorderSize = 0
         cmdObjectTransparency.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectTransparency.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectTransparency.ForeColor = Color.Black
         cmdObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectTransparency.Location = New Point(558, 623)
+        cmdObjectTransparency.Location = New Point(271, 632)
         cmdObjectTransparency.Name = "cmdObjectTransparency"
         cmdObjectTransparency.Size = New Size(35, 35)
         cmdObjectTransparency.TabIndex = 43
@@ -633,58 +1312,39 @@ Partial Class ControlPanel
         ' 
         ' cmdObjectHighlightSharpness
         ' 
-        cmdObjectHighlightSharpness.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectHighlightSharpness.FlatAppearance.BorderSize = 0
         cmdObjectHighlightSharpness.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectHighlightSharpness.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectHighlightSharpness.ForeColor = Color.Black
         cmdObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectHighlightSharpness.Location = New Point(965, 643)
+        cmdObjectHighlightSharpness.Location = New Point(271, 519)
         cmdObjectHighlightSharpness.Name = "cmdObjectHighlightSharpness"
         cmdObjectHighlightSharpness.Size = New Size(35, 35)
         cmdObjectHighlightSharpness.TabIndex = 39
         cmdObjectHighlightSharpness.Text = "ƒ"
         cmdObjectHighlightSharpness.UseVisualStyleBackColor = False
         ' 
-        ' cmdObjectPositionZ
+        ' lblObjectSize
         ' 
-        cmdObjectPositionZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectPositionZ.FlatAppearance.BorderSize = 0
-        cmdObjectPositionZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectPositionZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectPositionZ.ForeColor = Color.Black
-        cmdObjectPositionZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectPositionZ.Location = New Point(1073, 558)
-        cmdObjectPositionZ.Name = "cmdObjectPositionZ"
-        cmdObjectPositionZ.Size = New Size(35, 35)
-        cmdObjectPositionZ.TabIndex = 27
-        cmdObjectPositionZ.Text = "ƒ"
-        cmdObjectPositionZ.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectPositionY
-        ' 
-        cmdObjectPositionY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectPositionY.FlatAppearance.BorderSize = 0
-        cmdObjectPositionY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectPositionY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectPositionY.ForeColor = Color.Black
-        cmdObjectPositionY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectPositionY.Location = New Point(1032, 576)
-        cmdObjectPositionY.Name = "cmdObjectPositionY"
-        cmdObjectPositionY.Size = New Size(35, 35)
-        cmdObjectPositionY.TabIndex = 25
-        cmdObjectPositionY.Text = "ƒ"
-        cmdObjectPositionY.UseVisualStyleBackColor = False
+        lblObjectSize.AutoEllipsis = True
+        lblObjectSize.ForeColor = SystemColors.ControlText
+        lblObjectSize.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectSize.Location = New Point(9, 251)
+        lblObjectSize.Name = "lblObjectSize"
+        lblObjectSize.Size = New Size(229, 35)
+        lblObjectSize.TabIndex = 218
+        lblObjectSize.Text = "Size X, Y, Z (m): "
+        lblObjectSize.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectSize.UseMnemonic = False
         ' 
         ' cmdObjectHighlightColor
         ' 
-        cmdObjectHighlightColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectHighlightColor.FlatAppearance.BorderSize = 0
         cmdObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectHighlightColor.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectHighlightColor.ForeColor = Color.Black
         cmdObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectHighlightColor.Location = New Point(558, 552)
+        cmdObjectHighlightColor.Location = New Point(271, 477)
         cmdObjectHighlightColor.Name = "cmdObjectHighlightColor"
         cmdObjectHighlightColor.Size = New Size(35, 35)
         cmdObjectHighlightColor.TabIndex = 37
@@ -693,58 +1353,42 @@ Partial Class ControlPanel
         ' 
         ' cmdObjectColor
         ' 
-        cmdObjectColor.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectColor.FlatAppearance.BorderSize = 0
         cmdObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectColor.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectColor.ForeColor = Color.Black
         cmdObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectColor.Location = New Point(558, 523)
+        cmdObjectColor.Location = New Point(271, 434)
         cmdObjectColor.Name = "cmdObjectColor"
         cmdObjectColor.Size = New Size(35, 35)
         cmdObjectColor.TabIndex = 35
         cmdObjectColor.Text = "ƒ"
         cmdObjectColor.UseVisualStyleBackColor = False
         ' 
-        ' cmdObjectVelocityX
+        ' tbObjectHighlightSharpness
         ' 
-        cmdObjectVelocityX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectVelocityX.FlatAppearance.BorderSize = 0
-        cmdObjectVelocityX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectVelocityX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectVelocityX.ForeColor = Color.Black
-        cmdObjectVelocityX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectVelocityX.Location = New Point(1007, 558)
-        cmdObjectVelocityX.Name = "cmdObjectVelocityX"
-        cmdObjectVelocityX.Size = New Size(35, 35)
-        cmdObjectVelocityX.TabIndex = 29
-        cmdObjectVelocityX.Text = "ƒ"
-        cmdObjectVelocityX.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectPositionX
-        ' 
-        cmdObjectPositionX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectPositionX.FlatAppearance.BorderSize = 0
-        cmdObjectPositionX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectPositionX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectPositionX.ForeColor = Color.Black
-        cmdObjectPositionX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectPositionX.Location = New Point(1132, 592)
-        cmdObjectPositionX.Name = "cmdObjectPositionX"
-        cmdObjectPositionX.Size = New Size(35, 35)
-        cmdObjectPositionX.TabIndex = 23
-        cmdObjectPositionX.Text = "ƒ"
-        cmdObjectPositionX.UseVisualStyleBackColor = False
+        tbObjectHighlightSharpness.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tbObjectHighlightSharpness.BackColor = SystemColors.Control
+        tbObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        tbObjectHighlightSharpness.LargeChange = 20
+        tbObjectHighlightSharpness.Location = New Point(314, 519)
+        tbObjectHighlightSharpness.Maximum = 200
+        tbObjectHighlightSharpness.Name = "tbObjectHighlightSharpness"
+        tbObjectHighlightSharpness.Size = New Size(628, 90)
+        tbObjectHighlightSharpness.SmallChange = 10
+        tbObjectHighlightSharpness.TabIndex = 40
+        tbObjectHighlightSharpness.TickFrequency = 5
+        tbObjectHighlightSharpness.TickStyle = System.Windows.Forms.TickStyle.None
+        tbObjectHighlightSharpness.Value = 50
         ' 
         ' cmdObjectCharge
         ' 
-        cmdObjectCharge.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectCharge.FlatAppearance.BorderSize = 0
         cmdObjectCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectCharge.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectCharge.ForeColor = Color.Black
         cmdObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectCharge.Location = New Point(1383, 509)
+        cmdObjectCharge.Location = New Point(271, 201)
         cmdObjectCharge.Name = "cmdObjectCharge"
         cmdObjectCharge.Size = New Size(35, 35)
         cmdObjectCharge.TabIndex = 7
@@ -753,38 +1397,60 @@ Partial Class ControlPanel
         ' 
         ' cmdObjectMass
         ' 
-        cmdObjectMass.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         cmdObjectMass.FlatAppearance.BorderSize = 0
         cmdObjectMass.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         cmdObjectMass.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectMass.ForeColor = Color.Black
         cmdObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectMass.Location = New Point(1172, 701)
+        cmdObjectMass.Location = New Point(271, 156)
         cmdObjectMass.Name = "cmdObjectMass"
         cmdObjectMass.Size = New Size(35, 35)
         cmdObjectMass.TabIndex = 5
         cmdObjectMass.Text = "ƒ"
         cmdObjectMass.UseVisualStyleBackColor = False
         ' 
+        ' txtObjectNumber
+        ' 
+        txtObjectNumber.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectNumber.Enabled = False
+        txtObjectNumber.ForeColor = SystemColors.ControlText
+        txtObjectNumber.Location = New Point(312, 111)
+        txtObjectNumber.Name = "txtObjectNumber"
+        txtObjectNumber.Size = New Size(630, 35)
+        txtObjectNumber.TabIndex = 4
+        txtObjectNumber.Text = "0"
+        txtObjectNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
         ' lblObjectHighlightColor
         ' 
         lblObjectHighlightColor.AutoEllipsis = True
         lblObjectHighlightColor.ForeColor = SystemColors.ControlText
         lblObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectHighlightColor.Location = New Point(433, 552)
+        lblObjectHighlightColor.Location = New Point(11, 477)
         lblObjectHighlightColor.Name = "lblObjectHighlightColor"
-        lblObjectHighlightColor.Size = New Size(126, 21)
+        lblObjectHighlightColor.Size = New Size(250, 35)
         lblObjectHighlightColor.TabIndex = 161
         lblObjectHighlightColor.Text = "Highlight Color: "
         lblObjectHighlightColor.TextAlign = ContentAlignment.MiddleLeft
         lblObjectHighlightColor.UseMnemonic = False
+        ' 
+        ' txtObjectCharge
+        ' 
+        txtObjectCharge.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectCharge.ForeColor = SystemColors.ControlText
+        txtObjectCharge.Location = New Point(312, 201)
+        txtObjectCharge.Name = "txtObjectCharge"
+        txtObjectCharge.Size = New Size(630, 35)
+        txtObjectCharge.TabIndex = 8
+        txtObjectCharge.Text = "0"
+        txtObjectCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         ' 
         ' lblObjectName
         ' 
         lblObjectName.AutoEllipsis = True
         lblObjectName.ForeColor = SystemColors.ControlText
         lblObjectName.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectName.Location = New Point(9, 10)
+        lblObjectName.Location = New Point(9, 20)
         lblObjectName.Name = "lblObjectName"
         lblObjectName.Size = New Size(250, 35)
         lblObjectName.TabIndex = 140
@@ -792,54 +1458,46 @@ Partial Class ControlPanel
         lblObjectName.TextAlign = ContentAlignment.MiddleLeft
         lblObjectName.UseMnemonic = False
         ' 
+        ' txtObjectMass
+        ' 
+        txtObjectMass.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtObjectMass.ForeColor = SystemColors.ControlText
+        txtObjectMass.Location = New Point(312, 156)
+        txtObjectMass.Name = "txtObjectMass"
+        txtObjectMass.Size = New Size(630, 35)
+        txtObjectMass.TabIndex = 6
+        txtObjectMass.Text = "0"
+        txtObjectMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        ' 
         ' lblObjectTransparency
         ' 
         lblObjectTransparency.AutoEllipsis = True
         lblObjectTransparency.ForeColor = SystemColors.ControlText
         lblObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectTransparency.Location = New Point(433, 623)
+        lblObjectTransparency.Location = New Point(11, 627)
         lblObjectTransparency.Name = "lblObjectTransparency"
-        lblObjectTransparency.Size = New Size(127, 21)
+        lblObjectTransparency.Size = New Size(238, 35)
         lblObjectTransparency.TabIndex = 149
         lblObjectTransparency.Text = "Transparency:"
         lblObjectTransparency.TextAlign = ContentAlignment.MiddleLeft
         lblObjectTransparency.UseMnemonic = False
         ' 
-        ' txtObjectVelocityZ
-        ' 
-        txtObjectVelocityZ.ForeColor = SystemColors.ControlText
-        txtObjectVelocityZ.Location = New Point(791, 496)
-        txtObjectVelocityZ.Name = "txtObjectVelocityZ"
-        txtObjectVelocityZ.Size = New Size(82, 35)
-        txtObjectVelocityZ.TabIndex = 34
-        txtObjectVelocityZ.Text = "0"
-        txtObjectVelocityZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
         ' txtObjectName
         ' 
+        txtObjectName.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtObjectName.ForeColor = SystemColors.ControlText
-        txtObjectName.Location = New Point(407, 11)
+        txtObjectName.Location = New Point(312, 21)
         txtObjectName.Name = "txtObjectName"
-        txtObjectName.Size = New Size(1138, 35)
+        txtObjectName.Size = New Size(630, 35)
         txtObjectName.TabIndex = 1
         txtObjectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectVelocityY
-        ' 
-        txtObjectVelocityY.ForeColor = SystemColors.ControlText
-        txtObjectVelocityY.Location = New Point(686, 496)
-        txtObjectVelocityY.Name = "txtObjectVelocityY"
-        txtObjectVelocityY.Size = New Size(82, 35)
-        txtObjectVelocityY.TabIndex = 32
-        txtObjectVelocityY.Text = "0"
-        txtObjectVelocityY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         ' 
         ' lblObjectMass
         ' 
         lblObjectMass.AutoEllipsis = True
         lblObjectMass.ForeColor = SystemColors.ControlText
         lblObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectMass.Location = New Point(21, 144)
+        lblObjectMass.Location = New Point(9, 155)
         lblObjectMass.Name = "lblObjectMass"
         lblObjectMass.Size = New Size(238, 35)
         lblObjectMass.TabIndex = 141
@@ -852,489 +1510,65 @@ Partial Class ControlPanel
         lblObjectCharge.AutoEllipsis = True
         lblObjectCharge.ForeColor = SystemColors.ControlText
         lblObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectCharge.Location = New Point(9, 198)
+        lblObjectCharge.Location = New Point(9, 200)
         lblObjectCharge.Name = "lblObjectCharge"
-        lblObjectCharge.Size = New Size(126, 21)
+        lblObjectCharge.Size = New Size(238, 35)
         lblObjectCharge.TabIndex = 142
         lblObjectCharge.Text = "Charge (C): "
         lblObjectCharge.TextAlign = ContentAlignment.MiddleLeft
         lblObjectCharge.UseMnemonic = False
-        ' 
-        ' lblObjectColor
-        ' 
-        lblObjectColor.AutoEllipsis = True
-        lblObjectColor.ForeColor = SystemColors.ControlText
-        lblObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectColor.Location = New Point(433, 523)
-        lblObjectColor.Name = "lblObjectColor"
-        lblObjectColor.Size = New Size(126, 21)
-        lblObjectColor.TabIndex = 146
-        lblObjectColor.Text = "Color: "
-        lblObjectColor.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectColor.UseMnemonic = False
-        ' 
-        ' lblObjectPosition
-        ' 
-        lblObjectPosition.AutoEllipsis = True
-        lblObjectPosition.ForeColor = SystemColors.ControlText
-        lblObjectPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectPosition.Location = New Point(433, 467)
-        lblObjectPosition.Name = "lblObjectPosition"
-        lblObjectPosition.Size = New Size(126, 21)
-        lblObjectPosition.TabIndex = 144
-        lblObjectPosition.Text = "Position X,Y,Z  (m):"
-        lblObjectPosition.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectPosition.UseMnemonic = False
-        ' 
-        ' lblObjectVelocity
-        ' 
-        lblObjectVelocity.AutoEllipsis = True
-        lblObjectVelocity.ForeColor = SystemColors.ControlText
-        lblObjectVelocity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectVelocity.Location = New Point(433, 496)
-        lblObjectVelocity.Name = "lblObjectVelocity"
-        lblObjectVelocity.Size = New Size(126, 21)
-        lblObjectVelocity.TabIndex = 145
-        lblObjectVelocity.Text = "Velocity X,Y,Z (m/s): "
-        lblObjectVelocity.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectVelocity.UseMnemonic = False
         ' 
         ' lblObjectHighlightSharpness
         ' 
         lblObjectHighlightSharpness.AutoEllipsis = True
         lblObjectHighlightSharpness.ForeColor = SystemColors.ControlText
         lblObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectHighlightSharpness.Location = New Point(433, 576)
+        lblObjectHighlightSharpness.Location = New Point(11, 527)
         lblObjectHighlightSharpness.Name = "lblObjectHighlightSharpness"
-        lblObjectHighlightSharpness.Size = New Size(126, 21)
+        lblObjectHighlightSharpness.Size = New Size(250, 35)
         lblObjectHighlightSharpness.TabIndex = 164
         lblObjectHighlightSharpness.Text = "Highlight Sharpness: "
         lblObjectHighlightSharpness.TextAlign = ContentAlignment.MiddleLeft
         lblObjectHighlightSharpness.UseMnemonic = False
         ' 
-        ' tbObjectTransparency
-        ' 
-        tbObjectTransparency.BackColor = SystemColors.Control
-        tbObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        tbObjectTransparency.LargeChange = 15
-        tbObjectTransparency.Location = New Point(581, 623)
-        tbObjectTransparency.Maximum = 255
-        tbObjectTransparency.Name = "tbObjectTransparency"
-        tbObjectTransparency.Size = New Size(292, 90)
-        tbObjectTransparency.SmallChange = 15
-        tbObjectTransparency.TabIndex = 44
-        tbObjectTransparency.TickFrequency = 5
-        tbObjectTransparency.TickStyle = System.Windows.Forms.TickStyle.None
-        tbObjectTransparency.Value = 255
-        ' 
-        ' txtObjectPositionZ
-        ' 
-        txtObjectPositionZ.ForeColor = SystemColors.ControlText
-        txtObjectPositionZ.Location = New Point(791, 467)
-        txtObjectPositionZ.Name = "txtObjectPositionZ"
-        txtObjectPositionZ.Size = New Size(82, 35)
-        txtObjectPositionZ.TabIndex = 28
-        txtObjectPositionZ.Text = "0"
-        txtObjectPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectPositionX
-        ' 
-        txtObjectPositionX.ForeColor = SystemColors.ControlText
-        txtObjectPositionX.Location = New Point(581, 467)
-        txtObjectPositionX.Name = "txtObjectPositionX"
-        txtObjectPositionX.Size = New Size(82, 35)
-        txtObjectPositionX.TabIndex = 24
-        txtObjectPositionX.Text = "0"
-        txtObjectPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectPositionY
-        ' 
-        txtObjectPositionY.ForeColor = SystemColors.ControlText
-        txtObjectPositionY.Location = New Point(686, 467)
-        txtObjectPositionY.Name = "txtObjectPositionY"
-        txtObjectPositionY.Size = New Size(82, 35)
-        txtObjectPositionY.TabIndex = 26
-        txtObjectPositionY.Text = "0"
-        txtObjectPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectVelocityX
-        ' 
-        txtObjectVelocityX.ForeColor = SystemColors.ControlText
-        txtObjectVelocityX.Location = New Point(581, 496)
-        txtObjectVelocityX.Name = "txtObjectVelocityX"
-        txtObjectVelocityX.Size = New Size(82, 35)
-        txtObjectVelocityX.TabIndex = 30
-        txtObjectVelocityX.Text = "0"
-        txtObjectVelocityX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectMass
-        ' 
-        txtObjectMass.ForeColor = SystemColors.ControlText
-        txtObjectMass.Location = New Point(407, 134)
-        txtObjectMass.Name = "txtObjectMass"
-        txtObjectMass.Size = New Size(1138, 35)
-        txtObjectMass.TabIndex = 6
-        txtObjectMass.Text = "0"
-        txtObjectMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectCharge
-        ' 
-        txtObjectCharge.ForeColor = SystemColors.ControlText
-        txtObjectCharge.Location = New Point(581, 384)
-        txtObjectCharge.Name = "txtObjectCharge"
-        txtObjectCharge.Size = New Size(292, 35)
-        txtObjectCharge.TabIndex = 8
-        txtObjectCharge.Text = "0"
-        txtObjectCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectNumber
-        ' 
-        txtObjectNumber.Enabled = False
-        txtObjectNumber.ForeColor = SystemColors.ControlText
-        txtObjectNumber.Location = New Point(407, 93)
-        txtObjectNumber.Name = "txtObjectNumber"
-        txtObjectNumber.Size = New Size(1138, 35)
-        txtObjectNumber.TabIndex = 4
-        txtObjectNumber.Text = "0"
-        txtObjectNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' tbObjectReflectivity
-        ' 
-        tbObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        tbObjectReflectivity.LargeChange = 10
-        tbObjectReflectivity.Location = New Point(581, 599)
-        tbObjectReflectivity.Maximum = 100
-        tbObjectReflectivity.Name = "tbObjectReflectivity"
-        tbObjectReflectivity.Size = New Size(292, 90)
-        tbObjectReflectivity.TabIndex = 42
-        tbObjectReflectivity.TickFrequency = 5
-        tbObjectReflectivity.TickStyle = System.Windows.Forms.TickStyle.None
-        ' 
-        ' tbObjectHighlightSharpness
-        ' 
-        tbObjectHighlightSharpness.BackColor = SystemColors.Control
-        tbObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        tbObjectHighlightSharpness.LargeChange = 20
-        tbObjectHighlightSharpness.Location = New Point(581, 575)
-        tbObjectHighlightSharpness.Maximum = 200
-        tbObjectHighlightSharpness.Name = "tbObjectHighlightSharpness"
-        tbObjectHighlightSharpness.Size = New Size(292, 90)
-        tbObjectHighlightSharpness.SmallChange = 10
-        tbObjectHighlightSharpness.TabIndex = 40
-        tbObjectHighlightSharpness.TickFrequency = 5
-        tbObjectHighlightSharpness.TickStyle = System.Windows.Forms.TickStyle.None
-        tbObjectHighlightSharpness.Value = 50
-        ' 
-        ' txtObjectSizeX
-        ' 
-        txtObjectSizeX.Enabled = False
-        txtObjectSizeX.ForeColor = SystemColors.ControlText
-        txtObjectSizeX.Location = New Point(581, 413)
-        txtObjectSizeX.Name = "txtObjectSizeX"
-        txtObjectSizeX.Size = New Size(82, 35)
-        txtObjectSizeX.TabIndex = 10
-        txtObjectSizeX.Text = "5"
-        txtObjectSizeX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectSizeY
-        ' 
-        txtObjectSizeY.Enabled = False
-        txtObjectSizeY.ForeColor = SystemColors.ControlText
-        txtObjectSizeY.Location = New Point(686, 413)
-        txtObjectSizeY.Name = "txtObjectSizeY"
-        txtObjectSizeY.Size = New Size(82, 35)
-        txtObjectSizeY.TabIndex = 12
-        txtObjectSizeY.Text = "5"
-        txtObjectSizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectSizeZ
-        ' 
-        txtObjectSizeZ.Enabled = False
-        txtObjectSizeZ.ForeColor = SystemColors.ControlText
-        txtObjectSizeZ.Location = New Point(791, 413)
-        txtObjectSizeZ.Name = "txtObjectSizeZ"
-        txtObjectSizeZ.Size = New Size(82, 35)
-        txtObjectSizeZ.TabIndex = 14
-        txtObjectSizeZ.Text = "5"
-        txtObjectSizeZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' lblObjectSize
-        ' 
-        lblObjectSize.AutoEllipsis = True
-        lblObjectSize.ForeColor = SystemColors.ControlText
-        lblObjectSize.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectSize.Location = New Point(18, 309)
-        lblObjectSize.Name = "lblObjectSize"
-        lblObjectSize.Size = New Size(117, 21)
-        lblObjectSize.TabIndex = 218
-        lblObjectSize.Text = "Size X, Y, Z (m): "
-        lblObjectSize.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectSize.UseMnemonic = False
-        ' 
-        ' txtObjectNormalZ
-        ' 
-        txtObjectNormalZ.Enabled = False
-        txtObjectNormalZ.ForeColor = SystemColors.ControlText
-        txtObjectNormalZ.Location = New Point(791, 440)
-        txtObjectNormalZ.Name = "txtObjectNormalZ"
-        txtObjectNormalZ.Size = New Size(82, 35)
-        txtObjectNormalZ.TabIndex = 21
-        txtObjectNormalZ.Text = "5"
-        txtObjectNormalZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectNormalY
-        ' 
-        txtObjectNormalY.Enabled = False
-        txtObjectNormalY.ForeColor = SystemColors.ControlText
-        txtObjectNormalY.Location = New Point(686, 440)
-        txtObjectNormalY.Name = "txtObjectNormalY"
-        txtObjectNormalY.Size = New Size(82, 35)
-        txtObjectNormalY.TabIndex = 18
-        txtObjectNormalY.Text = "5"
-        txtObjectNormalY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' txtObjectNormalX
-        ' 
-        txtObjectNormalX.Enabled = False
-        txtObjectNormalX.ForeColor = SystemColors.ControlText
-        txtObjectNormalX.Location = New Point(581, 440)
-        txtObjectNormalX.Name = "txtObjectNormalX"
-        txtObjectNormalX.Size = New Size(82, 35)
-        txtObjectNormalX.TabIndex = 16
-        txtObjectNormalX.Text = "5"
-        txtObjectNormalX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' cmdObjectRadius
-        ' 
-        cmdObjectRadius.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectRadius.FlatAppearance.BorderSize = 0
-        cmdObjectRadius.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectRadius.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectRadius.ForeColor = Color.Black
-        cmdObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRadius.Location = New Point(1227, 466)
-        cmdObjectRadius.Name = "cmdObjectRadius"
-        cmdObjectRadius.Size = New Size(35, 35)
-        cmdObjectRadius.TabIndex = 9
-        cmdObjectRadius.Text = "ƒ"
-        cmdObjectRadius.UseVisualStyleBackColor = False
-        ' 
-        ' lblObjectRadius
-        ' 
-        lblObjectRadius.AutoEllipsis = True
-        lblObjectRadius.ForeColor = SystemColors.ControlText
-        lblObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRadius.Location = New Point(9, 253)
-        lblObjectRadius.Name = "lblObjectRadius"
-        lblObjectRadius.Size = New Size(118, 21)
-        lblObjectRadius.TabIndex = 143
-        lblObjectRadius.Text = "Radius (m): "
-        lblObjectRadius.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectRadius.UseMnemonic = False
-        ' 
-        ' txtObjectRotationZ
-        ' 
-        txtObjectRotationZ.Enabled = False
-        txtObjectRotationZ.ForeColor = SystemColors.ControlText
-        txtObjectRotationZ.Location = New Point(791, 440)
-        txtObjectRotationZ.Name = "txtObjectRotationZ"
-        txtObjectRotationZ.Size = New Size(82, 35)
-        txtObjectRotationZ.TabIndex = 223
-        txtObjectRotationZ.Text = "5"
-        txtObjectRotationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' cmdObjectRotationZ
-        ' 
-        cmdObjectRotationZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectRotationZ.FlatAppearance.BorderSize = 0
-        cmdObjectRotationZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectRotationZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectRotationZ.ForeColor = Color.Black
-        cmdObjectRotationZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRotationZ.Location = New Point(1305, 455)
-        cmdObjectRotationZ.Name = "cmdObjectRotationZ"
-        cmdObjectRotationZ.Size = New Size(35, 35)
-        cmdObjectRotationZ.TabIndex = 22
-        cmdObjectRotationZ.Text = "ƒ"
-        cmdObjectRotationZ.UseVisualStyleBackColor = False
-        ' 
-        ' txtObjectRotationY
-        ' 
-        txtObjectRotationY.Enabled = False
-        txtObjectRotationY.ForeColor = SystemColors.ControlText
-        txtObjectRotationY.Location = New Point(686, 440)
-        txtObjectRotationY.Name = "txtObjectRotationY"
-        txtObjectRotationY.Size = New Size(82, 35)
-        txtObjectRotationY.TabIndex = 222
-        txtObjectRotationY.Text = "5"
-        txtObjectRotationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' cmdObjectRotationY
-        ' 
-        cmdObjectRotationY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectRotationY.FlatAppearance.BorderSize = 0
-        cmdObjectRotationY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectRotationY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectRotationY.ForeColor = Color.Black
-        cmdObjectRotationY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRotationY.Location = New Point(1084, 455)
-        cmdObjectRotationY.Name = "cmdObjectRotationY"
-        cmdObjectRotationY.Size = New Size(35, 35)
-        cmdObjectRotationY.TabIndex = 17
-        cmdObjectRotationY.Text = "ƒ"
-        cmdObjectRotationY.UseVisualStyleBackColor = False
-        ' 
-        ' txtObjectRotationX
-        ' 
-        txtObjectRotationX.Enabled = False
-        txtObjectRotationX.ForeColor = SystemColors.ControlText
-        txtObjectRotationX.Location = New Point(581, 440)
-        txtObjectRotationX.Name = "txtObjectRotationX"
-        txtObjectRotationX.Size = New Size(82, 35)
-        txtObjectRotationX.TabIndex = 221
-        txtObjectRotationX.Text = "5"
-        txtObjectRotationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' cmdObjectRotationX
-        ' 
-        cmdObjectRotationX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectRotationX.FlatAppearance.BorderSize = 0
-        cmdObjectRotationX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectRotationX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectRotationX.ForeColor = Color.Black
-        cmdObjectRotationX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRotationX.Location = New Point(1325, 333)
-        cmdObjectRotationX.Name = "cmdObjectRotationX"
-        cmdObjectRotationX.Size = New Size(35, 35)
-        cmdObjectRotationX.TabIndex = 15
-        cmdObjectRotationX.Text = "ƒ"
-        cmdObjectRotationX.UseVisualStyleBackColor = False
-        ' 
-        ' lblObjectRotation
-        ' 
-        lblObjectRotation.AutoEllipsis = True
-        lblObjectRotation.ForeColor = SystemColors.ControlText
-        lblObjectRotation.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRotation.Location = New Point(433, 440)
-        lblObjectRotation.Name = "lblObjectRotation"
-        lblObjectRotation.Size = New Size(127, 21)
-        lblObjectRotation.TabIndex = 224
-        lblObjectRotation.Text = "Rotation Y, P, R  (rad):"
-        lblObjectRotation.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectRotation.UseMnemonic = False
-        ' 
-        ' lblObjectNormal
-        ' 
-        lblObjectNormal.AutoEllipsis = True
-        lblObjectNormal.ForeColor = SystemColors.ControlText
-        lblObjectNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectNormal.Location = New Point(433, 440)
-        lblObjectNormal.Name = "lblObjectNormal"
-        lblObjectNormal.Size = New Size(117, 21)
-        lblObjectNormal.TabIndex = 228
-        lblObjectNormal.Text = "Orientation X, Y, Z:"
-        lblObjectNormal.TextAlign = ContentAlignment.MiddleLeft
-        lblObjectNormal.UseMnemonic = False
-        ' 
-        ' cmdObjectSizeX
-        ' 
-        cmdObjectSizeX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectSizeX.FlatAppearance.BorderSize = 0
-        cmdObjectSizeX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectSizeX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectSizeX.ForeColor = Color.Black
-        cmdObjectSizeX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectSizeX.Location = New Point(1409, 516)
-        cmdObjectSizeX.Name = "cmdObjectSizeX"
-        cmdObjectSizeX.Size = New Size(35, 35)
-        cmdObjectSizeX.TabIndex = 168
-        cmdObjectSizeX.Text = "ƒ"
-        cmdObjectSizeX.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectSizeY
-        ' 
-        cmdObjectSizeY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectSizeY.FlatAppearance.BorderSize = 0
-        cmdObjectSizeY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectSizeY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectSizeY.ForeColor = Color.Black
-        cmdObjectSizeY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectSizeY.Location = New Point(1213, 399)
-        cmdObjectSizeY.Name = "cmdObjectSizeY"
-        cmdObjectSizeY.Size = New Size(35, 35)
-        cmdObjectSizeY.TabIndex = 11
-        cmdObjectSizeY.Text = "ƒ"
-        cmdObjectSizeY.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectSizeZ
-        ' 
-        cmdObjectSizeZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectSizeZ.FlatAppearance.BorderSize = 0
-        cmdObjectSizeZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectSizeZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectSizeZ.ForeColor = Color.Black
-        cmdObjectSizeZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectSizeZ.Location = New Point(1213, 566)
-        cmdObjectSizeZ.Name = "cmdObjectSizeZ"
-        cmdObjectSizeZ.Size = New Size(35, 35)
-        cmdObjectSizeZ.TabIndex = 13
-        cmdObjectSizeZ.Text = "ƒ"
-        cmdObjectSizeZ.UseVisualStyleBackColor = False
-        ' 
-        ' txtObjectRadius
-        ' 
-        txtObjectRadius.ForeColor = SystemColors.ControlText
-        txtObjectRadius.Location = New Point(581, 490)
-        txtObjectRadius.Name = "txtObjectRadius"
-        txtObjectRadius.Size = New Size(292, 35)
-        txtObjectRadius.TabIndex = 151
-        txtObjectRadius.Text = "0"
-        txtObjectRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        ' 
-        ' cmdObjectNormalX
-        ' 
-        cmdObjectNormalX.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectNormalX.FlatAppearance.BorderSize = 0
-        cmdObjectNormalX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectNormalX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectNormalX.ForeColor = Color.Black
-        cmdObjectNormalX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNormalX.Location = New Point(1101, 793)
-        cmdObjectNormalX.Name = "cmdObjectNormalX"
-        cmdObjectNormalX.Size = New Size(35, 35)
-        cmdObjectNormalX.TabIndex = 231
-        cmdObjectNormalX.Text = "ƒ"
-        cmdObjectNormalX.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectNormalY
-        ' 
-        cmdObjectNormalY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectNormalY.FlatAppearance.BorderSize = 0
-        cmdObjectNormalY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectNormalY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectNormalY.ForeColor = Color.Black
-        cmdObjectNormalY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNormalY.Location = New Point(1305, 803)
-        cmdObjectNormalY.Name = "cmdObjectNormalY"
-        cmdObjectNormalY.Size = New Size(35, 35)
-        cmdObjectNormalY.TabIndex = 238
-        cmdObjectNormalY.Text = "ƒ"
-        cmdObjectNormalY.UseVisualStyleBackColor = False
-        ' 
-        ' cmdObjectNormalZ
-        ' 
-        cmdObjectNormalZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdObjectNormalZ.FlatAppearance.BorderSize = 0
-        cmdObjectNormalZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        cmdObjectNormalZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-        cmdObjectNormalZ.ForeColor = Color.Black
-        cmdObjectNormalZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNormalZ.Location = New Point(1383, 701)
-        cmdObjectNormalZ.Name = "cmdObjectNormalZ"
-        cmdObjectNormalZ.Size = New Size(35, 35)
-        cmdObjectNormalZ.TabIndex = 239
-        cmdObjectNormalZ.Text = "ƒ"
-        cmdObjectNormalZ.UseVisualStyleBackColor = False
+        ' lblObjectColor
+        ' 
+        lblObjectColor.AutoEllipsis = True
+        lblObjectColor.ForeColor = SystemColors.ControlText
+        lblObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectColor.Location = New Point(11, 437)
+        lblObjectColor.Name = "lblObjectColor"
+        lblObjectColor.Size = New Size(229, 35)
+        lblObjectColor.TabIndex = 146
+        lblObjectColor.Text = "Color: "
+        lblObjectColor.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectColor.UseMnemonic = False
+        ' 
+        ' lblObjectVelocity
+        ' 
+        lblObjectVelocity.AutoEllipsis = True
+        lblObjectVelocity.ForeColor = SystemColors.ControlText
+        lblObjectVelocity.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectVelocity.Location = New Point(9, 392)
+        lblObjectVelocity.Name = "lblObjectVelocity"
+        lblObjectVelocity.Size = New Size(250, 35)
+        lblObjectVelocity.TabIndex = 145
+        lblObjectVelocity.Text = "Velocity X,Y,Z (m/s): "
+        lblObjectVelocity.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectVelocity.UseMnemonic = False
+        ' 
+        ' lblObjectPosition
+        ' 
+        lblObjectPosition.AutoEllipsis = True
+        lblObjectPosition.ForeColor = SystemColors.ControlText
+        lblObjectPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        lblObjectPosition.Location = New Point(9, 343)
+        lblObjectPosition.Name = "lblObjectPosition"
+        lblObjectPosition.Size = New Size(239, 35)
+        lblObjectPosition.TabIndex = 144
+        lblObjectPosition.Text = "Position X,Y,Z  (m):"
+        lblObjectPosition.TextAlign = ContentAlignment.MiddleLeft
+        lblObjectPosition.UseMnemonic = False
         ' 
         ' cmdGroupAdd
         ' 
@@ -1343,42 +1577,12 @@ Partial Class ControlPanel
         cmdGroupAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
         cmdGroupAdd.ForeColor = SystemColors.ControlText
         cmdGroupAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdGroupAdd.Location = New Point(6, 1176)
+        cmdGroupAdd.Location = New Point(3, 1188)
         cmdGroupAdd.Name = "cmdGroupAdd"
-        cmdGroupAdd.Size = New Size(1554, 62)
+        cmdGroupAdd.Size = New Size(964, 62)
         cmdGroupAdd.TabIndex = 0
         cmdGroupAdd.Text = "Add Objects"
         cmdGroupAdd.UseVisualStyleBackColor = True
-        ' 
-        ' cmdGroupRemove
-        ' 
-        cmdGroupRemove.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdGroupRemove.Enabled = False
-        cmdGroupRemove.FlatAppearance.BorderColor = Color.Black
-        cmdGroupRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
-        cmdGroupRemove.ForeColor = SystemColors.ControlText
-        cmdGroupRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdGroupRemove.Location = New Point(786, 3)
-        cmdGroupRemove.Name = "cmdGroupRemove"
-        cmdGroupRemove.Size = New Size(777, 62)
-        cmdGroupRemove.TabIndex = 2
-        cmdGroupRemove.Text = "Remove Objects"
-        cmdGroupRemove.UseVisualStyleBackColor = True
-        ' 
-        ' cmdGroupReplace
-        ' 
-        cmdGroupReplace.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        cmdGroupReplace.Enabled = False
-        cmdGroupReplace.FlatAppearance.BorderColor = Color.Black
-        cmdGroupReplace.FlatStyle = System.Windows.Forms.FlatStyle.System
-        cmdGroupReplace.ForeColor = SystemColors.ControlText
-        cmdGroupReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdGroupReplace.Location = New Point(3, 3)
-        cmdGroupReplace.Name = "cmdGroupReplace"
-        cmdGroupReplace.Size = New Size(777, 62)
-        cmdGroupReplace.TabIndex = 1
-        cmdGroupReplace.Text = "Replace Objects"
-        cmdGroupReplace.UseVisualStyleBackColor = True
         ' 
         ' TabLights
         ' 
@@ -1388,24 +1592,24 @@ Partial Class ControlPanel
         TabLights.Controls.Add(cmdLightAdd)
         TabLights.Location = New Point(4, 39)
         TabLights.Name = "TabLights"
-        TabLights.Size = New Size(1572, 1042)
+        TabLights.Size = New Size(973, 1321)
         TabLights.TabIndex = 2
         TabLights.Text = "Lighting"
         TabLights.UseVisualStyleBackColor = True
         ' 
         ' TableLayoutPanel8
         ' 
-        TableLayoutPanel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         TableLayoutPanel8.ColumnCount = 2
         TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
         TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
         TableLayoutPanel8.Controls.Add(cmdLightRemove, 1, 0)
         TableLayoutPanel8.Controls.Add(cmdLightReplace, 0, 0)
-        TableLayoutPanel8.Location = New Point(3, 971)
+        TableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom
+        TableLayoutPanel8.Location = New Point(0, 1253)
         TableLayoutPanel8.Name = "TableLayoutPanel8"
         TableLayoutPanel8.RowCount = 1
-        TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel8.Size = New Size(1566, 68)
+        TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel8.Size = New Size(973, 68)
         TableLayoutPanel8.TabIndex = 66
         ' 
         ' cmdLightRemove
@@ -1417,9 +1621,9 @@ Partial Class ControlPanel
         cmdLightRemove.FlatStyle = System.Windows.Forms.FlatStyle.System
         cmdLightRemove.ForeColor = SystemColors.ControlText
         cmdLightRemove.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdLightRemove.Location = New Point(786, 3)
+        cmdLightRemove.Location = New Point(489, 3)
         cmdLightRemove.Name = "cmdLightRemove"
-        cmdLightRemove.Size = New Size(777, 62)
+        cmdLightRemove.Size = New Size(481, 62)
         cmdLightRemove.TabIndex = 2
         cmdLightRemove.Text = "Remove Light"
         cmdLightRemove.UseVisualStyleBackColor = False
@@ -1435,7 +1639,7 @@ Partial Class ControlPanel
         cmdLightReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl
         cmdLightReplace.Location = New Point(3, 3)
         cmdLightReplace.Name = "cmdLightReplace"
-        cmdLightReplace.Size = New Size(777, 62)
+        cmdLightReplace.Size = New Size(480, 62)
         cmdLightReplace.TabIndex = 1
         cmdLightReplace.Text = "Replace Light"
         cmdLightReplace.UseVisualStyleBackColor = False
@@ -1448,7 +1652,7 @@ Partial Class ControlPanel
         gbLights.Controls.Add(chLightsEnable)
         gbLights.Location = New Point(6, 3)
         gbLights.Name = "gbLights"
-        gbLights.Size = New Size(1560, 890)
+        gbLights.Size = New Size(961, 1179)
         gbLights.TabIndex = 65
         gbLights.TabStop = False
         gbLights.Text = "Lights"
@@ -1481,7 +1685,7 @@ Partial Class ControlPanel
         Panel1.Controls.Add(lblLightType)
         Panel1.Location = New Point(0, 247)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1557, 637)
+        Panel1.Size = New Size(958, 926)
         Panel1.TabIndex = 115
         ' 
         ' TableLayoutPanel12
@@ -1496,7 +1700,7 @@ Partial Class ControlPanel
         TableLayoutPanel12.Name = "TableLayoutPanel12"
         TableLayoutPanel12.RowCount = 1
         TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel12.Size = New Size(1219, 46)
+        TableLayoutPanel12.Size = New Size(620, 46)
         TableLayoutPanel12.TabIndex = 118
         ' 
         ' txtLightAngleInner
@@ -1505,7 +1709,7 @@ Partial Class ControlPanel
         txtLightAngleInner.ForeColor = SystemColors.ControlText
         txtLightAngleInner.Location = New Point(3, 3)
         txtLightAngleInner.Name = "txtLightAngleInner"
-        txtLightAngleInner.Size = New Size(603, 35)
+        txtLightAngleInner.Size = New Size(304, 35)
         txtLightAngleInner.TabIndex = 17
         txtLightAngleInner.Text = "45"
         txtLightAngleInner.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1514,9 +1718,9 @@ Partial Class ControlPanel
         ' 
         txtLightAngleOuter.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightAngleOuter.ForeColor = SystemColors.ControlText
-        txtLightAngleOuter.Location = New Point(612, 3)
+        txtLightAngleOuter.Location = New Point(313, 3)
         txtLightAngleOuter.Name = "txtLightAngleOuter"
-        txtLightAngleOuter.Size = New Size(604, 35)
+        txtLightAngleOuter.Size = New Size(304, 35)
         txtLightAngleOuter.TabIndex = 18
         txtLightAngleOuter.Text = "45"
         txtLightAngleOuter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1535,7 +1739,7 @@ Partial Class ControlPanel
         TableLayoutPanel11.Name = "TableLayoutPanel11"
         TableLayoutPanel11.RowCount = 1
         TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel11.Size = New Size(1219, 49)
+        TableLayoutPanel11.Size = New Size(620, 49)
         TableLayoutPanel11.TabIndex = 117
         ' 
         ' txtLightAttenuationA
@@ -1544,7 +1748,7 @@ Partial Class ControlPanel
         txtLightAttenuationA.ForeColor = SystemColors.ControlText
         txtLightAttenuationA.Location = New Point(3, 3)
         txtLightAttenuationA.Name = "txtLightAttenuationA"
-        txtLightAttenuationA.Size = New Size(400, 35)
+        txtLightAttenuationA.Size = New Size(200, 35)
         txtLightAttenuationA.TabIndex = 14
         txtLightAttenuationA.Text = "0"
         txtLightAttenuationA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1553,9 +1757,9 @@ Partial Class ControlPanel
         ' 
         txtLightAttenuationB.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightAttenuationB.ForeColor = SystemColors.ControlText
-        txtLightAttenuationB.Location = New Point(409, 3)
+        txtLightAttenuationB.Location = New Point(209, 3)
         txtLightAttenuationB.Name = "txtLightAttenuationB"
-        txtLightAttenuationB.Size = New Size(400, 35)
+        txtLightAttenuationB.Size = New Size(200, 35)
         txtLightAttenuationB.TabIndex = 15
         txtLightAttenuationB.Text = "0"
         txtLightAttenuationB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1564,9 +1768,9 @@ Partial Class ControlPanel
         ' 
         txtLightAttenuationC.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightAttenuationC.ForeColor = SystemColors.ControlText
-        txtLightAttenuationC.Location = New Point(815, 3)
+        txtLightAttenuationC.Location = New Point(415, 3)
         txtLightAttenuationC.Name = "txtLightAttenuationC"
-        txtLightAttenuationC.Size = New Size(401, 35)
+        txtLightAttenuationC.Size = New Size(202, 35)
         txtLightAttenuationC.TabIndex = 16
         txtLightAttenuationC.Text = "0"
         txtLightAttenuationC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1577,7 +1781,7 @@ Partial Class ControlPanel
         txtLightRange.ForeColor = SystemColors.ControlText
         txtLightRange.Location = New Point(325, 360)
         txtLightRange.Name = "txtLightRange"
-        txtLightRange.Size = New Size(1219, 35)
+        txtLightRange.Size = New Size(620, 35)
         txtLightRange.TabIndex = 13
         txtLightRange.Text = "45"
         txtLightRange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1590,7 +1794,7 @@ Partial Class ControlPanel
         tbLightAmbient.Location = New Point(325, 299)
         tbLightAmbient.Maximum = 100
         tbLightAmbient.Name = "tbLightAmbient"
-        tbLightAmbient.Size = New Size(1219, 90)
+        tbLightAmbient.Size = New Size(620, 90)
         tbLightAmbient.SmallChange = 15
         tbLightAmbient.TabIndex = 12
         tbLightAmbient.TickFrequency = 5
@@ -1611,7 +1815,7 @@ Partial Class ControlPanel
         TableLayoutPanel10.Name = "TableLayoutPanel10"
         TableLayoutPanel10.RowCount = 1
         TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel10.Size = New Size(1219, 47)
+        TableLayoutPanel10.Size = New Size(620, 47)
         TableLayoutPanel10.TabIndex = 116
         ' 
         ' txtLightDirectionX
@@ -1620,7 +1824,7 @@ Partial Class ControlPanel
         txtLightDirectionX.ForeColor = SystemColors.ControlText
         txtLightDirectionX.Location = New Point(3, 3)
         txtLightDirectionX.Name = "txtLightDirectionX"
-        txtLightDirectionX.Size = New Size(400, 35)
+        txtLightDirectionX.Size = New Size(200, 35)
         txtLightDirectionX.TabIndex = 7
         txtLightDirectionX.Text = "0"
         txtLightDirectionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1629,9 +1833,9 @@ Partial Class ControlPanel
         ' 
         txtLightDirectionY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightDirectionY.ForeColor = SystemColors.ControlText
-        txtLightDirectionY.Location = New Point(409, 3)
+        txtLightDirectionY.Location = New Point(209, 3)
         txtLightDirectionY.Name = "txtLightDirectionY"
-        txtLightDirectionY.Size = New Size(400, 35)
+        txtLightDirectionY.Size = New Size(200, 35)
         txtLightDirectionY.TabIndex = 8
         txtLightDirectionY.Text = "0"
         txtLightDirectionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1640,9 +1844,9 @@ Partial Class ControlPanel
         ' 
         txtLightDirectionZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightDirectionZ.ForeColor = SystemColors.ControlText
-        txtLightDirectionZ.Location = New Point(815, 3)
+        txtLightDirectionZ.Location = New Point(415, 3)
         txtLightDirectionZ.Name = "txtLightDirectionZ"
-        txtLightDirectionZ.Size = New Size(401, 35)
+        txtLightDirectionZ.Size = New Size(202, 35)
         txtLightDirectionZ.TabIndex = 9
         txtLightDirectionZ.Text = "0"
         txtLightDirectionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1661,7 +1865,7 @@ Partial Class ControlPanel
         TableLayoutPanel9.Name = "TableLayoutPanel9"
         TableLayoutPanel9.RowCount = 1
         TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel9.Size = New Size(1219, 47)
+        TableLayoutPanel9.Size = New Size(620, 47)
         TableLayoutPanel9.TabIndex = 115
         ' 
         ' txtLightPositionX
@@ -1670,7 +1874,7 @@ Partial Class ControlPanel
         txtLightPositionX.ForeColor = SystemColors.ControlText
         txtLightPositionX.Location = New Point(3, 3)
         txtLightPositionX.Name = "txtLightPositionX"
-        txtLightPositionX.Size = New Size(400, 35)
+        txtLightPositionX.Size = New Size(200, 35)
         txtLightPositionX.TabIndex = 4
         txtLightPositionX.Text = "0"
         txtLightPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1679,9 +1883,9 @@ Partial Class ControlPanel
         ' 
         txtLightPositionY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightPositionY.ForeColor = SystemColors.ControlText
-        txtLightPositionY.Location = New Point(409, 3)
+        txtLightPositionY.Location = New Point(209, 3)
         txtLightPositionY.Name = "txtLightPositionY"
-        txtLightPositionY.Size = New Size(400, 35)
+        txtLightPositionY.Size = New Size(200, 35)
         txtLightPositionY.TabIndex = 5
         txtLightPositionY.Text = "0"
         txtLightPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1690,9 +1894,9 @@ Partial Class ControlPanel
         ' 
         txtLightPositionZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtLightPositionZ.ForeColor = SystemColors.ControlText
-        txtLightPositionZ.Location = New Point(815, 3)
+        txtLightPositionZ.Location = New Point(415, 3)
         txtLightPositionZ.Name = "txtLightPositionZ"
-        txtLightPositionZ.Size = New Size(401, 35)
+        txtLightPositionZ.Size = New Size(202, 35)
         txtLightPositionZ.TabIndex = 6
         txtLightPositionZ.Text = "0"
         txtLightPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1707,7 +1911,7 @@ Partial Class ControlPanel
         plLightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         plLightColor.Location = New Point(325, 210)
         plLightColor.Name = "plLightColor"
-        plLightColor.Size = New Size(1219, 32)
+        plLightColor.Size = New Size(620, 32)
         plLightColor.TabIndex = 10
         plLightColor.UseVisualStyleBackColor = False
         ' 
@@ -1719,7 +1923,7 @@ Partial Class ControlPanel
         cbLightType.Items.AddRange(New Object() {"Directional", "Point", "Spot"})
         cbLightType.Location = New Point(325, 61)
         cbLightType.Name = "cbLightType"
-        cbLightType.Size = New Size(1219, 35)
+        cbLightType.Size = New Size(620, 35)
         cbLightType.TabIndex = 3
         ' 
         ' tbLightHighlight
@@ -1730,7 +1934,7 @@ Partial Class ControlPanel
         tbLightHighlight.Location = New Point(325, 257)
         tbLightHighlight.Maximum = 255
         tbLightHighlight.Name = "tbLightHighlight"
-        tbLightHighlight.Size = New Size(1219, 90)
+        tbLightHighlight.Size = New Size(620, 90)
         tbLightHighlight.SmallChange = 5
         tbLightHighlight.TabIndex = 11
         tbLightHighlight.TickFrequency = 5
@@ -1755,7 +1959,7 @@ Partial Class ControlPanel
         lblLightAttenuation.AutoEllipsis = True
         lblLightAttenuation.ForeColor = SystemColors.ControlText
         lblLightAttenuation.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblLightAttenuation.Location = New Point(12, 406)
+        lblLightAttenuation.Location = New Point(12, 408)
         lblLightAttenuation.Name = "lblLightAttenuation"
         lblLightAttenuation.Size = New Size(307, 35)
         lblLightAttenuation.TabIndex = 114
@@ -1822,7 +2026,7 @@ Partial Class ControlPanel
         txtLightName.ForeColor = SystemColors.ControlText
         txtLightName.Location = New Point(325, 12)
         txtLightName.Name = "txtLightName"
-        txtLightName.Size = New Size(1219, 35)
+        txtLightName.Size = New Size(620, 35)
         txtLightName.TabIndex = 2
         txtLightName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         ' 
@@ -1832,7 +2036,7 @@ Partial Class ControlPanel
         txtLightFalloff.ForeColor = SystemColors.ControlText
         txtLightFalloff.Location = New Point(325, 506)
         txtLightFalloff.Name = "txtLightFalloff"
-        txtLightFalloff.Size = New Size(1219, 35)
+        txtLightFalloff.Size = New Size(620, 35)
         txtLightFalloff.TabIndex = 19
         txtLightFalloff.Text = "1"
         txtLightFalloff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1908,10 +2112,10 @@ Partial Class ControlPanel
         listLights.Font = New Font("Arial", 9F)
         listLights.ForeColor = SystemColors.ControlText
         listLights.ItemHeight = 27
-        listLights.Location = New Point(6, 75)
+        listLights.Location = New Point(12, 75)
         listLights.MinimumSize = New Size(0, 120)
         listLights.Name = "listLights"
-        listLights.Size = New Size(1538, 166)
+        listLights.Size = New Size(933, 166)
         listLights.TabIndex = 1
         ' 
         ' chLightsEnable
@@ -1923,7 +2127,7 @@ Partial Class ControlPanel
         chLightsEnable.FlatStyle = System.Windows.Forms.FlatStyle.System
         chLightsEnable.ForeColor = SystemColors.ControlText
         chLightsEnable.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chLightsEnable.Location = New Point(6, 34)
+        chLightsEnable.Location = New Point(12, 34)
         chLightsEnable.Name = "chLightsEnable"
         chLightsEnable.Size = New Size(347, 35)
         chLightsEnable.TabIndex = 0
@@ -1939,9 +2143,9 @@ Partial Class ControlPanel
         cmdLightAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
         cmdLightAdd.ForeColor = SystemColors.ControlText
         cmdLightAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdLightAdd.Location = New Point(6, 899)
+        cmdLightAdd.Location = New Point(3, 1188)
         cmdLightAdd.Name = "cmdLightAdd"
-        cmdLightAdd.Size = New Size(1560, 62)
+        cmdLightAdd.Size = New Size(967, 62)
         cmdLightAdd.TabIndex = 0
         cmdLightAdd.Text = "Add Light"
         cmdLightAdd.UseVisualStyleBackColor = False
@@ -1951,17 +2155,17 @@ Partial Class ControlPanel
         TabDisplay.BackColor = SystemColors.Control
         TabDisplay.Controls.Add(spRendering)
         TabDisplay.Controls.Add(CmdSaveOut)
-        TabDisplay.Location = New Point(4, 44)
+        TabDisplay.Location = New Point(4, 39)
         TabDisplay.Name = "TabDisplay"
-        TabDisplay.Size = New Size(1572, 1037)
+        TabDisplay.Size = New Size(973, 1321)
         TabDisplay.TabIndex = 6
         TabDisplay.Text = "Rendering"
         TabDisplay.UseVisualStyleBackColor = True
         ' 
         ' spRendering
         ' 
-        spRendering.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        spRendering.Location = New Point(3, 3)
+        spRendering.Dock = System.Windows.Forms.DockStyle.Fill
+        spRendering.Location = New Point(0, 0)
         spRendering.Name = "spRendering"
         spRendering.Orientation = System.Windows.Forms.Orientation.Horizontal
         ' 
@@ -1972,8 +2176,8 @@ Partial Class ControlPanel
         ' spRendering.Panel2
         ' 
         spRendering.Panel2.Controls.Add(gbCamera)
-        spRendering.Size = New Size(1566, 973)
-        spRendering.SplitterDistance = 573
+        spRendering.Size = New Size(973, 1259)
+        spRendering.SplitterDistance = 740
         spRendering.TabIndex = 92
         ' 
         ' gbRendering
@@ -1982,7 +2186,7 @@ Partial Class ControlPanel
         gbRendering.Controls.Add(pRender)
         gbRendering.Location = New Point(3, 3)
         gbRendering.Name = "gbRendering"
-        gbRendering.Size = New Size(1560, 565)
+        gbRendering.Size = New Size(967, 732)
         gbRendering.TabIndex = 90
         gbRendering.TabStop = False
         gbRendering.Text = "Render"
@@ -2013,7 +2217,7 @@ Partial Class ControlPanel
         pRender.Controls.Add(cbRender)
         pRender.Location = New Point(6, 29)
         pRender.Name = "pRender"
-        pRender.Size = New Size(1548, 528)
+        pRender.Size = New Size(955, 695)
         pRender.TabIndex = 0
         ' 
         ' chVSync
@@ -2022,7 +2226,7 @@ Partial Class ControlPanel
         chVSync.FlatStyle = System.Windows.Forms.FlatStyle.System
         chVSync.ForeColor = SystemColors.ControlText
         chVSync.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chVSync.Location = New Point(6, 425)
+        chVSync.Location = New Point(9, 442)
         chVSync.Name = "chVSync"
         chVSync.Size = New Size(548, 35)
         chVSync.TabIndex = 10
@@ -2042,7 +2246,7 @@ Partial Class ControlPanel
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 1
         TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel3.Size = New Size(1166, 44)
+        TableLayoutPanel3.Size = New Size(573, 44)
         TableLayoutPanel3.TabIndex = 246
         ' 
         ' txtWindowX
@@ -2051,7 +2255,7 @@ Partial Class ControlPanel
         txtWindowX.ForeColor = SystemColors.ControlText
         txtWindowX.Location = New Point(3, 3)
         txtWindowX.Name = "txtWindowX"
-        txtWindowX.Size = New Size(577, 35)
+        txtWindowX.Size = New Size(280, 35)
         txtWindowX.TabIndex = 2
         txtWindowX.Text = "500"
         txtWindowX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2060,9 +2264,9 @@ Partial Class ControlPanel
         ' 
         txtWindowY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtWindowY.ForeColor = SystemColors.ControlText
-        txtWindowY.Location = New Point(586, 3)
+        txtWindowY.Location = New Point(289, 3)
         txtWindowY.Name = "txtWindowY"
-        txtWindowY.Size = New Size(577, 35)
+        txtWindowY.Size = New Size(281, 35)
         txtWindowY.TabIndex = 3
         txtWindowY.Text = "500"
         txtWindowY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2072,9 +2276,9 @@ Partial Class ControlPanel
         Label45.AutoEllipsis = True
         Label45.ForeColor = SystemColors.ControlText
         Label45.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label45.Location = New Point(6, 14)
+        Label45.Location = New Point(9, 13)
         Label45.Name = "Label45"
-        Label45.Size = New Size(348, 35)
+        Label45.Size = New Size(345, 35)
         Label45.TabIndex = 126
         Label45.Text = "Render Mode: "
         Label45.TextAlign = ContentAlignment.MiddleLeft
@@ -2085,7 +2289,7 @@ Partial Class ControlPanel
         Label3.AutoEllipsis = True
         Label3.ForeColor = SystemColors.ControlText
         Label3.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label3.Location = New Point(6, 59)
+        Label3.Location = New Point(9, 58)
         Label3.Name = "Label3"
         Label3.Size = New Size(348, 35)
         Label3.TabIndex = 245
@@ -2098,7 +2302,7 @@ Partial Class ControlPanel
         Label30.AutoEllipsis = True
         Label30.ForeColor = SystemColors.ControlText
         Label30.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label30.Location = New Point(6, 346)
+        Label30.Location = New Point(9, 345)
         Label30.Name = "Label30"
         Label30.Size = New Size(305, 35)
         Label30.TabIndex = 117
@@ -2116,7 +2320,7 @@ Partial Class ControlPanel
         tbPolys.Maximum = 100
         tbPolys.Minimum = 2
         tbPolys.Name = "tbPolys"
-        tbPolys.Size = New Size(1163, 90)
+        tbPolys.Size = New Size(570, 90)
         tbPolys.TabIndex = 8
         tbPolys.TickFrequency = 5
         tbPolys.TickStyle = System.Windows.Forms.TickStyle.None
@@ -2127,7 +2331,7 @@ Partial Class ControlPanel
         Label12.AutoEllipsis = True
         Label12.ForeColor = SystemColors.ControlText
         Label12.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label12.Location = New Point(6, 103)
+        Label12.Location = New Point(9, 102)
         Label12.Name = "Label12"
         Label12.Size = New Size(348, 35)
         Label12.TabIndex = 115
@@ -2143,7 +2347,7 @@ Partial Class ControlPanel
         txtRenderThreads.Location = New Point(376, 59)
         txtRenderThreads.MaxLength = 4
         txtRenderThreads.Name = "txtRenderThreads"
-        txtRenderThreads.Size = New Size(1166, 35)
+        txtRenderThreads.Size = New Size(573, 35)
         txtRenderThreads.TabIndex = 1
         txtRenderThreads.Text = "1"
         txtRenderThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2156,7 +2360,7 @@ Partial Class ControlPanel
         cbShading.Items.AddRange(New Object() {"Flat", "Gouraud"})
         cbShading.Location = New Point(376, 298)
         cbShading.Name = "cbShading"
-        cbShading.Size = New Size(1166, 35)
+        cbShading.Size = New Size(573, 35)
         cbShading.TabIndex = 7
         ' 
         ' Label18
@@ -2164,7 +2368,7 @@ Partial Class ControlPanel
         Label18.AutoEllipsis = True
         Label18.ForeColor = SystemColors.ControlText
         Label18.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label18.Location = New Point(6, 156)
+        Label18.Location = New Point(9, 155)
         Label18.Name = "Label18"
         Label18.Size = New Size(348, 35)
         Label18.TabIndex = 116
@@ -2177,7 +2381,7 @@ Partial Class ControlPanel
         Label46.AutoEllipsis = True
         Label46.ForeColor = SystemColors.ControlText
         Label46.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label46.Location = New Point(6, 205)
+        Label46.Location = New Point(9, 204)
         Label46.Name = "Label46"
         Label46.Size = New Size(348, 35)
         Label46.TabIndex = 129
@@ -2190,7 +2394,7 @@ Partial Class ControlPanel
         Label43.AutoEllipsis = True
         Label43.ForeColor = SystemColors.ControlText
         Label43.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label43.Location = New Point(6, 297)
+        Label43.Location = New Point(9, 296)
         Label43.Name = "Label43"
         Label43.Size = New Size(348, 35)
         Label43.TabIndex = 120
@@ -2203,7 +2407,7 @@ Partial Class ControlPanel
         Label13.AutoEllipsis = True
         Label13.ForeColor = SystemColors.ControlText
         Label13.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label13.Location = New Point(6, 251)
+        Label13.Location = New Point(9, 250)
         Label13.Name = "Label13"
         Label13.Size = New Size(348, 35)
         Label13.TabIndex = 114
@@ -2217,7 +2421,7 @@ Partial Class ControlPanel
         txtHFoV.ForeColor = SystemColors.ControlText
         txtHFoV.Location = New Point(376, 157)
         txtHFoV.Name = "txtHFoV"
-        txtHFoV.Size = New Size(1166, 35)
+        txtHFoV.Size = New Size(573, 35)
         txtHFoV.TabIndex = 4
         txtHFoV.Text = "45"
         txtHFoV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2228,7 +2432,7 @@ Partial Class ControlPanel
         txtVFoV.ForeColor = SystemColors.ControlText
         txtVFoV.Location = New Point(376, 206)
         txtVFoV.Name = "txtVFoV"
-        txtVFoV.Size = New Size(1166, 35)
+        txtVFoV.Size = New Size(573, 35)
         txtVFoV.TabIndex = 5
         txtVFoV.Text = "45"
         txtVFoV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2237,9 +2441,9 @@ Partial Class ControlPanel
         ' 
         txtMaxFPS.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtMaxFPS.ForeColor = SystemColors.ControlText
-        txtMaxFPS.Location = New Point(376, 477)
+        txtMaxFPS.Location = New Point(376, 495)
         txtMaxFPS.Name = "txtMaxFPS"
-        txtMaxFPS.Size = New Size(1163, 35)
+        txtMaxFPS.Size = New Size(570, 35)
         txtMaxFPS.TabIndex = 11
         txtMaxFPS.Text = "45"
         txtMaxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2250,7 +2454,7 @@ Partial Class ControlPanel
         chTrace.FlatStyle = System.Windows.Forms.FlatStyle.System
         chTrace.ForeColor = SystemColors.ControlText
         chTrace.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chTrace.Location = New Point(6, 384)
+        chTrace.Location = New Point(9, 391)
         chTrace.Name = "chTrace"
         chTrace.Size = New Size(345, 35)
         chTrace.TabIndex = 9
@@ -2263,7 +2467,7 @@ Partial Class ControlPanel
         Label44.AutoEllipsis = True
         Label44.ForeColor = SystemColors.ControlText
         Label44.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label44.Location = New Point(37, 476)
+        Label44.Location = New Point(40, 493)
         Label44.Name = "Label44"
         Label44.Size = New Size(322, 35)
         Label44.TabIndex = 124
@@ -2281,7 +2485,7 @@ Partial Class ControlPanel
         plRenderBackColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         plRenderBackColor.Location = New Point(376, 252)
         plRenderBackColor.Name = "plRenderBackColor"
-        plRenderBackColor.Size = New Size(1163, 32)
+        plRenderBackColor.Size = New Size(570, 32)
         plRenderBackColor.TabIndex = 6
         plRenderBackColor.UseVisualStyleBackColor = False
         ' 
@@ -2293,7 +2497,7 @@ Partial Class ControlPanel
         cbRender.Items.AddRange(New Object() {"DirectX 9 (Hardware)", "DirectX 9 (Software)", "Raytracing (Software)"})
         cbRender.Location = New Point(376, 14)
         cbRender.Name = "cbRender"
-        cbRender.Size = New Size(1166, 35)
+        cbRender.Size = New Size(573, 35)
         cbRender.TabIndex = 0
         ' 
         ' gbCamera
@@ -2302,7 +2506,7 @@ Partial Class ControlPanel
         gbCamera.Controls.Add(pCamera)
         gbCamera.Location = New Point(3, 3)
         gbCamera.Name = "gbCamera"
-        gbCamera.Size = New Size(1560, 387)
+        gbCamera.Size = New Size(967, 506)
         gbCamera.TabIndex = 91
         gbCamera.TabStop = False
         gbCamera.Text = "Camera"
@@ -2322,7 +2526,7 @@ Partial Class ControlPanel
         pCamera.Controls.Add(Label16)
         pCamera.Location = New Point(6, 33)
         pCamera.Name = "pCamera"
-        pCamera.Size = New Size(1548, 345)
+        pCamera.Size = New Size(955, 464)
         pCamera.TabIndex = 0
         ' 
         ' TableLayoutPanel7
@@ -2339,7 +2543,7 @@ Partial Class ControlPanel
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 1
         TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel7.Size = New Size(1169, 47)
+        TableLayoutPanel7.Size = New Size(576, 47)
         TableLayoutPanel7.TabIndex = 106
         ' 
         ' txtCOrientX
@@ -2349,7 +2553,7 @@ Partial Class ControlPanel
         txtCOrientX.ForeColor = SystemColors.ControlText
         txtCOrientX.Location = New Point(3, 3)
         txtCOrientX.Name = "txtCOrientX"
-        txtCOrientX.Size = New Size(383, 35)
+        txtCOrientX.Size = New Size(186, 35)
         txtCOrientX.TabIndex = 6
         txtCOrientX.Text = "0"
         txtCOrientX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2359,9 +2563,9 @@ Partial Class ControlPanel
         txtCOrientY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtCOrientY.Enabled = False
         txtCOrientY.ForeColor = SystemColors.ControlText
-        txtCOrientY.Location = New Point(392, 3)
+        txtCOrientY.Location = New Point(195, 3)
         txtCOrientY.Name = "txtCOrientY"
-        txtCOrientY.Size = New Size(383, 35)
+        txtCOrientY.Size = New Size(186, 35)
         txtCOrientY.TabIndex = 7
         txtCOrientY.Text = "1"
         txtCOrientY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2371,9 +2575,9 @@ Partial Class ControlPanel
         txtCOrientZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtCOrientZ.Enabled = False
         txtCOrientZ.ForeColor = SystemColors.ControlText
-        txtCOrientZ.Location = New Point(781, 3)
+        txtCOrientZ.Location = New Point(387, 3)
         txtCOrientZ.Name = "txtCOrientZ"
-        txtCOrientZ.Size = New Size(385, 35)
+        txtCOrientZ.Size = New Size(186, 35)
         txtCOrientZ.TabIndex = 8
         txtCOrientZ.Text = "0"
         txtCOrientZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2392,7 +2596,7 @@ Partial Class ControlPanel
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 1
         TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel5.Size = New Size(1169, 43)
+        TableLayoutPanel5.Size = New Size(576, 43)
         TableLayoutPanel5.TabIndex = 105
         ' 
         ' txtCTargetX
@@ -2402,7 +2606,7 @@ Partial Class ControlPanel
         txtCTargetX.ForeColor = SystemColors.ControlText
         txtCTargetX.Location = New Point(3, 3)
         txtCTargetX.Name = "txtCTargetX"
-        txtCTargetX.Size = New Size(383, 35)
+        txtCTargetX.Size = New Size(186, 35)
         txtCTargetX.TabIndex = 3
         txtCTargetX.Text = "0"
         txtCTargetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2412,9 +2616,9 @@ Partial Class ControlPanel
         txtCTargetY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtCTargetY.Enabled = False
         txtCTargetY.ForeColor = SystemColors.ControlText
-        txtCTargetY.Location = New Point(392, 3)
+        txtCTargetY.Location = New Point(195, 3)
         txtCTargetY.Name = "txtCTargetY"
-        txtCTargetY.Size = New Size(383, 35)
+        txtCTargetY.Size = New Size(186, 35)
         txtCTargetY.TabIndex = 4
         txtCTargetY.Text = "0"
         txtCTargetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2424,9 +2628,9 @@ Partial Class ControlPanel
         txtCTargetZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtCTargetZ.Enabled = False
         txtCTargetZ.ForeColor = SystemColors.ControlText
-        txtCTargetZ.Location = New Point(781, 3)
+        txtCTargetZ.Location = New Point(387, 3)
         txtCTargetZ.Name = "txtCTargetZ"
-        txtCTargetZ.Size = New Size(385, 35)
+        txtCTargetZ.Size = New Size(186, 35)
         txtCTargetZ.TabIndex = 5
         txtCTargetZ.Text = "0"
         txtCTargetZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2445,7 +2649,7 @@ Partial Class ControlPanel
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 1
         TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel4.Size = New Size(1169, 45)
+        TableLayoutPanel4.Size = New Size(576, 45)
         TableLayoutPanel4.TabIndex = 104
         ' 
         ' txtCPosX
@@ -2455,7 +2659,7 @@ Partial Class ControlPanel
         txtCPosX.ForeColor = SystemColors.ControlText
         txtCPosX.Location = New Point(3, 3)
         txtCPosX.Name = "txtCPosX"
-        txtCPosX.Size = New Size(383, 35)
+        txtCPosX.Size = New Size(186, 35)
         txtCPosX.TabIndex = 0
         txtCPosX.Text = "0"
         txtCPosX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2465,9 +2669,9 @@ Partial Class ControlPanel
         txtCPosY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtCPosY.Enabled = False
         txtCPosY.ForeColor = SystemColors.ControlText
-        txtCPosY.Location = New Point(392, 3)
+        txtCPosY.Location = New Point(195, 3)
         txtCPosY.Name = "txtCPosY"
-        txtCPosY.Size = New Size(383, 35)
+        txtCPosY.Size = New Size(186, 35)
         txtCPosY.TabIndex = 1
         txtCPosY.Text = "0"
         txtCPosY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2477,9 +2681,9 @@ Partial Class ControlPanel
         txtCPosZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtCPosZ.Enabled = False
         txtCPosZ.ForeColor = SystemColors.ControlText
-        txtCPosZ.Location = New Point(781, 3)
+        txtCPosZ.Location = New Point(387, 3)
         txtCPosZ.Name = "txtCPosZ"
-        txtCPosZ.Size = New Size(385, 35)
+        txtCPosZ.Size = New Size(186, 35)
         txtCPosZ.TabIndex = 2
         txtCPosZ.Text = "-10"
         txtCPosZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2503,7 +2707,7 @@ Partial Class ControlPanel
         chCamera.FlatStyle = System.Windows.Forms.FlatStyle.System
         chCamera.ForeColor = SystemColors.ControlText
         chCamera.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chCamera.Location = New Point(7, 14)
+        chCamera.Location = New Point(9, 18)
         chCamera.Name = "chCamera"
         chCamera.Size = New Size(406, 35)
         chCamera.TabIndex = 42
@@ -2521,7 +2725,7 @@ Partial Class ControlPanel
         tbCameraSpeed.Maximum = 40
         tbCameraSpeed.Minimum = 10
         tbCameraSpeed.Name = "tbCameraSpeed"
-        tbCameraSpeed.Size = New Size(1166, 90)
+        tbCameraSpeed.Size = New Size(573, 90)
         tbCameraSpeed.TabIndex = 9
         tbCameraSpeed.TickFrequency = 5
         tbCameraSpeed.TickStyle = System.Windows.Forms.TickStyle.None
@@ -2532,9 +2736,9 @@ Partial Class ControlPanel
         Label17.AutoEllipsis = True
         Label17.ForeColor = SystemColors.ControlText
         Label17.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label17.Location = New Point(37, 162)
+        Label17.Location = New Point(40, 164)
         Label17.Name = "Label17"
-        Label17.Size = New Size(376, 35)
+        Label17.Size = New Size(348, 35)
         Label17.TabIndex = 102
         Label17.Text = "Camera Up Orientation X,Y,Z: "
         Label17.TextAlign = ContentAlignment.MiddleLeft
@@ -2547,7 +2751,7 @@ Partial Class ControlPanel
         Label11.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Label11.Location = New Point(37, 63)
         Label11.Name = "Label11"
-        Label11.Size = New Size(333, 35)
+        Label11.Size = New Size(325, 35)
         Label11.TabIndex = 100
         Label11.Text = "Camera Position X,Y,Z (m): "
         Label11.TextAlign = ContentAlignment.MiddleLeft
@@ -2558,7 +2762,7 @@ Partial Class ControlPanel
         Label16.AutoEllipsis = True
         Label16.ForeColor = SystemColors.ControlText
         Label16.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label16.Location = New Point(37, 110)
+        Label16.Location = New Point(40, 113)
         Label16.Name = "Label16"
         Label16.Size = New Size(317, 35)
         Label16.TabIndex = 101
@@ -2568,15 +2772,15 @@ Partial Class ControlPanel
         ' 
         ' CmdSaveOut
         ' 
-        CmdSaveOut.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        CmdSaveOut.Dock = System.Windows.Forms.DockStyle.Bottom
         CmdSaveOut.Enabled = False
         CmdSaveOut.FlatAppearance.BorderColor = Color.Black
         CmdSaveOut.FlatStyle = System.Windows.Forms.FlatStyle.System
         CmdSaveOut.ForeColor = SystemColors.ControlText
         CmdSaveOut.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        CmdSaveOut.Location = New Point(5, 972)
+        CmdSaveOut.Location = New Point(0, 1259)
         CmdSaveOut.Name = "CmdSaveOut"
-        CmdSaveOut.Size = New Size(1561, 62)
+        CmdSaveOut.Size = New Size(973, 62)
         CmdSaveOut.TabIndex = 0
         CmdSaveOut.Text = "Save Image"
         CmdSaveOut.UseVisualStyleBackColor = True
@@ -2585,17 +2789,17 @@ Partial Class ControlPanel
         ' 
         TabForces.BackColor = SystemColors.Control
         TabForces.Controls.Add(spForces)
-        TabForces.Location = New Point(4, 44)
+        TabForces.Location = New Point(4, 39)
         TabForces.Name = "TabForces"
-        TabForces.Size = New Size(1572, 1037)
+        TabForces.Size = New Size(973, 1321)
         TabForces.TabIndex = 3
         TabForces.Text = "Forces & Collisions"
         TabForces.UseVisualStyleBackColor = True
         ' 
         ' spForces
         ' 
-        spForces.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        spForces.Location = New Point(3, 3)
+        spForces.Dock = System.Windows.Forms.DockStyle.Fill
+        spForces.Location = New Point(0, 0)
         spForces.Name = "spForces"
         spForces.Orientation = System.Windows.Forms.Orientation.Horizontal
         ' 
@@ -2606,8 +2810,8 @@ Partial Class ControlPanel
         ' spForces.Panel2
         ' 
         spForces.Panel2.Controls.Add(gbCollisions)
-        spForces.Size = New Size(1566, 1031)
-        spForces.SplitterDistance = 513
+        spForces.Size = New Size(973, 1321)
+        spForces.SplitterDistance = 655
         spForces.TabIndex = 80
         ' 
         ' gbForces
@@ -2616,7 +2820,7 @@ Partial Class ControlPanel
         gbForces.Controls.Add(pForces)
         gbForces.Location = New Point(3, 3)
         gbForces.Name = "gbForces"
-        gbForces.Size = New Size(1560, 504)
+        gbForces.Size = New Size(967, 646)
         gbForces.TabIndex = 0
         gbForces.TabStop = False
         gbForces.Text = "Forces"
@@ -2642,7 +2846,7 @@ Partial Class ControlPanel
         pForces.Controls.Add(chGravity)
         pForces.Location = New Point(6, 34)
         pForces.Name = "pForces"
-        pForces.Size = New Size(1548, 452)
+        pForces.Size = New Size(955, 594)
         pForces.TabIndex = 1
         ' 
         ' tlpAccelForce
@@ -2659,7 +2863,7 @@ Partial Class ControlPanel
         tlpAccelForce.Name = "tlpAccelForce"
         tlpAccelForce.RowCount = 1
         tlpAccelForce.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        tlpAccelForce.Size = New Size(1143, 45)
+        tlpAccelForce.Size = New Size(550, 45)
         tlpAccelForce.TabIndex = 70
         ' 
         ' txtFieldX
@@ -2669,7 +2873,7 @@ Partial Class ControlPanel
         txtFieldX.ForeColor = SystemColors.ControlText
         txtFieldX.Location = New Point(3, 3)
         txtFieldX.Name = "txtFieldX"
-        txtFieldX.Size = New Size(375, 35)
+        txtFieldX.Size = New Size(177, 35)
         txtFieldX.TabIndex = 5
         txtFieldX.Text = "0"
         txtFieldX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2679,9 +2883,9 @@ Partial Class ControlPanel
         txtFieldY.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtFieldY.Enabled = False
         txtFieldY.ForeColor = SystemColors.ControlText
-        txtFieldY.Location = New Point(384, 3)
+        txtFieldY.Location = New Point(186, 3)
         txtFieldY.Name = "txtFieldY"
-        txtFieldY.Size = New Size(375, 35)
+        txtFieldY.Size = New Size(177, 35)
         txtFieldY.TabIndex = 6
         txtFieldY.Text = "0"
         txtFieldY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2691,9 +2895,9 @@ Partial Class ControlPanel
         txtFieldZ.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtFieldZ.Enabled = False
         txtFieldZ.ForeColor = SystemColors.ControlText
-        txtFieldZ.Location = New Point(765, 3)
+        txtFieldZ.Location = New Point(369, 3)
         txtFieldZ.Name = "txtFieldZ"
-        txtFieldZ.Size = New Size(375, 35)
+        txtFieldZ.Size = New Size(178, 35)
         txtFieldZ.TabIndex = 7
         txtFieldZ.Text = "0"
         txtFieldZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2705,7 +2909,7 @@ Partial Class ControlPanel
         txtPermittivity.ForeColor = SystemColors.ControlText
         txtPermittivity.Location = New Point(402, 133)
         txtPermittivity.Name = "txtPermittivity"
-        txtPermittivity.Size = New Size(1143, 35)
+        txtPermittivity.Size = New Size(550, 35)
         txtPermittivity.TabIndex = 3
         txtPermittivity.Text = "1.0006"
         txtPermittivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2717,7 +2921,7 @@ Partial Class ControlPanel
         chForces.FlatStyle = System.Windows.Forms.FlatStyle.System
         chForces.ForeColor = SystemColors.ControlText
         chForces.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chForces.Location = New Point(3, 13)
+        chForces.Location = New Point(19, 13)
         chForces.Name = "chForces"
         chForces.Size = New Size(347, 35)
         chForces.TabIndex = 0
@@ -2730,9 +2934,9 @@ Partial Class ControlPanel
         Label48.AutoEllipsis = True
         Label48.ForeColor = SystemColors.ControlText
         Label48.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label48.Location = New Point(33, 133)
+        Label48.Location = New Point(49, 133)
         Label48.Name = "Label48"
-        Label48.Size = New Size(363, 36)
+        Label48.Size = New Size(347, 36)
         Label48.TabIndex = 95
         Label48.Text = "Relative Permittivity of Medium:"
         Label48.TextAlign = ContentAlignment.MiddleLeft
@@ -2743,9 +2947,9 @@ Partial Class ControlPanel
         Label26.AutoEllipsis = True
         Label26.ForeColor = SystemColors.ControlText
         Label26.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label26.Location = New Point(33, 297)
+        Label26.Location = New Point(49, 297)
         Label26.Name = "Label26"
-        Label26.Size = New Size(363, 35)
+        Label26.Size = New Size(347, 35)
         Label26.TabIndex = 90
         Label26.Text = "Fluid Density (kg/m^3):"
         Label26.TextAlign = ContentAlignment.MiddleLeft
@@ -2758,7 +2962,7 @@ Partial Class ControlPanel
         txtFluidViscosity.ForeColor = SystemColors.ControlText
         txtFluidViscosity.Location = New Point(402, 339)
         txtFluidViscosity.Name = "txtFluidViscosity"
-        txtFluidViscosity.Size = New Size(1143, 35)
+        txtFluidViscosity.Size = New Size(550, 35)
         txtFluidViscosity.TabIndex = 10
         txtFluidViscosity.Text = "1.78E-5"
         txtFluidViscosity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2768,9 +2972,9 @@ Partial Class ControlPanel
         Label28.AutoEllipsis = True
         Label28.ForeColor = SystemColors.ControlText
         Label28.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label28.Location = New Point(33, 380)
+        Label28.Location = New Point(49, 380)
         Label28.Name = "Label28"
-        Label28.Size = New Size(363, 35)
+        Label28.Size = New Size(347, 35)
         Label28.TabIndex = 91
         Label28.Text = "Drag Coefficient:"
         Label28.TextAlign = ContentAlignment.MiddleLeft
@@ -2781,9 +2985,9 @@ Partial Class ControlPanel
         Label29.AutoEllipsis = True
         Label29.ForeColor = SystemColors.ControlText
         Label29.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label29.Location = New Point(33, 339)
+        Label29.Location = New Point(49, 339)
         Label29.Name = "Label29"
-        Label29.Size = New Size(363, 35)
+        Label29.Size = New Size(347, 35)
         Label29.TabIndex = 93
         Label29.Text = "Fluid Viscosity (kg/ms):"
         Label29.TextAlign = ContentAlignment.MiddleLeft
@@ -2796,7 +3000,7 @@ Partial Class ControlPanel
         chDrag.FlatStyle = System.Windows.Forms.FlatStyle.System
         chDrag.ForeColor = SystemColors.ControlText
         chDrag.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chDrag.Location = New Point(3, 259)
+        chDrag.Location = New Point(19, 259)
         chDrag.Name = "chDrag"
         chDrag.Size = New Size(262, 35)
         chDrag.TabIndex = 8
@@ -2811,7 +3015,7 @@ Partial Class ControlPanel
         txtDragCoeff.ForeColor = SystemColors.ControlText
         txtDragCoeff.Location = New Point(402, 380)
         txtDragCoeff.Name = "txtDragCoeff"
-        txtDragCoeff.Size = New Size(1143, 35)
+        txtDragCoeff.Size = New Size(550, 35)
         txtDragCoeff.TabIndex = 11
         txtDragCoeff.Text = "0.1"
         txtDragCoeff.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2821,9 +3025,9 @@ Partial Class ControlPanel
         Label22.AutoEllipsis = True
         Label22.ForeColor = SystemColors.ControlText
         Label22.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label22.Location = New Point(33, 216)
+        Label22.Location = New Point(49, 216)
         Label22.Name = "Label22"
-        Label22.Size = New Size(363, 35)
+        Label22.Size = New Size(347, 35)
         Label22.TabIndex = 89
         Label22.Text = "Acceleration (m/s^2) X,Y,Z:"
         Label22.TextAlign = ContentAlignment.MiddleLeft
@@ -2836,7 +3040,7 @@ Partial Class ControlPanel
         txtFluidDensity.ForeColor = SystemColors.ControlText
         txtFluidDensity.Location = New Point(402, 298)
         txtFluidDensity.Name = "txtFluidDensity"
-        txtFluidDensity.Size = New Size(1143, 35)
+        txtFluidDensity.Size = New Size(550, 35)
         txtFluidDensity.TabIndex = 9
         txtFluidDensity.Text = "1.225"
         txtFluidDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2848,7 +3052,7 @@ Partial Class ControlPanel
         chField.FlatStyle = System.Windows.Forms.FlatStyle.System
         chField.ForeColor = SystemColors.ControlText
         chField.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chField.Location = New Point(3, 178)
+        chField.Location = New Point(19, 178)
         chField.Name = "chField"
         chField.Size = New Size(347, 35)
         chField.TabIndex = 4
@@ -2864,7 +3068,7 @@ Partial Class ControlPanel
         chElectrostatic.Font = New Font("Arial", 9F)
         chElectrostatic.ForeColor = SystemColors.ControlText
         chElectrostatic.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chElectrostatic.Location = New Point(3, 95)
+        chElectrostatic.Location = New Point(19, 95)
         chElectrostatic.Name = "chElectrostatic"
         chElectrostatic.Size = New Size(347, 35)
         chElectrostatic.TabIndex = 2
@@ -2879,7 +3083,7 @@ Partial Class ControlPanel
         chGravity.FlatStyle = System.Windows.Forms.FlatStyle.System
         chGravity.ForeColor = SystemColors.ControlText
         chGravity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chGravity.Location = New Point(3, 54)
+        chGravity.Location = New Point(19, 54)
         chGravity.Name = "chGravity"
         chGravity.Size = New Size(347, 35)
         chGravity.TabIndex = 1
@@ -2893,7 +3097,7 @@ Partial Class ControlPanel
         gbCollisions.Controls.Add(pCollisions)
         gbCollisions.Location = New Point(3, 3)
         gbCollisions.Name = "gbCollisions"
-        gbCollisions.Size = New Size(1560, 506)
+        gbCollisions.Size = New Size(967, 654)
         gbCollisions.TabIndex = 79
         gbCollisions.TabStop = False
         gbCollisions.Text = "Collisions"
@@ -2913,7 +3117,7 @@ Partial Class ControlPanel
         pCollisions.Controls.Add(Label25)
         pCollisions.Location = New Point(6, 34)
         pCollisions.Name = "pCollisions"
-        pCollisions.Size = New Size(1548, 464)
+        pCollisions.Size = New Size(955, 612)
         pCollisions.TabIndex = 80
         ' 
         ' TableLayoutPanel2
@@ -2930,7 +3134,7 @@ Partial Class ControlPanel
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 1
         TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel2.Size = New Size(1143, 52)
+        TableLayoutPanel2.Size = New Size(550, 52)
         TableLayoutPanel2.TabIndex = 72
         ' 
         ' txtAddMin
@@ -2940,7 +3144,7 @@ Partial Class ControlPanel
         txtAddMin.ForeColor = SystemColors.ControlText
         txtAddMin.Location = New Point(3, 3)
         txtAddMin.Name = "txtAddMin"
-        txtAddMin.Size = New Size(375, 35)
+        txtAddMin.Size = New Size(177, 35)
         txtAddMin.TabIndex = 7
         txtAddMin.Text = "2"
         txtAddMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2950,9 +3154,9 @@ Partial Class ControlPanel
         txtAddAvg.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtAddAvg.Enabled = False
         txtAddAvg.ForeColor = SystemColors.ControlText
-        txtAddAvg.Location = New Point(384, 3)
+        txtAddAvg.Location = New Point(186, 3)
         txtAddAvg.Name = "txtAddAvg"
-        txtAddAvg.Size = New Size(375, 35)
+        txtAddAvg.Size = New Size(177, 35)
         txtAddAvg.TabIndex = 8
         txtAddAvg.Text = "3"
         txtAddAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2962,9 +3166,9 @@ Partial Class ControlPanel
         txtAddMax.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtAddMax.Enabled = False
         txtAddMax.ForeColor = SystemColors.ControlText
-        txtAddMax.Location = New Point(765, 3)
+        txtAddMax.Location = New Point(369, 3)
         txtAddMax.Name = "txtAddMax"
-        txtAddMax.Size = New Size(375, 35)
+        txtAddMax.Size = New Size(178, 35)
         txtAddMax.TabIndex = 9
         txtAddMax.Text = "8"
         txtAddMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -2983,7 +3187,7 @@ Partial Class ControlPanel
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
         TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
-        TableLayoutPanel1.Size = New Size(1140, 45)
+        TableLayoutPanel1.Size = New Size(547, 45)
         TableLayoutPanel1.TabIndex = 71
         ' 
         ' txtBreakMax
@@ -2991,9 +3195,9 @@ Partial Class ControlPanel
         txtBreakMax.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtBreakMax.Enabled = False
         txtBreakMax.ForeColor = SystemColors.ControlText
-        txtBreakMax.Location = New Point(763, 3)
+        txtBreakMax.Location = New Point(367, 3)
         txtBreakMax.Name = "txtBreakMax"
-        txtBreakMax.Size = New Size(374, 35)
+        txtBreakMax.Size = New Size(177, 35)
         txtBreakMax.TabIndex = 6
         txtBreakMax.Text = "500"
         txtBreakMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3003,9 +3207,9 @@ Partial Class ControlPanel
         txtBreakAvg.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         txtBreakAvg.Enabled = False
         txtBreakAvg.ForeColor = SystemColors.ControlText
-        txtBreakAvg.Location = New Point(383, 3)
+        txtBreakAvg.Location = New Point(185, 3)
         txtBreakAvg.Name = "txtBreakAvg"
-        txtBreakAvg.Size = New Size(374, 35)
+        txtBreakAvg.Size = New Size(176, 35)
         txtBreakAvg.TabIndex = 5
         txtBreakAvg.Text = "100"
         txtBreakAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3017,7 +3221,7 @@ Partial Class ControlPanel
         txtBreakMin.ForeColor = SystemColors.ControlText
         txtBreakMin.Location = New Point(3, 3)
         txtBreakMin.Name = "txtBreakMin"
-        txtBreakMin.Size = New Size(374, 35)
+        txtBreakMin.Size = New Size(176, 35)
         txtBreakMin.TabIndex = 4
         txtBreakMin.Text = "50"
         txtBreakMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3026,7 +3230,7 @@ Partial Class ControlPanel
         ' 
         chInterpolate.AutoSize = True
         chInterpolate.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chInterpolate.Location = New Point(33, 112)
+        chInterpolate.Location = New Point(49, 111)
         chInterpolate.Name = "chInterpolate"
         chInterpolate.Size = New Size(385, 31)
         chInterpolate.TabIndex = 2
@@ -3040,7 +3244,7 @@ Partial Class ControlPanel
         chCollision.FlatStyle = System.Windows.Forms.FlatStyle.System
         chCollision.ForeColor = SystemColors.ControlText
         chCollision.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chCollision.Location = New Point(3, 17)
+        chCollision.Location = New Point(19, 18)
         chCollision.Name = "chCollision"
         chCollision.Size = New Size(347, 35)
         chCollision.TabIndex = 0
@@ -3053,9 +3257,9 @@ Partial Class ControlPanel
         Label20.AutoEllipsis = True
         Label20.ForeColor = SystemColors.ControlText
         Label20.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label20.Location = New Point(33, 55)
+        Label20.Location = New Point(49, 56)
         Label20.Name = "Label20"
-        Label20.Size = New Size(363, 35)
+        Label20.Size = New Size(333, 35)
         Label20.TabIndex = 66
         Label20.Text = "Coeff. of Restitution:"
         Label20.TextAlign = ContentAlignment.MiddleLeft
@@ -3068,7 +3272,7 @@ Partial Class ControlPanel
         txtCoR.ForeColor = SystemColors.ControlText
         txtCoR.Location = New Point(402, 56)
         txtCoR.Name = "txtCoR"
-        txtCoR.Size = New Size(1140, 35)
+        txtCoR.Size = New Size(547, 35)
         txtCoR.TabIndex = 1
         txtCoR.Text = "0.5"
         txtCoR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3081,9 +3285,9 @@ Partial Class ControlPanel
         chbreakable.FlatStyle = System.Windows.Forms.FlatStyle.System
         chbreakable.ForeColor = SystemColors.ControlText
         chbreakable.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chbreakable.Location = New Point(33, 149)
+        chbreakable.Location = New Point(49, 150)
         chbreakable.Name = "chbreakable"
-        chbreakable.Size = New Size(347, 35)
+        chbreakable.Size = New Size(333, 35)
         chbreakable.TabIndex = 3
         chbreakable.Text = "Breakable Collisions"
         chbreakable.UseMnemonic = False
@@ -3094,7 +3298,7 @@ Partial Class ControlPanel
         lblResulting.AutoEllipsis = True
         lblResulting.ForeColor = SystemColors.ControlText
         lblResulting.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblResulting.Location = New Point(63, 233)
+        lblResulting.Location = New Point(79, 234)
         lblResulting.Name = "lblResulting"
         lblResulting.Size = New Size(217, 65)
         lblResulting.TabIndex = 67
@@ -3107,9 +3311,9 @@ Partial Class ControlPanel
         Label25.AutoEllipsis = True
         Label25.ForeColor = SystemColors.ControlText
         Label25.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label25.Location = New Point(63, 187)
+        Label25.Location = New Point(79, 190)
         Label25.Name = "Label25"
-        Label25.Size = New Size(317, 35)
+        Label25.Size = New Size(303, 35)
         Label25.TabIndex = 68
         Label25.Text = "Endurance Min, Avg, Max:"
         Label25.TextAlign = ContentAlignment.MiddleLeft
@@ -3123,16 +3327,16 @@ Partial Class ControlPanel
         TabSimulation.Location = New Point(4, 39)
         TabSimulation.Name = "TabSimulation"
         TabSimulation.Padding = New System.Windows.Forms.Padding(3)
-        TabSimulation.Size = New Size(1572, 1042)
+        TabSimulation.Size = New Size(973, 1321)
         TabSimulation.TabIndex = 0
         TabSimulation.Text = "Simulation"
         TabSimulation.UseVisualStyleBackColor = True
         ' 
         ' spSaveAndLoad
         ' 
-        spSaveAndLoad.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        spSaveAndLoad.Dock = System.Windows.Forms.DockStyle.Bottom
         spSaveAndLoad.IsSplitterFixed = True
-        spSaveAndLoad.Location = New Point(6, 974)
+        spSaveAndLoad.Location = New Point(3, 1256)
         spSaveAndLoad.Name = "spSaveAndLoad"
         ' 
         ' spSaveAndLoad.Panel1
@@ -3142,8 +3346,8 @@ Partial Class ControlPanel
         ' spSaveAndLoad.Panel2
         ' 
         spSaveAndLoad.Panel2.Controls.Add(cmdLoad)
-        spSaveAndLoad.Size = New Size(1554, 62)
-        spSaveAndLoad.SplitterDistance = 777
+        spSaveAndLoad.Size = New Size(967, 62)
+        spSaveAndLoad.SplitterDistance = 483
         spSaveAndLoad.TabIndex = 90
         ' 
         ' cmdSave
@@ -3156,7 +3360,7 @@ Partial Class ControlPanel
         cmdSave.ImeMode = System.Windows.Forms.ImeMode.NoControl
         cmdSave.Location = New Point(0, 0)
         cmdSave.Name = "cmdSave"
-        cmdSave.Size = New Size(777, 62)
+        cmdSave.Size = New Size(483, 62)
         cmdSave.TabIndex = 0
         cmdSave.Text = "Save Simulation"
         cmdSave.UseVisualStyleBackColor = True
@@ -3170,7 +3374,7 @@ Partial Class ControlPanel
         cmdLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl
         cmdLoad.Location = New Point(0, 0)
         cmdLoad.Name = "cmdLoad"
-        cmdLoad.Size = New Size(770, 62)
+        cmdLoad.Size = New Size(477, 62)
         cmdLoad.TabIndex = 1
         cmdLoad.Text = "Load Simulation"
         cmdLoad.UseVisualStyleBackColor = True
@@ -3181,14 +3385,13 @@ Partial Class ControlPanel
         gbSimulation.Controls.Add(pSimulation)
         gbSimulation.Location = New Point(6, 6)
         gbSimulation.Name = "gbSimulation"
-        gbSimulation.Size = New Size(1560, 962)
+        gbSimulation.Size = New Size(959, 1244)
         gbSimulation.TabIndex = 89
         gbSimulation.TabStop = False
         gbSimulation.Text = "Simulation"
         ' 
         ' pSimulation
         ' 
-        pSimulation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         pSimulation.AutoScroll = True
         pSimulation.Controls.Add(Label1)
         pSimulation.Controls.Add(txtLimitObjects)
@@ -3200,9 +3403,10 @@ Partial Class ControlPanel
         pSimulation.Controls.Add(cbIntegration)
         pSimulation.Controls.Add(txtScale)
         pSimulation.Controls.Add(txtTimeStep)
-        pSimulation.Location = New Point(6, 34)
+        pSimulation.Dock = System.Windows.Forms.DockStyle.Fill
+        pSimulation.Location = New Point(3, 31)
         pSimulation.Name = "pSimulation"
-        pSimulation.Size = New Size(1548, 922)
+        pSimulation.Size = New Size(953, 1210)
         pSimulation.TabIndex = 32
         ' 
         ' Label1
@@ -3210,12 +3414,12 @@ Partial Class ControlPanel
         Label1.AutoEllipsis = True
         Label1.ForeColor = SystemColors.ControlText
         Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label1.Location = New Point(-3, 19)
+        Label1.Location = New Point(22, 19)
         Label1.Name = "Label1"
-        Label1.Size = New Size(322, 34)
+        Label1.Size = New Size(297, 34)
         Label1.TabIndex = 9
         Label1.Text = "Time Step (s):"
-        Label1.TextAlign = ContentAlignment.MiddleRight
+        Label1.TextAlign = ContentAlignment.MiddleLeft
         Label1.UseMnemonic = False
         ' 
         ' txtLimitObjects
@@ -3224,7 +3428,7 @@ Partial Class ControlPanel
         txtLimitObjects.ForeColor = SystemColors.ControlText
         txtLimitObjects.Location = New Point(328, 121)
         txtLimitObjects.Name = "txtLimitObjects"
-        txtLimitObjects.Size = New Size(1214, 35)
+        txtLimitObjects.Size = New Size(619, 35)
         txtLimitObjects.TabIndex = 2
         txtLimitObjects.Text = "200"
         txtLimitObjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3235,12 +3439,12 @@ Partial Class ControlPanel
         Label4.ForeColor = SystemColors.ControlText
         Label4.ImageAlign = ContentAlignment.MiddleRight
         Label4.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label4.Location = New Point(0, 70)
+        Label4.Location = New Point(22, 70)
         Label4.Name = "Label4"
-        Label4.Size = New Size(322, 35)
+        Label4.Size = New Size(300, 35)
         Label4.TabIndex = 12
         Label4.Text = "Limit Calculations (C/s):"
-        Label4.TextAlign = ContentAlignment.MiddleRight
+        Label4.TextAlign = ContentAlignment.MiddleLeft
         Label4.UseMnemonic = False
         ' 
         ' Label14
@@ -3248,12 +3452,12 @@ Partial Class ControlPanel
         Label14.AutoEllipsis = True
         Label14.ForeColor = SystemColors.ControlText
         Label14.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label14.Location = New Point(0, 223)
+        Label14.Location = New Point(22, 223)
         Label14.Name = "Label14"
-        Label14.Size = New Size(322, 35)
+        Label14.Size = New Size(300, 35)
         Label14.TabIndex = 28
         Label14.Text = "Method of Integration:"
-        Label14.TextAlign = ContentAlignment.MiddleRight
+        Label14.TextAlign = ContentAlignment.MiddleLeft
         Label14.UseMnemonic = False
         ' 
         ' Label2
@@ -3262,12 +3466,12 @@ Partial Class ControlPanel
         Label2.ForeColor = SystemColors.ControlText
         Label2.ImageAlign = ContentAlignment.MiddleRight
         Label2.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label2.Location = New Point(0, 173)
+        Label2.Location = New Point(22, 173)
         Label2.Name = "Label2"
-        Label2.Size = New Size(322, 35)
+        Label2.Size = New Size(300, 35)
         Label2.TabIndex = 31
         Label2.Text = "World Scale:"
-        Label2.TextAlign = ContentAlignment.MiddleRight
+        Label2.TextAlign = ContentAlignment.MiddleLeft
         Label2.UseMnemonic = False
         ' 
         ' Label24
@@ -3276,12 +3480,12 @@ Partial Class ControlPanel
         Label24.ForeColor = SystemColors.ControlText
         Label24.ImageAlign = ContentAlignment.MiddleRight
         Label24.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Label24.Location = New Point(0, 115)
+        Label24.Location = New Point(22, 115)
         Label24.Name = "Label24"
-        Label24.Size = New Size(322, 41)
+        Label24.Size = New Size(300, 41)
         Label24.TabIndex = 26
         Label24.Text = "Limit Objects:"
-        Label24.TextAlign = ContentAlignment.MiddleRight
+        Label24.TextAlign = ContentAlignment.MiddleLeft
         Label24.UseMnemonic = False
         ' 
         ' txtLimitCalc
@@ -3290,7 +3494,7 @@ Partial Class ControlPanel
         txtLimitCalc.ForeColor = SystemColors.ControlText
         txtLimitCalc.Location = New Point(328, 70)
         txtLimitCalc.Name = "txtLimitCalc"
-        txtLimitCalc.Size = New Size(1214, 35)
+        txtLimitCalc.Size = New Size(619, 35)
         txtLimitCalc.TabIndex = 1
         txtLimitCalc.Text = "1000"
         txtLimitCalc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3304,7 +3508,7 @@ Partial Class ControlPanel
         cbIntegration.Items.AddRange(New Object() {"1st order - Euler", "2nd order - Verlet", "4th order - Symplectic", "6th order - Symplectic"})
         cbIntegration.Location = New Point(328, 223)
         cbIntegration.Name = "cbIntegration"
-        cbIntegration.Size = New Size(1214, 35)
+        cbIntegration.Size = New Size(619, 35)
         cbIntegration.TabIndex = 4
         ' 
         ' txtScale
@@ -3313,7 +3517,7 @@ Partial Class ControlPanel
         txtScale.ForeColor = SystemColors.ControlText
         txtScale.Location = New Point(328, 173)
         txtScale.Name = "txtScale"
-        txtScale.Size = New Size(1214, 35)
+        txtScale.Size = New Size(619, 35)
         txtScale.TabIndex = 3
         txtScale.Text = "1"
         txtScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3324,7 +3528,7 @@ Partial Class ControlPanel
         txtTimeStep.ForeColor = SystemColors.ControlText
         txtTimeStep.Location = New Point(325, 18)
         txtTimeStep.Name = "txtTimeStep"
-        txtTimeStep.Size = New Size(1217, 35)
+        txtTimeStep.Size = New Size(622, 35)
         txtTimeStep.TabIndex = 0
         txtTimeStep.Text = "0.001"
         txtTimeStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -3338,10 +3542,10 @@ Partial Class ControlPanel
         Tabs.Controls.Add(TabDisplay)
         Tabs.Controls.Add(TabLights)
         Tabs.Controls.Add(TabGroups)
-        Tabs.Location = New Point(12, 73)
+        Tabs.Location = New Point(0, 73)
         Tabs.Name = "Tabs"
         Tabs.SelectedIndex = 0
-        Tabs.Size = New Size(1580, 1361)
+        Tabs.Size = New Size(981, 1364)
         Tabs.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Tabs.TabIndex = 1
         ' 
@@ -3359,108 +3563,42 @@ Partial Class ControlPanel
         TableLayoutPanel6.Size = New Size(200, 100)
         TableLayoutPanel6.TabIndex = 0
         ' 
-        ' TableLayoutPanel13
+        ' TableLayoutPanel16
         ' 
-        TableLayoutPanel13.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        TableLayoutPanel13.ColumnCount = 2
-        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel13.Controls.Add(cmdGroupReplace, 0, 0)
-        TableLayoutPanel13.Controls.Add(cmdGroupRemove, 1, 0)
-        TableLayoutPanel13.Location = New Point(3, 1244)
-        TableLayoutPanel13.Name = "TableLayoutPanel13"
-        TableLayoutPanel13.RowCount = 1
-        TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel13.Size = New Size(1566, 68)
-        TableLayoutPanel13.TabIndex = 71
+        TableLayoutPanel16.ColumnCount = 3
+        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        TableLayoutPanel16.Location = New Point(0, 0)
+        TableLayoutPanel16.Name = "TableLayoutPanel16"
+        TableLayoutPanel16.RowCount = 1
+        TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        TableLayoutPanel16.Size = New Size(200, 100)
+        TableLayoutPanel16.TabIndex = 0
         ' 
-        ' Panel2
+        ' tblRotation
         ' 
-        Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        Panel2.AutoScroll = True
-        Panel2.Controls.Add(plObjectHighlightColor)
-        Panel2.Controls.Add(cmdObjectNormalZ)
-        Panel2.Controls.Add(plObjectColor)
-        Panel2.Controls.Add(cmdObjectNormalY)
-        Panel2.Controls.Add(cmdObjectRefractiveIndex)
-        Panel2.Controls.Add(cmdObjectNormalX)
-        Panel2.Controls.Add(txtObjectRefractiveIndex)
-        Panel2.Controls.Add(txtObjectRadius)
-        Panel2.Controls.Add(lblObjectRefractiveIndex)
-        Panel2.Controls.Add(cmdObjectSizeZ)
-        Panel2.Controls.Add(lblObjectReflectivity)
-        Panel2.Controls.Add(cmdObjectSizeY)
-        Panel2.Controls.Add(cmdObjectReflectivity)
-        Panel2.Controls.Add(cmdObjectSizeX)
-        Panel2.Controls.Add(lblObjectType)
-        Panel2.Controls.Add(lblObjectNormal)
-        Panel2.Controls.Add(cbObjectType)
-        Panel2.Controls.Add(lblObjectRotation)
-        Panel2.Controls.Add(chObjectWireframe)
-        Panel2.Controls.Add(cmdObjectRotationX)
-        Panel2.Controls.Add(chObjectAffected)
-        Panel2.Controls.Add(txtObjectRotationX)
-        Panel2.Controls.Add(chObjectAffects)
-        Panel2.Controls.Add(cmdObjectRotationY)
-        Panel2.Controls.Add(cmdObjectNumber)
-        Panel2.Controls.Add(txtObjectRotationY)
-        Panel2.Controls.Add(lblObjectNumber)
-        Panel2.Controls.Add(cmdObjectRotationZ)
-        Panel2.Controls.Add(txtObjectRotationZ)
-        Panel2.Controls.Add(cmdObjectVelocityZ)
-        Panel2.Controls.Add(lblObjectRadius)
-        Panel2.Controls.Add(cmdObjectVelocityY)
-        Panel2.Controls.Add(cmdObjectRadius)
-        Panel2.Controls.Add(cmdObjectTransparency)
-        Panel2.Controls.Add(txtObjectNormalX)
-        Panel2.Controls.Add(cmdObjectHighlightSharpness)
-        Panel2.Controls.Add(txtObjectNormalY)
-        Panel2.Controls.Add(cmdObjectPositionZ)
-        Panel2.Controls.Add(txtObjectNormalZ)
-        Panel2.Controls.Add(cmdObjectPositionY)
-        Panel2.Controls.Add(lblObjectSize)
-        Panel2.Controls.Add(cmdObjectHighlightColor)
-        Panel2.Controls.Add(txtObjectSizeZ)
-        Panel2.Controls.Add(cmdObjectColor)
-        Panel2.Controls.Add(txtObjectSizeY)
-        Panel2.Controls.Add(cmdObjectVelocityX)
-        Panel2.Controls.Add(txtObjectSizeX)
-        Panel2.Controls.Add(cmdObjectPositionX)
-        Panel2.Controls.Add(tbObjectHighlightSharpness)
-        Panel2.Controls.Add(cmdObjectCharge)
-        Panel2.Controls.Add(tbObjectReflectivity)
-        Panel2.Controls.Add(cmdObjectMass)
-        Panel2.Controls.Add(txtObjectNumber)
-        Panel2.Controls.Add(lblObjectHighlightColor)
-        Panel2.Controls.Add(txtObjectCharge)
-        Panel2.Controls.Add(lblObjectName)
-        Panel2.Controls.Add(txtObjectMass)
-        Panel2.Controls.Add(lblObjectTransparency)
-        Panel2.Controls.Add(txtObjectVelocityX)
-        Panel2.Controls.Add(txtObjectVelocityZ)
-        Panel2.Controls.Add(txtObjectPositionY)
-        Panel2.Controls.Add(txtObjectName)
-        Panel2.Controls.Add(txtObjectPositionX)
-        Panel2.Controls.Add(txtObjectVelocityY)
-        Panel2.Controls.Add(txtObjectPositionZ)
-        Panel2.Controls.Add(lblObjectMass)
-        Panel2.Controls.Add(tbObjectTransparency)
-        Panel2.Controls.Add(lblObjectCharge)
-        Panel2.Controls.Add(lblObjectHighlightSharpness)
-        Panel2.Controls.Add(lblObjectColor)
-        Panel2.Controls.Add(lblObjectVelocity)
-        Panel2.Controls.Add(lblObjectPosition)
-        Panel2.Location = New Point(-3, 206)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1557, 952)
-        Panel2.TabIndex = 240
+        tblRotation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        tblRotation.ColumnCount = 6
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        tblRotation.Location = New Point(0, 0)
+        tblRotation.Name = "tblRotation"
+        tblRotation.RowCount = 1
+        tblRotation.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        tblRotation.Size = New Size(200, 100)
+        tblRotation.TabIndex = 0
         ' 
         ' ControlPanel
         ' 
         AutoScaleDimensions = New SizeF(192F, 192F)
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         BackColor = SystemColors.Control
-        ClientSize = New Size(1604, 1479)
+        ClientSize = New Size(981, 1479)
         Controls.Add(Tabs)
         Controls.Add(Stats)
         Controls.Add(cmdStart)
@@ -3479,9 +3617,22 @@ Partial Class ControlPanel
         Stats.ResumeLayout(False)
         Stats.PerformLayout()
         TabGroups.ResumeLayout(False)
+        TableLayoutPanel13.ResumeLayout(False)
         gbObjects.ResumeLayout(False)
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
+        tblOrientation.ResumeLayout(False)
+        tblOrientation.PerformLayout()
+        tblVelocity.ResumeLayout(False)
+        tblVelocity.PerformLayout()
+        tblPosition.ResumeLayout(False)
+        tblPosition.PerformLayout()
+        TableLayoutPanel15.ResumeLayout(False)
+        TableLayoutPanel15.PerformLayout()
         CType(tbObjectTransparency, ComponentModel.ISupportInitialize).EndInit()
         CType(tbObjectReflectivity, ComponentModel.ISupportInitialize).EndInit()
+        tblSize.ResumeLayout(False)
+        tblSize.PerformLayout()
         CType(tbObjectHighlightSharpness, ComponentModel.ISupportInitialize).EndInit()
         TabLights.ResumeLayout(False)
         TableLayoutPanel8.ResumeLayout(False)
@@ -3546,9 +3697,6 @@ Partial Class ControlPanel
         pSimulation.ResumeLayout(False)
         pSimulation.PerformLayout()
         Tabs.ResumeLayout(False)
-        TableLayoutPanel13.ResumeLayout(False)
-        Panel2.ResumeLayout(False)
-        Panel2.PerformLayout()
         ResumeLayout(False)
 
     End Sub
@@ -3618,7 +3766,6 @@ Partial Class ControlPanel
     Friend WithEvents cmdObjectSizeX As System.Windows.Forms.Button
     Friend WithEvents lblObjectSize As System.Windows.Forms.Label
     Friend WithEvents lblObjectNormal As System.Windows.Forms.Label
-    Friend WithEvents txtObjectNormalZ As System.Windows.Forms.TextBox
     Friend WithEvents txtObjectNormalY As System.Windows.Forms.TextBox
     Friend WithEvents txtObjectNormalX As System.Windows.Forms.TextBox
     Friend WithEvents cmdObjectNormalX As System.Windows.Forms.Button
@@ -3785,4 +3932,12 @@ Partial Class ControlPanel
     Friend WithEvents TableLayoutPanel11 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents TableLayoutPanel13 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents tblSize As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents TableLayoutPanel16 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents tblVelocity As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents tblOrientation As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents txtObjectNormalZ As System.Windows.Forms.TextBox
+    Friend WithEvents tblPosition As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents TableLayoutPanel15 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents tblRotation As System.Windows.Forms.TableLayoutPanel
 End Class

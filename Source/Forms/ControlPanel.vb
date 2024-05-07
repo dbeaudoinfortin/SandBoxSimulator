@@ -929,6 +929,8 @@ Public Class ControlPanel
         txtObjectRotationX.Visible = Not isObjectInfinitePlane
         txtObjectRotationY.Visible = Not isObjectInfinitePlane
         txtObjectRotationZ.Visible = Not isObjectInfinitePlane
+        tblRotation.Visible = Not isObjectInfinitePlane
+
         cmdObjectRotationX.Enabled = isObjectBox Or isObjectPlane
         cmdObjectRotationY.Enabled = isObjectBox Or isObjectPlane
         cmdObjectRotationZ.Enabled = isObjectBox Or isObjectPlane
@@ -944,6 +946,8 @@ Public Class ControlPanel
         txtObjectNormalX.Visible = isObjectInfinitePlane
         txtObjectNormalY.Visible = isObjectInfinitePlane
         txtObjectNormalZ.Visible = isObjectInfinitePlane
+        tblOrientation.Visible = isObjectInfinitePlane
+
         cmdObjectNormalX.Enabled = isObjectInfinitePlane
         cmdObjectNormalY.Enabled = isObjectInfinitePlane
         cmdObjectNormalZ.Enabled = isObjectInfinitePlane
@@ -966,6 +970,8 @@ Public Class ControlPanel
         txtObjectSizeX.Visible = Not isObjectSphere
         txtObjectSizeY.Visible = Not isObjectSphere
         txtObjectSizeZ.Visible = Not isObjectSphere
+        tblSize.Visible = Not isObjectSphere
+
         cmdObjectSizeX.Enabled = isObjectBox Or isObjectPlane
         cmdObjectSizeY.Enabled = isObjectBox Or isObjectPlane
         cmdObjectSizeZ.Enabled = isObjectBox 'Planes are 2 dimensional objects
@@ -2224,10 +2230,7 @@ Public Class ControlPanel
         End If
     End Sub
     Private Function ShowDistribution() As Boolean
-        If Distribution.ShowDialog() = DialogResult.OK Then
-            Return True
-        End If
-        Return False
+        Return Distribution.ShowDialog() = DialogResult.OK
     End Function
     Private Sub TbPolys_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbPolys.Scroll
         ConfigModified = True
@@ -2236,6 +2239,5 @@ Public Class ControlPanel
     Private Sub TxtRenderThreads_TextChanged(sender As Object, e As EventArgs) Handles txtRenderThreads.TextChanged
         ConfigModified = True
     End Sub
-
-
 End Class
+
