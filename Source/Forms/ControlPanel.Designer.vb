@@ -340,7 +340,7 @@ Partial Class ControlPanel
         Stats.AutoSize = False
         Stats.ImageScalingSize = New Size(32, 32)
         Stats.Items.AddRange(New System.Windows.Forms.ToolStripItem() {lblStat})
-        Stats.Location = New Point(0, 1161)
+        Stats.Location = New Point(0, 1437)
         Stats.Name = "Stats"
         Stats.Size = New Size(1604, 42)
         Stats.SizingGrip = False
@@ -372,7 +372,7 @@ Partial Class ControlPanel
         TabGroups.Location = New Point(4, 39)
         TabGroups.Name = "TabGroups"
         TabGroups.Padding = New System.Windows.Forms.Padding(3)
-        TabGroups.Size = New Size(1572, 1042)
+        TabGroups.Size = New Size(1572, 1318)
         TabGroups.TabIndex = 7
         TabGroups.Text = "Objects"
         TabGroups.UseVisualStyleBackColor = True
@@ -384,7 +384,7 @@ Partial Class ControlPanel
         gbObjects.Controls.Add(Panel2)
         gbObjects.Location = New Point(6, 6)
         gbObjects.Name = "gbObjects"
-        gbObjects.Size = New Size(1560, 888)
+        gbObjects.Size = New Size(1560, 1164)
         gbObjects.TabIndex = 70
         gbObjects.TabStop = False
         gbObjects.Text = "Objects"
@@ -396,7 +396,7 @@ Partial Class ControlPanel
         plObjectHighlightColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         plObjectHighlightColor.ForeColor = Color.White
         plObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        plObjectHighlightColor.Location = New Point(408, 315)
+        plObjectHighlightColor.Location = New Point(581, 552)
         plObjectHighlightColor.Name = "plObjectHighlightColor"
         plObjectHighlightColor.Size = New Size(292, 21)
         plObjectHighlightColor.TabIndex = 38
@@ -409,7 +409,7 @@ Partial Class ControlPanel
         plObjectColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         plObjectColor.ForeColor = Color.FromArgb(CByte(255), CByte(192), CByte(128))
         plObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        plObjectColor.Location = New Point(408, 286)
+        plObjectColor.Location = New Point(581, 523)
         plObjectColor.Name = "plObjectColor"
         plObjectColor.Size = New Size(292, 21)
         plObjectColor.TabIndex = 36
@@ -423,9 +423,9 @@ Partial Class ControlPanel
         cmdObjectRefractiveIndex.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectRefractiveIndex.ForeColor = Color.Black
         cmdObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRefractiveIndex.Location = New Point(427, 118)
+        cmdObjectRefractiveIndex.Location = New Point(1427, 844)
         cmdObjectRefractiveIndex.Name = "cmdObjectRefractiveIndex"
-        cmdObjectRefractiveIndex.Size = New Size(639, 26)
+        cmdObjectRefractiveIndex.Size = New Size(35, 35)
         cmdObjectRefractiveIndex.TabIndex = 45
         cmdObjectRefractiveIndex.Text = "ƒ"
         cmdObjectRefractiveIndex.UseVisualStyleBackColor = False
@@ -433,7 +433,7 @@ Partial Class ControlPanel
         ' txtObjectRefractiveIndex
         ' 
         txtObjectRefractiveIndex.ForeColor = SystemColors.ControlText
-        txtObjectRefractiveIndex.Location = New Point(408, 413)
+        txtObjectRefractiveIndex.Location = New Point(581, 650)
         txtObjectRefractiveIndex.Name = "txtObjectRefractiveIndex"
         txtObjectRefractiveIndex.Size = New Size(292, 35)
         txtObjectRefractiveIndex.TabIndex = 46
@@ -445,7 +445,7 @@ Partial Class ControlPanel
         lblObjectRefractiveIndex.AutoEllipsis = True
         lblObjectRefractiveIndex.ForeColor = SystemColors.ControlText
         lblObjectRefractiveIndex.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRefractiveIndex.Location = New Point(260, 413)
+        lblObjectRefractiveIndex.Location = New Point(433, 650)
         lblObjectRefractiveIndex.Name = "lblObjectRefractiveIndex"
         lblObjectRefractiveIndex.Size = New Size(117, 21)
         lblObjectRefractiveIndex.TabIndex = 233
@@ -458,7 +458,7 @@ Partial Class ControlPanel
         lblObjectReflectivity.AutoEllipsis = True
         lblObjectReflectivity.ForeColor = SystemColors.ControlText
         lblObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectReflectivity.Location = New Point(260, 362)
+        lblObjectReflectivity.Location = New Point(433, 599)
         lblObjectReflectivity.Name = "lblObjectReflectivity"
         lblObjectReflectivity.Size = New Size(117, 21)
         lblObjectReflectivity.TabIndex = 230
@@ -474,9 +474,9 @@ Partial Class ControlPanel
         cmdObjectReflectivity.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectReflectivity.ForeColor = Color.Black
         cmdObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectReflectivity.Location = New Point(385, 362)
+        cmdObjectReflectivity.Location = New Point(558, 599)
         cmdObjectReflectivity.Name = "cmdObjectReflectivity"
-        cmdObjectReflectivity.Size = New Size(704, 0)
+        cmdObjectReflectivity.Size = New Size(35, 35)
         cmdObjectReflectivity.TabIndex = 41
         cmdObjectReflectivity.Text = "ƒ"
         cmdObjectReflectivity.UseVisualStyleBackColor = False
@@ -486,9 +486,9 @@ Partial Class ControlPanel
         lblObjectType.AutoEllipsis = True
         lblObjectType.ForeColor = SystemColors.ControlText
         lblObjectType.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectType.Location = New Point(260, 62)
+        lblObjectType.Location = New Point(9, 52)
         lblObjectType.Name = "lblObjectType"
-        lblObjectType.Size = New Size(118, 23)
+        lblObjectType.Size = New Size(292, 35)
         lblObjectType.TabIndex = 213
         lblObjectType.Text = "Type of Objects: "
         lblObjectType.TextAlign = ContentAlignment.MiddleLeft
@@ -499,9 +499,9 @@ Partial Class ControlPanel
         cbObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         cbObjectType.FormattingEnabled = True
         cbObjectType.Items.AddRange(New Object() {"Sphere", "Box", "Plane", "Infinite Plane"})
-        cbObjectType.Location = New Point(408, 62)
+        cbObjectType.Location = New Point(407, 52)
         cbObjectType.Name = "cbObjectType"
-        cbObjectType.Size = New Size(292, 35)
+        cbObjectType.Size = New Size(1138, 35)
         cbObjectType.TabIndex = 2
         ' 
         ' chObjectWireframe
@@ -511,7 +511,7 @@ Partial Class ControlPanel
         chObjectWireframe.FlatStyle = System.Windows.Forms.FlatStyle.System
         chObjectWireframe.ForeColor = SystemColors.ControlText
         chObjectWireframe.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chObjectWireframe.Location = New Point(501, 440)
+        chObjectWireframe.Location = New Point(674, 677)
         chObjectWireframe.Name = "chObjectWireframe"
         chObjectWireframe.Size = New Size(152, 19)
         chObjectWireframe.TabIndex = 49
@@ -526,7 +526,7 @@ Partial Class ControlPanel
         chObjectAffected.CheckState = System.Windows.Forms.CheckState.Checked
         chObjectAffected.Font = New Font("Arial", 9F)
         chObjectAffected.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chObjectAffected.Location = New Point(371, 441)
+        chObjectAffected.Location = New Point(544, 678)
         chObjectAffected.Name = "chObjectAffected"
         chObjectAffected.Size = New Size(245, 31)
         chObjectAffected.TabIndex = 48
@@ -540,7 +540,7 @@ Partial Class ControlPanel
         chObjectAffects.CheckState = System.Windows.Forms.CheckState.Checked
         chObjectAffects.Font = New Font("Arial", 9F)
         chObjectAffects.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        chObjectAffects.Location = New Point(263, 441)
+        chObjectAffects.Location = New Point(436, 678)
         chObjectAffects.Name = "chObjectAffects"
         chObjectAffects.Size = New Size(197, 31)
         chObjectAffects.TabIndex = 47
@@ -556,9 +556,9 @@ Partial Class ControlPanel
         cmdObjectNumber.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectNumber.ForeColor = Color.Black
         cmdObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNumber.Location = New Point(580, 326)
+        cmdObjectNumber.Location = New Point(753, 563)
         cmdObjectNumber.Name = "cmdObjectNumber"
-        cmdObjectNumber.Size = New Size(665, 0)
+        cmdObjectNumber.Size = New Size(35, 35)
         cmdObjectNumber.TabIndex = 3
         cmdObjectNumber.Text = "ƒ"
         cmdObjectNumber.UseVisualStyleBackColor = False
@@ -568,9 +568,9 @@ Partial Class ControlPanel
         lblObjectNumber.AutoEllipsis = True
         lblObjectNumber.ForeColor = SystemColors.ControlText
         lblObjectNumber.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectNumber.Location = New Point(260, 91)
+        lblObjectNumber.Location = New Point(9, 92)
         lblObjectNumber.Name = "lblObjectNumber"
-        lblObjectNumber.Size = New Size(126, 21)
+        lblObjectNumber.Size = New Size(318, 35)
         lblObjectNumber.TabIndex = 205
         lblObjectNumber.Text = "Number of Objects:"
         lblObjectNumber.TextAlign = ContentAlignment.MiddleLeft
@@ -583,7 +583,7 @@ Partial Class ControlPanel
         listGroups.ItemHeight = 27
         listGroups.Location = New Point(6, 34)
         listGroups.Name = "listGroups"
-        listGroups.Size = New Size(1548, 166)
+        listGroups.Size = New Size(1536, 166)
         listGroups.TabIndex = 0
         ' 
         ' cmdObjectVelocityZ
@@ -594,9 +594,9 @@ Partial Class ControlPanel
         cmdObjectVelocityZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectVelocityZ.ForeColor = Color.Black
         cmdObjectVelocityZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectVelocityZ.Location = New Point(466, 230)
+        cmdObjectVelocityZ.Location = New Point(1101, 599)
         cmdObjectVelocityZ.Name = "cmdObjectVelocityZ"
-        cmdObjectVelocityZ.Size = New Size(758, 0)
+        cmdObjectVelocityZ.Size = New Size(35, 35)
         cmdObjectVelocityZ.TabIndex = 33
         cmdObjectVelocityZ.Text = "ƒ"
         cmdObjectVelocityZ.UseVisualStyleBackColor = False
@@ -609,9 +609,9 @@ Partial Class ControlPanel
         cmdObjectVelocityY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectVelocityY.ForeColor = Color.Black
         cmdObjectVelocityY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectVelocityY.Location = New Point(491, 259)
+        cmdObjectVelocityY.Location = New Point(664, 496)
         cmdObjectVelocityY.Name = "cmdObjectVelocityY"
-        cmdObjectVelocityY.Size = New Size(838, 0)
+        cmdObjectVelocityY.Size = New Size(35, 35)
         cmdObjectVelocityY.TabIndex = 31
         cmdObjectVelocityY.Text = "ƒ"
         cmdObjectVelocityY.UseVisualStyleBackColor = False
@@ -624,9 +624,9 @@ Partial Class ControlPanel
         cmdObjectTransparency.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectTransparency.ForeColor = Color.Black
         cmdObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectTransparency.Location = New Point(385, 386)
+        cmdObjectTransparency.Location = New Point(558, 623)
         cmdObjectTransparency.Name = "cmdObjectTransparency"
-        cmdObjectTransparency.Size = New Size(757, 0)
+        cmdObjectTransparency.Size = New Size(35, 35)
         cmdObjectTransparency.TabIndex = 43
         cmdObjectTransparency.Text = "ƒ"
         cmdObjectTransparency.UseVisualStyleBackColor = False
@@ -639,9 +639,9 @@ Partial Class ControlPanel
         cmdObjectHighlightSharpness.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectHighlightSharpness.ForeColor = Color.Black
         cmdObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectHighlightSharpness.Location = New Point(385, 339)
+        cmdObjectHighlightSharpness.Location = New Point(965, 643)
         cmdObjectHighlightSharpness.Name = "cmdObjectHighlightSharpness"
-        cmdObjectHighlightSharpness.Size = New Size(838, 27)
+        cmdObjectHighlightSharpness.Size = New Size(35, 35)
         cmdObjectHighlightSharpness.TabIndex = 39
         cmdObjectHighlightSharpness.Text = "ƒ"
         cmdObjectHighlightSharpness.UseVisualStyleBackColor = False
@@ -654,9 +654,9 @@ Partial Class ControlPanel
         cmdObjectPositionZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectPositionZ.ForeColor = Color.Black
         cmdObjectPositionZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectPositionZ.Location = New Point(596, 230)
+        cmdObjectPositionZ.Location = New Point(1073, 558)
         cmdObjectPositionZ.Name = "cmdObjectPositionZ"
-        cmdObjectPositionZ.Size = New Size(693, 36)
+        cmdObjectPositionZ.Size = New Size(35, 35)
         cmdObjectPositionZ.TabIndex = 27
         cmdObjectPositionZ.Text = "ƒ"
         cmdObjectPositionZ.UseVisualStyleBackColor = False
@@ -669,9 +669,9 @@ Partial Class ControlPanel
         cmdObjectPositionY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectPositionY.ForeColor = Color.Black
         cmdObjectPositionY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectPositionY.Location = New Point(491, 230)
+        cmdObjectPositionY.Location = New Point(1032, 576)
         cmdObjectPositionY.Name = "cmdObjectPositionY"
-        cmdObjectPositionY.Size = New Size(838, 44)
+        cmdObjectPositionY.Size = New Size(35, 35)
         cmdObjectPositionY.TabIndex = 25
         cmdObjectPositionY.Text = "ƒ"
         cmdObjectPositionY.UseVisualStyleBackColor = False
@@ -684,9 +684,9 @@ Partial Class ControlPanel
         cmdObjectHighlightColor.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectHighlightColor.ForeColor = Color.Black
         cmdObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectHighlightColor.Location = New Point(385, 315)
+        cmdObjectHighlightColor.Location = New Point(558, 552)
         cmdObjectHighlightColor.Name = "cmdObjectHighlightColor"
-        cmdObjectHighlightColor.Size = New Size(838, 0)
+        cmdObjectHighlightColor.Size = New Size(35, 35)
         cmdObjectHighlightColor.TabIndex = 37
         cmdObjectHighlightColor.Text = "ƒ"
         cmdObjectHighlightColor.UseVisualStyleBackColor = False
@@ -699,9 +699,9 @@ Partial Class ControlPanel
         cmdObjectColor.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectColor.ForeColor = Color.Black
         cmdObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectColor.Location = New Point(385, 286)
+        cmdObjectColor.Location = New Point(558, 523)
         cmdObjectColor.Name = "cmdObjectColor"
-        cmdObjectColor.Size = New Size(838, 24)
+        cmdObjectColor.Size = New Size(35, 35)
         cmdObjectColor.TabIndex = 35
         cmdObjectColor.Text = "ƒ"
         cmdObjectColor.UseVisualStyleBackColor = False
@@ -714,9 +714,9 @@ Partial Class ControlPanel
         cmdObjectVelocityX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectVelocityX.ForeColor = Color.Black
         cmdObjectVelocityX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectVelocityX.Location = New Point(385, 259)
+        cmdObjectVelocityX.Location = New Point(1007, 558)
         cmdObjectVelocityX.Name = "cmdObjectVelocityX"
-        cmdObjectVelocityX.Size = New Size(838, 51)
+        cmdObjectVelocityX.Size = New Size(35, 35)
         cmdObjectVelocityX.TabIndex = 29
         cmdObjectVelocityX.Text = "ƒ"
         cmdObjectVelocityX.UseVisualStyleBackColor = False
@@ -729,9 +729,9 @@ Partial Class ControlPanel
         cmdObjectPositionX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectPositionX.ForeColor = Color.Black
         cmdObjectPositionX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectPositionX.Location = New Point(385, 230)
+        cmdObjectPositionX.Location = New Point(1132, 592)
         cmdObjectPositionX.Name = "cmdObjectPositionX"
-        cmdObjectPositionX.Size = New Size(838, 44)
+        cmdObjectPositionX.Size = New Size(35, 35)
         cmdObjectPositionX.TabIndex = 23
         cmdObjectPositionX.Text = "ƒ"
         cmdObjectPositionX.UseVisualStyleBackColor = False
@@ -744,9 +744,9 @@ Partial Class ControlPanel
         cmdObjectCharge.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectCharge.ForeColor = Color.Black
         cmdObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectCharge.Location = New Point(385, 147)
+        cmdObjectCharge.Location = New Point(1383, 509)
         cmdObjectCharge.Name = "cmdObjectCharge"
-        cmdObjectCharge.Size = New Size(757, 0)
+        cmdObjectCharge.Size = New Size(35, 35)
         cmdObjectCharge.TabIndex = 7
         cmdObjectCharge.Text = "ƒ"
         cmdObjectCharge.UseVisualStyleBackColor = False
@@ -759,9 +759,9 @@ Partial Class ControlPanel
         cmdObjectMass.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectMass.ForeColor = Color.Black
         cmdObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectMass.Location = New Point(385, 118)
+        cmdObjectMass.Location = New Point(1172, 701)
         cmdObjectMass.Name = "cmdObjectMass"
-        cmdObjectMass.Size = New Size(838, 299)
+        cmdObjectMass.Size = New Size(35, 35)
         cmdObjectMass.TabIndex = 5
         cmdObjectMass.Text = "ƒ"
         cmdObjectMass.UseVisualStyleBackColor = False
@@ -771,7 +771,7 @@ Partial Class ControlPanel
         lblObjectHighlightColor.AutoEllipsis = True
         lblObjectHighlightColor.ForeColor = SystemColors.ControlText
         lblObjectHighlightColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectHighlightColor.Location = New Point(260, 315)
+        lblObjectHighlightColor.Location = New Point(433, 552)
         lblObjectHighlightColor.Name = "lblObjectHighlightColor"
         lblObjectHighlightColor.Size = New Size(126, 21)
         lblObjectHighlightColor.TabIndex = 161
@@ -784,9 +784,9 @@ Partial Class ControlPanel
         lblObjectName.AutoEllipsis = True
         lblObjectName.ForeColor = SystemColors.ControlText
         lblObjectName.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectName.Location = New Point(260, 35)
+        lblObjectName.Location = New Point(9, 10)
         lblObjectName.Name = "lblObjectName"
-        lblObjectName.Size = New Size(146, 21)
+        lblObjectName.Size = New Size(250, 35)
         lblObjectName.TabIndex = 140
         lblObjectName.Text = "Name of Objects: "
         lblObjectName.TextAlign = ContentAlignment.MiddleLeft
@@ -797,7 +797,7 @@ Partial Class ControlPanel
         lblObjectTransparency.AutoEllipsis = True
         lblObjectTransparency.ForeColor = SystemColors.ControlText
         lblObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectTransparency.Location = New Point(260, 386)
+        lblObjectTransparency.Location = New Point(433, 623)
         lblObjectTransparency.Name = "lblObjectTransparency"
         lblObjectTransparency.Size = New Size(127, 21)
         lblObjectTransparency.TabIndex = 149
@@ -808,7 +808,7 @@ Partial Class ControlPanel
         ' txtObjectVelocityZ
         ' 
         txtObjectVelocityZ.ForeColor = SystemColors.ControlText
-        txtObjectVelocityZ.Location = New Point(618, 259)
+        txtObjectVelocityZ.Location = New Point(791, 496)
         txtObjectVelocityZ.Name = "txtObjectVelocityZ"
         txtObjectVelocityZ.Size = New Size(82, 35)
         txtObjectVelocityZ.TabIndex = 34
@@ -818,16 +818,16 @@ Partial Class ControlPanel
         ' txtObjectName
         ' 
         txtObjectName.ForeColor = SystemColors.ControlText
-        txtObjectName.Location = New Point(408, 35)
+        txtObjectName.Location = New Point(407, 11)
         txtObjectName.Name = "txtObjectName"
-        txtObjectName.Size = New Size(292, 35)
+        txtObjectName.Size = New Size(1138, 35)
         txtObjectName.TabIndex = 1
         txtObjectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         ' 
         ' txtObjectVelocityY
         ' 
         txtObjectVelocityY.ForeColor = SystemColors.ControlText
-        txtObjectVelocityY.Location = New Point(513, 259)
+        txtObjectVelocityY.Location = New Point(686, 496)
         txtObjectVelocityY.Name = "txtObjectVelocityY"
         txtObjectVelocityY.Size = New Size(82, 35)
         txtObjectVelocityY.TabIndex = 32
@@ -839,9 +839,9 @@ Partial Class ControlPanel
         lblObjectMass.AutoEllipsis = True
         lblObjectMass.ForeColor = SystemColors.ControlText
         lblObjectMass.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectMass.Location = New Point(260, 118)
+        lblObjectMass.Location = New Point(21, 144)
         lblObjectMass.Name = "lblObjectMass"
-        lblObjectMass.Size = New Size(126, 21)
+        lblObjectMass.Size = New Size(238, 35)
         lblObjectMass.TabIndex = 141
         lblObjectMass.Text = "Mass (kg): "
         lblObjectMass.TextAlign = ContentAlignment.MiddleLeft
@@ -852,7 +852,7 @@ Partial Class ControlPanel
         lblObjectCharge.AutoEllipsis = True
         lblObjectCharge.ForeColor = SystemColors.ControlText
         lblObjectCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectCharge.Location = New Point(260, 147)
+        lblObjectCharge.Location = New Point(9, 198)
         lblObjectCharge.Name = "lblObjectCharge"
         lblObjectCharge.Size = New Size(126, 21)
         lblObjectCharge.TabIndex = 142
@@ -865,7 +865,7 @@ Partial Class ControlPanel
         lblObjectColor.AutoEllipsis = True
         lblObjectColor.ForeColor = SystemColors.ControlText
         lblObjectColor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectColor.Location = New Point(260, 286)
+        lblObjectColor.Location = New Point(433, 523)
         lblObjectColor.Name = "lblObjectColor"
         lblObjectColor.Size = New Size(126, 21)
         lblObjectColor.TabIndex = 146
@@ -878,7 +878,7 @@ Partial Class ControlPanel
         lblObjectPosition.AutoEllipsis = True
         lblObjectPosition.ForeColor = SystemColors.ControlText
         lblObjectPosition.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectPosition.Location = New Point(260, 230)
+        lblObjectPosition.Location = New Point(433, 467)
         lblObjectPosition.Name = "lblObjectPosition"
         lblObjectPosition.Size = New Size(126, 21)
         lblObjectPosition.TabIndex = 144
@@ -891,7 +891,7 @@ Partial Class ControlPanel
         lblObjectVelocity.AutoEllipsis = True
         lblObjectVelocity.ForeColor = SystemColors.ControlText
         lblObjectVelocity.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectVelocity.Location = New Point(260, 259)
+        lblObjectVelocity.Location = New Point(433, 496)
         lblObjectVelocity.Name = "lblObjectVelocity"
         lblObjectVelocity.Size = New Size(126, 21)
         lblObjectVelocity.TabIndex = 145
@@ -904,7 +904,7 @@ Partial Class ControlPanel
         lblObjectHighlightSharpness.AutoEllipsis = True
         lblObjectHighlightSharpness.ForeColor = SystemColors.ControlText
         lblObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectHighlightSharpness.Location = New Point(260, 339)
+        lblObjectHighlightSharpness.Location = New Point(433, 576)
         lblObjectHighlightSharpness.Name = "lblObjectHighlightSharpness"
         lblObjectHighlightSharpness.Size = New Size(126, 21)
         lblObjectHighlightSharpness.TabIndex = 164
@@ -917,7 +917,7 @@ Partial Class ControlPanel
         tbObjectTransparency.BackColor = SystemColors.Control
         tbObjectTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
         tbObjectTransparency.LargeChange = 15
-        tbObjectTransparency.Location = New Point(408, 386)
+        tbObjectTransparency.Location = New Point(581, 623)
         tbObjectTransparency.Maximum = 255
         tbObjectTransparency.Name = "tbObjectTransparency"
         tbObjectTransparency.Size = New Size(292, 90)
@@ -930,7 +930,7 @@ Partial Class ControlPanel
         ' txtObjectPositionZ
         ' 
         txtObjectPositionZ.ForeColor = SystemColors.ControlText
-        txtObjectPositionZ.Location = New Point(618, 230)
+        txtObjectPositionZ.Location = New Point(791, 467)
         txtObjectPositionZ.Name = "txtObjectPositionZ"
         txtObjectPositionZ.Size = New Size(82, 35)
         txtObjectPositionZ.TabIndex = 28
@@ -940,7 +940,7 @@ Partial Class ControlPanel
         ' txtObjectPositionX
         ' 
         txtObjectPositionX.ForeColor = SystemColors.ControlText
-        txtObjectPositionX.Location = New Point(408, 230)
+        txtObjectPositionX.Location = New Point(581, 467)
         txtObjectPositionX.Name = "txtObjectPositionX"
         txtObjectPositionX.Size = New Size(82, 35)
         txtObjectPositionX.TabIndex = 24
@@ -950,7 +950,7 @@ Partial Class ControlPanel
         ' txtObjectPositionY
         ' 
         txtObjectPositionY.ForeColor = SystemColors.ControlText
-        txtObjectPositionY.Location = New Point(513, 230)
+        txtObjectPositionY.Location = New Point(686, 467)
         txtObjectPositionY.Name = "txtObjectPositionY"
         txtObjectPositionY.Size = New Size(82, 35)
         txtObjectPositionY.TabIndex = 26
@@ -960,7 +960,7 @@ Partial Class ControlPanel
         ' txtObjectVelocityX
         ' 
         txtObjectVelocityX.ForeColor = SystemColors.ControlText
-        txtObjectVelocityX.Location = New Point(408, 259)
+        txtObjectVelocityX.Location = New Point(581, 496)
         txtObjectVelocityX.Name = "txtObjectVelocityX"
         txtObjectVelocityX.Size = New Size(82, 35)
         txtObjectVelocityX.TabIndex = 30
@@ -970,9 +970,9 @@ Partial Class ControlPanel
         ' txtObjectMass
         ' 
         txtObjectMass.ForeColor = SystemColors.ControlText
-        txtObjectMass.Location = New Point(408, 118)
+        txtObjectMass.Location = New Point(407, 134)
         txtObjectMass.Name = "txtObjectMass"
-        txtObjectMass.Size = New Size(292, 35)
+        txtObjectMass.Size = New Size(1138, 35)
         txtObjectMass.TabIndex = 6
         txtObjectMass.Text = "0"
         txtObjectMass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -980,7 +980,7 @@ Partial Class ControlPanel
         ' txtObjectCharge
         ' 
         txtObjectCharge.ForeColor = SystemColors.ControlText
-        txtObjectCharge.Location = New Point(408, 147)
+        txtObjectCharge.Location = New Point(581, 384)
         txtObjectCharge.Name = "txtObjectCharge"
         txtObjectCharge.Size = New Size(292, 35)
         txtObjectCharge.TabIndex = 8
@@ -991,9 +991,9 @@ Partial Class ControlPanel
         ' 
         txtObjectNumber.Enabled = False
         txtObjectNumber.ForeColor = SystemColors.ControlText
-        txtObjectNumber.Location = New Point(408, 91)
+        txtObjectNumber.Location = New Point(407, 93)
         txtObjectNumber.Name = "txtObjectNumber"
-        txtObjectNumber.Size = New Size(292, 35)
+        txtObjectNumber.Size = New Size(1138, 35)
         txtObjectNumber.TabIndex = 4
         txtObjectNumber.Text = "0"
         txtObjectNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1002,7 +1002,7 @@ Partial Class ControlPanel
         ' 
         tbObjectReflectivity.ImeMode = System.Windows.Forms.ImeMode.NoControl
         tbObjectReflectivity.LargeChange = 10
-        tbObjectReflectivity.Location = New Point(408, 362)
+        tbObjectReflectivity.Location = New Point(581, 599)
         tbObjectReflectivity.Maximum = 100
         tbObjectReflectivity.Name = "tbObjectReflectivity"
         tbObjectReflectivity.Size = New Size(292, 90)
@@ -1015,7 +1015,7 @@ Partial Class ControlPanel
         tbObjectHighlightSharpness.BackColor = SystemColors.Control
         tbObjectHighlightSharpness.ImeMode = System.Windows.Forms.ImeMode.NoControl
         tbObjectHighlightSharpness.LargeChange = 20
-        tbObjectHighlightSharpness.Location = New Point(408, 338)
+        tbObjectHighlightSharpness.Location = New Point(581, 575)
         tbObjectHighlightSharpness.Maximum = 200
         tbObjectHighlightSharpness.Name = "tbObjectHighlightSharpness"
         tbObjectHighlightSharpness.Size = New Size(292, 90)
@@ -1029,7 +1029,7 @@ Partial Class ControlPanel
         ' 
         txtObjectSizeX.Enabled = False
         txtObjectSizeX.ForeColor = SystemColors.ControlText
-        txtObjectSizeX.Location = New Point(408, 176)
+        txtObjectSizeX.Location = New Point(581, 413)
         txtObjectSizeX.Name = "txtObjectSizeX"
         txtObjectSizeX.Size = New Size(82, 35)
         txtObjectSizeX.TabIndex = 10
@@ -1040,7 +1040,7 @@ Partial Class ControlPanel
         ' 
         txtObjectSizeY.Enabled = False
         txtObjectSizeY.ForeColor = SystemColors.ControlText
-        txtObjectSizeY.Location = New Point(513, 176)
+        txtObjectSizeY.Location = New Point(686, 413)
         txtObjectSizeY.Name = "txtObjectSizeY"
         txtObjectSizeY.Size = New Size(82, 35)
         txtObjectSizeY.TabIndex = 12
@@ -1051,7 +1051,7 @@ Partial Class ControlPanel
         ' 
         txtObjectSizeZ.Enabled = False
         txtObjectSizeZ.ForeColor = SystemColors.ControlText
-        txtObjectSizeZ.Location = New Point(618, 176)
+        txtObjectSizeZ.Location = New Point(791, 413)
         txtObjectSizeZ.Name = "txtObjectSizeZ"
         txtObjectSizeZ.Size = New Size(82, 35)
         txtObjectSizeZ.TabIndex = 14
@@ -1063,7 +1063,7 @@ Partial Class ControlPanel
         lblObjectSize.AutoEllipsis = True
         lblObjectSize.ForeColor = SystemColors.ControlText
         lblObjectSize.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectSize.Location = New Point(260, 176)
+        lblObjectSize.Location = New Point(18, 309)
         lblObjectSize.Name = "lblObjectSize"
         lblObjectSize.Size = New Size(117, 21)
         lblObjectSize.TabIndex = 218
@@ -1075,7 +1075,7 @@ Partial Class ControlPanel
         ' 
         txtObjectNormalZ.Enabled = False
         txtObjectNormalZ.ForeColor = SystemColors.ControlText
-        txtObjectNormalZ.Location = New Point(618, 203)
+        txtObjectNormalZ.Location = New Point(791, 440)
         txtObjectNormalZ.Name = "txtObjectNormalZ"
         txtObjectNormalZ.Size = New Size(82, 35)
         txtObjectNormalZ.TabIndex = 21
@@ -1086,7 +1086,7 @@ Partial Class ControlPanel
         ' 
         txtObjectNormalY.Enabled = False
         txtObjectNormalY.ForeColor = SystemColors.ControlText
-        txtObjectNormalY.Location = New Point(513, 203)
+        txtObjectNormalY.Location = New Point(686, 440)
         txtObjectNormalY.Name = "txtObjectNormalY"
         txtObjectNormalY.Size = New Size(82, 35)
         txtObjectNormalY.TabIndex = 18
@@ -1097,7 +1097,7 @@ Partial Class ControlPanel
         ' 
         txtObjectNormalX.Enabled = False
         txtObjectNormalX.ForeColor = SystemColors.ControlText
-        txtObjectNormalX.Location = New Point(408, 203)
+        txtObjectNormalX.Location = New Point(581, 440)
         txtObjectNormalX.Name = "txtObjectNormalX"
         txtObjectNormalX.Size = New Size(82, 35)
         txtObjectNormalX.TabIndex = 16
@@ -1112,9 +1112,9 @@ Partial Class ControlPanel
         cmdObjectRadius.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectRadius.ForeColor = Color.Black
         cmdObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRadius.Location = New Point(385, 176)
+        cmdObjectRadius.Location = New Point(1227, 466)
         cmdObjectRadius.Name = "cmdObjectRadius"
-        cmdObjectRadius.Size = New Size(802, 0)
+        cmdObjectRadius.Size = New Size(35, 35)
         cmdObjectRadius.TabIndex = 9
         cmdObjectRadius.Text = "ƒ"
         cmdObjectRadius.UseVisualStyleBackColor = False
@@ -1124,7 +1124,7 @@ Partial Class ControlPanel
         lblObjectRadius.AutoEllipsis = True
         lblObjectRadius.ForeColor = SystemColors.ControlText
         lblObjectRadius.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRadius.Location = New Point(260, 176)
+        lblObjectRadius.Location = New Point(9, 253)
         lblObjectRadius.Name = "lblObjectRadius"
         lblObjectRadius.Size = New Size(118, 21)
         lblObjectRadius.TabIndex = 143
@@ -1136,7 +1136,7 @@ Partial Class ControlPanel
         ' 
         txtObjectRotationZ.Enabled = False
         txtObjectRotationZ.ForeColor = SystemColors.ControlText
-        txtObjectRotationZ.Location = New Point(618, 203)
+        txtObjectRotationZ.Location = New Point(791, 440)
         txtObjectRotationZ.Name = "txtObjectRotationZ"
         txtObjectRotationZ.Size = New Size(82, 35)
         txtObjectRotationZ.TabIndex = 223
@@ -1151,9 +1151,9 @@ Partial Class ControlPanel
         cmdObjectRotationZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectRotationZ.ForeColor = Color.Black
         cmdObjectRotationZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRotationZ.Location = New Point(596, 203)
+        cmdObjectRotationZ.Location = New Point(1305, 455)
         cmdObjectRotationZ.Name = "cmdObjectRotationZ"
-        cmdObjectRotationZ.Size = New Size(675, 0)
+        cmdObjectRotationZ.Size = New Size(35, 35)
         cmdObjectRotationZ.TabIndex = 22
         cmdObjectRotationZ.Text = "ƒ"
         cmdObjectRotationZ.UseVisualStyleBackColor = False
@@ -1162,7 +1162,7 @@ Partial Class ControlPanel
         ' 
         txtObjectRotationY.Enabled = False
         txtObjectRotationY.ForeColor = SystemColors.ControlText
-        txtObjectRotationY.Location = New Point(513, 203)
+        txtObjectRotationY.Location = New Point(686, 440)
         txtObjectRotationY.Name = "txtObjectRotationY"
         txtObjectRotationY.Size = New Size(82, 35)
         txtObjectRotationY.TabIndex = 222
@@ -1177,9 +1177,9 @@ Partial Class ControlPanel
         cmdObjectRotationY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectRotationY.ForeColor = Color.Black
         cmdObjectRotationY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRotationY.Location = New Point(491, 203)
+        cmdObjectRotationY.Location = New Point(1084, 455)
         cmdObjectRotationY.Name = "cmdObjectRotationY"
-        cmdObjectRotationY.Size = New Size(838, 9)
+        cmdObjectRotationY.Size = New Size(35, 35)
         cmdObjectRotationY.TabIndex = 17
         cmdObjectRotationY.Text = "ƒ"
         cmdObjectRotationY.UseVisualStyleBackColor = False
@@ -1188,7 +1188,7 @@ Partial Class ControlPanel
         ' 
         txtObjectRotationX.Enabled = False
         txtObjectRotationX.ForeColor = SystemColors.ControlText
-        txtObjectRotationX.Location = New Point(408, 203)
+        txtObjectRotationX.Location = New Point(581, 440)
         txtObjectRotationX.Name = "txtObjectRotationX"
         txtObjectRotationX.Size = New Size(82, 35)
         txtObjectRotationX.TabIndex = 221
@@ -1203,9 +1203,9 @@ Partial Class ControlPanel
         cmdObjectRotationX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectRotationX.ForeColor = Color.Black
         cmdObjectRotationX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectRotationX.Location = New Point(386, 159)
+        cmdObjectRotationX.Location = New Point(1325, 333)
         cmdObjectRotationX.Name = "cmdObjectRotationX"
-        cmdObjectRotationX.Size = New Size(781, 15)
+        cmdObjectRotationX.Size = New Size(35, 35)
         cmdObjectRotationX.TabIndex = 15
         cmdObjectRotationX.Text = "ƒ"
         cmdObjectRotationX.UseVisualStyleBackColor = False
@@ -1215,7 +1215,7 @@ Partial Class ControlPanel
         lblObjectRotation.AutoEllipsis = True
         lblObjectRotation.ForeColor = SystemColors.ControlText
         lblObjectRotation.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRotation.Location = New Point(260, 203)
+        lblObjectRotation.Location = New Point(433, 440)
         lblObjectRotation.Name = "lblObjectRotation"
         lblObjectRotation.Size = New Size(127, 21)
         lblObjectRotation.TabIndex = 224
@@ -1228,7 +1228,7 @@ Partial Class ControlPanel
         lblObjectNormal.AutoEllipsis = True
         lblObjectNormal.ForeColor = SystemColors.ControlText
         lblObjectNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectNormal.Location = New Point(260, 203)
+        lblObjectNormal.Location = New Point(433, 440)
         lblObjectNormal.Name = "lblObjectNormal"
         lblObjectNormal.Size = New Size(117, 21)
         lblObjectNormal.TabIndex = 228
@@ -1244,9 +1244,9 @@ Partial Class ControlPanel
         cmdObjectSizeX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectSizeX.ForeColor = Color.Black
         cmdObjectSizeX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectSizeX.Location = New Point(385, 176)
+        cmdObjectSizeX.Location = New Point(1409, 516)
         cmdObjectSizeX.Name = "cmdObjectSizeX"
-        cmdObjectSizeX.Size = New Size(811, 0)
+        cmdObjectSizeX.Size = New Size(35, 35)
         cmdObjectSizeX.TabIndex = 168
         cmdObjectSizeX.Text = "ƒ"
         cmdObjectSizeX.UseVisualStyleBackColor = False
@@ -1259,9 +1259,9 @@ Partial Class ControlPanel
         cmdObjectSizeY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectSizeY.ForeColor = Color.Black
         cmdObjectSizeY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectSizeY.Location = New Point(491, 176)
+        cmdObjectSizeY.Location = New Point(1213, 399)
         cmdObjectSizeY.Name = "cmdObjectSizeY"
-        cmdObjectSizeY.Size = New Size(744, 22)
+        cmdObjectSizeY.Size = New Size(35, 35)
         cmdObjectSizeY.TabIndex = 11
         cmdObjectSizeY.Text = "ƒ"
         cmdObjectSizeY.UseVisualStyleBackColor = False
@@ -1274,9 +1274,9 @@ Partial Class ControlPanel
         cmdObjectSizeZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectSizeZ.ForeColor = Color.Black
         cmdObjectSizeZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectSizeZ.Location = New Point(596, 176)
+        cmdObjectSizeZ.Location = New Point(1213, 566)
         cmdObjectSizeZ.Name = "cmdObjectSizeZ"
-        cmdObjectSizeZ.Size = New Size(693, 22)
+        cmdObjectSizeZ.Size = New Size(35, 35)
         cmdObjectSizeZ.TabIndex = 13
         cmdObjectSizeZ.Text = "ƒ"
         cmdObjectSizeZ.UseVisualStyleBackColor = False
@@ -1284,7 +1284,7 @@ Partial Class ControlPanel
         ' txtObjectRadius
         ' 
         txtObjectRadius.ForeColor = SystemColors.ControlText
-        txtObjectRadius.Location = New Point(408, 176)
+        txtObjectRadius.Location = New Point(581, 490)
         txtObjectRadius.Name = "txtObjectRadius"
         txtObjectRadius.Size = New Size(292, 35)
         txtObjectRadius.TabIndex = 151
@@ -1299,9 +1299,9 @@ Partial Class ControlPanel
         cmdObjectNormalX.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectNormalX.ForeColor = Color.Black
         cmdObjectNormalX.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNormalX.Location = New Point(385, 203)
+        cmdObjectNormalX.Location = New Point(1101, 793)
         cmdObjectNormalX.Name = "cmdObjectNormalX"
-        cmdObjectNormalX.Size = New Size(757, 22)
+        cmdObjectNormalX.Size = New Size(35, 35)
         cmdObjectNormalX.TabIndex = 231
         cmdObjectNormalX.Text = "ƒ"
         cmdObjectNormalX.UseVisualStyleBackColor = False
@@ -1314,9 +1314,9 @@ Partial Class ControlPanel
         cmdObjectNormalY.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectNormalY.ForeColor = Color.Black
         cmdObjectNormalY.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNormalY.Location = New Point(491, 203)
+        cmdObjectNormalY.Location = New Point(1305, 803)
         cmdObjectNormalY.Name = "cmdObjectNormalY"
-        cmdObjectNormalY.Size = New Size(838, 35)
+        cmdObjectNormalY.Size = New Size(35, 35)
         cmdObjectNormalY.TabIndex = 238
         cmdObjectNormalY.Text = "ƒ"
         cmdObjectNormalY.UseVisualStyleBackColor = False
@@ -1329,9 +1329,9 @@ Partial Class ControlPanel
         cmdObjectNormalZ.Font = New Font("Arial", 8.25F, FontStyle.Bold)
         cmdObjectNormalZ.ForeColor = Color.Black
         cmdObjectNormalZ.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdObjectNormalZ.Location = New Point(596, 203)
+        cmdObjectNormalZ.Location = New Point(1383, 701)
         cmdObjectNormalZ.Name = "cmdObjectNormalZ"
-        cmdObjectNormalZ.Size = New Size(702, 0)
+        cmdObjectNormalZ.Size = New Size(35, 35)
         cmdObjectNormalZ.TabIndex = 239
         cmdObjectNormalZ.Text = "ƒ"
         cmdObjectNormalZ.UseVisualStyleBackColor = False
@@ -1343,9 +1343,9 @@ Partial Class ControlPanel
         cmdGroupAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
         cmdGroupAdd.ForeColor = SystemColors.ControlText
         cmdGroupAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        cmdGroupAdd.Location = New Point(6, 900)
+        cmdGroupAdd.Location = New Point(6, 1176)
         cmdGroupAdd.Name = "cmdGroupAdd"
-        cmdGroupAdd.Size = New Size(1560, 62)
+        cmdGroupAdd.Size = New Size(1554, 62)
         cmdGroupAdd.TabIndex = 0
         cmdGroupAdd.Text = "Add Objects"
         cmdGroupAdd.UseVisualStyleBackColor = True
@@ -3341,7 +3341,7 @@ Partial Class ControlPanel
         Tabs.Location = New Point(12, 73)
         Tabs.Name = "Tabs"
         Tabs.SelectedIndex = 0
-        Tabs.Size = New Size(1580, 1085)
+        Tabs.Size = New Size(1580, 1361)
         Tabs.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Tabs.TabIndex = 1
         ' 
@@ -3367,7 +3367,7 @@ Partial Class ControlPanel
         TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
         TableLayoutPanel13.Controls.Add(cmdGroupReplace, 0, 0)
         TableLayoutPanel13.Controls.Add(cmdGroupRemove, 1, 0)
-        TableLayoutPanel13.Location = New Point(3, 968)
+        TableLayoutPanel13.Location = New Point(3, 1244)
         TableLayoutPanel13.Name = "TableLayoutPanel13"
         TableLayoutPanel13.RowCount = 1
         TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F))
@@ -3452,7 +3452,7 @@ Partial Class ControlPanel
         Panel2.Controls.Add(lblObjectPosition)
         Panel2.Location = New Point(-3, 206)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1557, 676)
+        Panel2.Size = New Size(1557, 952)
         Panel2.TabIndex = 240
         ' 
         ' ControlPanel
@@ -3460,7 +3460,7 @@ Partial Class ControlPanel
         AutoScaleDimensions = New SizeF(192F, 192F)
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         BackColor = SystemColors.Control
-        ClientSize = New Size(1604, 1203)
+        ClientSize = New Size(1604, 1479)
         Controls.Add(Tabs)
         Controls.Add(Stats)
         Controls.Add(cmdStart)
