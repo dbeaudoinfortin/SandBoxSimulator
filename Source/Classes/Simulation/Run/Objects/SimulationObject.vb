@@ -23,7 +23,7 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
     Public HalfSize As XYZ
     Public Rotation As XYZ ' Used for Box and Finite Plane
     Public Normal As XYZ 'Used for Infinite Plane
-    Public BoxCollisionData As BoxCollisionData 'Used only in collisions
+    Public CollisionData As ObjectCollisionData 'Used only in collisions
     Public DXRenderData As ObjectDXRenderData
     Public DXRenderType As RenderType
 
@@ -49,7 +49,7 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
         Radius = other.Radius
         Velocity.Copy(other.Velocity)
         Transparency = other.Transparency
-        BoxCollisionData = Nothing
+        CollisionData = Nothing
         DXRenderData = Nothing
         DXRenderType = other.DXRenderType
     End Sub
@@ -77,7 +77,7 @@ Public Class SimulationObject 'USED AT RUNTIME ONLY, DISECTION OF SIMULATION GRO
         Radius = 1
         Velocity = New XYZ(0, 0, 0)
         Transparency = 255
-        BoxCollisionData = Nothing
+        CollisionData = Nothing
         DXRenderData = Nothing
         DXRenderType = RenderType.Solid
     End Sub

@@ -121,6 +121,8 @@ Note that repositioning of the camera clears the trace history of the objects wh
 - Box and plane rendering is broken with the ray tracing render setting. The objects always show up a spheres.
 - Ray traced rendering does not support aspect ratio other than 1:1. This is more of a bug than a design limitation.
 - Sphere to box collisions cannot handle situations where the sphere makes clean contact with only an edge of the box. This is a work in progress.
+- The interpolation between time steps for collision detection is only implemented for sphere to sphere collisions. Again, this is work in progress.
+- Box to plane collisions have not been implemented.
 
 # Changes in Version 4.1
 
@@ -148,6 +150,7 @@ The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this project
 - DirectX rendering makes use of the DirectX 9 implementation from the SharpDX library.
 - Ray traced rendering is built from scratch by myself. Rays are traced using the usual "backwards" approach of projecting them out of the camera, through the screen, to the objects, and then bouncing them to the lights. Once the colour of a pixel is calculated, it is written to a byte buffer. At the end of the frame, that buffer is written to a texture and texture is drawn in the scene using DirectX 9. Each thread renders their frame independently, and the frames are presented alternately in a first-come-first-served manner.
 - The solution contains a second project called CS Compatibility. The purpose of this project is to build a DLL that sits between SandBox Simulator and a handful of calls to SharpDX, as a work-around for some of the language incompatibilities between C# and VB .Net. Since SharpDX is no longer under development, and VB .Net's popularity continues to fall, I doubt the compatibility issues will get resolved. I also don't feel it's worth rewriting Sandbox Simulator in another language since its just a fun side project.
+-The random number generator is seeded with a value calculated from the configuration of the simulation. The idea is to always produce the same seed on every run, so long as the configuration doesn't change, so that we have consistent, predictable results.
 
 # Future Plans
 There are a number of additions that I have been meaning to implement (one of these days...):

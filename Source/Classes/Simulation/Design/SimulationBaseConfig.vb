@@ -1,4 +1,5 @@
-﻿Imports System.Text
+﻿Imports System.Security.Cryptography
+Imports System.Text
 Imports System.Windows.Forms
 
 Public Structure SimulationBaseConfig
@@ -147,8 +148,18 @@ Public Structure SimulationBaseConfig
             End If
         Next
 
-        Return Math.Abs(stingBuilder.ToString.GetHashCode)
+        'In more recent .net versions, ToString.GetHashCode functions has a randomized component
+        'Instead, I use the MD5 hash, which won't change between builds
+
+        Return Math.Abs(ComputeMd5Hash(stingBuilder.ToString))
     End Function
+    Private Function ComputeMd5Hash(ByVal inputString As String) As Double
+        Using hasher As MD5 = MD5.Create()
+            Dim inputBytes As Byte() = Encoding.UTF8.GetBytes(inputString)
+            Return ToDouble(BitConverter.ToInt32(hasher.ComputeHash(inputBytes)))
+        End Using
+    End Function
+
     Public Overloads Sub ToString(stringBuilder As StringBuilder)
 
         Dim tabs As String = Constants.vbTab

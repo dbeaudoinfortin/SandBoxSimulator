@@ -1211,7 +1211,7 @@ Partial Class ControlPanel
         lblObjectRotation.AutoEllipsis = True
         lblObjectRotation.ForeColor = SystemColors.ControlText
         lblObjectRotation.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        lblObjectRotation.Location = New Point(9, 290)
+        lblObjectRotation.Location = New Point(9, 295)
         lblObjectRotation.Name = "lblObjectRotation"
         lblObjectRotation.Size = New Size(274, 35)
         lblObjectRotation.TabIndex = 224

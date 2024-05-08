@@ -9,7 +9,7 @@ Public Structure XYZ
         Return New XYZ(Double.PositiveInfinity, Double.PositiveInfinity, Double.PositiveInfinity)
     End Function
     Public Function IsNaN() As Boolean
-        Return X = Double.NaN And Y = Double.NaN And Z = Double.NaN
+        Return Double.IsNaN(X) AndAlso Double.IsNaN(Y) AndAlso Double.IsNaN(Z)
     End Function
     Public Function IsZero() As Boolean
         Return X = 0 And Y = 0 And Z = 0

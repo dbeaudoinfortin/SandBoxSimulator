@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
+Imports System.Windows.Forms.AxHost
 Imports SharpDX.Direct3D9
 
 Public Class ControlPanel
@@ -646,26 +647,21 @@ Public Class ControlPanel
         txtObjectName.Enabled = State
         cmdObjectNumber.Enabled = State
 
-        'position
+        'position - Applies to all
         cmdObjectPositionX.Enabled = State
         cmdObjectPositionY.Enabled = State
         cmdObjectPositionZ.Enabled = State
 
-        'velocity
+        'velocity - Applies to all
         cmdObjectVelocityX.Enabled = State
         cmdObjectVelocityY.Enabled = State
         cmdObjectVelocityZ.Enabled = State
 
+        'colour - Applies to all
         cmdObjectColor.Enabled = State
 
-        'transparency
+        'transparency - Applies to all
         cmdObjectTransparency.Enabled = State
-
-        chObjectAffected.Enabled = State
-        chObjectAffects.Enabled = State
-        chObjectWireframe.Enabled = State
-        chObjectPoints.Enabled = State
-
         cmdGroupAdd.Enabled = State
 
         If State = False Then
@@ -703,6 +699,8 @@ Public Class ControlPanel
             chVSync.Enabled = State
             txtMaxFPS.Enabled = State
             txtRenderThreads.Enabled = State
+            chObjectWireframe.Enabled = State
+            chObjectPoints.Enabled = State
 
             'CAMERA
             txtCPosX.Enabled = State
@@ -798,6 +796,9 @@ Public Class ControlPanel
             cmdObjectHighlightSharpness.Enabled = State
             cmdObjectReflectivity.Enabled = State
             cmdObjectRefractiveIndex.Enabled = State
+
+            chObjectAffected.Enabled = State
+            chObjectAffects.Enabled = State
         Else
             CheckConditionals()
         End If
@@ -824,6 +825,9 @@ Public Class ControlPanel
         chVSync.Enabled = isDXRender
         txtVFoV.Enabled = Not isDXRender
         cbShading.Enabled = isFancyDXLights
+
+        chObjectWireframe.Enabled = isDXRender
+        chObjectPoints.Enabled = isDXRender
 
         If isDXRender Then 'Using Direct X
             txtRenderThreads.Text = "1"
@@ -907,20 +911,24 @@ Public Class ControlPanel
         cmdGroupReplace.Enabled = (listGroups.SelectedIndex <> -1) 'An object group is selected
         txtObjectNumber.Enabled = (cmdObjectNumber.ForeColor = Color.Black) 'number
 
-        'mass
-        Dim isObjectMassEnabled As Boolean = (chObjectAffected.Checked Or chObjectAffects.Checked) And (isAnyForceEnabled Or isCollisionsEnabled)
-        cmdObjectMass.Enabled = isObjectMassEnabled
-        txtObjectMass.Enabled = isObjectMassEnabled And (cmdObjectMass.ForeColor = Color.Black)
+        Dim isObjectSphere As Boolean = (cbObjectType.SelectedIndex = 0)
+        Dim isObjectBox As Boolean = (cbObjectType.SelectedIndex = 1)
+        Dim isObjectPlane As Boolean = (cbObjectType.SelectedIndex = 2)
+        Dim isObjectInfinitePlane As Boolean = (cbObjectType.SelectedIndex = 3)
+
+        'affected - does not apply to planes
+        chObjectAffected.Enabled = (isObjectSphere Or isObjectBox) And (isAnyForceEnabled Or isCollisionsEnabled)
+        chObjectAffects.Enabled = (isAnyForceEnabled Or isCollisionsEnabled)
 
         'charge
         Dim isObjectChargeEnabled As Boolean = isForcesEnabled And chElectrostatic.Checked And (chObjectAffected.Checked Or chObjectAffects.Checked)
         cmdObjectCharge.Enabled = isObjectChargeEnabled
         txtObjectCharge.Enabled = isObjectChargeEnabled And (cmdObjectCharge.ForeColor = Color.Black)
 
-        Dim isObjectSphere As Boolean = (cbObjectType.SelectedIndex = 0)
-        Dim isObjectBox As Boolean = (cbObjectType.SelectedIndex = 1)
-        Dim isObjectPlane As Boolean = (cbObjectType.SelectedIndex = 2)
-        Dim isObjectInfinitePlane As Boolean = (cbObjectType.SelectedIndex = 3)
+        'mass
+        Dim isObjectMassEnabled As Boolean = (isObjectSphere Or isObjectBox) And (chObjectAffected.Checked Or chObjectAffects.Checked) And (isAnyForceEnabled Or isCollisionsEnabled)
+        cmdObjectMass.Enabled = isObjectMassEnabled
+        txtObjectMass.Enabled = isObjectMassEnabled And (cmdObjectMass.ForeColor = Color.Black)
 
         'rotation, infinite plane has this replaced with a normal vector
         lblObjectRotation.Visible = Not isObjectInfinitePlane
@@ -2039,20 +2047,22 @@ Public Class ControlPanel
     Private Sub InsertGroup(ByRef i As Integer)
 
         Simulation.Config.ObjectGroups(i).Name = txtObjectName.Text
-        Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
         Simulation.Config.ObjectGroups(i).Affects = chObjectAffects.Checked
         Simulation.Config.ObjectGroups(i).Wireframe = chObjectWireframe.Checked
         Simulation.Config.ObjectGroups(i).Points = chObjectPoints.Checked
-        If cbObjectType.SelectedIndex = 0 Then
-            Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
-        ElseIf cbObjectType.SelectedIndex = 1 Then
+
+        If cbObjectType.SelectedIndex = 1 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Box
+            Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
         ElseIf cbObjectType.SelectedIndex = 2 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Plane
+            Simulation.Config.ObjectGroups(i).Affected = False
         ElseIf cbObjectType.SelectedIndex = 3 Then
             Simulation.Config.ObjectGroups(i).Type = ObjectType.InfinitePlane
+            Simulation.Config.ObjectGroups(i).Affected = False
         Else
             Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
+            Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
         End If
 
         ObjectNumber.Value = ToInt32(txtObjectNumber.Text)

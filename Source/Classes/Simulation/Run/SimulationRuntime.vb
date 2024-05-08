@@ -141,7 +141,11 @@ Public Class SimulationRuntime
 
                     If Config.Collisions.Enabled Then
                         'Precompute a bunch of data that will be useful in collision detection
-                        Objects(ObjectCount).BoxCollisionData = New BoxCollisionData(Objects(ObjectCount).Rotation, Objects(ObjectCount).HalfSize)
+                        If Group.Type = ObjectType.Box Then
+                            Objects(ObjectCount).CollisionData = New BoxCollisionData(Objects(ObjectCount).Rotation, Objects(ObjectCount).HalfSize)
+                        Else
+                            Objects(ObjectCount).CollisionData = New PlaneCollisionData(Objects(ObjectCount).Rotation, Objects(ObjectCount).HalfSize)
+                        End If
                     End If
                 ElseIf Group.Type = ObjectType.Sphere Then
                     Objects(ObjectCount).Radius = Group.Radius.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount)
@@ -191,6 +195,7 @@ Public Class SimulationRuntime
         Running = True
 
         'Reinitialize the random number generator
+        'The idea is to always produce the same seed on every run so that we have consistent, predicatable results
         RandMaker.Seed = Config.GetUniqueSeed()
         RandMaker.Restart()
 
@@ -244,6 +249,7 @@ Public Class SimulationRuntime
     End Sub
     Public Sub StopSimulation()
         Running = False
+        Paused = False
 
         ControlPanel.StatusUpdate.Enabled = False
         Output.CameraUpdate.Enabled = False
