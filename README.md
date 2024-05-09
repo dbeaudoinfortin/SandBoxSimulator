@@ -4,7 +4,7 @@
 
 SandBox Simulator is an educational (and fun!) 3D physics simulation engine. It lets you play around with different Newtonian physics concepts and visualize them.
 
-I originally developed this application in 2008 as a fun side project. At the time there was nothing that I could find to let you quickly visualize several types of physical interactions. My goal was a couple of mouse clicks on a form and you're seeing the results right away; no math and no programming required. I resurrected version 4.0 from the dead and have made some significant changes in version 4.1 (see below) to modernize it.
+I initially developed this application in 2008 as a fun hobby project. My goal was to learn about computational physics, numerical analysis, 3D rendering and ray tracing from the basics. For that reason, I chose to write everything from scratch, eventhough plenty of physics libraries existed. At that time, I couldn't find any simple GUI-based applications that allowed for the quick visualization of various physical interactions. My aim was to enable the user to see results with just a few clicks — no math or coding necessary. I recently revived version 4.0, and have implemented many significant updates in version 4.1 to bring it up to date (details below).
 
 Originally designed to give approximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
 
@@ -149,6 +149,8 @@ The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this project
 - Requires Visual Studio 2022.
 - DirectX rendering makes use of the DirectX 9 implementation from the SharpDX library.
 - Ray traced rendering is built from scratch by myself. Rays are traced using the usual "backwards" approach of projecting them out of the camera, through the screen, to the objects, and then bouncing them to the lights. Once the colour of a pixel is calculated, it is written to a byte buffer. At the end of the frame, that buffer is written to a texture and texture is drawn in the scene using DirectX 9. Each thread renders their frame independently, and the frames are presented alternately in a first-come-first-served manner.
+- The physics engine is also built from scratch by myself. The numerical analysis makes use of several forms of numerical integration, which you can choose from.
+- For both object-to-object collisions and ray tracing, I have chosen to dissect the boxes into 6 individual planes and perform the intersection calculations on the 6 planes, rather than take an oriented bounding box (OBB) approach. I believe this is more efficient in my case because the box rotation is not dynamic and thus the rotation of each of the planes can be calculated before starting the simulation. At some point, I'd like to introduce rotational velocities so that the objects can "tumble". I will probably benefit from switching to an OBB approach since my current approach would require recalculating the rotations of all 6 planes on every iteration.
 - The solution contains a second project called CS Compatibility. The purpose of this project is to build a DLL that sits between SandBox Simulator and a handful of calls to SharpDX, as a work-around for some of the language incompatibilities between C# and VB .Net. Since SharpDX is no longer under development, and VB .Net's popularity continues to fall, I doubt the compatibility issues will get resolved. I also don't feel it's worth rewriting Sandbox Simulator in another language since its just a fun side project.
 -The random number generator is seeded with a value calculated from the configuration of the simulation. The idea is to always produce the same seed on every run, so long as the configuration doesn't change, so that we have consistent, predictable results.
 
@@ -182,6 +184,8 @@ There are a number of additions that I have been meaning to implement (one of th
 # Some Pretty Pictures
 
 Here are some examples of visualizations.
+
+https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1881aecd-40bf-4f04-820c-efdfc1f741a6
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/925be17a-3b91-46f9-90a7-03a9ac5d9caf" width="800" />
 
