@@ -100,11 +100,11 @@ Public Class SimulationRuntime
         Dim NewObjectCount As Integer
 
         'Add new objects from the groups
-        For GroupIndex As Integer = 0 To Config.ObjectGroupCount - 1
+        For GroupIndex As Integer = 0 To Config.ObjectGroups.Count - 1
             Dim Group As SimulationConfigObjectGroup = Config.ObjectGroups(GroupIndex)
 
             'Determine the number of objects
-            NewObjectCount = Group.Number.CalculateEffectiveValue(RandMaker, GroupIndex, Config.ObjectGroupCount)
+            NewObjectCount = Group.Number.CalculateEffectiveValue(RandMaker, GroupIndex, Config.ObjectGroups.Count)
             If NewObjectCount < 1 Then NewObjectCount = 1 'Sanity check! 
 
             'Resize the object array
@@ -175,7 +175,7 @@ Public Class SimulationRuntime
     End Sub
     Private Sub ConvertLightConfigstoLights()
         If (Config.Render.EnableLighting) Then
-            LightCount = Config.LightConfigCount
+            LightCount = Config.LightConfigs.Count
             ReDim Lights(LightCount)
             For index As Integer = 0 To LightCount - 1
                 Lights(index).Copy(Config.LightConfigs(index))

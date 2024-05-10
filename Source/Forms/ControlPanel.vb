@@ -71,7 +71,7 @@ Public Class ControlPanel
         End If
 
         'TODO: Should sum up the count of all the objects of all the groups
-        If ToInt32(txtLimitObjects.Text) < Simulation.Config.ObjectGroupCount Then
+        If ToInt32(txtLimitObjects.Text) < Simulation.Config.ObjectGroups.Count Then
             MsgBox("The number of Objects must not be greater than Max Objects.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
@@ -1177,7 +1177,7 @@ Public Class ControlPanel
 
         '----LIGHTS----
         listLights.Items.Clear()
-        For i = 0 To Simulation.Config.LightConfigCount - 1
+        For i = 0 To Simulation.Config.LightConfigs.Count - 1
             listLights.Items.Insert(listLights.Items.Count, Simulation.Config.LightConfigs(i).Name)
         Next
         listLights.ClearSelected()
@@ -1185,7 +1185,7 @@ Public Class ControlPanel
 
         '----OBJECTS----
         listGroups.Items.Clear()
-        For i = 0 To Simulation.Config.ObjectGroupCount - 1
+        For i = 0 To Simulation.Config.ObjectGroups.Count - 1
             listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.ObjectGroups(i).Name)
         Next
         listGroups.ClearSelected()
@@ -1255,7 +1255,7 @@ Public Class ControlPanel
                 MsgBox("The number Of objects In the simulation surpasses the maximum number of objects", MsgBoxStyle.Critical, "Error")
                 Exit Sub
             End If
-            If Simulation.Config.ObjectGroupCount <= 0 Then
+            If Simulation.Config.ObjectGroups.Count <= 0 Then
                 MsgBox("At least one Object Is required To begin the simulation.", MsgBoxStyle.Critical, "Error")
                 Exit Sub
             End If
@@ -1407,9 +1407,8 @@ Public Class ControlPanel
     End Sub
     Private Sub CmdAddLight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLightAdd.Click
         If Not IsValidLight() = True Then Exit Sub
-        Simulation.Config.EnlargeLights()
-        InsertLight(Simulation.Config.LightConfigCount - 1)
-        listLights.Items.Insert(listLights.Items.Count, Simulation.Config.LightConfigs(Simulation.Config.LightConfigCount - 1).Name)
+        InsertLight(Simulation.Config.LightConfigs.Count)
+        listLights.Items.Insert(listLights.Items.Count, Simulation.Config.LightConfigs(Simulation.Config.LightConfigs.Count - 1).Name)
         listLights.ClearSelected()
         ConfigModified = True
     End Sub
@@ -1418,49 +1417,53 @@ Public Class ControlPanel
         Dim isPointLight As Boolean = (cbLightType.SelectedIndex = 1)
         Dim isSpotLight As Boolean = (cbLightType.SelectedIndex = 2)
 
+        Dim newLight As New SimulationConfigLight
+        Simulation.Config.LightConfigs.Insert(i, newLight)
+
         If isSpotLight Then
-            Simulation.Config.LightConfigs(i).Type = LightType.Spot
+            newLight.Type = LightType.Spot
         ElseIf isPointLight Then
-            Simulation.Config.LightConfigs(i).Type = LightType.Point
+            newLight.Type = LightType.Point
         ElseIf isDirectionalLight Then
-            Simulation.Config.LightConfigs(i).Type = LightType.Directional
+            newLight.Type = LightType.Directional
         End If
 
-        Simulation.Config.LightConfigs(i).Name = txtLightName.Text
-        Simulation.Config.LightConfigs(i).Color = plLightColor.BackColor
+        newLight.Name = txtLightName.Text
+        newLight.Color = plLightColor.BackColor
 
         If (isDirectionalLight Or isSpotLight) Then
-            Simulation.Config.LightConfigs(i).Direction.X = ToSingle(txtLightDirectionX.Text)
-            Simulation.Config.LightConfigs(i).Direction.Y = ToSingle(txtLightDirectionY.Text)
-            Simulation.Config.LightConfigs(i).Direction.Z = ToSingle(txtLightDirectionZ.Text)
+            newLight.Direction.X = ToSingle(txtLightDirectionX.Text)
+            newLight.Direction.Y = ToSingle(txtLightDirectionY.Text)
+            newLight.Direction.Z = ToSingle(txtLightDirectionZ.Text)
         End If
 
         If (isSpotLight Or isPointLight) Then
-            Simulation.Config.LightConfigs(i).Position.X = ToSingle(txtLightPositionX.Text)
-            Simulation.Config.LightConfigs(i).Position.Y = ToSingle(txtLightPositionY.Text)
-            Simulation.Config.LightConfigs(i).Position.Z = ToSingle(txtLightPositionZ.Text)
+            newLight.Position.X = ToSingle(txtLightPositionX.Text)
+            newLight.Position.Y = ToSingle(txtLightPositionY.Text)
+            newLight.Position.Z = ToSingle(txtLightPositionZ.Text)
 
-            Simulation.Config.LightConfigs(i).AttenuationA = ToSingle(txtLightAttenuationA.Text)
-            Simulation.Config.LightConfigs(i).AttenuationB = ToSingle(txtLightAttenuationB.Text)
-            Simulation.Config.LightConfigs(i).AttenuationC = ToSingle(txtLightAttenuationC.Text)
+            newLight.AttenuationA = ToSingle(txtLightAttenuationA.Text)
+            newLight.AttenuationB = ToSingle(txtLightAttenuationB.Text)
+            newLight.AttenuationC = ToSingle(txtLightAttenuationC.Text)
 
-            Simulation.Config.LightConfigs(i).Range = ToSingle(txtLightRange.Text)
+            newLight.Range = ToSingle(txtLightRange.Text)
         End If
 
         If (isSpotLight) Then
-            Simulation.Config.LightConfigs(i).InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
-            Simulation.Config.LightConfigs(i).OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
-            Simulation.Config.LightConfigs(i).Falloff = ToSingle(txtLightFalloff.Text)
+            newLight.InnerCone = ToSingle(ToDouble(txtLightAngleInner.Text) * (Math.PI / 180))
+            newLight.OuterCone = ToSingle(ToDouble(txtLightAngleOuter.Text) * (Math.PI / 180))
+            newLight.Falloff = ToSingle(txtLightFalloff.Text)
         End If
 
-        Simulation.Config.LightConfigs(i).AmbientRatio = tbLightAmbient.Value
-        Simulation.Config.LightConfigs(i).AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
-        Simulation.Config.LightConfigs(i).SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
+        newLight.AmbientRatio = tbLightAmbient.Value
+        newLight.AmbientColor = Color.FromArgb(255, ToByte(plLightColor.BackColor.R * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.G * (tbLightAmbient.Value / 100)), ToByte(plLightColor.BackColor.B * (tbLightAmbient.Value / 100)))
+        newLight.SpecularColor = Color.FromArgb(255, tbLightHighlight.Value, tbLightHighlight.Value, tbLightHighlight.Value)
     End Sub
     Private Sub CmdReplaceLight_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdLightReplace.Click
         If IsValidLight() = True Then
             Dim index As Integer
             index = listLights.SelectedIndex
+            Simulation.Config.LightConfigs.RemoveAt(index)
             InsertLight(index)
             listLights.Items.RemoveAt(index)
             listLights.Items.Insert(index, Simulation.Config.LightConfigs(index).Name)
@@ -1470,7 +1473,7 @@ Public Class ControlPanel
     End Sub
     Private Sub CmdRemoveLight_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdLightRemove.Click
         If MsgBox("Are you sure you want to remove the selected light?", MsgBoxStyle.YesNo, "Remove?") = vbYes Then
-            Simulation.Config.RemoveLight(listLights.SelectedIndex)
+            Simulation.Config.LightConfigs.RemoveAt(listLights.SelectedIndex)
             listLights.Items.RemoveAt(listLights.SelectedIndex)
             listLights.ClearSelected()
             ConfigModified = True
@@ -1999,7 +2002,7 @@ Public Class ControlPanel
     Private Function ObjectRoomLeft() As Integer
         Dim CurrentObjects As Integer = 0
         'TODO move this the distribution object
-        For i = 0 To Simulation.Config.ObjectGroupCount - 1
+        For i = 0 To Simulation.Config.ObjectGroups.Count - 1
             If Simulation.Config.ObjectGroups(i).Number.UseFunction Then
                 If Simulation.Config.ObjectGroups(i).Number.Random Then
                     CurrentObjects += Simulation.Config.ObjectGroups(i).Number.RandomMax
@@ -2035,9 +2038,8 @@ Public Class ControlPanel
             Exit Sub
         End If
 
-        Simulation.Config.EnlargeGroups()
-        InsertGroup(Simulation.Config.ObjectGroupCount - 1)
-        listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.ObjectGroups(Simulation.Config.ObjectGroupCount - 1).Name)
+        InsertGroup(Simulation.Config.ObjectGroups.Count)
+        listGroups.Items.Insert(listGroups.Items.Count, Simulation.Config.ObjectGroups(Simulation.Config.ObjectGroups.Count - 1).Name)
         listGroups.ClearSelected()
         ConfigModified = True
 
@@ -2046,79 +2048,82 @@ Public Class ControlPanel
     End Sub
     Private Sub InsertGroup(ByRef i As Integer)
 
-        Simulation.Config.ObjectGroups(i).Name = txtObjectName.Text
-        Simulation.Config.ObjectGroups(i).Affects = chObjectAffects.Checked
-        Simulation.Config.ObjectGroups(i).Wireframe = chObjectWireframe.Checked
-        Simulation.Config.ObjectGroups(i).Points = chObjectPoints.Checked
+        Dim newGroup As New SimulationConfigObjectGroup
+        Simulation.Config.ObjectGroups.Insert(i, newGroup)
+
+        newGroup.Name = txtObjectName.Text
+        newGroup.Affects = chObjectAffects.Checked
+        newGroup.Wireframe = chObjectWireframe.Checked
+        newGroup.Points = chObjectPoints.Checked
 
         If cbObjectType.SelectedIndex = 1 Then
-            Simulation.Config.ObjectGroups(i).Type = ObjectType.Box
-            Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
+            newGroup.Type = ObjectType.Box
+            newGroup.Affected = chObjectAffected.Checked
         ElseIf cbObjectType.SelectedIndex = 2 Then
-            Simulation.Config.ObjectGroups(i).Type = ObjectType.Plane
-            Simulation.Config.ObjectGroups(i).Affected = False
+            newGroup.Type = ObjectType.Plane
+            newGroup.Affected = False
         ElseIf cbObjectType.SelectedIndex = 3 Then
-            Simulation.Config.ObjectGroups(i).Type = ObjectType.InfinitePlane
-            Simulation.Config.ObjectGroups(i).Affected = False
+            newGroup.Type = ObjectType.InfinitePlane
+            newGroup.Affected = False
         Else
-            Simulation.Config.ObjectGroups(i).Type = ObjectType.Sphere
-            Simulation.Config.ObjectGroups(i).Affected = chObjectAffected.Checked
+            newGroup.Type = ObjectType.Sphere
+            newGroup.Affected = chObjectAffected.Checked
         End If
 
         ObjectNumber.Value = ToInt32(txtObjectNumber.Text)
-        Simulation.Config.ObjectGroups(i).Number.Copy(ObjectNumber)
+        newGroup.Number.Copy(ObjectNumber)
 
         ObjectMass.Value = ToDouble(txtObjectMass.Text)
-        Simulation.Config.ObjectGroups(i).Mass.Copy(ObjectMass)
+        newGroup.Mass.Copy(ObjectMass)
 
         ObjectCharge.Value = ToDouble(txtObjectCharge.Text)
-        Simulation.Config.ObjectGroups(i).Charge.Copy(ObjectCharge)
+        newGroup.Charge.Copy(ObjectCharge)
 
         ObjectSize.X.Value = ToDouble(txtObjectSizeX.Text)
         ObjectSize.Y.Value = ToDouble(txtObjectSizeY.Text)
         ObjectSize.Z.Value = ToDouble(txtObjectSizeZ.Text)
-        Simulation.Config.ObjectGroups(i).Size.Copy(ObjectSize)
+        newGroup.Size.Copy(ObjectSize)
 
         ObjectRadius.Value = ToDouble(txtObjectRadius.Text)
-        Simulation.Config.ObjectGroups(i).Radius.Copy(ObjectRadius)
+        newGroup.Radius.Copy(ObjectRadius)
 
         ObjectRotation.X.Value = ToDouble(txtObjectRotationX.Text)
         ObjectRotation.Y.Value = ToDouble(txtObjectRotationY.Text)
         ObjectRotation.Z.Value = ToDouble(txtObjectRotationZ.Text)
-        Simulation.Config.ObjectGroups(i).Rotation.Copy(ObjectRotation)
+        newGroup.Rotation.Copy(ObjectRotation)
 
         ObjectNormal.X.Value = ToDouble(txtObjectNormalX.Text)
         ObjectNormal.Y.Value = ToDouble(txtObjectNormalY.Text)
         ObjectNormal.Z.Value = ToDouble(txtObjectNormalZ.Text)
-        Simulation.Config.ObjectGroups(i).Normal.Copy(ObjectNormal)
+        newGroup.Normal.Copy(ObjectNormal)
 
         ObjectPosition.X.Value = ToDouble(txtObjectPositionX.Text)
         ObjectPosition.Y.Value = ToDouble(txtObjectPositionY.Text)
         ObjectPosition.Z.Value = ToDouble(txtObjectPositionZ.Text)
-        Simulation.Config.ObjectGroups(i).Position.Copy(ObjectPosition)
+        newGroup.Position.Copy(ObjectPosition)
 
         ObjectVelocity.X.Value = ToDouble(txtObjectVelocityX.Text)
         ObjectVelocity.Y.Value = ToDouble(txtObjectVelocityY.Text)
         ObjectVelocity.Z.Value = ToDouble(txtObjectVelocityZ.Text)
-        Simulation.Config.ObjectGroups(i).Velocity.Copy(ObjectVelocity)
+        newGroup.Velocity.Copy(ObjectVelocity)
 
         ObjectColor.Value = plObjectColor.BackColor
-        Simulation.Config.ObjectGroups(i).Color.Copy(ObjectColor)
+        newGroup.Color.Copy(ObjectColor)
 
         ObjectHighlight.Value = plObjectHighlightColor.BackColor
-        Simulation.Config.ObjectGroups(i).Highlight.Copy(ObjectHighlight)
+        newGroup.Highlight.Copy(ObjectHighlight)
 
         ObjectRefractiveIndex.Value = ToDouble(txtObjectRefractiveIndex.Text)
-        Simulation.Config.ObjectGroups(i).RefractiveIndex.Copy(ObjectRefractiveIndex)
+        newGroup.RefractiveIndex.Copy(ObjectRefractiveIndex)
 
         ObjectTransparency.Value = ToDouble(tbObjectTransparency.Value)
-        Simulation.Config.ObjectGroups(i).Transparency.Copy(ObjectTransparency)
+        newGroup.Transparency.Copy(ObjectTransparency)
 
         ObjectSharpness.Value = ToSingle(tbObjectHighlightSharpness.Value)
-        Simulation.Config.ObjectGroups(i).Sharpness.Copy(ObjectSharpness)
+        newGroup.Sharpness.Copy(ObjectSharpness)
 
         ObjectReflectivity.Value = ToSingle(tbObjectReflectivity.Value)
-        Simulation.Config.ObjectGroups(i).Reflectivity.Copy(ObjectReflectivity)
+        newGroup.Reflectivity.Copy(ObjectReflectivity)
     End Sub
     Private Function IsValidMaxObjects() As Boolean
         If Not IsNumeric(txtLimitObjects.Text) Then
@@ -2166,6 +2171,7 @@ Public Class ControlPanel
             Exit Sub
         End If
 
+        Simulation.Config.ObjectGroups.RemoveAt(index)
         InsertGroup(index)
         listGroups.Items.RemoveAt(index)
         listGroups.Items.Insert(index, Simulation.Config.ObjectGroups(index).Name)
@@ -2177,7 +2183,7 @@ Public Class ControlPanel
     End Sub
     Private Sub CmdRemoveGroup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGroupRemove.Click
         If MsgBox("Are you sure you want to remove the selected group?", MsgBoxStyle.YesNo, "Remove?") = MsgBoxResult.No Then Exit Sub
-        Simulation.Config.RemoveGroup(listGroups.SelectedIndex)
+        Simulation.Config.ObjectGroups.RemoveAt(listGroups.SelectedIndex)
         listGroups.Items.RemoveAt(listGroups.SelectedIndex)
         listGroups.ClearSelected()
 
@@ -2263,6 +2269,72 @@ Public Class ControlPanel
 
     Private Sub chObjectWireframe_CheckedChanged(sender As Object, e As EventArgs) Handles chObjectWireframe.CheckedChanged
         If (chObjectWireframe.Checked) Then chObjectPoints.Checked = False
+    End Sub
+
+    Private Sub listGroups_MouseDown(sender As Object, e As MouseEventArgs) Handles listGroups.MouseDown
+        If e.Button = MouseButtons.Right Then
+            listGroups.ClearSelected()
+        ElseIf listGroups.SelectedIndex >= 0 Then
+            listGroups.DoDragDrop(listGroups.SelectedIndex, DragDropEffects.Move)
+            ListObjects_SelectedIndexChanged(sender, e)
+        End If
+    End Sub
+
+    Private Sub listGroups_DragOver(sender As Object, e As DragEventArgs) Handles listGroups.DragOver
+        e.Effect = DragDropEffects.Move
+    End Sub
+
+    Private Sub listGroups_DragDrop(sender As Object, e As DragEventArgs) Handles listGroups.DragDrop
+        Dim point As Point = listGroups.PointToClient(New Point(e.X, e.Y))
+        Dim newIndex As Integer = listGroups.IndexFromPoint(point)
+
+        If newIndex < 0 Then newIndex = listGroups.Items.Count - 1
+        Dim dropObject As Object = e.Data.GetData(GetType(Int32))
+        If dropObject Is Nothing Then Return
+
+        Dim oldIndex As Integer = DirectCast(dropObject, Int32)
+        If oldIndex < 0 Or oldIndex = newIndex Then Return
+
+        Dim oldItem = listGroups.Items.Item(oldIndex)
+        listGroups.Items.RemoveAt(oldIndex)
+        listGroups.Items.Insert(newIndex, oldItem)
+
+        Dim oldGroup = Simulation.Config.ObjectGroups.Item(oldIndex)
+        Simulation.Config.ObjectGroups.RemoveAt(oldIndex)
+        Simulation.Config.ObjectGroups.Insert(newIndex, oldGroup)
+    End Sub
+
+    Private Sub listLights_MouseDown(sender As Object, e As MouseEventArgs) Handles listLights.MouseDown
+        If e.Button = MouseButtons.Right Then
+            listLights.ClearSelected()
+        ElseIf listLights.SelectedIndex >= 0 Then
+            listLights.DoDragDrop(listLights.SelectedIndex, DragDropEffects.Move)
+            ListLights_SelectedIndexChanged(sender, e)
+        End If
+    End Sub
+
+    Private Sub listLights_DragOver(sender As Object, e As DragEventArgs) Handles listLights.DragOver
+        e.Effect = DragDropEffects.Move
+    End Sub
+
+    Private Sub listLights_DragDrop(sender As Object, e As DragEventArgs) Handles listLights.DragDrop
+        Dim point As Point = listLights.PointToClient(New Point(e.X, e.Y))
+        Dim newIndex As Integer = listLights.IndexFromPoint(point)
+
+        If newIndex < 0 Then newIndex = listLights.Items.Count - 1
+        Dim dropObject As Object = e.Data.GetData(GetType(Int32))
+        If dropObject Is Nothing Then Return
+
+        Dim oldIndex As Integer = DirectCast(dropObject, Int32)
+        If oldIndex < 0 Or oldIndex = newIndex Then Return
+
+        Dim oldItem = listLights.Items.Item(oldIndex)
+        listLights.Items.RemoveAt(oldIndex)
+        listLights.Items.Insert(newIndex, oldItem)
+
+        Dim oldLight = Simulation.Config.LightConfigs.Item(oldIndex)
+        Simulation.Config.LightConfigs.RemoveAt(oldIndex)
+        Simulation.Config.LightConfigs.Insert(newIndex, oldLight)
     End Sub
 End Class
 

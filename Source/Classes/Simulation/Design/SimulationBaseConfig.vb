@@ -12,12 +12,10 @@ Public Structure SimulationBaseConfig
     Public Settings As SimulationSettings
 
     'Simulation Groups
-    Public ObjectGroupCount As Integer
-    Public ObjectGroups() As SimulationConfigObjectGroup
+    Public ObjectGroups As List(Of SimulationConfigObjectGroup)
 
     'Simulation Lights
-    Public LightConfigCount As Integer
-    Public LightConfigs() As SimulationConfigLight
+    Public LightConfigs As List(Of SimulationConfigLight)
 
     Public Sub Clear()
         Render.Clear()
@@ -27,14 +25,14 @@ Public Structure SimulationBaseConfig
         Settings.Clear()
 
         'Groups
-        ObjectGroupCount = 1
-        ReDim ObjectGroups(0)
-        ObjectGroups(0) = New SimulationConfigObjectGroup
+        ObjectGroups = New List(Of SimulationConfigObjectGroup) From {
+            New SimulationConfigObjectGroup
+        }
 
         'Lights
-        LightConfigCount = 1
-        ReDim LightConfigs(0)
-        LightConfigs(0) = New SimulationConfigLight
+        LightConfigs = New List(Of SimulationConfigLight) From {
+            New SimulationConfigLight
+        }
     End Sub
     Public Sub Copy(ByRef Other As SimulationBaseConfig)
 
@@ -45,19 +43,10 @@ Public Structure SimulationBaseConfig
         Settings.Copy(Other.Settings)
 
         'Groups
-        ObjectGroupCount = Other.ObjectGroupCount
-        ReDim ObjectGroups(ObjectGroupCount - 1)
-        For i As Integer = 0 To ObjectGroupCount - 1
-            ObjectGroups(i) = New SimulationConfigObjectGroup(Other.ObjectGroups(i))
-        Next
+        ObjectGroups = New List(Of SimulationConfigObjectGroup)(Other.ObjectGroups)
 
         'Lights
-        LightConfigCount = Other.LightConfigCount
-        ReDim LightConfigs(LightConfigCount - 1)
-        For i As Integer = 0 To LightConfigCount - 1
-            LightConfigs(i) = New SimulationConfigLight(Other.LightConfigs(i))
-        Next
-
+        LightConfigs = New List(Of SimulationConfigLight)(Other.LightConfigs)
     End Sub
     Public Function GetUniqueSeed() As Double
         'Calculates a unique value that can be used as a seed for a random number generator
@@ -70,14 +59,14 @@ Public Structure SimulationBaseConfig
 
         'Collisions - Global Settings
         If Collisions.Enabled Then
-            stingBuilder.Append(Collisions.CoR.ToString)
+            stingBuilder.Append(Collisions.CoR)
             If Collisions.Breakable Then
-                stingBuilder.Append(Collisions.AddAvg.ToString)
-                stingBuilder.Append(Collisions.AddMin.ToString)
-                stingBuilder.Append(Collisions.AddMax.ToString)
-                stingBuilder.Append(Collisions.BreakAvg.ToString)
-                stingBuilder.Append(Collisions.BreakMin.ToString)
-                stingBuilder.Append(Collisions.BreakMax.ToString)
+                stingBuilder.Append(Collisions.AddAvg)
+                stingBuilder.Append(Collisions.AddMin)
+                stingBuilder.Append(Collisions.AddMax)
+                stingBuilder.Append(Collisions.BreakAvg)
+                stingBuilder.Append(Collisions.BreakMin)
+                stingBuilder.Append(Collisions.BreakMax)
             End If
         End If
 
@@ -85,26 +74,26 @@ Public Structure SimulationBaseConfig
         If Forces.Enabled Then
             If Forces.ElectroStatic.Enabled Then
                 'Charge is only relevant when the electrostatic force is enabled
-                stingBuilder.Append(Forces.ElectroStatic.Permittivity.ToString)
+                stingBuilder.Append(Forces.ElectroStatic.Permittivity)
             End If
 
             If Forces.Field.Enabled = True Then
-                stingBuilder.Append(Forces.Field.Acceleration.X.ToString)
-                stingBuilder.Append(Forces.Field.Acceleration.Y.ToString)
-                stingBuilder.Append(Forces.Field.Acceleration.Z.ToString)
+                stingBuilder.Append(Forces.Field.Acceleration.X)
+                stingBuilder.Append(Forces.Field.Acceleration.Y)
+                stingBuilder.Append(Forces.Field.Acceleration.Z)
             End If
 
             If Forces.Drag.Enabled Then
-                stingBuilder.Append(Forces.Drag.Density.ToString)
-                stingBuilder.Append(Forces.Drag.Viscosity.ToString)
-                stingBuilder.Append(Forces.Drag.DragCoeff.ToString)
+                stingBuilder.Append(Forces.Drag.Density)
+                stingBuilder.Append(Forces.Drag.Viscosity)
+                stingBuilder.Append(Forces.Drag.DragCoeff)
             End If
         End If
 
         'Per Object Settings
-        For r As Integer = 0 To ObjectGroupCount - 1
-            stingBuilder.Append(ObjectGroups(r).Affected.ToString)
-            stingBuilder.Append(ObjectGroups(r).Affects.ToString)
+        For r As Integer = 0 To ObjectGroups.Count - 1
+            stingBuilder.Append(ObjectGroups(r).Affected)
+            stingBuilder.Append(ObjectGroups(r).Affects)
             stingBuilder.Append(ObjectGroups(r).Type.ToString)
 
             ObjectGroups(r).Number.AddUniqueString(stingBuilder)
@@ -153,29 +142,18 @@ Public Structure SimulationBaseConfig
 
         Return Math.Abs(ComputeMd5Hash(stingBuilder.ToString))
     End Function
-    Private Function ComputeMd5Hash(ByVal inputString As String) As Double
+    Private Shared Function ComputeMd5Hash(ByVal inputString As String) As Double
         Using hasher As MD5 = MD5.Create()
             Dim inputBytes As Byte() = Encoding.UTF8.GetBytes(inputString)
             Return ToDouble(BitConverter.ToInt32(hasher.ComputeHash(inputBytes)))
         End Using
     End Function
-
     Public Overloads Sub ToString(stringBuilder As StringBuilder)
 
         Dim tabs As String = Constants.vbTab
         Dim tabsPlusOne As String = tabs & Constants.vbTab
 
         stringBuilder.AppendLine("<PR4-File>")
-
-        stringBuilder.Append(tabs)
-        stringBuilder.Append("<LightCount>")
-        stringBuilder.Append(LightConfigCount.ToString())
-        stringBuilder.AppendLine("</LightCount>")
-
-        stringBuilder.Append(tabs)
-        stringBuilder.Append("<GroupCount>")
-        stringBuilder.Append(ObjectGroupCount.ToString())
-        stringBuilder.AppendLine("</GroupCount>")
 
         stringBuilder.Append(tabs)
         stringBuilder.AppendLine("<Camera>")
@@ -207,14 +185,15 @@ Public Structure SimulationBaseConfig
         stringBuilder.Append(tabs)
         stringBuilder.AppendLine("</Render>")
 
-        For i = 0 To ObjectGroupCount - 1
+        For i = 0 To ObjectGroups.Count - 1
             stringBuilder.Append(tabs)
             stringBuilder.AppendLine("<Group>")
             ObjectGroups(i).ToString(stringBuilder, tabsPlusOne)
+            stringBuilder.Append(tabs)
             stringBuilder.AppendLine("</Group>")
         Next
 
-        For i = 0 To LightConfigCount - 1
+        For i = 0 To LightConfigs.Count - 1
             stringBuilder.Append(tabs)
             stringBuilder.AppendLine("<Light>")
             LightConfigs(i).ToString(stringBuilder, tabsPlusOne)
@@ -228,49 +207,8 @@ Public Structure SimulationBaseConfig
         ToString(stringBuilder)
         Return stringBuilder.ToString
     End Function
-    Public Sub EnlargeGroups()
-        ObjectGroupCount += 1
-        Array.Resize(ObjectGroups, ObjectGroupCount)
-        ObjectGroups(ObjectGroupCount - 1) = New SimulationConfigObjectGroup
-    End Sub
-    Public Sub EnlargeLights()
-        LightConfigCount += 1
-        Array.Resize(LightConfigs, LightConfigCount)
-        LightConfigs(LightConfigCount - 1) = New SimulationConfigLight
-    End Sub
-    Public Sub RemoveGroup(ByVal i As Integer)
-        For q = i To ObjectGroupCount - 2
-            ObjectGroups(q).Copy(ObjectGroups(q + 1))
-        Next
-        ObjectGroupCount -= 1
-        Array.Resize(ObjectGroups, ObjectGroupCount)
-    End Sub
-    Public Sub RemoveLight(ByVal i As Integer)
-        For q = i To LightConfigCount - 2
-            LightConfigs(q).Copy(LightConfigs(q + 1))
-        Next
-        LightConfigCount -= 1
-        Array.Resize(LightConfigs, LightConfigCount)
-    End Sub
     Public Sub Load(ByRef intext As String)
-        Dim StartPos As Integer
-        Dim EnQtoIPosistion As Integer
-        Dim q As Integer
         Dim Result As String
-
-        Result = GetXMLNodeValue(intext, "LightCount")
-        If Result <> "" And IsNumeric(Result) Then
-            LightConfigCount = ToInt32(Result)
-        Else
-            LightConfigCount = 1
-        End If
-
-        Result = GetXMLNodeValue(intext, "GroupCount")
-        If Result <> "" And IsNumeric(Result) Then
-            ObjectGroupCount = ToInt32(Result)
-        Else
-            ObjectGroupCount = 1
-        End If
 
         Result = GetXMLNodeValue(intext, "Camera")
         If Result <> "" Then
@@ -307,44 +245,32 @@ Public Structure SimulationBaseConfig
             Render.Clear()
         End If
 
-        'Create new Groups
-        ReDim ObjectGroups(ObjectGroupCount - 1)
-        For i = 0 To ObjectGroupCount - 1
-            ObjectGroups(i) = New SimulationConfigObjectGroup
-        Next
+        Dim StartPos As Integer
+        Dim EnQtoIPosistion As Integer
 
         'Load Groups
+        ObjectGroups = New List(Of SimulationConfigObjectGroup)
         For i = 1 To Len(intext)
             If UCase(Mid(intext, i, Len("<Group>"))) = UCase("<Group>") Then
                 StartPos = i + Len("<Group>") - 1
             ElseIf UCase(Mid(intext, i, Len("</Group>"))) = UCase("</Group>") Then
                 EnQtoIPosistion = i - 1
-                ObjectGroups(q).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1))
-                q = q + 1
-                If q > ObjectGroupCount Then Exit For
+                ObjectGroups.Add((New SimulationConfigObjectGroup).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1)))
             End If
         Next
 
         'Reset Flags
         StartPos = 0
         EnQtoIPosistion = 0
-        q = 0
-
-        'Create new Lights
-        ReDim LightConfigs(LightConfigCount - 1)
-        For i = 0 To LightConfigCount - 1
-            LightConfigs(i) = New SimulationConfigLight
-        Next
 
         'Load Lights
+        LightConfigs = New List(Of SimulationConfigLight)
         For i = 1 To Len(intext)
             If UCase(Mid(intext, i, Len("<Light>"))) = UCase("<Light>") Then
                 StartPos = i + Len("<Light>") - 1
             ElseIf UCase(Mid(intext, i, Len("</Light>"))) = UCase("</Light>") Then
                 EnQtoIPosistion = i - 1
-                LightConfigs(q).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1))
-                q = q + 1
-                If q > LightConfigCount Then Exit For
+                LightConfigs.Add((New SimulationConfigLight).Load(Mid(intext, StartPos, EnQtoIPosistion - StartPos + 1)))
             End If
         Next
     End Sub

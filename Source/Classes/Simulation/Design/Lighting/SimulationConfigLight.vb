@@ -139,7 +139,7 @@ Public Class SimulationConfigLight 'USED AT DESIGN TIME
         ToString(stringBuilder, "")
         Return stringBuilder.ToString
     End Function
-    Public Sub Load(ByRef intext As String)
+    Public Function Load(ByRef intext As String) As SimulationConfigLight
         Dim Result As String
 
         Result = GetXMLNodeValue(intext, "Name")
@@ -254,6 +254,8 @@ Public Class SimulationConfigLight 'USED AT DESIGN TIME
         Else
             AmbientColor = Color.FromArgb(255, ToInt32(Color.R * (AmbientRatio / 100)), ToInt32(Color.G * (AmbientRatio / 100)), ToInt32(Color.B * (AmbientRatio / 100)))
         End If
-    End Sub
+
+        Return Me
+    End Function
 End Class
 

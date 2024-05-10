@@ -33,32 +33,32 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Name>")
-        stringBuilder.Append(Name.ToString)
+        stringBuilder.Append(Name)
         stringBuilder.AppendLine("</Name>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Affected>")
-        stringBuilder.Append(Affected.ToString)
+        stringBuilder.Append(Affected)
         stringBuilder.AppendLine("</Affected>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Affects>")
-        stringBuilder.Append(Affects.ToString)
+        stringBuilder.Append(Affects)
         stringBuilder.AppendLine("</Affects>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Wireframe>")
-        stringBuilder.Append(Wireframe.ToString)
+        stringBuilder.Append(Wireframe)
         stringBuilder.AppendLine("</Wireframe>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Points>")
-        stringBuilder.Append(Points.ToString)
+        stringBuilder.Append(Points)
         stringBuilder.AppendLine("</Points>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Type>")
-        stringBuilder.Append(Type.ToString)
+        stringBuilder.Append(Type)
         stringBuilder.AppendLine("</Type>")
 
         stringBuilder.Append(tabs)
@@ -222,7 +222,7 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
         Transparency.Value = 255
         RefractiveIndex.Clear()
     End Sub
-    Public Sub Load(ByRef intext As String)
+    Public Function Load(ByRef intext As String) As SimulationConfigObjectGroup
         Dim Result As String
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Name~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         Result = GetXMLNodeValue(intext, "Name")
@@ -385,5 +385,6 @@ Public Class SimulationConfigObjectGroup 'USED AT DESIGN TIME ONLY
             RefractiveIndex.Clear()
         End If
 
-    End Sub
+        Return Me
+    End Function
 End Class
