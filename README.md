@@ -119,10 +119,9 @@ Note that repositioning of the camera clears the trace history of the objects wh
 
 - Simulation files (.PR files) made on a computer using one language may produce an error when loaded on a computer using an other language. This is due to different regional and language formats not being taken into consideration. If you encounter this problem, set the regional and language format in your computer's control panel to "English Canada". I plan to eventually get around to fixing this.
 - Box and plane rendering is broken with the ray tracing render setting. The objects always show up a spheres.
-- Ray traced rendering does not support aspect ratio other than 1:1. This is more of a bug than a design limitation.
 - Sphere to box collisions cannot handle situations where the sphere makes clean contact with only an edge of the box. This is a work in progress.
 - The interpolation between time steps for collision detection is only implemented for sphere to sphere collisions. Again, this is work in progress.
-- Box to plane collisions have not been implemented.
+- Box to box and box to plane collisions have not been implemented.
 
 # Changes in Version 4.1
 

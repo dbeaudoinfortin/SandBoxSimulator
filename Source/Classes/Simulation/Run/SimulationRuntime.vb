@@ -206,7 +206,7 @@ Public Class SimulationRuntime
         Output.ClientSize = New Size(Config.Render.Width, Config.Render.Height)
 
         'Set the camera's initial state based on the configuration 
-        Camera.Intitialize(Config.Camera, Config.Render.Width, Config.Render.Height, Config.Render.Mode = 2)
+        Camera.Intitialize(Config.Camera, Config.Render.Height, Config.Render.Mode = 2)
 
         'Determine the number of threads that will be needed
         Dim doIntegration As Boolean = NeedIntegration()

@@ -36,8 +36,7 @@ Public Structure SimulationCamera
     Public Raytraced As Boolean
     Public ScreenHeightUnit As XYZ      'Only used in Raytracing
     Public ScreenWidthUnit As XYZ       'Only used in Raytracing
-    Private ScreenTempW As Double           'Only used in Raytracing
-    Private ScreenTempH As Double           'Only used in Raytracing
+    Private ScreenTempH As Double       'Only used in Raytracing
 
     Public Shared CameraLock As New ReaderWriterLockSlim
     Public Shared CameraMoveLock As New Object()
@@ -102,8 +101,8 @@ Public Structure SimulationCamera
             Dim newPosition = Target + newTargetToPosition
 
             'Used in Raytracing
-            Dim newScreenWidthUnit As XYZ = (ScreenTempW * Radius) * V
-            Dim newScreenHeightUnit As XYZ = (ScreenTempH * Radius) * newU
+            Dim newScreenWidthUnit As XYZ = ScreenTempH * V
+            Dim newScreenHeightUnit As XYZ = ScreenTempH * newU
 
             'TODO NEED TO UPDATE UP VECTOR
             CameraLock.EnterWriteLock()
@@ -115,7 +114,7 @@ Public Structure SimulationCamera
             CameraLock.ExitWriteLock()
         End If
     End Sub
-    Public Sub Intitialize(ByRef Config As SimulationConfigCamera, ByRef ScreenWidth As Integer, ByRef ScreenHeight As Integer, isRaytraced As Boolean)
+    Public Sub Intitialize(ByRef Config As SimulationConfigCamera, ByRef ScreenHeight As Integer, isRaytraced As Boolean)
 
         Raytraced = isRaytraced
 
@@ -133,7 +132,7 @@ Public Structure SimulationCamera
 
         'Find the coordinate system that defines the sphere of movement
         U = Config.UpVector.GetNewUnit()
-        N =  TargetToPosition.GetNewUnit()
+        N = TargetToPosition.GetNewUnit()
         V = U.Cross(N)
 
         Radius = TargetToPosition.Magnitude
@@ -146,9 +145,8 @@ Public Structure SimulationCamera
         MoveRight = False
         MoveLeft = False
 
-        ScreenTempW = (Tan(Config.HFov * 0.5) * 2) / ScreenWidth
-        ScreenTempH = (Tan(Config.VFov * 0.5) * 2) / ScreenHeight
-        ScreenWidthUnit = (ScreenTempW * Radius) * V
-        ScreenHeightUnit = (ScreenTempH * Radius) * U
+        ScreenTempH = ((Tan(Config.VFov * 0.5) * 2) * Radius) / ScreenHeight
+        ScreenWidthUnit = ScreenTempH * V
+        ScreenHeightUnit = ScreenTempH * U
     End Sub
 End Structure

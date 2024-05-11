@@ -235,23 +235,6 @@ Public Class ControlPanel
             MsgBox("Horizontal Field of View must be greater than zero and less than 180.", MsgBoxStyle.Critical, "Error")
             Return False
         End If
-        If ToDouble(txtHFoV.Text) <> Int(ToDouble(txtHFoV.Text)) Then
-            MsgBox("Horizontal Field of View must be of integer value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-
-        If Not IsNumeric(txtVFoV.Text) Then
-            MsgBox("Vertical Field of View must have a numeric value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToDouble(txtVFoV.Text) <= 0 Or ToDouble(txtVFoV.Text) >= 180 Then
-            MsgBox("Vertical Field of View must be greater than zero and less than 180.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
-        If ToDouble(txtVFoV.Text) <> Int(ToDouble(txtVFoV.Text)) Then
-            MsgBox("Vertical Field of View must be of integer value.", MsgBoxStyle.Critical, "Error")
-            Return False
-        End If
 
         If Not IsNumeric(txtMaxFPS.Text) Then
             MsgBox("Maximum Frame Rate must have a numeric value.", MsgBoxStyle.Critical, "Error")
@@ -693,7 +676,6 @@ Public Class ControlPanel
             txtAddMax.Enabled = State
 
             'RENDER
-            txtVFoV.Enabled = State
             cbShading.Enabled = State
             tbPolys.Enabled = State
             chVSync.Enabled = State
@@ -823,7 +805,6 @@ Public Class ControlPanel
         txtRenderThreads.Enabled = Not isDXRender
         tbPolys.Enabled = isDXRender
         chVSync.Enabled = isDXRender
-        txtVFoV.Enabled = Not isDXRender
         cbShading.Enabled = isFancyDXLights
 
         chObjectWireframe.Enabled = isDXRender
@@ -1575,18 +1556,10 @@ Public Class ControlPanel
     Private Sub TxtAddMax_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtAddMax.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub TxtWindowX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowX.TextChanged
-        ConfigModified = True
-    End Sub
-    Private Sub TxtWindowY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowY.TextChanged
-        ConfigModified = True
-    End Sub
     Private Sub TxtScale_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtScale.TextChanged
         ConfigModified = True
     End Sub
-    Private Sub TxtHFoV_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHFoV.TextChanged
-        ConfigModified = True
-    End Sub
+
     Private Sub ChTrace_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chTrace.CheckedChanged
         ConfigModified = True
     End Sub
@@ -2335,6 +2308,31 @@ Public Class ControlPanel
         Dim oldLight = Simulation.Config.LightConfigs.Item(oldIndex)
         Simulation.Config.LightConfigs.RemoveAt(oldIndex)
         Simulation.Config.LightConfigs.Insert(newIndex, oldLight)
+    End Sub
+    Private Sub TxtHFoV_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHFoV.TextChanged
+        updateVFov()
+        ConfigModified = True
+    End Sub
+    Private Sub TxtWindowX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowX.TextChanged
+        updateVFov()
+        ConfigModified = True
+    End Sub
+    Private Sub TxtWindowY_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWindowY.TextChanged
+        updateVFov()
+        ConfigModified = True
+    End Sub
+
+    Private Sub updateVFov()
+        If Not IsNumeric(txtWindowX.Text) OrElse Not IsNumeric(txtWindowY.Text) OrElse Not IsNumeric(txtHFoV.Text) Then Return
+
+        Dim x As Double = ToDouble(txtWindowX.Text)
+        Dim y As Double = ToDouble(txtWindowY.Text)
+        Dim hfov As Double = ToDouble(txtHFoV.Text) 'In degrees
+        If x < 1 OrElse y < 1 OrElse hfov < 0 Then Return
+
+        Dim aspectRatio As Double = x / y
+        Dim vfovRadians As Double = 2 * Math.Atan(Math.Tan(hfov * Math.PI / 360) / aspectRatio)
+        txtVFoV.Text = (vfovRadians * 180 / Math.PI).ToString
     End Sub
 End Class
 

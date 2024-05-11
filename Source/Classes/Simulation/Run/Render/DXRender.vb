@@ -179,7 +179,8 @@ Public Class DXRender
         ' Setting the Projection Matrix
         Dim nearPlane As Single = 1 / (sim.Config.Render.WorldScale * 10)
         Dim farPlane As Single = sim.Config.Render.WorldScale * 2000
-        CSCompat.SetTransformation(sim.Render.Device, TransformState.Projection, SharpDX.Matrix.PerspectiveFovLH(sim.Config.Camera.HFov, sim.Config.Render.AspectRatio, nearPlane, farPlane))
+
+        CSCompat.SetTransformation(sim.Render.Device, TransformState.Projection, SharpDX.Matrix.PerspectiveFovLH(sim.Config.Camera.VFov, ToSingle(sim.Config.Render.Width / sim.Config.Render.Height), nearPlane, farPlane))
 
         'Calculate Sphere complexity
         sim.Render.SphereSecondaryComplexity = ToInt32((sim.Config.Render.SphereComplexity * 0.5) + 0.5)

@@ -397,15 +397,15 @@ Partial Class ControlPanel
         ' TableLayoutPanel13
         ' 
         TableLayoutPanel13.ColumnCount = 2
-        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
+        TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
         TableLayoutPanel13.Controls.Add(cmdGroupReplace, 0, 0)
         TableLayoutPanel13.Controls.Add(cmdGroupRemove, 1, 0)
         TableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Bottom
         TableLayoutPanel13.Location = New Point(3, 1245)
         TableLayoutPanel13.Name = "TableLayoutPanel13"
         TableLayoutPanel13.RowCount = 1
-        TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
         TableLayoutPanel13.Size = New Size(967, 68)
         TableLayoutPanel13.TabIndex = 71
         ' 
@@ -455,7 +455,7 @@ Partial Class ControlPanel
         ' 
         listGroups.AllowDrop = True
         listGroups.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        listGroups.Font = New Font("Arial", 9F)
+        listGroups.Font = New Font("Arial", 9.0F)
         listGroups.ForeColor = SystemColors.ControlText
         listGroups.ItemHeight = 27
         listGroups.Location = New Point(6, 34)
@@ -539,11 +539,11 @@ Partial Class ControlPanel
         ' 
         tblOrientation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         tblOrientation.ColumnCount = 6
-        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblOrientation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
         tblOrientation.Controls.Add(txtObjectNormalX, 1, 0)
         tblOrientation.Controls.Add(txtObjectNormalY, 3, 0)
@@ -554,7 +554,7 @@ Partial Class ControlPanel
         tblOrientation.Location = New Point(271, 291)
         tblOrientation.Name = "tblOrientation"
         tblOrientation.RowCount = 1
-        tblOrientation.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblOrientation.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblOrientation.Size = New Size(668, 43)
         tblOrientation.TabIndex = 243
         ' 
@@ -640,11 +640,11 @@ Partial Class ControlPanel
         ' 
         tblVelocity.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         tblVelocity.ColumnCount = 6
-        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblVelocity.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
         tblVelocity.Controls.Add(txtObjectVelocityX, 1, 0)
         tblVelocity.Controls.Add(txtObjectVelocityY, 3, 0)
@@ -655,7 +655,7 @@ Partial Class ControlPanel
         tblVelocity.Location = New Point(271, 389)
         tblVelocity.Name = "tblVelocity"
         tblVelocity.RowCount = 1
-        tblVelocity.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblVelocity.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblVelocity.Size = New Size(671, 43)
         tblVelocity.TabIndex = 244
         ' 
@@ -738,11 +738,11 @@ Partial Class ControlPanel
         ' 
         tblPosition.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         tblPosition.ColumnCount = 6
-        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblPosition.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
         tblPosition.Controls.Add(txtObjectPositionX, 1, 0)
         tblPosition.Controls.Add(txtObjectPositionY, 3, 0)
@@ -753,7 +753,7 @@ Partial Class ControlPanel
         tblPosition.Location = New Point(271, 340)
         tblPosition.Name = "tblPosition"
         tblPosition.RowCount = 1
-        tblPosition.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblPosition.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblPosition.Size = New Size(671, 43)
         tblPosition.TabIndex = 242
         ' 
@@ -836,11 +836,11 @@ Partial Class ControlPanel
         ' 
         TableLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         TableLayoutPanel15.ColumnCount = 6
-        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
         TableLayoutPanel15.Controls.Add(txtObjectRotationX, 1, 0)
         TableLayoutPanel15.Controls.Add(txtObjectRotationY, 3, 0)
@@ -851,7 +851,7 @@ Partial Class ControlPanel
         TableLayoutPanel15.Location = New Point(271, 291)
         TableLayoutPanel15.Name = "TableLayoutPanel15"
         TableLayoutPanel15.RowCount = 1
-        TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         TableLayoutPanel15.Size = New Size(671, 43)
         TableLayoutPanel15.TabIndex = 241
         ' 
@@ -980,11 +980,11 @@ Partial Class ControlPanel
         ' 
         tblSize.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         tblSize.ColumnCount = 6
-        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblSize.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
         tblSize.Controls.Add(txtObjectSizeX, 1, 0)
         tblSize.Controls.Add(txtObjectSizeY, 3, 0)
@@ -995,7 +995,7 @@ Partial Class ControlPanel
         tblSize.Location = New Point(271, 247)
         tblSize.Name = "tblSize"
         tblSize.RowCount = 1
-        tblSize.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblSize.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblSize.Size = New Size(671, 43)
         tblSize.TabIndex = 240
         ' 
@@ -1240,7 +1240,7 @@ Partial Class ControlPanel
         chObjectAffected.AutoSize = True
         chObjectAffected.Checked = True
         chObjectAffected.CheckState = System.Windows.Forms.CheckState.Checked
-        chObjectAffected.Font = New Font("Arial", 9F)
+        chObjectAffected.Font = New Font("Arial", 9.0F)
         chObjectAffected.ImeMode = System.Windows.Forms.ImeMode.NoControl
         chObjectAffected.Location = New Point(229, 731)
         chObjectAffected.Name = "chObjectAffected"
@@ -1254,7 +1254,7 @@ Partial Class ControlPanel
         chObjectAffects.AutoSize = True
         chObjectAffects.Checked = True
         chObjectAffects.CheckState = System.Windows.Forms.CheckState.Checked
-        chObjectAffects.Font = New Font("Arial", 9F)
+        chObjectAffects.Font = New Font("Arial", 9.0F)
         chObjectAffects.ImeMode = System.Windows.Forms.ImeMode.NoControl
         chObjectAffects.Location = New Point(11, 731)
         chObjectAffects.Name = "chObjectAffects"
@@ -1622,15 +1622,15 @@ Partial Class ControlPanel
         ' TableLayoutPanel8
         ' 
         TableLayoutPanel8.ColumnCount = 2
-        TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
+        TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
         TableLayoutPanel8.Controls.Add(cmdLightRemove, 1, 0)
         TableLayoutPanel8.Controls.Add(cmdLightReplace, 0, 0)
         TableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom
         TableLayoutPanel8.Location = New Point(0, 1253)
         TableLayoutPanel8.Name = "TableLayoutPanel8"
         TableLayoutPanel8.RowCount = 1
-        TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel8.Size = New Size(973, 68)
         TableLayoutPanel8.TabIndex = 66
         ' 
@@ -1721,7 +1721,7 @@ Partial Class ControlPanel
         TableLayoutPanel12.Location = New Point(325, 459)
         TableLayoutPanel12.Name = "TableLayoutPanel12"
         TableLayoutPanel12.RowCount = 1
-        TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel12.Size = New Size(620, 46)
         TableLayoutPanel12.TabIndex = 118
         ' 
@@ -1760,7 +1760,7 @@ Partial Class ControlPanel
         TableLayoutPanel11.Location = New Point(325, 404)
         TableLayoutPanel11.Name = "TableLayoutPanel11"
         TableLayoutPanel11.RowCount = 1
-        TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel11.Size = New Size(620, 49)
         TableLayoutPanel11.TabIndex = 117
         ' 
@@ -1836,7 +1836,7 @@ Partial Class ControlPanel
         TableLayoutPanel10.Location = New Point(325, 157)
         TableLayoutPanel10.Name = "TableLayoutPanel10"
         TableLayoutPanel10.RowCount = 1
-        TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel10.Size = New Size(620, 47)
         TableLayoutPanel10.TabIndex = 116
         ' 
@@ -1886,7 +1886,7 @@ Partial Class ControlPanel
         TableLayoutPanel9.Location = New Point(325, 104)
         TableLayoutPanel9.Name = "TableLayoutPanel9"
         TableLayoutPanel9.RowCount = 1
-        TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel9.Size = New Size(620, 47)
         TableLayoutPanel9.TabIndex = 115
         ' 
@@ -2132,7 +2132,7 @@ Partial Class ControlPanel
         ' 
         listLights.AllowDrop = True
         listLights.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-        listLights.Font = New Font("Arial", 9F)
+        listLights.Font = New Font("Arial", 9.0F)
         listLights.ForeColor = SystemColors.ControlText
         listLights.ItemHeight = 27
         listLights.Location = New Point(12, 75)
@@ -2261,14 +2261,14 @@ Partial Class ControlPanel
         ' 
         TableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         TableLayoutPanel3.ColumnCount = 2
-        TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
+        TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
         TableLayoutPanel3.Controls.Add(txtWindowX, 0, 0)
         TableLayoutPanel3.Controls.Add(txtWindowY, 1, 0)
         TableLayoutPanel3.Location = New Point(376, 103)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 1
-        TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel3.Size = New Size(573, 44)
         TableLayoutPanel3.TabIndex = 246
         ' 
@@ -2452,6 +2452,7 @@ Partial Class ControlPanel
         ' txtVFoV
         ' 
         txtVFoV.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        txtVFoV.Enabled = False
         txtVFoV.ForeColor = SystemColors.ControlText
         txtVFoV.Location = New Point(376, 206)
         txtVFoV.Name = "txtVFoV"
@@ -2565,7 +2566,7 @@ Partial Class ControlPanel
         TableLayoutPanel7.Location = New Point(376, 162)
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 1
-        TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel7.Size = New Size(576, 47)
         TableLayoutPanel7.TabIndex = 106
         ' 
@@ -2618,7 +2619,7 @@ Partial Class ControlPanel
         TableLayoutPanel5.Location = New Point(376, 110)
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 1
-        TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel5.Size = New Size(576, 43)
         TableLayoutPanel5.TabIndex = 105
         ' 
@@ -2671,7 +2672,7 @@ Partial Class ControlPanel
         TableLayoutPanel4.Location = New Point(376, 59)
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 1
-        TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel4.Size = New Size(576, 45)
         TableLayoutPanel4.TabIndex = 104
         ' 
@@ -2885,7 +2886,7 @@ Partial Class ControlPanel
         tlpAccelForce.Location = New Point(402, 214)
         tlpAccelForce.Name = "tlpAccelForce"
         tlpAccelForce.RowCount = 1
-        tlpAccelForce.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        tlpAccelForce.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         tlpAccelForce.Size = New Size(550, 45)
         tlpAccelForce.TabIndex = 70
         ' 
@@ -3088,7 +3089,7 @@ Partial Class ControlPanel
         chElectrostatic.AutoEllipsis = True
         chElectrostatic.Enabled = False
         chElectrostatic.FlatStyle = System.Windows.Forms.FlatStyle.System
-        chElectrostatic.Font = New Font("Arial", 9F)
+        chElectrostatic.Font = New Font("Arial", 9.0F)
         chElectrostatic.ForeColor = SystemColors.ControlText
         chElectrostatic.ImeMode = System.Windows.Forms.ImeMode.NoControl
         chElectrostatic.Location = New Point(19, 95)
@@ -3156,7 +3157,7 @@ Partial Class ControlPanel
         TableLayoutPanel2.Location = New Point(402, 246)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 1
-        TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel2.Size = New Size(550, 52)
         TableLayoutPanel2.TabIndex = 72
         ' 
@@ -3209,7 +3210,7 @@ Partial Class ControlPanel
         TableLayoutPanel1.Location = New Point(402, 187)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
-        TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F))
+        TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
         TableLayoutPanel1.Size = New Size(547, 45)
         TableLayoutPanel1.TabIndex = 71
         ' 
@@ -3578,24 +3579,24 @@ Partial Class ControlPanel
         TableLayoutPanel6.ColumnCount = 3
         TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
         TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0F))
         TableLayoutPanel6.Location = New Point(0, 0)
         TableLayoutPanel6.Name = "TableLayoutPanel6"
         TableLayoutPanel6.RowCount = 1
-        TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0F))
         TableLayoutPanel6.Size = New Size(200, 100)
         TableLayoutPanel6.TabIndex = 0
         ' 
         ' TableLayoutPanel16
         ' 
         TableLayoutPanel16.ColumnCount = 3
-        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
+        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
+        TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0F))
         TableLayoutPanel16.Location = New Point(0, 0)
         TableLayoutPanel16.Name = "TableLayoutPanel16"
         TableLayoutPanel16.RowCount = 1
-        TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0F))
         TableLayoutPanel16.Size = New Size(200, 100)
         TableLayoutPanel16.TabIndex = 0
         ' 
@@ -3603,16 +3604,16 @@ Partial Class ControlPanel
         ' 
         tblRotation.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         tblRotation.ColumnCount = 6
-        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
         tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F))
-        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F))
-        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37.0F))
+        tblRotation.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0F))
         tblRotation.Location = New Point(0, 0)
         tblRotation.Name = "tblRotation"
         tblRotation.RowCount = 1
-        tblRotation.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F))
+        tblRotation.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0F))
         tblRotation.Size = New Size(200, 100)
         tblRotation.TabIndex = 0
         ' 
@@ -3626,7 +3627,7 @@ Partial Class ControlPanel
         Controls.Add(Stats)
         Controls.Add(cmdStart)
         DoubleBuffered = True
-        Font = New Font("Arial", 9F)
+        Font = New Font("Arial", 9.0F)
         ForeColor = SystemColors.ControlText
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
