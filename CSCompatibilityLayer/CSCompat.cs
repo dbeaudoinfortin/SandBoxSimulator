@@ -75,7 +75,8 @@ namespace CSCompatibilityLayer
             }
         }
 
-        [DllImport("d3dx9_43.dll", EntryPoint = "D3DXCreateMeshFVF", CallingConvention = CallingConvention.StdCall)]
-        private unsafe static extern int D3DXCreateMeshFVF_(int arg0, int arg1, int arg2, int arg3, void* arg4, void* arg5);
+        [LibraryImport("d3dx9_43.dll", EntryPoint = "D3DXCreateMeshFVF")]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvStdcall)])]
+        private static unsafe partial int D3DXCreateMeshFVF_(int arg0, int arg1, int arg2, int arg3, void* arg4, void* arg5);
     }
 }

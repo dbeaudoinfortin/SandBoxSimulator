@@ -157,7 +157,7 @@ Public Class SimulationRuntime
                 'Transparency
                 Dim Transparency As Byte = ToByte(Min(Group.Transparency.CalculateEffectiveValue(RandMaker, ObjectIndex, NewObjectCount), 255))
                 Objects(ObjectCount).Transparency = Transparency
-                Render.Transparency = Render.Transparency Or (Transparency) < 255
+                Render.UsingTransparency = Render.UsingTransparency Or (Transparency) < 255
 
                 'COLOR - Applies to all Object Types
                 'Apply the object colour based on the base colour and the transparency
@@ -174,6 +174,9 @@ Public Class SimulationRuntime
         Next
     End Sub
     Private Sub ConvertLightConfigstoLights()
+        'Reset the directional lighting flag
+        Render.UsingNonDirectionalLights = False
+
         If (Config.Render.EnableLighting) Then
             LightCount = Config.LightConfigs.Count
             ReDim Lights(LightCount)
@@ -181,6 +184,7 @@ Public Class SimulationRuntime
                 Lights(index).Copy(Config.LightConfigs(index))
                 Lights(index).Position = Lights(index).Position * Config.Render.WorldScale
                 Lights(index).Range = Lights(index).Range * Config.Render.WorldScale
+                Render.UsingNonDirectionalLights = Render.UsingNonDirectionalLights Or Not (Lights(index).Type = LightType.Directional)
             Next
         Else
             'Won't be needing any lights!
@@ -395,15 +399,11 @@ Public Class SimulationRuntime
 
     Private Sub TearDownRender()
         If Config.Render.Mode < 2 Then 'DirectX mode
+            ObjectDXRenderData.ClearMeshCache()
+
             'Trash all objects
             For i = 0 To ObjectCount - 1
-                If Not IsNothing(Objects(i).DXRenderData) Then
-                    If Not IsNothing(Objects(i).DXRenderData.Mesh) Then
-                        Objects(i).DXRenderData.Mesh.Dispose()
-                    End If
-                    Objects(i).DXRenderData.Material = Nothing
-                    Objects(i).DXRenderData.RotationMatrix = Nothing
-                End If
+                Objects(i).DXRenderData?.Clear()
             Next
         End If
 

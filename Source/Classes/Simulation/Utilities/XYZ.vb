@@ -162,17 +162,17 @@ Public Structure XYZ
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<X>")
-        stringBuilder.Append(X.ToString)
+        stringBuilder.Append(X)
         stringBuilder.AppendLine("</X>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Y>")
-        stringBuilder.Append(Y.ToString())
+        stringBuilder.Append(Y)
         stringBuilder.AppendLine("</Y>")
 
         stringBuilder.Append(tabs)
         stringBuilder.Append("<Z>")
-        stringBuilder.Append(Z.ToString())
+        stringBuilder.Append(Z)
         stringBuilder.AppendLine("</Z>")
     End Sub
     Public Overrides Function ToString() As String

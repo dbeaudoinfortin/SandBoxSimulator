@@ -1,9 +1,12 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.Windows.Forms
 Imports CSCompatibilityLayer
 Imports SharpDX
 Imports SharpDX.Direct3D9
 
 Public Class ObjectDXRenderData
+    Private Shared ObjectMeshCache As New Dictionary(Of String, Mesh)
+
     Public Mesh As Mesh
     Public Material As Material
     Public RotationMatrix As SharpDX.Matrix
@@ -14,9 +17,17 @@ Public Class ObjectDXRenderData
         Me.RotationMatrix = RotationMatrix
     End Sub
 
-    Public Shared Function Build(ByRef SimObject As SimulationObject, ByRef DXDevice As Device, ByRef Scale As Single, ByRef Complexity1 As Integer, ByRef Complexity2 As Integer) As ObjectDXRenderData
+    Public Sub Clear()
+        'Shouldn't happen since the ObjectCache gets cleared first
+        Mesh?.Dispose()
+        Mesh = Nothing
+        Material = Nothing
+        RotationMatrix = Nothing
+    End Sub
+
+    Public Shared Function Build(ByRef SimObject As SimulationObject, ByRef DXDevice As Device, ByRef Scale As Single, ByRef Complexity1 As Integer, ByRef Complexity2 As Integer, UsingNonDirectionalLights As Boolean) As ObjectDXRenderData
         Return New ObjectDXRenderData(
-            CreateMesh(SimObject, DXDevice, Scale, Complexity1, Complexity2),
+            CreateMesh(SimObject, DXDevice, Scale, Complexity1, Complexity2, UsingNonDirectionalLights),
             CreateMaterial(SimObject),
             CreateRotationMatrix(SimObject)
             )
@@ -33,18 +44,50 @@ Public Class ObjectDXRenderData
             .Power = SimObject.HighlightSharpness
         }
     End Function
-    Public Shared Function CreateMesh(ByRef SimObject As SimulationObject, ByRef device As Device, ByRef Scale As Single, ByRef Complexity1 As Integer, ByRef Complexity2 As Integer) As Mesh
-        If SimObject.Type = ObjectType.Sphere Then
-            Return CSCompat.CreateSphere(device, ToSingle(Scale * SimObject.Radius), Complexity1, Complexity2)
-        ElseIf SimObject.Type = ObjectType.Box Then
-            Dim boxMesh = CSCompat.CreateBox(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * SimObject.Size.Z))
-            Return TessellateMesh(device, boxMesh)
-        ElseIf SimObject.Type = ObjectType.Plane Then
-            Return CSCompat.CreateBox(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * 0.0001))
-        ElseIf SimObject.Type = ObjectType.InfinitePlane Then
-            Return CSCompat.CreateBox(device, Scale * 2000, ToSingle(Scale * 0.0001), Scale * 2000)
+
+    Private Shared ReadOnly TESSELATION_ROUNDS As Integer = 2
+    Public Shared Function CreateMesh(ByRef SimObject As SimulationObject, ByRef device As Device, ByRef Scale As Single, ByRef Complexity1 As Integer, ByRef Complexity2 As Integer, UsingNonDirectionalLights As Boolean) As Mesh
+        'We cache the meshes so that we don't create a unique mesh for every object
+        Dim key As String = GetMeshCacheKey(SimObject)
+        Dim objectMesh As Mesh
+        If Not ObjectMeshCache.TryGetValue(key, objectMesh) Then
+            If SimObject.Type = ObjectType.Sphere Then
+                objectMesh = CSCompat.CreateSphere(device, ToSingle(Scale * SimObject.Radius), Complexity1, Complexity2)
+            ElseIf SimObject.Type = ObjectType.Box Then
+                objectMesh = CSCompat.CreateBox(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * SimObject.Size.Z))
+            ElseIf SimObject.Type = ObjectType.Plane Then
+                objectMesh = CSCompat.CreateBox(device, ToSingle(Scale * SimObject.Size.X), ToSingle(Scale * SimObject.Size.Y), ToSingle(Scale * 0.0001))
+            ElseIf SimObject.Type = ObjectType.InfinitePlane Then
+                objectMesh = CSCompat.CreateBox(device, Scale * 2000, ToSingle(Scale * 0.0001), Scale * 2000)
+            End If
+
+            'Since we are using fixed-function vertex lighting (instead of pixel shaders), we need a more complicated mesh for the lights to shine properly.
+            If Not SimObject.Type = ObjectType.Sphere And UsingNonDirectionalLights Then
+                'Not the most efficient way to do this, an more intelligent tessellator would be better 
+                For i = 1 To TESSELATION_ROUNDS
+                    Dim newObjectMesh = TessellateMesh(device, objectMesh)
+                    objectMesh.Dispose() 'Won't be needing this anymore!
+                    objectMesh = newObjectMesh
+                Next
+            End If
+
+            ObjectMeshCache.Add(key, objectMesh)
         End If
-        Return Nothing
+
+        Return objectMesh
+    End Function
+
+    Private Shared Function GetMeshCacheKey(ByRef SimObject As SimulationObject) As String
+        Dim key As String = SimObject.Type.ToString
+
+        'Don't bother with a string builder, not enough concatenations
+        If SimObject.Type = ObjectType.Sphere Then
+            key &= SimObject.Radius
+        ElseIf SimObject.Type = ObjectType.Box Or SimObject.Type = ObjectType.Plane Then
+            key &= SimObject.Size.ToString
+        End If
+
+        Return key
     End Function
 
     Private Shared ReadOnly MESH_VERTEX_SIZE As Integer = 6 * 4 '3 floats (32bits=4bytes) for position, 3 floats for normal
@@ -62,6 +105,8 @@ Public Class ObjectDXRenderData
     End Structure
 
     Private Shared Function TessellateMesh(ByRef device As Device, ByRef oldMesh As Mesh) As Mesh
+        'This function will divide each triangle of the mesh into 4 triangles
+        'The old mesh will not be distroyed
 
         'Lock and read existing data
         Dim oldVertexBuffer As VertexBuffer = oldMesh.VertexBuffer
@@ -91,10 +136,10 @@ Public Class ObjectDXRenderData
         oldIndexBuffer.Unlock()
 
         'Calculate the size of the buffers for the new mesh
-        'Each triangle will be split into two, doubling the index count
-        'We are adding 1 midpoint vertex for each triangle and sharing the other triangles 
-        Dim newVertexCount As Integer = oldVertexCount + (oldIndexCount \ 3)
-        Dim newIndexCount As Integer = oldIndexCount * 2
+        'Each triangle will be split into four, doubling the index count
+        'We are adding 3 midpoint vertices for each triangle and sharing the other vertices 
+        Dim newVertexCount As Integer = oldVertexCount + oldIndexCount
+        Dim newIndexCount As Integer = oldIndexCount * 4
 
         'Create the new buffers
         Dim newVertices(newVertexCount - 1) As MeshVertex
@@ -104,9 +149,9 @@ Public Class ObjectDXRenderData
         Array.Copy(oldVertices, newVertices, oldVertexCount)
 
         'Start inserting new vertices and the end of the existing ones
-        Dim newMidABIndex As Int16 = oldVertexCount
+        Dim newVertexIndex As Int16 = oldVertexCount
 
-        'Loop for each triangle (3 indices per triangle)
+        'Loop for each existing triangle (3 indices per triangle)
         For i As Integer = 0 To oldIndexCount - 1 Step 3
 
             Dim indexA As Int16 = oldIndices(i)
@@ -115,32 +160,58 @@ Public Class ObjectDXRenderData
 
             Dim A As MeshVertex = oldVertices(indexA)
             Dim B As MeshVertex = oldVertices(indexB)
+            Dim C As MeshVertex = oldVertices(indexC)
 
             'Calculate the midpoint of A and B
+            Dim indexMidAB As Int16 = newVertexIndex
             Dim midAB As Vector3 = (A.Position + B.Position) / 2
             Dim midABNormal As Vector3 = (A.Normal + B.Normal) / 2
             midABNormal.Normalize()
 
-            newVertices(newMidABIndex) = New MeshVertex(midAB, midABNormal)
+            'Calculate the midpoint of A and C
+            Dim indexMidAC As Int16 = newVertexIndex + 1S
+            Dim midAC As Vector3 = (A.Position + C.Position) / 2
+            Dim midACNormal As Vector3 = (A.Normal + C.Normal) / 2
+            midACNormal.Normalize()
 
-            'First triangle uses A, midAB & C and midAB, B, C
-            newIndices(i * 2) = indexA
-            newIndices(i * 2 + 1) = newMidABIndex
-            newIndices(i * 2 + 2) = indexC
+            'Calculate the midpoint of B and C
+            Dim indexMidBC As Int16 = newVertexIndex + 2S
+            Dim midBC As Vector3 = (B.Position + C.Position) / 2
+            Dim midBCNormal As Vector3 = (B.Normal + C.Normal) / 2
+            midBCNormal.Normalize()
 
-            'Second triangle uses midAB, B, C
-            newIndices(i * 2 + 3) = newMidABIndex
-            newIndices(i * 2 + 4) = indexB
-            newIndices(i * 2 + 5) = indexC
+            newVertices(indexMidAB) = New MeshVertex(midAB, midABNormal)
+            newVertices(indexMidAC) = New MeshVertex(midAC, midACNormal)
+            newVertices(indexMidBC) = New MeshVertex(midBC, midBCNormal)
 
-            newMidABIndex += 1S
+            Dim indexOffset = i * 4 'Create 4 new indices on ever loop
+
+            'Triangles are wound counter-clockwise by default
+            'First triangle uses A, midAB & midAC 
+            newIndices(indexOffset) = indexA
+            newIndices(indexOffset + 1) = indexMidAB
+            newIndices(indexOffset + 2) = indexMidAC
+
+            'Second triangle uses midAC, midBC, C
+            newIndices(indexOffset + 3) = indexMidAC
+            newIndices(indexOffset + 4) = indexMidBC
+            newIndices(indexOffset + 5) = indexC
+
+            'Third triangle uses midAB, B, midBC
+            newIndices(indexOffset + 6) = indexMidAB
+            newIndices(indexOffset + 7) = indexB
+            newIndices(indexOffset + 8) = indexMidBC
+
+            'Fourth triangle uses midAB, midBC, midAC
+            newIndices(indexOffset + 9) = indexMidAB
+            newIndices(indexOffset + 10) = indexMidBC
+            newIndices(indexOffset + 11) = indexMidAC
+
+            newVertexIndex += 3S 'We added 3 new vertices, increment by 3
         Next
 
         ' Create new buffers and mesh
         Dim newMesh = CSCompat.CreateMeshFVF(device, newIndexCount \ 3, newVertexCount, MeshFlags.Managed, VertexFormat.Position Or VertexFormat.Normal)
-
-        'Dim newVertexBuffer As New VertexBuffer(device, newVertexCount * MESH_VERTEX_SIZE, Usage.WriteOnly, VertexFormat.Position Or VertexFormat.Normal, Pool.Default)
-        'Dim newIndexBuffer As New IndexBuffer(device, newIndexCount * MESH_INDEX_SIZE, Usage.WriteOnly, Pool.Default, True) 'Make sure 16bit is set to true
 
         ' Lock and write new data
         Dim newVertexData As DataStream = newMesh.VertexBuffer.Lock(0, newVertexCount * MESH_VERTEX_SIZE, LockFlags.None)
@@ -156,8 +227,16 @@ Public Class ObjectDXRenderData
 
         newMesh.VertexBuffer.Unlock()
         newMesh.IndexBuffer.Unlock()
-        oldMesh.Dispose()
-
         Return newMesh
     End Function
+
+    Public Shared Sub ClearMeshCache()
+        'Trash all objects
+        For Each objectMesh As Mesh In ObjectMeshCache.Values
+            If Not IsNothing(objectMesh) Then
+                objectMesh.Dispose()
+            End If
+        Next
+        ObjectMeshCache.Clear()
+    End Sub
 End Class

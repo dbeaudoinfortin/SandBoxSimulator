@@ -25,7 +25,7 @@ Public Class DXRender
             renderObjects(i) = Sim.Objects(i)
         Next
 
-        If Sim.Render.Transparency Then
+        If Sim.Render.UsingTransparency Then
             SortObjectsByDepth(renderObjects, cameraPosition)
         End If
 
@@ -78,7 +78,7 @@ Public Class DXRender
                 Next
             End If
 
-            If Sim.Render.Transparency Then
+            If Sim.Render.UsingTransparency Then
                 'Need to sort objects by depth, always, objects may have moved
                 SortObjectsByDepth(renderObjects, cameraPosition)
             End If
@@ -86,7 +86,7 @@ Public Class DXRender
             For i = 0 To Sim.ObjectCount - 1
                 'If the object doesn't exist create it on the fly
                 If renderObjects(i).DXRenderData Is Nothing Then
-                    Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity)
+                    Sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(Sim.Objects(i), Sim.Render.Device, Sim.Config.Render.WorldScale, Sim.Config.Render.SphereComplexity, Sim.Render.SphereSecondaryComplexity, Sim.Render.UsingNonDirectionalLights)
                 End If
 
                 'Wireframe vs points vs solid rendering
@@ -169,7 +169,7 @@ Public Class DXRender
         End If
 
         'Initialize transparency settings
-        If sim.Render.Transparency Then
+        If sim.Render.UsingTransparency Then
             sim.Render.Device.SetRenderState(RenderState.AlphaBlendEnable, True)
             sim.Render.Device.SetRenderState(RenderState.SourceBlend, SharpDX.Direct3D9.Blend.SourceAlpha)
             sim.Render.Device.SetRenderState(RenderState.DestinationBlend, SharpDX.Direct3D9.Blend.InverseSourceAlpha)
@@ -187,7 +187,7 @@ Public Class DXRender
 
         'Create object meshes and materials
         For i = 0 To sim.ObjectCount - 1
-            sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(sim.Objects(i), sim.Render.Device, sim.Config.Render.WorldScale, sim.Config.Render.SphereComplexity, sim.Render.SphereSecondaryComplexity)
+            sim.Objects(i).DXRenderData = ObjectDXRenderData.Build(sim.Objects(i), sim.Render.Device, sim.Config.Render.WorldScale, sim.Config.Render.SphereComplexity, sim.Render.SphereSecondaryComplexity, sim.Render.UsingNonDirectionalLights)
         Next
 
         'Create the lights
