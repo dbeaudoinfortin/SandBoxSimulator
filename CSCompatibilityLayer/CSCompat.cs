@@ -1,4 +1,5 @@
-﻿using SharpDX.Direct3D9;
+﻿using SharpDX;
+using SharpDX.Direct3D9;
 using System;
 using System.Runtime.InteropServices;
 
@@ -6,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace CSCompatibilityLayer
 {
     //Resolves language incompatibility issues between C# and VB for 3rd-party code
-    public class CSCompat
+    public partial class CSCompat
     {
         public static void SetTransformation(ref Device device, ref TransformState transformState, ref SharpDX.Matrix matrix)
         {
@@ -31,8 +32,9 @@ namespace CSCompatibilityLayer
             }
         }
 
-        [DllImport("d3dx9_43.dll", EntryPoint = "D3DXCreateSphere", CallingConvention = CallingConvention.StdCall)]
-        private unsafe static extern int D3DXCreateSphere_(void* arg0, float arg1, int arg2, int arg3, void* arg4, void* arg5);
+        [LibraryImport("d3dx9_43.dll", EntryPoint = "D3DXCreateSphere")]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvStdcall)])]
+        private static unsafe partial int D3DXCreateSphere_(void* arg0, float arg1, int arg2, int arg3, void* arg4, void* arg5);
 
         public static Mesh CreateBox(ref Device device, float width, float height, float depth)
         {
@@ -52,7 +54,28 @@ namespace CSCompatibilityLayer
             }
         }
 
-        [DllImport("d3dx9_43.dll", EntryPoint = "D3DXCreateBox", CallingConvention = CallingConvention.StdCall)]
-        private unsafe static extern int D3DXCreateBox_(void* arg0, float arg1, float arg2, float arg3, void* arg4, void* arg5);
+        [LibraryImport("d3dx9_43.dll", EntryPoint = "D3DXCreateBox")]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvStdcall)])]
+        private static unsafe partial int D3DXCreateBox_(void* arg0, float arg1, float arg2, float arg3, void* arg4, void* arg5);
+
+        public static Mesh CreateMeshFVF(ref Device device, int numFaces, int numVertices, int options, VertexFormat fvf)
+        {
+            CreateMeshFVF(device, numFaces, numVertices, options, fvf, out Mesh mesh);
+            return mesh;
+        }
+
+        public static void CreateMeshFVF(Device d3DDeviceRef, int numFaces, int numVertices, int options, VertexFormat fvf, out Mesh meshOut)
+        {
+            unsafe
+            {
+                IntPtr meshOut_ = IntPtr.Zero;
+                SharpDX.Result result = D3DXCreateMeshFVF_(numFaces, numVertices, options, unchecked((int)fvf), (void*)((d3DDeviceRef == null) ? IntPtr.Zero : d3DDeviceRef.NativePointer), &meshOut_);
+                meshOut = (meshOut_ == IntPtr.Zero) ? null : new Mesh(meshOut_);
+                result.CheckError();
+            }
+        }
+
+        [DllImport("d3dx9_43.dll", EntryPoint = "D3DXCreateMeshFVF", CallingConvention = CallingConvention.StdCall)]
+        private unsafe static extern int D3DXCreateMeshFVF_(int arg0, int arg1, int arg2, int arg3, void* arg4, void* arg5);
     }
 }
