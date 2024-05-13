@@ -241,6 +241,8 @@ https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1881aecd-40b
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/7a954dbf-efdd-4aad-882b-06524b6e7f6e" width="800" />
 
+<img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/8f2428ee-b8ab-4a07-96d5-ccd4f45647ea" width="800" />
+
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/80e3d4df-34f2-4131-aec4-ce8425dd3f2c" width="800" />
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/05ec1778-2183-4e9b-808f-98c2b12405b1" width="800" />
