@@ -6,7 +6,7 @@
 
 SandBox Simulator is an educational (and fun!) 3D rigid body physics simulation engine. It lets you play around with different Newtonian physics concepts and visualize them.
 
-I initially developed this application in 2008 as a fun hobby project. My goal was to learn about computational physics, numerical analysis, 3D rendering and ray tracing from the basics. For that reason, I chose to write everything from scratch, eventhough plenty of physics libraries existed. At that time, I couldn't find any simple GUI-based applications that allowed for the quick visualization of various physical interactions. My aim was to enable the user to see results with just a few clicks — no math or coding necessary. I recently revived version 4.0, and have implemented many significant updates in version 4.1 to bring it up to date (details below).
+I initially developed this application in 2007 as a fun hobby project. My goal was to learn about computational physics, numerical analysis, 3D rendering and ray tracing from the basics. For that reason, I chose to write everything from scratch, eventhough plenty of physics libraries existed. At that time, I couldn't find any simple GUI-based applications that allowed for the quick visualization of various physical interactions. My aim was to enable the user to see results with just a few clicks — no math or coding necessary. I recently revived version 4.0, and have implemented many significant updates in version 4.1 to bring it up to date (details below).
 
 Originally designed to give approximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
 
@@ -95,7 +95,7 @@ As part of resurrecting this project from the dead, I have made several technolo
 - Any modern GPU with hardware vertex processing (2006+), integrated or discrete.
 - Any modern x86-64 CPU.
 
-The original 2008-era system requirements were:
+The original 2007-era system requirements were:
 - Microsoft .Net Framework version 2.0
 - Windows XP or higher.
 - A DirectX 9 compatible GPU.
@@ -128,7 +128,7 @@ Note that repositioning of the camera clears the trace history of the objects wh
 
 # Changes in Version 4.1
 
-The last version, 4.0, was abandoned in 2008. In 2024 I resurrected this projects and made the following changes in version 4.1:
+The first version, 1.0, was created in 2007 and the last version, 4.0, was abandoned in 2008. In 2024 I resurrected this projects, increased the version number to 4.1 and made the following changes:
 - Upgraded from the .Net Framework 2.0 to .Net 8.0.
 - Moved from Visual Studio 2005 to Visual Studio 2022.
 - Upgraded from 32bit to 64bit.
