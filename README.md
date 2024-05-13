@@ -1,6 +1,8 @@
 # SandBox Simulator 4
 
-![Splash](https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/7698041f-ecb1-420e-bd94-154bf1bdaf4d)
+<p align="center">
+<img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/7698041f-ecb1-420e-bd94-154bf1bdaf4d"/>
+</p>
 
 SandBox Simulator is an educational (and fun!) 3D rigid body physics simulation engine. It lets you play around with different Newtonian physics concepts and visualize them.
 
@@ -168,6 +170,8 @@ There are a number of additions that I have been meaning to implement (one of th
 - Ray tracing depth control to limit object interactions and improve performance.
 
 # Screenshots
+
+<p align="center">
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/6dd2e880-be1a-4f61-8ad9-701a32754b5f" width="500" />
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/58a134e3-915f-49a4-9aba-8569c31e5977" width="500" />
@@ -179,12 +183,14 @@ There are a number of additions that I have been meaning to implement (one of th
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/a55dcb95-cf00-42e1-a5fe-182439e71707" width="500" />
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/d15321e6-e3c2-4cf5-a613-b142f9ce7a65" width="500" />
+</p>
 
 
 # Some Pretty Pictures
 
 Here are some examples of visualizations.
 
+<p align="center">
 https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1881aecd-40bf-4f04-820c-efdfc1f741a6
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/925be17a-3b91-46f9-90a7-03a9ac5d9caf" width="800" />
@@ -238,4 +244,4 @@ https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1881aecd-40b
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/80e3d4df-34f2-4131-aec4-ce8425dd3f2c" width="800" />
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/05ec1778-2183-4e9b-808f-98c2b12405b1" width="800" />
-
+</p>
