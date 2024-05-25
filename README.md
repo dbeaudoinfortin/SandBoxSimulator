@@ -191,7 +191,8 @@ There are a number of additions that I have been meaning to implement (one of th
 Here are some examples of visualizations.
 
 <p align="center">
-https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1881aecd-40bf-4f04-820c-efdfc1f741a6
+  
+<video src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/1881aecd-40bf-4f04-820c-efdfc1f741a6" width="800" />
 
 <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/925be17a-3b91-46f9-90a7-03a9ac5d9caf" width="800" />
 
