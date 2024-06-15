@@ -6,7 +6,7 @@
 
 SandBox Simulator is an educational (and fun!) 3D rigid body physics simulation engine. It lets you play around with different Newtonian physics concepts and visualize them.
 
-I initially developed this application in 2007 as a fun hobby project. My goal was to learn about computational physics, numerical analysis, 3D rendering and ray tracing from the basics. For that reason, I chose to write everything from scratch, eventhough plenty of physics libraries existed. At that time, I couldn't find any simple GUI-based applications that allowed for the quick visualization of various physical interactions. My aim was to enable the user to see results with just a few clicks — no math or coding necessary. I recently revived version 4.0, and have implemented many significant updates in version 4.1 to bring it up to date (details below).
+I initially developed this application in 2007 as a fun hobby project. My goal was to learn about computational physics, numerical analysis, 3D rendering and ray tracing from the basics. For that reason, I chose to write everything from scratch, even though plenty of physics libraries existed. At that time, I couldn't find any simple GUI-based applications that allowed for the quick visualization of various physical interactions. My aim was to enable the user to see results with just a few clicks — no math or coding necessary. I recently revived version 4.0, and have implemented many significant updates in version 4.1 to bring it up to date (details below).
 
 Originally designed to give approximate visual solutions to n-body problems of point masses, SandBox Simulator now supports much more:
 
