@@ -248,3 +248,10 @@ Here are some examples of visualizations.
   
   <img src="https://github.com/dbeaudoinfortin/SandBoxSimulator/assets/15943629/05ec1778-2183-4e9b-808f-98c2b12405b1" width="800" />
 </p>
+
+
+## Legal Stuff
+
+Copyright (c) 2007 David Fortin
+
+This software is provided by David Fortin under the MIT License, meaning you are free to use it however you want, as long as you include the original copyright notice (above) and license notice in any copy you make. You just can't hold me liable in case something goes wrong. License details can be read [here](https://github.com/dbeaudoinfortin/SandBoxSimulator?tab=MIT-1-ov-file)
